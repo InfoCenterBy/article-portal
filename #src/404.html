@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+	@@include('_head.html',{
+	"title":"Главная"
+	})
+	<body>
+		<div class="wrapper">
+			@@include('_header.html',{})
+			<main class="page">
+				<section class="page-404">
+					<div class='container'>
+						<div class="page-404__body">
+							<div class="page-404__img">
+								<img src="./img/404.gif" alt="" class="img-fluid">
+							</div>
+							<div class="page-404__info">
+								<h1 class="main-title">СТРАНИЦА НЕ НАЙДЕНА</h1>
+								<p>Не переживайте, просто кто-то где-то ошибся. Попробуйте вернуться <a href="index.html">на главную</a> и начать сначала</p>
+								<div>
+									<a href="index.html" class="page-404__button">Перейти на главную</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</main>
+			@@include('_footer.html',{})
+		</div>
+		@@include('_js.html',{})
+	</body>
+</html>

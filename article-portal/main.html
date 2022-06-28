@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+   <title>Информационно-аналитическая база</title>
+   <meta charset="UTF-8" />
+   <meta name="format-detection" content="telephone=no" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+   <link rel="stylesheet" href="css/style.min.css" />
+</head>
+
+	<body>
+		<div class="wrapper">
+			<header class="header">
+	<div class="header-top">
+		<div class="header-top__body">
+			<a href="index.html" class="logo">
+				Порталчик-чик-чик
+			</a>
+			<div class="header-search">
+				<!--				<i class="bi bi-search"></i>-->
+				<div class="header-search__wrapper">
+					<div class="header-search__input">
+						<input type="text" class="" />
+					</div>
+					<button type="submit" class="button">Найти<i class="bi bi-search ms-3"></i></button>
+				</div>
+			</div>
+			<div class="login-users">
+				Вход для пользователей
+				<i class="bi bi-person ms-3"></i>
+			</div>
+		</div>
+	</div>
+	<div class="header-bottom">
+		<div class="container">
+			<div class="header-bottom__body">
+				<div class="header-bottom__col">
+					<div class="header-bottom__item">USD: <span id="usd"></span></div>
+					<div class="header-bottom__item">EUR: <span id="eur"></span></div>
+					<div class="header-bottom__item">RUB: <span id="rub"></span></div>
+				</div>
+				<div class="header-bottom__col">
+					<div class="header-bottom__item">Базовая величина: <span>32 BYN</span></div>
+					<div class="header-bottom__item">Базовая арендная величина: <span>16,9 BYN</span></div>
+					<div class="header-bottom__item">Базовая ставка: <span>210 BYN</span></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="header-menu">
+		<button type="button" class="header-menu__burger">
+			<i class="bi bi-arrow-right-circle"></i>
+		</button>
+		<nav class="menu-header">
+			<ul class="menu-header__list">
+				<li>
+					<div class="menu-header__collapse">
+						<a href="#" class="menu-header__link" title="Статьи"><i class="bi bi-card-heading me-3"></i>Статьи</a>
+						<button class="submenu-button collapsed" data-bs-toggle="collapse" data-bs-target="#articles-collapse" aria-expanded="false" aria-current="true">
+							<i class="bi bi-chevron-down"></i>
+						</button>
+					</div>
+					<ul class="submenu-header collapse" id="articles-collapse">
+						<li><a href="#" class="submenu-header__link">Налогообложение ИП</a></li>
+						<li><a href="#" class="submenu-header__link">Налогообложение организаций</a></li>
+						<li><a href="#" class="submenu-header__link">Бухгалтерский учет</a></li>
+						<li><a href="#" class="submenu-header__link">Государственное регулирование</a></li>
+					</ul>
+				</li>
+				<li>
+					<div class="menu-header__collapse">
+						<a href="#" class="menu-header__link" title="Новости"><i class="bi bi-newspaper me-3"></i>Новости</a>
+						<button class="submenu-button collapsed" data-bs-toggle="collapse" data-bs-target="#news-collapse" aria-expanded="false" aria-current="true">
+							<i class="bi bi-chevron-down"></i>
+						</button>
+					</div>
+					<ul class="submenu-header collapse" id="news-collapse">
+						<li><a href="#" class="submenu-header__link">Новости законодательства</a></li>
+						<li><a href="#" class="submenu-header__link">Экономические новости</a></li>
+						<li><a href="#" class="submenu-header__link">Международные новости</a></li>
+						<li><a href="#" class="submenu-header__link">События</a></li>
+					</ul>
+				</li>
+				<li>
+					<div class="menu-header__collapse">
+						<a href="#" class="menu-header__link" title="Формы документов"><i class="bi bi-file-earmark-ruled me-3"></i>Формы документов</a>
+						<button class="submenu-button collapsed" data-bs-toggle="collapse" data-bs-target="#forms-doc-collapse" aria-expanded="false" aria-current="true">
+							<i class="bi bi-chevron-down"></i>
+						</button>
+					</div>
+					<ul class="submenu-header collapse" id="forms-doc-collapse">
+						<li><a href="#" class="submenu-header__link">1</a></li>
+						<li><a href="#" class="submenu-header__link">2</a></li>
+						<li><a href="#" class="submenu-header__link">3</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#" class="menu-header__link" title="Налоговый календарь"><i class="bi bi-calendar2-week me-3"></i>Налоговый календарь</a>
+				</li>
+				<li>
+					<a href="#" class="menu-header__link" title="Курсы валют"><i class="bi bi-currency-exchange me-3"></i>Курсы валют</a>
+				</li>
+				<li>
+					<div class="menu-header__collapse">
+						<a href="#" class="menu-header__link" title="Справочная информация"><i class="bi bi-table me-3"></i>Справочная информация</a>
+						<button class="submenu-button collapsed" data-bs-toggle="collapse" data-bs-target="#ref-info-collapse" aria-expanded="false" aria-current="true">
+							<i class="bi bi-chevron-down"></i>
+						</button>
+					</div>
+					<ul class="submenu-header collapse" id="ref-info-collapse">
+						<li><a href="#" class="submenu-header__link">1</a></li>
+						<li><a href="#" class="submenu-header__link">2</a></li>
+						<li><a href="#" class="submenu-header__link">3</a></li>
+					</ul>
+				</li>
+			</ul>
+			<ul class="menu-header__list">
+				<li>
+					<a href="#" class="menu-header__link" title="Авторам"><i class="bi bi-pencil-square me-3"></i>Авторам</a>
+				</li>
+				<li>
+					<a href="#" class="menu-header__link" title="Рекламодателям"><i class="bi bi-megaphone me-3"></i>Рекламодателям</a>
+				</li>
+				<li>
+					<a href="#" class="menu-header__link" title="Формы Помощь"><i class="bi bi-question-circle me-3"></i>Формы Помощь</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</header>
+			<main class="page">
+				<section class="my-4">
+					<div class='container'>
+						<div class="title-underline">
+							<h3 class="title-underline__title">
+								<i class="bi bi-tag me-2"></i>
+								Популярное на портале
+							</h3>
+							<a href="#" class="title-underline__link">
+								Все темы
+								<i class="bi bi-arrow-right ms-3"></i>
+							</a>
+						</div>
+						<div class="d-flex flex-wrap">
+							<a class="button-hover" href="#">
+								<span class="button-hover__hover-wrap"></span>
+								<div class="button-hover__text">Сбор за размещение рекламы</div>
+							</a>
+							<a class="button-hover" href="#">
+								<span class="button-hover__hover-wrap"></span>
+								<div class="button-hover__text">Маркировка</div>
+							</a>
+							<a class="button-hover" href="#">
+								<span class="button-hover__hover-wrap"></span>
+								<span class="button-hover__text">Кассовое оборудование</span>
+							</a>
+							<a class="button-hover" href="#">
+								<span class="button-hover__hover-wrap"></span>
+								<span class="button-hover__text">Расчет больничных</span>
+							</a>
+							<a class="button-hover" href="#">
+								<span class="button-hover__hover-wrap"></span>
+								<span class="button-hover__text">Государственное реглирование</span>
+							</a>
+							<a class="button-hover" href="#">
+								<span class="button-hover__hover-wrap"></span>
+								<span class="button-hover__text">УСН</span>
+							</a>
+							<a class="button-hover" href="#">
+								<span class="button-hover__hover-wrap"></span>
+								<span class="button-hover__text">Отпуск</span>
+							</a>
+							<a class="button-hover" href="#">
+								<span class="button-hover__hover-wrap"></span>
+								<span class="button-hover__text">Больничные</span>
+							</a>
+							<a class="button-hover" href="#">
+								<span class="button-hover__hover-wrap"></span>
+								<div class="button-hover__text">Сбор за размещение рекламы</div>
+							</a>
+							<a class="button-hover" href="#">
+								<span class="button-hover__hover-wrap"></span>
+								<div class="button-hover__text">Маркировка</div>
+							</a>
+							<a class="button-hover" href="#">
+								<span class="button-hover__hover-wrap"></span>
+								<span class="button-hover__text">Кассовое оборудование</span>
+							</a>
+							<a class="button-hover" href="#">
+								<span class="button-hover__hover-wrap"></span>
+								<span class="button-hover__text">Расчет больничных</span>
+							</a>
+							<a class="button-hover" href="#">
+								<span class="button-hover__hover-wrap"></span>
+								<span class="button-hover__text">Государственное реглирование</span>
+							</a>
+							<a class="button-hover" href="#">
+								<span class="button-hover__hover-wrap"></span>
+								<span class="button-hover__text">УСН</span>
+							</a>
+							<a class="button-hover" href="#">
+								<span class="button-hover__hover-wrap"></span>
+								<span class="button-hover__text">Отпуск</span>
+							</a>
+							<a class="button-hover" href="#">
+								<span class="button-hover__hover-wrap"></span>
+								<span class="button-hover__text">Больничные</span>
+							</a>
+						</div>
+					</div>
+				</section>
+				<section class="categories">
+					<div class='container'>
+						<div class="title-underline title-underline_white">
+							<h3 class="title-underline__title">
+								<i class="bi bi-journal-text me-2"></i>
+								Рубрики
+							</h3>
+						</div>
+						<div class="row g-4">
+							<div class="col-md-3">
+								<a href="#" class="item-categories decor">
+									<span class="item-categories__icon">
+										<img src="./img/icon/categories/01.svg" alt="Иконка" />
+									</span>
+									<h5 class="item-categories__text">
+										Налогообложение индивидуальных предпринимателей
+									</h5>
+								</a>
+							</div>
+							<div class="col-md-3">
+								<a href="#" class="item-categories decor">
+									<span class="item-categories__icon">
+										<img src="./img/icon/categories/02.svg" alt="Иконка" />
+									</span>
+									<h5 class="item-categories__text">
+										Налогообложение индивидуальных предпринимателей
+									</h5>
+								</a>
+							</div>
+							<div class="col-md-3">
+								<a href="#" class="item-categories decor">
+									<span class="item-categories__icon">
+										<img src="./img/icon/categories/03.svg" alt="Иконка" />
+									</span>
+									<h5 class="item-categories__text">
+										Бухгалтерский учет
+									</h5>
+								</a>
+							</div>
+							<div class="col-md-3">
+								<a href="#" class="item-categories decor">
+									<span class="item-categories__icon">
+										<img src="./img/icon/categories/04.svg" alt="Иконка" />
+									</span>
+									<h5 class="item-categories__text">
+										Государственное регулирование
+									</h5>
+								</a>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="my-5">
+					<div class='container'>
+						<div class="row g-4">
+							<div class="col-xl-7">
+								<div class="title-underline">
+									<h3 class="title-underline__title">
+										<i class="bi bi-card-heading me-2"></i>
+										Последние статьи
+									</h3>
+									<a href="#" class="title-underline__link">
+										Все статьи
+										<i class="bi bi-arrow-right ms-3"></i>
+									</a>
+								</div>
+								<div class="list-recent-aticles">
+									<div class="item-article">
+										<div class="item-article__bookmark">
+											<i class="bi bi-bookmark-star-fill"></i>
+										</div>
+										<div class="item-article__category">
+											Налогообложение ИП / Таможенное регулирование
+										</div>
+										<a href="#" class="item-article__title">
+											<i class="bi bi-lock-fill me-3"></i>
+											Как изменить сроки уплаты таможенных платежей
+										</a>
+										<div class="item-article__text">В современных условиях индивидуальным предпринимателям иногда требуется изменить срок уплаты платежей, взимаемых таможней. Как это правильно сделать — ответ в настоящей публикации.</div>
+										<div class="item-article__footer">
+											<div class="item-article__date date">
+												<i class="bi bi-calendar me-2"></i>
+												20.05.2022
+											</div>
+											<div class="item-article__list-tags">
+												<i class="bi bi-tag"></i>
+												<div class="d-flex flex-wrap">
+													<div class="item-article__tag">Таможенные платежи</div>
+													<div class="item-article__tag">ЕАЭС</div>
+													<div class="item-article__tag">ЕАЭС</div>
+													<div class="item-article__tag">Срок уплаты</div>
+													<div class="item-article__tag">Срок уплаты</div>
+												</div>
+											</div>
+										</div>
+										<div class="item-article__read-more">
+											<a href="#">
+												Читать
+												<i class="bi bi-arrow-right ms-2"></i>
+											</a>
+										</div>
+									</div>
+									<div class="item-article">
+										<div class="item-article__bookmark">
+											<i class="bi bi-bookmark-star-fill"></i>
+										</div>
+										<div class="item-article__category">
+											Налогообложение ИП / Таможенное регулирование
+										</div>
+										<a href="#" class="item-article__title">
+											<i class="bi bi-lock-fill me-3"></i>
+											Как изменить сроки уплаты таможенных платежей
+										</a>
+										<div class="item-article__text">В современных условиях индивидуальным предпринимателям иногда требуется изменить срок уплаты платежей, взимаемых таможней. Как это правильно сделать — ответ в настоящей публикации.</div>
+										<div class="item-article__footer">
+											<div class="item-article__date date">
+												<i class="bi bi-calendar me-2"></i>
+												20.05.2022
+											</div>
+											<div class="item-article__list-tags">
+												<i class="bi bi-tag"></i>
+												<div class="d-flex flex-wrap">
+													<div class="item-article__tag">Таможенные платежи</div>
+													<div class="item-article__tag">ЕАЭС</div>
+													<div class="item-article__tag">Срок уплаты</div>
+												</div>
+											</div>
+										</div>
+										<div class="item-article__read-more">
+											<a href="#">
+												Читать
+												<i class="bi bi-arrow-right ms-2"></i>
+											</a>
+										</div>
+									</div>
+									<div class="item-article">
+										<div class="item-article__bookmark">
+											<i class="bi bi-bookmark-star-fill"></i>
+										</div>
+										<div class="item-article__category">
+											Налогообложение ИП / Таможенное регулирование
+										</div>
+										<a href="#" class="item-article__title">
+											<i class="bi bi-lock-fill me-3"></i>
+											Как изменить сроки уплаты таможенных платежей
+										</a>
+										<div class="item-article__text">В современных условиях индивидуальным предпринимателям иногда требуется изменить срок уплаты платежей, взимаемых таможней. Как это правильно сделать — ответ в настоящей публикации.</div>
+										<div class="item-article__footer">
+											<div class="item-article__date date">
+												<i class="bi bi-calendar me-2"></i>
+												20.05.2022
+											</div>
+											<div class="item-article__list-tags">
+												<i class="bi bi-tag"></i>
+												<div class="d-flex flex-wrap">
+													<div class="item-article__tag">Таможенные платежи</div>
+													<div class="item-article__tag">ЕАЭС</div>
+													<div class="item-article__tag">Срок уплаты</div>
+												</div>
+											</div>
+										</div>
+										<div class="item-article__read-more">
+											<a href="#">
+												Читать
+												<i class="bi bi-arrow-right ms-2"></i>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-xl-5">
+								<div class="mb-4">
+									<div class="title-full">
+										<h3 class="title-full__title">
+											<i class="bi bi-file-earmark-text me-2"></i>
+											Формы документов
+										</h3>
+										<a href="#" class="title-full__link">
+											Все
+											<i class="bi bi-arrow-right ms-3"></i>
+										</a>
+									</div>
+									<div class="list-documents">
+										<a href="#" class="item-document">
+											<i class="bi bi-file-earmark-text me-2"></i>
+											<span>Договор найма жилого помещения частного жилищного фонда граждан</span>
+										</a>
+										<a href="#" class="item-document">
+											<i class="bi bi-file-earmark-text me-2"></i>
+											<span>Уведомление о начале (прекращении) осуществления ремесленной деятельности</span>
+										</a>
+										<a href="#" class="item-document">
+											<i class="bi bi-file-earmark-text me-2"></i>
+											<span>Договор аренды (субаренды) машино-мест</span>
+										</a>
+										<a href="#" class="item-document">
+											<i class="bi bi-file-earmark-text me-2"></i>
+											<span>Налоговая декларация (расчет) по подоходному налогу с физических лиц </span>
+										</a>
+										<a href="#" class="item-document">
+											<i class="bi bi-file-earmark-text me-2"></i>
+											<span>Уведомление о начале (прекращении) осуществления ремесленной деятельности</span>
+										</a>
+										<a href="#" class="item-document">
+											<i class="bi bi-file-earmark-text me-2"></i>
+											<span>Договор аренды (субаренды) машино-мест</span>
+										</a>
+										<a href="#" class="item-document">
+											<i class="bi bi-file-earmark-text me-2"></i>
+											<span>Налоговая декларация (расчет) по подоходному налогу с физических лиц </span>
+										</a>
+										<a href="#" class="item-document">
+											<i class="bi bi-file-earmark-text me-2"></i>
+											<span>Договор найма жилого помещения частного жилищного фонда граждан</span>
+										</a>
+									</div>
+								</div>
+								<div class="mb-4">
+									<div class="title-full">
+										<h3 class="title-full__title">
+											<i class="bi bi-calendar2-week me-2"></i>
+											Налоговый календарь
+										</h3>
+									</div>
+									<div id="calendarFosm" class="calendar-container"></div>
+								</div>
+								<div class="mb-4">
+									<div class="title-full">
+										<h3 class="title-full__title">
+											<i class="bi bi-person-bounding-box me-2"></i>
+											Проверка контрагента
+										</h3>
+									</div>
+									<div class="сounterparty-check">
+										<div class="сounterparty-check__title">Сервис для поиска информации о бизнес-партнере</div>
+										<div class="сounterparty-check__wrapper">
+											<div class="сounterparty-check__input">
+												<input type="text" class="" />
+											</div>
+											<button type="submit" class="button">Проверить<i class="bi bi-search ms-3"></i></button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="slider-event my-5">
+					<div class='container'>
+						<div class="title-underline">
+							<h3 class="title-underline__title">
+								<i class="bi bi-images me-2"></i>
+								Последние события
+							</h3>
+						</div>
+						<div class="slider-event-control">
+							<div class="slider-event-control__arrow slider-event-control__arrow_prev"><i class="bi bi-chevron-left"></i></div>
+							<div class="slider-event-control__arrow slider-event-control__arrow_next"><i class="bi bi-chevron-right"></i></div>
+						</div>
+						<div class="slider-event__wrapper swiper">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<a href="event-post.html" class="item-event">
+										<span class="item-event__photo">
+											<img src="./img/events/01.jpg" alt="фото">
+										</span>
+										<span class="item-event__info">
+											<h5 class="item-event__title">День Победы — праздник, который объединяет поколения"</h5>
+											<span class="item-event__text">6 мая, в преддверии Дня Победы, представители МНС во главе с Министром Сергеем Наливайко возложили венок и цветы к монументу, воздвигнутому в память о жертвах лагеря Шталаг 352</span>
+											<span class="item-event__row">
+												<span class="date">
+													<i class="bi bi-calendar me-2"></i>
+													20.05.2022
+												</span>
+												<span class="item-event__read-more">
+													Читать
+													<i class="bi bi-arrow-right ms-2"></i>
+												</span>
+											</span>
+										</span>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="event-post.html" class="item-event">
+										<span class="item-event__photo">
+											<img src="./img/events/02.jpg" alt="фото">
+										</span>
+										<span class="item-event__info">
+											<h5 class="item-event__title">Современные инструменты в действии</h5>
+											<span class="item-event__text">Парламентарии ознакомились
+												с ходом цифровизации налоговых сервисов</span>
+											<span class="item-event__row">
+												<span class="date">
+													<i class="bi bi-calendar me-2"></i>
+													18.05.2022
+												</span>
+												<span class="item-event__read-more">
+													Читать
+													<i class="bi bi-arrow-right ms-2"></i>
+												</span>
+											</span>
+										</span>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="event-post.html" class="item-event">
+										<span class="item-event__photo">
+											<img src="./img/blank-photo.jpg" alt="фото">
+										</span>
+										<span class="item-event__info">
+											<h5 class="item-event__title">В ЕАЭС продолжают принимать меры по повышению устойчивости экономик стран союза</h5>
+											<span class="item-event__text">Новый пакет антикризисных мер, направленных на насыщение единого рынка ЕАЭС социально значимыми товарами, принят на внеочередном апрельском заседании Совета ЕЭК</span>
+											<span class="item-event__row">
+												<span class="date">
+													<i class="bi bi-calendar me-2"></i>
+													11.04.2022
+												</span>
+												<span class="item-event__read-more">
+													Читать
+													<i class="bi bi-arrow-right ms-2"></i>
+												</span>
+											</span>
+										</span>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="event-post.html" class="item-event">
+										<span class="item-event__photo">
+											<img src="./img/blank-photo.jpg" alt="фото">
+										</span>
+										<span class="item-event__info">
+											<h5 class="item-event__title">Нацбанк проанализировал ключевые тенденции
+												белорусской экономики</h5>
+											<span class="item-event__text">В январе–марте 2022 г. объем валового внутреннего продукта (ВВП) Беларуси в текущих ценах составил 42,6 млрд. руб.</span>
+											<span class="item-event__row">
+												<span class="date">
+													<i class="bi bi-calendar me-2"></i>
+													20.05.2022
+												</span>
+												<span class="item-event__read-more">
+													Читать
+													<i class="bi bi-arrow-right ms-2"></i>
+												</span>
+											</span>
+										</span>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="event-post.html" class="item-event">
+										<span class="item-event__photo">
+											<img src="./img/events/02.jpg" alt="фото">
+										</span>
+										<span class="item-event__info">
+											<h5 class="item-event__title">День Победы — праздник, который объединяет поколения"</h5>
+											<span class="item-event__text">6 мая, в преддверии Дня Победы, представители МНС во главе с Министром Сергеем Наливайко возложили венок и цветы к монументу, воздвигнутому в память о жертвах лагеря Шталаг 352</span>
+											<span class="item-event__row">
+												<span class="date">
+													<i class="bi bi-calendar me-2"></i>
+													20.05.2022
+												</span>
+												<span class="item-event__read-more">
+													Читать
+													<i class="bi bi-arrow-right ms-2"></i>
+												</span>
+											</span>
+										</span>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="event-post.html" class="item-event">
+										<span class="item-event__photo">
+											<img src="./img/events/01.jpg" alt="фото">
+										</span>
+										<span class="item-event__info">
+											<h5 class="item-event__title">Современные инструменты в действии</h5>
+											<span class="item-event__text">Парламентарии ознакомились
+												с ходом цифровизации налоговых сервисов</span>
+											<span class="item-event__row">
+												<span class="date">
+													<i class="bi bi-calendar me-2"></i>
+													20.05.2022
+												</span>
+												<span class="item-event__read-more">
+													Читать
+													<i class="bi bi-arrow-right ms-2"></i>
+												</span>
+											</span>
+										</span>
+									</a>
+								</div>
+								<div class="swiper-slide">
+									<a href="event-post.html" class="item-event">
+										<span class="item-event__photo">
+											<img src="./img/blank-photo.jpg" alt="фото">
+										</span>
+										<span class="item-event__info">
+											<h5 class="item-event__title">В ЕАЭС продолжают принимать меры по повышению устойчивости экономик стран союза</h5>
+											<span class="item-event__text">Новый пакет антикризисных мер, направленных на насыщение единого рынка ЕАЭС социально значимыми товарами, принят на внеочередном апрельском заседании Совета ЕЭК</span>
+											<span class="item-event__row">
+												<span class="date">
+													<i class="bi bi-calendar me-2"></i>
+													20.05.2022
+												</span>
+												<span class="item-event__read-more">
+													Читать
+													<i class="bi bi-arrow-right ms-2"></i>
+												</span>
+											</span>
+										</span>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="my-5">
+					<div class='container'>
+						<div class="title-underline">
+							<h3 class="title-underline__title">
+								<i class="bi bi-newspaper"></i>
+								Последние новости
+							</h3>
+							<a href="#" class="title-underline__link">
+								Все новости
+								<i class="bi bi-arrow-right ms-3"></i>
+							</a>
+						</div>
+					</div>
+				</section>
+				<section class="my-5">
+					<div class='container'>
+						<div class="row g-4">
+							<div class="col-xl-7">
+								<div class="title-full">
+									<h3 class="title-full__title">
+										<i class="bi bi-table"></i>
+										Справочная информация
+									</h3>
+									<a href="#" class="title-full__link">
+										Больше
+										<i class="bi bi-arrow-right ms-3"></i>
+									</a>
+								</div>
+								<div class="list-information-indicators">
+									<a href="#" class="item-information-indicator">
+										<span class="item-information-indicator__number">32 BYN</span>
+										<span class="item-information-indicator__text">Базовая величина</span>
+										<span class="date">
+											<i class="bi bi-calendar me-2"></i>
+											20.05.2022
+										</span>
+									</a>
+									<a href="#" class="item-information-indicator">
+										<span class="item-information-indicator__number">16.9 BYN</span>
+										<span class="item-information-indicator__text">Базовая величина</span>
+										<span class="date">
+											<i class="bi bi-calendar me-2"></i>
+											20.05.2022
+										</span>
+									</a>
+									<a href="#" class="item-information-indicator">
+										<span class="item-information-indicator__number">210 BYN</span>
+										<span class="item-information-indicator__text">Базовая ставка</span>
+										<span class="date">
+											<i class="bi bi-calendar me-2"></i>
+											20.05.2022
+										</span>
+									</a>
+								</div>
+							</div>
+							<div class="col-xl-5">
+								<div class="title-full">
+									<h3 class="title-full__title">
+										<i class="bi bi-table"></i>
+										Основные показатели
+									</h3>
+									<a href="#" class="title-full__link">
+										Больше
+										<i class="bi bi-arrow-right ms-3"></i>
+									</a>
+								</div>
+								<div class="list-information-indicators">
+									<a href="#" class="item-information-indicator">
+										<span class="item-information-indicator__number">20%</span>
+										<span class="item-information-indicator__text">Налог на добавленную стоимость</span>
+									</a>
+									<a href="#" class="item-information-indicator">
+										<span class="item-information-indicator__number">18%</span>
+										<span class="item-information-indicator__text">Налог на прибыль</span>
+									</a>
+									<a href="#" class="item-information-indicator">
+										<span class="item-information-indicator__number">13%</span>
+										<span class="item-information-indicator__text">Подоходный налог</span>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+			</main>
+			<footer class="footer">
+	<div class="container">
+		<a href="index.html">
+			Логотип
+		</a>
+	</div>
+</footer>
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<script src="js/script.min.js"></script>
+		<script>
+			// ===========  Calendar ===========================
+			var $calendar;
+			$(document).ready(function () {
+				let container = $('#calendarFosm').simpleCalendar({
+					fixedStartDay: 1, // begin weeks by sunday
+					disableEmptyDetails: true,
+					events: [
+						// generate new event after tomorrow for one hour
+						{
+							startDate: '2022-06-30',
+							endDate: '2022-06-30',
+							place: 'г. Гродно',
+							summary:
+									'Республиканская летняя спартакиада работников лесного хозяйства',
+						},
+						{
+							startDate: '2022-06-14',
+							endDate: '2022-06-14',
+							place: 'г. Гродно',
+							summary:
+									'Республиканская летняя спартакиада работников лесного хозяйства',
+						},
+						{
+							startDate: '2022-06-15',
+							endDate: '2022-06-17',
+							place: 'г. Гродно',
+							summary:
+									'Республиканская летняя спартакиада работников лесного хозяйства',
+						},
+						{
+							startDate: '2022-06-14',
+							endDate: '2022-06-14',
+							place: 'г. Минск',
+							summary: 'Областные соревнования на лучшего инструктора-методиста',
+						},
+						{
+							startDate: '2022-06-14',
+							endDate: '2022-06-15',
+							place: 'г. Минск',
+							summary: 'Областные соревнования на лучшего инструктора-методиста',
+						},
+						{
+							startDate: '2022-06-14',
+							endDate: '2022-06-21',
+							place: 'г. Минск',
+							summary: 'Областные соревнования на лучшего инструктора-методиста',
+						},
+						{
+							startDate: '2022-06-22',
+							endDate: '2022-06-23',
+							place: 'г. Брест',
+							summary:
+									'Легкая атлетика в помещении(юноши и девушки (2008–2009 г.р.)',
+						},
+					],
+				});
+
+				$calendar = container.data('plugin_simpleCalendar');
+			});
+		</script>
+	</body>
+</html>

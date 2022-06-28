@@ -1,0 +1,201 @@
+.calendar {
+   padding: 24px 24px 4px;
+   border: 1px solid #d1d2d4;
+   position: relative;
+   overflow: hidden;
+   text-align: center;
+   font: 15px/1em inherit;
+   color: #8E8E93;
+}
+.calendar a {
+   text-decoration: none;
+   color: inherit;
+}
+.calendar header .simple-calendar-btn {
+   display: inline-block;
+   position: absolute;
+   width: 35px;
+   height: 35px;
+   text-align: center;
+   line-height: 30px;
+   color: #DDDDDD;
+   border: 1px solid #DDDDDD;
+}
+.calendar header .simple-calendar-btn:hover {
+   background: #c47a2c;
+}
+.calendar header .simple-calendar-btn:before {
+   content: '';
+   position: absolute;
+   top: 37%;
+   left: 30%;
+   width: 10px;
+   height: 10px;
+   border-style: solid;
+   border-width: 2px 2px 0 0;
+   transform: rotate(45deg);
+}
+.calendar header .btn-prev {
+   top: 30px;
+   left: 24px;
+   transform: rotate(-180deg);
+}
+.calendar header .btn-next {
+   top: 30px;
+   right: 24px;
+}
+.calendar header .btn-next:before {
+   transform: rotate(45deg);
+}
+.calendar header .month {
+   padding: 0;
+   margin: 0;
+   font-size: 24px;
+   color: #000000;
+   font-weight: 600;
+}
+.calendar header .month .year {
+   font-size: 16px;
+   font-weight: 400;
+   color: #8e8e93;
+}
+.calendar table {
+   width: 100%;
+   margin: 20px 0;
+   border-spacing: 0px;
+}
+.calendar thead {
+   font-size: 1.2em;
+   font-weight: 600;
+}
+.calendar td {
+   padding: 0.2em 0.1em;
+}
+.calendar .day {
+   position: relative;
+   display: inline-block;
+   width: 2.5em;
+   height: 2.5em;
+   line-height: 2.5em;
+   border: 2px solid transparent;
+   cursor: pointer;
+}
+.calendar .day:hover {
+   //border: 2px solid #21388f;
+}
+.calendar .day.today {
+   border: 1px solid #C47A2D;
+   background-color: #F9B974;
+   color: #fcfcfc;
+}
+.calendar .day.today.has-event:after {
+   background: #fcfcfc;
+}
+.calendar .day.wrong-month {
+   color: #cbd1d2;
+}
+.calendar .day.wrong-month:hover {
+   //border: 2px solid transparent;
+}
+.calendar .day.has-event {
+   border: 1px solid #c47a2c;
+}
+.calendar .day.has-event.pass-event {
+	text-decoration: line-through;
+}
+.calendar .day.has-event.pass-event::after {
+	background: #cbd1d2;
+}
+.calendar .day.disabled {
+   cursor: default;
+}
+.calendar .day.disabled:hover {
+   //border: 2px solid transparent;
+}
+.calendar .event-container {
+   display: none;
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   padding: 55px 15px 15px;
+   background: #e5e5e5;
+   box-sizing: border-box;
+}
+.calendar .event-container .event-wrapper {
+   overflow-y: auto;
+   max-height: 100%;
+}
+
+.calendar .event-container .event-wrapper::-webkit-scrollbar {
+   width: 5px;
+   height: 8px;
+   background-color: #e9e9e9;
+}
+
+.calendar .event-container .event-wrapper::-webkit-scrollbar-thumb {
+   background-color: #c4c4c4;
+   border-radius: 13px;
+}
+
+.calendar .event-container .event-wrapper::-webkit-scrollbar-thumb:hover {
+   background-color: #8E8E93;
+}
+.calendar .event-container .close {
+   position: absolute;
+   width: 30px;
+   height: 30px;
+   top: 15px;
+   right: 15px;
+   cursor: pointer;
+}
+.calendar .event-container .close:before,
+.calendar .event-container .close:after {
+   content: '';
+   position: absolute;
+   top: 0;
+   left: 50%;
+   width: 2px;
+   height: 100%;
+   background-color: #000000;
+}
+.calendar .event-container .close:before {
+   transform: rotate(45deg);
+}
+.calendar .event-container .close:after {
+   transform: rotate(-45deg);
+}
+.calendar .event-container .event {
+   position: relative;
+   width: 100%;
+   padding: 1em;
+   margin-bottom: 1em;
+   border: 2px solid #000000;
+   box-sizing: border-box;
+   text-align: left;
+   color: #151616;
+}
+.calendar .event-container .event-date {
+   margin-bottom: 1em;
+   color: #c47a2c;
+   font-weight: 600;
+}
+.calendar .event-container .event-place {
+   margin-bottom: 1em;
+   color: #c47a2c;
+}
+.calendar .event-container .event-hour {
+   float: right;
+}
+.calendar .event-container .event-summary {
+   font-weight: 600;
+}
+.calendar .filler {
+   position: absolute;
+   width: 0;
+   height: 0;
+   border-radius: 50%;
+   background: #e5e5e5;
+   transform: translate(-50%, -50%);
+}
