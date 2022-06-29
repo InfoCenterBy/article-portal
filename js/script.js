@@ -343,6 +343,7 @@ if (document.querySelector('.slider-event__wrapper')) {
     const burger = document.querySelector(".header-menu__burger");
     const menu = document.querySelector(".header-menu");
     const page = document.querySelector(".page");
+    const footer = document.querySelector(".footer");
     const headerBottom = document.querySelector(".header-bottom");
     const body = document.querySelector("body");
 
@@ -351,13 +352,14 @@ if (document.querySelector('.slider-event__wrapper')) {
         if(!menu.classList.contains('_active')) {
             menu.classList.add('_active')
             page.classList.add('_active')
+            footer.classList.add('_active')
             headerBottom.classList.add('_active')
         } else {
             menu.classList.remove('_active')
             page.classList.remove('_active')
+            footer.classList.remove('_active')
             headerBottom.classList.remove('_active')
         }
-
     })
 })()
 
