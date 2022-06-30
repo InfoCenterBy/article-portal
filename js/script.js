@@ -402,4 +402,10 @@ $(function() {
             $(this).find('.button-hover__hover-wrap').css({top:relY, left:relX})
         });
     $('[href=#]').click(function(){return false});
-});;
+});
+
+$(".scrollbar-y").mCustomScrollbar({
+    axis: "y"
+});
+
+;
