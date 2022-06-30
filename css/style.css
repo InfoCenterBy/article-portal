@@ -1596,41 +1596,73 @@ td.vertical-bottom {
   padding: 24px 0px;
 }
 
-.footer__title {
-  margin: 0px 0px 24px 0px;
-  font-size: 18px;
-  color: var(--color-gold);
-  font-weight: 600;
-}
-
-.footer__list {
-  margin-bottom: 0;
-  padding-left: 0;
-}
-
-.footer__list li:not(:last-child) {
-  margin: 0px 0px 10px 0px;
-}
-
-.footer__link {
-  font-size: 16px;
-  color: var(--color-white);
-}
-
-.footer__link:hover {
-  color: var(--color-gold-light);
-}
-
 .footer__subscribe {
   margin: 36px 0px 0px 0px;
-  display: inline-block;
+}
+
+.footer__subscribe a {
   font-size: 18px;
   color: var(--color-gold);
   font-weight: 600;
   text-transform: uppercase;
 }
 
-.footer__subscribe:hover {
+.footer__subscribe a:hover {
+  color: var(--color-gold-light);
+}
+
+.menu-footer__collapse {
+  margin: 0px 0px 24px 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.menu-footer__title {
+  font-size: 18px;
+  color: var(--color-gold);
+  font-weight: 600;
+}
+
+.menu-footer__link {
+  font-size: 18px;
+  color: var(--color-gold);
+  font-weight: 600;
+}
+
+.menu-footer__link:hover {
+  color: var(--color-gold-light);
+}
+
+.menu-footer__button {
+  display: none;
+}
+
+.submenu-footer {
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+.submenu-footer li {
+  margin: 0px 0px 24px 0px;
+}
+
+.submenu-footer li i {
+  color: var(--color-gold-light);
+}
+
+.submenu-footer__link {
+  font-size: 16px;
+  color: var(--color-white);
+}
+
+.submenu-footer__link:hover {
   color: var(--color-gold-light);
 }
 
@@ -2260,6 +2292,18 @@ td.vertical-bottom {
 }
 
 @media (min-width: 768px) {
+  .submenu-footer li {
+    margin: 0px 0px 10px 0px;
+  }
+
+  .submenu-footer li:last-child {
+    margin: 0px 0px 0px 0px;
+  }
+
+  .submenu-footer.collapse:not(.show) {
+    display: block;
+  }
+
   .item-category__label {
     height: 100%;
     padding: 10px 17px;
@@ -2350,6 +2394,22 @@ td.vertical-bottom {
   .article-header__rubric {
     display: inline-block;
     margin: 0px 0px 10px 0px;
+  }
+
+  .footer__body {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .menu-footer {
+    border-bottom: 1px solid var(--color-white);
+  }
+
+  .menu-footer__button {
+    display: block;
+    padding: 0px 16px;
+    color: var(--color-gold);
   }
 
   .footer-bottom {
