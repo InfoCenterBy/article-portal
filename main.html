@@ -5,7 +5,8 @@
    <meta charset="UTF-8" />
    <meta name="format-detection" content="telephone=no" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+<!--   <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />-->
+
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.min.css">
@@ -18,7 +19,7 @@
 	<div class="header-top">
 		<div class="header-top__body">
 			<a href="index.html" class="logo">
-				Порталчик-чик-чик
+				<img class="img-fluid" src="./img/logo.png" alt="" />
 			</a>
 			<div class="header-search">
 				<!--				<i class="bi bi-search"></i>-->
@@ -35,7 +36,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="header-bottom">
+	<div class="header-bottom overlay">
 		<div class="container">
 			<div class="header-bottom__body">
 				<div class="header-bottom__col">
@@ -60,7 +61,7 @@
 				<li>
 					<div class="menu-header__collapse">
 						<a href="#" class="menu-header__link" title="Статьи"><i class="bi bi-card-heading me-3"></i>Статьи</a>
-						<button class="submenu-button collapsed" data-bs-toggle="collapse" data-bs-target="#articles-collapse" aria-expanded="false" aria-current="true">
+						<button class="menu-header__button collapsed" data-bs-toggle="collapse" data-bs-target="#articles-collapse" aria-expanded="false" aria-current="true">
 							<i class="bi bi-chevron-down"></i>
 						</button>
 					</div>
@@ -74,7 +75,7 @@
 				<li>
 					<div class="menu-header__collapse">
 						<a href="#" class="menu-header__link" title="Новости"><i class="bi bi-newspaper me-3"></i>Новости</a>
-						<button class="submenu-button collapsed" data-bs-toggle="collapse" data-bs-target="#news-collapse" aria-expanded="false" aria-current="true">
+						<button class="menu-header__button collapsed" data-bs-toggle="collapse" data-bs-target="#news-collapse" aria-expanded="false" aria-current="true">
 							<i class="bi bi-chevron-down"></i>
 						</button>
 					</div>
@@ -88,7 +89,7 @@
 				<li>
 					<div class="menu-header__collapse">
 						<a href="#" class="menu-header__link" title="Формы документов"><i class="bi bi-file-earmark-ruled me-3"></i>Формы документов</a>
-						<button class="submenu-button collapsed" data-bs-toggle="collapse" data-bs-target="#forms-doc-collapse" aria-expanded="false" aria-current="true">
+						<button class="menu-header__button collapsed" data-bs-toggle="collapse" data-bs-target="#forms-doc-collapse" aria-expanded="false" aria-current="true">
 							<i class="bi bi-chevron-down"></i>
 						</button>
 					</div>
@@ -107,7 +108,7 @@
 				<li>
 					<div class="menu-header__collapse">
 						<a href="#" class="menu-header__link" title="Справочная информация"><i class="bi bi-table me-3"></i>Справочная информация</a>
-						<button class="submenu-button collapsed" data-bs-toggle="collapse" data-bs-target="#ref-info-collapse" aria-expanded="false" aria-current="true">
+						<button class="menu-header__button collapsed" data-bs-toggle="collapse" data-bs-target="#ref-info-collapse" aria-expanded="false" aria-current="true">
 							<i class="bi bi-chevron-down"></i>
 						</button>
 					</div>
@@ -133,7 +134,7 @@
 		</nav>
 	</div>
 </header>
-			<main class="page">
+			<main class="page overlay">
 				<section class="my-4">
 					<div class='container'>
 						<div class="title-underline">
@@ -667,7 +668,7 @@
 								</div>
 							</form>
 						</div>
-						<div class="list-news overflow-y">
+						<div class="list-news scrollbar-y">
 							<div class="item-news">
 								<a href="#" class="item-news__title">Как изменить сроки уплаты таможенных платежей</a>
 								<div class="item-news__text">В современных условиях индивидуальным предпринимателям иногда требуется изменить срок уплаты платежей, взимаемых таможней. Как это правильно сделать — ответ в настоящей публикации.</div>
@@ -799,7 +800,7 @@
 				</section>
 
 			</main>
-			<footer class="footer">
+			<footer class="footer overlay">
 	<div class="container">
 		<div class="footer__body">
 			<div class="row g-4">
@@ -879,7 +880,7 @@
 </footer>
 		</div>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+<!--<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.concat.min.js"></script>
 <script src="js/script.min.js"></script>
@@ -910,23 +911,20 @@
 			var $calendar;
 			$(document).ready(function () {
 				let container = $('#calendarFosm').simpleCalendar({
-					fixedStartDay: 1, // begin weeks by sunday
+					fixedStartDay: 1,
 					disableEmptyDetails: true,
 					events: [
-						// generate new event after tomorrow for one hour
 						{
 							startDate: '2022-06-30',
 							endDate: '2022-06-30',
 							place: 'г. Гродно',
-							summary:
-									'Республиканская летняя спартакиада работников лесного хозяйства',
+							summary: 'Республиканская летняя спартакиада работников лесного хозяйства',
 						},
 						{
 							startDate: '2022-06-14',
 							endDate: '2022-06-14',
 							place: 'г. Гродно',
-							summary:
-									'Республиканская летняя спартакиада работников лесного хозяйства',
+							summary: 'Республиканская летняя спартакиада работников лесного хозяйства',
 						},
 						{
 							startDate: '2022-06-15',
@@ -957,12 +955,10 @@
 							startDate: '2022-06-22',
 							endDate: '2022-06-23',
 							place: 'г. Брест',
-							summary:
-									'Легкая атлетика в помещении(юноши и девушки (2008–2009 г.р.)',
+							summary: 'Легкая атлетика в помещении(юноши и девушки (2008–2009 г.р.)',
 						},
 					],
 				});
-
 				$calendar = container.data('plugin_simpleCalendar');
 			});
 		</script>
