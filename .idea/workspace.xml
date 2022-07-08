@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5f771dc4-28f0-464f-b769-ff36ab9eeb7d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/#src/item-categoria.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/#src/js/libs/swiper-8.2.6.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/#src/scss/swiper-8.2.6.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/#src/_footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/#src/_footer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/#src/_head.html" beforeDir="false" afterPath="$PROJECT_DIR$/#src/_head.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/#src/_header.html" beforeDir="false" afterPath="$PROJECT_DIR$/#src/_header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/#src/_js.html" beforeDir="false" afterPath="$PROJECT_DIR$/#src/_js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/#src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/#src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/#src/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/#src/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/#src/js/libs/swiper.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/#src/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/#src/js/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/#src/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/#src/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/#src/scss/_footer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/#src/scss/_footer.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/#src/scss/_header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/#src/scss/_header.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/#src/scss/_ui.scss" beforeDir="false" afterPath="$PROJECT_DIR$/#src/scss/_ui.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/#src/scss/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/#src/scss/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/#src/scss/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/#src/scss/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/#src/ui.html" beforeDir="false" afterPath="$PROJECT_DIR$/#src/ui.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/webResources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/article-portal/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/article-portal/404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/article-portal/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/article-portal/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/article-portal/css/style.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/article-portal/css/style.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/article-portal/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/article-portal/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/article-portal/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/article-portal/js/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/article-portal/js/script.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/article-portal/js/script.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/article-portal/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/article-portal/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/article-portal/question-answer.html" beforeDir="false" afterPath="$PROJECT_DIR$/article-portal/question-answer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/article-portal/ui.html" beforeDir="false" afterPath="$PROJECT_DIR$/article-portal/ui.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gulpfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/gulpfile.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2BCMhYn0xxoElcHTaT6pvKDsplj" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="extract.css.actions.ExtractCSSConfigurable" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5f771dc4-28f0-464f-b769-ff36ab9eeb7d" name="Changes" comment="" />
+      <created>1656405732855</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1656405732855</updated>
+      <workItem from="1656405733969" duration="11117000" />
+      <workItem from="1656481329196" duration="13692000" />
+      <workItem from="1656568826620" duration="9320000" />
+      <workItem from="1656654493030" duration="6023000" />
+      <workItem from="1656914071149" duration="1780000" />
+      <workItem from="1657000079146" duration="1198000" />
+      <workItem from="1657086590989" duration="28000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
