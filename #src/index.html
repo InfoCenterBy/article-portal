@@ -1,27 +1,44 @@
 <!DOCTYPE html>
 <html lang="ru">
-	@@include('_head.html',{
-	"title":"Информационно-аналитическая база"
-	})
-	<body>
-		<div class="wrapper">
-			@@include('_header.html',{})
-			<main class="page">
-				<section class="">
-					<div class='container'>
-						<div class="">
-							<h1 class="h1 mb-3">Структура сайта "Порталчик-чик-чик"</h1>
-							<ul>
-								<li><a href="main.html">Главная</a></li>
-								<li><a href="question-answer.html">Вопрос-ответ</a></li>
-								<li><a href="ui.html">UI</a></li>
-							</ul>
-						</div>
-					</div>
-				</section>
-			</main>
-			@@include('_footer.html',{})
-		</div>
-		@@include('_js.html',{})
-	</body>
+@@include('_head.html',{
+"title":"Информационно-аналитическая база"
+})
+<body class="bg-blue">
+<style>
+    .bg-blue {
+        background-color: #034A66;
+    }
+
+    .item-link {
+        display: inline-block;
+        padding: 10px;
+        font-size: 24px;
+        font-weight: 600;
+        color: #c47a2c;
+        box-shadow: 0.5rem .5rem 1rem rgba(0, 0, 0, .15);
+    }
+
+    .item-link:hover {
+        color: #f9b974;
+        box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, .3);
+    }
+</style>
+<div class="wrapper">
+    <main class="page">
+        <section class="">
+            <div class='container'>
+                <h1 class="h1 my-5 text-center text-white">Структура сайта "Порталчик-чик-чик"</h1>
+                <ul>
+                    <li class="mb-3"><a href="main.html" class="item-link">Главная</a></li>
+                    <li class="mb-3"><a href="item-categoria.html" class="item-link">Налогообложение индивидуальных
+                        предпринимателей</a></li>
+                    <li class="mb-3"><a href="question-answer.html" class="item-link">Вопрос-ответ</a></li>
+                    <li class="mb-3"><a href="ui.html" class="item-link">UI</a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+</div>
+@@include('_js.html',{})
+</body>
 </html>
