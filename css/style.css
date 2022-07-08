@@ -55,7 +55,7 @@ body {
 
 body {
   line-height: 1.4;
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-family: "Inter", sans-serif;
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -64,7 +64,7 @@ body {
 input,
 button,
 textarea {
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: inherit;
 }
 
@@ -172,6 +172,12 @@ body._lock {
 .overlay._header-menu-open:before {
   opacity: 1;
   visibility: visible;
+}
+
+.overlay._header-menu-open .header-top {
+  -webkit-transform: translateX(-300px);
+      -ms-transform: translateX(-300px);
+          transform: translateX(-300px);
 }
 
 .container {
@@ -1444,7 +1450,7 @@ button.swiper-pagination-bullet {
 }
 
 .list-links__link:hover {
-  color: var(--color-blue);
+  color: var(--color-gold);
 }
 
 .list-hashtag {
@@ -2353,7 +2359,10 @@ td.vertical-bottom {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 5;
+  z-index: 12;
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
 }
 
 .header-top__body {
@@ -2462,7 +2471,7 @@ td.vertical-bottom {
   position: fixed;
   top: 0px;
   left: 0;
-  z-index: 2;
+  z-index: 11;
   -webkit-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
@@ -2470,6 +2479,9 @@ td.vertical-bottom {
 
 .header-menu._active {
   width: 300px;
+  -webkit-transform: translateX(-300px);
+      -ms-transform: translateX(-300px);
+          transform: translateX(-300px);
 }
 
 .header-menu._active .header-menu__burger i:before {
