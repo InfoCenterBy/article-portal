@@ -18,7 +18,7 @@
 </head>
 
 <body>
-<div class="wrapper overlay">
+<div class="wrapper">
     <header class="header">
     <div class="header-top">
         <div class="header-top__body">
@@ -30,7 +30,7 @@
                     <div class="header-search__input">
                         <input type="text" class=""/>
                     </div>
-                    <button type="submit" class="button">Найти<i class="bi bi-search ms-3"></i></button>
+                    <button type="submit" class="button button_search-header">Найти<i class="bi bi-search ms-3"></i></button>
                 </div>
             </div>
             <div class="login-users">
@@ -666,11 +666,11 @@
                 <div class="form-news">
                     <div class="form-news__header">
                         <div class="form-news__title-category">Все новости</div>
-                        <div class="form-news__button">
+                        <div class="form-news__button-menu">
                             <i class="bi bi-chevron-down"></i>
                         </div>
                     </div>
-                    <form class="form-news__body">
+                    <form class="form-news__menu">
                         <div class="item-category">
                             <input type="radio" id="news-1" name="category-news" value="all" checked>
                             <label for="news-1" class="item-category__label">Все новости</label>
@@ -925,36 +925,14 @@
     </div>
 </footer>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.concat.min.js"></script>
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.concat.min.js"></script>
 <script src="js/script.min.js"></script>
 <script>
-    const formNewsButton = document.querySelector('.form-news__button');
-    const formBody = document.querySelector('.form-news__body');
-    const labels = document.querySelectorAll('.item-category__label');
-
-    formNewsButton.addEventListener('click', () => {
-        formNewsButton.classList.toggle('active');
-        formBody.classList.toggle('active');
-    });
-
-    labels.forEach((label) => {
-        label.addEventListener('click', function (e) {
-            formNewsButton.classList.remove('active');
-            formBody.classList.remove('active');
-        });
-    });
-
-    document.addEventListener('click', function (e) {
-        if (!e.target.closest('.form-news__body, .form-news__button')) {
-            formNewsButton.classList.remove('active');
-            formBody.classList.remove('active');
-        }
-    });
     // ===========  Calendar ===========================
     var $calendar;
     $(document).ready(function () {

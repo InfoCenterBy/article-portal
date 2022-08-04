@@ -501,28 +501,31 @@ DynamicAdapt.prototype.arraySort = function (arr) {
 
 const da = new DynamicAdapt("max");
 da.init();
+// burger menu
 (function burgerMenu() {
     const burger = document.querySelector(".header-menu__burger");
     const menu = document.querySelector(".header-menu");
-    const arrayOverlay = document.querySelectorAll(".overlay");
+    const wrapper = document.querySelector(".wrapper");
     const body = document.querySelector("body");
     const buttonSubmenu = document.querySelectorAll(".menu-header__button");
     const submenu = document.querySelectorAll(".submenu-header");
+    const main = document.querySelector("main");
+    const footer = document.querySelector("footer");
 
     const showMenu = () => {
         menu.classList.add('_active')
         body.classList.add('_lock')
-        arrayOverlay.forEach((item) => {
-            item.classList.add('_header-menu-open')
-        })
+        wrapper.classList.add('_overlay')
+        main.classList.add('_header-menu-open')
+        footer.classList.add('_header-menu-open')
     }
 
     const closeMenu = () => {
         menu.classList.remove('_active')
         body.classList.remove('_lock')
-        arrayOverlay.forEach((item) => {
-            item.classList.remove('_header-menu-open')
-        })
+        wrapper.classList.remove('_overlay')
+        main.classList.remove('_header-menu-open')
+        footer.classList.remove('_header-menu-open')
         buttonSubmenu.forEach((item) => {
             item.classList.add('collapsed')
         })
@@ -545,10 +548,35 @@ da.init();
     })
 })()
 
+// menu form news on main page (max-width: 768px)
+const buttonMenuFormNews = document.querySelector('.form-news__button-menu');
+const formNewsMenu = document.querySelector('.form-news__menu');
+const labels = document.querySelectorAll('.item-category__label');
+if (buttonMenuFormNews) {
+    buttonMenuFormNews.addEventListener('click', () => {
+        buttonMenuFormNews.classList.toggle('_active');
+        formNewsMenu.classList.toggle('_active');
+    });
+    const closeMenuFormNews = () => {
+        buttonMenuFormNews.classList.remove('_active');
+        formNewsMenu.classList.remove('_active');
+    }
+    labels.forEach((label) => {
+        label.addEventListener('click', function (e) {
+            closeMenuFormNews()
+        });
+    });
+    document.addEventListener('click', function (e) {
+        if (!e.target.closest('.form-news__menu, .form-news__button-menu')) {
+            closeMenuFormNews()
+        }
+    });
+}
+
+// Exchange Rates from Rest API
 const usd = document.getElementById('usd');
 const eur = document.getElementById('eur');
 const rub = document.getElementById('rub');
-
 async function getExchangeRates() {
     try {
         let response = await fetch('https://www.nbrb.by/api/exrates/rates?periodicity=0');
@@ -567,25 +595,28 @@ async function getExchangeRates() {
         console.log(error);
     }
 }
-
 getExchangeRates();
 
-$(function () {
-    $('.button-hover')
-        .on('mouseenter', function (e) {
-            var parentOffset = $(this).offset(),
-                relX = e.pageX - parentOffset.left,
-                relY = e.pageY - parentOffset.top;
-            $(this).find('.button-hover__hover-wrap').css({top: relY, left: relX})
-        })
-        .on('mouseout', function (e) {
-            var parentOffset = $(this).offset(),
-                relX = e.pageX - parentOffset.left,
-                relY = e.pageY - parentOffset.top;
-            $(this).find('.button-hover__hover-wrap').css({top: relY, left: relX})
-        });
-    // $('[href=#]').click(function(){return false});
-});
+(function ($) {
+    $(function () {
+        $('.button-hover')
+            .on('mouseenter', function (e) {
+                var parentOffset = $(this).offset(),
+                    relX = e.pageX - parentOffset.left,
+                    relY = e.pageY - parentOffset.top;
+                $(this).find('.button-hover__hover-wrap').css({top: relY, left: relX})
+            })
+            .on('mouseout', function (e) {
+                var parentOffset = $(this).offset(),
+                    relX = e.pageX - parentOffset.left,
+                    relY = e.pageY - parentOffset.top;
+                $(this).find('.button-hover__hover-wrap').css({top: relY, left: relX})
+            });
+        // $('[href=#]').click(function(){return false});
+    });
 
-$(".scrollbar-y").mCustomScrollbar();
 
+    $(window).on("load", function () {
+        $(".scrollbar-y").mCustomScrollbar();
+    });
+})(jQuery);
