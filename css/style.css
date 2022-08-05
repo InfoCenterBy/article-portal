@@ -1690,6 +1690,10 @@ td.vertical-bottom {
           align-items: center;
 }
 
+.header-search__button-close {
+  display: none;
+}
+
 .header-search__input {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 auto;
@@ -1699,8 +1703,12 @@ td.vertical-bottom {
 .header-search__input input {
   width: 100%;
   padding: 7px 13px;
-  color: var(--color-gray-dark);
   border: 1px solid var(--color-gold);
+}
+
+.header-search__input input:focus {
+  -webkit-box-shadow: 0px 0px 7px 1px rgba(196, 122, 44, 0.2) inset;
+          box-shadow: 0px 0px 7px 1px rgba(196, 122, 44, 0.2) inset;
 }
 
 .header-search-button {
@@ -2756,6 +2764,10 @@ td.vertical-bottom {
     padding: 0 15px;
   }
 
+  .header {
+    margin: 68px 0px 0px 0px;
+  }
+
   .header-top__main-block {
     padding: 10px 18px;
   }
@@ -2785,7 +2797,55 @@ td.vertical-bottom {
   }
 
   .header-search {
-    display: none;
+    width: 100%;
+    margin: 0 auto;
+    background-color: var(--color-white);
+    border-bottom: 1px solid var(--color-gray);
+    position: fixed;
+    top: 0px;
+    left: 0;
+    z-index: 11;
+    -webkit-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+    -webkit-transform: translateY(-120%);
+        -ms-transform: translateY(-120%);
+            transform: translateY(-120%);
+  }
+
+  .header-search._active {
+    -webkit-transform: translateY(0%);
+        -ms-transform: translateY(0%);
+            transform: translateY(0%);
+  }
+
+  .header-search__button-close {
+    padding: 13px 12px;
+    display: block;
+    font-size: 30px;
+    border-right: 1px solid var(--color-gray);
+  }
+
+  .header-search__input input {
+    padding: 20px 15px;
+    border: none;
+  }
+
+  .header-search__input input:focus {
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+
+  .header-search .button_search {
+    padding: 0 20px 0px 0px;
+    font-size: 0;
+    background-color: transparent;
+  }
+
+  .header-search .button_search i {
+    margin-left: 0 !important;
+    font-size: 26px;
+    color: var(--color-black);
   }
 
   .header-search-button {

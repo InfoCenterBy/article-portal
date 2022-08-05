@@ -502,56 +502,85 @@ DynamicAdapt.prototype.arraySort = function (arr) {
 const da = new DynamicAdapt("max");
 da.init();
 // burger menu
-(function burgerMenu() {
-    const burger = document.querySelector(".burger");
-    const menu = document.querySelector(".header-menu");
-    const headerBottom = document.querySelector(".header-bottom");
-    const wrapper = document.querySelector(".wrapper");
-    const body = document.querySelector("body");
-    const buttonSubmenu = document.querySelectorAll(".menu-header__button");
-    const submenu = document.querySelectorAll(".submenu-header");
-    const main = document.querySelector("main");
-    const footer = document.querySelector("footer");
+const burger = document.querySelector(".burger");
+const menu = document.querySelector(".header-menu");
+const headerBottom = document.querySelector(".header-bottom");
+const wrapper = document.querySelector(".wrapper");
+const body = document.querySelector("body");
+const buttonSubmenu = document.querySelectorAll(".menu-header__button");
+const submenu = document.querySelectorAll(".submenu-header");
+const main = document.querySelector("main");
+const footer = document.querySelector("footer");
 
-    const showMenu = () => {
-        burger.classList.add('_active')
-        menu.classList.add('_active')
-        body.classList.add('_lock')
-        wrapper.classList.add('_overlay')
-        headerBottom.classList.add('_header-menu-open')
-        main.classList.add('_header-menu-open')
-        footer.classList.add('_header-menu-open')
-    }
+const showOverlay = () => {
+    console.log('showOverlay')
+    body.classList.add('_lock')
+    wrapper.classList.add('_overlay')
+}
 
-    const closeMenu = () => {
-        burger.classList.remove('_active')
-        menu.classList.remove('_active')
-        body.classList.remove('_lock')
-        wrapper.classList.remove('_overlay')
-        headerBottom.classList.remove('_header-menu-open')
-        main.classList.remove('_header-menu-open')
-        footer.classList.remove('_header-menu-open')
-        buttonSubmenu.forEach((item) => {
-            item.classList.add('collapsed')
-        })
-        submenu.forEach((item) => {
-            item.classList.remove('show')
-        })
-    }
+const hideOverlay = () => {
+    body.classList.remove('_lock')
+    wrapper.classList.remove('_overlay')
+}
 
-    burger.addEventListener("click", () => {
-        if (!burger.classList.contains('_active')) {
-            showMenu()
-        } else {
-            closeMenu()
-        }
+const showMenu = () => {
+    burger.classList.add('_active')
+    menu.classList.add('_active')
+    body.classList.add('_lock')
+    wrapper.classList.add('_overlay')
+    headerBottom.classList.add('_header-menu-open')
+    main.classList.add('_header-menu-open')
+    footer.classList.add('_header-menu-open')
+}
+
+const closeMenu = () => {
+    burger.classList.remove('_active')
+    menu.classList.remove('_active')
+    headerBottom.classList.remove('_header-menu-open')
+    main.classList.remove('_header-menu-open')
+    footer.classList.remove('_header-menu-open')
+    buttonSubmenu.forEach((item) => {
+        item.classList.add('collapsed')
     })
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest(".header-menu, .burger")) {
-            closeMenu()
-        }
+    submenu.forEach((item) => {
+        item.classList.remove('show')
     })
-})()
+}
+
+burger.addEventListener("click", () => {
+    if (!burger.classList.contains('_active')) {
+        showOverlay()
+        showMenu()
+    } else {
+        hideOverlay()
+        closeMenu()
+    }
+})
+
+document.addEventListener('click', (e) => {
+    if (!e.target.closest(".header-menu, .burger, .header-search, .header-search-button")) {
+        hideOverlay()
+    }
+    if (!e.target.closest(".header-menu, .burger")) {
+        closeMenu()
+    }
+    if (!e.target.closest(".header-search, .header-search-button")) {
+        headerSearch.classList.remove('_active')
+    }
+})
+
+// header search
+const buttonOpenHeaderSearch = document.querySelector('.header-search-button');
+const buttonCloseHeaderSearch = document.querySelector('.header-search__button-close');
+const headerSearch = document.querySelector('.header-search');
+buttonOpenHeaderSearch.addEventListener("click", () => {
+    showOverlay()
+    headerSearch.classList.add('_active')
+})
+buttonCloseHeaderSearch.addEventListener("click", () => {
+    hideOverlay()
+    headerSearch.classList.remove('_active')
+})
 
 // menu form news on main page (max-width: 768px)
 const buttonMenuFormNews = document.querySelector('.form-news__button-menu');
