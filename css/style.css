@@ -355,6 +355,7 @@ body._lock {
   color: var(--color-black);
   background-color: var(--color-gray);
   position: relative;
+  white-space: nowrap;
   display: block;
   overflow: hidden;
 }
@@ -2321,6 +2322,18 @@ td.vertical-bottom {
           transform: translateX(300px);
 }
 
+.main-list-hashtag {
+  overflow: hidden;
+}
+
+.main-list-hashtag__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
 .form-question-answer__item input {
   display: none;
 }
@@ -2755,6 +2768,21 @@ td.vertical-bottom {
   }
 
   .header-bottom {
+    display: none;
+  }
+
+  .main-list-hashtag__wrapper {
+    overflow-x: scroll;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+  }
+
+  .main-list-hashtag__wrapper .button-hover {
+    margin: 0px 10px 0px 0px;
+    overflow: visible;
+  }
+
+  .main-list-hashtag__wrapper .button-hover__hover-wrap {
     display: none;
   }
 }
