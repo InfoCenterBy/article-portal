@@ -2756,6 +2756,10 @@ td.vertical-bottom {
     padding: 0 15px;
   }
 
+  .header-top__main-block {
+    padding: 10px 18px;
+  }
+
   .header-top__burger {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -2766,7 +2770,7 @@ td.vertical-bottom {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    padding: 0px 25px;
+    padding: 0px 20px;
     border-right: 1px solid var(--color-gray);
   }
 
@@ -2774,6 +2778,10 @@ td.vertical-bottom {
     -webkit-box-flex: 1;
         -ms-flex: 1 1 auto;
             flex: 1 1 auto;
+  }
+
+  .logo {
+    width: 40px;
   }
 
   .header-search {
