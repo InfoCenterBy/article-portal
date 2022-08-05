@@ -503,8 +503,9 @@ const da = new DynamicAdapt("max");
 da.init();
 // burger menu
 (function burgerMenu() {
-    const burger = document.querySelector(".header-menu__burger");
+    const burger = document.querySelector(".burger");
     const menu = document.querySelector(".header-menu");
+    const headerBottom = document.querySelector(".header-bottom");
     const wrapper = document.querySelector(".wrapper");
     const body = document.querySelector("body");
     const buttonSubmenu = document.querySelectorAll(".menu-header__button");
@@ -513,17 +514,21 @@ da.init();
     const footer = document.querySelector("footer");
 
     const showMenu = () => {
+        burger.classList.add('_active')
         menu.classList.add('_active')
         body.classList.add('_lock')
         wrapper.classList.add('_overlay')
+        headerBottom.classList.add('_header-menu-open')
         main.classList.add('_header-menu-open')
         footer.classList.add('_header-menu-open')
     }
 
     const closeMenu = () => {
+        burger.classList.remove('_active')
         menu.classList.remove('_active')
         body.classList.remove('_lock')
         wrapper.classList.remove('_overlay')
+        headerBottom.classList.remove('_header-menu-open')
         main.classList.remove('_header-menu-open')
         footer.classList.remove('_header-menu-open')
         buttonSubmenu.forEach((item) => {
@@ -535,14 +540,14 @@ da.init();
     }
 
     burger.addEventListener("click", () => {
-        if (!menu.classList.contains('_active')) {
+        if (!burger.classList.contains('_active')) {
             showMenu()
         } else {
             closeMenu()
         }
     })
     document.addEventListener('click', (e) => {
-        if (!e.target.closest(".header-menu")) {
+        if (!e.target.closest(".header-menu, .burger")) {
             closeMenu()
         }
     })
