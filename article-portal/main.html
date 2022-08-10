@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <title>Информационно-аналитическая база</title>
+    <title>Главная</title>
     <meta charset="UTF-8"/>
     <meta name="format-detection" content="telephone=no"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,24 +18,31 @@
 </head>
 
 <body>
-<div class="wrapper overlay">
+<div class="wrapper">
     <header class="header">
     <div class="header-top">
         <div class="header-top__body">
-            <a href="index.html" class="logo">
-                <img class="img-fluid" src="./img/logo.png" alt=""/>
-            </a>
-            <div class="header-search">
-                <div class="header-search__wrapper">
-                    <div class="header-search__input">
-                        <input type="text" class=""/>
-                    </div>
-                    <button type="submit" class="button">Найти<i class="bi bi-search ms-3"></i></button>
+            <div class="header-top__burger"></div>
+            <div class="header-top__main-block">
+                <div class="header-top__logo">
+                    <a href="index.html" class="logo">
+                        <img class="img-fluid" src="./img/logo.png" alt=""/>
+                    </a>
                 </div>
-            </div>
-            <div class="login-users">
-                Вход для пользователей
-                <i class="bi bi-person ms-3"></i>
+                <div class="header-search">
+                    <div class="header-search__wrapper">
+                        <button type="submit" class="header-search__button-close"><i class="bi bi-x-lg"></i></button>
+                        <div class="header-search__input">
+                            <input type="text" class=""/>
+                        </div>
+                        <button type="submit" class="button button_search">Найти<i class="bi bi-search ms-3"></i></button>
+                    </div>
+                </div>
+                <button class="header-search-button"><i class="bi bi-search"></i></button>
+                <a href="#" class="login-users">
+                    Вход для пользователей
+                    <i class="bi bi-person"></i>
+                </a>
             </div>
         </div>
     </div>
@@ -48,16 +55,21 @@
                     <div class="header-bottom__item">RUB: <span id="rub"></span></div>
                 </div>
                 <div class="header-bottom__col">
-                    <div class="header-bottom__item">Базовая величина: <span>32 BYN</span></div>
-                    <div class="header-bottom__item">Базовая арендная величина: <span>16,9 BYN</span></div>
-                    <div class="header-bottom__item">Базовая ставка: <span>210 BYN</span></div>
+                    <div class="header-bottom__item">Базовая величина: <span>32&nbsp;BYN</span></div>
+                    <div class="header-bottom__item">Базовая арендная величина: <span>16,9&nbsp;BYN</span></div>
+                    <div class="header-bottom__item">Базовая ставка: <span>210&nbsp;BYN</span></div>
                 </div>
             </div>
         </div>
     </div>
     <div class="header-menu scrollbar-y">
-        <button type="button" class="header-menu__burger">
+        <button type="button" class="burger" data-da=".header-top__burger,768,0">
             <i class="bi bi-arrow-right-circle"></i>
+            <div>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </button>
         <nav class="menu-header">
             <ul class="menu-header__list">
@@ -107,14 +119,6 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#" class="menu-header__link" title="Налоговый календарь"><i
-                            class="bi bi-calendar2-week me-3"></i>Налоговый календарь</a>
-                </li>
-                <li>
-                    <a href="#" class="menu-header__link" title="Курсы валют"><i
-                            class="bi bi-currency-exchange me-3"></i>Курсы валют</a>
-                </li>
-                <li>
                     <div class="menu-header__collapse">
                         <a href="#" class="menu-header__link" title="Справочная информация"><i
                                 class="bi bi-table me-3"></i>Справочная информация</a>
@@ -154,72 +158,66 @@
                         <i class="bi bi-tag me-2"></i>
                         Популярное на портале
                     </h3>
-                    <a href="#" class="title-underline__link">
-                        Все темы
-                        <i class="bi bi-arrow-right ms-3"></i>
-                    </a>
                 </div>
-                <div class="d-flex flex-wrap">
-                    <a class="button-hover" href="#">
-                        <span class="button-hover__hover-wrap"></span>
-                        <div class="button-hover__text">Сбор за размещение рекламы</div>
-                    </a>
-                    <a class="button-hover" href="#">
-                        <span class="button-hover__hover-wrap"></span>
-                        <div class="button-hover__text">Маркировка</div>
-                    </a>
-                    <a class="button-hover" href="#">
-                        <span class="button-hover__hover-wrap"></span>
-                        <span class="button-hover__text">Кассовое оборудование</span>
-                    </a>
-                    <a class="button-hover" href="#">
-                        <span class="button-hover__hover-wrap"></span>
-                        <span class="button-hover__text">Расчет больничных</span>
-                    </a>
-                    <a class="button-hover" href="#">
-                        <span class="button-hover__hover-wrap"></span>
-                        <span class="button-hover__text">Государственное реглирование</span>
-                    </a>
-                    <a class="button-hover" href="#">
-                        <span class="button-hover__hover-wrap"></span>
-                        <span class="button-hover__text">УСН</span>
-                    </a>
-                    <a class="button-hover" href="#">
-                        <span class="button-hover__hover-wrap"></span>
-                        <span class="button-hover__text">Отпуск</span>
-                    </a>
-                    <a class="button-hover" href="#">
-                        <span class="button-hover__hover-wrap"></span>
-                        <div class="button-hover__text">Сбор за размещение рекламы</div>
-                    </a>
-                    <a class="button-hover" href="#">
-                        <span class="button-hover__hover-wrap"></span>
-                        <div class="button-hover__text">Маркировка</div>
-                    </a>
-                    <a class="button-hover" href="#">
-                        <span class="button-hover__hover-wrap"></span>
-                        <span class="button-hover__text">Кассовое оборудование</span>
-                    </a>
-                    <a class="button-hover" href="#">
-                        <span class="button-hover__hover-wrap"></span>
-                        <span class="button-hover__text">Расчет больничных</span>
-                    </a>
-                    <a class="button-hover" href="#">
-                        <span class="button-hover__hover-wrap"></span>
-                        <span class="button-hover__text">Государственное реглирование</span>
-                    </a>
-                    <a class="button-hover" href="#">
-                        <span class="button-hover__hover-wrap"></span>
-                        <span class="button-hover__text">УСН</span>
-                    </a>
-                    <a class="button-hover" href="#">
-                        <span class="button-hover__hover-wrap"></span>
-                        <span class="button-hover__text">Отпуск</span>
-                    </a>
-                    <a class="button-hover" href="#">
-                        <span class="button-hover__hover-wrap"></span>
-                        <span class="button-hover__text">Больничные</span>
-                    </a>
+                <div class="main-list-hashtag">
+                    <div class="main-list-hashtag__wrapper scrollbar-x">
+                        <a class="button-hover" href="#">
+                            <span class="button-hover__hover-wrap"></span>
+                            <div class="button-hover__text">#Сбор за размещение рекламы</div>
+                        </a>
+                        <a class="button-hover" href="#">
+                            <span class="button-hover__hover-wrap"></span>
+                            <div class="button-hover__text">#Маркировка</div>
+                        </a>
+                        <a class="button-hover" href="#">
+                            <span class="button-hover__hover-wrap"></span>
+                            <span class="button-hover__text">#Кассовое оборудование</span>
+                        </a>
+                        <a class="button-hover" href="#">
+                            <span class="button-hover__hover-wrap"></span>
+                            <span class="button-hover__text">#Расчет больничных</span>
+                        </a>
+                        <a class="button-hover" href="#">
+                            <span class="button-hover__hover-wrap"></span>
+                            <span class="button-hover__text">#Государственное реглирование</span>
+                        </a>
+                        <a class="button-hover" href="#">
+                            <span class="button-hover__hover-wrap"></span>
+                            <span class="button-hover__text">#УСН</span>
+                        </a>
+                        <a class="button-hover" href="#">
+                            <span class="button-hover__hover-wrap"></span>
+                            <div class="button-hover__text">#Сбор за размещение рекламы</div>
+                        </a>
+                        <a class="button-hover" href="#">
+                            <span class="button-hover__hover-wrap"></span>
+                            <div class="button-hover__text">#Маркировка</div>
+                        </a>
+                        <a class="button-hover" href="#">
+                            <span class="button-hover__hover-wrap"></span>
+                            <span class="button-hover__text">#Кассовое оборудование</span>
+                        </a>
+                        <a class="button-hover" href="#">
+                            <span class="button-hover__hover-wrap"></span>
+                            <span class="button-hover__text">#Расчет больничных</span>
+                        </a>
+                        <a class="button-hover" href="#">
+                            <span class="button-hover__hover-wrap"></span>
+                            <span class="button-hover__text">#Государственное реглирование</span>
+                        </a>
+                        <a class="button-hover" href="#">
+                            <span class="button-hover__hover-wrap"></span>
+                            <span class="button-hover__text">#УСН</span>
+                        </a>
+                        <a class="button-hover" href="#">
+                            <span class="button-hover__hover-wrap"></span>
+                            <span class="button-hover__text">#Отпуск</span>
+                        </a>
+                        <a class="button-hover" href="#">
+                            <span class="button-hover__hover-wrap"></span>
+                            <span class="button-hover__text">#Больничные</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -472,7 +470,9 @@
                                     <div class="сounterparty-check__input">
                                         <input type="text" class=""/>
                                     </div>
-                                    <button type="submit" class="button">Проверить<i class="bi bi-search ms-3"></i>
+                                    <button type="submit" class="button button_search">
+                                        Проверить
+                                        <i class="bi bi-search ms-2"></i>
                                     </button>
                                 </div>
                             </div>
@@ -666,11 +666,11 @@
                 <div class="form-news">
                     <div class="form-news__header">
                         <div class="form-news__title-category">Все новости</div>
-                        <div class="form-news__button">
+                        <div class="form-news__button-menu">
                             <i class="bi bi-chevron-down"></i>
                         </div>
                     </div>
-                    <form class="form-news__body">
+                    <form class="form-news__menu">
                         <div class="item-category">
                             <input type="radio" id="news-1" name="category-news" value="all" checked>
                             <label for="news-1" class="item-category__label">Все новости</label>
@@ -780,25 +780,25 @@
                                 <span class="item-information-indicator__number">32 BYN</span>
                                 <span class="item-information-indicator__text">Базовая величина</span>
                                 <span class="date">
-											<i class="bi bi-calendar me-2"></i>
-											20.05.2022
-										</span>
+												<i class="bi bi-calendar me-2"></i>
+												20.05.2022
+											</span>
                             </a>
                             <a href="#" class="item-information-indicator">
                                 <span class="item-information-indicator__number">16.9 BYN</span>
-                                <span class="item-information-indicator__text">Базовая величина</span>
+                                <span class="item-information-indicator__text">Базовая арендная величина</span>
                                 <span class="date">
-											<i class="bi bi-calendar me-2"></i>
-											20.05.2022
-										</span>
+												<i class="bi bi-calendar me-2"></i>
+												20.05.2022
+											</span>
                             </a>
                             <a href="#" class="item-information-indicator">
                                 <span class="item-information-indicator__number">210 BYN</span>
                                 <span class="item-information-indicator__text">Базовая ставка</span>
                                 <span class="date">
-											<i class="bi bi-calendar me-2"></i>
-											20.05.2022
-										</span>
+												<i class="bi bi-calendar me-2"></i>
+												20.05.2022
+											</span>
                             </a>
                         </div>
                     </div>
@@ -831,7 +831,6 @@
                 </div>
             </div>
         </section>
-
     </main>
     <footer class="footer">
     <div class="container">
@@ -926,36 +925,14 @@
     </div>
 </footer>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<!--<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.concat.min.js"></script>
 <script src="js/script.min.js"></script>
 <script>
-    const formNewsButton = document.querySelector('.form-news__button');
-    const formBody = document.querySelector('.form-news__body');
-    const labels = document.querySelectorAll('.item-category__label');
-
-    formNewsButton.addEventListener('click', () => {
-        formNewsButton.classList.toggle('active');
-        formBody.classList.toggle('active');
-    });
-
-    labels.forEach((label) => {
-        label.addEventListener('click', function (e) {
-            formNewsButton.classList.remove('active');
-            formBody.classList.remove('active');
-        });
-    });
-
-    document.addEventListener('click', function (e) {
-        if (!e.target.closest('.form-news__body, .form-news__button')) {
-            formNewsButton.classList.remove('active');
-            formBody.classList.remove('active');
-        }
-    });
     // ===========  Calendar ===========================
     var $calendar;
     $(document).ready(function () {

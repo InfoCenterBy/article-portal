@@ -53,14 +53,24 @@
 }
 
 .button {
-  padding: 8px 20px;
+  width: 245px;
+  display: inline-block;
+  padding: 18px 0px;
   font-size: 16px;
   color: var(--color-white);
   font-weight: 500;
+  text-align: center;
   background-color: var(--color-gold);
   white-space: nowrap;
+  transition: all 0.3s ease 0s;
+
+  &_search {
+    width: auto;
+    padding: 8px 20px;
+  }
 
   &:hover {
+    color: var(--color-white);
     background-color: var(--color-gold-light);
   }
 }
@@ -159,6 +169,10 @@
   }
 }
 
+.advertising-banner {
+  display: block;
+}
+
 .button-hover {
   padding: 8px 12px;
   margin: 0px 10px 10px 0px;
@@ -166,6 +180,7 @@
   color: var(--color-black);
   background-color: var(--color-gray);
   position: relative;
+  white-space: nowrap;
   display: block;
   overflow: hidden;
 
@@ -193,6 +208,113 @@
   &__text {
     position: relative;
     z-index: 3;
+
+  }
+}
+
+.link-download {
+  position: relative;
+
+  @media (hover: hover) {
+    &:hover {
+      .link-download__bookmark {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
+
+  &:hover {
+    .link-download__name {
+      color: var(--color-blue-light);
+    }
+
+    .link-download__person {
+      color: var(--color-gold);
+      border-color: var(--color-gold);
+    }
+  }
+
+  &:not(:last-child) {
+      margin: 0px 0px 15px 0px;
+  }
+
+  // .link-download__link
+  &__link {
+    display: flex;
+    align-items: center;
+    padding: 15px 30px;
+    border: 1px solid var(--color-gray);
+  }
+
+  // .link-download__bookmark
+  &__bookmark {
+    font-size: 26px;
+    color: var(--color-gray);
+    position: absolute;
+    top: -12px;
+    right: 100px;
+    transition: all 0.3s ease 0s;
+
+    i {
+      background-color: var(--color-white);
+    }
+    
+    &:hover {
+      color: var(--color-blue-light);
+    }
+    
+    @media (hover: hover) {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    @media (max-width: $md4+px) {
+      right: 30px;
+    }
+  }
+
+  // .link-download__info
+  &__info {
+    flex: 1 1 auto;
+    display: flex;
+    margin-right: 30px;
+    
+    @media (max-width: $md4+px) {
+      margin-right: 10px;
+    }
+  }
+
+  // .link-download__icon-file
+  &__icon-file {
+    margin: 0px 35px 0px 0px;
+    font-size: 40px;
+    color: var(--color-black);
+
+    @media (max-width: $md4+px) {
+      display: none;
+    }
+  }
+
+  // .link-download__name
+  &__name {
+    margin: 0px 0px 15px 0px;
+    font-size: 16px;
+    color: var(--color-black);
+  }
+
+  // .link-download__person
+  &__person {
+    padding: 5px 15px;
+    font-size: 14px;
+    color: var(--color-gray-dark);
+    border: 1px solid var(--color-gray-dark);
+  }
+
+  // .link-download__icon
+  &__icon {
+    font-size: 28px;
+    color: var(--color-black);
   }
 }
 
@@ -205,11 +327,17 @@
     color: var(--color-gold);
   }
 }
-
+//.breadcrumb-wrapper {
+//  padding: 24px 0px;
+//  border-bottom: 1px solid var(--color-gray);
+//}
 .breadcrumb {
-  margin: 24px 0px;
+  margin: 0px;
+  padding: 24px 0px;
+  border-bottom: 1px solid var(--color-gray);
   color: var(--color-gray);
   font-size: 14px;
+
   // .breadcrumb-item a
   &-item a {
     color: var(--color-gray-dark);
@@ -264,6 +392,15 @@
     margin: 0px 0px 24px 0px;
   }
 
+  @media (hover: hover) {
+    &:hover {
+      .item-article__bookmark {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
+
   &:hover {
     border: 1px solid var(--color-gold);
 
@@ -282,11 +419,21 @@
     font-size: 28px;
     color: var(--color-gray);
     position: absolute;
-    top: -10px;
+    top: -12px;
     right: 28px;
     z-index: 2;
-    @media (max-width: $md1+px) {
-      opacity: 1;
+
+    i {
+      background-color: var(--color-white);
+    }
+
+    &:hover {
+      color: var(--color-blue-light);
+    }
+
+    @media (hover: hover) {
+      opacity: 0;
+      visibility: hidden;
     }
   }
 
@@ -378,6 +525,7 @@
   display: flex;
   // .sidebar-row__content
   &__content {
+    padding: 24px 0px 0px 0px;
     flex: 1 1 auto;
   }
 
@@ -467,6 +615,7 @@
 .сounterparty-check {
   padding: 24px;
   border: 1px solid var(--color-gray);
+
   // .сounterparty-check__title
   &__title {
     margin: 0px 0px 18px 0px;

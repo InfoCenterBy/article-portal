@@ -11,6 +11,7 @@
   display: flex;
   justify-content: flex-end;
 
+  // .slider-event-control__arrow
   &__arrow {
     width: 32px;
     height: 32px;
@@ -28,7 +29,7 @@
     i {
       color: var(--color-black);
     }
-
+    // .slider-event-control__arrow_next
     &_next {
       margin: 0px 0px 0px 16px;
     }
