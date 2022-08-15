@@ -16,6 +16,7 @@ const showOverlay = () => {
 }
 
 const hideOverlay = () => {
+    console.log('hideOverlay')
     body.classList.remove('_lock')
     wrapper.classList.remove('_overlay')
 }
@@ -55,7 +56,7 @@ burger.addEventListener("click", () => {
 })
 
 document.addEventListener('click', (e) => {
-    if (!e.target.closest(".header-menu, .burger, .header-search, .header-search-button")) {
+    if (!e.target.closest(".header-menu, .burger, .header-search, .header-search-button, .form-documents__button-open, .form-documents__wrapper")) {
         hideOverlay()
     }
     if (!e.target.closest(".header-menu, .burger")) {
@@ -67,9 +68,9 @@ document.addEventListener('click', (e) => {
 })
 
 // header search
-const buttonOpenHeaderSearch = document.querySelector('.header-search-button');
-const buttonCloseHeaderSearch = document.querySelector('.header-search__button-close');
-const headerSearch = document.querySelector('.header-search');
+const buttonOpenHeaderSearch = document.querySelector('.header-search-button'),
+    buttonCloseHeaderSearch = document.querySelector('.header-search__button-close'),
+    headerSearch = document.querySelector('.header-search');
 buttonOpenHeaderSearch.addEventListener("click", () => {
     showOverlay()
     headerSearch.classList.add('_active')
@@ -80,9 +81,9 @@ buttonCloseHeaderSearch.addEventListener("click", () => {
 })
 
 // menu form news on main page (max-width: 768px)
-const buttonMenuFormNews = document.querySelector('.form-news__button-menu');
-const formNewsMenu = document.querySelector('.form-news__menu');
-const labels = document.querySelectorAll('.item-category__label');
+const buttonMenuFormNews = document.querySelector('.form-news__button-menu'),
+    formNewsMenu = document.querySelector('.form-news__menu'),
+    labels = document.querySelectorAll('.item-category__label');
 if (buttonMenuFormNews) {
     buttonMenuFormNews.addEventListener('click', () => {
         buttonMenuFormNews.classList.toggle('_active');
@@ -104,10 +105,34 @@ if (buttonMenuFormNews) {
     });
 }
 
+// form-documents
+const buttonOpenFormDocuments = document.querySelector('.form-documents__button-open'),
+    buttonCloseFormDocuments = document.querySelector('.form-documents__button-close'),
+    wrapperFormDocuments = document.querySelector('.form-documents__wrapper');
+if (buttonOpenFormDocuments) {
+    buttonOpenFormDocuments.addEventListener("click", () => {
+        showOverlay()
+        wrapperFormDocuments.classList.add('_open')
+    })
+
+    buttonCloseFormDocuments.addEventListener("click", () => {
+        hideOverlay()
+        wrapperFormDocuments.classList.remove('_open')
+    })
+
+    document.addEventListener('click', function (e) {
+        if (!e.target.closest('.form-documents__button-open, .form-documents__wrapper')) {
+            wrapperFormDocuments.classList.remove('_open')
+        }
+    });
+}
+
+
 // Exchange Rates from Rest API
 const usd = document.getElementById('usd');
 const eur = document.getElementById('eur');
 const rub = document.getElementById('rub');
+
 async function getExchangeRates() {
     try {
         let response = await fetch('https://www.nbrb.by/api/exrates/rates?periodicity=0');
@@ -126,6 +151,7 @@ async function getExchangeRates() {
         console.log(error);
     }
 }
+
 getExchangeRates();
 
 (function ($) {
