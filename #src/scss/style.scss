@@ -11,6 +11,7 @@
   --color-gray-dark: #818181;
   --color-blue: #040926;
   --color-blue-light: #034A66;
+  --color-red: #D24344;
 }
 
 //<Шрифт по умолчанию>==========================================================================================
@@ -393,5 +394,76 @@ body {
     padding: 5px 10px;
     font-size: 12px;
     cursor: pointer;
+  }
+}
+
+.login {
+  margin: 80px 0px;
+
+  @media (max-width: $md3+px) {
+    margin: 40px 0px;
+  }
+
+  // .login__body
+  &__body {
+    width: 100%;
+    max-width: 550px;
+    margin: 0px 30px 0px 0px;
+
+    @media (max-width: $md2+px) {
+      margin: 0;
+    }
+  }
+
+  // .login__content
+  &__content {
+    padding: 40px 0px 0px 0px;
+  }
+
+  // .capabilities
+  &__capabilities {
+    width: 100%;
+    max-width: 430px;
+    margin: 75px 0px 0px 0px;
+
+    @media (max-width: $md2+px) {
+        display: none;
+    }
+
+    ul {
+      padding: 0;
+      margin: 0;
+
+      li {
+        display: flex;
+        align-items: center;
+
+        i {
+          font-size: 26px;
+          color: var(--color-blue);
+        }
+
+        &:not(:last-child) {
+          margin: 0px 0px 40px 0px;
+        }
+      }
+    }
+  }
+}
+
+.nav-login {
+  border-bottom: 1px solid var(--color-gray);
+
+  // .nav-login__button
+  &__button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: var(--color-gray-dark);
+    border-bottom: 2px solid transparent;
+
+    &.active {
+      color: var(--color-gold);
+      border-color: var(--color-gold);
+    }
   }
 }

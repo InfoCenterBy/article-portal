@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+    @@include('_head.html',{
+    "title":"Вход в личный кабинет"
+    })
+    <body>
+        <div class="wrapper">
+            @@include('_header.html',{})
+            <main class="page">
+                <section class="login">
+                    <div class='container'>
+                       <div class="d-flex justify-content-around">
+                           <div class="login__body">
+                               <h1 class="h1">Вход в личный кабинет</h1>
+                               <nav>
+                                   <div class="nav nav-login" id="nav-tab" role="tablist">
+                                       <button class="nav-login__button active" id="nav-login-tab" data-bs-toggle="tab" data-bs-target="#nav-login" type="button" role="tab" aria-controls="nav-login" aria-selected="true">Войти</button>
+                                       <button class="nav-login__button" id="nav-registration-tab" data-bs-toggle="tab" data-bs-target="#nav-registration" type="button" role="tab" aria-controls="nav-registration" aria-selected="false">Зарегистрироваться</button>
+                                   </div>
+                               </nav>
+                               <div class="tab-content" id="nav-tabContent">
+                                   <div class="tab-pane fade show active" id="nav-login" role="tabpanel" aria-labelledby="nav-login-tab" tabindex="0">
+                                       <div class="login__content">
+                                           <form id="form-login">
+                                              <div class="input mb-4">
+                                                  <label for="email-login">Email <span>*</span></label>
+                                                  <input type="text" id="email-login" class="_email _required" placeholder="Ваш email">
+                                                  <div class="input__text-error"><i class="bi bi-exclamation-triangle me-2"></i>Электронная почта не может быть пустой</div>
+                                                  <div class="input__text-error-email"><i class="bi bi-exclamation-triangle me-2"></i>Адрес электоронной почты должен заканчиваться на @**.**</div>
+                                              </div>
+                                               <div class="input">
+                                                   <label for="password-login">Пароль <span>*</span></label>
+                                                   <div class="input__password">
+                                                       <input type="password" id="password-login" class="_required" placeholder="Введите пароль">
+                                                       <i class="icon-password bi bi-eye-slash"></i>
+                                                   </div>
+                                                   <div class="input__text-error"><i class="bi bi-exclamation-triangle me-2"></i>Пароль не может быть пустым</div>
+                                               </div>
+                                               <div class="mt-5 text-center">
+                                                    <button type="submit" id="submit-login" class="button">Войти</button>
+                                               </div>
+                                           </form>
+                                           <div class="d-flex justify-content-center mt-4">
+                                               <a href="#" class="button-login-social"><img src="./img/icon/facebook.svg" alt="facebook" class="img-fluid"></a>
+                                               <a href="#" class="button-login-social"><img src="./img/icon/google.svg" alt="google" class="img-fluid"></a>
+                                           </div>
+                                       </div>
+                                   </div>
+                                   <div class="tab-pane fade" id="nav-registration" role="tabpanel" aria-labelledby="nav-registration-tab" tabindex="0">
+                                       <div class="login__content">
+                                           <form id="form-registration">
+                                               <div class="input mb-4">
+                                                   <label for="name">Имя <span>*</span></label>
+                                                   <input type="text" id="name" class="_required-registr" placeholder="Ваше имя">
+                                                   <div class="input__text-error"><i class="bi bi-exclamation-triangle me-2"></i>Поле не может быть пустым</div>
+                                               </div>
+                                               <div class="input mb-4">
+                                                   <label for="surname">Фамилия <span>*</span></label>
+                                                   <input type="text" id="surname" class="_required-registr" placeholder="Ваша фамилия">
+                                                   <div class="input__text-error"><i class="bi bi-exclamation-triangle me-2"></i>Поле не может быть пустым</div>
+                                               </div>
+                                               <div class="input mb-4">
+                                                   <label for="middle-name">Отчество</label>
+                                                   <input type="text" id="middle-name" placeholder="Ваше отчество">
+                                               </div>
+                                               <div class="input mb-4">
+                                                   <label for="email-registration">Email <span>*</span></label>
+                                                   <input type="text" id="email-registration" class="_email _required-registr" placeholder="Ваш email">
+                                                   <div class="input__text-error"><i class="bi bi-exclamation-triangle me-2"></i>Электронная почта не может быть пустой</div>
+                                                   <div class="input__text-error-email"><i class="bi bi-exclamation-triangle me-2"></i>Адрес электоронной почты должен заканчиваться на @**.**</div>
+                                               </div>
+                                               <div class="input mb-4">
+                                                   <label for="unp-registration">УНП</label>
+                                                   <input type="phone" id="unp-registration" placeholder="Ваш УНП">
+                                               </div>
+                                               <div class="input mb-4">
+                                                   <label for="phone-registration">Телефон</label>
+                                                   <input type="phone" id="phone-registration" placeholder="+375 (**) ***-**-**">
+                                               </div>
+                                               <div class="input mb-4">
+                                                   <label for="password-registration">Пароль <span>*</span></label>
+                                                   <div class="input__password">
+                                                       <input type="password" id="password-registration" class="_required-registr" placeholder="Введите пароль">
+                                                       <i class="icon-password bi bi-eye-slash"></i>
+                                                   </div>
+                                                   <div class="input__text-error"><i class="bi bi-exclamation-triangle me-2"></i>Пароль не может быть пустым</div>
+                                               </div>
+                                               <div class="input mb-4">
+                                                   <label for="password-confirmation-registration">Подтверждение пароля <span>*</span></label>
+                                                   <div class="input__password">
+                                                       <input type="password" id="password-confirmation-registration" class="password-confirmation _required-registr" placeholder="Введите пароль ещё раз">
+                                                       <i class="icon-password bi bi-eye-slash"></i>
+                                                   </div>
+                                                   <div class="input__text-error"><i class="bi bi-exclamation-triangle me-2"></i>Пароли не совпадают</div>
+                                               </div>
+                                               <div class="checkbox mb-4">
+                                                   <input type="checkbox" id="personal-data" class="_required-registr">
+                                                   <label class="checkbox__label" for="personal-data">
+                                                       <span class="checkbox__label_text">Я даю свое <a href="#" target="_blank">согласие на обработку персональных данных</a></span>
+                                                   </label>
+                                               </div>
+                                               <div class="checkbox mb-4">
+                                                   <input type="checkbox" id="use-personal-account" class="_required-registr">
+                                                   <label class="checkbox__label" for="use-personal-account">
+                                                       <span class="checkbox__label_text">Согласен <a href="#" target="_blank">с условиями использования личного кабинета</a></span>
+                                                   </label>
+                                               </div>
+                                               <div class="checkbox mb-4">
+                                                   <input type="checkbox" id="email-newsletter">
+                                                   <label class="checkbox__label" for="email-newsletter">
+                                                       <span class="checkbox__label_text">Я даю свое <a href="#" target="_blank">согласие на email рассылку</a></span>
+                                                   </label>
+                                               </div>
+                                               <div class="mt-5 text-center">
+                                                   <button type="submit" id="submit-registration" class="button">Войти</button>
+                                               </div>
+                                           </form>
+                                           <div class="d-flex justify-content-center mt-4">
+                                               <a href="#" class="button-login-social"><img src="./img/icon/facebook.svg" alt="facebook" class="img-fluid"></a>
+                                               <a href="#" class="button-login-social"><img src="./img/icon/google.svg" alt="google" class="img-fluid"></a>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="login__capabilities">
+                               <h4 class="h4">Личный кабинет дает возможность:</h4>
+                               <ul>
+                                   <li><i class="bi bi-bell me-4"></i><span>Получать уведомления о новых статьях</span></li>
+                                   <li><i class="bi bi-bookmark me-4"></i><span>Добавлять понравившееся статьи и документы в закладки</span></li>
+                                   <li><i class="bi bi-gem me-4"></i><span>Читать наши прекрасные новости</span></li>
+                               </ul>
+                           </div>
+                       </div>
+                    </div>
+                </section>
+            </main>
+            @@include('_footer.html',{})
+        </div>
+        @@include('_js.html',{})
+    </body>
+</html>

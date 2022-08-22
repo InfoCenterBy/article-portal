@@ -10,13 +10,11 @@ const main = document.querySelector("main");
 const footer = document.querySelector("footer");
 
 const showOverlay = () => {
-    console.log('showOverlay')
     body.classList.add('_lock')
     wrapper.classList.add('_overlay')
 }
 
 const hideOverlay = () => {
-    console.log('hideOverlay')
     body.classList.remove('_lock')
     wrapper.classList.remove('_overlay')
 }
@@ -83,18 +81,20 @@ buttonCloseHeaderSearch.addEventListener("click", () => {
 // menu form news on main page (max-width: 768px)
 const buttonMenuFormNews = document.querySelector('.form-news__button-menu'),
     formNewsMenu = document.querySelector('.form-news__menu'),
-    labels = document.querySelectorAll('.item-category__label');
+    categories = document.querySelectorAll('.item-news-category');
+
 if (buttonMenuFormNews) {
     buttonMenuFormNews.addEventListener('click', () => {
         buttonMenuFormNews.classList.toggle('_active');
-        formNewsMenu.classList.toggle('_active');
+        formNewsMenu.classList.toggle('_show');
     });
     const closeMenuFormNews = () => {
         buttonMenuFormNews.classList.remove('_active');
-        formNewsMenu.classList.remove('_active');
+        formNewsMenu.classList.remove('_show');
     }
-    labels.forEach((label) => {
+    categories.forEach((label) => {
         label.addEventListener('click', function (e) {
+            e.preventDefault()
             closeMenuFormNews()
         });
     });
@@ -127,6 +127,139 @@ if (buttonOpenFormDocuments) {
     });
 }
 
+// function for form
+function emailTest(input) {
+    return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(
+        input.value
+    );
+}
+
+function formAddError(input) {
+    input.parentElement.classList.add('_error');
+}
+
+function formRemoveError(input) {
+    input.parentElement.classList.remove('_error');
+}
+
+const btnsVisibilityPassword = document.querySelectorAll(".icon-password");
+
+const siblings = el => [].slice.call(el.parentNode.children).filter(child => (child !== el));
+
+btnsVisibilityPassword.forEach(btn => btn.addEventListener('click', () => {
+    let input = siblings(btn)
+    if (input[0].type === "password") {
+        input[0].type = "text";
+        btn.classList.remove('bi-eye-slash')
+        btn.classList.add('bi-eye')
+    } else {
+        input[0].type = "password";
+        btn.classList.add('bi-eye-slash')
+        btn.classList.remove('bi-eye')
+    }
+}))
+
+// form-login
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('form-login');
+    const buttonSubmitLogin = document.getElementById('submit-login')
+
+    form.addEventListener('submit', formSend);
+
+    async function formSend(e) {
+        e.preventDefault();
+
+        let error = formValidate(form);
+
+        if (error === 0) {
+            form.reset()
+            alert('Вы вошли на портал-чик-чик-чик')
+            buttonSubmitLogin.disabled = true
+        }
+
+        function formValidate(form) {
+            let error = 0;
+            let formRequired = document.querySelectorAll('._required');
+
+            for (let i = 0; i < formRequired.length; i++) {
+                const input = formRequired[i];
+                formRemoveError(input);
+
+                if (input.classList.contains('_email') && input.value !== '') {
+                    if (emailTest(input)) {
+                        input.parentElement.classList.add('_error-email');
+                        error++;
+                    } else {
+                        input.parentElement.classList.remove('_error-email');
+                    }
+                } else {
+                    if (input.value === '') {
+                        formAddError(input);
+                        error++;
+                    }
+                }
+            }
+            return error;
+        }
+    }
+});
+
+// form-registration
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('form-registration');
+    const buttonSubmitLogin = document.getElementById('submit-registration')
+
+    form.addEventListener('submit', formSend);
+
+    async function formSend(e) {
+        e.preventDefault();
+
+        let error = formValidate(form);
+
+        if (error === 0) {
+            form.reset()
+            alert('Спасибо за регистрацию')
+            buttonSubmitLogin.disabled = true
+        }
+
+        function formValidate(form) {
+            let error = 0;
+            let formRequired = document.querySelectorAll('._required-registr');
+            let password = document.getElementById("password-registration").value
+
+            for (let i = 0; i < formRequired.length; i++) {
+                const input = formRequired[i];
+                formRemoveError(input);
+
+                if (input.classList.contains('_email') && input.value !== '') {
+                    if (emailTest(input)) {
+                        input.parentElement.classList.add('_error-email');
+                        error++;
+                    } else {
+                        input.parentElement.classList.remove('_error-email');
+                    }
+                } else if (input.getAttribute('type') === 'checkbox' && input.checked === false) {
+                    formAddError(input);
+                    error++;
+                } else if (input.classList.contains('password-confirmation') && input.value !== '') {
+
+                    if (input.value !== password) {
+                        formAddError(input);
+                        error++;
+                    } else {
+                        console.log('yes', password)
+                    }
+                } else {
+                    if (input.value === '') {
+                        formAddError(input);
+                        error++;
+                    }
+                }
+            }
+            return error;
+        }
+    }
+});
 
 // Exchange Rates from Rest API
 const usd = document.getElementById('usd');
@@ -155,6 +288,9 @@ async function getExchangeRates() {
 getExchangeRates();
 
 (function ($) {
+    $('#phone-registration').mask('+375 (99) 999-99-99');
+    $('#unp-registration').mask('999999999');
+
     $(function () {
         $('.button-hover')
             .on('mouseenter', function (e) {

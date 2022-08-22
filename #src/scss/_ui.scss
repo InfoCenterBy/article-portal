@@ -69,9 +69,14 @@
     padding: 8px 20px;
   }
 
-  &:hover {
+  &:hover,
+  &:disabled {
     color: var(--color-white);
     background-color: var(--color-gold-light);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
   }
 }
 
@@ -83,10 +88,14 @@
   border: 1px solid var(--color-gold);
   transition: all 0.3s ease 0s;
 
-  &:hover {
+  &:hover,
+  &:disabled {
     color: var(--color-gold);
   }
 
+  &:disabled {
+    cursor: not-allowed;
+  }
 }
 
 .title-underline {

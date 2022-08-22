@@ -243,6 +243,14 @@
 
   &._active {
     width: 300px;
+
+    .menu-header__link {
+      font-size: 16px;
+    }
+
+    .menu-header__button {
+      font-size: 16px;
+    }
   }
 
   @media (max-width: $md3+px) {
@@ -288,6 +296,7 @@
     padding: 14px 0px 14px 16px;
     display: flex;
     align-items: center;
+    font-size: 0px;
     color: var(--color-black);
     white-space: nowrap;
 
@@ -305,6 +314,7 @@
     padding: 14px 16px;
     transform: rotate(180deg);
     transition: all 0.3s ease 0s;
+    font-size: 0;
 
     &.collapsed {
       transform: rotate(0deg);
