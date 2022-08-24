@@ -65,6 +65,7 @@
   font-size: 16px;
   font-weight: 500;
   color: var(--color-black);
+  cursor: pointer;
 
   &:hover:not(._active) {
     color: var(--color-black);
@@ -79,6 +80,10 @@
     border-left: 1px solid var(--color-gray);
     border-right: 1px solid var(--color-gray);
     background-color: transparent;
+
+    &:last-child {
+        margin: 0px;
+    }
   }
 
   @media (max-width: $md3+px) {

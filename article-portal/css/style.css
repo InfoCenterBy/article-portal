@@ -944,13 +944,7 @@ body._lock {
   font-weight: 500;
 }
 
-.list-news {
-  max-height: 540px;
-  border: 1px solid var(--color-gray);
-}
-
 .item-news {
-  margin: 0 24px;
   padding: 24px 0px;
 }
 
@@ -2487,6 +2481,7 @@ td.vertical-bottom {
   font-size: 16px;
   font-weight: 500;
   color: var(--color-black);
+  cursor: pointer;
 }
 
 .item-news-category:hover:not(._active) {
@@ -3001,6 +2996,11 @@ td.vertical-bottom {
       flex-wrap: wrap;
 }
 
+.list-news {
+  max-height: 540px;
+  border: 1px solid var(--color-gray);
+}
+
 .item-select-checkbox {
   margin: 0px 15px 15px 0px;
   padding: 4px 0px 4px 15px;
@@ -3083,6 +3083,36 @@ td.vertical-bottom {
   border-color: var(--color-gold);
 }
 
+.categories-news {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  border-bottom: 1px solid var(--color-gray);
+}
+
+.categories-news__item {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: var(--color-gray-dark);
+  border-bottom: 2px solid transparent;
+}
+
+.categories-news__item:hover {
+  color: var(--color-gold);
+  border-color: var(--color-gray);
+}
+
+.categories-news__item._active {
+  font-weight: 600;
+  color: var(--color-gold);
+  border-color: var(--color-gold);
+}
+
 @media (min-width: 768px) {
   .submenu-footer li {
     margin: 0px 0px 10px 0px;
@@ -3104,6 +3134,10 @@ td.vertical-bottom {
     border-left: 1px solid var(--color-gray);
     border-right: 1px solid var(--color-gray);
     background-color: transparent;
+  }
+
+  .item-news-category:last-child {
+    margin: 0px;
   }
 }
 
@@ -3153,7 +3187,7 @@ td.vertical-bottom {
         -ms-flex-order: 1;
             order: 1;
     padding: 0;
-    margin: 0px 0px 24px 0px;
+    margin: 24px 0px 0px 0px;
     border: none;
   }
 
@@ -3272,6 +3306,24 @@ td.vertical-bottom {
 
   .login__capabilities {
     display: none;
+  }
+
+  .categories-news {
+    padding: 0px 0px 10px 0px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+
+  .categories-news__item {
+    padding: 0px;
+    margin: 0px 0px 5px 0px;
+    border-bottom: 2px solid var(--color-gray);
+    border-bottom: none;
   }
 }
 
