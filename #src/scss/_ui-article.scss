@@ -31,6 +31,10 @@ td.vertical-bottom {
 
 	&__wrapper {
 		display: flex;
+
+		@media (max-width: 1200px) {
+			flex-direction: column;
+		}
 	}
 
 	&__content {
@@ -44,7 +48,7 @@ td.vertical-bottom {
 		display: flex;
 		flex-direction: column;
 		
-		@media (max-width: $md2+px) {
+		@media (max-width: 1200px) {
 		    display: none;
 		}
 	}

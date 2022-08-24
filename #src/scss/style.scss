@@ -36,7 +36,6 @@ $mainColor: var(--color-black);
 
 //<ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>===============================================================================================
 @import "null";
-@import "variables";
 body {
   background-color: var(--color-white);
   color: $mainColor;
@@ -474,18 +473,18 @@ body {
 }
 
 .categories-news {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
   border-bottom: 1px solid var(--color-gray);
+  display: flex;
+  align-items: flex-end;
 
   // .categories-news__item
   &__item {
     padding: 10px 20px;
     font-size: 16px;
+    text-align: center;
     color: var(--color-gray-dark);
     border-bottom: 2px solid transparent;
-    
+
     &:hover {
       color: var(--color-gold);
       border-color: var(--color-gray);
@@ -496,19 +495,20 @@ body {
       color: var(--color-gold);
       border-color: var(--color-gold);
     }
+  }
 
+  @media (max-width: 1200px) {
+    overflow: hidden;
+    overflow-x: auto;
+
+    &__item {
+      white-space: nowrap;
+    }
   }
 
   @media (max-width: $md2+px) {
-    padding: 0px 0px 10px 0px;
-    flex-direction: column;
-    align-items: flex-start;
-
     &__item {
-      padding: 0px;
-      margin: 0px 0px 5px 0px;
-      border-bottom: 2px solid var(--color-gray);
-      border-bottom: none;
+      padding: 10px 15px;
     }
   }
 }

@@ -113,6 +113,7 @@ h3,
 h4,
 h5,
 h6 {
+  margin: 0;
   font-weight: inherit;
   font-size: inherit;
 }
@@ -557,6 +558,18 @@ body._lock {
   background: var(--color-white);
 }
 
+.scrollbar-x .mCSB_horizontal.mCSB_inside > .mCSB_container {
+  margin-bottom: 0;
+}
+
+.scrollbar-x .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  background: var(--color-gray);
+}
+
+.scrollbar-x .mCSB_scrollTools .mCSB_draggerRail {
+  background: var(--color-white);
+}
+
 .item-article {
   padding: 30px 25px 15px;
   border: 1px solid var(--color-gray);
@@ -714,6 +727,10 @@ body._lock {
   color: var(--color-gold);
 }
 
+.list-links__link.active {
+  color: var(--color-gold);
+}
+
 .list-hashtag {
   margin: 0 auto;
   padding-left: 0;
@@ -724,11 +741,9 @@ body._lock {
       flex-wrap: wrap;
 }
 
-.list-hashtag li {
-  margin: 0px 16px 16px 0px;
-}
-
 .list-hashtag__hashtag {
+  display: block;
+  margin: 0px 16px 16px 0px;
   font-size: 14px;
   color: var(--color-gray-dark);
 }
@@ -3084,20 +3099,19 @@ td.vertical-bottom {
 }
 
 .categories-news {
+  border-bottom: 1px solid var(--color-gray);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  border-bottom: 1px solid var(--color-gray);
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
 }
 
 .categories-news__item {
   padding: 10px 20px;
   font-size: 16px;
+  text-align: center;
   color: var(--color-gray-dark);
   border-bottom: 2px solid transparent;
 }
@@ -3161,11 +3175,7 @@ td.vertical-bottom {
   }
 }
 
-@media (max-width: 1100px) {
-  .item-article__read-more a {
-    opacity: 1;
-  }
-
+@media (max-width: 1200px) {
   .sidebar-wrapper {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -3189,6 +3199,73 @@ td.vertical-bottom {
     padding: 0;
     margin: 24px 0px 0px 0px;
     border: none;
+  }
+
+  .list-links {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    overflow: hidden;
+    overflow-x: auto;
+    white-space: nowrap;
+    border-bottom: 1px solid var(--color-gray);
+  }
+
+  .list-links li:not(:last-child) {
+    margin: 0px;
+  }
+
+  .list-links__link {
+    display: block;
+    padding: 10px 20px;
+    border-bottom: 2px solid transparent;
+  }
+
+  .list-links__link.active {
+    border-bottom: 2px solid var(--color-gold);
+  }
+
+  .list-hashtag {
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    overflow: hidden;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .article__wrapper {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+
+  .article__sidebar {
+    display: none;
+  }
+
+  .categories-news {
+    overflow: hidden;
+    overflow-x: auto;
+  }
+
+  .categories-news__item {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 1200px) and (max-width: 992px) {
+  .list-links__link {
+    padding: 10px 15px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .item-article__read-more a {
+    opacity: 1;
   }
 
   .item-event__read-more {
@@ -3238,10 +3315,6 @@ td.vertical-bottom {
 }
 
 @media (max-width: 992px) {
-  .article__sidebar {
-    display: none;
-  }
-
   .list {
     padding-left: 40px;
   }
@@ -3308,22 +3381,8 @@ td.vertical-bottom {
     display: none;
   }
 
-  .categories-news {
-    padding: 0px 0px 10px 0px;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
-  }
-
   .categories-news__item {
-    padding: 0px;
-    margin: 0px 0px 5px 0px;
-    border-bottom: 2px solid var(--color-gray);
-    border-bottom: none;
+    padding: 10px 15px;
   }
 }
 
@@ -3593,6 +3652,10 @@ td.vertical-bottom {
 
   .link-download__icon-file {
     display: none;
+  }
+
+  .item-article {
+    padding: 20px 15px 15px;
   }
 
   .item-article__footer {

@@ -75,17 +75,17 @@
             <ul class="menu-header__list">
                 <li>
                     <div class="menu-header__collapse">
-                        <a href="#" class="menu-header__link" title="Статьи"><i class="bi bi-card-heading me-3"></i>Статьи</a>
+                        <a href="articles.html" class="menu-header__link" title="Статьи"><i class="bi bi-card-heading me-3"></i>Статьи</a>
                         <button class="menu-header__button collapsed" data-bs-toggle="collapse"
                                 data-bs-target="#articles-collapse" aria-expanded="false" aria-current="true">
                             <i class="bi bi-chevron-down"></i>
                         </button>
                     </div>
                     <ul class="submenu-header collapse" id="articles-collapse">
+                        <li><a href="item-section.html" class="submenu-header__link">Бухгалтерский учет</a></li>
+                        <li><a href="#" class="submenu-header__link">Государственное регулирование</a></li>
                         <li><a href="#" class="submenu-header__link">Налогообложение ИП</a></li>
                         <li><a href="#" class="submenu-header__link">Налогообложение организаций</a></li>
-                        <li><a href="#" class="submenu-header__link">Бухгалтерский учет</a></li>
-                        <li><a href="#" class="submenu-header__link">Государственное регулирование</a></li>
                     </ul>
                 </li>
                 <li>
@@ -104,7 +104,7 @@
                 </li>
                 <li>
                     <div class="menu-header__collapse">
-                        <a href="#" class="menu-header__link" title="Формы документов"><i
+                        <a href="forms-of-documents.html" class="menu-header__link" title="Формы документов"><i
                                 class="bi bi-file-earmark-ruled me-3"></i>Формы документов</a>
                         <button class="menu-header__button collapsed" data-bs-toggle="collapse"
                                 data-bs-target="#forms-doc-collapse" aria-expanded="false" aria-current="true">
@@ -315,6 +315,28 @@
                 <br>
                 <hr>
                 <br>
+                <!-- Карточка новости -->
+                <div class="item-news">
+                    <h5>
+                        <a href="item-news.html" class="item-news__title">Как изменить сроки уплаты таможенных платежей</a>
+                    </h5>
+                    <div class="item-news__text">В современных условиях индивидуальным предпринимателям иногда
+                        требуется изменить срок уплаты платежей, взимаемых таможней. Как это правильно сделать —
+                        ответ в настоящей публикации.
+                    </div>
+                    <div class="item-news__row">
+                        <div class="date">
+                            <i class="bi bi-calendar me-2"></i>
+                            20.05.2022
+                        </div>
+                        <a href="item-news.html" class="item-news__read-more">
+                            Читать
+                            <i class="bi bi-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+                <hr>
+                <br>
                 <!-- Карточка статьи -->
                 <div class="list-recent-articles">
                     <div class="item-article">
@@ -324,10 +346,12 @@
                         <div class="item-article__category">
                             Налогообложение ИП / Таможенное регулирование
                         </div>
-                        <a href="#" class="item-article__title">
-                            <i class="bi bi-lock-fill me-3"></i>
-                            Как изменить сроки уплаты таможенных платежей
-                        </a>
+                        <h5>
+                            <a href="item-section.html" class="item-article__title">
+                                <i class="bi bi-lock-fill me-3"></i>
+                                Как изменить сроки уплаты таможенных платежей
+                            </a>
+                        </h5>
                         <div class="item-article__text">В современных условиях индивидуальным предпринимателям
                             иногда требуется изменить срок уплаты платежей, взимаемых таможней. Как это
                             правильно сделать — ответ в настоящей публикации.
@@ -349,7 +373,7 @@
                             </div>
                         </div>
                         <div class="item-article__read-more">
-                            <a href="#">
+                            <a href="item-section.html">
                                 Читать
                                 <i class="bi bi-arrow-right ms-2"></i>
                             </a>
