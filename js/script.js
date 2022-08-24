@@ -669,42 +669,44 @@ document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('form-login');
     const buttonSubmitLogin = document.getElementById('submit-login')
 
-    form.addEventListener('submit', formSend);
+    if (form) {
+        form.addEventListener('submit', formSend);
 
-    async function formSend(e) {
-        e.preventDefault();
+        async function formSend(e) {
+            e.preventDefault();
 
-        let error = formValidate(form);
+            let error = formValidate(form);
 
-        if (error === 0) {
-            form.reset()
-            alert('Вы вошли на портал-чик-чик-чик')
-            buttonSubmitLogin.disabled = true
-        }
+            if (error === 0) {
+                form.reset()
+                alert('Вы вошли на портал-чик-чик-чик')
+                buttonSubmitLogin.disabled = true
+            }
 
-        function formValidate(form) {
-            let error = 0;
-            let formRequired = document.querySelectorAll('._required');
+            function formValidate(form) {
+                let error = 0;
+                let formRequired = document.querySelectorAll('._required');
 
-            for (let i = 0; i < formRequired.length; i++) {
-                const input = formRequired[i];
-                formRemoveError(input);
+                for (let i = 0; i < formRequired.length; i++) {
+                    const input = formRequired[i];
+                    formRemoveError(input);
 
-                if (input.classList.contains('_email') && input.value !== '') {
-                    if (emailTest(input)) {
-                        input.parentElement.classList.add('_error-email');
-                        error++;
+                    if (input.classList.contains('_email') && input.value !== '') {
+                        if (emailTest(input)) {
+                            input.parentElement.classList.add('_error-email');
+                            error++;
+                        } else {
+                            input.parentElement.classList.remove('_error-email');
+                        }
                     } else {
-                        input.parentElement.classList.remove('_error-email');
-                    }
-                } else {
-                    if (input.value === '') {
-                        formAddError(input);
-                        error++;
+                        if (input.value === '') {
+                            formAddError(input);
+                            error++;
+                        }
                     }
                 }
+                return error;
             }
-            return error;
         }
     }
 });
@@ -713,55 +715,56 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('form-registration');
     const buttonSubmitLogin = document.getElementById('submit-registration')
+    if (form) {
+        form.addEventListener('submit', formSend);
 
-    form.addEventListener('submit', formSend);
+        async function formSend(e) {
+            e.preventDefault();
 
-    async function formSend(e) {
-        e.preventDefault();
+            let error = formValidate(form);
 
-        let error = formValidate(form);
+            if (error === 0) {
+                form.reset()
+                alert('Спасибо за регистрацию')
+                buttonSubmitLogin.disabled = true
+            }
 
-        if (error === 0) {
-            form.reset()
-            alert('Спасибо за регистрацию')
-            buttonSubmitLogin.disabled = true
-        }
+            function formValidate(form) {
+                let error = 0;
+                let formRequired = document.querySelectorAll('._required-registr');
+                let password = document.getElementById("password-registration").value
 
-        function formValidate(form) {
-            let error = 0;
-            let formRequired = document.querySelectorAll('._required-registr');
-            let password = document.getElementById("password-registration").value
+                for (let i = 0; i < formRequired.length; i++) {
+                    const input = formRequired[i];
+                    formRemoveError(input);
 
-            for (let i = 0; i < formRequired.length; i++) {
-                const input = formRequired[i];
-                formRemoveError(input);
-
-                if (input.classList.contains('_email') && input.value !== '') {
-                    if (emailTest(input)) {
-                        input.parentElement.classList.add('_error-email');
-                        error++;
-                    } else {
-                        input.parentElement.classList.remove('_error-email');
-                    }
-                } else if (input.getAttribute('type') === 'checkbox' && input.checked === false) {
-                    formAddError(input);
-                    error++;
-                } else if (input.classList.contains('password-confirmation') && input.value !== '') {
-
-                    if (input.value !== password) {
+                    if (input.classList.contains('_email') && input.value !== '') {
+                        if (emailTest(input)) {
+                            input.parentElement.classList.add('_error-email');
+                            error++;
+                        } else {
+                            input.parentElement.classList.remove('_error-email');
+                        }
+                    } else if (input.getAttribute('type') === 'checkbox' && input.checked === false) {
                         formAddError(input);
                         error++;
+                    } else if (input.classList.contains('password-confirmation') && input.value !== '') {
+
+                        if (input.value !== password) {
+                            formAddError(input);
+                            error++;
+                        } else {
+                            console.log('yes', password)
+                        }
                     } else {
-                        console.log('yes', password)
-                    }
-                } else {
-                    if (input.value === '') {
-                        formAddError(input);
-                        error++;
+                        if (input.value === '') {
+                            formAddError(input);
+                            error++;
+                        }
                     }
                 }
+                return error;
             }
-            return error;
         }
     }
 });
@@ -816,5 +819,8 @@ getExchangeRates();
 
     $(window).on("load", function () {
         $(".scrollbar-y").mCustomScrollbar();
+        $(".scrollbar-x").mCustomScrollbar({
+            axis:"x"
+        });
     });
 })(jQuery);
