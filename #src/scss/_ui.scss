@@ -596,16 +596,17 @@
   }
 }
 
-.list-links {
-  padding-left: 0;
-  margin-bottom: 30px;
+.nav-links {
 
-  li:not(:last-child) {
-    margin: 0px 0px 16px 0px;
+  // .list-links__wrapper
+  &__wrapper {
+
   }
 
   // .list-links__link
   &__link {
+    margin: 0px 0px 16px 0px;
+    display: block;
     font-size: 16px;
     color: var(--color-blue-light);
     font-weight: 500;
@@ -617,22 +618,26 @@
     &.active {
       color: var(--color-gold);
     }
+
+    &:last-child {
+        margin: 0px;
+    }
   }
   
   @media (max-width: 1200px) {
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    overflow-x: auto;
-    white-space: nowrap;
     border-bottom: 1px solid var(--color-gray);
 
-    li:not(:last-child) {
-      margin: 0px;
+    &__wrapper {
+      margin: 0px 0px -1px 0px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      overflow-x: auto;
+      white-space: nowrap;
     }
 
     &__link {
-      display: block;
+      margin: 0;
       padding: 10px 20px;
       border-bottom: 2px solid transparent;
 
@@ -640,9 +645,6 @@
         border-bottom: 2px solid var(--color-gold);
       }
 
-      @media (max-width: $md2+px) {
-        padding: 10px 15px;
-      }
     }
   }
 }
@@ -919,6 +921,61 @@
 
     @media (max-width: $md1+px) {
       opacity: 1;
+    }
+  }
+}
+
+.overflow-x {
+  overflow: hidden;
+  overflow-x: auto;
+}
+
+.nav-tab {
+  border-bottom: 1px solid var(--color-gray);
+
+  // .nav-tab_news
+  &_news {
+    .nav-tab__wrapper {
+      white-space: normal;
+    }
+
+    @media (max-width: 1200px) {
+      .nav-tab__wrapper {
+        overflow: hidden;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+
+      &__item {
+        white-space: nowrap;
+      }
+    }
+  }
+
+  // .nav-tab__wrapper
+  &__wrapper {
+    margin-bottom: -1px;
+    display: flex;
+    white-space: nowrap;
+  }
+
+  // .nav-tab__button
+  &__button {
+    position: relative;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    color: var(--color-gray-dark);
+    border-bottom: 2px solid transparent;
+
+    &.active {
+      color: var(--color-gold);
+      border-color: var(--color-gold);
+    }
+
+    &:hover {
+      color: var(--color-gold);
+      border-color: var(--color-gold);
     }
   }
 }

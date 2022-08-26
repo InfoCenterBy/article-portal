@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+    @@include('_head.html',{
+    "title":"Личный кабинет"
+    })
+    <body>
+        <div class="wrapper">
+            @@include('_header.html',{})
+            <main class="page">
+                <section class="my-5">
+                    <div class='container'>
+                        <h1 class="h1">Личный кабинет</h1>
+                       <nav class="nav-tab">
+                           <div class="nav-tab__wrapper overflow-x" id="nav-tab" role="tablist">
+                               <button class="nav-tab__button active" id="nav-personal-data-tab" data-bs-toggle="tab" data-bs-target="#nav-personal-data" type="button" role="tab" aria-controls="nav-personal-data" aria-selected="true">Персональные данные</button>
+                               <button class="nav-tab__button" id="nav-subscription-management-tab" data-bs-toggle="tab" data-bs-target="#nav-subscription-management" type="button" role="tab" aria-controls="nav-subscription-management" aria-selected="false">Управление подпиской</button>
+                               <button class="nav-tab__button" id="nav-newsletter-management-tab" data-bs-toggle="tab" data-bs-target="#nav-newsletter-management" type="button" role="tab" aria-controls="nav-newsletter-management" aria-selected="false">Управление рассылкой</button>
+                               <button class="nav-tab__button" id="nav-security-privacy-tab" data-bs-toggle="tab" data-bs-target="#nav-security-privacy" type="button" role="tab" aria-controls="nav-security-privacy" aria-selected="false">Безопасность и конфиденциальность</button>
+                           </div>
+                       </nav>
+                       <div class="tab-content" id="nav-tabContent">
+                           <div class="tab-pane fade show active" id="nav-personal-data" role="tabpanel" aria-labelledby="nav-personal-data-tab" tabindex="0">
+                               <form id="form-profile" class="form-profile mt-5">
+                                       <div class="d-flex flex-md-row flex-column">
+                                            <div class="form-profile__photo">
+                                                <img src="./img/avatar.jpg" alt="" class="img-fluid" />
+                                                <div class="form-profile__input-photo">
+                                                    <label for="change-photo"><i class="bi bi-pencil me-3"></i>Изменить фото</label>
+                                                    <input id="change-photo" type="file">
+                                                </div>
+                                            </div>
+                                           <div class="form-profile__profile ms-md-5 mt-4 mt-md-0">
+                                               <div class="input mb-4">
+                                                   <label for="name">Имя</label>
+                                                   <input type="text" id="name" placeholder="Ваше имя">
+                                                   <div class="input__text-error"><i class="bi bi-exclamation-triangle me-2"></i>Поле не может быть пустым</div>
+                                               </div>
+                                               <div class="input mb-4">
+                                                   <label for="surname">Фамилия</label>
+                                                   <input type="text" id="surname" placeholder="Ваша фамилия">
+                                                   <div class="input__text-error"><i class="bi bi-exclamation-triangle me-2"></i>Поле не может быть пустым</div>
+                                               </div>
+                                               <div class="input mb-4">
+                                                   <label for="middle-name">Отчество</label>
+                                                   <input type="text" id="middle-name" placeholder="Ваше отчество">
+                                               </div>
+                                               <div class="input mb-4">
+                                                   <label for="email-registration">Email</label>
+                                                   <input type="text" id="email-registration" placeholder="Ваш email">
+                                                   <div class="input__text-error"><i class="bi bi-exclamation-triangle me-2"></i>Электронная почта не может быть пустой</div>
+                                                   <div class="input__text-error-email"><i class="bi bi-exclamation-triangle me-2"></i>Адрес электоронной почты должен заканчиваться на @**.**</div>
+                                               </div>
+                                               <div class="input mb-4">
+                                                   <label for="unp-registration">УНП</label>
+                                                   <input type="phone" id="unp-registration" placeholder="Ваш УНП">
+                                               </div>
+                                               <div class="input mb-4">
+                                                   <label for="phone-registration">Телефон</label>
+                                                   <input type="phone" id="phone-registration" placeholder="+375 (**) ***-**-**">
+                                               </div>
+                                               <div class="mt-5 text-center">
+                                                   <button type="submit" class="button">Сохранить изменения</button>
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </form>
+                           </div>
+                           <div class="tab-pane fade" id="nav-subscription-management" role="tabpanel" aria-labelledby="nav-subscription-management-tab" tabindex="0">
+                               <div class="mt-5">
+                                   Управление подпиской
+                               </div>
+                           </div>
+                           <div class="tab-pane fade" id="nav-newsletter-management" role="tabpanel" aria-labelledby="nav-newsletter-management-tab" tabindex="0">
+                               <div class="mt-5">
+                                   Управление рассылкой
+                               </div>
+                           </div>
+                           <div class="tab-pane fade" id="nav-security-privacy" role="tabpanel" aria-labelledby="nav-security-privacy" tabindex="0">
+                               <div class="mt-5">
+                                   Безопасность и конфиденциальность
+                               </div>
+                           </div>
+                       </div>
+                    </div>
+                </section>
+            </main>
+            @@include('_footer.html',{})
+        </div>
+        @@include('_js.html',{})
+    </body>
+</html>

@@ -283,6 +283,7 @@
 
     &:focus {
       border: 1px solid var(--color-gold);
+      box-shadow: 0 0 7px 1px rgba(196, 122, 44, 0.2) inset;
     }
   }
   // .input__password
@@ -391,5 +392,57 @@
   width: 40px;
 }
 
+.form-profile {
+  width: 100%;
+  max-width: 730px;
+
+  // .form-profile__photo
+  &__photo {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+
+
+    &:hover {
+      .form-profile__input-photo {
+        transform: translateY(0%);
+      }
+    }
+  }
+
+  // .form-profile__input-photo
+  &__input-photo {
+    background: linear-gradient(180deg, rgba(26, 26, 26, 0) 0%, rgba(26, 26, 26, 0.08) 38.54%, rgba(26, 26, 26, 0.22) 64.06%, rgba(26, 26, 26, 0.68) 99.6%);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    bottom: 0;
+    transform: translateY(100%);
+    transition: all 0.3s ease 0s;
+
+    label {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 14px 0px;
+      font-size: 14px;
+      color: var(--color-white);
+      cursor: pointer;
+    }
+
+    input {
+      display: none;
+    }
+  }
+
+  // .form-profile__photo
+  &__profile {
+    flex: 1 1 auto;
+  }
+}
 
 

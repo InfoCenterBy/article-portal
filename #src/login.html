@@ -12,15 +12,15 @@
                        <div class="d-flex justify-content-around">
                            <div class="login__body">
                                <h1 class="h1">Вход в личный кабинет</h1>
-                               <nav>
-                                   <div class="nav nav-login" id="nav-tab" role="tablist">
-                                       <button class="nav-login__button active" id="nav-login-tab" data-bs-toggle="tab" data-bs-target="#nav-login" type="button" role="tab" aria-controls="nav-login" aria-selected="true">Войти</button>
-                                       <button class="nav-login__button" id="nav-registration-tab" data-bs-toggle="tab" data-bs-target="#nav-registration" type="button" role="tab" aria-controls="nav-registration" aria-selected="false">Зарегистрироваться</button>
+                               <nav class="nav-tab">
+                                   <div class="nav-tab__wrapper overflow-x" id="nav-tab" role="tablist">
+                                       <button class="nav-tab__button active" id="nav-login-tab" data-bs-toggle="tab" data-bs-target="#nav-login" type="button" role="tab" aria-controls="nav-login" aria-selected="true">Войти</button>
+                                       <button class="nav-tab__button" id="nav-registration-tab" data-bs-toggle="tab" data-bs-target="#nav-registration" type="button" role="tab" aria-controls="nav-registration" aria-selected="false">Зарегистрироваться</button>
                                    </div>
                                </nav>
                                <div class="tab-content" id="nav-tabContent">
                                    <div class="tab-pane fade show active" id="nav-login" role="tabpanel" aria-labelledby="nav-login-tab" tabindex="0">
-                                       <div class="login__content">
+                                       <div class="mt-5">
                                            <form id="form-login">
                                               <div class="input mb-4">
                                                   <label for="email-login">Email <span>*</span></label>
@@ -47,7 +47,7 @@
                                        </div>
                                    </div>
                                    <div class="tab-pane fade" id="nav-registration" role="tabpanel" aria-labelledby="nav-registration-tab" tabindex="0">
-                                       <div class="login__content">
+                                       <div class="mt-5">
                                            <form id="form-registration">
                                                <div class="input mb-4">
                                                    <label for="name">Имя <span>*</span></label>
@@ -137,6 +137,144 @@
             </main>
             @@include('_footer.html',{})
         </div>
+        <script>
+            // function for form
+            function emailTest(input) {
+                return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(
+                    input.value
+                );
+            }
+
+            function formAddError(input) {
+                input.parentElement.classList.add('_error');
+            }
+
+            function formRemoveError(input) {
+                input.parentElement.classList.remove('_error');
+            }
+
+            const btnsVisibilityPassword = document.querySelectorAll(".icon-password");
+
+            const siblings = el => [].slice.call(el.parentNode.children).filter(child => (child !== el));
+
+            btnsVisibilityPassword.forEach(btn => btn.addEventListener('click', () => {
+                let input = siblings(btn)
+                if (input[0].type === "password") {
+                    input[0].type = "text";
+                    btn.classList.remove('bi-eye-slash')
+                    btn.classList.add('bi-eye')
+                } else {
+                    input[0].type = "password";
+                    btn.classList.add('bi-eye-slash')
+                    btn.classList.remove('bi-eye')
+                }
+            }))
+
+            // form-login
+            document.addEventListener('DOMContentLoaded', function () {
+                const form = document.getElementById('form-login');
+                const buttonSubmitLogin = document.getElementById('submit-login')
+
+                if (form) {
+                    form.addEventListener('submit', formSend);
+
+                    async function formSend(e) {
+                        e.preventDefault();
+
+                        let error = formValidate(form);
+
+                        if (error === 0) {
+                            form.reset()
+                            alert('Вы вошли на портал-чик-чик-чик')
+                            buttonSubmitLogin.disabled = true
+                        }
+
+                        function formValidate(form) {
+                            let error = 0;
+                            let formRequired = document.querySelectorAll('._required');
+
+                            for (let i = 0; i < formRequired.length; i++) {
+                                const input = formRequired[i];
+                                formRemoveError(input);
+
+                                if (input.classList.contains('_email') && input.value !== '') {
+                                    if (emailTest(input)) {
+                                        input.parentElement.classList.add('_error-email');
+                                        error++;
+                                    } else {
+                                        input.parentElement.classList.remove('_error-email');
+                                    }
+                                } else {
+                                    if (input.value === '') {
+                                        formAddError(input);
+                                        error++;
+                                    }
+                                }
+                            }
+                            return error;
+                        }
+                    }
+                }
+            });
+
+            // form-registration
+            document.addEventListener('DOMContentLoaded', function () {
+                const form = document.getElementById('form-registration');
+                const buttonSubmitLogin = document.getElementById('submit-registration')
+                if (form) {
+                    form.addEventListener('submit', formSend);
+
+                    async function formSend(e) {
+                        e.preventDefault();
+
+                        let error = formValidate(form);
+
+                        if (error === 0) {
+                            form.reset()
+                            alert('Спасибо за регистрацию')
+                            buttonSubmitLogin.disabled = true
+                        }
+
+                        function formValidate(form) {
+                            let error = 0;
+                            let formRequired = document.querySelectorAll('._required-registr');
+                            let password = document.getElementById("password-registration").value
+
+                            for (let i = 0; i < formRequired.length; i++) {
+                                const input = formRequired[i];
+                                formRemoveError(input);
+
+                                if (input.classList.contains('_email') && input.value !== '') {
+                                    if (emailTest(input)) {
+                                        input.parentElement.classList.add('_error-email');
+                                        error++;
+                                    } else {
+                                        input.parentElement.classList.remove('_error-email');
+                                    }
+                                } else if (input.getAttribute('type') === 'checkbox' && input.checked === false) {
+                                    formAddError(input);
+                                    error++;
+                                } else if (input.classList.contains('password-confirmation') && input.value !== '') {
+
+                                    if (input.value !== password) {
+                                        formAddError(input);
+                                        error++;
+                                    } else {
+                                        console.log('yes', password)
+                                    }
+                                } else {
+                                    if (input.value === '') {
+                                        formAddError(input);
+                                        error++;
+                                    }
+                                }
+                            }
+                            return error;
+                        }
+                    }
+                }
+            });
+        </script>
         @@include('_js.html',{})
     </body>
 </html>

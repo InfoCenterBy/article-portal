@@ -59,6 +59,17 @@
 		    display: block;
 			padding: 0px 16px;
 			color: var(--color-gold);
+
+			i:before {
+				transition: all 0.3s ease 0s;
+				transform: rotate(180deg);
+			}
+
+			&.collapsed {
+				i:before {
+					transform: rotate(0deg);
+				}
+			}
 		}
 	}
 }
