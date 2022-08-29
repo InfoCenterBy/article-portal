@@ -262,6 +262,7 @@ body._lock {
 }
 
 .button_empty {
+  padding: 16px 0px;
   border: 2px solid var(--color-gold);
   color: var(--color-black);
   background-color: transparent;
@@ -1242,8 +1243,25 @@ td.vertical-bottom {
   text-transform: uppercase;
 }
 
+.article-line {
+  border-bottom: 3px solid var(--color-gold);
+  margin: 0px 0px 30px 0px;
+}
+
 .article-text {
   border-bottom: 3px solid var(--color-gold);
+}
+
+.article-text img {
+  margin: 32px auto;
+  max-width: 830px;
+  display: block;
+}
+
+.article-source {
+  padding: 10px 0px 0px 0px;
+  font-size: 14px;
+  color: var(--color-gray-dark);
 }
 
 .paywall {
@@ -3192,6 +3210,29 @@ td.vertical-bottom {
 
 .login__capabilities ul li:not(:last-child) {
   margin: 0px 0px 40px 0px;
+}
+
+.circulation {
+  padding: 40px 0px 200px;
+  background: url("../img/circulation-bg.png") bottom center no-repeat;
+}
+
+.circulation__body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.circulation__info {
+  margin: 80px 0px 0px 0px;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 460px;
+          flex: 0 0 460px;
+}
+
+.circulation__info ul li {
+  list-style: disc;
+  font-weight: 600;
 }
 
 @media (min-width: 768px) {
