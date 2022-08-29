@@ -1006,3 +1006,33 @@
     }
   }
 }
+
+.slider-webinars {
+  padding: 24px;
+  border: 1px solid var(--color-gray);
+}
+
+.item-webinar {
+  display: flex;
+  // .item-webinar__info
+  i.bi-person-video3 {
+    margin: 0px 40px 0px 0px;
+    font-size: 81px;
+    color: var(--color-gold);
+  }
+  &__info {
+  }
+
+  // .item-webinar__link
+  &__link {
+    color: var(--color-gray-dark);
+    
+    &:hover {
+      color: var(--color-gold);
+
+      i:before {
+        transform: translateX(3px);
+      }
+    }
+  }
+}

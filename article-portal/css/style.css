@@ -1067,6 +1067,37 @@ body._lock {
   border-color: var(--color-gold);
 }
 
+.slider-webinars {
+  padding: 24px;
+  border: 1px solid var(--color-gray);
+}
+
+.item-webinar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.item-webinar i.bi-person-video3 {
+  margin: 0px 40px 0px 0px;
+  font-size: 81px;
+  color: var(--color-gold);
+}
+
+.item-webinar__link {
+  color: var(--color-gray-dark);
+}
+
+.item-webinar__link:hover {
+  color: var(--color-gold);
+}
+
+.item-webinar__link:hover i:before {
+  -webkit-transform: translateX(3px);
+      -ms-transform: translateX(3px);
+          transform: translateX(3px);
+}
+
 p {
   margin-bottom: 24px;
 }
