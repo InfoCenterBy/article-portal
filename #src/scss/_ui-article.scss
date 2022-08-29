@@ -150,8 +150,23 @@ td.vertical-bottom {
 		text-transform: uppercase;
 	}
 }
+.article-line {
+	border-bottom: 3px solid var(--color-gold);
+	margin: 0px 0px 30px 0px;
+}
 .article-text {
 	border-bottom: 3px solid var(--color-gold);
+
+	img {
+		margin: 32px auto;
+		max-width: 830px;
+		display: block;
+	}
+}
+.article-source {
+	padding: 10px 0px 0px 0px;
+	font-size: 14px;
+	color: var(--color-gray-dark);
 }
 .paywall {
 	margin-top: -60px;

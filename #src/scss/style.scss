@@ -458,5 +458,28 @@ body {
   }
 }
 
+.circulation {
+  padding: 40px 0px 200px;
+  background: url('../img/circulation-bg.png') bottom center no-repeat;
+  // .circulation__body
+  &__body {
+    display: flex;
+  }
+
+  // .circulation__info
+  &__info {
+    margin: 80px 0px 0px 0px;
+    flex: 0 0 460px;
+
+    ul li {
+      list-style: disc;
+      font-weight: 600;
+    }
+  }
+
+  // .circulation__img
+  &__img {
+  }
+}
 
 
