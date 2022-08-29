@@ -32,7 +32,7 @@ td.vertical-bottom {
 	&__wrapper {
 		display: flex;
 
-		@media (max-width: 1200px) {
+		@media (max-width: $md1+px) {
 			flex-direction: column;
 		}
 	}
@@ -47,8 +47,8 @@ td.vertical-bottom {
 		margin: 0 0 0 48px;
 		display: flex;
 		flex-direction: column;
-		
-		@media (max-width: 1200px) {
+
+		@media (max-width: $md1+px) {
 		    display: none;
 		}
 	}

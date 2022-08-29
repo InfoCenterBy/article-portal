@@ -442,6 +442,10 @@
   // .form-profile__photo
   &__profile {
     flex: 1 1 auto;
+    
+    @media (max-width: $md3+px) {
+       width: 100%;
+    }
   }
 }
 

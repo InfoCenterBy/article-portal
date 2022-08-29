@@ -78,6 +78,17 @@
   &:disabled {
     cursor: not-allowed;
   }
+
+  &_empty  {
+    border: 2px solid var(--color-gold);
+    color: var(--color-black);
+    background-color: transparent;
+
+    &:hover {
+      color: var(--color-white);
+      background-color: var(--color-gold);
+    }
+  }
 }
 
 .button-small {
@@ -193,7 +204,7 @@
 }
 
 .advertising-banner {
-  display: block;
+  border: 3px solid var(--color-gold);
 }
 
 .button-hover {
@@ -594,7 +605,7 @@
       margin: 24px 0px 0px 0px;
       border: none;
 
-      &.advertising-banner {
+      &.banner {
         display: none;
       }
 
