@@ -151,6 +151,7 @@
 </header>
     <main class="page">
         <!-- Хлебные крошки  -->
+        <h1 class="h1">ХЛЕБНЫЕ КРОШКИ</h1>
         <nav aria-label="breadcrumb">
             <div class='container'>
                 <ol class="breadcrumb">
@@ -164,6 +165,7 @@
         <div class="my-5">
             <div class='container'>
                 <!-- ЗАГОЛОВКИ -->
+                <h1 class="h1">ЗАГОЛОВКИ</h1>
                 <h1 class="h1">Заголовок H1</h1>
                 <div class="bg-dark">
                     <h1 class="h1 h1_white">Заголовок H1 (белый)</h1>
@@ -201,6 +203,7 @@
                 <h6 class="h6 h6_gold">Заголовок H6 (золотой)</h6>
                 <hr>
                 <!-- Заголовок подчеркнутый -->
+                <h1 class="h1">ЗАГОЛОВОК ПОДЧЁРКНЫТЫЙ</h1>
                 <div class="title-underline">
                     <h3 class="title-underline__title">
                         <i class="bi bi-tag me-2"></i>
@@ -209,6 +212,7 @@
                 </div>
                 <hr>
                 <!-- Заголовок подчеркнутый с ссылкой -->
+                <h1 class="h1">ЗАГОЛОВОК ПОДЧЁРКНЫТЫЙ ССЫЛКОЙ</h1>
                 <div class="title-underline">
                     <h3 class="title-underline__title">
                         <i class="bi bi-tag me-2"></i>
@@ -221,6 +225,7 @@
                 </div>
                 <hr>
                 <!-- Заголовок с фоном -->
+                <h1 class="h1">ЗАГОЛОВОК С ФОНОМ</h1>
                 <div class="title-full">
                     <h3 class="title-full__title">
                         <i class="bi bi-file-earmark-text me-2"></i>
@@ -229,6 +234,7 @@
                 </div>
                 <hr>
                 <!-- Заголовок с фоном и ссылкой -->
+                <h1 class="h1">ЗАГОЛОВОК С ФОНОМ И ССЫЛКОЙ</h1>
                 <div class="title-full">
                     <h3 class="title-full__title">
                         <i class="bi bi-file-earmark-text me-2"></i>
@@ -241,6 +247,7 @@
                 </div>
                 <hr>
                 <!-- КНОПКИ -->
+                <h1 class="h1">КНОПКИ</h1>
                 <button class="button">Кнопка</button>
                 <hr>
                 <button class="button button_search">Кнопка поиска</button>
@@ -249,12 +256,14 @@
                 <hr>
                 <button class="button-small">Кнопка маленькая</button>
                 <hr>
+                <h1 class="h1">Кнопка-hover</h1>
                 <a class="button-hover" href="#">
                     <span class="button-hover__hover-wrap"></span>
-                    <div class="button-hover__text">#Сбор за размещение рекламы</div>
+                    <div class="button-hover__text">#Маркировка</div>
                 </a>
                 <hr>
                 <!-- Ссылки загрузки  -->
+                <h1 class="h1">Ссылки загрузки</h1>
                 <div>
                     <div class="link-download">
                         <button type="button" class="link-download__bookmark" title="Добавить в закладки">
@@ -317,7 +326,98 @@
                 <br>
                 <hr>
                 <br>
+                <!-- Элементы формы -->
+                <h1 class="h1">Элементы формы</h1>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-4">
+                            <div class="input">
+                                <label for="name">Имя <span>*</span></label>
+                                <input type="text" id="name" class="_required" placeholder="Ваше имя">
+                                <div class="input__text-error"><i class="bi bi-exclamation-triangle me-2"></i>Поле не может быть пустым</div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="input">
+                                <label for="phone-registration">Телефон</label>
+                                <input type="phone" id="phone-registration" placeholder="+375 (**) ***-**-**">
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="input">
+                                <label for="password-registration">Пароль <span>*</span></label>
+                                <div class="input__password">
+                                    <input type="password" id="password-registration" class="_required" placeholder="Введите пароль">
+                                    <i class="icon-password bi bi-eye-slash"></i>
+                                </div>
+                                <div class="input__text-error"><i class="bi bi-exclamation-triangle me-2"></i>Пароль не может быть пустым</div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="checkbox mb-4">
+                                <input type="checkbox" id="RefInfo01">
+                                <label class="checkbox__label" for="RefInfo01">Курсы валют</label>
+                            </div>
+                            <div class="checkbox mb-4">
+                                <input type="checkbox" id="RefInfo02">
+                                <label class="checkbox__label" for="RefInfo02">Налоговый календарь</label>
+                            </div>
+                            <div class="checkbox mb-4">
+                                <input type="checkbox" id="RefInfo03">
+                                <label class="checkbox__label" for="RefInfo03">Основные показатели</label>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="label mb-0">Пол</div>
+                            <div class="d-flex flex-wrap">
+                                <div class="radio mt-3 me-4">
+                                    <input id="men" type="radio" name="radio" value="1" checked>
+                                    <label class="radio__label" for="men">Мужской</label>
+                                </div>
+                                <div class="radio mt-3 me-4">
+                                    <input id="women" type="radio" name="radio" value="2">
+                                    <label class="radio__label" for="women">Женский</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="label">Вид деятельности</div>
+                            <select class="select">
+                                <option></option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <div class="mb-4">
+                            <div class="d-flex justify-content-between">
+                                <div class="fw-semibold">Акции и выгодные предложения по подписке</div>
+                                <div class="form-check form-switch ms-3">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="promotions">
+                                    <label class="form-check-label" for="promotions"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="checkbox">
+                                <input type="checkbox" id="personal-data" class="_required">
+                                <label class="checkbox__label" for="personal-data">
+                                    <span class="checkbox__label_text">Я даю свое <a href="#" target="_blank">согласие на обработку персональных данных</a></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="submit" class="button">Отправить</button>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <hr>
+                <br>
                 <!-- Карточка новости -->
+                <h1 class="h1">КАРТОЧКА НОВОСТИ</h1>
                 <div class="item-news">
                     <h5>
                         <a href="item-news.html" class="item-news__title">Как изменить сроки уплаты таможенных платежей</a>
@@ -340,6 +440,7 @@
                 <hr>
                 <br>
                 <!-- Карточка статьи -->
+                <h1 class="h1">КАРТОЧКА СТАТЬИ</h1>
                 <div class="list-recent-articles">
                     <div class="item-article">
                         <button type="button" class="item-article__bookmark" title="Добавить в закладки">
@@ -382,8 +483,11 @@
                         </div>
                     </div>
                 </div>
+                <br>
                 <hr>
+                <br>
                 <!-- ШАПКА СТАТЬИ -->
+                <h1 class="h1">ШАПКА СТАТЬИ</h1>
                 <div class="article-header">
                     <div class="article-header__top">
                         <div class="article-header__date">18.04.2022</div>
@@ -420,7 +524,11 @@
                         </ul>
                     </div>
                 </div>
-
+                <br>
+                <hr>
+                <br>
+                <!-- ЭЛЕМЕНТЫ СТАТЬИ -->
+                <h1 class="h1">ЭЛЕМЕНТЫ СТАТЬИ</h1>
                 <div class="article-text">
                     <br>
                     <hr>
