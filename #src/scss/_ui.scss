@@ -52,6 +52,32 @@
   font-size: 16px;
 }
 
+.color-gold {
+  color: var(--color-gold);
+}
+
+.color-gray-dark {
+  color: var(--color-gray-dark);
+}
+
+.border-gray {
+  border: 1px solid var(--color-gray);
+}
+
+.link {
+  font-size: 16px;
+  color: var(--color-black);
+
+  &:hover {
+    color: inherit;
+    opacity: 0.5;
+  }
+
+  &_gray-dark {
+    color: var(--color-gray-dark);
+  }
+}
+
 .button {
   width: 245px;
   display: inline-block;
@@ -270,7 +296,7 @@
   }
 
   &:not(:last-child) {
-      margin: 0px 0px 15px 0px;
+    margin: 0px 0px 15px 0px;
   }
 
   // .link-download__link
@@ -293,11 +319,11 @@
     i {
       background-color: var(--color-white);
     }
-    
+
     &:hover {
       color: var(--color-blue-light);
     }
-    
+
     @media (hover: hover) {
       opacity: 0;
       visibility: hidden;
@@ -313,7 +339,7 @@
     flex: 1 1 auto;
     display: flex;
     margin-right: 30px;
-    
+
     @media (max-width: $md4+px) {
       margin-right: 10px;
     }
@@ -613,6 +639,10 @@
       .hidden-title {
         display: none;
       }
+
+      hr {
+        display: none;
+      }
     }
   }
 }
@@ -643,7 +673,7 @@
       margin: 0px 0px 16px 0px;
     }
   }
-  
+
   @media (max-width: $md1+px) {
     border-bottom: 1px solid var(--color-gray);
 
@@ -992,7 +1022,7 @@
     border-bottom: 2px solid transparent;
 
     &:not(:last-child) {
-        margin: 0px 3px 0px 0px;
+      margin: 0px 3px 0px 0px;
     }
 
     &.active {
@@ -1021,12 +1051,13 @@
     color: var(--color-gold);
   }
   &__info {
+    flex: 1 1 auto;
   }
 
   // .item-webinar__link
   &__link {
     color: var(--color-gray-dark);
-    
+
     &:hover {
       color: var(--color-gold);
 

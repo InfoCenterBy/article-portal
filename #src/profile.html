@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="ru">
+    @@include('_head.html',{
+    "title":"Профиль"
+    })
+    <body>
+        <div class="wrapper">
+            @@include('_header.html',{})
+            <main class="page">
+                <nav aria-label="breadcrumb">
+                    <div class='container'>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="main.html"><i class="bi bi-house"></i></a></li>
+                            <li class="breadcrumb-item"><a href="personal-area.html">Личный кабинет</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Профиль</li>
+                        </ol>
+                    </div>
+                </nav>
+                <section class="mb-5">
+                    <div class='container'>
+                        <div class="sidebar-wrapper">
+                            <div class="sidebar-wrapper__content">
+                                <h1 class="h1">Личный кабинет</h1>
+                                <div class="color-gray-dark mb-5">Основная информация о пользователе, управление напоминания и рассылками</div>
+                                <nav class="nav-tab">
+                                    <div class="nav-tab__wrapper overflow-x" id="nav-tab" role="tablist">
+                                        <button class="nav-tab__button active" id="nav-personal-data-tab" data-bs-toggle="tab" data-bs-target="#nav-personal-data" type="button" role="tab" aria-controls="nav-personal-data" aria-selected="true">Данные пользователя</button>
+                                        <button class="nav-tab__button" id="nav-subscription-management-tab" data-bs-toggle="tab" data-bs-target="#nav-subscription-management" type="button" role="tab" aria-controls="nav-subscription-management" aria-selected="false">Настройка уведомлений</button>
+                                        <button class="nav-tab__button" id="nav-newsletter-management-tab" data-bs-toggle="tab" data-bs-target="#nav-newsletter-management" type="button" role="tab" aria-controls="nav-newsletter-management" aria-selected="false">Настройка рассылок</button>
+                                    </div>
+                                </nav>
+                                <div class="tab-content" id="nav-tabContent">
+                                    <div class="tab-pane mt-5 fade show active" id="nav-personal-data" role="tabpanel" aria-labelledby="nav-personal-data-tab" tabindex="0">
+                                        <div class="border-gray p-3 p-sm-4 mb-4 d-flex flex-md-row flex-column justify-content-between align-items-center">
+                                            <div class="d-flex flex-sm-row flex-column align-items-center">
+                                                <div class="profile-photo">
+                                                    <img src="./img/avatar.jpg" alt="" class="img-fluid" />
+                                                    <div class="profile-photo__input">
+                                                        <label for="change-photo"><i class="bi bi-pencil me-3"></i>Изменить фото</label>
+                                                        <input id="change-photo" type="file">
+                                                    </div>
+                                                </div>
+                                                <div class="profile-name ms-sm-4 mt-3 mt-sm-0">
+                                                    <div class="h3 mb-3">Иванова Ирина Ивановна</div>
+                                                    <div class="color-gray-dark">test@test.ru</div>
+                                                </div>
+                                            </div>
+                                            <div class="ms-md-4 mt-4 mt-md-0 color-gray-dark">Профиль заполнен на 28%</div>
+                                        </div>
+                                        <div class="border-gray p-3 p-sm-4 mb-4">
+                                            <h3 class="h3 mb-4">Личные данные</h3>
+                                            <form>
+                                                <div class="row g-4">
+                                                    <div class="col-md-6">
+                                                        <div class="input">
+                                                            <label for="surname">Фамилия</label>
+                                                            <input type="text" id="surname" placeholder="Ваша фамилия">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="input">
+                                                            <label for="name">Имя</label>
+                                                            <input type="text" id="name" placeholder="Ваше имя">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="input">
+                                                            <label for="middle-name">Отчество</label>
+                                                            <input type="text" id="middle-name" placeholder="Ваше отчество">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="label mb-0">Пол</div>
+                                                        <div class="d-flex flex-wrap">
+                                                            <div class="radio mt-3 me-4">
+                                                                <input id="men" type="radio" name="radio" value="1" checked>
+                                                                <label class="radio__label" for="men">Мужской</label>
+                                                            </div>
+                                                            <div class="radio mt-3 me-4">
+                                                                <input id="women" type="radio" name="radio" value="2">
+                                                                <label class="radio__label" for="women">Женский</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="input">
+                                                            <label for="birthday">Дата рождения</label>
+                                                            <input type="date" id="birthday">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="input">
+                                                            <label for="phone-registration">Телефон</label>
+                                                            <input type="phone" id="phone-registration" placeholder="+375 (**) ***-**-**">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <button type="submit" class="button">Сохранить изменения</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="border-gray p-3 p-sm-4 mb-4">
+                                            <h3 class="h3 mb-4">Данные для входа</h3>
+                                            <form>
+                                                <div class="row g-4">
+                                                    <div class="col-md-6">
+                                                        <div class="input">
+                                                            <label for="email-check">Электронная почта</label>
+                                                            <div class="input__email _check">
+                                                                <input type="text" id="email-check" placeholder="test@test.ru" disabled>
+                                                                <i class="bi bi-check-circle-fill"></i>
+                                                            </div>
+                                                            <div class="input__text-email">Электронная почта подтверждена</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="input">
+                                                            <label for="email">Новый адрес</label>
+                                                            <input type="text" id="email" placeholder="Ваш email">
+                                                            <div class="input__text-error"><i class="bi bi-exclamation-triangle me-2"></i>Электронная почта не может быть пустой</div>
+                                                            <div class="input__text-error-email"><i class="bi bi-exclamation-triangle me-2"></i>Адрес электоронной почты должен заканчиваться на @**.**</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <button type="submit" class="button">Сохранить изменения</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="border-gray p-3 p-sm-4">
+                                            <h3 class="h3 mb-4">Место работы</h3>
+                                            <form>
+                                                <div class="row g-4">
+                                                    <div class="col-md-12">
+                                                        <div class="label mb-0">Кем вы являетесь?</div>
+                                                        <div class="d-flex flex-wrap">
+                                                            <div class="radio mt-3 me-4">
+                                                                <input id="individuals" type="radio" name="whoAreYou" value="1" checked>
+                                                                <label class="radio__label" for="individuals">Физическое лицо</label>
+                                                            </div>
+                                                            <div class="radio mt-3 me-4">
+                                                                <input id="individualEntrepreneur" type="radio" name="whoAreYou" value="2">
+                                                                <label class="radio__label" for="individualEntrepreneur">Индивидуальный предприниматель</label>
+                                                            </div>
+                                                            <div class="radio mt-3 me-4">
+                                                                <input id="organization" type="radio" name="whoAreYou" value="2">
+                                                                <label class="radio__label" for="organization">Организация</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="label">Должность</div>
+                                                        <select class="select">
+                                                            <option></option>
+                                                            <option>Главный бухгалтер</option>
+                                                            <option>Заместитель главного бухгалтера</option>
+                                                            <option>Бухгалтер</option>
+                                                            <option>Аудитор</option>
+                                                            <option>Финансовый директор</option>
+                                                            <option>Директор</option>
+                                                            <option>Юрист</option>
+                                                            <option>Экономист</option>
+                                                            <option>Налоговый консультант</option>
+                                                            <option>Другое</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-6"></div>
+                                                    <div class="col-md-6">
+                                                        <div class="input">
+                                                            <label for="name-company">Название организации</label>
+                                                            <input type="text" id="name-company" placeholder="Название организации">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="input">
+                                                            <label for="unp-profile">УНП</label>
+                                                            <input type="phone" id="unp-profile" placeholder="Ваш УНП">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="label">Вид деятельности</div>
+                                                        <select class="select">
+                                                            <option></option>
+                                                            <option>Торговля</option>
+                                                            <option>Промышленность</option>
+                                                            <option>Сельское хозяйство</option>
+                                                            <option>Строительство</option>
+                                                            <option>Образование</option>
+                                                            <option>Медицина</option>
+                                                            <option>Транспорт</option>
+                                                            <option>Отдых и туризм</option>
+                                                            <option>Информационные технологии</option>
+                                                            <option>Сфера услуг</option>
+                                                            <option>Другое</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="label">Размер компании</div>
+                                                        <select class="select">
+                                                            <option></option>
+                                                            <option>Менее 15 сотрудников</option>
+                                                            <option>От 16 до 100 сотрудников</option>
+                                                            <option>От 101 до 250 сотрудников</option>
+                                                            <option>Более 250 сотрудников</option>
+                                                            <option>Не знаю</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="label">Регион</div>
+                                                        <select class="select">
+                                                            <option></option>
+                                                            <option>Брестская область</option>
+                                                            <option>Витебская область</option>
+                                                            <option>Гомельская область</option>
+                                                            <option>Гродненская область</option>
+                                                            <option>Минская область</option>
+                                                            <option>Могилевская область</option>
+                                                            <option>Город Минск</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <button type="submit" class="button">Сохранить изменения</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane mt-5 fade" id="nav-subscription-management" role="tabpanel" aria-labelledby="nav-subscription-management-tab" tabindex="0">
+                                        <form class="border-gray p-3 p-sm-4 mb-4">
+                                            <div class="d-md-flex justify-content-between align-items-center mb-4">
+                                                <h3 class="h3 m-0">Настройка уведомлений</h3>
+                                                <div class="d-flex align-items-center notification-all ms-md-3 mt-3 mt-md-0">
+                                                    <div class="checkbox me-4">
+                                                        <input type="checkbox" id="selectAll">
+                                                        <label class="checkbox__label" for="selectAll">
+                                                            <span class="checkbox__label_text">Выделить все</span>
+                                                        </label>
+                                                    </div>
+                                                    <button type="button" class="notification-all__btn-clear"><i class="bi bi-x-square me-2"></i>Очистить все</button>
+                                                </div>
+                                            </div>
+                                            <div class="border-gray p-3 p-sm-4 mb-3">
+                                                <div class="mb-5">
+                                                    <div class="d-flex align-items-center mb-4">
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" id="refInfo">
+                                                            <label class="checkbox__label" for="refInfo"></label>
+                                                        </div>
+                                                        <h4 class="h4 m-0">Справочная информация</h4>
+                                                    </div>
+                                                    <div class="ps-2 ps-sm-4">
+                                                        <div class="checkbox mb-4">
+                                                            <input type="checkbox" id="RefInfo01">
+                                                            <label class="checkbox__label" for="RefInfo01">Курсы валют</label>
+                                                        </div>
+                                                        <div class="checkbox mb-4">
+                                                            <input type="checkbox" id="RefInfo02">
+                                                            <label class="checkbox__label" for="RefInfo02">Налоговый календарь</label>
+                                                        </div>
+                                                        <div class="checkbox mb-4">
+                                                            <input type="checkbox" id="RefInfo03">
+                                                            <label class="checkbox__label" for="RefInfo03">Основные показатели</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-5">
+                                                    <div class="d-flex align-items-center mb-4">
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" id="articles">
+                                                            <label class="checkbox__label" for="articles"></label>
+                                                        </div>
+                                                        <h4 class="h4 m-0">Статьи</h4>
+                                                    </div>
+                                                    <div class="ps-2 ps-sm-4" id="accordionArticles">
+                                                        <div class="item-form-accordion">
+                                                            <h2 class="item-form-accordion__title d-flex align-items-center" id="panelsStayOpen-heading01">
+                                                                <div class="checkbox">
+                                                                    <input type="checkbox" id="01">
+                                                                    <label class="checkbox__label" for="01"></label>
+                                                                </div>
+                                                                <button class="item-form-accordion__button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse01" aria-expanded="true" aria-controls="panelsStayOpen-collapse01">
+                                                                    <span>Налогообложение ИП</span>
+                                                                    <i class="bi bi-chevron-up ms-3"></i>
+                                                                </button>
+                                                            </h2>
+                                                            <div id="panelsStayOpen-collapse01" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading01">
+                                                                <div class="item-form-accordion__body">
+                                                                    <div class="checkbox mb-4">
+                                                                        <input type="checkbox" id="01-1">
+                                                                        <label class="checkbox__label" for="01-1">Юридическое бюро</label>
+                                                                    </div>
+                                                                    <div class="checkbox mb-4">
+                                                                        <input type="checkbox" id="01-2">
+                                                                        <label class="checkbox__label" for="01-2">Государственное регулирование</label>
+                                                                    </div>
+                                                                    <div class="checkbox mb-4">
+                                                                        <input type="checkbox" id="01-3">
+                                                                        <label class="checkbox__label" for="01-3">Ценообразование</label>
+                                                                    </div>
+                                                                    <div class="checkbox mb-4">
+                                                                        <input type="checkbox" id="01-4">
+                                                                        <label class="checkbox__label" for="01-4">Ревизия и контроль</label>
+                                                                    </div>
+                                                                    <div class="checkbox mb-4">
+                                                                        <input type="checkbox" id="01-5">
+                                                                        <label class="checkbox__label" for="01-5">Разъяснения</label>
+                                                                    </div>
+                                                                    <div class="checkbox mb-4">
+                                                                        <input type="checkbox" id="01-6">
+                                                                        <label class="checkbox__label" for="01-6">В помощь предпринимателю</label>
+                                                                    </div>
+                                                                    <div class="checkbox">
+                                                                        <input type="checkbox" id="01-7">
+                                                                        <label class="checkbox__label" for="01-7">Таможенное регулирование</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="item-form-accordion">
+                                                            <h2 class="item-form-accordion__title d-flex align-items-center" id="panelsStayOpen-heading02">
+                                                                <div class="checkbox">
+                                                                    <input type="checkbox" id="02">
+                                                                    <label class="checkbox__label" for="02"></label>
+                                                                </div>
+                                                                <button class="item-form-accordion__button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse02" aria-expanded="false" aria-controls="panelsStayOpen-collapse02">
+                                                                    <span>Налогообложение организаций</span>
+                                                                    <i class="bi bi-chevron-up ms-3"></i>
+                                                                </button>
+                                                            </h2>
+                                                            <div id="panelsStayOpen-collapse02" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading02">
+                                                                <div class="item-form-accordion__body">
+                                                                    <div class="checkbox mb-4">
+                                                                        <input type="checkbox" id="02-1">
+                                                                        <label class="checkbox__label" for="02-1">Юридическое бюро</label>
+                                                                    </div>
+                                                                    <div class="checkbox mb-4">
+                                                                        <input type="checkbox" id="02-2">
+                                                                        <label class="checkbox__label" for="02-2">Государственное регулирование</label>
+                                                                    </div>
+                                                                    <div class="checkbox">
+                                                                        <input type="checkbox" id="02-3">
+                                                                        <label class="checkbox__label" for="02-3">Ценообразование</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="item-form-accordion">
+                                                            <h2 class="item-form-accordion__title d-flex align-items-center" id="panelsStayOpen-heading03">
+                                                                <div class="checkbox">
+                                                                    <input type="checkbox" id="03">
+                                                                    <label class="checkbox__label" for="03"></label>
+                                                                </div>
+                                                                <button class="item-form-accordion__button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse03" aria-expanded="false" aria-controls="panelsStayOpen-collapse03">
+                                                                    <span>Государственное регулирование</span>
+                                                                    <i class="bi bi-chevron-up ms-3"></i>
+                                                                </button>
+                                                            </h2>
+                                                            <div id="panelsStayOpen-collapse03" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading03">
+                                                                <div class="item-form-accordion__body">
+                                                                    <div class="checkbox mb-4">
+                                                                        <input type="checkbox" id="03-1">
+                                                                        <label class="checkbox__label" for="03-1">Юридическое бюро</label>
+                                                                    </div>
+                                                                    <div class="checkbox mb-4">
+                                                                        <input type="checkbox" id="03-2">
+                                                                        <label class="checkbox__label" for="03-2">Государственное регулирование</label>
+                                                                    </div>
+                                                                    <div class="checkbox">
+                                                                        <input type="checkbox" id="03-3">
+                                                                        <label class="checkbox__label" for="03-3">Ценообразование</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="item-form-accordion">
+                                                            <h2 class="item-form-accordion__title d-flex align-items-center" id="panelsStayOpen-heading04">
+                                                                <div class="checkbox">
+                                                                    <input type="checkbox" id="04">
+                                                                    <label class="checkbox__label" for="04"></label>
+                                                                </div>
+                                                                <button class="item-form-accordion__button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse04" aria-expanded="false" aria-controls="panelsStayOpen-collapse04">
+                                                                    <span>Государственное регулирование</span>
+                                                                    <i class="bi bi-chevron-up ms-3"></i>
+                                                                </button>
+                                                            </h2>
+                                                            <div id="panelsStayOpen-collapse04" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading04">
+                                                                <div class="item-form-accordion__body">
+                                                                    <div class="checkbox mb-4">
+                                                                        <input type="checkbox" id="04-1">
+                                                                        <label class="checkbox__label" for="03-1">Юридическое бюро</label>
+                                                                    </div>
+                                                                    <div class="checkbox mb-4">
+                                                                        <input type="checkbox" id="04-2">
+                                                                        <label class="checkbox__label" for="03-2">Государственное регулирование</label>
+                                                                    </div>
+                                                                    <div class="checkbox">
+                                                                        <input type="checkbox" id="04-3">
+                                                                        <label class="checkbox__label" for="03-3">Ценообразование</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-5">
+                                                    <div class="d-flex align-items-center mb-4">
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" id="news">
+                                                            <label class="checkbox__label" for="news"></label>
+                                                        </div>
+                                                        <h4 class="h4 m-0">Новости</h4>
+                                                    </div>
+                                                    <div class="ps-2 ps-sm-4">
+                                                        <div class="checkbox mb-4">
+                                                            <input type="checkbox" id="News01">
+                                                            <label class="checkbox__label" for="News01">Новости законодательства</label>
+                                                        </div>
+                                                        <div class="checkbox mb-4">
+                                                            <input type="checkbox" id="News02">
+                                                            <label class="checkbox__label" for="News02">Экономические новости</label>
+                                                        </div>
+                                                        <div class="checkbox mb-4">
+                                                            <input type="checkbox" id="News03">
+                                                            <label class="checkbox__label" for="News03">Международные новости</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-5">
+                                                    <div class="d-flex align-items-center mb-4">
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" id="webinars">
+                                                            <label class="checkbox__label" for="webinars"></label>
+                                                        </div>
+                                                        <h4 class="h4 m-0">Вебинары</h4>
+                                                    </div>
+                                                </div>
+                                                <button type="submit" class="button">Сохранить изменения</button>
+                                            </div>
+                                        </form>
+                                        <form class="border-gray p-3 p-sm-4">
+                                            <h3 class="h3 mb-4">Настройка уведомлений</h3>
+                                            <div>
+                                                <div class="checkbox mb-4">
+                                                    <input type="checkbox" id="notificationWebsite">
+                                                    <label class="checkbox__label" for="notificationWebsite">
+                                                        <span class="checkbox__label_text">На платформе</span>
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <input type="checkbox" id="notificationEmail">
+                                                    <label class="checkbox__label" for="notificationEmail">
+                                                        <span class="checkbox__label_text">На e-mail</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="tab-pane fade" id="nav-newsletter-management" role="tabpanel" aria-labelledby="nav-newsletter-management-tab" tabindex="0">
+                                        <div class="mt-5">
+                                            <form>
+                                                <div class="d-md-flex justify-content-between align-items-center mb-4">
+                                                    <h3 class="h3 m-0">Настройка рассылок</h3>
+                                                    <div class="d-flex align-items-center notification-all ms-md-3 mt-3 mt-md-0">
+                                                        <div class="checkbox me-4">
+                                                            <input type="checkbox" id="enableAll">
+                                                            <label class="checkbox__label" for="enableAll">
+                                                                <span class="checkbox__label_text">Включить все</span>
+                                                            </label>
+                                                        </div>
+                                                        <button type="button" class="notification-all__btn-clear"><i class="bi bi-x-square me-2"></i>Очистить все</button>
+                                                    </div>
+                                                </div>
+                                                <div class="border-gray p-3 p-sm-4 mb-4">
+                                                    <div class="d-flex justify-content-between">
+                                                        <div class="fw-semibold">Новости законодательства</div>
+                                                        <div class="form-check form-switch ms-3">
+                                                            <input class="form-check-input" type="checkbox" role="switch" id="legislativeNews">
+                                                            <label class="form-check-label" for="legislativeNews"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="border-gray p-3 p-sm-4 mb-4">
+                                                    <div class="d-flex justify-content-between">
+                                                        <div class="fw-semibold">Вебинары</div>
+                                                        <div class="form-check form-switch ms-3">
+                                                            <input class="form-check-input" type="checkbox" role="switch" id="webinar">
+                                                            <label class="form-check-label" for="webinar"></label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ps-3 mt-4"><span class="color-gold">О чем:</span> cписок актуальных вебинаров, организуемых Республиканское унитарное предприятие «Информационно-издательский центр по налогам и сборам»</div>
+                                                    <div class="ps-3 mt-4"><span class="color-gold">Перодичность:</span> 1 раз в месяц</div>
+                                                </div>
+                                                <div class="border-gray p-3 p-sm-4 mb-4">
+                                                    <div class="d-flex justify-content-between">
+                                                        <div class="fw-semibold">Налоговый календарь</div>
+                                                        <div class="form-check form-switch ms-3">
+                                                            <input class="form-check-input" type="checkbox" role="switch" id="taxCalendary">
+                                                            <label class="form-check-label" for="taxCalendary"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="border-gray p-3 p-sm-4 mb-4">
+                                                    <div class="d-flex justify-content-between">
+                                                        <div class="fw-semibold">Новые статьи на платформе за неделю</div>
+                                                        <div class="form-check form-switch ms-3">
+                                                            <input class="form-check-input" type="checkbox" role="switch" id="articlesPerWeek">
+                                                            <label class="form-check-label" for="articlesPerWeek"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="border-gray p-3 p-sm-4 mb-4">
+                                                    <div class="d-flex justify-content-between">
+                                                        <div class="fw-semibold">Акции и выгодные предложения по подписке</div>
+                                                        <div class="form-check form-switch ms-3">
+                                                            <input class="form-check-input" type="checkbox" role="switch" id="promotions">
+                                                            <label class="form-check-label" for="promotions"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <aside data-da=".sidebar-wrapper__content,1100,1" class="sidebar-wrapper__aside mb-4">
+                                <h4 class="h4 h4_gold hidden-title">Личный кабинет</h4>
+                                <nav class="nav-links mb-4">
+                                    <div class="nav-links__wrapper">
+                                        <a href="profile.html" class="nav-links__link active">Профиль</a>
+                                        <a href="#" class="nav-links__link">Избранное</a>
+                                        <a href="#" class="nav-links__link">История просмотров</a>
+                                        <a href="#" class="nav-links__link">Настройки</a>
+                                        <a href="#" class="nav-links__link">Подписка</a>
+                                    </div>
+                                </nav>
+                                <hr>
+                                <h5 class="h4 h4_gold">Техническая поддежка</h5>
+                                <a href="tel:+37517111111" class="link link_gray">+375 (17) 11-11-11</a>
+                            </aside>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            @@include('_footer.html',{})
+        </div>
+        @@include('_js.html',{})
+    </body>
+</html>
