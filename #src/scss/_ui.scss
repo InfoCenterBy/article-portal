@@ -602,6 +602,34 @@
   }
 }
 
+.date-added {
+  font-size: 14px;
+  color: var(--color-gray-dark);
+}
+
+.delete {
+  flex: 0 0 46px;
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--color-gray);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  i {
+    font-size: 20px;
+    color: var(--color-gray-dark);
+  }
+  
+  &:hover {
+    border-color: var(--color-gold);
+
+    i {
+      color: var(--color-gold);
+    }
+  }
+}
+
 .sidebar-wrapper {
   display: flex;
   // .sidebar-row__content
@@ -858,15 +886,13 @@
   }
 }
 
-.list-information-indicators {
-  border: 1px solid var(--color-gray);
-}
-
 .item-information-indicator {
-  padding: 20px 30px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px;
   position: relative;
+  border: 1px solid var(--color-gray);
 
   &:not(:last-child) {
     &:before {
@@ -886,37 +912,24 @@
     background-color: rgba(209, 210, 212, 0.2);
   }
 
-  @media (max-width: $md4+px) {
-    flex-direction: column;
-    align-items: flex-start;
-  }
   // .item-information-indicator__number
   &__number {
-    flex: 0 0 100px;
-    padding: 5px 0px;
-    font-size: 20px;
+    font-size: 32px;
     color: var(--color-gold);
-    font-weight: 700;
-    text-transform: uppercase;
-    white-space: nowrap;
-    border-right: 1px solid var(--color-gold);
+    font-weight: 600;
+    border-bottom: 2px solid var(--color-gold);
+
     @media (max-width: $md4+px) {
-      flex: 1 1 auto;
-      border-right: none;
-      border-bottom: 1px solid var(--color-gold);
+
     }
   }
 
   // .item-information-indicator__text
   &__text {
-    padding: 5px 24px;
-    flex: 1 1 auto;
+    padding: 20px 0px 0px 0px;
     color: var(--color-black);
     font-size: 14px;
-    font-weight: 500;
-    @media (max-width: $md4+px) {
-      padding: 20px 0px;
-    }
+    text-transform: uppercase;
   }
 }
 
@@ -1065,5 +1078,25 @@
         transform: translateX(3px);
       }
     }
+  }
+}
+
+.modal-confirm {
+  padding: 32px;
+  background-color: var(--color-white);
+  border-radius: 0px;
+  border: none;
+
+  // .modal-confirm__body
+  &__body {
+    i {
+      font-size: 54px;
+      color: var(--color-gold);
+    }
+  }
+
+  // .modal-confirm__footer
+  &__footer {
+
   }
 }
