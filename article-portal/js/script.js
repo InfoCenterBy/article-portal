@@ -660,7 +660,20 @@ if (buttonOpenFormDocuments) {
         }
     });
 }
+// FUNCTION FOR FORM
+function emailTest(input) {
+    return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(
+        input.value
+    );
+}
 
+function formAddError(input) {
+    input.parentElement.classList.add('_error');
+}
+
+function formRemoveError(input) {
+    input.parentElement.classList.remove('_error');
+}
 // switch password type
 const btnsVisibilityPassword = document.querySelectorAll(".icon-password");
 const siblings = el => [].slice.call(el.parentNode.children).filter(child => (child !== el));
