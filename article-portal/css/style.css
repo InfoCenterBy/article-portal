@@ -3219,6 +3219,11 @@ td.vertical-bottom {
   padding: 24px 24px 0px;
 }
 
+.wrapper-form {
+  width: 100%;
+  max-width: 550px;
+}
+
 .page {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 auto;

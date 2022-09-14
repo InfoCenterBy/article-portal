@@ -661,6 +661,22 @@ if (buttonOpenFormDocuments) {
     });
 }
 
+// switch password type
+const btnsVisibilityPassword = document.querySelectorAll(".icon-password");
+const siblings = el => [].slice.call(el.parentNode.children).filter(child => (child !== el));
+btnsVisibilityPassword.forEach(btn => btn.addEventListener('click', () => {
+    let input = siblings(btn)
+    if (input[0].type === "password") {
+        input[0].type = "text";
+        btn.classList.remove('bi-eye-slash')
+        btn.classList.add('bi-eye')
+    } else {
+        input[0].type = "password";
+        btn.classList.add('bi-eye-slash')
+        btn.classList.remove('bi-eye')
+    }
+}))
+
 // Exchange Rates from Rest API
 const usd = document.getElementById('usd');
 const eur = document.getElementById('eur');

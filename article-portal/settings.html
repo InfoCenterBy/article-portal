@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
     <head>
-    <title>Избранное</title>
+    <title>Настройки</title>
     <meta charset="UTF-8"/>
     <meta name="format-detection" content="telephone=no"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -155,7 +155,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="main.html"><i class="bi bi-house"></i></a></li>
                             <li class="breadcrumb-item"><a href="personal-area.html">Личный кабинет</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Избранное</li>
+                            <li class="breadcrumb-item active" aria-current="page">Настройки</li>
                         </ol>
                     </div>
                 </nav>
@@ -163,129 +163,59 @@
                     <div class='container'>
                         <div class="sidebar-wrapper">
                             <div class="sidebar-wrapper__content">
-                                <h1 class="h1">Избранное</h1>
-                                <div class="color-gray-dark mb-4">Материалы, которые вы добавили в закладки</div>
-                                <div class="d-md-flex justify-content-between align-items-center mb-4">
-                                    <h3 class="h3 m-0">Статьи</h3>
-                                    <div class="d-flex align-items-center notification-all ms-md-3 mt-3 mt-md-0">
-                                        <div class="checkbox me-4">
-                                            <input type="checkbox" id="selectAll">
-                                            <label class="checkbox__label" for="selectAll">
-                                                <span class="checkbox__label_text">Выделить все</span>
-                                            </label>
+                                <h1 class="h1">Настройки</h1>
+                                <div class="color-gray-dark mb-5">Здесь вы сможете изменить настрйоки безопасности и конфиденциальности</div>
+                                <div class="wrapper-form">
+                                    <nav class="nav-tab">
+                                        <div class="nav-tab__wrapper overflow-x" id="nav-tab" role="tablist">
+                                            <button class="nav-tab__button active" id="nav-change-password-tab" data-bs-toggle="tab" data-bs-target="#nav-change-password" type="button" role="tab" aria-controls="nav-change-password" aria-selected="true">Изменить пароль</button>
+                                            <button class="nav-tab__button" id="nav-sign-out-tab" data-bs-toggle="tab" data-bs-target="#nav-sign-out" type="button" role="tab" aria-controls="nav-sign-out" aria-selected="false">Выйти из профиля</button>
                                         </div>
-                                        <button type="button" class="notification-all__btn-clear"><i class="bi bi-x-square me-2"></i>Очистить все</button>
-                                    </div>
-                                </div>
-                                <div class="list-recent-articles">
-                                    <div class="item-article">
-                                        <div class="d-md-flex">
-                                            <div class="d-flex">
-                                                <div class="checkbox me-1">
-                                                    <input type="checkbox" id="RefInfo01">
-                                                    <label class="checkbox__label" for="RefInfo01"></label>
-                                                </div>
-                                                <div class="shrink-1">
-                                                    <div class="item-article__category">
-                                                        Налогообложение ИП / Таможенное регулирование
+                                    </nav>
+                                    <div class="tab-content" id="nav-tabContent">
+                                        <div class="tab-pane mt-5 fade show active" id="nav-change-password" role="tabpanel" aria-labelledby="nav-change-password-tab" tabindex="0">
+                                            <form>
+                                                <div class="input mb-4">
+                                                    <label for="current-password">Текущий пароль <span>*</span></label>
+                                                    <div class="input__password">
+                                                        <input type="password" id="current-password" class="_required" placeholder="Введите пароль">
+                                                        <i class="icon-password bi bi-eye-slash"></i>
                                                     </div>
-                                                    <h5>
-                                                        <a href="item-section.html" class="item-article__title">
-                                                            Как изменить сроки уплаты таможенных платежей
-                                                        </a>
-                                                    </h5>
-                                                    <div class="item-article__text">В современных условиях индивидуальным предпринимателям
-                                                        иногда требуется изменить срок уплаты платежей, взимаемых таможней. Как это
-                                                        правильно сделать — ответ в настоящей публикации.
+                                                    <div class="input__text-error"><i class="bi bi-exclamation-triangle me-2"></i>Пароль не может быть пустым</div>
+                                                </div>
+                                                <div class="input mb-4">
+                                                    <label for="news-password">Новый пароль <span>*</span></label>
+                                                    <div class="input__password">
+                                                        <input type="password" id="news-password" class="_required" placeholder="Введите новый пароль">
+                                                        <i class="icon-password bi bi-eye-slash"></i>
                                                     </div>
+                                                    <div class="input__text-error"><i class="bi bi-exclamation-triangle me-2"></i>Пароль не может быть пустым</div>
                                                 </div>
-                                            </div>
-                                            <div class="d-flex justify-content-between">
-                                                <div class="date-added ms-5 me-3 me-md-5">
-                                                    <div>Дата&nbsp;добавления:</div>
-                                                    <div class="h6 m-0 mt-2">31.08.2022</div>
+                                                <div class="input mb-4">
+                                                    <label for="password-confirmation-registration">Повторите новый пароль <span>*</span></label>
+                                                    <div class="input__password">
+                                                        <input type="password" id="password-confirmation-registration" class="password-confirmation _required" placeholder="Введите новый пароль еще раз">
+                                                        <i class="icon-password bi bi-eye-slash"></i>
+                                                    </div>
+                                                    <div class="input__text-error"><i class="bi bi-exclamation-triangle me-2"></i>Пароли не совпадают</div>
                                                 </div>
-                                                <a class="delete" data-bs-toggle="modal" href="#exampleModalToggle" role="button">
-                                                    <i class="bi bi-trash"></i>
-                                                </a>
-                                            </div>
+                                                <div class="mt-5">
+                                                    <button type="submit" class="button">Сохранить изменения</button>
+                                                </div>
+                                            </form>
                                         </div>
-                                    </div>
-                                    <div class="item-article">
-                                        <div class="d-md-flex">
-                                            <div class="d-flex">
-                                                <div class="checkbox me-1">
-                                                    <input type="checkbox" id="RefInfo02">
-                                                    <label class="checkbox__label" for="RefInfo02"></label>
-                                                </div>
-                                                <div class="shrink-1">
-                                                    <div class="item-article__category">
-                                                        Налогообложение ИП / Таможенное регулирование
-                                                    </div>
-                                                    <h5>
-                                                        <a href="item-section.html" class="item-article__title">
-                                                            Определение цен реализации строительных материалов при осуществлении оптовой торговли
-                                                        </a>
-                                                    </h5>
-                                                    <div class="item-article__text">
-                                                        Автором данной статьи на условных примерах рассмотрен порядок определения цен реализации строительных материалов двойного (многоцелевого) назначения, применяемых оптовыми организациями при их реализации строительным организациям — покупателям и строительным организациям — покупателям с привлечением оптовых организаций — посредников.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-between">
-                                                <div class="date-added ms-5 me-3 me-md-5">
-                                                    <div>Дата&nbsp;добавления:</div>
-                                                    <div class="h6 m-0 mt-2">23.08.2022</div>
-                                                </div>
-                                                <button type="button" class="delete">
-                                                    <i class="bi bi-trash"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        <div class="tab-pane mt-5 fade" id="nav-sign-out" role="tabpanel" aria-labelledby="nav-sign-out-tab" tabindex="0">
 
-                                    <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-confirm modal-content">
-                                                <div class="d-flex aligh-items-flex-end">
-                                                    <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-confirm__body text-center">
-                                                    <div class="my-4"><i class="bi bi-trash"></i></div>
-                                                    <h5 class="h5">Вы уверены, что вы хотите удалить выбранную статью?</h5>
-                                                </div>
-                                                <div class="d-flex align-items-center">
-                                                    <button type="button" class="button button_empty" data-bs-dismiss="modal" aria-label="Close">Нет</button>
-                                                    <button class="ms-3 button" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Да</button>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
-                                    <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-confirm modal-content">
-                                                <div class="d-flex aligh-items-flex-end">
-                                                    <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-confirm__body text-center">
-                                                    <div class="my-4"><i class="bi bi-check-circle"></i></div>
-                                                    <h5 class="h5">Выбранная статья успешно удалена</h5>
-                                                </div>
-                                                <button type="button" class="button w-100" data-bs-dismiss="modal" aria-label="Close">Вернуться в Избранное</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="text-center mt-4">
-                                    <button type="submit" class="button"><i class="bi bi-trash me-2"></i>Удалить выделенное</button>
                                 </div>
                             </div>
                             <aside data-da=".sidebar-wrapper__content,1100,1" class="sidebar-wrapper__aside mb-4">
                                 <h4 class="h4 h4_gold hidden-title">Личный кабинет</h4>
                                 <nav class="nav-links mb-4">
                                     <div class="nav-links__wrapper">
-                                        <a href="profile.html" class="nav-links__link">Профиль</a>
-                                        <a href="favorites.html" class="nav-links__link active">Избранное</a>
+                                        <a href="profile.html" class="nav-links__link active">Профиль</a>
+                                        <a href="favorites.html" class="nav-links__link">Избранное</a>
                                         <a href="browsing-history.html" class="nav-links__link">История просмотров</a>
                                         <a href="settings.html" class="nav-links__link">Настройки</a>
                                         <a href="subscription-management.html" class="nav-links__link">Управление подпиской</a>
@@ -399,5 +329,6 @@
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
 <script src="js/script.min.js"></script>
+
     </body>
 </html>

@@ -3086,6 +3086,11 @@ td.vertical-bottom {
   }
 }
 
+.wrapper-form {
+  width: 100%;
+  max-width: 550px;
+}
+
 .page {
   flex: 1 1 auto;
   transition: all 0.3s ease 0s;
