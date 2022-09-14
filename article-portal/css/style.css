@@ -3574,20 +3574,17 @@ td.vertical-bottom {
   cursor: pointer;
 }
 
-.login {
-  margin: 80px 0px;
-}
-
 .login__body {
   width: 100%;
   max-width: 550px;
-  margin: 0px 30px 0px 0px;
+  padding: 80px 0px;
 }
 
 .login__capabilities {
   width: 100%;
-  max-width: 430px;
-  margin: 75px 0px 0px 0px;
+  max-width: 500px;
+  padding: 80px 0px 0px 48px;
+  border-left: 1px solid var(--color-gray);
 }
 
 .login__capabilities ul {
@@ -3900,6 +3897,7 @@ td.vertical-bottom {
 
   .login__body {
     margin: 0;
+    padding: 40px 0px;
   }
 
   .login__capabilities {
@@ -4153,10 +4151,6 @@ td.vertical-bottom {
   .item-news-category {
     display: block;
     padding: 10px 24px;
-  }
-
-  .login {
-    margin: 40px 0px;
   }
 
   .login .h1 {
