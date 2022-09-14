@@ -1100,3 +1100,69 @@
 
   }
 }
+
+.item-subscription {
+  border: 1px solid var(--color-gray);
+  background-color: #D1D2D433;
+
+  &.active {
+    background-color: transparent;
+
+    .item-subscription__action {
+      color: var(--color-black);
+    }
+
+    .item-subscription__remaining-days {
+      display: inline;
+    }
+
+    .item-subscription__button {
+      display: block;
+    }
+
+    .item-subscription__action {
+      color: var(--color-black);
+
+      &:before {
+        background-color: #5CB85C;
+      }
+    }
+  }
+
+  // .item-subscription__remaining-days
+  &__remaining-days {
+    display: none;
+    color: var(--color-red);
+  }
+
+  // .item-subscription__button
+  &__button {
+    display: none;
+  }
+
+  // .item-subscription__link
+  &__link {
+    color: var(--color-gold);
+
+    &:hover {
+      color: var(--color-gold);
+      text-decoration: underline;
+    }
+  }
+
+  // .item-subscription__action
+  &__action {
+    color: var(--color-gray-dark);
+    
+    &:before {
+      content:'';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--color-red);
+      position: absolute;
+      top: calc(50% - 4px);
+      left: 0;
+    }
+  }
+}

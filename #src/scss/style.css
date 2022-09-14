@@ -1074,6 +1074,56 @@ body._lock {
   font-size: 54px;
   color: var(--color-gold);
 }
+.item-subscription {
+  border: 1px solid var(--color-gray);
+  background-color: rgba(209, 210, 212, 0.2);
+}
+.item-subscription.active {
+  background-color: transparent;
+}
+.item-subscription.active .item-subscription__action {
+  color: var(--color-black);
+}
+.item-subscription.active .item-subscription__remaining-days {
+  display: inline;
+}
+.item-subscription.active .item-subscription__button {
+  display: block;
+}
+.item-subscription.active .item-subscription__action {
+  color: var(--color-black);
+}
+.item-subscription.active .item-subscription__action:before {
+  background-color: #5CB85C;
+}
+.item-subscription__remaining-days {
+  display: none;
+  color: var(--color-red);
+}
+.item-subscription__button {
+  display: none;
+}
+.item-subscription__link {
+  color: var(--color-gold);
+}
+.item-subscription__link:hover {
+  color: var(--color-gold);
+  text-decoration: underline;
+}
+.item-subscription__action {
+  color: var(--color-gray-dark);
+}
+.item-subscription__action:before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-red);
+  position: absolute;
+  top: calc(50% - 4px);
+  left: 0;
+}
+
 p {
   margin-bottom: 24px;
 }
