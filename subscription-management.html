@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
     <head>
-    <title>Избранное</title>
+    <title>Управление подпиской</title>
     <meta charset="UTF-8"/>
     <meta name="format-detection" content="telephone=no"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -155,7 +155,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="main.html"><i class="bi bi-house"></i></a></li>
                             <li class="breadcrumb-item"><a href="personal-area.html">Личный кабинет</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Избранное</li>
+                            <li class="breadcrumb-item active" aria-current="page">Управление подпиской</li>
                         </ol>
                     </div>
                 </nav>
@@ -163,121 +163,66 @@
                     <div class='container'>
                         <div class="sidebar-wrapper">
                             <div class="sidebar-wrapper__content">
-                                <h1 class="h1">Избранное</h1>
-                                <div class="color-gray-dark mb-4">Материалы, которые вы добавили в закладки</div>
-                                <div class="d-md-flex justify-content-between align-items-center mb-4">
-                                    <h3 class="h3 m-0">Статьи</h3>
-                                    <div class="d-flex align-items-center notification-all ms-md-3 mt-3 mt-md-0">
-                                        <div class="checkbox me-4">
-                                            <input type="checkbox" id="selectAll">
-                                            <label class="checkbox__label" for="selectAll">
-                                                <span class="checkbox__label_text">Выделить все</span>
-                                            </label>
-                                        </div>
-                                        <button type="button" class="notification-all__btn-clear"><i class="bi bi-x-square me-2"></i>Очистить все</button>
+                                <h1 class="h1">Управление подпиской</h1>
+                                <div class="color-gray-dark mb-5">Здесь вы сможете увидеть срок окончания вашей подписки и скачать закрывающие документы</div>
+                                <div class="item-subscription active mb-4 p-3 p-md-4 d-md-flex justify-content-between align-items-start">
+                                    <div class="item-subscription__action mb-3 ms-md-3 ps-3 position-relative order-md-2 text-right">
+                                        Активна
                                     </div>
-                                </div>
-                                <div class="list-recent-articles">
-                                    <div class="item-article">
-                                        <div class="d-md-flex">
-                                            <div class="d-flex">
-                                                <div class="checkbox me-1">
-                                                    <input type="checkbox" id="RefInfo01">
-                                                    <label class="checkbox__label" for="RefInfo01"></label>
-                                                </div>
-                                                <div class="shrink-1">
-                                                    <div class="item-article__category">
-                                                        Налогообложение ИП / Таможенное регулирование
-                                                    </div>
-                                                    <h5>
-                                                        <a href="item-section.html" class="item-article__title">
-                                                            Как изменить сроки уплаты таможенных платежей
-                                                        </a>
-                                                    </h5>
-                                                    <div class="item-article__text">В современных условиях индивидуальным предпринимателям
-                                                        иногда требуется изменить срок уплаты платежей, взимаемых таможней. Как это
-                                                        правильно сделать — ответ в настоящей публикации.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-between">
-                                                <div class="date-added ms-5 me-3 me-md-5">
-                                                    <div>Дата&nbsp;добавления:</div>
-                                                    <div class="h6 m-0 mt-2">31.08.2022</div>
-                                                </div>
-                                                <a class="delete" data-bs-toggle="modal" href="#exampleModalToggle" role="button">
-                                                    <i class="bi bi-trash"></i>
-                                                </a>
-                                            </div>
+                                    <div class="item-subscription__info">
+                                        <h4 class="h4 mb-3">Подписка на платформу</h4>
+                                        <div class="item-subscription__period mb-4">Срок действия подписки: c 18.08.2022 по <span class="item-subscription__period_to">30.12.2022</span> <span class="item-subscription__period_remaining-days">(истекает через 27 дней)</span></div>
+                                        <div class="item-subscription__button mb-4">
+                                            <button class="button">Продлить подписку</button>
                                         </div>
-                                    </div>
-                                    <div class="item-article">
-                                        <div class="d-md-flex">
-                                            <div class="d-flex">
-                                                <div class="checkbox me-1">
-                                                    <input type="checkbox" id="RefInfo02">
-                                                    <label class="checkbox__label" for="RefInfo02"></label>
-                                                </div>
-                                                <div class="shrink-1">
-                                                    <div class="item-article__category">
-                                                        Налогообложение ИП / Таможенное регулирование
-                                                    </div>
-                                                    <h5>
-                                                        <a href="item-section.html" class="item-article__title">
-                                                            Определение цен реализации строительных материалов при осуществлении оптовой торговли
-                                                        </a>
-                                                    </h5>
-                                                    <div class="item-article__text">
-                                                        Автором данной статьи на условных примерах рассмотрен порядок определения цен реализации строительных материалов двойного (многоцелевого) назначения, применяемых оптовыми организациями при их реализации строительным организациям — покупателям и строительным организациям — покупателям с привлечением оптовых организаций — посредников.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-between">
-                                                <div class="date-added ms-5 me-3 me-md-5">
-                                                    <div>Дата&nbsp;добавления:</div>
-                                                    <div class="h6 m-0 mt-2">23.08.2022</div>
-                                                </div>
-                                                <button type="button" class="delete">
-                                                    <i class="bi bi-trash"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-confirm modal-content">
-                                                <div class="d-flex aligh-items-flex-end">
-                                                    <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-confirm__body text-center">
-                                                    <div class="my-4"><i class="bi bi-trash"></i></div>
-                                                    <h5 class="h5">Вы уверены, что вы хотите удалить выбранную статью?</h5>
-                                                </div>
-                                                <div class="d-flex align-items-center">
-                                                    <button type="button" class="button button_empty" data-bs-dismiss="modal" aria-label="Close">Нет</button>
-                                                    <button class="ms-3 button" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Да</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-confirm modal-content">
-                                                <div class="d-flex aligh-items-flex-end">
-                                                    <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-confirm__body text-center">
-                                                    <div class="my-4"><i class="bi bi-check-circle"></i></div>
-                                                    <h5 class="h5">Выбранная статья успешно удалена</h5>
-                                                </div>
-                                                <button type="button" class="button w-100" data-bs-dismiss="modal" aria-label="Close">Вернуться в Избранное</button>
-                                            </div>
+                                        <div>
+                                            <a href="#" class="item-subscription__link" download="">Скачать закрывающие документы <i class="bi bi-download ms-2"></i></a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="text-center mt-4">
-                                    <button type="submit" class="button"><i class="bi bi-trash me-2"></i>Удалить выделенное</button>
+                                <div id="accordionArticles">
+                                    <div class="item-form-accordion">
+                                        <h2 class="item-form-accordion__title d-flex align-items-center" id="panelsStayOpen-heading01">
+                                            <button class="item-form-accordion__button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse01" aria-expanded="true" aria-controls="panelsStayOpen-collapse01">
+                                                <span class="h4 m-0">Неактивные подписки</span>
+                                                <i class="bi bi-chevron-up ms-3"></i>
+                                            </button>
+                                        </h2>
+                                        <div id="panelsStayOpen-collapse01" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading01">
+                                            <div class="py-4">
+                                                <div class="item-subscription mb-4 p-3 p-md-4 d-md-flex justify-content-between align-items-start">
+                                                    <div class="item-subscription__action mb-3 ms-md-3 ps-3 position-relative order-md-2 text-right">
+                                                        Не активна
+                                                    </div>
+                                                    <div class="item-subscription__info">
+                                                        <h4 class="h4 mb-3">Подписка на платформу</h4>
+                                                        <div class="item-subscription__period mb-4">Срок действия подписки: c 18.08.2022 по <span class="item-subscription__period_to">30.12.2022</span> <span class="item-subscription__period_remaining-days">(истекает через 27 дней)</span></div>
+                                                        <div class="item-subscription__button mb-4">
+                                                            <button class="button">Продлить подписку</button>
+                                                        </div>
+                                                        <div>
+                                                            <a href="#" class="item-subscription__link" download="">Скачать закрывающие документы <i class="bi bi-download ms-2"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="item-subscription mb-4 p-3 p-md-4 d-md-flex justify-content-between align-items-start">
+                                                    <div class="item-subscription__action mb-3 ms-md-3 ps-3 position-relative order-md-2 text-right">
+                                                        Не активна
+                                                    </div>
+                                                    <div class="item-subscription__info">
+                                                        <h4 class="h4 mb-3">Подписка на платформу</h4>
+                                                        <div class="item-subscription__period mb-4">Срок действия подписки: c 18.08.2022 по <span class="item-subscription__period_to">30.12.2022</span><span class="item-subscription__period_remaining-days">(истекает через 27 дней)</span></div>
+                                                        <div class="item-subscription__button mb-4">
+                                                            <button class="button">Продлить подписку</button>
+                                                        </div>
+                                                        <div>
+                                                            <a href="#" class="item-subscription__link" download="">Скачать закрывающие документы <i class="bi bi-download ms-2"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <aside data-da=".sidebar-wrapper__content,1100,1" class="sidebar-wrapper__aside mb-4">
@@ -285,10 +230,10 @@
                                 <nav class="nav-links mb-4">
                                     <div class="nav-links__wrapper">
                                         <a href="profile.html" class="nav-links__link">Профиль</a>
-                                        <a href="favorites.html" class="nav-links__link active">Избранное</a>
+                                        <a href="favorites.html" class="nav-links__link">Избранное</a>
                                         <a href="browsing-history.html" class="nav-links__link">История просмотров</a>
                                         <a href="settings.html" class="nav-links__link">Настройки</a>
-                                        <a href="subscription-management.html" class="nav-links__link">Управление подпиской</a>
+                                        <a href="subscription-management.html" class="nav-links__link active">Управление подпиской</a>
                                     </div>
                                 </nav>
                                 <hr>
