@@ -155,25 +155,12 @@
                        <div class="d-flex justify-content-around">
                            <div class="login__body">
                                <h1 class="h1">Регистрация для подписчиков журналов</h1>
-                               <form id="form-registration">
-                                   <div class="input mb-4">
-                                       <label for="name">Ваш логин или e-mail с портала info-center.by <span>*</span></label>
-                                       <input type="text" id="name" class="_required" placeholder="Ваш логин или e-mail с портала info-center.by">
-                                       <div class="input__text-error"><i class="bi bi-exclamation-triangle me-2"></i>Поле не может быть пустым</div>
-                                   </div>
+                               <form id="form-registration-for-subscribers">
                                    <div class="input mb-4">
                                        <label for="email-registration">Email <span>*</span></label>
-                                       <input type="text" id="email-registration" class="_email _required-registr" placeholder="Ваш email">
+                                       <input type="text" id="email-registration" class="_email _required" placeholder="Ваш email">
                                        <div class="input__text-error"><i class="bi bi-exclamation-triangle me-2"></i>Электронная почта не может быть пустой</div>
                                        <div class="input__text-error-email"><i class="bi bi-exclamation-triangle me-2"></i>Адрес электоронной почты должен заканчиваться на @**.**</div>
-                                   </div>
-                                   <div class="input mb-4">
-                                       <label for="unp-registration">УНП</label>
-                                       <input type="phone" id="unp-registration" placeholder="Ваш УНП">
-                                   </div>
-                                   <div class="input mb-4">
-                                       <label for="phone-registration">Телефон</label>
-                                       <input type="phone" id="phone-registration" placeholder="+375 (**) ***-**-**">
                                    </div>
                                    <div class="input mb-4">
                                        <label for="password-registration">Пароль <span>*</span></label>
@@ -191,6 +178,18 @@
                                        </div>
                                        <div class="input__text-error"><i class="bi bi-exclamation-triangle me-2"></i>Пароли не совпадают</div>
                                    </div>
+                                   <div class="input mb-4">
+                                       <label for="unp-registration">УНП</label>
+                                       <input type="phone" id="unp-registration" placeholder="Ваш УНП">
+                                   </div>
+                                   <div class="input mb-4">
+                                       <label for="name">Ваш логин или e-mail с портала info-center.by</label>
+                                       <input type="text" id="name" placeholder="Ваш логин или e-mail с портала info-center.by">
+                                   </div>
+                                   <div class="input mb-4">
+                                       <label for="phone-registration">Телефон</label>
+                                       <input type="phone" id="phone-registration" placeholder="+375 (**) ***-**-**">
+                                   </div>
                                    <div class="checkbox mb-4">
                                        <input type="checkbox" id="personal-data" class="_required">
                                        <label class="checkbox__label" for="personal-data">
@@ -198,7 +197,7 @@
                                        </label>
                                    </div>
                                    <div class="checkbox mb-4">
-                                       <input type="checkbox" id="use-personal-account" class="_required-registr">
+                                       <input type="checkbox" id="use-personal-account" class="_required">
                                        <label class="checkbox__label" for="use-personal-account">
                                            <span class="checkbox__label_text">Согласен <a href="#" target="_blank">с условиями использования личного кабинета</a></span>
                                        </label>
@@ -210,7 +209,7 @@
                                        </label>
                                    </div>
                                    <div class="mt-5 text-center">
-                                       <button type="submit" id="submit-registration" class="button">Зарегистрироваться</button>
+                                       <button type="submit" id="submit-registration-for-subscribers" class="button">Зарегистрироваться</button>
                                    </div>
                                </form>
                            </div>
@@ -326,74 +325,10 @@
 </footer>
         </div>
         <script>
-            // function for form
-            function emailTest(input) {
-                return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(
-                    input.value
-                );
-            }
-
-            function formAddError(input) {
-                input.parentElement.classList.add('_error');
-            }
-
-            function formRemoveError(input) {
-                input.parentElement.classList.remove('_error');
-            }
-
-
-
-            // form-login
+            // form-registration-for-subscribers
             document.addEventListener('DOMContentLoaded', function () {
-                const form = document.getElementById('form-login');
-                const buttonSubmitLogin = document.getElementById('submit-login')
-
-                if (form) {
-                    form.addEventListener('submit', formSend);
-
-                    async function formSend(e) {
-                        e.preventDefault();
-
-                        let error = formValidate(form);
-
-                        if (error === 0) {
-                            form.reset()
-                            alert('Вы вошли на портал-чик-чик-чик')
-                            buttonSubmitLogin.disabled = true
-                        }
-
-                        function formValidate(form) {
-                            let error = 0;
-                            let formRequired = document.querySelectorAll('._required');
-
-                            for (let i = 0; i < formRequired.length; i++) {
-                                const input = formRequired[i];
-                                formRemoveError(input);
-
-                                if (input.classList.contains('_email') && input.value !== '') {
-                                    if (emailTest(input)) {
-                                        input.parentElement.classList.add('_error-email');
-                                        error++;
-                                    } else {
-                                        input.parentElement.classList.remove('_error-email');
-                                    }
-                                } else {
-                                    if (input.value === '') {
-                                        formAddError(input);
-                                        error++;
-                                    }
-                                }
-                            }
-                            return error;
-                        }
-                    }
-                }
-            });
-
-            // form-registration
-            document.addEventListener('DOMContentLoaded', function () {
-                const form = document.getElementById('form-registration');
-                const buttonSubmitLogin = document.getElementById('submit-registration')
+                const form = document.getElementById('form-registration-for-subscribers');
+                const buttonSubmitLogin = document.getElementById('submit-registration-for-subscribers')
                 if (form) {
                     form.addEventListener('submit', formSend);
 
@@ -410,7 +345,7 @@
 
                         function formValidate(form) {
                             let error = 0;
-                            let formRequired = document.querySelectorAll('._required-registr');
+                            let formRequired = document.querySelectorAll('._required');
                             let password = document.getElementById("password-registration").value
 
                             for (let i = 0; i < formRequired.length; i++) {
