@@ -189,6 +189,56 @@
   }
 }
 
+.dropdown-menu-login   {
+  margin: 0 auto;
+  padding: 16px;
+  width: 100%;
+  min-width: 380px;
+  max-width: 380px;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray);
+  box-shadow: 2px 8px 16px rgba(60, 60, 60, 0.12);
+  border-radius: 0px;
+
+  @media (max-width: 410px) {
+    min-width: 310px;
+    inset: 0px -5px auto auto !important;
+  }
+
+  .input input {
+    padding: 10px;
+  }
+  .checkbox {
+    input:checked + .checkbox__label:after {
+      left: 6px;
+      top: 6px;
+      width: 9px;
+      height: 6px;
+    }
+
+    &__label {
+      font-size: 14px;
+
+      &:before {
+        margin: 0px 10px 0px 0px;
+        flex: 0 0 20px;
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+  .link {
+    font-size: 14px;
+  }
+  .button {
+    padding: 10px 0;
+
+    &_empty {
+      padding: 8px 0;
+    }
+  }
+}
+
 .header-bottom {
   margin: 86px 0px 0px 0px;
   padding: 14px 0px;

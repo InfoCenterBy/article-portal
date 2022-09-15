@@ -224,6 +224,10 @@ body._lock {
   color: var(--color-gold);
 }
 
+.color-blue {
+  color: var(--color-blue);
+}
+
 .color-gray-dark {
   color: var(--color-gray-dark);
 }
@@ -236,12 +240,15 @@ body._lock {
   font-size: 16px;
   color: var(--color-black);
 }
+.link_gray-dark {
+  color: var(--color-gray-dark);
+}
+.link_blue-light {
+  color: var(--color-blue-light);
+}
 .link:hover {
   color: inherit;
   opacity: 0.5;
-}
-.link_gray-dark {
-  color: var(--color-gray-dark);
 }
 
 .button {
@@ -2021,6 +2028,51 @@ td.vertical-bottom {
     font-size: 34px;
     margin-left: 0;
   }
+}
+
+.dropdown-menu-login {
+  margin: 0 auto;
+  padding: 16px;
+  width: 100%;
+  min-width: 380px;
+  max-width: 380px;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray);
+  box-shadow: 2px 8px 16px rgba(60, 60, 60, 0.12);
+  border-radius: 0px;
+}
+@media (max-width: 410px) {
+  .dropdown-menu-login {
+    min-width: 310px;
+    inset: 0px -5px auto auto !important;
+  }
+}
+.dropdown-menu-login .input input {
+  padding: 10px;
+}
+.dropdown-menu-login .checkbox input:checked + .checkbox__label:after {
+  left: 6px;
+  top: 6px;
+  width: 9px;
+  height: 6px;
+}
+.dropdown-menu-login .checkbox__label {
+  font-size: 14px;
+}
+.dropdown-menu-login .checkbox__label:before {
+  margin: 0px 10px 0px 0px;
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+}
+.dropdown-menu-login .link {
+  font-size: 14px;
+}
+.dropdown-menu-login .button {
+  padding: 10px 0;
+}
+.dropdown-menu-login .button_empty {
+  padding: 8px 0;
 }
 
 .header-bottom {

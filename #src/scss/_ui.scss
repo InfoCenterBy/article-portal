@@ -56,6 +56,10 @@
   color: var(--color-gold);
 }
 
+.color-blue {
+  color: var(--color-blue);
+}
+
 .color-gray-dark {
   color: var(--color-gray-dark);
 }
@@ -68,13 +72,17 @@
   font-size: 16px;
   color: var(--color-black);
 
+  &_gray-dark {
+    color: var(--color-gray-dark);
+  }
+
+  &_blue-light {
+    color: var(--color-blue-light);
+  }
+
   &:hover {
     color: inherit;
     opacity: 0.5;
-  }
-
-  &_gray-dark {
-    color: var(--color-gray-dark);
   }
 }
 
