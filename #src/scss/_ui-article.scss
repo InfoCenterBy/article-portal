@@ -683,6 +683,8 @@ td.vertical-bottom {
 }
 /* --- ТАБЛИЦА 1 --- */
 .table-1 {
+	overflow-x: auto;
+
 	table {
 		margin-top: 3px;
 
@@ -731,6 +733,8 @@ td.vertical-bottom {
 }
 /* --- ТАБЛИЦА 2 --- */
 .table-2 {
+	overflow-x: auto;
+
 	table {
 
 		th, td {
@@ -746,6 +750,8 @@ td.vertical-bottom {
 }
 /* --- ТАБЛИЦА 3 --- */
 .table-3 {
+	overflow-x: auto;
+
 	table {
 		width: 100%;
 

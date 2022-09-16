@@ -64,6 +64,22 @@
   color: var(--color-gray-dark);
 }
 
+.color-red {
+  color: var(--color-red);
+}
+
+.color-green {
+  color: var(--color-green);
+}
+
+.color-orange {
+  color: var(--color-orange);
+}
+
+.color-indigo {
+  color: var(--color-indigo);
+}
+
 .border-gray {
   border: 1px solid var(--color-gray);
 }
@@ -419,6 +435,31 @@
   // .breadcrumb-item.active
   &-item.active {
     color: var(--color-gray);
+  }
+}
+
+.toast-basic {
+  width: 400px;
+  padding: 16px 24px;
+  color: var(--color-white);
+  background-color: var(--color-blue-light);
+  box-shadow: 3px 3px transparent, 4px 4px var(--color-gold);
+  border-radius: 0px;
+  border: none;
+
+  i {
+    font-size: 22px;
+  }
+  // .toast-basic__close
+  &__close {
+    i {
+      color: var(--color-white);
+      font-size: 20px;
+    }
+
+    &:hover {
+        opacity: 0.5;
+    }
   }
 }
 

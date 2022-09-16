@@ -43,15 +43,17 @@ const closeMenu = () => {
     })
 }
 
-burger.addEventListener("click", () => {
-    if (!burger.classList.contains('_active')) {
-        showOverlay()
-        showMenu()
-    } else {
-        hideOverlay()
-        closeMenu()
-    }
-})
+if (burger) {
+    burger.addEventListener("click", () => {
+        if (!burger.classList.contains('_active')) {
+            showOverlay()
+            showMenu()
+        } else {
+            hideOverlay()
+            closeMenu()
+        }
+    })
+}
 
 document.addEventListener('click', (e) => {
     if (!e.target.closest(".header-menu, .burger, .header-search, .header-search-button, .form-documents__button-open, .form-documents__wrapper")) {
@@ -69,14 +71,18 @@ document.addEventListener('click', (e) => {
 const buttonOpenHeaderSearch = document.querySelector('.header-search-button'),
     buttonCloseHeaderSearch = document.querySelector('.header-search__button-close'),
     headerSearch = document.querySelector('.header-search');
-buttonOpenHeaderSearch.addEventListener("click", () => {
-    showOverlay()
-    headerSearch.classList.add('_active')
-})
-buttonCloseHeaderSearch.addEventListener("click", () => {
-    hideOverlay()
-    headerSearch.classList.remove('_active')
-})
+if (buttonOpenHeaderSearch) {
+    buttonOpenHeaderSearch.addEventListener("click", () => {
+        showOverlay()
+        headerSearch.classList.add('_active')
+    })
+}
+if (buttonCloseHeaderSearch) {
+    buttonCloseHeaderSearch.addEventListener("click", () => {
+        hideOverlay()
+        headerSearch.classList.remove('_active')
+    })
+}
 
 // menu form news on main page (max-width: 768px)
 const buttonMenuFormNews = document.querySelector('.form-news__button-menu'),
@@ -155,6 +161,23 @@ btnsVisibilityPassword.forEach(btn => btn.addEventListener('click', () => {
         btn.classList.remove('bi-eye')
     }
 }))
+
+// toast
+const toastButtons = document.querySelectorAll('.toast-button');
+const toastsBasic = document.querySelectorAll('.toast-basic');
+if (toastButtons) {
+    toastButtons.forEach(btn =>
+        btn.addEventListener('click', () => {
+            console.log(btn.getAttribute('data-class'))
+            toastsBasic.forEach(toast => {
+                if (toast.classList.contains(btn.getAttribute('data-class'))) {
+                    const el = new bootstrap.Toast(toast)
+                    el.show()
+                }
+            })
+        })
+    )
+}
 
 // Exchange Rates from Rest API
 const usd = document.getElementById('usd');

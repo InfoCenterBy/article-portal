@@ -11,6 +11,9 @@
   --color-blue: #040926;
   --color-blue-light: #034A66;
   --color-red: #D24344;
+  --color-green: #48B16E;
+  --color-orange: #F9B974;
+  --color-indigo: #5EB1FF;
 }
 
 * {
@@ -241,6 +244,22 @@ body._lock {
 
 .color-gray-dark {
   color: var(--color-gray-dark);
+}
+
+.color-red {
+  color: var(--color-red);
+}
+
+.color-green {
+  color: var(--color-green);
+}
+
+.color-orange {
+  color: var(--color-orange);
+}
+
+.color-indigo {
+  color: var(--color-indigo);
 }
 
 .border-gray {
@@ -575,6 +594,30 @@ body._lock {
 
 .breadcrumb-item.active {
   color: var(--color-gray);
+}
+
+.toast-basic {
+  width: 400px;
+  padding: 16px 24px;
+  color: var(--color-white);
+  background-color: var(--color-blue-light);
+  -webkit-box-shadow: 3px 3px transparent, 4px 4px var(--color-gold);
+          box-shadow: 3px 3px transparent, 4px 4px var(--color-gold);
+  border-radius: 0px;
+  border: none;
+}
+
+.toast-basic i {
+  font-size: 22px;
+}
+
+.toast-basic__close i {
+  color: var(--color-white);
+  font-size: 20px;
+}
+
+.toast-basic__close:hover {
+  opacity: 0.5;
 }
 
 .sidebar {
@@ -1919,6 +1962,10 @@ td.vertical-bottom {
 
 /* --- ТАБЛИЦА 1 --- */
 
+.table-1 {
+  overflow-x: auto;
+}
+
 .table-1 table {
   margin-top: 3px;
 }
@@ -1967,6 +2014,10 @@ td.vertical-bottom {
 
 /* --- ТАБЛИЦА 2 --- */
 
+.table-2 {
+  overflow-x: auto;
+}
+
 .table-2 table th,
 .table-2 table td {
   padding: 6px 12px;
@@ -1979,6 +2030,10 @@ td.vertical-bottom {
 }
 
 /* --- ТАБЛИЦА 3 --- */
+
+.table-3 {
+  overflow-x: auto;
+}
 
 .table-3 table {
   width: 100%;
