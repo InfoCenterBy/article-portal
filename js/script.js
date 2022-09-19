@@ -589,13 +589,15 @@ if (burger) {
         }
     })
 }
-btnloginUsers.addEventListener("click", () => {
-    if (btnloginUsers.classList.contains('show')) {
-        showOverlay()
-    } else {
-        hideOverlay()
-    }
-})
+if (btnloginUsers) {
+    btnloginUsers.addEventListener("click", () => {
+        if (btnloginUsers.classList.contains('show')) {
+            showOverlay()
+        } else {
+            hideOverlay()
+        }
+    })
+}
 
 document.addEventListener('click', (e) => {
     if (!e.target.closest(".header-menu, .burger, .header-search, .header-search-button, .form-documents__button-open, .form-documents__wrapper, .login-users, .dropdown-menu-login")) {

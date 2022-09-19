@@ -2210,6 +2210,18 @@ td.vertical-bottom {
   padding: 8px 0;
 }
 
+.notifications-user {
+  font-size: 24px;
+}
+
+.menu-user {
+  font-size: 14px;
+}
+
+.menu-user i.bi-person-circle {
+  font-size: 24px;
+}
+
 .header-bottom {
   margin: 86px 0px 0px 0px;
   padding: 14px 0px;
