@@ -45,6 +45,7 @@
                         <i class="bi bi-person"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-login dropdown-menu-end">
+                        <div class="dropdown-arrow"></div>
                         <form id="form-login">
                             <div class="input mb-3">
                                 <label for="email-login">Email <span>*</span></label>
@@ -62,12 +63,12 @@
                             </div>
                             <div class="d-flex justify-content-between align-items-center mb-4">
                                 <div class="checkbox">
-                                    <input type="checkbox" id="email-newsletter">
-                                    <label class="checkbox__label" for="email-newsletter">
+                                    <input type="checkbox" id="remember-me">
+                                    <label class="checkbox__label" for="remember-me">
                                         <span class="checkbox__label_text">Запомнить меня</span>
                                     </label>
                                 </div>
-                                <a href="#" class="link link_color-blue-light">Забыли пароль?</a>
+                                <a href="#" class="link link_blue-light">Забыли пароль?</a>
                             </div>
                             <div class="mb-2">
                                 <button type="submit" id="submit-login" class="button w-100">Войти</button>
@@ -138,6 +139,10 @@
                     </ul>
                 </li>
                 <li>
+                    <a href="#" class="menu-header__link" title="Новости">
+                        <i class="bi bi-images me-3"></i>Последние события</a>
+                </li>
+                <li>
                     <div class="menu-header__collapse">
                         <a href="forms-of-documents.html" class="menu-header__link" title="Формы документов"><i
                                 class="bi bi-file-earmark-ruled me-3"></i>Формы документов</a>
@@ -168,17 +173,34 @@
                         <li><a href="#" class="submenu-header__link">Проверка контрагента</a></li>
                     </ul>
                 </li>
+                <li>
+                    <div class="menu-header__collapse">
+                        <a href="#" class="menu-header__link" title="Справочная информация">
+                            <i class="bi bi-boxes me-3"></i>Сервисы</a>
+                        <button class="menu-header__button collapsed" data-bs-toggle="collapse"
+                                data-bs-target="#services-collapse" aria-expanded="false" aria-current="true">
+                            <i class="bi bi-chevron-down"></i>
+                        </button>
+                    </div>
+                    <ul class="submenu-header collapse" id="services-collapse">
+                        <li><a href="#" class="submenu-header__link">Вопрос-ответ</a></li>
+                        <li><a href="#" class="submenu-header__link">Медиатека</a></li>
+                        <li><a href="#" class="submenu-header__link">Вебинары</a></li>
+                    </ul>
+                </li>
             </ul>
             <ul class="menu-header__list">
                 <li>
-                    <a href="#" class="menu-header__link" title="Авторам"><i class="bi bi-pencil-square me-3"></i>Авторам</a>
+                    <a href="#" class="menu-header__link" title="Авторам">
+                        <i class="bi bi-pencil-square me-3"></i>Авторам</a>
                 </li>
                 <li>
-                    <a href="#" class="menu-header__link" title="Рекламодателям"><i class="bi bi-megaphone me-3"></i>Рекламодателям</a>
+                    <a href="#" class="menu-header__link" title="Рекламодателям">
+                        <i class="bi bi-megaphone me-3"></i>Рекламодателям</a>
                 </li>
                 <li>
-                    <a href="#" class="menu-header__link" title="Формы Помощь"><i
-                            class="bi bi-question-circle me-3"></i>Помощь</a>
+                    <a href="#" class="menu-header__link" title="Формы Помощь">
+                        <i class="bi bi-question-circle me-3"></i>Помощь</a>
                 </li>
             </ul>
         </nav>
@@ -189,7 +211,6 @@
                     <div class='container'>
                        <div class="d-flex justify-content-around">
                            <div class="login__body">
-                               <h1 class="h1">Вход в личный кабинет</h1>
                                <nav class="nav-tab">
                                    <div class="nav-tab__wrapper overflow-x" id="nav-tab" role="tablist">
                                        <button class="nav-tab__button active" id="nav-login-tab" data-bs-toggle="tab" data-bs-target="#nav-login" type="button" role="tab" aria-controls="nav-login" aria-selected="true">Войти</button>
@@ -199,6 +220,7 @@
                                <div class="tab-content" id="nav-tabContent">
                                    <div class="tab-pane fade show active" id="nav-login" role="tabpanel" aria-labelledby="nav-login-tab" tabindex="0">
                                        <div class="mt-5">
+                                           <div class="h1">Вход в личный кабинет</div>
                                            <form id="form-login">
                                               <div class="input mb-4">
                                                   <label for="email-login">Email <span>*</span></label>
@@ -206,7 +228,7 @@
                                                   <div class="input__text-error"><i class="bi bi-exclamation-triangle me-2"></i>Электронная почта не может быть пустой</div>
                                                   <div class="input__text-error-email"><i class="bi bi-exclamation-triangle me-2"></i>Адрес электоронной почты должен заканчиваться на @**.**</div>
                                               </div>
-                                               <div class="input">
+                                               <div class="input mb-4">
                                                    <label for="password-login">Пароль <span>*</span></label>
                                                    <div class="input__password">
                                                        <input type="password" id="password-login" class="_required" placeholder="Введите пароль">
@@ -214,46 +236,33 @@
                                                    </div>
                                                    <div class="input__text-error"><i class="bi bi-exclamation-triangle me-2"></i>Пароль не может быть пустым</div>
                                                </div>
+                                               <div class="d-flex justify-content-between align-items-center mb-4">
+                                                   <div class="checkbox">
+                                                       <input type="checkbox" id="rememberMe">
+                                                       <label class="checkbox__label" for="rememberMe">
+                                                           <span class="checkbox__label_text mt-n1">Запомнить меня</span>
+                                                       </label>
+                                                   </div>
+                                                   <a href="#" class="link link_blue-light">Забыли пароль?</a>
+                                               </div>
                                                <div class="mt-5 text-center">
                                                     <button type="submit" id="submit-login" class="button">Войти</button>
                                                </div>
                                            </form>
-                                           <div class="d-flex justify-content-center mt-4">
-                                               <a href="#" class="button-login-social"><img src="./img/icon/facebook.svg" alt="facebook" class="img-fluid"></a>
-                                               <a href="#" class="button-login-social"><img src="./img/icon/google.svg" alt="google" class="img-fluid"></a>
+                                           <div class="mt-4 text-center">
+                                               Еще нет аккаунта? <a href="#" class="link link_blue-light">Зарегистрируйтесь</a>
                                            </div>
                                        </div>
                                    </div>
                                    <div class="tab-pane fade" id="nav-registration" role="tabpanel" aria-labelledby="nav-registration-tab" tabindex="0">
                                        <div class="mt-5">
+                                           <div class="h1">Регистрация</div>
                                            <form id="form-registration">
-                                               <div class="input mb-4">
-                                                   <label for="name">Имя <span>*</span></label>
-                                                   <input type="text" id="name" class="_required-registr" placeholder="Ваше имя">
-                                                   <div class="input__text-error"><i class="bi bi-exclamation-triangle me-2"></i>Поле не может быть пустым</div>
-                                               </div>
-                                               <div class="input mb-4">
-                                                   <label for="surname">Фамилия <span>*</span></label>
-                                                   <input type="text" id="surname" class="_required-registr" placeholder="Ваша фамилия">
-                                                   <div class="input__text-error"><i class="bi bi-exclamation-triangle me-2"></i>Поле не может быть пустым</div>
-                                               </div>
-                                               <div class="input mb-4">
-                                                   <label for="middle-name">Отчество</label>
-                                                   <input type="text" id="middle-name" placeholder="Ваше отчество">
-                                               </div>
                                                <div class="input mb-4">
                                                    <label for="email-registration">Email <span>*</span></label>
                                                    <input type="text" id="email-registration" class="_email _required-registr" placeholder="Ваш email">
                                                    <div class="input__text-error"><i class="bi bi-exclamation-triangle me-2"></i>Электронная почта не может быть пустой</div>
                                                    <div class="input__text-error-email"><i class="bi bi-exclamation-triangle me-2"></i>Адрес электоронной почты должен заканчиваться на @**.**</div>
-                                               </div>
-                                               <div class="input mb-4">
-                                                   <label for="unp-registration">УНП</label>
-                                                   <input type="phone" id="unp-registration" placeholder="Ваш УНП">
-                                               </div>
-                                               <div class="input mb-4">
-                                                   <label for="phone-registration">Телефон</label>
-                                                   <input type="phone" id="phone-registration" placeholder="+375 (**) ***-**-**">
                                                </div>
                                                <div class="input mb-4">
                                                    <label for="password-registration">Пароль <span>*</span></label>
@@ -293,21 +302,22 @@
                                                    <button type="submit" id="submit-registration" class="button">Войти</button>
                                                </div>
                                            </form>
-                                           <div class="d-flex justify-content-center mt-4">
-                                               <a href="#" class="button-login-social"><img src="./img/icon/facebook.svg" alt="facebook" class="img-fluid"></a>
-                                               <a href="#" class="button-login-social"><img src="./img/icon/google.svg" alt="google" class="img-fluid"></a>
+                                           <div class="mt-4 text-center">
+                                               Уже зарегистрированы? <a href="#" class="link link_blue-light">Войдите в аккаунт</a>
                                            </div>
                                        </div>
                                    </div>
                                </div>
                            </div>
                            <div class="login__capabilities ms-5">
-                               <h4 class="h4">Личный кабинет дает возможность:</h4>
-                               <ul>
-                                   <li><i class="bi bi-bell me-4"></i><span>Получать уведомления о новых статьях</span></li>
-                                   <li><i class="bi bi-bookmark me-4"></i><span>Добавлять понравившееся статьи и документы в закладки</span></li>
-                                   <li><i class="bi bi-gem me-4"></i><span>Читать актуальные новости о бухучете и налогах</span></li>
-                               </ul>
+                               <div class="login__capabilities-content">
+                                   <h4 class="h4">Личный кабинет дает возможность:</h4>
+                                   <ul>
+                                       <li><i class="bi bi-bell me-4"></i><span>Получать уведомления о новых статьях</span></li>
+                                       <li><i class="bi bi-bookmark me-4"></i><span>Добавлять понравившееся статьи и документы в закладки</span></li>
+                                       <li><i class="bi bi-gem me-4"></i><span>Читать актуальные новости о бухучете и налогах</span></li>
+                                   </ul>
+                               </div>
                            </div>
                        </div>
                     </div>

@@ -45,6 +45,7 @@
                         <i class="bi bi-person"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-login dropdown-menu-end">
+                        <div class="dropdown-arrow"></div>
                         <form id="form-login">
                             <div class="input mb-3">
                                 <label for="email-login">Email <span>*</span></label>
@@ -62,12 +63,12 @@
                             </div>
                             <div class="d-flex justify-content-between align-items-center mb-4">
                                 <div class="checkbox">
-                                    <input type="checkbox" id="email-newsletter">
-                                    <label class="checkbox__label" for="email-newsletter">
+                                    <input type="checkbox" id="remember-me">
+                                    <label class="checkbox__label" for="remember-me">
                                         <span class="checkbox__label_text">Запомнить меня</span>
                                     </label>
                                 </div>
-                                <a href="#" class="link link_color-blue-light">Забыли пароль?</a>
+                                <a href="#" class="link link_blue-light">Забыли пароль?</a>
                             </div>
                             <div class="mb-2">
                                 <button type="submit" id="submit-login" class="button w-100">Войти</button>
@@ -138,6 +139,10 @@
                     </ul>
                 </li>
                 <li>
+                    <a href="#" class="menu-header__link" title="Новости">
+                        <i class="bi bi-images me-3"></i>Последние события</a>
+                </li>
+                <li>
                     <div class="menu-header__collapse">
                         <a href="forms-of-documents.html" class="menu-header__link" title="Формы документов"><i
                                 class="bi bi-file-earmark-ruled me-3"></i>Формы документов</a>
@@ -168,17 +173,34 @@
                         <li><a href="#" class="submenu-header__link">Проверка контрагента</a></li>
                     </ul>
                 </li>
+                <li>
+                    <div class="menu-header__collapse">
+                        <a href="#" class="menu-header__link" title="Справочная информация">
+                            <i class="bi bi-boxes me-3"></i>Сервисы</a>
+                        <button class="menu-header__button collapsed" data-bs-toggle="collapse"
+                                data-bs-target="#services-collapse" aria-expanded="false" aria-current="true">
+                            <i class="bi bi-chevron-down"></i>
+                        </button>
+                    </div>
+                    <ul class="submenu-header collapse" id="services-collapse">
+                        <li><a href="#" class="submenu-header__link">Вопрос-ответ</a></li>
+                        <li><a href="#" class="submenu-header__link">Медиатека</a></li>
+                        <li><a href="#" class="submenu-header__link">Вебинары</a></li>
+                    </ul>
+                </li>
             </ul>
             <ul class="menu-header__list">
                 <li>
-                    <a href="#" class="menu-header__link" title="Авторам"><i class="bi bi-pencil-square me-3"></i>Авторам</a>
+                    <a href="#" class="menu-header__link" title="Авторам">
+                        <i class="bi bi-pencil-square me-3"></i>Авторам</a>
                 </li>
                 <li>
-                    <a href="#" class="menu-header__link" title="Рекламодателям"><i class="bi bi-megaphone me-3"></i>Рекламодателям</a>
+                    <a href="#" class="menu-header__link" title="Рекламодателям">
+                        <i class="bi bi-megaphone me-3"></i>Рекламодателям</a>
                 </li>
                 <li>
-                    <a href="#" class="menu-header__link" title="Формы Помощь"><i
-                            class="bi bi-question-circle me-3"></i>Помощь</a>
+                    <a href="#" class="menu-header__link" title="Формы Помощь">
+                        <i class="bi bi-question-circle me-3"></i>Помощь</a>
                 </li>
             </ul>
         </nav>
