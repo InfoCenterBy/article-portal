@@ -3059,6 +3059,9 @@ td.vertical-bottom {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: relative;
   cursor: pointer;
 }
@@ -3076,7 +3079,7 @@ td.vertical-bottom {
 
 .checkbox__label:before {
   content: '';
-  margin: 0px 20px 0px 0px;
+  margin: 0px 16px 0px 0px;
   -ms-flex-item-align: start;
       align-self: flex-start;
   -webkit-box-flex: 0;
@@ -3217,11 +3220,6 @@ td.vertical-bottom {
   -webkit-transform: translateX(-100%);
       -ms-transform: translateX(-100%);
           transform: translateX(-100%);
-}
-
-.button-login-social {
-  margin: 0 15px;
-  width: 40px;
 }
 
 .profile-photo {
@@ -3665,12 +3663,19 @@ td.vertical-bottom {
   border-left: 1px solid var(--color-gray);
 }
 
-.login__capabilities ul {
+.login__capabilities-content {
+  position: sticky;
+  top: 110px;
+  left: 0;
+  right: 0;
+}
+
+.login__capabilities-content ul {
   padding: 0;
   margin: 0;
 }
 
-.login__capabilities ul li {
+.login__capabilities-content ul li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3679,12 +3684,12 @@ td.vertical-bottom {
           align-items: center;
 }
 
-.login__capabilities ul li i {
+.login__capabilities-content ul li i {
   font-size: 26px;
   color: var(--color-blue);
 }
 
-.login__capabilities ul li:not(:last-child) {
+.login__capabilities-content ul li:not(:last-child) {
   margin: 0px 0px 40px 0px;
 }
 
