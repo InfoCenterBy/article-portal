@@ -542,6 +542,7 @@ const buttonSubmenu = document.querySelectorAll(".menu-header__button");
 const submenu = document.querySelectorAll(".submenu-header");
 const main = document.querySelector("main");
 const footer = document.querySelector("footer");
+const btnloginUsers = document.querySelector(".login-users");
 
 const showOverlay = () => {
     body.classList.add('_lock')
@@ -588,9 +589,16 @@ if (burger) {
         }
     })
 }
+btnloginUsers.addEventListener("click", () => {
+    if (btnloginUsers.classList.contains('show')) {
+        showOverlay()
+    } else {
+        hideOverlay()
+    }
+})
 
 document.addEventListener('click', (e) => {
-    if (!e.target.closest(".header-menu, .burger, .header-search, .header-search-button, .form-documents__button-open, .form-documents__wrapper")) {
+    if (!e.target.closest(".header-menu, .burger, .header-search, .header-search-button, .form-documents__button-open, .form-documents__wrapper, .login-users, .dropdown-menu-login")) {
         hideOverlay()
     }
     if (!e.target.closest(".header-menu, .burger")) {
