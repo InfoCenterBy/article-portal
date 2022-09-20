@@ -542,7 +542,7 @@ const buttonSubmenu = document.querySelectorAll(".menu-header__button");
 const submenu = document.querySelectorAll(".submenu-header");
 const main = document.querySelector("main");
 const footer = document.querySelector("footer");
-const btnloginUsers = document.querySelector(".login-users");
+const btnsDropdown = document.querySelectorAll(".btn-dropdown");
 
 const showOverlay = () => {
     body.classList.add('_lock')
@@ -589,18 +589,21 @@ if (burger) {
         }
     })
 }
-if (btnloginUsers) {
-    btnloginUsers.addEventListener("click", () => {
-        if (btnloginUsers.classList.contains('show')) {
-            showOverlay()
-        } else {
-            hideOverlay()
-        }
+if (btnsDropdown) {
+    btnsDropdown.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            console.log('click')
+            if (btn.classList.contains('show')) {
+                showOverlay()
+            } else {
+                hideOverlay()
+            }
+        })
     })
 }
 
 document.addEventListener('click', (e) => {
-    if (!e.target.closest(".header-menu, .burger, .header-search, .header-search-button, .form-documents__button-open, .form-documents__wrapper, .login-users, .dropdown-menu-login")) {
+    if (!e.target.closest(".header-menu, .burger, .header-search, .header-search-button, .form-documents__button-open, .form-documents__wrapper, .btn-dropdown, .dropdown-menu")) {
         hideOverlay()
     }
     if (!e.target.closest(".header-menu, .burger")) {
