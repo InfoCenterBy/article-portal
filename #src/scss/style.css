@@ -1192,9 +1192,13 @@ body._lock {
   border: 1px solid var(--color-gray);
 }
 .item-notification__icon {
+  flex: 0 0 35px;
+  height: 35px;
   margin-right: 16px;
-  padding: 8px;
   background: rgba(209, 210, 212, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .item-notification__icon i {
   font-size: 20px;
@@ -2209,6 +2213,17 @@ td.vertical-bottom {
 
 .notifications-user {
   font-size: 24px;
+  position: relative;
+}
+.notifications-user .badge {
+  padding: 4px 6px;
+  font-size: 11px;
+  font-weight: 500;
+  background-color: var(--color-red);
+  border-radius: 10px;
+  position: absolute;
+  top: 0;
+  right: -12px;
 }
 
 .dropdown-menu-notifications {

@@ -1250,9 +1250,13 @@
 
   // .item-notification__icon
   &__icon {
+    flex: 0 0 35px;
+    height: 35px;
     margin-right: 16px;
-    padding: 8px;
     background: rgba(209, 210, 212, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     i {
       font-size: 20px;
