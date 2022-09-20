@@ -189,16 +189,25 @@
   }
 }
 
-.dropdown-menu-login   {
+.header .dropdown-menu {
   margin: 0 auto;
-  padding: 16px;
   width: 100%;
-  min-width: 380px;
-  max-width: 380px;
   background-color: var(--color-white);
   border: 1px solid var(--color-gray);
   box-shadow: 2px 8px 16px rgba(60, 60, 60, 0.12);
   border-radius: 0px;
+}
+
+.dropdown-menu-wrapper {
+  overflow: hidden;
+  overflow-y: auto;
+  max-height: calc(100vh - 100px);
+}
+
+.dropdown-menu-login {
+  min-width: 380px;
+  max-width: 380px;
+  inset: 10px 0px auto auto !important;
 
   @media (max-width: 410px) {
     min-width: 310px;
@@ -235,6 +244,114 @@
 
     &_empty {
       padding: 8px 0;
+    }
+  }
+}
+
+.notifications-user {
+  font-size: 24px;
+}
+
+.dropdown-menu-notifications {
+  min-width: 680px;
+  max-width: 680px;
+  inset: 10px -30px auto auto !important;
+  transform: translate(0px, 36px) !important;
+
+  .badge {
+    font-size: 12px;
+    font-weight: 500;
+    background-color: var(--color-red);
+    border-radius: 10px;
+  }
+
+  .link-setting {
+    padding: 10px 0 10px 10px;
+    font-size: 16px;
+    color: var(--color-gray-dark);
+    
+    &:hover {
+      color: var(--color-gold);
+    }
+  }
+
+  .dropdown-arrow {
+    right: 33px;
+  }
+
+  @media (max-width: $md3+px) {
+    min-width: 500px;
+    max-width: 500px;
+    inset: 10px -60px auto auto !important;
+
+    .dropdown-arrow {
+      right: 63px;
+    }
+  }
+  
+  @media (max-width: $md4+px) {
+    min-width: 380px;
+    max-width: 380px;
+  }
+
+  @media (max-width: 410px) {
+    min-width: 310px;
+  }
+
+  // .dropdown-menu-notifications__check-all
+  &__check-all {
+    &:hover {
+        text-decoration: underline;
+    }
+  }
+}
+
+.tab-pane-notifications {
+  max-height: 300px;
+}
+
+.menu-user {
+  font-size: 14px;
+
+  i.bi-person-circle {
+    font-size: 24px;
+  }
+
+  // .menu-user__name
+  &__name {
+    @media (max-width: $md2+px) {
+        display: none;
+    }
+  }
+}
+
+.dropdown-menu-user {
+  min-width: 260px;
+  max-width: 260px;
+  inset: 10px 0px auto auto !important;
+
+  .dropdown-arrow {
+    right: 65px;
+  }
+  
+  @media (max-width: $md2+px) {
+    .dropdown-arrow {
+      right: 3px;
+    }
+  }
+
+  a {
+    font-size: 16px;
+    color: var(--color-blue);
+
+    i {
+      font-size: 18px;
+      color: var(--color-gray-dark);
+    }
+
+    &:hover {
+      color: var(--color-gold);
+      background-color: var(--color-gray);
     }
   }
 }

@@ -1209,3 +1209,109 @@
     }
   }
 }
+
+.dropdown-arrow {
+  width: 16px;
+  height: 8px;
+  position: absolute;
+  top: -9px;
+  right: 30px;
+
+  &:before {
+    content:'';
+    display: block;
+    border-bottom: 8px solid rgba(0,0,0,0.176);
+    border-left: 8px solid rgba(0,0,0,0);
+    border-right: 8px solid rgba(0,0,0,0);
+    border-top: 0px solid rgba(0,0,0,0);
+    position: absolute;
+    top: 0;
+  }
+  
+  &:after {
+      content:'';
+      display: block;
+      border-bottom: 8px solid rgb(255,255,255);
+      border-left: 8px solid rgba(0,0,0,0);
+      border-right: 8px solid rgba(0,0,0,0);
+      border-top: 0px solid rgba(0,0,0,0);
+      position: absolute;
+      top: 1px;
+  }
+}
+
+.item-notification {
+  margin-bottom: 8px;
+  padding: 16px;
+  display: flex;
+  align-items: flex-start;
+  border: 1px solid var(--color-gray);
+
+
+  // .item-notification__icon
+  &__icon {
+    margin-right: 16px;
+    padding: 8px;
+    background: rgba(209, 210, 212, 0.3);
+
+    i {
+      font-size: 20px;
+      color: var(--color-gray-dark);
+    }
+  }
+
+  // .item-notification__info
+  &__info {
+    flex: 1 1 auto;
+    margin-right: 16px;
+  }
+
+  ul {
+    padding-left: 0;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    li {
+      font-size: 10px;
+      color: var(--color-gray-dark);
+
+      &:not(:first-child) {
+        padding-left: 20px;
+        position: relative;
+
+        &:before {
+          content:'';
+          width: 3px;
+          height: 3px;
+          background-color: var(--color-gray-dark);
+          border-radius: 50%;
+          position: absolute;
+          left: 9px;
+          top: 6px;
+        }
+      }
+    }
+  }
+  // .item-notification__title
+  &__title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-black);
+
+    &:hover {
+      color: var(--color-gold);
+    }
+  }
+
+  // .item-notification__btn-delete
+  &__btn-delete {
+    font-size: 20px;
+    color: var(--color-gray-dark);
+    
+    &:hover {
+      color: var(--color-gray);
+    }
+  }
+}
