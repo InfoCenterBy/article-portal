@@ -208,10 +208,20 @@
   min-width: 380px;
   max-width: 380px;
   inset: 10px 0px auto auto !important;
+  
+  @media (max-width: $md2+px) {
+    .dropdown-arrow {
+      right: 8px;
+    }
+  }
 
   @media (max-width: 410px) {
     min-width: 310px;
     inset: 0px -5px auto auto !important;
+
+    .dropdown-arrow {
+      right: 13px;
+    }
   }
 
   .input input {
