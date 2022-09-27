@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+    @@include('_head.html',{
+    "title":"Нет результатов по запросу"
+    })
+    <body>
+        <div class="wrapper">
+            @@include('_header.html',{})
+            <main class="page">
+                <section class="my-5">
+                    <div class='container'>
+                        <div class="d-lg-flex justify-content-between align-items-end">
+                            <h1 class="h1 me-lg-3">Результаты по запросу: <span class="color-gold">«срок»</span></h1>
+                            <div class="h5">Найдено: 0 результатов</div>
+                        </div>
+                        <div class="mt-5 text-center">
+                            <div class="h5 m-0 color-gray-dark">По запросу <span>«совет»</span> ничего не найдено</div>
+                            <div>
+                                <img class="img-fluid" src="./img/default-search.gif" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            @@include('_footer.html',{})
+        </div>
+        @@include('_js.html',{})
+    </body>
+</html>
