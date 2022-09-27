@@ -266,6 +266,14 @@ body._lock {
   border: 1px solid var(--color-gray);
 }
 
+.border-bottom-gray {
+  border-bottom: 1px solid var(--color-gray);
+}
+
+.border-top-gray {
+  border-top: 1px solid var(--color-gray);
+}
+
 .link {
   font-size: 16px;
   color: var(--color-black);
@@ -1135,18 +1143,57 @@ body._lock {
   border-color: var(--color-gold);
 }
 
-.item-webinar {
+.last-webinar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.item-webinar__link {
+.last-webinar__link {
   color: var(--color-black);
 }
 
-.item-webinar__link:hover {
+.last-webinar__link:hover {
   color: var(--color-gold);
+}
+
+.item-webinar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 25px 25px 25px 15px;
+  border: 1px solid var(--color-gray-dark);
+  font-size: 16px;
+  color: var(--color-gray-dark);
+}
+
+.item-webinar__title {
+  margin: 0px 55px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  color: var(--color-black);
+}
+
+.item-webinar__btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.item-webinar:hover {
+  color: var(--color-gray-dark);
+  border-color: var(--color-gold);
+}
+
+.item-webinar:hover .item-webinar__title {
+  color: var(--color-gold);
+}
+
+.item-webinar:hover .item-webinar__btn i:before {
+  -webkit-transform: translateX(3px);
+      -ms-transform: translateX(3px);
+          transform: translateX(3px);
 }
 
 .item-media-library__img {
@@ -4164,6 +4211,10 @@ td.vertical-bottom {
     margin-left: 0;
   }
 
+  .dropdown-menu-login .dropdown-arrow {
+    right: 8px;
+  }
+
   .menu-user__name {
     display: none;
   }
@@ -4208,6 +4259,10 @@ td.vertical-bottom {
 @media (max-width: 768px) {
   .container {
     padding: 0 15px;
+  }
+
+  .item-webinar__title {
+    margin: 0px 25px;
   }
 
   .header {
@@ -4506,8 +4561,16 @@ td.vertical-bottom {
     display: block;
   }
 
+  .last-webinar {
+    display: block;
+  }
+
   .item-webinar {
     display: block;
+  }
+
+  .item-webinar__title {
+    margin: 16px 0px;
   }
 
   .dropdown-menu-notifications {
@@ -4656,6 +4719,10 @@ td.vertical-bottom {
   .dropdown-menu-login {
     min-width: 310px;
     inset: 0px -5px auto auto !important;
+  }
+
+  .dropdown-menu-login .dropdown-arrow {
+    right: 13px;
   }
 
   .dropdown-menu-notifications {
