@@ -234,6 +234,10 @@ body._lock {
   font-size: 16px;
 }
 
+.fz-14 {
+  font-size: 14px;
+}
+
 .color-gold {
   color: var(--color-gold);
 }
@@ -1424,8 +1428,6 @@ p {
 }
 
 table {
-  margin: 24px 0;
-  overflow-x: auto;
   border-collapse: collapse;
 }
 
@@ -2190,6 +2192,49 @@ td.vertical-bottom {
 
 .table-3 table tbody td {
   vertical-align: top;
+}
+
+/* --- ТАБЛИЦА 4 --- */
+
+.table-4 {
+  overflow-x: auto;
+}
+
+.table-4 table th,
+.table-4 table td {
+  padding: 16px 10px;
+  border: 1px solid var(--color-gray);
+}
+
+.table-4 table thead {
+  text-align: center;
+  font-weight: 600;
+}
+
+.table-4 table thead tr td {
+  color: var(--color-white);
+  background-color: var(--color-blue-light);
+}
+
+.table-4 table tbody {
+  text-align: center;
+}
+
+.table-4 table tbody tr:hover {
+  background: rgba(129, 129, 129, 0.1);
+}
+
+.table-4 table tbody tr td:first-child {
+  text-align: left;
+}
+
+.table-4 table a {
+  color: var(--color-black);
+}
+
+.table-4 table a:hover {
+  color: var(--color-blue-light);
+  text-decoration: underline;
 }
 
 .header {

@@ -2,8 +2,6 @@ p {
 	margin-bottom: 24px;
 }
 table {
-	margin: 24px 0;
-	overflow-x: auto;
 	border-collapse: collapse;
 
 	p {
@@ -767,6 +765,54 @@ td.vertical-bottom {
 
 		tbody td {
 			vertical-align: top;
+		}
+	}
+}
+/* --- ТАБЛИЦА 4 --- */
+.table-4 {
+	overflow-x: auto;
+
+	table {
+
+		th, td {
+			padding: 16px 10px;
+			border: 1px solid var(--color-gray);
+		}
+
+		thead {
+			text-align: center;
+			font-weight: 600;
+
+			tr td {
+				color: var(--color-white);
+				background-color: var(--color-blue-light);
+			}
+		}
+
+		tbody {
+			text-align: center;
+
+			tr {
+				&:hover {
+					background: rgba(129, 129, 129, 0.1);
+				}
+
+				td {
+
+					&:first-child {
+						text-align: left;
+					}
+				}
+			}
+		}
+		
+		a {
+			color: var(--color-black);
+
+			&:hover {
+				color: var(--color-blue-light);
+				text-decoration: underline;
+			}
 		}
 	}
 }
