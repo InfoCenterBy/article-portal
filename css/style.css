@@ -234,6 +234,10 @@ body._lock {
   font-size: 16px;
 }
 
+.fz-14 {
+  font-size: 14px;
+}
+
 .color-gold {
   color: var(--color-gold);
 }
@@ -1424,8 +1428,6 @@ p {
 }
 
 table {
-  margin: 24px 0;
-  overflow-x: auto;
   border-collapse: collapse;
 }
 
@@ -1498,6 +1500,10 @@ td.vertical-bottom {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.article-header__top .actions-article {
+  margin: 0;
 }
 
 .article-header__date {
@@ -1577,6 +1583,54 @@ td.vertical-bottom {
   font-size: 14px;
   color: var(--color-gray-dark);
   text-transform: uppercase;
+}
+
+.question-answer {
+  margin: 48px 0;
+}
+
+.question-answer__block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.question-answer__block_question .question-answer__title {
+  color: var(--color-gold);
+}
+
+.question-answer__block_question .question-answer__text {
+  border-color: var(--color-gold);
+}
+
+.question-answer__block_answer .question-answer__title {
+  color: var(--color-blue-light);
+}
+
+.question-answer__block_answer .question-answer__text {
+  border-color: var(--color-blue-light);
+}
+
+.question-answer__block:not(:last-child) {
+  margin: 0px 0px 40px 0px;
+}
+
+.question-answer__title {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 100px;
+          flex: 0 0 100px;
+  padding: 5px 0px 0px 0px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.question-answer__text {
+  padding: 5px 0px 5px 16px;
+  border-left: 4px solid;
+}
+
+.question-answer__text p:last-child {
+  margin-bottom: 0px;
 }
 
 .article-reviewer {
@@ -1809,7 +1863,7 @@ td.vertical-bottom {
 }
 
 .block-img-text__img {
-  margin: 0px 20px 0px 0px;
+  margin: 0px 20px 0px 0px !important;
   max-width: 200px;
 }
 
@@ -2190,6 +2244,49 @@ td.vertical-bottom {
 
 .table-3 table tbody td {
   vertical-align: top;
+}
+
+/* --- ТАБЛИЦА 4 --- */
+
+.table-4 {
+  overflow-x: auto;
+}
+
+.table-4 table th,
+.table-4 table td {
+  padding: 16px 10px;
+  border: 1px solid var(--color-gray);
+}
+
+.table-4 table thead {
+  text-align: center;
+  font-weight: 600;
+}
+
+.table-4 table thead tr td {
+  color: var(--color-white);
+  background-color: var(--color-blue-light);
+}
+
+.table-4 table tbody {
+  text-align: center;
+}
+
+.table-4 table tbody tr:hover {
+  background: rgba(129, 129, 129, 0.1);
+}
+
+.table-4 table tbody tr td:first-child {
+  text-align: left;
+}
+
+.table-4 table a {
+  color: var(--color-black);
+}
+
+.table-4 table a:hover {
+  color: var(--color-blue-light);
+  text-decoration: underline;
 }
 
 .header {
@@ -4571,6 +4668,26 @@ td.vertical-bottom {
 
   .item-webinar__title {
     margin: 16px 0px;
+  }
+
+  .question-answer__block {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+
+  .question-answer__title {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+    padding: 0px 0px 10px 0px;
+  }
+
+  .question-answer__text {
+    padding: 24px 0px 5px 0px;
+    border-top: 4px solid;
+    border-left: none;
   }
 
   .dropdown-menu-notifications {
