@@ -1045,6 +1045,7 @@
 .nav-tab {
   border-bottom: 1px solid var(--color-gray);
 
+
   // .nav-tab_news
   &_news {
     .nav-tab__wrapper {
@@ -1093,6 +1094,24 @@
       color: var(--color-gold);
       border-color: var(--color-gold);
     }
+  }
+
+  .link-setting {
+    margin-left: auto;
+    padding: 10px 0 10px 10px;
+    font-size: 16px;
+    color: var(--color-gray-dark);
+
+    &:hover {
+      color: var(--color-gold);
+    }
+  }
+
+  .badge {
+    font-size: 12px;
+    font-weight: 500;
+    background-color: var(--color-red);
+    border-radius: 10px;
   }
 }
 
@@ -1342,6 +1361,14 @@
     li {
       font-size: 10px;
       color: var(--color-gray-dark);
+
+      a {
+        color: var(--color-gray-dark);
+        
+        &:hover {
+          color: var(--color-gold);
+        }
+      }
 
       &:not(:first-child) {
         padding-left: 20px;

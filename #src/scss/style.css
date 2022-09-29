@@ -1076,6 +1076,21 @@ body._lock {
   color: var(--color-gold);
   border-color: var(--color-gold);
 }
+.nav-tab .link-setting {
+  margin-left: auto;
+  padding: 10px 0 10px 10px;
+  font-size: 16px;
+  color: var(--color-gray-dark);
+}
+.nav-tab .link-setting:hover {
+  color: var(--color-gold);
+}
+.nav-tab .badge {
+  font-size: 12px;
+  font-weight: 500;
+  background-color: var(--color-red);
+  border-radius: 10px;
+}
 
 .last-webinar {
   display: flex;
@@ -1273,6 +1288,12 @@ body._lock {
 .item-notification ul li {
   font-size: 10px;
   color: var(--color-gray-dark);
+}
+.item-notification ul li a {
+  color: var(--color-gray-dark);
+}
+.item-notification ul li a:hover {
+  color: var(--color-gold);
 }
 .item-notification ul li:not(:first-child) {
   padding-left: 20px;
@@ -2377,20 +2398,6 @@ td.vertical-bottom {
   max-width: 680px;
   inset: 10px -30px auto auto !important;
   transform: translate(0px, 36px) !important;
-}
-.dropdown-menu-notifications .badge {
-  font-size: 12px;
-  font-weight: 500;
-  background-color: var(--color-red);
-  border-radius: 10px;
-}
-.dropdown-menu-notifications .link-setting {
-  padding: 10px 0 10px 10px;
-  font-size: 16px;
-  color: var(--color-gray-dark);
-}
-.dropdown-menu-notifications .link-setting:hover {
-  color: var(--color-gold);
 }
 .dropdown-menu-notifications .dropdown-arrow {
   right: 33px;
