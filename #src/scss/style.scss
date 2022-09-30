@@ -500,5 +500,14 @@ body {
   &__img {
   }
 }
-
+.page-404 {
+  @include adaptiv-value("padding-top", 110, 40, 1);
+  @include adaptiv-value("padding-bottom", 110, 40, 1);
+  // .page-404__text
+  &__text {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
 

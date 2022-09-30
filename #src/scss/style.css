@@ -3902,5 +3902,24 @@ td.vertical-bottom {
   list-style: disc;
   font-weight: 600;
 }
+.page-404 {
+  padding-top: 110px;
+  padding-bottom: 110px;
+}
+@media (max-width: 1520px) {
+  .page-404 {
+    padding-top: calc(40px + 70 * ((100vw - 320px) / 1200));
+  }
+}
+@media (max-width: 1520px) {
+  .page-404 {
+    padding-bottom: calc(40px + 70 * ((100vw - 320px) / 1200));
+  }
+}
+.page-404__text {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
 
 /*# sourceMappingURL=style.css.map */
