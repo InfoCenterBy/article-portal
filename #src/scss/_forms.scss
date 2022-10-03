@@ -663,3 +663,41 @@
   max-width: 550px;
 }
 
+.accordion-form {
+  &:not(:last-child) {
+    margin: 0px 0px 30px 0px;
+  }
+  // .accordion-form__button
+  &__button {
+    padding-bottom: 16px;
+    width: 100%;
+    font-size: 16px;
+    color: var(--color-blue-light);
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    span {
+      flex: 1 1 auto;
+      text-align: left;
+    }
+
+    i:before {
+      color: var(--color-gray-dark);
+      transition: all 0.3s ease 0s;
+    }
+
+    &.collapsed {
+      i:before {
+        transform: rotate(180deg);
+      }
+    }
+  }
+  // .accordion-form__filter
+  &__filter {
+    max-height: 220px;
+    overflow-y: auto;
+  }
+}
+

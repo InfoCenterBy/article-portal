@@ -378,6 +378,7 @@
   &__info {
     flex: 1 1 auto;
     display: flex;
+    align-items: center;
     margin-right: 30px;
 
     @media (max-width: $md4+px) {
@@ -398,13 +399,14 @@
 
   // .link-download__name
   &__name {
-    margin: 0px 0px 15px 0px;
     font-size: 16px;
     color: var(--color-black);
   }
 
   // .link-download__person
   &__person {
+    display: inline-block;
+    margin: 15px 0px 0px 0px;
     padding: 5px 15px;
     font-size: 14px;
     color: var(--color-gray-dark);
@@ -1405,6 +1407,249 @@
     
     &:hover {
       color: var(--color-gray);
+    }
+  }
+}
+
+.wrapper {
+}
+
+.page {
+}
+
+.container {
+}
+
+.breadcrumb {
+}
+
+.breadcrumb-item {
+}
+
+.bi {
+}
+
+.bi-house {
+}
+
+.active {
+}
+
+.article {
+}
+
+.mb-5 {
+}
+
+.sidebar-wrapper {
+  // .sidebar-wrapper__content
+  &__content {
+  }
+
+  // .sidebar-wrapper__aside
+  &__aside {
+  }
+}
+
+.content-forms-documents {
+  // .content-forms-documents__title
+  &__title {
+  }
+
+  // .content-forms-documents__count-search
+  &__count-search {
+  }
+}
+
+.d-sm-flex {
+}
+
+.justify-content-between {
+}
+
+.h3 {
+}
+
+.me-2 {
+}
+
+.row {
+}
+
+.g-4 {
+}
+
+.card-media-library {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid var(--color-gray);
+
+  // .card-media-library__img
+  &__img {
+    position: relative;
+    padding: 50% 0 0 0;
+
+    img  {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      inset: 0;
+      object-fit: cover;
+    }
+    
+    &:hover {
+
+    }
+  }
+
+  // .card-media-library__subtitle
+  &__subtitle {
+    padding: 20px 20px 12px 20px;
+    color: var(--color-gold);
+    font-weight: 500;
+  }
+
+  // .card-media-library__title
+  &__title {
+    flex: 1 1 auto;
+    display: block;
+    padding: 0px 20px;
+    color: var(--color-black);
+    font-size: 20px;
+    font-weight: 600;
+
+    &:hover {
+      color: var(--color-gold);
+    }
+  }
+
+  // .card-media-library__lector
+  &__lector {
+    padding: 20px;
+    color: var(--color-gray-dark);
+  }
+
+  // .card-media-library__footer
+  &__footer {
+    border-top: 1px solid var(--color-gray);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: var(--color-gray-dark);
+    white-space: nowrap;
+
+    i {
+      color: var(--color-gold);
+    }
+  }
+}
+
+.media-library {
+  // .media-library__head
+  &__head {
+    border-bottom: 1px solid var(--color-gold);
+  }
+  // .media-library__content
+  &__content {
+    ul li {
+      list-style-type: disc;
+    }
+    ul, ol {
+      li:not(:last-child) {
+          margin: 0px 0px 8px 0px;
+      }
+    }
+  }
+
+  // .media-library__video
+  &__video {
+    padding: 16px;
+    position: relative;
+    border: 3px solid var(--color-gold);
+
+    &:after,
+    &:before {
+      content: "";
+      position: absolute;
+      border: 5px solid var(--color-white);
+      z-index: 2;
+    }
+
+    &:after {
+      left: -4px;
+      top: 75px;
+      right: -4px;
+      bottom: 75px;
+      border-top: none;
+      border-bottom: none;
+    }
+
+    &:before {
+      left: 75px;
+      top: -4px;
+      right: 75px;
+      bottom: -4px;
+      border-left: none;
+      border-right: none;
+    }
+
+    // .media-library__video
+    &_wrapper {
+      position: relative;
+      aspect-ratio: 16/9;
+
+      iframe {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        inset: 0;
+        object-fit: cover;
+        z-index: 3;
+      }
+    }
+  }
+
+  // .media-library__hashtag
+  &__hashtag {
+    padding-top: 5px;
+    border-top: 1px solid var(--color-gold);
+  }
+}
+
+.preview-media-library {
+  padding: 16px;
+  border: 1px solid var(--color-gray);
+
+  // .preview-media-library__top
+  &__top {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  // .preview-media-library__info
+  &__info {
+    width: 100%;
+    max-width: 560px;
+  }
+
+  // .preview-media-library__footer
+  &__footer {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 14px;
+    color: var(--color-gray-dark);
+    white-space: nowrap;
+    border-top: 1px solid var(--color-gray);
+
+    div {
+      margin: 16px 30px 0px 0px;
+    }
+
+    i {
+      color: var(--color-gold);
     }
   }
 }
