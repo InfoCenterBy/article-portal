@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+    @@include('_head.html',{
+    "title":"Справочная информация"
+    })
+    <body>
+        <div class="wrapper">
+            @@include('_header.html',{})
+            <main class="page">
+                <nav aria-label="breadcrumb">
+                    <div class='container'>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="main.html"><i class="bi bi-house"></i></a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Справочная информация</li>
+                        </ol>
+                    </div>
+                </nav>
+                <section class="mt-4 mb-5">
+                    <div class='container'>
+                        <h1 class="h1 h1_gold">Справочная информация</h1>
+                        <a href="tax-calendar.html" class="card-link mb-4">
+                            <span class="card-link__row">
+                                <span class="card-link__icon">
+                                    <img class="img-fluid" src="./img/icons/icons-reference-information/icon-tax-calendar.svg" alt="Иконка">
+                                </span>
+                                <span class="card-link__content">
+                                    <span class="card-link__title">Налоговый календарь</span>
+                                    <span class="card-link__text">Календарь сроков уплаты юридическими лицами и индивидуальными предпринимателями налогов (сборов) и иных платежей, представления налоговых деклараций (расчетов) и иной отчетности</span>
+                                </span>
+                            </span>
+                            <span class="card-link__go">
+                                Перейти
+                                <i class="bi bi-arrow-right ms-2"></i>
+                            </span>
+                        </a>
+                        <a href="exchange-rates.html" class="card-link mb-4">
+                            <span class="card-link__row">
+                                <span class="card-link__icon">
+                                    <img class="img-fluid" src="./img/icons/icons-reference-information/icon-exchange-rates.svg" alt="Иконка">
+                                </span>
+                                <span class="card-link__content">
+                                    <span class="card-link__title">Курсы валют</span>
+                                    <span class="card-link__text">Курсы иностранных валют, установленные Национальным банком Республики Беларусь</span>
+                                </span>
+                            </span>
+                            <span class="card-link__go">
+                                Перейти
+                                <i class="bi bi-arrow-right ms-2"></i>
+                            </span>
+                        </a>
+                        <a href="basic-indicators.html" class="card-link mb-4">
+                            <span class="card-link__row">
+                                <span class="card-link__icon">
+                                    <img class="img-fluid" src="./img/icons/icons-reference-information/icon-basic-indicators.svg" alt="Иконка">
+                                </span>
+                                <span class="card-link__content">
+                                    <span class="card-link__title">Основные показатели</span>
+                                    <span class="card-link__text">Интерактивная таблица с актуальными данными об основных показателях </span>
+                                </span>
+                            </span>
+                            <span class="card-link__go">
+                                Перейти
+                                <i class="bi bi-arrow-right ms-2"></i>
+                            </span>
+                        </a>
+                        <a href="basic-taxes.html" class="card-link mb-4">
+                            <span class="card-link__row">
+                                <span class="card-link__icon">
+                                    <img class="img-fluid" src="./img/icons/icons-reference-information/icon-basic-taxes.svg" alt="Иконка">
+                                </span>
+                                <span class="card-link__content">
+                                    <span class="card-link__title">Основные налоги</span>
+                                    <span class="card-link__text">Интерактивная таблица с актуальными ставками налогов в Республике Беларусь</span>
+                                </span>
+                            </span>
+                            <span class="card-link__go">
+                                Перейти
+                                <i class="bi bi-arrow-right ms-2"></i>
+                            </span>
+                        </a>
+                    </div>
+                </section>
+            </main>
+            @@include('_footer.html',{})
+        </div>
+        @@include('_js.html',{})
+    </body>
+</html>

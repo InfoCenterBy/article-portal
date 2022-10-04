@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+    @@include('_head.html',{
+    "title":"Сервисы"
+    })
+    <body>
+        <div class="wrapper">
+            @@include('_header.html',{})
+            <main class="page">
+                <nav aria-label="breadcrumb">
+                    <div class='container'>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="main.html"><i class="bi bi-house"></i></a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Сервисы</li>
+                        </ol>
+                    </div>
+                </nav>
+                <section class="mt-4 mb-5">
+                    <div class='container'>
+                        <h1 class="h1 h1_gold">Сервисы</h1>
+                        <a href="question-answer.html" class="card-link mb-4">
+                            <span class="card-link__row">
+                                <span class="card-link__icon">
+                                    <img class="img-fluid" src="./img/icons/icons-services/icon-question-answer.svg" alt="Иконка">
+                                </span>
+                                <span class="card-link__content">
+                                    <span class="card-link__title">Вопрос-ответ</span>
+                                    <span class="card-link__text">Разборы актуальных тем и практических ситуаций от наших экспертов</span>
+                                </span>
+                            </span>
+                            <span class="card-link__go">
+                                Перейти
+                                <i class="bi bi-arrow-right ms-2"></i>
+                            </span>
+                        </a>
+                        <a href="media-library.html" class="card-link mb-4">
+                             <span class="card-link__row">
+                                <span class="card-link__icon">
+                                    <img class="img-fluid" src="./img/icons/icons-services/icon-media-library.svg" alt="Иконка">
+                                </span>
+                                <span class="card-link__content">
+                                    <span class="card-link__title">Медиатека</span>
+                                    <span class="card-link__text">Записи прямых эфиров для индивидуальных предпринимателей</span>
+                                </span>
+                            </span>
+                            <span class="card-link__go">
+                                Перейти
+                                <i class="bi bi-arrow-right ms-2"></i>
+                            </span>
+                        </a>
+                        <a href="webinars.html" class="card-link mb-4">
+                            <span class="card-link__row">
+                                <span class="card-link__icon">
+                                    <img class="img-fluid" src="./img/icons/icons-services/icon-webinars.svg" alt="Иконка">
+                                </span>
+                                <span class="card-link__content">
+                                    <span class="card-link__title">Вебинары</span>
+                                    <span class="card-link__text">Актуальная информация о предстоящих вебинарах</span>
+                                </span>
+                            </span>
+                            <span class="card-link__go">
+                                Перейти
+                                <i class="bi bi-arrow-right ms-2"></i>
+                            </span>
+                        </a>
+                    </div>
+                </section>
+            </main>
+            @@include('_footer.html',{})
+        </div>
+        @@include('_js.html',{})
+    </body>
+</html>
