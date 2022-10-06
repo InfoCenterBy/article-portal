@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+@@include('_head.html',{
+"title":"Задать вопрос"
+})
+<body>
+<div class="wrapper">
+    @@include('_header.html',{})
+    <main class="page">
+        <nav aria-label="breadcrumb">
+            <div class='container'>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="main.html"><i class="bi bi-house"></i></a></li>
+                    <li class="breadcrumb-item"><a href="services.html">Сервисы</a></li>
+                    <li class="breadcrumb-item"><a href="question-answer.html">Вопрос-ответ</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Задать вопрос</li>
+                </ol>
+            </div>
+        </nav>
+        <section class="article mb-5">
+            <div class='container'>
+                <div class="pt-4 pb-5">
+                    <h1 class="h1">Задать вопрос</h1>
+                    <div class="row g-5">
+                        <div class="col-lg-6">
+                            <div class="block-exclamation">
+                                <i class="bi bi-exclamation-circle"></i>
+                                <div class="block-exclamation__text">
+                                    <h5 class="h5">Увaжaeмый пoльзoвaтeль!</h5>
+                                    <p>Пepeд тeм кaк зaдaть cвoй вoпpoc, вocпoльзyйтecь пoиcкoм по сайту. Возможно, вы найдете ответ в опубликованных статьях или других ответах экспертов, уже опубликованных на сайте.</p>
+                                    <p>В случае, если вы не нашли ответ на свой вопрос, задайте его нам. Пocлe oтпpaвки вoпpoc пocтyпaет нa paccмoтpeниe в peдaкцию, гдe гoтoвятcя oтвeты нa самые популярные и актуальные из них.</p>
+                                    <p>Cpoки пoдгoтoвки oтвeтa зaвиcят oт cлoжнocти вопроса. Ответ на заданный вопрос будет размещен либо в рубрике "Вопрос - ответ", либо в качестве статьи, а также отправлен на адрес электронной почты пользователя, задавшего вопрос.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="input mb-4">
+                                <label for="email-registration">Email <span>*</span></label>
+                                <input type="text" id="email-registration" class="_email _required-registr" placeholder="Ваш email">
+                                <div class="input__text-error"><i class="bi bi-exclamation-triangle me-2"></i>Электронная почта не может быть пустой</div>
+                                <div class="input__text-error-email"><i class="bi bi-exclamation-triangle me-2"></i>Адрес электоронной почты должен заканчиваться на @**.**</div>
+                            </div>
+                            <div class="input mb-4">
+                                <label for="name">ФИО</label>
+                                <input type="text" id="name" class="_required" placeholder="Иванов Иван Иванович">
+                            </div>
+                            <div class="textarea mb-4">
+                                <label for="question">Вопрос <span>*</span></label>
+                                <textarea rows="6" cols="33" id="question" class="_required" placeholder="Иванов Иван Иванович"></textarea>
+                            </div>
+                            <div class="file-input mb-4">
+                                <div class="file-input__title">Прикрепить файл</div>
+                                <input type="file" accept=".jpg,.jpeg,.png,.docx,.txt,.pdf" id="file-input">
+                                <label for="file-input" class="file-input__label">
+                                    <span class="file-input__block file-input__block_front">
+                                         <i class="bi bi-download mb-2"></i>
+                                         <span>Размер не более 5Мб, расширение docx, txt, pdf, png, jpg</span>
+                                    </span>
+                                    <span class="file-input__block file-input__block_back d-none">
+                                        <i class="bi bi-check2-circle mb-2 color-gold"></i>
+                                        <span class="color-blue">{{ photo.name }}</span>
+                                        <button class="file-input__btn-remove" type="button" title="Удалить файл">
+                                            <i class="bi bi-x"></i>
+                                        </button>
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="mt-5 text-center">
+                                <button type="submit" id="" class="button button_empty">Отправить вопрос</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    @@include('_footer.html',{})
+</div>
+@@include('_js.html',{})
+</body>
+</html>
