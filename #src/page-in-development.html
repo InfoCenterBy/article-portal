@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+	@@include('_head.html',{
+	"title":"Страница находится в разработке"
+	})
+	<body>
+		<div class="wrapper">
+			@@include('_header.html',{})
+			<main class="page">
+				<section class="page-404">
+					<div class='container'>
+						<div class="text-center">
+							<div class="mb-5">
+								<img class="img-fluid" src="./img/page-in-development.gif" alt="page-in-development">
+							</div>
+							<div class="h1 h1_gold">Страница находится в разработке</div>
+							<div class="page-404__text mb-4">Приносим свои извинения, портал работает в тестовом режиме, поэтому некоторые функции могут работать некорректно</div>
+							<div>
+								<a href="index.html" class="button button_empty">На главную</a>
+							</div>
+						</div>
+					</div>
+				</section>
+			</main>
+			@@include('_footer.html',{})
+		</div>
+		@@include('_js.html',{})
+	</body>
+</html>

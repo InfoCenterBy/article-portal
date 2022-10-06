@@ -72,6 +72,7 @@
                             <li><a href="#article-header">Шапка статьи</a></li>
                             <li><a href="#elements-webinar">Карточка вебинара</a></li>
                             <li><a href="#elements-notification">Элементы уведомлений</a></li>
+                            <li><a href="#modals">Модальные окна</a></li>
                             <li><a href="#elements-article">Элементы статьи</a>
                                 <ul class="mt-2 ps-3">
                                     <li><a href="#subtitle-1">Подзаголовок первого уровня</a></li>
@@ -592,6 +593,119 @@
                                     <li><a href="#" class="list-hashtag__hashtag">#УСН</a></li>
                                     <li><a href="#" class="list-hashtag__hashtag">#Государственное регулирование</a></li>
                                 </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="modals">
+                        <h2>Модальные окна</h2>
+                        <div class="mb-3">
+                            <a data-bs-toggle="modal" href="#deleteArticleModalToggle" class="button w-100" title="Добавить в закладки">
+                                Удалить статью
+                            </a>
+                            <div class="modal fade" id="deleteArticleModalToggle" aria-hidden="true" aria-labelledby="modalToggleLabel" tabindex="-1">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-confirm modal-content">
+                                        <div class="d-flex aligh-items-flex-end">
+                                            <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-confirm__body">
+                                            <div class="modal-confirm__icon"><i class="bi bi-trash"></i></div>
+                                            <h5 class="h5">Вы уверены, что вы хотите удалить выбранную статью?</h5>
+                                            <div class="d-flex align-items-center">
+                                                <button type="button" class="button button_empty" data-bs-dismiss="modal" aria-label="Close">Нет</button>
+                                                <button class="ms-3 button" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Да</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <a data-bs-toggle="modal" href="#selectArticleModalToggle" class="button w-100" title="Добавить в закладки">
+                                Выбранная статья успешно удалена
+                            </a>
+                            <div class="modal fade" id="selectArticleModalToggle" aria-hidden="true" aria-labelledby="ModalToggleLabel2" tabindex="-1">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-confirm modal-content">
+                                        <div class="d-flex aligh-items-flex-end">
+                                            <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-confirm__body">
+                                            <div class="modal-confirm__icon"><i class="bi bi-check-circle"></i></div>
+                                            <h5 class="h5">Выбранная статья успешно удалена</h5>
+                                            <button type="button" class="button w-100" data-bs-dismiss="modal" aria-label="Close">Вернуться в Избранное</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <a data-bs-toggle="modal" href="#addToBookmarksModalToggle" class="button w-100" title="Добавить в закладки">
+                                Добавить в закладки (если не авторизован)
+                            </a>
+                            <div class="modal fade" id="addToBookmarksModalToggle" aria-hidden="true" aria-labelledby="modalToggleLabel" tabindex="-1">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-confirm modal-content">
+                                        <div class="d-flex aligh-items-flex-end">
+                                            <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-confirm__body">
+                                            <div class="modal-confirm__icon"><i class="bi bi-bookmark-plus"></i></div>
+                                            <h5 class="h5">Оставлять вопросы могут только авторизованные пользователи с активной подпиской</h5>
+                                            <div>
+                                                <a href="login.html" class="button">Войти</a>
+                                            </div>
+                                            <div class="mt-3">
+                                                Еще нет аккаунта? <a href="login.html" class="link link_blue-light">Зарегистрируйтесь</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <a data-bs-toggle="modal" href="#askQuestionNotAuthorizedModalToggle" class="button w-100">
+                                Задать вопрос (если не авторизован)
+                            </a>
+                            <div class="modal fade" id="askQuestionNotAuthorizedModalToggle" aria-hidden="true" aria-labelledby="modalToggleLabel" tabindex="-1">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-confirm modal-content">
+                                        <div class="d-flex aligh-items-flex-end">
+                                            <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-confirm__body">
+                                            <div class="modal-confirm__icon"><i class="bi bi-chat-left-text"></i></div>
+                                            <h5 class="h5">Добавлять статьи в закладки могут только авторизованные пользователи. Пожалуйста, авторизуйтесь или зарегистрируйтесь</h5>
+                                            <div>
+                                                <a href="login.html" class="button">Войти</a>
+                                            </div>
+                                            <div class="mt-3">
+                                                Еще нет аккаунта? <a href="login.html" class="link link_blue-light">Зарегистрируйтесь</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <a data-bs-toggle="modal" href="#askQuestionWithoutSubscriptionModalToggle" class="button w-100">
+                                Задать вопрос (если авторизован, но нет подписки)
+                            </a>
+                            <div class="modal fade" id="askQuestionWithoutSubscriptionModalToggle" aria-hidden="true" aria-labelledby="modalToggleLabel" tabindex="-1">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-confirm modal-content">
+                                        <div class="d-flex aligh-items-flex-end">
+                                            <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-confirm__body">
+                                            <div class="modal-confirm__icon"><i class="bi bi-book"></i></div>
+                                            <h5 class="h5">Оставлять вопросы могут только пользователи с активной подпиской</h5>
+                                            <div>
+                                                <a href="subscription.html" class="button">Оформить подписку</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

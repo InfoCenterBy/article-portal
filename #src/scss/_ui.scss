@@ -1208,22 +1208,33 @@
 }
 
 .modal-confirm {
-  padding: 32px;
+  padding: 24px;
   background-color: var(--color-white);
   border-radius: 0px;
-  border: none;
+  border: 1px solid var(--color-gray);
+  box-shadow: 2px 8px 16px rgba(60, 60, 60, 0.12);
 
   // .modal-confirm__body
   &__body {
+    text-align: center;
+  }
+
+  // .modal-confirm__icon
+  &__icon {
+    margin: 0px 0px 16px 0px;
+
     i {
       font-size: 54px;
       color: var(--color-gold);
     }
   }
 
-  // .modal-confirm__footer
-  &__footer {
+  @media (max-width: $md4+px) {
+    padding: 16px;
+  }
 
+  .btn-close:focus {
+    box-shadow: none;
   }
 }
 

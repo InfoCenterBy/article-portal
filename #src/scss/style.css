@@ -1169,15 +1169,31 @@ body._lock {
 }
 
 .modal-confirm {
-  padding: 32px;
+  padding: 24px;
   background-color: var(--color-white);
   border-radius: 0px;
-  border: none;
+  border: 1px solid var(--color-gray);
+  box-shadow: 2px 8px 16px rgba(60, 60, 60, 0.12);
 }
-.modal-confirm__body i {
+.modal-confirm__body {
+  text-align: center;
+}
+.modal-confirm__icon {
+  margin: 0px 0px 16px 0px;
+}
+.modal-confirm__icon i {
   font-size: 54px;
   color: var(--color-gold);
 }
+@media (max-width: 576px) {
+  .modal-confirm {
+    padding: 16px;
+  }
+}
+.modal-confirm .btn-close:focus {
+  box-shadow: none;
+}
+
 .item-subscription {
   border: 1px solid var(--color-gray);
   background-color: rgba(209, 210, 212, 0.2);
