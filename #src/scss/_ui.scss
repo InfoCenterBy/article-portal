@@ -156,6 +156,14 @@
       background-color: var(--color-gold);
     }
   }
+
+  &_blue-light {
+    background-color: var(--color-blue-light);
+
+    &:hover {
+      background-color: rgba(3, 74, 102, 0.5);
+    }
+  }
 }
 
 .button-small {
@@ -731,12 +739,6 @@
 }
 
 .nav-links {
-
-  // .list-links__wrapper
-  &__wrapper {
-
-  }
-
   // .list-links__link
   &__link {
     display: block;
@@ -1046,8 +1048,6 @@
 
 .nav-tab {
   border-bottom: 1px solid var(--color-gray);
-
-
   // .nav-tab_news
   &_news {
     .nav-tab__wrapper {
@@ -1063,6 +1063,124 @@
 
       &__item {
         white-space: nowrap;
+      }
+    }
+  }
+
+  &_step {
+    padding: 30px;
+    border: none;
+    background-color: #faf9fa;
+    box-shadow: inset 0px -1px 0px #E3E8EE;
+
+    .nav-tab__wrapper {
+      margin: 0 auto;
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+    }
+
+    .nav-tab__button {
+      flex: 0 1 33.333%;
+      padding: 24px;
+      margin: 0 auto;
+      color: var(--color-gray-dark);
+      border-top: 1px solid var(--color-gray);
+      border-bottom: 1px solid var(--color-gray);
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+
+      &:not(:last-child) {
+        margin: 0px;
+      }
+
+      &:first-child {
+        border-left: 1px solid var(--color-gray);
+
+        &:before {
+          display: none;
+        }
+      }
+
+      &:last-child {
+        border-right: 1px solid var(--color-gray);
+
+        &:after {
+          display: none;
+        }
+      }
+      &:before,
+      &:after {
+        content: " ";
+        width: 45px;
+        height: 45px;
+        background: inherit;
+        border-top: 1px solid var(--color-gray);
+        border-right: 1px solid var(--color-gray);
+        transform: rotate(45deg) skew(25deg, 25deg);
+        position: absolute;
+        top: 23px;
+      }
+
+      &:before {
+        left: -23px;
+      }
+
+      &:after {
+        right: -23px;
+      }
+
+      &.active,
+      &:hover {
+        &:first-child,
+        &:last-child {
+          border-color: var(--color-gold);
+        }
+        &:before,
+        &:after {
+          border-color: var(--color-gold);
+        }
+      }
+
+      .title {
+        font-size: 18px;
+        font-weight: 600;
+      }
+
+      .subtitle {
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: $md2+px) {
+      padding: 16px;
+
+      .nav-tab__wrapper {
+        gap: 12px;
+      }
+
+      .nav-tab__button {
+        padding: 12px 24px;
+
+        &:before,
+        &:after {
+          content: " ";
+          width: 35px;
+          height: 35px;
+          position: absolute;
+          top: 16px;
+        }
+
+        &:before {
+          left: -17px;
+        }
+
+        &:after {
+          right: -17px;
+        }
       }
     }
   }
@@ -1117,6 +1235,38 @@
   }
 }
 
+.tab-content-step {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 1200px;
+
+  // .tab-content-step__check-icon
+  &__check-icon {
+    font-size: 145px;
+    color: var(--color-gold);
+  }
+
+  // .tab-content-step__check-icon
+  &__lock-icon {
+    font-size: 85px;
+    color: var(--color-gold);
+  }
+
+  // .tab-content-step__wrapper
+  &__wrapper {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 710px;
+
+    // .tab-content-step__wrapper_small
+    &_small {
+      max-width: 410px;
+    }
+  }
+}
+
+
 .last-webinar {
   display: flex;
   
@@ -1137,7 +1287,7 @@
 .item-webinar {
   display: flex;
   padding: 25px 25px 25px 15px;
-  border: 1px solid var(--color-gray-dark);
+  border: 1px solid var(--color-gray);
   font-size: 16px;
   color: var(--color-gray-dark);
 
@@ -1766,7 +1916,7 @@
 }
 
 .block-exclamation {
-  padding: 15px 15px 15px 30px;
+  padding: 24px 24px 0px 30px;
   border-left: 4px solid var(--color-gold);
   background-color: #FAF9FA;
   display: flex;
@@ -1778,7 +1928,7 @@
   }
 
   @media (max-width: $md4+px) {
-    padding: 15px;
+    padding: 15px 15px 0px 15px;
     flex-direction: column;
 
     i {
