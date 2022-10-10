@@ -4705,6 +4705,35 @@ td.vertical-bottom {
   margin: 0 auto;
 }
 
+.item-contact__title {
+  margin-bottom: 10px;
+}
+
+.item-contact__info a {
+  font-size: 16px;
+  color: var(--color-black);
+}
+
+.item-contact__info a:hover {
+  opacity: 0.5;
+}
+
+.item-contact__info div:not(:last-child) {
+  margin: 0px 0px 8px 0px;
+}
+
+.contacts-map {
+  height: 100%;
+  position: relative;
+}
+
+.contacts-map iframe {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+}
+
 @media (min-width: 768px) {
   .submenu-footer li {
     margin: 0px 0px 10px 0px;
@@ -5022,6 +5051,10 @@ td.vertical-bottom {
 
   .login__capabilities {
     display: none;
+  }
+
+  .contacts-map {
+    padding: 50% 0px 0px 0px;
   }
 }
 
