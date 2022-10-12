@@ -234,7 +234,7 @@
                                         Количество единиц иностранной валюты, буквенный код валюты
                                     </td>
                                     <td>
-                                        Официальный курс
+                                        Официальный курс, (BYN)
                                     </td>
                                 </tr>
                             </thead>
@@ -346,7 +346,6 @@
               "https://www.nbrb.by/api/exrates/rates?periodicity=0"
             );
             let exchangeRates = await response.json();
-            console.log(exchangeRates);
             showDate(exchangeRates[0].Date);
             createListExchangeRates(exchangeRates);
             return exchangeRates;
