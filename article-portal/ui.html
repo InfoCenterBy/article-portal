@@ -21,7 +21,7 @@
     <style>
         .ui-header {
             color: #ffffff;
-            background-color: #034A66;
+            background-color: #818181;
         }
         .ui-sidebar {
             flex: 0 0 300px;
@@ -62,7 +62,7 @@
         <main class="page">
             <div class="ui-header d-flex align-items-center p-3">
                 <a href="index.html" class="logo">
-                    <img class="img-fluid" src="./img/logo.png" alt="">
+                    <img class="img-fluid" src="./img/logo_nalog.png" alt="">
                 </a>
                 <h1 class="fs-1 font-bold text-center flex-grow-1">UI ПОРТАЛА</h1>
             </div>
@@ -121,61 +121,23 @@
                 <div class="ui-content flex-grow-1">
                     <div id="toast">
                         <h2>Всплывающие окна (Toast)</h2>
-                        <div>
-                            <button type="button" class="h6 toast-button" data-class="toast-success">Toast Success</button>
-                            <div class="toast-container position-fixed bottom-0 end-0 p-3 p-md-4">
-                                <div class="toast toast-basic toast-success" role="alert" aria-live="assertive" aria-atomic="true">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="h6 h6_white m-0 d-flex align-items-center">
-                                            <i class="bi bi-check2-circle color-green me-3"></i>
-                                            Успешно сохранено
-                                        </div>
-                                        <button type="button" class="toast-basic__close" data-bs-dismiss="toast" aria-label="Close"><i class="bi bi-x"></i></button>
+                        <div class="toast-container position-fixed bottom-0 end-0 p-3 p-md-4">
+                            <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="h6 h6_white m-0 d-flex align-items-center">
+                                        <i class=""></i>
+                                        <div class="toast-text"></div>
                                     </div>
+                                    <button type="button" class="toast-basic__close" data-bs-dismiss="toast" aria-label="Close"><i class="bi bi-x"></i></button>
                                 </div>
                             </div>
                         </div>
                         <div>
-                            <button type="button" class="h6 toast-button" data-class="toast-fail">Toast Fail</button>
-                            <div class="toast-container position-fixed bottom-0 end-0 p-3 p-md-4">
-                                <div class="toast toast-basic toast-fail" role="alert" aria-live="assertive" aria-atomic="true">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="h6 h6_white m-0 d-flex align-items-center">
-                                            <i class="bi bi-exclamation-triangle color-red me-3"></i>
-                                            Не удалось сохранить
-                                        </div>
-                                        <button type="button" class="toast-basic__close" data-bs-dismiss="toast" aria-label="Close"><i class="bi bi-x"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <button type="button" class="h6 toast-button" data-class="toast-attention">Toast Attention</button>
-                            <div class="toast-container position-fixed bottom-0 end-0 p-3 p-md-4">
-                                <div class="toast toast-basic toast-attention" role="alert" aria-live="assertive" aria-atomic="true">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="h6 h6_white m-0 d-flex align-items-center">
-                                            <i class="bi bi-exclamation-circle color-orange me-3"></i>
-                                            Внимание
-                                        </div>
-                                        <button type="button" class="toast-basic__close" data-bs-dismiss="toast" aria-label="Close"><i class="bi bi-x"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <button type="button" class="h6 toast-button" data-class="toast-info">Toast Info</button>
-                            <div class="toast-container position-fixed bottom-0 end-0 p-3 p-md-4">
-                                <div class="toast toast-basic toast-info" role="alert" aria-live="assertive" aria-atomic="true">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="h6 h6_white m-0 d-flex align-items-center">
-                                            <i class="bi bi-info-circle color-indigo me-3"></i>
-                                            Информация
-                                        </div>
-                                        <button type="button" class="toast-basic__close" data-bs-dismiss="toast" aria-label="Close"><i class="bi bi-x"></i></button>
-                                    </div>
-                                </div>
-                            </div>
+                            <button type="button" class="h6 toast-button w-100 mb-3" onclick="showToast('Успешно сохранено', 'success')">Toast Success</button>
+                            <button type="button" class="h6 toast-button w-100 mb-3" onclick="showToast('Не удалось сохранить', 'fail')">Toast Fail</button>
+                            <button type="button" class="h6 toast-button w-100 mb-3" onclick="showToast('Внимание', 'attention')">Toast Attention</button>
+                            <button type="button" class="h6 toast-button w-100 mb-3" onclick="showToast('Информация')">Toast Info</button>
+
                         </div>
                     </div>
                     <div id="breadcrumb">
@@ -612,112 +574,34 @@
                     </div>
                     <div id="modals">
                         <h2>Модальные окна</h2>
-                        <div class="mb-3">
-                            <a data-bs-toggle="modal" href="#deleteArticleModalToggle" class="button w-100" title="Добавить в закладки">
-                                Удалить статью
-                            </a>
-                            <div class="modal fade" id="deleteArticleModalToggle" aria-hidden="true" aria-labelledby="modalToggleLabel" tabindex="-1">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-confirm modal-content">
-                                        <div class="d-flex aligh-items-flex-end">
-                                            <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-confirm__body">
-                                            <div class="modal-confirm__icon"><i class="bi bi-trash"></i></div>
-                                            <h5 class="h5">Вы уверены, что вы хотите удалить выбранную статью?</h5>
-                                            <div class="d-flex align-items-center">
-                                                <button type="button" class="button button_empty" data-bs-dismiss="modal" aria-label="Close">Нет</button>
-                                                <button class="ms-3 button" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Да</button>
-                                            </div>
-                                        </div>
+                        <button type="button" onclick="showModal('Вы уверены, что вы хотите удалить выбранную статью?', 'delete')" class="button w-100 mb-3" title="Добавить в закладки">
+                            Удалить статью
+                        </button>
+                        <button type="button" onclick="showModal('Выбранная статья успешно удалена', 'delete-success')" class="button w-100 mb-3">
+                            Выбранная статья успешно удалена
+                        </button>
+                        <button type="button" onclick="showModal('Добавлять статьи в закладки могут только авторизованные пользователи. Пожалуйста, авторизуйтесь или зарегистрируйтесь', 'add-bookmarks')" class="button w-100 mb-3">
+                            Добавить в закладки (если не авторизован)
+                        </button>
+                        <button type="button" onclick="showModal('Оставлять вопросы могут только авторизованные пользователи с активной подпиской', 'ask-question-login')" class="button w-100 mb-3">
+                            Задать вопрос (если не авторизован)
+                        </button>
+                        <button type="button" onclick="showModal('Оставлять вопросы могут только пользователи с активной подпиской', 'ask-question-subscription')" class="button w-100 mb-3">
+                            Задать вопрос (если авторизован, но нет подписки)
+                        </button>
+                        <button type="button" onclick="showModal('Какой-то текст')" class="button w-100 mb-3">
+                            Default
+                        </button>
+                        <div class="modal fade" id="deleteArticleModalToggle" aria-hidden="true" aria-labelledby="modalToggleLabel" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-confirm modal-content">
+                                    <div class="d-inline-flex aligh-items-flex-end">
+                                        <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <a data-bs-toggle="modal" href="#selectArticleModalToggle" class="button w-100" title="Добавить в закладки">
-                                Выбранная статья успешно удалена
-                            </a>
-                            <div class="modal fade" id="selectArticleModalToggle" aria-hidden="true" aria-labelledby="ModalToggleLabel2" tabindex="-1">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-confirm modal-content">
-                                        <div class="d-flex aligh-items-flex-end">
-                                            <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-confirm__body">
-                                            <div class="modal-confirm__icon"><i class="bi bi-check-circle"></i></div>
-                                            <h5 class="h5">Выбранная статья успешно удалена</h5>
-                                            <button type="button" class="button w-100" data-bs-dismiss="modal" aria-label="Close">Вернуться в Избранное</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <a data-bs-toggle="modal" href="#addToBookmarksModalToggle" class="button w-100" title="Добавить в закладки">
-                                Добавить в закладки (если не авторизован)
-                            </a>
-                            <div class="modal fade" id="addToBookmarksModalToggle" aria-hidden="true" aria-labelledby="modalToggleLabel" tabindex="-1">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-confirm modal-content">
-                                        <div class="d-flex aligh-items-flex-end">
-                                            <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-confirm__body">
-                                            <div class="modal-confirm__icon"><i class="bi bi-bookmark-plus"></i></div>
-                                            <h5 class="h5">Оставлять вопросы могут только авторизованные пользователи с активной подпиской</h5>
-                                            <div>
-                                                <a href="login.html" class="button">Войти</a>
-                                            </div>
-                                            <div class="mt-3">
-                                                Еще нет аккаунта? <a href="login.html" class="link link_blue-light">Зарегистрируйтесь</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <a data-bs-toggle="modal" href="#askQuestionNotAuthorizedModalToggle" class="button w-100">
-                                Задать вопрос (если не авторизован)
-                            </a>
-                            <div class="modal fade" id="askQuestionNotAuthorizedModalToggle" aria-hidden="true" aria-labelledby="modalToggleLabel" tabindex="-1">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-confirm modal-content">
-                                        <div class="d-flex aligh-items-flex-end">
-                                            <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-confirm__body">
-                                            <div class="modal-confirm__icon"><i class="bi bi-chat-left-text"></i></div>
-                                            <h5 class="h5">Добавлять статьи в закладки могут только авторизованные пользователи. Пожалуйста, авторизуйтесь или зарегистрируйтесь</h5>
-                                            <div>
-                                                <a href="login.html" class="button">Войти</a>
-                                            </div>
-                                            <div class="mt-3">
-                                                Еще нет аккаунта? <a href="login.html" class="link link_blue-light">Зарегистрируйтесь</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <a data-bs-toggle="modal" href="#askQuestionWithoutSubscriptionModalToggle" class="button w-100">
-                                Задать вопрос (если авторизован, но нет подписки)
-                            </a>
-                            <div class="modal fade" id="askQuestionWithoutSubscriptionModalToggle" aria-hidden="true" aria-labelledby="modalToggleLabel" tabindex="-1">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-confirm modal-content">
-                                        <div class="d-flex aligh-items-flex-end">
-                                            <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-confirm__body">
-                                            <div class="modal-confirm__icon"><i class="bi bi-book"></i></div>
-                                            <h5 class="h5">Оставлять вопросы могут только пользователи с активной подпиской</h5>
-                                            <div>
-                                                <a href="subscription.html" class="button">Оформить подписку</a>
-                                            </div>
-                                        </div>
+                                    <div class="modal-confirm__body">
+                                        <div class="modal-confirm__icon"><i class=""></i></div>
+                                        <h5 class="h5 modal-confirm__title"></h5>
+                                        <div class="modal-confirm__info"></div>
                                     </div>
                                 </div>
                             </div>
@@ -1881,12 +1765,107 @@
             </div>
         </main>
     </div>
-<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
 <script src="js/script.min.js"></script>
+    <script>
+        // TOAST
+        const showToast = (message, type = 'default') => {
+            let toastItem = document.querySelector('.toast');
+            let myToast = bootstrap.Toast.getOrCreateInstance(toastItem);
+            let toastI = toastItem.querySelector('i');
+            let messageDiv = document.querySelector('.toast-text');
+
+            messageDiv.innerHTML = message;
+
+            switch (type) {
+                case 'success':
+                    toastItem.className = 'toast toast-basic toast-success';
+                    toastI.className    = 'bi bi-check2-circle color-green me-3';
+                    break;
+                case 'fail':
+                    console.log('success12');
+                    toastItem.className = 'toast toast-basic toast-fail';
+                    toastI.className    = 'bi bi-exclamation-triangle color-red me-3';
+                    break;
+                case 'attention':
+                    toastItem.className = 'toast toast-basic toast-attention';
+                    toastI.className    = 'bi bi-exclamation-circle color-orange me-3';
+                    break;
+                default:
+                    toastItem.className = 'toast toast-basic toast-info';
+                    toastI.className    = 'bi bi-info-circle color-indigo me-3';
+                    break
+            }
+
+            myToast.show();
+        }
+        // MODAL
+        const showModal = (message, type = 'default') => {
+            let modalItem = document.querySelector('.modal');
+            let myModal = bootstrap.Modal.getOrCreateInstance(modalItem);
+            let modalIcon = modalItem.querySelector('i');
+            let messageDiv = document.querySelector('.modal-confirm__title');
+            let modalInfo = modalItem.querySelector('.modal-confirm__info');
+
+            messageDiv.innerHTML = message;
+
+            switch (type) {
+                case 'delete':
+                    modalIcon.className = 'bi bi-trash';
+                    modalInfo.innerHTML = `<div class="d-flex align-items-center">
+                                          <button type="button" class="button button_empty" data-bs-dismiss="modal" aria-label="Close">
+                                            Нет
+                                          </button>
+                                          <button type="button" class="ms-3 button" onclick="showModal('Выбранная статья успешно удалена', 'delete-success')">
+                                            Да
+                                          </button>
+                                        </div>`;
+                    break;
+                case 'delete-success':
+                    modalInfo.innerHTML = `<div class="d-flex align-items-center">
+                                          <button type="button" class="button w-100" data-bs-dismiss="modal" aria-label="Close">
+                                            Вернуться в Избранное
+                                          </button>
+                                        </div>`;
+                    modalIcon.className = 'bi bi-check-circle';
+                    break;
+                case 'add-bookmarks':
+                    modalInfo.innerHTML = `<div class="d-flex align-items-center">
+                                          <a href="login.html" class="button">Войти</a>
+                                        </div>
+                                        <div class="mt-3">
+                                           Еще нет аккаунта? <a href="login.html" class="link link_blue-light">Зарегистрируйтесь</a>
+                                        </div>`;
+                    modalIcon.className = 'bi bi-bookmark-plus';
+                    break;
+                case 'ask-question-login':
+                    modalInfo.innerHTML = `<div class="d-flex align-items-center">
+                                          <a href="login.html" class="button">Войти</a>
+                                        </div>
+                                        <div class="mt-3">
+                                            Еще нет аккаунта? <a href="login.html" class="link link_blue-light">Зарегистрируйтесь</a>
+                                        </div>`;
+                    modalIcon.className = 'bi bi-chat-left-text';
+                    break;
+                case 'ask-question-subscription':
+                    modalInfo.innerHTML = `<div class="d-flex align-items-center">
+                                          <a href="subscription.html" class="button">Оформить подписку</a>
+                                        </div>`;
+                    modalIcon.className = 'bi bi-book';
+                    break;
+                default:
+                    modalInfo.innerHTML = '';
+                    modalIcon.className = 'bi bi-check-lg';
+                break
+            }
+
+            myModal.show();
+        }
+    </script>
 </body>
 </html>

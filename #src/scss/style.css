@@ -4458,4 +4458,10 @@ td.vertical-bottom {
   }
 }
 
+.list-exchange-rates img {
+  margin-right: 20px;
+  max-width: 30px;
+  height: auto;
+}
+
 /*# sourceMappingURL=style.css.map */

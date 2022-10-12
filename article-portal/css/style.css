@@ -4734,6 +4734,12 @@ td.vertical-bottom {
   inset: 0;
 }
 
+.list-exchange-rates img {
+  margin-right: 20px;
+  max-width: 30px;
+  height: auto;
+}
+
 @media (min-width: 768px) {
   .submenu-footer li {
     margin: 0px 0px 10px 0px;
