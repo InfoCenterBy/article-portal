@@ -1797,7 +1797,7 @@
             switch (type) {
                 case 'delete':
                     modalIcon.className = 'bi bi-trash';
-                    modalInfo.innerHTML = `<div class="d-flex align-items-center">
+                    modalInfo.innerHTML = `<div class="d-flex justify-content-center align-items-center">
                                           <button type="button" class="button button_empty" data-bs-dismiss="modal" aria-label="Close">
                                             Нет
                                           </button>
@@ -1807,7 +1807,7 @@
                                         </div>`;
                     break;
                 case 'delete-success':
-                    modalInfo.innerHTML = `<div class="d-flex align-items-center">
+                    modalInfo.innerHTML = `<div class="d-flex justify-content-center align-items-center">
                                           <button type="button" class="button w-100" data-bs-dismiss="modal" aria-label="Close">
                                             Вернуться в Избранное
                                           </button>
@@ -1815,7 +1815,7 @@
                     modalIcon.className = 'bi bi-check-circle';
                     break;
                 case 'add-bookmarks':
-                    modalInfo.innerHTML = `<div class="d-flex align-items-center">
+                    modalInfo.innerHTML = `<div class="d-flex justify-content-center align-items-center">
                                           <a href="login.html" class="button">Войти</a>
                                         </div>
                                         <div class="mt-3">
@@ -1824,7 +1824,7 @@
                     modalIcon.className = 'bi bi-bookmark-plus';
                     break;
                 case 'ask-question-login':
-                    modalInfo.innerHTML = `<div class="d-flex align-items-center">
+                    modalInfo.innerHTML = `<div class="d-flex justify-content-center align-items-center">
                                           <a href="login.html" class="button">Войти</a>
                                         </div>
                                         <div class="mt-3">
@@ -1833,7 +1833,7 @@
                     modalIcon.className = 'bi bi-chat-left-text';
                     break;
                 case 'ask-question-subscription':
-                    modalInfo.innerHTML = `<div class="d-flex align-items-center">
+                    modalInfo.innerHTML = `<div class="d-flex justify-content-center align-items-center">
                                           <a href="subscription.html" class="button">Оформить подписку</a>
                                         </div>`;
                     modalIcon.className = 'bi bi-book';
