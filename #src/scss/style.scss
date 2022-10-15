@@ -557,3 +557,22 @@ body {
     height: auto;
   }
 }
+
+.blank-notifications {
+  @include adaptiv-value("padding-top", 40, 10, 1);
+  @include adaptiv-value("padding-bottom", 30, 0, 1);
+  text-align: center;
+  // .blank-notifications__icon
+  &__icon {
+    @include adaptiv-value("margin-bottom", 48px, 24px, 0);
+    font-size: 110px;
+    color: var(--color-gray);
+  }
+
+  // .blank-notifications__text
+  &__text {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}

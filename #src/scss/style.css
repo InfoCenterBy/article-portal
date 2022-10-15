@@ -4464,4 +4464,30 @@ td.vertical-bottom {
   height: auto;
 }
 
+.blank-notifications {
+  padding-top: 40px;
+  padding-bottom: 30px;
+  text-align: center;
+}
+@media (max-width: 1520px) {
+  .blank-notifications {
+    padding-top: calc(10px + 30 * ((100vw - 320px) / 1200));
+  }
+}
+@media (max-width: 1520px) {
+  .blank-notifications {
+    padding-bottom: calc(0px + 30 * ((100vw - 320px) / 1200));
+  }
+}
+.blank-notifications__icon {
+  margin-bottom: calc(24pxpx + 24px * ((100vw - 320px) / 1600));
+  font-size: 110px;
+  color: var(--color-gray);
+}
+.blank-notifications__text {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
 /*# sourceMappingURL=style.css.map */
