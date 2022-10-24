@@ -102,10 +102,6 @@ a:hover {
   text-decoration: none;
 }
 
-ul li {
-  list-style: none;
-}
-
 img {
   vertical-align: top;
 }
@@ -885,6 +881,10 @@ body._lock {
       flex-wrap: wrap;
 }
 
+.list-hashtag li {
+  list-style: none;
+}
+
 .list-hashtag__hashtag {
   display: block;
   margin: 0px 16px 16px 0px;
@@ -1569,6 +1569,7 @@ body._lock {
 }
 
 .item-notification ul li {
+  list-style: none;
   font-size: 10px;
   color: var(--color-gray-dark);
 }
@@ -1701,10 +1702,6 @@ body._lock {
 
 .media-library__head {
   border-bottom: 1px solid var(--color-gold);
-}
-
-.media-library__content ul li {
-  list-style-type: disc;
 }
 
 .media-library__content ul li:not(:last-child),
@@ -3255,6 +3252,7 @@ td.vertical-bottom {
 }
 
 .submenu-footer li {
+  list-style: none;
   margin: 0px 0px 24px 0px;
 }
 
@@ -4765,7 +4763,6 @@ td.vertical-bottom {
 }
 
 .circulation__info ul li {
-  list-style: disc;
   font-weight: 600;
 }
 
