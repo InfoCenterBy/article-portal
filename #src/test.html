@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+@@include('_head.html',{
+"title":"Информационно-аналитическая база"
+})
+<body class="bg-blue">
+<style>
+    .index-header {
+        color: #ffffff;
+        background-color: #818181;
+    }
+    .bg-blue {
+        background-color: #034A66;
+    }
+    .item-link {
+        display: inline-block;
+        padding: 10px;
+        font-size: 24px;
+        font-weight: 600;
+        color: #c47a2c;
+        box-shadow: 0.5rem .5rem 1rem rgba(0, 0, 0, .15);
+    }
+    .item-link:hover {
+        color: #f9b974;
+        box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, .3);
+    }
+    .typetitle {
+        margin-bottom: 35px;
+        font-size: 60px;
+        color: #ffffff;
+    }
+    .cursor {
+        display: inline-block;
+        background-color: #ccc;
+        margin-left: 0.1rem;
+        width: 3px;
+        animation: blink 1s infinite;
+    }
+    .cursor.typing {
+        animation: none;
+    }
+    @keyframes blink {
+        0%  { background-color: #ccc; }
+        49% { background-color: #ccc; }
+        50% { background-color: transparent; }
+        99% { background-color: transparent; }
+        100%  { background-color: #ccc; }
+    }
+</style>
+<div class="wrapper">
+    <main class="page">
+        <div class="index-header d-flex align-items-center p-3 mb-4">
+            <a href="index.html" class="logo">
+                <img class="img-fluid" src="./img/logo_padatak.png" alt="Логотип">
+            </a>
+            <h1 class="fs-1 font-bold text-center flex-grow-1">Структура сайта "Портала"</h1>
+        </div>
+        <section class="">
+            <div class='container'>
+                <h2 class="typetitle"><span class="typed-text"></span><span class="cursor">&nbsp;</span></h2>
+            </div>
+        </section>
+    </main>
+</div>
+@@include('_js.html',{})
+<script>
+    const typedTextSpan = document.querySelector(".typed-text");
+    const cursorSpan = document.querySelector(".cursor");
+
+    const textArray = ["Структура сайта \"Портала\"", "Информационно-аналитическая база"];
+    const typingDelay = 100;
+    const erasingDelay = 50;
+    const newTextDelay = 1500; // Delay between current and next text
+    let textArrayIndex = 0;
+    let charIndex = 0;
+
+    function type() {
+        if (charIndex < textArray[textArrayIndex].length) {
+            if(!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+            typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+            charIndex++;
+            setTimeout(type, typingDelay);
+        }
+        else {
+            cursorSpan.classList.remove("typing");
+            setTimeout(erase, newTextDelay);
+        }
+    }
+
+    function erase() {
+        if (charIndex > 0) {
+            if(!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+            typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex-1);
+            charIndex--;
+            setTimeout(erase, erasingDelay);
+        }
+        else {
+            cursorSpan.classList.remove("typing");
+            textArrayIndex++;
+            if(textArrayIndex>=textArray.length) textArrayIndex=0;
+            setTimeout(type, typingDelay + 1100);
+        }
+    } 
+
+    document.addEventListener("DOMContentLoaded", function() { // On DOM Load initiate the effect
+        if(textArray.length) setTimeout(type, newTextDelay + 250);
+    });
+</script>
+</body>
+</html>

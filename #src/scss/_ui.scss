@@ -798,6 +798,10 @@
   display: flex;
   flex-wrap: wrap;
 
+  li {
+    list-style: none;
+  }
+
   // .list-hashtag__hashtag
   &__hashtag {
     display: block;
@@ -1527,6 +1531,7 @@
     flex-wrap: wrap;
 
     li {
+      list-style: none;
       font-size: 10px;
       color: var(--color-gray-dark);
 
@@ -1724,9 +1729,6 @@
   }
   // .media-library__content
   &__content {
-    ul li {
-      list-style-type: disc;
-    }
     ul, ol {
       li:not(:last-child) {
           margin: 0px 0px 8px 0px;
