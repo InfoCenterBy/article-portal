@@ -360,7 +360,6 @@ body._lock {
 
 .button_blue-light:disabled {
   cursor: not-allowed;
-  color: var(--color-gray-dark);
   background-color: rgba(3, 74, 102, 0.2);
 }
 
@@ -382,6 +381,8 @@ body._lock {
 
 .button-small:disabled {
   cursor: not-allowed;
+  color: var(--color-gray);
+  border-color: var(--color-gray);
 }
 
 .title-underline {
