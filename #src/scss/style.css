@@ -303,12 +303,13 @@ body._lock {
   width: auto;
   padding: 8px 20px;
 }
-.button:hover, .button:disabled {
+.button:hover {
   color: var(--color-white);
   background-color: var(--color-gold-light);
 }
 .button:disabled {
   cursor: not-allowed;
+  background-color: var(--color-gray);
 }
 .button_empty {
   padding: 16px 0px;
@@ -320,11 +321,21 @@ body._lock {
   color: var(--color-white);
   background-color: var(--color-gold);
 }
+.button_empty:disabled {
+  cursor: not-allowed;
+  color: var(--color-gray-dark);
+  border-color: var(--color-gray);
+  background-color: transparent;
+}
 .button_blue-light {
   background-color: var(--color-blue-light);
 }
 .button_blue-light:hover {
   background-color: rgba(3, 74, 102, 0.5);
+}
+.button_blue-light:disabled {
+  cursor: not-allowed;
+  background-color: rgba(3, 74, 102, 0.2);
 }
 
 .button-small {
@@ -340,6 +351,8 @@ body._lock {
 }
 .button-small:disabled {
   cursor: not-allowed;
+  color: var(--color-gray);
+  border-color: var(--color-gray);
 }
 
 .title-underline {
