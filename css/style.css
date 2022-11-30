@@ -5790,26 +5790,26 @@ td.vertical-bottom {
 
 @media print {
   header {
-    display: none;
+    display: none !important;
   }
 
   nav {
-    display: none;
+    display: none !important;
   }
 
   .actions-article {
-    display: none;
+    display: none !important;
   }
 
   .paywall {
-    display: none;
+    display: none !important;
   }
 
   footer {
-    display: none;
+    display: none !important;
   }
 
   .interesting-article {
-    display: none;
+    display: none !important;
   }
 }
