@@ -1,0 +1,20 @@
+@media print {
+     header{
+          display: none;
+     }
+     nav{
+          display: none;
+     }
+     .actions-article{
+          display: none;
+     }
+     .paywall{
+          display: none;
+     }
+     footer{
+          display: none;
+     }
+     .interesting-article{
+          display: none;
+     }
+}
