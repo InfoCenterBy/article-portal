@@ -1181,6 +1181,14 @@ body._lock {
   border-color: var(--color-gold);
 }
 
+.nav-tab__button:hover .title {
+  color: var(--color-gold);
+}
+
+.nav-tab__button.active .title {
+  color: var(--color-gold);
+}
+
 .nav-tab .link-setting {
   margin-left: auto;
   padding: 10px 0 10px 10px;
@@ -2045,6 +2053,19 @@ body._lock {
 
 .subsribe-card__hr-gold {
   border-top: 3px solid var(--color-gold) !important;
+}
+
+.subscribe-full-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  -webkit-column-gap: 60px;
+     -moz-column-gap: 60px;
+          column-gap: 60px;
+}
+
+.subscribe-full-info__text {
+  width: 100%;
 }
 
 p {
@@ -5600,6 +5621,12 @@ td.vertical-bottom {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+  }
+}
+
+@media (max-width: 730px) {
+  .subscribe-full-info {
+    grid-template-columns: 1fr;
   }
 }
 
