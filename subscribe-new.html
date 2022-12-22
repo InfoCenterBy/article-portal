@@ -711,15 +711,48 @@
                                                   </div>
                                              </div>
                                              <div class="d-flex justify-content-center align-items-center mt-5">
-                                                  <button type="button" class="ms-3 button">Оформить заказ</button>
+                                                  <button class="ms-3 button" type="button" data-bs-toggle="modal"
+                                                       data-bs-target="#makeOrder">Оформить заказ</button>
+                                             </div>
+                                        </div>
+                                   </div>
+                                   <div class="modal fade modal-order" id="makeOrder" tabindex="-1"
+                                        aria-labelledby="makeOrderLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                             <div class="modal-content">
+                                                  <div class="modal-header">
+                                                       <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                  </div>
+                                                  <div
+                                                       class="modal-body d-flex flex-column justify-content-center align-items-center">
+                                                       <i class="bi bi-check2-circle color-gold"></i>
+                                                       <p>
+                                                            Ваш заказ <span class="color-gold">№ХХХ</span> успешно
+                                                            сформирован!
+                                                       </p>
+                                                       <p>Счет-фактура для оплаты создана и отправлена Вам на почту
+                                                            <span class="color-gold">dariab.nobody@gmail.com</span>.
+                                                            Также Вы можете скачать счет в
+                                                            Личном кабинете в разделе «<a href=""
+                                                                 class="color-gold">Управление подпиской</a>».
+                                                       </p>
+                                                  </div>
+                                                  <div
+                                                       class="modal-footer d-flex flex-column justify-content-center align-items-center">
+                                                       <span>Выберите способ оплаты:</span>
+                                                  </div>
                                              </div>
                                         </div>
                                    </div>
                               </div>
                          </div>
                     </div>
+
                </section>
+
           </main>
+
           <footer class="footer">
     <div class="container">
         <div class="footer__body">

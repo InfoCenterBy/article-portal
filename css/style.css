@@ -2068,6 +2068,29 @@ body._lock {
   width: 100%;
 }
 
+.modal-order .modal-dialog {
+  max-width: 774px;
+  width: 100%;
+}
+
+.modal-order .modal-header,
+.modal-order .modal-footer {
+  border: 0;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+.modal-order .modal-body {
+  padding-left: 38px;
+  padding-right: 38px;
+  text-align: center;
+  border: 0;
+}
+
+.modal-order .modal-body .bi-check2-circle {
+  font-size: 60px;
+}
+
 p {
   margin-bottom: 24px;
 }
