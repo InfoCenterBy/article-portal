@@ -1237,6 +1237,12 @@
       color: var(--color-gold);
       border-color: var(--color-gold);
     }
+    &:hover .title{
+      color: var(--color-gold);
+    }
+    &.active .title{
+      color: var(--color-gold);
+    }
   }
 
   .link-setting {
@@ -2228,6 +2234,22 @@
     border-top: 3px solid var(--color-gold) !important;
   }
 }
+
+.subscribe-full-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  column-gap: 60px;
+  &__text {
+    width: 100%;
+  }
+  @media (max-width: 730px) {
+    &{
+    grid-template-columns: 1fr;
+    }
+  }
+}
+
 
 
 
