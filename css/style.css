@@ -2081,14 +2081,80 @@ body._lock {
 }
 
 .modal-order .modal-body {
+  overflow-y: auto;
   padding-left: 38px;
   padding-right: 38px;
   text-align: center;
   border: 0;
+  width: 100%;
 }
 
 .modal-order .modal-body .bi-check2-circle {
   font-size: 60px;
+  height: 80px;
+}
+
+.modal-order .modal-order-card-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  gap: 25px;
+}
+
+.modal-order__card {
+  max-width: 220px;
+  width: 100%;
+  height: 200px;
+  padding: 8px 10px 20px 10px;
+  border: 1px solid var(--color-gray);
+  color: var(--color-gray-dark);
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.modal-order__card img {
+  max-width: 77px;
+  width: 100%;
+  max-height: 77px;
+  margin-bottom: 16px;
+}
+
+.modal-order__card:not(.card-disabled):hover {
+  border: 1px solid var(--color-gold);
+}
+
+.modal-order__card-header {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  visibility: hidden;
+}
+
+.modal-order__card-header span {
+  font-size: 10px;
+  color: var(--color-gray-dark);
+  border: 1px solid var(--color-gray-dark);
+  border-radius: 10px;
+  padding: 4px 6px;
+}
+
+.modal-order .card-disabled {
+  background: #FAF9FA;
+  color: var(--color-gray);
+}
+
+.modal-order .card-disabled .modal-order__card-header {
+  visibility: visible;
 }
 
 p {
@@ -5101,6 +5167,10 @@ td.vertical-bottom {
     font-size: calc(12px + 4 * ((100vw - 320px) / 1200));
   }
 
+  .modal-order__card {
+    font-size: calc(12px + 4 * ((100vw - 320px) / 1200));
+  }
+
   .page-404 {
     padding-top: calc(40px + 70 * ((100vw - 320px) / 1200));
   }
@@ -5920,6 +5990,12 @@ td.vertical-bottom {
   }
 }
 
+@media (max-width: 470px) {
+  .modal-order .modal-order-card-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 450px) {
   .logo {
     width: 110px;
@@ -5927,6 +6003,11 @@ td.vertical-bottom {
 }
 
 @media (max-width: 410px) {
+  .modal-order .modal-body .bi-check2-circle {
+    visibility: hidden;
+    margin-bottom: 60px;
+  }
+
   .dropdown-menu-login {
     min-width: 310px;
     inset: 0px -5px auto auto !important;
