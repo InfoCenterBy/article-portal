@@ -761,8 +761,9 @@
                                                                            alt="padatak-order-check">
                                                                       <span>Оплата по<br>счет-фактуре</span>
                                                                  </div>
-                                                                 <div
-                                                                      class="modal-order__card d-flex flex-column justify-content-center align-items-center">
+                                                                 <div class="modal-order__card d-flex flex-column justify-content-center align-items-center"
+                                                                      type="button" data-bs-toggle="modal"
+                                                                      data-bs-target="#orderErip">
                                                                       <div class="modal-order__card-header">
                                                                            <span>в разработке</span>
                                                                       </div>
@@ -770,6 +771,53 @@
                                                                            alt="padatak-order-erip">
                                                                       <span>Оплата через<br>систему ЕРИП</span>
                                                                  </div>
+                                                            </div>
+                                                       </div>
+                                                  </div>
+                                                  <div
+                                                       class="modal-footer d-flex flex-column justify-content-center align-items-center">
+                                                  </div>
+                                             </div>
+                                        </div>
+                                   </div>
+
+                                   <div class="modal fade modal-order" id="orderErip" tabindex="-1"
+                                        aria-labelledby="orderErip" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                             <div class="modal-content">
+                                                  <div class="modal-header">
+                                                       <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                  </div>
+                                                  <div
+                                                       class="modal-body d-flex flex-column justify-content-center align-items-center">
+                                                       <span>Оплата через систему ЕРИП</span>
+                                                       <p>Ваш код платежа для оплаты через систему ЕРИП: <span
+                                                                 class="color-gold">123456789</span></p>
+                                                       <hr>
+                                                       <div>
+                                                            <span>По дереву ЕРИП:</span>
+                                                            <ol>
+                                                                 <li>Выберите пункт ЕРИП в интернет-банкинге, мобильном
+                                                                      приложении или терминале</li>
+                                                                 <li>Далее выберите последовательно пункты:</li>
+                                                                 <li>Введите код платежа для оплаты в ЕРИП: 123456789
+                                                                 </li>
+                                                                 <li>Проверьте корректность информации</li>
+                                                                 <li>Совершите платеж</li>
+                                                            </ol>
+                                                       </div>
+                                                       <hr>
+                                                       <div>
+                                                            <span>
+                                                                 По QR-коду:
+                                                            </span>
+                                                            <div class="erip-qr-container">
+                                                                 <div class="erip-qr"></div>
+                                                                 <p>Для оплаты отсканируйте QR-код в мобильном
+                                                                      приложении Вашего банка. <br>
+                                                                      Код платежа для оплаты в ЕРИП: <span
+                                                                           class="color-gold">123456789</span></p>
                                                             </div>
                                                        </div>
                                                   </div>

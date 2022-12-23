@@ -2157,6 +2157,14 @@ body._lock {
   visibility: visible;
 }
 
+.modal-order {
+  z-index: 1052 !important;
+}
+
+.modal-erip {
+  z-index: 1053 !important;
+}
+
 p {
   margin-bottom: 24px;
 }
