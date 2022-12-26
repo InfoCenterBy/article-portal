@@ -2283,7 +2283,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     align-content: center;
     align-items: center;
-    width: 100%;
+    width: 100% !important;
     gap: 25px;
     &{
       @media (max-width:470px) {
@@ -2292,8 +2292,8 @@
     }
   }
   &__card{
-    max-width: 220px;
-    width: 100%;
+    // max-width: 220px;
+    width: 100% !important;
     height: 200px;
     padding: 8px 10px 20px 10px;
     border: 1px solid var(--color-gray);
@@ -2340,7 +2340,61 @@
   z-index: 1053 !important;
 }
 
-
+#orderErip{
+  overflow-x: hidden;
+  *{
+  text-align: left !important;
+  }
+  hr{
+    border: 1px solid var(--color-gray);
+    // outline: 1px solid red;
+    width: 100%;
+  }
+  ol{
+    li{
+      margin: 6px 0;
+    }
+  }
+  .erip-qr-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    &{
+      @media (max-width: 550px) {
+        flex-direction: column;
+      }
+    }
+    p{
+      margin: 0;
+    }
+  }
+  .erip-qr {
+    max-width: 148px;
+    width: 100%;
+    max-height: 148px;
+    height: 100%;
+    img{
+      width: 100%;
+    }
+  }
+  .modal-body >span{
+    font-size: 18px;
+  }
+  .modal-body{
+    &{
+      @media (max-width:520px) {
+        padding-top: 200px;
+      }
+    }
+  }
+  .erip-list{
+    ul{
+      li{
+        list-style: none;
+      }
+    }
+  }
+}
 
 
 

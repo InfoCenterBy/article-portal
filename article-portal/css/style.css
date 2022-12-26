@@ -2102,13 +2102,12 @@ body._lock {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 100%;
+  width: 100% !important;
   gap: 25px;
 }
 
 .modal-order__card {
-  max-width: 220px;
-  width: 100%;
+  width: 100% !important;
   height: 200px;
   padding: 8px 10px 20px 10px;
   border: 1px solid var(--color-gray);
@@ -2163,6 +2162,59 @@ body._lock {
 
 .modal-erip {
   z-index: 1053 !important;
+}
+
+#orderErip {
+  overflow-x: hidden;
+}
+
+#orderErip * {
+  text-align: left !important;
+}
+
+#orderErip hr {
+  border: 1px solid var(--color-gray);
+  width: 100%;
+}
+
+#orderErip ol li {
+  margin: 6px 0;
+}
+
+#orderErip .erip-qr-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#orderErip .erip-qr-container p {
+  margin: 0;
+}
+
+#orderErip .erip-qr {
+  max-width: 148px;
+  width: 100%;
+  max-height: 148px;
+  height: 100%;
+}
+
+#orderErip .erip-qr img {
+  width: 100%;
+}
+
+#orderErip .modal-body > span {
+  font-size: 18px;
+}
+
+#orderErip .erip-list ul li {
+  list-style: none;
 }
 
 p {
@@ -5995,6 +6047,21 @@ td.vertical-bottom {
     padding: 15px 0px 0px 0px;
     border-top: 5px solid var(--color-gold);
     border-left: none;
+  }
+}
+
+@media (max-width: 550px) {
+  #orderErip .erip-qr-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+@media (max-width: 520px) {
+  #orderErip .modal-body {
+    padding-top: 200px;
   }
 }
 
