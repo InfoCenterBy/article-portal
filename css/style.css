@@ -2102,13 +2102,12 @@ body._lock {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 100%;
+  width: 100% !important;
   gap: 25px;
 }
 
 .modal-order__card {
-  max-width: 220px;
-  width: 100%;
+  width: 100% !important;
   height: 200px;
   padding: 8px 10px 20px 10px;
   border: 1px solid var(--color-gray);
