@@ -2209,6 +2209,10 @@ body._lock {
   font-size: 18px;
 }
 
+#orderErip .erip-list ul li {
+  list-style: none;
+}
+
 p {
   margin-bottom: 24px;
 }
