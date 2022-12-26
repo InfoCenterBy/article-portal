@@ -2164,6 +2164,10 @@ body._lock {
   z-index: 1053 !important;
 }
 
+#orderErip {
+  overflow-x: hidden;
+}
+
 #orderErip * {
   text-align: left !important;
 }
@@ -6055,6 +6059,12 @@ td.vertical-bottom {
   }
 }
 
+@media (max-width: 520px) {
+  #orderErip .modal-body {
+    padding-top: 200px;
+  }
+}
+
 @media (max-width: 470px) {
   .modal-order .modal-order-card-wrapper {
     grid-template-columns: 1fr;
@@ -6084,12 +6094,6 @@ td.vertical-bottom {
 
   .dropdown-menu-notifications {
     min-width: 310px;
-  }
-}
-
-@media (max-width: 355px) {
-  #orderErip .modal-body {
-    padding-top: 200px;
   }
 }
 
