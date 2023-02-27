@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+@@include('_head.html',{
+"title":"Личный кабинет"
+})
+
+<body>
+     <div class="wrapper">
+          @@include('_header.html',{})
+          <main class="page">
+               <nav aria-label="breadcrumb">
+                    <div class='container'>
+                         <ol class="breadcrumb">
+                              <li class="breadcrumb-item"><a href="main.html"><i class="bi bi-house"></i></a></li>
+                              <li class="breadcrumb-item active" aria-current="page">Личный кабинет</li>
+                         </ol>
+                    </div>
+               </nav>
+               <section class="mb-5">
+                    <div class='container'>
+                         <div class="sidebar-wrapper">
+                              <div class="sidebar-wrapper__content">
+                                   <h1 class="h1">Управление доступом</h1>
+                                   <div class="color-gray-dark mb-5">Здесь вы можете увидеть историю ваших заказов и
+                                        срок окончания доступа</div>
+                                   <div class="access-block">
+                                        <div class="d-flex flex-row justify-content-between align-items-center">
+                                             <div class="d-flex flex-row access-block__number">
+                                                  <span>Заказ</span>
+                                                  <span class="ms-2">№364</span>
+                                             </div>
+                                             <div class="access-block__status access-status-active">Доступ активен</div>
+                                        </div>
+                                        <div class="access-block__title">
+                                             Доступ к цифровой платформе о налогах и бухгалтерском учете «padatak.by»
+                                        </div>
+                                        <div
+                                             class="d-flex flex-row justify-content-between align-items-center mt-3 color-gray-dark">
+                                             <div class="d-none d-md-flex flex-row access-block__number">
+                                                  <span>Заказ</span>
+                                                  <span class="ms-2">№364</span>
+                                             </div>
+                                             <div class="d-flex flex-row access-block__time">
+                                                  <span>До окончания</span>
+                                                  <span class="ms-2">43 дня</span>
+                                             </div>
+                                        </div>
+                                        <div class="access-progress-bar">
+                                             <div class="access-progress-bar__back">
+                                                  <div class="access-progress-bar__indicator" style="width: 60%;"></div>
+                                             </div>
+                                        </div>
+                                        <div
+                                             class="d-flex flex-row justify-content-between align-items-center mt-2 color-gray-dark access-block__number">
+                                             <span>10.02.2023</span>
+                                             <span>12.04.2023</span>
+                                        </div>
+                                   </div>
+
+                              </div>
+                              <aside data-da=".sidebar-wrapper__content,1100,1" class="sidebar-wrapper__aside mb-4">
+                                   <h4 class="h4 h4_gold hidden-title">Личный кабинет</h4>
+                                   <nav class="nav-links mb-4">
+                                        <div class="nav-links__wrapper">
+                                             <a href="profile.html" class="nav-links__link">Профиль</a>
+                                             <a href="favorites.html" class="nav-links__link">Избранное</a>
+                                             <a href="browsing-history.html" class="nav-links__link">История
+                                                  просмотров</a>
+                                             <a href="settings.html" class="nav-links__link">Настройки</a>
+                                             <a href="subscription.html" class="nav-links__link">Подписка</a>
+                                        </div>
+                                   </nav>
+                                   <hr>
+                                   <h5 class="h4 h4_gold">Техническая поддежка</h5>
+                                   <a href="tel:+37517111111" class="link link_gray">+375 (17) 11-11-11</a>
+                              </aside>
+                         </div>
+                    </div>
+               </section>
+          </main>
+          @@include('_footer.html',{})
+     </div>
+     @@include('_js.html',{})
+</body>
+
+</html>
