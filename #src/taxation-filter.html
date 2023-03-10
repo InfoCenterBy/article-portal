@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+@@include('_head.html',{
+"title":"Личный кабинет"
+})
+
+<body>
+     <div class="wrapper">
+          @@include('_header.html',{})
+          <main class="page">
+               <nav aria-label="breadcrumb">
+                    <div class='container'>
+                         <ol class="breadcrumb">
+                              <li class="breadcrumb-item"><a href="main.html"><i class="bi bi-house"></i></a></li>
+                              <li class="breadcrumb-item"><a href="main.html">Сервисы</a></li>
+                              <li class="breadcrumb-item active" aria-current="page">Выбор режима налогообложения</li>
+                         </ol>
+                    </div>
+               </nav>
+               <section class="mb-5">
+                    <div class='container'>
+                         <div class="sidebar-wrapper">
+                              <div class="sidebar-wrapper__content access-content">
+                                   <h1 class="h1">Выбор режима налогообложения</h1>
+
+                              </div>
+                              <aside data-da=".sidebar-wrapper__content,1100,1" class="sidebar-wrapper__aside mb-4">
+                                   <h4 class="h4 h4_gold hidden-title">Фильтры</h4>
+                                   <nav class="nav-links mb-4">
+                                        <div class="nav-links__wrapper">
+                                             <a class="nav-links__link">Категория налогоплательщика</a>
+                                             <a class="nav-links__link">Особенности</a>
+                                             <a class="nav-links__link">Размер дохода за год</a>
+                                             <a class="nav-links__link">Количество сотрудников</a>
+                                        </div>
+                                   </nav>
+
+                              </aside>
+                         </div>
+                    </div>
+               </section>
+          </main>
+          @@include('_footer.html',{})
+     </div>
+     @@include('_js.html',{})
+</body>
+
+</html>
