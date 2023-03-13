@@ -2566,6 +2566,42 @@
   }
 }
 
+.card-wrapper{
+  border: 1px solid var(--color-gray);
 
+  &__more{
+    display: grid;
+    place-items: center;
+    border: 2px solid var(--color-gold);
+    color: var(--color-blue);
+  }
+  p{
+    color: var(--color-gray-dark);
+  }
+  font-weight: 400;
+  @include adaptiv-value("font-size", 16, 12, 1);
+  @include adaptiv-value("line-height", 19, 15, 1);
+}
+
+.card-filter {
+  transition: all 0.5s;
+  
+}
+
+.card-filter-enter,
+.card-filter-leave-to {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.card-filter-enter-to {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.card-filter-move {
+  opacity: 1;
+  transition: all 0.5s;
+}
 
 

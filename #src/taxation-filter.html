@@ -19,9 +19,40 @@
                </nav>
                <section class="mb-5">
                     <div class='container'>
-                         <div class="sidebar-wrapper">
+
+                         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+                         <div class="sidebar-wrapper" id="app">
                               <div class="sidebar-wrapper__content access-content">
                                    <h1 class="h1">Выбор режима налогообложения</h1>
+
+                                   <button @click="delel">del el</button>
+                                   <input type="text" class="js-range-slider" name="my_range" value="" />
+                                   <transition-group tag="div" class="row w-100" name="card-filter">
+                                        <div v-for="item in listItems" :key="item.id" class="col-md-4 card-filter my-2"
+                                             v-if="show">
+                                             <div
+                                                  class="card-wrapper d-flex flex-column my-2 justify-content-between p-4 h-100">
+                                                  <h4 class="h4">{{item.title}}</h4>
+                                                  <p>
+                                                       {{item.body}}
+                                                  </p>
+                                                  <div class="mt-auto py-3 card-wrapper__more">
+                                                       Подробнее
+                                                  </div>
+                                             </div>
+                                        </div>
+                                   </transition-group>
+
+
+
+                                   <div class="w-100">
+                                        <!-- <input :value="text" @input="onInput" placeholder="Type here">
+                                        <p>{{ text }}</p>
+                                        <button @click="increment">count is: {{ count }}</button> -->
+                                   </div>
+
+
+
 
                               </div>
                               <aside data-da=".sidebar-wrapper__content,1100,1" class="sidebar-wrapper__aside mb-4">
@@ -36,7 +67,51 @@
                                    </nav>
 
                               </aside>
+
+
                          </div>
+                         <script type="application/javascript">
+
+
+                              const vueApp = new Vue({
+                                   el: '#app',
+                                   components: {
+                                   },
+                                   data() {
+                                        return {
+                                             text: '',
+                                             count: 0,
+                                             listItems: [],
+                                             show: true,
+                                        }
+                                   },
+                                   methods: {
+                                        onInput(e) {
+                                             this.text = e.target.value
+                                        },
+                                        increment() {
+                                             this.count++
+                                        },
+                                        async getData() {
+                                             try {
+                                                  const res = await fetch("https://jsonplaceholder.typicode.com/posts")
+                                                  const finalRes = await res.json()
+                                                  this.listItems = finalRes.slice(0, 8)
+                                             }
+                                             catch (error) {
+                                                  console.log('There was an error', error)
+                                             }
+                                        },
+                                        delel() {
+                                             this.listItems.pop()
+                                        }
+                                   },
+                                   mounted() {
+                                        this.getData()
+                                   }
+                              })
+                         </script>
+
                     </div>
                </section>
           </main>
