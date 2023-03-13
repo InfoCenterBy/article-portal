@@ -31,6 +31,7 @@
 		"sass": "^1.56.1"
 	},
 	"dependencies": {
+		"ion-rangeslider": "^2.3.1",
 		"vue": "^3.2.47",
 		"vue-custom-range-slider": "^0.2.3"
 	}
