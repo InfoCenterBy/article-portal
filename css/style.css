@@ -2410,6 +2410,113 @@ body._lock {
   font-size: 12px;
 }
 
+.taxation-filter .card-wrapper {
+  border: 1px solid var(--color-gray);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.taxation-filter .card-wrapper__more {
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--color-gold);
+  color: var(--color-blue);
+}
+
+.taxation-filter .card-wrapper p {
+  color: var(--color-gray-dark);
+}
+
+.taxation-filter .card-filter {
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.taxation-filter .card-filter-enter,
+.taxation-filter .card-filter-leave-to {
+  opacity: 0;
+  -webkit-transform: scale(0);
+      -ms-transform: scale(0);
+          transform: scale(0);
+}
+
+.taxation-filter .card-filter-enter-to {
+  opacity: 1;
+  -webkit-transform: scale(1);
+      -ms-transform: scale(1);
+          transform: scale(1);
+}
+
+.taxation-filter .card-filter-move {
+  opacity: 1;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.taxation-filter .irs--round .irs-bar {
+  background-color: var(--color-gold-light);
+}
+
+.taxation-filter .irs--round .irs-handle {
+  background-color: #C47A2C;
+}
+
+.taxation-filter .irs--round .irs-handle {
+  border: 6.5px solid var(--color-gold);
+  -webkit-box-shadow: 0 1px 3px rgba(196, 122, 44, 0.3);
+          box-shadow: 0 1px 3px rgba(196, 122, 44, 0.3);
+  background-color: #ffffff;
+}
+
+.taxation-filter .irs--round .irs-from,
+.taxation-filter .irs--round .irs-to,
+.taxation-filter .irs--round .irs-single {
+  font-size: 14px;
+  padding: 3px 5px;
+  background-color: var(--color-gold);
+  color: white;
+  border-radius: 3px;
+}
+
+.taxation-filter .irs--round .irs-from:before,
+.taxation-filter .irs--round .irs-to:before,
+.taxation-filter .irs--round .irs-single:before {
+  border-top-color: var(--color-gold);
+}
+
+.taxation-filter .irs--round .irs-handle.state_hover,
+.taxation-filter .irs--round .irs-handle:hover {
+  background-color: #ffffff;
+}
+
+.taxation-filter .form-check-input:checked {
+  background-color: transparent;
+  border-color: var(--color-gold);
+}
+
+.taxation-filter .form-check-input:checked[type=checkbox] {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='orange' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
+}
+
+.taxation-filter .form-check-input:focus {
+  border-color: var(--color-gold-light);
+  -webkit-box-shadow: 0 0 0 0.25rem rgba(249, 185, 116, 0.25);
+          box-shadow: 0 0 0 0.25rem rgba(249, 185, 116, 0.25);
+}
+
+.taxation-filter .form-check-input {
+  border: 2px solid var(--color-gray-dark);
+  width: 25px;
+  height: 25px;
+}
+
+.taxation-filter .form-filter-title {
+  color: var(--color-blue-light);
+}
+
 p {
   margin-bottom: 24px;
 }
@@ -5450,6 +5557,14 @@ td.vertical-bottom {
 
   .access-content .access-table-mobile .access-table-card__data span:first-child {
     margin-right: calc(8px + 7 * ((100vw - 320px) / 1200));
+  }
+
+  .taxation-filter .card-wrapper {
+    font-size: calc(12px + 4 * ((100vw - 320px) / 1200));
+  }
+
+  .taxation-filter .card-wrapper {
+    line-height: calc(15px + 4 * ((100vw - 320px) / 1200));
   }
 
   .page-404 {

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
-    <head>
-      <title>Рекламодателям</title>
+<head>
+      <title>Личный кабинет</title>
       <meta charset="UTF-8" />
       <meta name="format-detection" content="telephone=no" />
       <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,9 +25,10 @@
 
       <link rel="stylesheet" href="css/style.min.css" />
 </head>
-    <body>
-        <div class="wrapper">
-            <header class="header">
+
+<body>
+     <div class="wrapper">
+          <header class="header">
     <div class="header-top">
         <div class="header-top__body">
             <div class="header-top__burger"></div>
@@ -217,38 +218,309 @@
         </nav>
     </div>
 </header>
-            <main class="page">
-                <nav aria-label="breadcrumb">
+          <main class="page taxation-filter">
+               <nav aria-label="breadcrumb">
                     <div class='container'>
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="main.html"><i class="bi bi-house"></i></a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Рекламодателям</li>
-                        </ol>
+                         <ol class="breadcrumb">
+                              <li class="breadcrumb-item"><a href="main.html"><i class="bi bi-house"></i></a></li>
+                              <li class="breadcrumb-item"><a href="main.html">Сервисы</a></li>
+                              <li class="breadcrumb-item active" aria-current="page">Выбор режима налогообложения</li>
+                         </ol>
                     </div>
-                </nav>
-                <section class="circulation">
+               </nav>
+               <section class="mb-5">
                     <div class='container'>
-                        <div class="circulation__body">
-                            <div class="circulation__info">
-                                <h1 class="h1 h1_gold">Рекламодателям</h1>
-                                <div class="mb-4">Мы предлагаем разместить рекламу на нашем портале. С условиями можно ознакомиться после обсуждения с нашим менеджером.</div>
-                                <ul>
-                                    <li class="mb-3">Точная целевая аудитория</li>
-                                    <li class="mb-3">Приятные цены</li>
-                                    <li class="mb-3">Пакетное размещение</li>
-                                </ul>
-                                <div class="mt-5">
-                                    <a href="mailto:info@info-center.by" class="button button_empty">Оставить заявку</a>
-                                </div>
-                            </div>
-                            <div class="circulation__img">
-                                <img src="./img/advertisers-img.png" alt="" class="img-fluid">
-                            </div>
-                        </div>
+
+                         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+                         <div class="sidebar-wrapper" id="app">
+                              <div class="sidebar-wrapper__content access-content">
+                                   <h1 class="h1">Выбор режима налогообложения</h1>
+
+                                   <!-- <button @click="delel">del el</button> -->
+                                   <transition-group tag="div" class="row w-100" name="card-filter">
+                                        <div v-for="item in filterList" :key="item.id" class="col-md-4 card-filter my-2"
+                                             v-if="show">
+                                             <div
+                                                  class="card-wrapper d-flex flex-column my-2 justify-content-between p-4 h-100">
+                                                  <h4 class="h4">{{item.title}}</h4>
+                                                  <p>
+                                                       {{item.body}}
+                                                  </p>
+                                                  <div class="mt-auto py-3 card-wrapper__more">
+                                                       Подробнее
+                                                  </div>
+                                             </div>
+                                        </div>
+                                   </transition-group>
+
+
+
+                                   <div class="w-100">
+                                        <!-- <input :value="text" @input="onInput" placeholder="Type here">
+                                        <p>{{ text }}</p>
+                                        <button @click="increment">count is: {{ count }}</button> -->
+                                   </div>
+
+
+
+
+                              </div>
+                              <aside data-da=".sidebar-wrapper__content,1100,1" class="sidebar-wrapper__aside mb-4">
+                                   <h4 class="h4 h4_gold">Фильтры</h4>
+
+                                   <form>
+
+                                        <div class="d-flex flex-column">
+                                             <div class="form-filter-title">
+                                                  Категория налогоплательщика
+                                             </div>
+                                             <div class="form-check">
+                                                  <input class="form-check-input" type="checkbox" value=""
+                                                       id="flexCheckDefault">
+                                                  <label class="form-check-label" for="flexCheckDefault">
+                                                       Default checkbox
+                                                  </label>
+                                             </div>
+                                        </div>
+                                        <input type="text" class="js-range-slider-income" name="income" value="">
+                                        <input type="text" class="js-range-slider-staff" name="staff" value="">
+
+
+                                   </form>
+
+                              </aside>
+
+
+                         </div>
+                         <script type="application/javascript">
+
+
+                              const vueApp = new Vue({
+                                   el: '#app',
+                                   components: {
+                                   },
+                                   data() {
+                                        return {
+                                             listItems: [],
+                                             filterList: [],
+                                             show: true,
+                                             income: '',
+                                             staff: '',
+                                             check1: false,
+
+                                        }
+                                   },
+                                   watch: {
+                                        income(data) {
+                                             // let newArr = this.listItems.filter(el => {
+                                             //      return el.income <= data
+                                             // })
+                                             // this.income = data
+                                             console.log('income', data)
+                                             this.filterEl(data, income = true)
+
+                                        },
+                                        staff(data) {
+                                             console.log("staff", data)
+                                             this.filterEl(data, staff = true)
+                                        },
+                                   },
+                                   methods: {
+                                        async getData() {
+                                             try {
+                                                  // const res = await fetch("https://jsonplaceholder.typicode.com/posts")
+                                                  // const finalRes = await res.json()
+                                                  // this.listItems = finalRes.slice(0, 8)
+                                                  let dataFilter = [{
+                                                       id: 1,
+                                                       title: 'ОРН для ЮЛ',
+                                                       body: 'Общий порядок налогообложения для юридических лиц',
+                                                       category: 'Юридическое лицо',
+                                                       features: '',
+                                                       income: 1.75,
+                                                       staff: 124,
+                                                  }, {
+                                                       id: 2,
+                                                       title: 'УСН для ЮЛ',
+                                                       body: 'Упрощенная система налогообложения для юридических лиц',
+                                                       category: 'Юридическое лицо',
+                                                       features: '',
+                                                       income: 0.75,
+                                                       staff: 324,
+                                                  },
+                                                  {
+                                                       id: 3,
+                                                       title: 'Единый налог для производителей сельскохозяйственной продукции',
+                                                       body: '',
+                                                       category: 'Юридическое лицо',
+                                                       features: 'Производство сельхозпродукции',
+                                                       income: 3,
+                                                       staff: 150,
+                                                  },
+                                                  {
+                                                       id: 4,
+                                                       title: 'Налог на игорный бизнес',
+                                                       body: '',
+                                                       category: 'Юридическое лицо',
+                                                       features: 'Игорный бизнес',
+                                                       income: 4,
+                                                       staff: 237,
+                                                  },
+                                                  {
+                                                       id: 5,
+                                                       title: 'ОРН для ИП',
+                                                       body: 'Общий порядок налогообложения для индивидуальных предпринимателей',
+                                                       category: 'Индивидуальный предприниматель',
+                                                       features: '',
+                                                       income: 2,
+                                                       staff: 100,
+                                                  },
+                                                  {
+                                                       id: 6,
+                                                       title: 'Единый налог с ИП и иных ФЛ (для ИП)',
+                                                       body: 'Единый налог с индивидуальных предпринимателей и иных физических лиц (для индивидуальных предпринимателей)',
+                                                       category: 'Индивидуальный предприниматель',
+                                                       features: '',
+                                                       income: 3,
+                                                       staff: 200,
+                                                  }
+                                                       ,
+                                                  {
+                                                       id: 7,
+                                                       title: 'Единый налог с ИП и иных ФЛ (для ФЛ)',
+                                                       body: 'Единый налог с индивидуальных предпринимателей и иных физических лиц (для физических лиц)',
+                                                       category: 'Индивидуальный предприниматель',
+                                                       features: '',
+                                                       income: 6,
+                                                       staff: 150,
+                                                  },
+                                                  {
+                                                       id: 8,
+                                                       title: 'НПД',
+                                                       body: 'Налог на профессиональный доход',
+                                                       category: 'Физическое лицо',
+                                                       features: '',
+                                                       income: 1,
+                                                       staff: 50,
+                                                  },]
+                                                  this.listItems = dataFilter
+                                                  this.filterList = this.listItems
+                                             }
+                                             catch (error) {
+                                                  console.log(error)
+                                             }
+                                        },
+                                        initSlider() {
+                                             $(".js-range-slider-income").ionRangeSlider({
+                                                  skin: "round",
+                                                  type: "double",
+                                                  from: 0,
+                                                  from_fixed: true,
+                                                  to: 2.5,
+                                                  min: 0,
+                                                  max: 5,
+                                                  grid: true,
+                                                  grid_num: 5,
+                                                  postfix: ' млн',
+                                                  step: 0.05,
+                                                  max_postfix: '+ ',
+                                             });
+
+                                             $(".js-range-slider-staff").ionRangeSlider({
+                                                  skin: "round",
+                                                  type: "double",
+                                                  from: 0,
+                                                  from_fixed: true,
+                                                  to: 100,
+                                                  min: 0,
+                                                  max: 500,
+                                                  grid: true,
+                                                  grid_num: 5,
+                                                  step: 50,
+                                                  max_postfix: '+ ',
+                                             });
+
+
+                                        },
+                                        modifyEl() {
+                                             try {
+                                                  document.querySelectorAll(".js-irs-0 .irs-grid-text").forEach(el => {
+                                                       if (el.innerHTML != '0' && el.innerHTML != '5') {
+                                                            el.innerHTML = el.innerHTML + ' млн'
+                                                       }
+                                                       if (el.innerHTML == '5') {
+                                                            el.innerHTML = ' '
+                                                       }
+                                                  })
+                                             }
+                                             catch (error) {
+                                                  console.log(error)
+                                             }
+
+                                             try {
+                                                  document.querySelectorAll(".js-irs-1 .irs-grid-text").forEach(el => {
+                                                       if (el.innerHTML == '500') {
+                                                            el.innerHTML = ' '
+                                                       }
+                                                  })
+                                             }
+                                             catch (error) {
+                                                  console.log(error)
+                                             }
+
+                                             try {
+
+
+                                                  document.querySelectorAll('.js-irs-0 .irs-to').forEach(el => {
+                                                       el.addEventListener('DOMSubtreeModified', (e) => {
+                                                            // add " * 1000000 " in the end of next line if data if millions (now in short form - 1.2)
+                                                            this.income = Math.fround($('.js-range-slider-income').prop("value").replace(/0;/g, '')).toFixed(2)
+                                                       })
+                                                  })
+
+                                                  document.querySelectorAll('.js-irs-1 .irs-to').forEach(el => {
+                                                       el.addEventListener('DOMSubtreeModified', (e) => {
+                                                            this.staff = parseInt($('.js-range-slider-staff').prop("value").replace(/0;/g, ''))
+                                                       })
+                                                  })
+                                             }
+                                             catch (error) {
+                                                  console.log(error)
+                                             }
+                                        },
+                                        filterEl(data, income, staff) {
+                                             // this.listItems = newArr
+                                             this.filterList = this.listItems
+                                             console.log('filter', data)
+                                             const newList = this.listItems.filter(el => {
+                                                  if (staff) {
+                                                       return el.staff <= data
+                                                  }
+                                                  if (income) {
+                                                       return el.income <= data
+                                                  }
+                                                  // if (staff && income) {
+                                                  //      return el.income <= data
+                                                  // }
+                                             })
+                                             // console.log(newList)
+                                             this.filterList = newList
+                                        },
+                                        delel() {
+                                             this.listItems.pop()
+                                        },
+                                   },
+                                   mounted() {
+                                        this.getData()
+                                        this.initSlider()
+                                        this.modifyEl()
+                                   }
+                              })
+                         </script>
                     </div>
-                </section>
-            </main>
-            <footer class="footer">
+               </section>
+          </main>
+          <footer class="footer">
     <div class="container">
         <div class="footer__body">
             <div class="row g-4">
@@ -340,8 +612,8 @@
         </div>
     </div>
 </footer>
-        </div>
-        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+     </div>
+     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
         crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
         integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
@@ -356,5 +628,6 @@
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 
 <script src="js/script.min.js"></script>
-    </body>
+</body>
+
 </html>
