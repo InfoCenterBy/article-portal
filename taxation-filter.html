@@ -307,22 +307,27 @@
                                              income: '',
                                              staff: '',
                                              check1: false,
-
+                                             filterRule: {
+                                                  income: 5,
+                                                  staff: 500,
+                                             }
                                         }
                                    },
                                    watch: {
-                                        income(data) {
+                                        income(dataIn) {
                                              // let newArr = this.listItems.filter(el => {
                                              //      return el.income <= data
                                              // })
                                              // this.income = data
-                                             console.log('income', data)
-                                             this.filterEl(data, income = true)
+                                             // console.log('income', dataIn)
+                                             this.filterRule.income = dataIn
+                                             this.filterEl()
 
                                         },
-                                        staff(data) {
-                                             console.log("staff", data)
-                                             this.filterEl(data, staff = true)
+                                        staff(dataSt) {
+                                             // console.log("staff", dataSt)
+                                             this.filterRule.staff = dataSt
+                                             this.filterEl()
                                         },
                                    },
                                    methods: {
@@ -488,23 +493,18 @@
                                                   console.log(error)
                                              }
                                         },
-                                        filterEl(data, income, staff) {
-                                             // this.listItems = newArr
-                                             this.filterList = this.listItems
-                                             console.log('filter', data)
-                                             const newList = this.listItems.filter(el => {
-                                                  if (staff) {
-                                                       return el.staff <= data
-                                                  }
-                                                  if (income) {
-                                                       return el.income <= data
-                                                  }
-                                                  // if (staff && income) {
-                                                  //      return el.income <= data
-                                                  // }
-                                             })
-                                             // console.log(newList)
-                                             this.filterList = newList
+                                        filterEl() {
+
+                                             try {
+                                                  const newList = this.listItems.filter(el => {
+                                                       return el.income <= this.filterRule.income && el.staff <= this.filterRule.staff
+                                                  })
+
+                                                  this.filterList = newList
+                                             }
+                                             catch (error) {
+                                                  console.log(error)
+                                             }
                                         },
                                         delel() {
                                              this.listItems.pop()

@@ -2517,6 +2517,12 @@ body._lock {
   color: var(--color-blue-light);
 }
 
+.taxation-filter .access-content {
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
 p {
   margin-bottom: 24px;
 }
