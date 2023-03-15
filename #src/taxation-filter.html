@@ -27,16 +27,40 @@
 
                                    <!-- <button @click="delel">del el</button> -->
                                    <transition-group tag="div" class="row w-100" name="card-filter">
-                                        <div v-for="item in filterList" :key="item.id" class="col-md-4 card-filter my-2"
-                                             v-if="show">
+                                        <div v-for="item in filterList" :key="item.id"
+                                             class="col-md-4 card-filter my-2">
                                              <div
                                                   class="card-wrapper d-flex flex-column my-2 justify-content-between p-4 h-100">
                                                   <h4 class="h4">{{item.title}}</h4>
                                                   <p>
                                                        {{item.body}}
                                                   </p>
-                                                  <div class="mt-auto py-3 card-wrapper__more">
+                                                  <div class="mt-auto py-3 card-wrapper__more" data-bs-toggle="modal"
+                                                       :data-bs-target="'#' + 'modal' + '-'  + item.id">
                                                        Подробнее
+                                                  </div>
+                                             </div>
+                                             <div class="modal fade" :id="'modal' + '-'  + item.id" tabindex="-1"
+                                                  aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                  <div class="modal-dialog modal-dialog-centered">
+                                                       <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                 <h5 class="modal-title" id="exampleModalLabel">
+                                                                      {{item.title}}</h5>
+                                                                 <button type="button" class="btn-close"
+                                                                      data-bs-dismiss="modal"
+                                                                      aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                 {{item.body}}
+                                                            </div>
+                                                            <!-- <div class="modal-footer">
+                                                                 <button type="button" class="btn btn-secondary"
+                                                                      data-bs-dismiss="modal">Close</button>
+                                                                 <button type="button" class="btn btn-primary">Save
+                                                                      changes</button>
+                                                            </div> -->
+                                                       </div>
                                                   </div>
                                              </div>
                                         </div>
@@ -44,13 +68,9 @@
 
 
 
-                                   <div class="w-100">
-                                        <!-- <input :value="text" @input="onInput" placeholder="Type here">
-                                        <p>{{ text }}</p>
-                                        <button @click="increment">count is: {{ count }}</button> -->
+                                   <div class="w-100" v-if="isEmpty">
+                                        <h1 class="h1">Все пусто</h1>
                                    </div>
-
-
 
 
                               </div>
@@ -60,15 +80,29 @@
                                    <form>
 
                                         <div class="d-flex flex-column">
-                                             <div class="form-filter-title">
+                                             <div class="form-filter-title mb-3">
                                                   Категория налогоплательщика
                                              </div>
-                                             <div class="form-check">
-                                                  <input class="form-check-input" type="checkbox" value=""
-                                                       id="flexCheckDefault">
-                                                  <label class="form-check-label" for="flexCheckDefault">
-                                                       Default checkbox
-                                                  </label>
+                                             <div class="form-check d-flex flex-row align-items-start mb-3"
+                                                  v-for="category in categories">
+                                                  <input type="checkbox" :id="category"
+                                                       @click="checkCategories = category; categoriesFlag(category)"
+                                                       :checked="checkCategories === category" class="form-check-input">
+                                                  <label v-bind:for="category"
+                                                       class="form-check-label ms-3">{{category}}</label>
+                                             </div>
+                                        </div>
+                                        <div class="d-flex flex-column">
+                                             <div class="form-filter-title mb-3">
+                                                  Особенности
+                                             </div>
+                                             <div class="form-check d-flex flex-row align-items-start mb-3"
+                                                  v-for="featury in features">
+                                                  <input type="checkbox" :id="featury"
+                                                       @click="checkFeatures = featury; featuryFlag(featury); "
+                                                       class="form-check-input">
+                                                  <label v-bind:for="featury"
+                                                       class="form-check-label ms-3">{{featury}}</label>
                                              </div>
                                         </div>
                                         <input type="text" class="js-range-slider-income" name="income" value="">
@@ -92,14 +126,20 @@
                                         return {
                                              listItems: [],
                                              filterList: [],
-                                             show: true,
+                                             // show: true,
                                              income: '',
                                              staff: '',
-                                             check1: false,
+                                             checkCategories: '',
+                                             checkFeatures: '',
                                              filterRule: {
                                                   income: 5,
                                                   staff: 500,
-                                             }
+                                                  category: '',
+                                                  featury: [],
+                                             },
+                                             categories: ['Юридическое лицо', 'Индивидуальный предприниматель', 'Физическое лицо'],
+                                             features: ['Производство подакцизных товаров', 'Игорный бизнес', 'Производство сельхозпродукции'],
+                                             isEmpty: false,
                                         }
                                    },
                                    watch: {
@@ -117,6 +157,20 @@
                                              // console.log("staff", dataSt)
                                              this.filterRule.staff = dataSt
                                              this.filterEl()
+                                        },
+                                        checkCategories(dataCheck) {
+                                             // this.check = dataCheck
+                                             this.filterRule.category = dataCheck
+                                             // console.log('dataCheck', this.filterRule)
+                                             this.filterEl()
+                                        },
+                                        checkFeatures(dataFeatures) {
+                                             // this.check = dataCheck
+                                             // if (this.filterRule.featury.includes(dataFeatures)) {
+
+                                             this.filterRule.featury.push(dataFeatures)
+                                             // }
+                                             console.log('dataFeatury', this.filterRule.featury.includes(dataFeatures))
                                         },
                                    },
                                    methods: {
@@ -285,11 +339,28 @@
                                         filterEl() {
 
                                              try {
+                                                  this.isEmpty = false
                                                   const newList = this.listItems.filter(el => {
-                                                       return el.income <= this.filterRule.income && el.staff <= this.filterRule.staff
+
+                                                       if (this.filterRule.category == '') {
+                                                            return el.income <= this.filterRule.income
+                                                                 && el.staff <= this.filterRule.staff
+                                                       }
+                                                       else {
+                                                            return el.income <= this.filterRule.income
+                                                                 && el.staff <= this.filterRule.staff
+                                                                 && el.category === this.filterRule.category
+                                                       }
                                                   })
 
                                                   this.filterList = newList
+
+                                                  if (this.filterList == 0) {
+                                                       console.log('ничего нет')
+                                                       setTimeout(() => {
+                                                            this.isEmpty = true
+                                                       }, 700)
+                                                  }
                                              }
                                              catch (error) {
                                                   console.log(error)
@@ -298,6 +369,25 @@
                                         delel() {
                                              this.listItems.pop()
                                         },
+                                        categoriesFlag(category) {
+                                             if (this.filterRule.category == category) {
+                                                  this.filterRule.category = ''
+                                                  this.checkCategories = ''
+                                                  this.filterEl()
+                                             }
+
+                                        },
+                                        featuryFlag(featury) {
+                                             // if (this.filterRule.featury.includes(featury)) {
+                                             //      console.log('alrady exist')
+                                             // }
+                                             // else
+                                             // console.log(featury)
+                                             // console.log(featury.split(/\s* \s*/))
+                                             // console.log('featury', featury, '#' + featury)
+                                             // console.log(featury.split(/\s* \s*/)[0])
+                                             console.log(document.getElementById('#' + featury.split(/\s* \s*/)[0]))
+                                        }
                                    },
                                    mounted() {
                                         this.getData()

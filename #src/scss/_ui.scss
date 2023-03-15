@@ -2582,6 +2582,12 @@
       place-items: center;
       border: 2px solid var(--color-gold);
       color: var(--color-blue);
+      cursor: pointer;
+      transition: all .5s;
+      &:hover{
+        background: var(--color-gold);
+        color: var(--color-white);
+      }
     }
     p{
       color: var(--color-gray-dark);
@@ -2624,6 +2630,7 @@
     border: 6.5px solid var(--color-gold);
     box-shadow: 0 1px 3px rgba(196, 122, 44,0.3);
     background-color: #ffffff;
+    cursor: pointer;
   }
 
   .irs--round .irs-from, .irs--round .irs-to, .irs--round .irs-single {
@@ -2661,6 +2668,7 @@
   }
   .form-filter-title{
     color: var(--color-blue-light);
+    font-weight: 500;
   }
   .access-content{
     transition: all 0.5s;
