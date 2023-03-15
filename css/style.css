@@ -2422,6 +2422,15 @@ body._lock {
   place-items: center;
   border: 2px solid var(--color-gold);
   color: var(--color-blue);
+  cursor: pointer;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.taxation-filter .card-wrapper__more:hover {
+  background: var(--color-gold);
+  color: var(--color-white);
 }
 
 .taxation-filter .card-wrapper p {
@@ -2469,6 +2478,7 @@ body._lock {
   -webkit-box-shadow: 0 1px 3px rgba(196, 122, 44, 0.3);
           box-shadow: 0 1px 3px rgba(196, 122, 44, 0.3);
   background-color: #ffffff;
+  cursor: pointer;
 }
 
 .taxation-filter .irs--round .irs-from,
@@ -2515,6 +2525,7 @@ body._lock {
 
 .taxation-filter .form-filter-title {
   color: var(--color-blue-light);
+  font-weight: 500;
 }
 
 .taxation-filter .access-content {
