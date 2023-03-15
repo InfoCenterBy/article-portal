@@ -40,33 +40,35 @@
                                                        Подробнее
                                                   </div>
                                              </div>
-                                             <div class="modal fade" :id="'modal' + '-'  + item.id" tabindex="-1"
-                                                  aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                  <div class="modal-dialog modal-dialog-centered">
-                                                       <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                 <h5 class="modal-title" id="exampleModalLabel">
-                                                                      {{item.title}}</h5>
-                                                                 <button type="button" class="btn-close"
-                                                                      data-bs-dismiss="modal"
-                                                                      aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                 {{item.body}}
-                                                            </div>
-                                                            <!-- <div class="modal-footer">
-                                                                 <button type="button" class="btn btn-secondary"
-                                                                      data-bs-dismiss="modal">Close</button>
-                                                                 <button type="button" class="btn btn-primary">Save
-                                                                      changes</button>
-                                                            </div> -->
-                                                       </div>
-                                                  </div>
-                                             </div>
+
+
                                         </div>
                                    </transition-group>
 
-
+                                   <div v-for="item in filterList" :key="item.id">
+                                        <div class="modal fade" :id="'modal' + '-'  + item.id" tabindex="-1"
+                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                             <div class="modal-dialog modal-dialog-centered">
+                                                  <div class="modal-content">
+                                                       <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">
+                                                                 {{item.title}}</h5>
+                                                            <button type="button" class="btn-close"
+                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
+                                                       </div>
+                                                       <div class="modal-body">
+                                                            {{item.body}}
+                                                       </div>
+                                                       <!-- <div class="modal-footer">
+                                                       <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                       <button type="button" class="btn btn-primary">Save
+                                                            changes</button>
+                                                  </div> -->
+                                                  </div>
+                                             </div>
+                                        </div>
+                                   </div>
 
                                    <div class="w-100" v-if="isEmpty">
                                         <h1 class="h1">Все пусто</h1>
@@ -99,8 +101,7 @@
                                              <div class="form-check d-flex flex-row align-items-start mb-3"
                                                   v-for="featury in features">
                                                   <input type="checkbox" :id="featury"
-                                                       @click="checkFeatures = featury; featuryFlag(featury); "
-                                                       class="form-check-input">
+                                                       @click="featuryFlag(featury, $event)" class="form-check-input">
                                                   <label v-bind:for="featury"
                                                        class="form-check-label ms-3">{{featury}}</label>
                                              </div>
@@ -167,10 +168,25 @@
                                         checkFeatures(dataFeatures) {
                                              // this.check = dataCheck
                                              // if (this.filterRule.featury.includes(dataFeatures)) {
+                                             // console.log(dataFeatures)
 
-                                             this.filterRule.featury.push(dataFeatures)
+
+                                             // this.filterRule.featury.push({ title: dataFeatures, status: true })
+
+                                             // if (!this.filterRule.featury.includes(dataFeatures)) {
+                                             //      this.filterRule.featury.push(dataFeatures)
+                                             //      // console.log("PUSHED")
                                              // }
-                                             console.log('dataFeatury', this.filterRule.featury.includes(dataFeatures))
+                                             // else {
+                                             //      let indexFeature = this.filterRule.featury.indexOf(dataFeatures)
+                                             //      if (indexFeature !== -1) {
+                                             //           this.filterRule.featury.splice(indexFeature, 1);
+                                             //      }
+                                             // }
+
+                                             // }
+                                             // console.log('RULES', this.filterRule)
+                                             // console.log('dataFeatury', this.filterRule.featury.includes(dataFeatures))
                                         },
                                    },
                                    methods: {
@@ -355,11 +371,10 @@
 
                                                   this.filterList = newList
 
-                                                  if (this.filterList == 0) {
+
+                                                  if (this.filterList.length == 0) {
                                                        console.log('ничего нет')
-                                                       setTimeout(() => {
-                                                            this.isEmpty = true
-                                                       }, 700)
+                                                       this.isEmpty = true
                                                   }
                                              }
                                              catch (error) {
@@ -377,7 +392,7 @@
                                              }
 
                                         },
-                                        featuryFlag(featury) {
+                                        featuryFlag(featury, event) {
                                              // if (this.filterRule.featury.includes(featury)) {
                                              //      console.log('alrady exist')
                                              // }
@@ -386,8 +401,30 @@
                                              // console.log(featury.split(/\s* \s*/))
                                              // console.log('featury', featury, '#' + featury)
                                              // console.log(featury.split(/\s* \s*/)[0])
-                                             console.log(document.getElementById('#' + featury.split(/\s* \s*/)[0]))
-                                        }
+                                             // if (featury) {
+                                             //      let newFeature = featury.split(/\s* \s*/).map(el => el = '#' + el).join(' ')
+                                             //      console.log('newFeature', document.getElementById(newFeature))
+                                             // }
+
+
+                                             // console.log("GET ELEM", featury.split(/\s* \s*/))
+                                             // console.log(document.querySelectorAll('#' + featury.split(/\s* \s*/)[0]))
+
+                                             if (event.target.checked) {
+                                                  console.log('isSelected' + featury);
+                                                  this.filterRule.featury.push(featury)
+
+
+                                             } else
+                                                  if (!event.target.checked) {
+                                                       console.log('Unselecded' + featury);
+                                                       let indexFeature = this.filterRule.featury.indexOf(featury)
+                                                       if (indexFeature !== -1) {
+                                                            this.filterRule.featury.splice(indexFeature, 1);
+                                                       }
+                                                  }
+                                             this.filterEl()
+                                        },
                                    },
                                    mounted() {
                                         this.getData()
