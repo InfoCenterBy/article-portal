@@ -2593,8 +2593,8 @@
       color: var(--color-gray-dark);
     }
     font-weight: 400;
-    @include adaptiv-value("font-size", 16, 12, 1);
-    @include adaptiv-value("line-height", 19, 15, 1);
+    @include adaptiv-value("font-size", 16, 14, 1);
+    @include adaptiv-value("line-height", 19, 17, 1);
   }
 
   .card-filter {
@@ -2695,5 +2695,11 @@
     &:hover{
       border-color: var(--color-gold-light);
     }
+  }
+  .filter-empty{
+    font-weight: 400;
+  }
+  .card-scope.row{
+    margin-left: 0 !important;
   }
 }
