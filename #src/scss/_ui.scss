@@ -2673,4 +2673,27 @@
   .access-content{
     transition: all 0.5s;
   }
+
+  .filter-empty-enter-active{
+    transition: opacity .1s ease;
+  }
+  .filter-empty-leave-active {
+    transition: opacity .1s ease;
+  }
+
+  .filter-empty-enter-from,
+  .filter-empty-leave-to {
+    opacity: 0;
+  }
+
+  .filter-reset{
+    color: var(--color-black);
+    border: 3px solid var(--color-gold);
+    padding: 15px 0;
+    transition: all .3s;
+    cursor: pointer;
+    &:hover{
+      border-color: var(--color-gold-light);
+    }
+  }
 }
