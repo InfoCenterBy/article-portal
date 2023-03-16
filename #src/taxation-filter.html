@@ -26,6 +26,18 @@
                                    <h1 class="h1">Выбор режима налогообложения</h1>
 
                                    <!-- <button @click="delel">del el</button> -->
+                                   <Transition name="filter-empty">
+                                        <div class="w-100 filter-empty d-flex flex-column justify-content-center align-items-center"
+                                             v-if="isEmpty">
+                                             <p class="h4 text-center color-gray-dark">По выбранным условиям нет
+                                                  подходящего режима
+                                                  налогообложения.
+                                                  Попробуйте изменить условия выбора.
+                                             </p>
+                                             <img src="img/default-search.gif" alt="default-search">
+                                        </div>
+                                   </Transition>
+
                                    <transition-group tag="div" class="row w-100" name="card-filter">
                                         <div v-for="item in filterList" :key="item.id"
                                              class="col-md-4 card-filter my-2">
@@ -70,16 +82,7 @@
                                         </div>
                                    </div>
 
-                                   <Transition name="filter-empty">
-                                        <div class="w-100 filter-empty d-flex flex-column justify-content-center align-items-center"
-                                             v-if="isEmpty">
-                                             <strong class="h3 text-center">По выбранным условиям нет подходящего режима
-                                                  налогообложения.
-                                                  Попробуйте изменить условия выбора.
-                                             </strong>
-                                             <img src="img/default-search.gif" alt="default-search">
-                                        </div>
-                                   </Transition>
+
 
 
                               </div>
@@ -106,12 +109,11 @@
                                                   Особенности
                                              </div>
                                              <div class="form-check d-flex flex-row align-items-start mb-3"
-                                                  v-for="featury in features">
-                                                  <input type="checkbox" :id="featury"
-                                                       @click="featuryFlag(featury, $event, rest = false)"
-                                                       class="form-check-input">
-                                                  <label v-bind:for="featury"
-                                                       class="form-check-label ms-3">{{featury}}</label>
+                                                  v-for="special in features">
+                                                  <input type="checkbox" :id="special"
+                                                       @click="specialFlag(special, $event)" class="form-check-input">
+                                                  <label v-bind:for="special"
+                                                       class="form-check-label ms-3">{{special}}</label>
                                              </div>
                                         </div>
                                         <div class="d-flex flex-column mt-4">
@@ -157,7 +159,7 @@
                                                   income: 5,
                                                   staff: 500,
                                                   category: '',
-                                                  featury: [],
+                                                  special: [],
                                              },
                                              categories: ['Юридическое лицо', 'Индивидуальный предприниматель', 'Физическое лицо'],
                                              features: ['Производство подакцизных товаров', 'Игорный бизнес', 'Производство сельхозпродукции'],
@@ -188,26 +190,26 @@
                                         },
                                         checkFeatures(dataFeatures) {
                                              // this.check = dataCheck
-                                             // if (this.filterRule.featury.includes(dataFeatures)) {
+                                             // if (this.filterRule.special.includes(dataFeatures)) {
                                              // console.log(dataFeatures)
 
 
-                                             // this.filterRule.featury.push({ title: dataFeatures, status: true })
+                                             // this.filterRule.special.push({ title: dataFeatures, status: true })
 
-                                             // if (!this.filterRule.featury.includes(dataFeatures)) {
-                                             //      this.filterRule.featury.push(dataFeatures)
+                                             // if (!this.filterRule.special.includes(dataFeatures)) {
+                                             //      this.filterRule.special.push(dataFeatures)
                                              //      // console.log("PUSHED")
                                              // }
                                              // else {
-                                             //      let indexFeature = this.filterRule.featury.indexOf(dataFeatures)
+                                             //      let indexFeature = this.filterRule.special.indexOf(dataFeatures)
                                              //      if (indexFeature !== -1) {
-                                             //           this.filterRule.featury.splice(indexFeature, 1);
+                                             //           this.filterRule.special.splice(indexFeature, 1);
                                              //      }
                                              // }
 
                                              // }
                                              // console.log('RULES', this.filterRule)
-                                             // console.log('dataFeatury', this.filterRule.featury.includes(dataFeatures))
+                                             // console.log('dataspecial', this.filterRule.special.includes(dataFeatures))
                                         },
 
                                    },
@@ -219,7 +221,7 @@
                                                   // this.listItems = finalRes.slice(0, 8)
                                                   let dataFilter = [{
                                                        id: 1,
-                                                       title: 'ОРН для ЮЛ',
+                                                       title: 'ОПН для ЮЛ',
                                                        body: 'Общий порядок налогообложения для юридических лиц',
                                                        category: 'Юридическое лицо',
                                                        features: ['Производство подакцизных товаров'],
@@ -254,7 +256,7 @@
                                                   },
                                                   {
                                                        id: 5,
-                                                       title: 'ОРН для ИП',
+                                                       title: 'ОПН для ИП',
                                                        body: 'Общий порядок налогообложения для индивидуальных предпринимателей',
                                                        category: 'Индивидуальный предприниматель',
                                                        features: ['Производство подакцизных товаров'],
@@ -297,8 +299,9 @@
                                              }
                                         },
                                         initSlider() {
+
                                              $(".js-range-slider-income").ionRangeSlider({
-                                                  skin: "round",
+                                                  skin: 'round',
                                                   type: "double",
                                                   from: 0,
                                                   from_fixed: true,
@@ -325,6 +328,7 @@
                                                   step: 50,
                                                   max_postfix: '+ ',
                                              });
+
 
 
                                         },
@@ -379,30 +383,30 @@
                                              try {
                                                   this.isEmpty = false
 
-                                                  let sortedFilter = this.filterRule.featury.sort()
+                                                  let sortedFilter = this.filterRule.special.sort()
                                                   // console.log('sortedFilter', sortedFilter)
                                                   const newList = this.listItems.filter(el => {
                                                        let sortedItems = el.features.slice().sort()
                                                        // console.log('sortedItems', sortedItems)
 
-                                                       if (this.filterRule.category === '' && this.filterRule.featury.length == 0) {
+                                                       if (this.filterRule.category === '' && this.filterRule.special.length == 0) {
                                                             return el.income <= this.filterRule.income
                                                                  && el.staff <= this.filterRule.staff
 
                                                        } else
-                                                            if (this.filterRule.category !== '' && this.filterRule.featury.length !== 0) {
+                                                            if (this.filterRule.category !== '' && this.filterRule.special.length !== 0) {
 
                                                                  return el.income <= this.filterRule.income
                                                                       && el.staff <= this.filterRule.staff
                                                                       && el.category === this.filterRule.category
-                                                                      && this.filterRule.featury.some(fit => el.features.includes(fit))
+                                                                      && this.filterRule.special.some(fit => el.features.includes(fit))
                                                                  // && JSON.stringify(sortedFilter) === JSON.stringify(sortedItems)
 
                                                             }
-                                                            else if (this.filterRule.category === '' && this.filterRule.featury.length !== 0) {
+                                                            else if (this.filterRule.category === '' && this.filterRule.special.length !== 0) {
                                                                  return el.income <= this.filterRule.income
                                                                       && el.staff <= this.filterRule.staff
-                                                                      && this.filterRule.featury.some(fit => el.features.includes(fit))
+                                                                      && this.filterRule.special.some(fit => el.features.includes(fit))
                                                                  // && JSON.stringify(sortedFilter) === JSON.stringify(sortedItems)
                                                             }
                                                             else {
@@ -412,10 +416,8 @@
                                                             }
                                                   })
 
-
-
                                                   // const newList = this.listItems.filter(el => {
-                                                  //      return this.filterRule.featury.some((f) => {
+                                                  //      return this.filterRule.special.some((f) => {
                                                   //           return f === el.features
                                                   //      })
                                                   // })
@@ -424,13 +426,14 @@
                                                   //      return obj.income <= this.filterRule.income &&
                                                   //           obj.staff <= this.filterRule.staff &&
                                                   //           obj.category === this.filterRule.category &&
-                                                  //           obj.features.some(f => this.filterRule.featury.includes(f));
+                                                  //           obj.features.some(f => this.filterRule.special.includes(f));
                                                   // });
+
+
+                                                  this.filterList = newList
                                                   if (newList.length === 0) {
                                                        this.isEmpty = true
                                                   }
-                                                  this.filterList = newList
-
 
                                              }
 
@@ -450,50 +453,45 @@
 
                                         },
 
-                                        featuryFlag(featury, event) {
-                                             // if (this.filterRule.featury.includes(featury)) {
-                                             //      console.log('alrady exist')
-                                             // }
-                                             // else
-                                             // console.log(featury)
-                                             // console.log(featury.split(/\s* \s*/))
-                                             // console.log('featury', featury, '#' + featury)
-                                             // console.log(featury.split(/\s* \s*/)[0])
-                                             // if (featury) {
-                                             //      let newFeature = featury.split(/\s* \s*/).map(el => el = '#' + el).join(' ')
-                                             //      console.log('newFeature', document.getElementById(newFeature))
-                                             // }
-
-
-                                             // console.log("GET ELEM", featury.split(/\s* \s*/))
-                                             // console.log(document.querySelectorAll('#' + featury.split(/\s* \s*/)[0]))
+                                        specialFlag(special, event) {
 
                                              if (event.target.checked) {
-                                                  console.log('isSelected' + featury);
-                                                  this.filterRule.featury.push(featury)
+                                                  console.log('isSelected' + special);
+                                                  this.filterRule.special.push(special)
 
 
                                              } else
                                                   if (!event.target.checked) {
-                                                       console.log('Unselecded' + featury);
-                                                       let indexFeature = this.filterRule.featury.indexOf(featury)
+                                                       console.log('Unselecded' + special);
+                                                       let indexFeature = this.filterRule.special.indexOf(special)
                                                        if (indexFeature !== -1) {
-                                                            this.filterRule.featury.splice(indexFeature, 1);
+                                                            this.filterRule.special.splice(indexFeature, 1);
                                                        }
                                                   }
 
                                              this.filterEl()
                                         },
                                         resetForm() {
-                                             this.filterRule.income = 5
-                                             this.filterRule.staff = 500
-                                             this.filterRule.category = ''
-                                             this.filterRule.featury = []
-                                             this.checkCategories = ''
-                                             this.checkFeatures = ''
+                                             // this.filterRule.income = 5
+                                             // this.filterRule.staff = 500
+                                             // this.filterRule.category = ''
+                                             // this.filterRule.special = []
+                                             // this.checkCategories = ''
+                                             // this.checkFeatures = ''
+                                             // document.querySelectorAll('.irs-bar').forEach(el => {
+                                             //      el.style.width = '95.5%'
+                                             // })
+                                             // document.querySelectorAll('.irs-handle.to').forEach(el => {
+                                             //      el.style.left = "92.5%"
+                                             // })
+                                             // document.querySelectorAll('.irs-to').forEach(el => {
+                                             //      el.style.left = "90%"
+                                             // })
 
-                                             document.querySelector('.filter-form').reset()
-                                             this.filterEl()
+                                             // this.initSlider()
+                                             // document.querySelector('.filter-form').reset()
+                                             location.reload()
+                                             // this.filterEl()
                                         }
                                    },
                                    mounted() {
