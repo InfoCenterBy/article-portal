@@ -2565,6 +2565,14 @@ body._lock {
   border-color: var(--color-gold-light);
 }
 
+.taxation-filter .filter-empty {
+  font-weight: 400;
+}
+
+.taxation-filter .card-scope.row {
+  margin-left: 0 !important;
+}
+
 p {
   margin-bottom: 24px;
 }
@@ -5608,11 +5616,11 @@ td.vertical-bottom {
   }
 
   .taxation-filter .card-wrapper {
-    font-size: calc(12px + 4 * ((100vw - 320px) / 1200));
+    font-size: calc(14px + 2 * ((100vw - 320px) / 1200));
   }
 
   .taxation-filter .card-wrapper {
-    line-height: calc(15px + 4 * ((100vw - 320px) / 1200));
+    line-height: calc(17px + 2 * ((100vw - 320px) / 1200));
   }
 
   .page-404 {
