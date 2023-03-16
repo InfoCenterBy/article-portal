@@ -237,6 +237,17 @@
                                    <h1 class="h1">Выбор режима налогообложения</h1>
 
                                    <!-- <button @click="delel">del el</button> -->
+                                   <Transition name="filter-empty">
+                                        <div class="w-100 filter-empty d-flex flex-column justify-content-center align-items-center"
+                                             v-if="isEmpty">
+                                             <strong class="h3 text-center">По выбранным условиям нет подходящего режима
+                                                  налогообложения.
+                                                  Попробуйте изменить условия выбора.
+                                             </strong>
+                                             <img src="img/default-search.gif" alt="default-search">
+                                        </div>
+                                   </Transition>
+
                                    <transition-group tag="div" class="row w-100" name="card-filter">
                                         <div v-for="item in filterList" :key="item.id"
                                              class="col-md-4 card-filter my-2">
@@ -281,16 +292,7 @@
                                         </div>
                                    </div>
 
-                                   <Transition name="filter-empty">
-                                        <div class="w-100 filter-empty d-flex flex-column justify-content-center align-items-center"
-                                             v-if="isEmpty">
-                                             <strong class="h3 text-center">По выбранным условиям нет подходящего режима
-                                                  налогообложения.
-                                                  Попробуйте изменить условия выбора.
-                                             </strong>
-                                             <img src="img/default-search.gif" alt="default-search">
-                                        </div>
-                                   </Transition>
+
 
 
                               </div>
