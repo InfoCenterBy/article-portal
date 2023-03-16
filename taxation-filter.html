@@ -251,44 +251,53 @@
                                                        Подробнее
                                                   </div>
                                              </div>
-                                             <div class="modal fade" :id="'modal' + '-'  + item.id" tabindex="-1"
-                                                  aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                  <div class="modal-dialog modal-dialog-centered">
-                                                       <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                 <h5 class="modal-title" id="exampleModalLabel">
-                                                                      {{item.title}}</h5>
-                                                                 <button type="button" class="btn-close"
-                                                                      data-bs-dismiss="modal"
-                                                                      aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                 {{item.body}}
-                                                            </div>
-                                                            <!-- <div class="modal-footer">
-                                                                 <button type="button" class="btn btn-secondary"
-                                                                      data-bs-dismiss="modal">Close</button>
-                                                                 <button type="button" class="btn btn-primary">Save
-                                                                      changes</button>
-                                                            </div> -->
-                                                       </div>
-                                                  </div>
-                                             </div>
+
+
                                         </div>
                                    </transition-group>
 
-
-
-                                   <div class="w-100" v-if="isEmpty">
-                                        <h1 class="h1">Все пусто</h1>
+                                   <div v-for="item in filterList" :key="item.id">
+                                        <div class="modal fade" :id="'modal' + '-'  + item.id" tabindex="-1"
+                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                             <div class="modal-dialog modal-dialog-centered">
+                                                  <div class="modal-content">
+                                                       <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">
+                                                                 {{item.title}}</h5>
+                                                            <button type="button" class="btn-close"
+                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
+                                                       </div>
+                                                       <div class="modal-body">
+                                                            {{item.body}}
+                                                       </div>
+                                                       <!-- <div class="modal-footer">
+                                                       <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                       <button type="button" class="btn btn-primary">Save
+                                                            changes</button>
+                                                  </div> -->
+                                                  </div>
+                                             </div>
+                                        </div>
                                    </div>
+
+                                   <Transition name="filter-empty">
+                                        <div class="w-100 filter-empty d-flex flex-column justify-content-center align-items-center"
+                                             v-if="isEmpty">
+                                             <strong class="h3 text-center">По выбранным условиям нет подходящего режима
+                                                  налогообложения.
+                                                  Попробуйте изменить условия выбора.
+                                             </strong>
+                                             <img src="img/default-search.gif" alt="default-search">
+                                        </div>
+                                   </Transition>
 
 
                               </div>
                               <aside data-da=".sidebar-wrapper__content,1100,1" class="sidebar-wrapper__aside mb-4">
                                    <h4 class="h4 h4_gold">Фильтры</h4>
 
-                                   <form>
+                                   <form class="filter-form">
 
                                         <div class="d-flex flex-column">
                                              <div class="form-filter-title mb-3">
@@ -303,23 +312,36 @@
                                                        class="form-check-label ms-3">{{category}}</label>
                                              </div>
                                         </div>
-                                        <div class="d-flex flex-column">
+                                        <div class="d-flex flex-column mt-4">
                                              <div class="form-filter-title mb-3">
                                                   Особенности
                                              </div>
                                              <div class="form-check d-flex flex-row align-items-start mb-3"
                                                   v-for="featury in features">
                                                   <input type="checkbox" :id="featury"
-                                                       @click="checkFeatures = featury; featuryFlag(featury); "
+                                                       @click="featuryFlag(featury, $event, rest = false)"
                                                        class="form-check-input">
                                                   <label v-bind:for="featury"
                                                        class="form-check-label ms-3">{{featury}}</label>
                                              </div>
                                         </div>
-                                        <input type="text" class="js-range-slider-income" name="income" value="">
-                                        <input type="text" class="js-range-slider-staff" name="staff" value="">
+                                        <div class="d-flex flex-column mt-4">
+                                             <div class="form-filter-title mb-3">
+                                                  Размер дохода за год
+                                             </div>
+                                             <input type="text" class="js-range-slider-income" name="income" value="">
+                                        </div>
+                                        <div class="d-flex flex-column mt-4">
+                                             <div class="form-filter-title mb-3">
+                                                  Количество сотрудников
+                                             </div>
 
-
+                                             <input type="text" class="js-range-slider-staff" name="staff" value="">
+                                        </div>
+                                        <div class="d-flex justify-content-center align-items-center filter-reset mt-4"
+                                             @click="resetForm()">
+                                             Очистить фильтр
+                                        </div>
                                    </form>
 
                               </aside>
@@ -378,11 +400,27 @@
                                         checkFeatures(dataFeatures) {
                                              // this.check = dataCheck
                                              // if (this.filterRule.featury.includes(dataFeatures)) {
+                                             // console.log(dataFeatures)
 
-                                             this.filterRule.featury.push(dataFeatures)
+
+                                             // this.filterRule.featury.push({ title: dataFeatures, status: true })
+
+                                             // if (!this.filterRule.featury.includes(dataFeatures)) {
+                                             //      this.filterRule.featury.push(dataFeatures)
+                                             //      // console.log("PUSHED")
                                              // }
-                                             console.log('dataFeatury', this.filterRule.featury.includes(dataFeatures))
+                                             // else {
+                                             //      let indexFeature = this.filterRule.featury.indexOf(dataFeatures)
+                                             //      if (indexFeature !== -1) {
+                                             //           this.filterRule.featury.splice(indexFeature, 1);
+                                             //      }
+                                             // }
+
+                                             // }
+                                             // console.log('RULES', this.filterRule)
+                                             // console.log('dataFeatury', this.filterRule.featury.includes(dataFeatures))
                                         },
+
                                    },
                                    methods: {
                                         async getData() {
@@ -395,7 +433,7 @@
                                                        title: 'ОРН для ЮЛ',
                                                        body: 'Общий порядок налогообложения для юридических лиц',
                                                        category: 'Юридическое лицо',
-                                                       features: '',
+                                                       features: ['Производство подакцизных товаров'],
                                                        income: 1.75,
                                                        staff: 124,
                                                   }, {
@@ -403,7 +441,7 @@
                                                        title: 'УСН для ЮЛ',
                                                        body: 'Упрощенная система налогообложения для юридических лиц',
                                                        category: 'Юридическое лицо',
-                                                       features: '',
+                                                       features: [],
                                                        income: 0.75,
                                                        staff: 324,
                                                   },
@@ -412,7 +450,7 @@
                                                        title: 'Единый налог для производителей сельскохозяйственной продукции',
                                                        body: '',
                                                        category: 'Юридическое лицо',
-                                                       features: 'Производство сельхозпродукции',
+                                                       features: ['Производство сельхозпродукции'],
                                                        income: 3,
                                                        staff: 150,
                                                   },
@@ -421,7 +459,7 @@
                                                        title: 'Налог на игорный бизнес',
                                                        body: '',
                                                        category: 'Юридическое лицо',
-                                                       features: 'Игорный бизнес',
+                                                       features: ['Игорный бизнес'],
                                                        income: 4,
                                                        staff: 237,
                                                   },
@@ -430,7 +468,7 @@
                                                        title: 'ОРН для ИП',
                                                        body: 'Общий порядок налогообложения для индивидуальных предпринимателей',
                                                        category: 'Индивидуальный предприниматель',
-                                                       features: '',
+                                                       features: ['Производство подакцизных товаров'],
                                                        income: 2,
                                                        staff: 100,
                                                   },
@@ -439,7 +477,7 @@
                                                        title: 'Единый налог с ИП и иных ФЛ (для ИП)',
                                                        body: 'Единый налог с индивидуальных предпринимателей и иных физических лиц (для индивидуальных предпринимателей)',
                                                        category: 'Индивидуальный предприниматель',
-                                                       features: '',
+                                                       features: [],
                                                        income: 3,
                                                        staff: 200,
                                                   }
@@ -448,9 +486,9 @@
                                                        id: 7,
                                                        title: 'Единый налог с ИП и иных ФЛ (для ФЛ)',
                                                        body: 'Единый налог с индивидуальных предпринимателей и иных физических лиц (для физических лиц)',
-                                                       category: 'Индивидуальный предприниматель',
-                                                       features: '',
-                                                       income: 6,
+                                                       category: 'Физическое лицо',
+                                                       features: [],
+                                                       income: 5,
                                                        staff: 150,
                                                   },
                                                   {
@@ -458,7 +496,7 @@
                                                        title: 'НПД',
                                                        body: 'Налог на профессиональный доход',
                                                        category: 'Физическое лицо',
-                                                       features: '',
+                                                       features: [],
                                                        income: 1,
                                                        staff: 50,
                                                   },]
@@ -551,35 +589,69 @@
 
                                              try {
                                                   this.isEmpty = false
-                                                  const newList = this.listItems.filter(el => {
 
-                                                       if (this.filterRule.category == '') {
+                                                  let sortedFilter = this.filterRule.featury.sort()
+                                                  // console.log('sortedFilter', sortedFilter)
+                                                  const newList = this.listItems.filter(el => {
+                                                       let sortedItems = el.features.slice().sort()
+                                                       // console.log('sortedItems', sortedItems)
+
+                                                       if (this.filterRule.category === '' && this.filterRule.featury.length == 0) {
                                                             return el.income <= this.filterRule.income
                                                                  && el.staff <= this.filterRule.staff
-                                                       }
-                                                       else {
-                                                            return el.income <= this.filterRule.income
-                                                                 && el.staff <= this.filterRule.staff
-                                                                 && el.category === this.filterRule.category
-                                                       }
+
+                                                       } else
+                                                            if (this.filterRule.category !== '' && this.filterRule.featury.length !== 0) {
+
+                                                                 return el.income <= this.filterRule.income
+                                                                      && el.staff <= this.filterRule.staff
+                                                                      && el.category === this.filterRule.category
+                                                                      && this.filterRule.featury.some(fit => el.features.includes(fit))
+                                                                 // && JSON.stringify(sortedFilter) === JSON.stringify(sortedItems)
+
+                                                            }
+                                                            else if (this.filterRule.category === '' && this.filterRule.featury.length !== 0) {
+                                                                 return el.income <= this.filterRule.income
+                                                                      && el.staff <= this.filterRule.staff
+                                                                      && this.filterRule.featury.some(fit => el.features.includes(fit))
+                                                                 // && JSON.stringify(sortedFilter) === JSON.stringify(sortedItems)
+                                                            }
+                                                            else {
+                                                                 return el.income <= this.filterRule.income
+                                                                      && el.staff <= this.filterRule.staff
+                                                                      && el.category === this.filterRule.category
+                                                            }
                                                   })
 
+
+
+                                                  // const newList = this.listItems.filter(el => {
+                                                  //      return this.filterRule.featury.some((f) => {
+                                                  //           return f === el.features
+                                                  //      })
+                                                  // })
+
+                                                  // const newList = this.listItems.filter(obj => {
+                                                  //      return obj.income <= this.filterRule.income &&
+                                                  //           obj.staff <= this.filterRule.staff &&
+                                                  //           obj.category === this.filterRule.category &&
+                                                  //           obj.features.some(f => this.filterRule.featury.includes(f));
+                                                  // });
+                                                  if (newList.length === 0) {
+                                                       this.isEmpty = true
+                                                  }
                                                   this.filterList = newList
 
-                                                  if (this.filterList == 0) {
-                                                       console.log('ничего нет')
-                                                       setTimeout(() => {
-                                                            this.isEmpty = true
-                                                       }, 700)
-                                                  }
+
                                              }
+
                                              catch (error) {
                                                   console.log(error)
                                              }
+
+
                                         },
-                                        delel() {
-                                             this.listItems.pop()
-                                        },
+
                                         categoriesFlag(category) {
                                              if (this.filterRule.category == category) {
                                                   this.filterRule.category = ''
@@ -588,7 +660,8 @@
                                              }
 
                                         },
-                                        featuryFlag(featury) {
+
+                                        featuryFlag(featury, event) {
                                              // if (this.filterRule.featury.includes(featury)) {
                                              //      console.log('alrady exist')
                                              // }
@@ -597,7 +670,41 @@
                                              // console.log(featury.split(/\s* \s*/))
                                              // console.log('featury', featury, '#' + featury)
                                              // console.log(featury.split(/\s* \s*/)[0])
-                                             console.log(document.getElementById('#' + featury.split(/\s* \s*/)[0]))
+                                             // if (featury) {
+                                             //      let newFeature = featury.split(/\s* \s*/).map(el => el = '#' + el).join(' ')
+                                             //      console.log('newFeature', document.getElementById(newFeature))
+                                             // }
+
+
+                                             // console.log("GET ELEM", featury.split(/\s* \s*/))
+                                             // console.log(document.querySelectorAll('#' + featury.split(/\s* \s*/)[0]))
+
+                                             if (event.target.checked) {
+                                                  console.log('isSelected' + featury);
+                                                  this.filterRule.featury.push(featury)
+
+
+                                             } else
+                                                  if (!event.target.checked) {
+                                                       console.log('Unselecded' + featury);
+                                                       let indexFeature = this.filterRule.featury.indexOf(featury)
+                                                       if (indexFeature !== -1) {
+                                                            this.filterRule.featury.splice(indexFeature, 1);
+                                                       }
+                                                  }
+
+                                             this.filterEl()
+                                        },
+                                        resetForm() {
+                                             this.filterRule.income = 5
+                                             this.filterRule.staff = 500
+                                             this.filterRule.category = ''
+                                             this.filterRule.featury = []
+                                             this.checkCategories = ''
+                                             this.checkFeatures = ''
+
+                                             document.querySelector('.filter-form').reset()
+                                             this.filterEl()
                                         }
                                    },
                                    mounted() {

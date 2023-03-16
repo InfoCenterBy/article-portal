@@ -2534,6 +2534,37 @@ body._lock {
   transition: all 0.5s;
 }
 
+.taxation-filter .filter-empty-enter-active {
+  -webkit-transition: opacity 0.1s ease;
+  -o-transition: opacity 0.1s ease;
+  transition: opacity 0.1s ease;
+}
+
+.taxation-filter .filter-empty-leave-active {
+  -webkit-transition: opacity 0.1s ease;
+  -o-transition: opacity 0.1s ease;
+  transition: opacity 0.1s ease;
+}
+
+.taxation-filter .filter-empty-enter-from,
+.taxation-filter .filter-empty-leave-to {
+  opacity: 0;
+}
+
+.taxation-filter .filter-reset {
+  color: var(--color-black);
+  border: 3px solid var(--color-gold);
+  padding: 15px 0;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.taxation-filter .filter-reset:hover {
+  border-color: var(--color-gold-light);
+}
+
 p {
   margin-bottom: 24px;
 }
