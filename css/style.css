@@ -2408,6 +2408,12 @@ body._lock {
 
 .access-content .access-table-mobile .access-table-card .access-block-status {
   font-size: 12px;
+  width: 100%;
+}
+
+.access-content .access-table-mobile .access-table-card .access-block-status-block {
+  max-width: 85px;
+  width: 100%;
 }
 
 .taxation-filter .card-wrapper {
