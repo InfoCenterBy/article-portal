@@ -474,13 +474,13 @@
                                         specialFlag(special, event) {
 
                                              if (event.target.checked) {
-                                                  console.log('isSelected' + special);
+                                                  // console.log('isSelected' + special);
                                                   this.filterRule.special.push(special)
 
 
                                              } else
                                                   if (!event.target.checked) {
-                                                       console.log('Unselecded' + special);
+                                                       // console.log('Unselecded' + special);
                                                        let indexFeature = this.filterRule.special.indexOf(special)
                                                        if (indexFeature !== -1) {
                                                             this.filterRule.special.splice(indexFeature, 1);
