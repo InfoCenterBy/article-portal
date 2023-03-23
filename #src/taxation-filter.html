@@ -23,7 +23,7 @@
                          <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
                          <div class="sidebar-wrapper" id="app">
                               <div class="sidebar-wrapper__content access-content">
-                                   <h1 class="h1">Выбор режима налогообложения</h1>
+                                   <h1 class="h1 px-3">Выбор режима налогообложения</h1>
 
                                    <!-- <button @click="delel">del el</button> -->
 
@@ -164,13 +164,13 @@
                                              checkCategories: '',
                                              checkFeatures: '',
                                              filterRule: {
-                                                  income: 5,
-                                                  staff: 500,
+                                                  income: 0.05,
+                                                  staff: 0,
                                                   category: '',
                                                   special: [],
                                              },
                                              categories: ['Юридическое лицо', 'Индивидуальный предприниматель', 'Физическое лицо'],
-                                             features: ['Производство подакцизных товаров', 'Игорный бизнес', 'Производство сельхозпродукции'],
+                                             features: ['Производство подакцизных товаров', 'Производство сельхозпродукции'],
                                              isEmpty: false,
                                         }
                                    },
@@ -233,8 +233,8 @@
                                                        body: 'Общий порядок налогообложения для юридических лиц',
                                                        category: 'Юридическое лицо',
                                                        features: ['Производство подакцизных товаров'],
-                                                       income: 2.2,
-                                                       staff: 124,
+                                                       income: 5,
+                                                       staff: 60,
                                                   }, {
                                                        id: 2,
                                                        title: 'УСН для ЮЛ',
@@ -242,7 +242,7 @@
                                                        category: 'Юридическое лицо',
                                                        features: [],
                                                        income: 2.15,
-                                                       staff: 324,
+                                                       staff: 50,
                                                   },
                                                   {
                                                        id: 3,
@@ -250,26 +250,26 @@
                                                        body: '',
                                                        category: 'Юридическое лицо',
                                                        features: ['Производство сельхозпродукции'],
-                                                       income: 3,
-                                                       staff: 150,
+                                                       income: 5,
+                                                       staff: 60,
                                                   },
-                                                  {
-                                                       id: 4,
-                                                       title: 'Налог на игорный бизнес',
-                                                       body: '',
-                                                       category: 'Юридическое лицо',
-                                                       features: ['Игорный бизнес'],
-                                                       income: 4,
-                                                       staff: 237,
-                                                  },
+                                                  // {
+                                                  //      id: 4,
+                                                  //      title: 'Налог на игорный бизнес',
+                                                  //      body: '',
+                                                  //      category: 'Юридическое лицо',
+                                                  //      features: ['Игорный бизнес'],
+                                                  //      income: 0,
+                                                  //      staff: 0,
+                                                  // },
                                                   {
                                                        id: 5,
                                                        title: 'ОПН для ИП',
                                                        body: 'Общий порядок налогообложения для индивидуальных предпринимателей',
                                                        category: 'Индивидуальный предприниматель',
                                                        features: ['Производство подакцизных товаров'],
-                                                       income: 2,
-                                                       staff: 100,
+                                                       income: 5,
+                                                       staff: 3,
                                                   },
                                                   {
                                                        id: 6,
@@ -277,8 +277,8 @@
                                                        body: 'Единый налог с индивидуальных предпринимателей и иных физических лиц (для индивидуальных предпринимателей)',
                                                        category: 'Индивидуальный предприниматель',
                                                        features: [],
-                                                       income: 3,
-                                                       staff: 200,
+                                                       income: 5,
+                                                       staff: 3,
                                                   }
                                                        ,
                                                   {
@@ -288,7 +288,7 @@
                                                        category: 'Физическое лицо',
                                                        features: [],
                                                        income: 5,
-                                                       staff: 150,
+                                                       staff: 0,
                                                   },
                                                   {
                                                        id: 8,
@@ -296,8 +296,8 @@
                                                        body: 'Налог на профессиональный доход',
                                                        category: 'Физическое лицо',
                                                        features: [],
-                                                       income: 1,
-                                                       staff: 50,
+                                                       income: 5,
+                                                       staff: 0,
                                                   },]
                                                   this.listItems = dataFilter
                                                   this.filterList = this.listItems
@@ -313,7 +313,7 @@
                                                   type: "double",
                                                   from: 0,
                                                   from_fixed: true,
-                                                  to: 2.5,
+                                                  to: 0,
                                                   min: 0,
                                                   max: 5,
                                                   grid: true,
@@ -322,6 +322,11 @@
                                                   step: 0.05,
                                                   max_postfix: '+ ',
                                                   force_edges: true,
+                                                  onChange: function () {
+                                                       document.querySelectorAll('.js-irs-0 .irs-from').forEach(el => {
+                                                            el.innerHTML = '0'
+                                                       })
+                                                  },
                                              });
 
                                              $(".js-range-slider-staff").ionRangeSlider({
@@ -329,12 +334,12 @@
                                                   type: "double",
                                                   from: 0,
                                                   from_fixed: true,
-                                                  to: 100,
+                                                  to: 0,
                                                   min: 0,
-                                                  max: 500,
+                                                  max: 60,
                                                   grid: true,
-                                                  grid_num: 5,
-                                                  step: 50,
+                                                  grid_num: 6,
+                                                  step: 1,
                                                   max_postfix: '+ ',
                                                   force_edges: true,
                                              });
@@ -351,6 +356,9 @@
                                                        if (el.innerHTML == '5') {
                                                             el.innerHTML = ' '
                                                        }
+                                                  })
+                                                  document.querySelectorAll('.js-irs-0 .irs-from').forEach(el => {
+                                                       el.innerHTML = '0'
                                                   })
                                              }
                                              catch (error) {
@@ -400,28 +408,28 @@
                                                        // console.log('sortedItems', sortedItems)
 
                                                        if (this.filterRule.category === '' && this.filterRule.special.length == 0) {
-                                                            return el.income <= this.filterRule.income
-                                                                 && el.staff <= this.filterRule.staff
+                                                            return el.income >= this.filterRule.income
+                                                                 && el.staff >= this.filterRule.staff
 
                                                        } else
                                                             if (this.filterRule.category !== '' && this.filterRule.special.length !== 0) {
 
-                                                                 return el.income <= this.filterRule.income
-                                                                      && el.staff <= this.filterRule.staff
+                                                                 return el.income >= this.filterRule.income
+                                                                      && el.staff >= this.filterRule.staff
                                                                       && el.category === this.filterRule.category
                                                                       && this.filterRule.special.some(fit => el.features.includes(fit))
                                                                  // && JSON.stringify(sortedFilter) === JSON.stringify(sortedItems)
 
                                                             }
                                                             else if (this.filterRule.category === '' && this.filterRule.special.length !== 0) {
-                                                                 return el.income <= this.filterRule.income
-                                                                      && el.staff <= this.filterRule.staff
+                                                                 return el.income >= this.filterRule.income
+                                                                      && el.staff >= this.filterRule.staff
                                                                       && this.filterRule.special.some(fit => el.features.includes(fit))
                                                                  // && JSON.stringify(sortedFilter) === JSON.stringify(sortedItems)
                                                             }
                                                             else {
-                                                                 return el.income <= this.filterRule.income
-                                                                      && el.staff <= this.filterRule.staff
+                                                                 return el.income >= this.filterRule.income
+                                                                      && el.staff >= this.filterRule.staff
                                                                       && el.category === this.filterRule.category
                                                             }
                                                   })
