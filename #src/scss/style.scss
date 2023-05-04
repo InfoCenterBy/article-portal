@@ -581,3 +581,39 @@ body {
 @import "__print";
 
 // @import "ion.rangeSlider.css";
+
+.subscribe-date{
+  .datetimepicker-input{
+    border-right: none;
+  }
+  .input-group-text{
+    background: none; 
+    border-left: none;
+  }
+  .input-group:has(.form-control:focus){
+    box-shadow: 0 0 0 .25rem rgba(13,110,253,.25);
+    border-radius: .25rem;
+    .input-group-text{
+      border-color: #86b7fe;
+    }
+  }
+  .form-control:focus{
+      border-color: #86b7fe;
+      outline: 0;
+      box-shadow: none;
+  }
+  .input-group:has(.form-control:disabled){
+    .form-control, .input-group-text{
+      background: transparent;
+      color: #D1D2D4;
+      user-select: none;
+      font-weight: 400;
+    }
+    ::placeholder{
+      color: #D1D2D4;
+    }
+    .bi{
+      color: #D1D2D4;
+    }
+  }
+}

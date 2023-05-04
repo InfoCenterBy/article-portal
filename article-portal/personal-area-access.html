@@ -14,15 +14,18 @@
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
       <link rel="stylesheet"
             href="https://cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.min.css">
-      <!--Plugin CSS file with desired skin-->
+
+      <!--Range silder CSS-->
       <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css" />
 
-      <!--jQuery-->
+      <!--Range slider JavaScript-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-      <!--Plugin JavaScript file-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
+
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/css/tempusdominus-bootstrap-4.min.css">
+
 
       <link rel="stylesheet" href="css/style.min.css" />
 </head>
@@ -356,9 +359,44 @@
                                    <!-- mobile access card start -->
                                    <div class="access-table-mobile">
                                         <div class="access-table-card d-flex flex-row justify-content-between">
-                                             <div class="d-flex align-items-start p-2">
+                                             <div class="access-block-status-block d-flex align-items-start p-2">
                                                   <div class="access-block-status access-status-active">
                                                        Доступ активен
+                                                  </div>
+                                             </div>
+                                             <div class="d-flex flex-column ms-2 p-2 w-100">
+                                                  <div class="access-table-card__data">
+                                                       <span>Номер заказа</span>
+                                                       <span>№364</span>
+                                                  </div>
+                                                  <div class="access-table-card__data">
+                                                       <span>Дата оформления</span>
+                                                       <span>10.02.2023</span>
+                                                  </div>
+                                                  <div class="access-table-card__data">
+                                                       <span>Период доступа</span>
+                                                       <span>90 дней</span>
+                                                  </div>
+                                                  <div class="access-table-card__data">
+                                                       <span>Счет на оплату</span>
+                                                       <a href=""><i class="bi bi-paperclip"></i> Скачать счет</a>
+                                                  </div>
+                                                  <div class="access-table-card__data">
+                                                       <span>Акт</span>
+                                                       <a href=""><i class="bi bi-paperclip"></i> Скачать акт</a>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                   </div>
+                                   <div class="access-table-mobile">
+                                        <div class="access-table-card d-flex flex-row justify-content-between">
+                                             <div
+                                                  class="access-block-status-block d-flex align-items-start p-2 flex-column">
+                                                  <div class="access-block-status access-status-npaid">
+                                                       Не оплачен
+                                                  </div>
+                                                  <div class="access-block-status access-status-npaid">
+                                                       Истек срок доступа
                                                   </div>
                                              </div>
                                              <div class="d-flex flex-column ms-2 p-2 w-100">
@@ -513,6 +551,10 @@
 <script
         src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/js/tempusdominus-bootstrap-4.min.js"></script>
+
 
 <script src="js/script.min.js"></script>
 </body>

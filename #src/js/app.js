@@ -275,3 +275,30 @@ var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
   return new bootstrap.Popover(popoverTriggerEl)
 })
 
+let today = new Date();
+let minDate = today.setDate(today.getDate() + 1);
+
+// $('#datePickerStart').datetimepicker({
+//   useCurrent: false,
+//   format: "DD/MM/YYYY",
+//   minDate: minDate
+// });
+
+$(function () {
+  $('#datetimepicker').datetimepicker({
+    format: 'DD.MM.YYYY', // Формат даты
+    icons: {
+      time: 'bi bi-clock', // Иконка времени
+      date: 'bi bi-calendar', // Иконка календаря
+      up: 'bi bi-chevron-up', // Иконка вверх
+      down: 'bi bi-chevron-down', // Иконка вниз
+      previous: 'bi bi-chevron-left', // Иконка стрелки влево
+      next: 'bi bi-chevron-right', // Иконка стрелки вправо
+      today: 'bi bi-calendar-check', // Иконка "Сегодня"
+      clear: 'bi bi-trash', // Иконка "Очистить"
+      close: 'bi bi-x', // Иконка "Закрыть"
+    },
+    minDate: minDate,
+    theme: 'bootstrap'
+  });
+});

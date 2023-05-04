@@ -14,15 +14,18 @@
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
       <link rel="stylesheet"
             href="https://cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.min.css">
-      <!--Plugin CSS file with desired skin-->
+
+      <!--Range silder CSS-->
       <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css" />
 
-      <!--jQuery-->
+      <!--Range slider JavaScript-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-      <!--Plugin JavaScript file-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
+
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/css/tempusdominus-bootstrap-4.min.css">
+
 
       <link rel="stylesheet" href="css/style.min.css" />
 </head>
@@ -219,7 +222,7 @@
         </nav>
     </div>
 </header>
-          <main class="page">
+          <main class="page taxation-filter">
                <nav aria-label="breadcrumb">
                     <div class='container'>
                          <ol class="breadcrumb">
@@ -235,32 +238,96 @@
                          <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
                          <div class="sidebar-wrapper" id="app">
                               <div class="sidebar-wrapper__content access-content">
-                                   <h1 class="h1">Выбор режима налогообложения</h1>
+                                   <h1 class="h1 px-3">Выбор режима налогообложения</h1>
 
-                                   <button @click="delel">del el</button>
-                                   <input type="text" class="js-range-slider" name="my_range" value="" />
-                                   <transition-group tag="div" class="row w-100" name="card-filter">
-                                        <div v-for="item in listItems" :key="item.id" class="col-md-4 card-filter my-2"
-                                             v-if="show">
-                                             <div
-                                                  class="card-wrapper d-flex flex-column my-2 justify-content-between p-4 h-100">
-                                                  <h4 class="h4">{{item.title}}</h4>
-                                                  <p>
-                                                       {{item.body}}
+                                   <!-- <button @click="delel">del el</button> -->
+
+                                   <div>
+                                        <Transition name="filter-empty">
+                                             <div class="w-100 filter-empty d-flex flex-column justify-content-center align-items-center"
+                                                  v-if="isEmpty">
+                                                  <p class="h5 text-center color-gray-dark">По выбранным условиям
+                                                       нет
+                                                       подходящего режима
+                                                       налогообложения.
+                                                       Попробуйте изменить условия выбора.
                                                   </p>
-                                                  <div class="mt-auto py-3 card-wrapper__more">
-                                                       Подробнее
+                                                  <img src="img/default-search.gif" alt="default-search">
+                                             </div>
+                                        </Transition>
+
+                                        <transition-group tag="div" class="row w-100 card-scope " name="card-filter">
+                                             <div v-for="item in filterList" :key="item.id"
+                                                  class="col-md-4 card-filter my-2">
+                                                  <div
+                                                       class="card-wrapper d-flex flex-column my-2 justify-content-between p-4 h-100">
+                                                       <h4 class="h4">{{item.title}}</h4>
+                                                       <p>
+                                                            {{item.text}}
+                                                       </p>
+                                                       <div class="mt-auto py-3 card-wrapper__more"
+                                                            data-bs-toggle="modal"
+                                                            :data-bs-target="'#' + 'modal' + '-'  + item.id">
+                                                            Подробнее
+                                                       </div>
+                                                  </div>
+
+
+                                             </div>
+                                        </transition-group>
+                                   </div>
+
+
+
+
+                                   <div v-for="item in filterList" :key="item.id">
+                                        <div class="modal fade" :id="'modal' + '-'  + item.id" tabindex="-1"
+                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                             <div class="modal-dialog modal-dialog-centered modal-lg">
+                                                  <div class="modal-content">
+                                                       <div class="modal-header align-items-start">
+                                                            <strong class="modal-title" id="exampleModalLabel">
+                                                                 {{item.title}}</strong>
+                                                            <button type="button" class="btn-close"
+                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
+                                                       </div>
+                                                       <div class="modal-body">
+                                                            <div class="px-4">
+                                                                 <span>{{item.text}}</span>
+                                                                 <div class="my-3"></div>
+                                                                 <!-- border-end-0 border-md-end -->
+                                                                 <div v-for="(value, key) in item.body" :key="key" class="d-flex flex-row flex-wrap border my-3 my-md-0">
+                                                                      <div class="border-bottom border-md-bottom-0 col-md-6 col-12">
+                                                                           <div class="d-flex h-100 ps-2 p-3 ">{{ key }}</div>
+                                                                      </div>
+                                                                      <div class="border-start-0 border-md-start col-md-6 col-12">
+                                                                           <div class="d-flex h-100 ps-2 p-3">
+                                                                                <div v-if="value === true" class="h-100"><i class="bi bi-check-circle-fill me-3 text-success"></i> Да</div>
+                                                                                <div v-else-if="value === false" class="h-100"><i class="bi bi-x-circle-fill me-3 text-danger"></i> Нет</div>
+                                                                                <div v-else-if="Array.isArray(value)" class="h-100">
+                                                                                     <div v-for="subItem in value" :key="subItem">
+                                                                                          <div v-for="(innerVal, innerKey) in subItem" :key="innerKey">
+                                                                                               {{innerKey}}
+                                                                                               <ul class="color-gray-dark">
+                                                                                                    <li v-for="innerSubItem in innerVal" :key="innerSubItem">
+                                                                                                         {{innerSubItem}}
+                                                                                                    </li>
+                                                                                               </ul>
+                                                                                          </div>
+                                                                                     </div>
+                                                                                </div>
+                                                                                <div v-else class="h-100">
+                                                                                     {{value}}
+                                                                                </div>
+                                                                           </div>
+                                                                      </div>
+                                                                      
+                                                                 </div>
+                                                            </div>
+                                                       </div>
                                                   </div>
                                              </div>
                                         </div>
-                                   </transition-group>
-
-
-
-                                   <div class="w-100">
-                                        <!-- <input :value="text" @input="onInput" placeholder="Type here">
-                                        <p>{{ text }}</p>
-                                        <button @click="increment">count is: {{ count }}</button> -->
                                    </div>
 
 
@@ -268,15 +335,53 @@
 
                               </div>
                               <aside data-da=".sidebar-wrapper__content,1100,1" class="sidebar-wrapper__aside mb-4">
-                                   <h4 class="h4 h4_gold hidden-title">Фильтры</h4>
-                                   <nav class="nav-links mb-4">
-                                        <div class="nav-links__wrapper">
-                                             <a class="nav-links__link">Категория налогоплательщика</a>
-                                             <a class="nav-links__link">Особенности</a>
-                                             <a class="nav-links__link">Размер дохода за год</a>
-                                             <a class="nav-links__link">Количество сотрудников</a>
+                                   <h4 class="h4 h4_gold">Фильтры</h4>
+
+                                   <form class="filter-form">
+
+                                        <div class="d-flex flex-column">
+                                             <div class="form-filter-title mb-3">
+                                                  Категория налогоплательщика
+                                             </div>
+                                             <div class="form-check d-flex flex-row align-items-start mb-3"
+                                                  v-for="category in categories">
+                                                  <input type="checkbox" :id="category"
+                                                       @click="checkCategories = category; categoriesFlag(category)"
+                                                       :checked="checkCategories === category" class="form-check-input">
+                                                  <label v-bind:for="category"
+                                                       class="form-check-label ms-3">{{category}}</label>
+                                             </div>
                                         </div>
-                                   </nav>
+                                        <div class="d-flex flex-column mt-4">
+                                             <div class="form-filter-title mb-3">
+                                                  Особенности
+                                             </div>
+                                             <div class="form-check d-flex flex-row align-items-start mb-3"
+                                                  v-for="special in features">
+                                                  <input type="checkbox" :id="special"
+                                                       @click="specialFlag(special, $event)" class="form-check-input">
+                                                  <label v-bind:for="special"
+                                                       class="form-check-label ms-3">{{special}}</label>
+                                             </div>
+                                        </div>
+                                        <div class="d-flex flex-column mt-4">
+                                             <div class="form-filter-title mb-3">
+                                                  Размер дохода за год
+                                             </div>
+                                             <input type="text" class="js-range-slider-income" name="income" value="">
+                                        </div>
+                                        <div class="d-flex flex-column mt-4">
+                                             <div class="form-filter-title mb-3">
+                                                  Количество сотрудников
+                                             </div>
+
+                                             <input type="text" class="js-range-slider-staff" name="staff" value="">
+                                        </div>
+                                        <div class="d-flex justify-content-center align-items-center filter-reset mt-4"
+                                             @click="resetForm()">
+                                             Очистить фильтр
+                                        </div>
+                                   </form>
 
                               </aside>
 
@@ -291,39 +396,491 @@
                                    },
                                    data() {
                                         return {
-                                             text: '',
-                                             count: 0,
                                              listItems: [],
-                                             show: true,
+                                             filterList: [],
+                                             // show: true,
+                                             income: '',
+                                             staff: '',
+                                             checkCategories: '',
+                                             checkFeatures: '',
+                                             filterRule: {
+                                                  income: 0.05,
+                                                  staff: 0,
+                                                  category: '',
+                                                  special: [],
+                                             },
+                                             categories: ['Юридическое лицо', 'Индивидуальный предприниматель', 'Физическое лицо'],
+                                             features: ['Производство подакцизных товаров', 'Производство сельхозпродукции'],
+                                             isEmpty: false,
                                         }
                                    },
+                                   watch: {
+                                        income(dataIn) {
+                                             // let newArr = this.listItems.filter(el => {
+                                             //      return el.income <= data
+                                             // })
+                                             // this.income = data
+                                             // console.log('income', dataIn)
+                                             this.filterRule.income = dataIn
+                                             this.filterEl()
+
+                                        },
+                                        staff(dataSt) {
+                                             // console.log("staff", dataSt)
+                                             this.filterRule.staff = dataSt
+                                             this.filterEl()
+                                        },
+                                        checkCategories(dataCheck) {
+                                             // this.check = dataCheck
+                                             this.filterRule.category = dataCheck
+                                             // console.log('dataCheck', this.filterRule)
+                                             this.filterEl()
+                                        },
+                                        checkFeatures(dataFeatures) {
+                                             // this.check = dataCheck
+                                             // if (this.filterRule.special.includes(dataFeatures)) {
+                                             // console.log(dataFeatures)
+
+
+                                             // this.filterRule.special.push({ title: dataFeatures, status: true })
+
+                                             // if (!this.filterRule.special.includes(dataFeatures)) {
+                                             //      this.filterRule.special.push(dataFeatures)
+                                             //      // console.log("PUSHED")
+                                             // }
+                                             // else {
+                                             //      let indexFeature = this.filterRule.special.indexOf(dataFeatures)
+                                             //      if (indexFeature !== -1) {
+                                             //           this.filterRule.special.splice(indexFeature, 1);
+                                             //      }
+                                             // }
+
+                                             // }
+                                             // console.log('RULES', this.filterRule)
+                                             // console.log('dataspecial', this.filterRule.special.includes(dataFeatures))
+                                        },
+
+                                   },
                                    methods: {
-                                        onInput(e) {
-                                             this.text = e.target.value
-                                        },
-                                        increment() {
-                                             this.count++
-                                        },
                                         async getData() {
                                              try {
-                                                  const res = await fetch("https://jsonplaceholder.typicode.com/posts")
-                                                  const finalRes = await res.json()
-                                                  this.listItems = finalRes.slice(0, 8)
+                                                  // const res = await fetch("https://jsonplaceholder.typicode.com/posts")
+                                                  // const finalRes = await res.json()
+                                                  // this.listItems = finalRes.slice(0, 8)
+                                                  let dataFilter = [{
+                                                       id: 1,
+                                                       title: 'ОПН для ЮЛ',
+                                                       body: {
+                                                                 "Регистрация в качестве ЮЛ": true,
+                                                                 "Ставка налога" : "По налогу на прибыль: 20 %",
+                                                                 "Отчетность" : "Налоговая декларация (расчет)",
+                                                                 "Периодичность отчетности" : "Ежеквартально (календарный год)",
+                                                                 "Периодичность уплаты налога" : "Ежеквартально (календарный год)",
+                                                                 "Основные ограничения" : false,
+                                                                 "Ведение учета" : true, 
+                                                                 "Налоговая база" : "Денежное выражение валовой выручки",
+                                                                 "Иные особенности" : "Законодательством установлены также иные ставки налога на прибыль Признаются плательщиками НДС Признаются плательщиками иных налогов (сборов) при наличии объектов налогообложения"
+                                                       },
+                                                       text: 'Общий порядок налогообложения для юридических лиц',
+                                                       category: 'Юридическое лицо',
+                                                       features: ['Производство подакцизных товаров'],
+                                                       income: 5,
+                                                       staff: 60,
+                                                  }, 
+                                                  {
+                                                       id: 2,
+                                                       title: 'УСН для ЮЛ',
+                                                       text: 'Упрощенная система налогообложения для юридических лиц',
+                                                       body: {
+                                                            "Плательщики" : "Юридические лица",
+                                                            "Представление уведомления о переходе на упрощенную систему налогообложения" : "Да (представляется с 1 октября по 31 декабря года, предшествующего календарному году, в котором организации претендуют начать применение УСН). Перейти на применение УСН вправе организации, у которых численность работников в среднем за первые девять месяцев года, предшествующего календарному году, в котором они претендуют начать применение упрощенной системы, не превышает 50 человек, и валовая выручка нарастающим итогом за эти девять месяцев составляет не более 1 612 500 руб.",
+                                                            "Ставка налога" : "6 %",
+                                                            "Отчетность" : "Налоговая декларация (расчет)",
+                                                            "Периодичность отчетности" : "Ежеквартально", 
+                                                            "Периодичность уплаты налога" : "Ежеквартально", 
+                                                            "Основные ограничения" : "Численность работников: не более 50 чел. Валовая выручка: не более 2 150 000 руб.",
+                                                            "Ведение учета" : "Книга учета доходов и расходов организаций, применяющих упрощенную систему налогообложения",
+                                                            "Налоговая база" : "Денежное выражение валовой выручки",
+                                                            "Иные особенности" : "Имеются ограничения и запреты по применению УСН в зависимости от видов деятельности и организационно-правового статуса организации. Ведение бухгалтерского учета",
+                                                       },
+                                                       category: 'Юридическое лицо',
+                                                       features: [],
+                                                       income: 2.15,
+                                                       staff: 50,
+                                                  },
+                                                  {
+                                                       id: 3,
+                                                       title: 'Единый налог для производителей сельскохозяйственной продукции',
+                                                       text: '',
+                                                       body: {
+                                                            "Плательщики" : "Организации, осуществляющие производство (производство и переработку) сельскохозяйственной продукции и (или) первичную переработку льна; организации в части деятельности их филиалов, исполняющих налоговые обязательства организации (далее — филиал), если эти филиалы осуществляют производство (производство и переработку) сельскохозяйственной продукции и (или) первичную переработку льна",
+                                                            "Представление уведомления о переходе на единый налог для производителей сельскохозяйственной продукции" : "Организация должна не позднее 1-го числа второго месяца квартала, с которого она претендует начать применение единого налога, представить в налоговый орган по месту постановки на учет уведомление о переходе на единый налог", 
+                                                            "Ставка налога" : "1 %",
+                                                            "Отчетность" : "Налоговая декларация (расчет)",
+                                                            "Периодичность отчетности" : "Ежемесячно или ежеквартально в зависимости от уплаты НДС",
+                                                            "Периодичность уплаты налога" : "Ежемесячно или ежеквартально в зависимости от уплаты НДС",
+                                                            "Основные ограничения" : "Применять единый налог вправе организации и обособленные филиалы, если выручка от реализации сельскохозяйственной продукции составляет не менее 50 % общей суммы выручки организации (филиала)",
+                                                            "Ведение учета" : true,
+                                                            "Налоговая база" : "Денежное выражение валовой выручки",
+                                                            "Иные особенности" : [
+                                                                 {
+                                                                      "Не вправе применять единый налог:" : [
+                                                                           'организации — плательщики налога при УСН;', 
+                                                                           'резиденты свободных (особых) экономических зон, специального туристско-рекреационного парка «Августовский канал», Парка высоких технологий, Китайско-Белорусского индустриального парка «Великий камень».',
+                                                                      ],
+                                                                      "Если за календарный год процентная доля, являющаяся критерием для применения единого налога, не соблюдена, организация будет обязана:" : [
+                                                                           'за этот календарный год исчислить и уплатить единый налог по повышенной ставке 3 %, а также земельный налог и арендную плату за землю по всем земельным участкам;',
+                                                                           'прекратить применение единого налога с начала следующего календарного года'
+                                                                      ]
+                                                                 }
+                                                            ]
+                                                       },
+                                                       category: 'Юридическое лицо',
+                                                       features: ['Производство сельхозпродукции'],
+                                                       income: 5,
+                                                       staff: 60,
+                                                  },
+                                                  // {
+                                                  //      id: 4,
+                                                  //      title: 'Налог на игорный бизнес',
+                                                  //      body: '',
+                                                  //      category: 'Юридическое лицо',
+                                                  //      features: ['Игорный бизнес'],
+                                                  //      income: 0,
+                                                  //      staff: 0,
+                                                  // },
+                                                  {
+                                                       id: 5,
+                                                       title: 'ОПН для ИП',
+                                                       text: 'Общий порядок налогообложения для индивидуальных предпринимателей',
+                                                       body: {
+                                                            "Регистрация в качестве ИП" : true, 
+                                                            "Ставка налога" : "20 %",
+                                                            "Отчетность" : "Налоговая декларация (расчет)", 
+                                                            "Периодичность отчетности" : "Ежеквартально",
+                                                            "Периодичность уплаты налога" : "Ежеквартально",
+                                                            "Основные ограничения" : "Для занятия предпринимательской деятельностью индивидуальный предприниматель вправе привлекать не более трех физических лиц по трудовым и (или) гражданско-правовым договорам",
+                                                            "Ведение учета" : "Да (основной учетный документ — книга учета доходов и расходов)",
+                                                            "Налоговая база" : "Денежное выражение доходов, полученных от осуществления предпринимательской деятельности, уменьшенных на сумму расходов и на сумму налоговых вычетов",
+                                                            "Иные особенности" : "Исходя из специфики осуществляемой деятельности предусмотрено ведение иных учетных документов. Могут признаваться плательщиками НДС при соблюдении определенных условий"
+                                                       },
+                                                       category: 'Индивидуальный предприниматель',
+                                                       features: ['Производство подакцизных товаров'],
+                                                       income: 5,
+                                                       staff: 3,
+                                                  },
+                                                  {
+                                                       id: 6,
+                                                       title: 'Единый налог с ИП и иных ФЛ (для ИП)',
+                                                       text: 'Единый налог с индивидуальных предпринимателей и иных физических лиц (для индивидуальных предпринимателей)',
+                                                       body: {
+                                                            "Регистрация в качестве ИП" : false,
+                                                            "Ставка налога" : "В белорусских рублях за месяц",
+                                                            "Отчетность" : "Налоговая декларация (расчет)",
+                                                            "Периодичность отчетности" : "Квартал",
+                                                            "Периодичность уплаты налога" : "Ежемесячно",
+                                                            "Основные ограничения" : "Для занятия предпринимательской деятельностью индивидуальный предприниматель вправе привлекать не более трех физических лиц по трудовым и (или) гражданско-правовым договорам",
+                                                            "Ведение учета" : "Да (книга учета валовой выручки от реализации товаров (работ, услуг))",
+                                                            "Налоговая база" : "Исходя из осуществляемых видов деятельности и (или) количества торговых объектов, торговых мест, обслуживающих объектов, валовой выручки",
+                                                            "Иные особенности" : "При превышении валовой выручки над сорокакратной суммой единого налога за соответствующий отчетный период без учета установленных законодательством льгот индивидуальными предпринимателями исчисляется доплата единого налога в размере 5 % с суммы такого превышения. В отношении деятельности по предоставлению мест для краткосрочного проживания данный порядок налогообложения является обязательным"
+                                                       },
+                                                       category: 'Индивидуальный предприниматель',
+                                                       features: [],
+                                                       income: 5,
+                                                       staff: 3,
+                                                  }
+                                                       ,
+                                                  {
+                                                       id: 7,
+                                                       title: 'Единый налог с ИП и иных ФЛ (для ФЛ)',
+                                                       text: 'Единый налог с индивидуальных предпринимателей и иных физических лиц (для физических лиц)',
+                                                       body: {
+                                                            "Регистрация в качестве ИП" : true,
+                                                            "Как стать плательщиком" : "Представление в налоговый орган письменного уведомления или уведомления через личный кабинет плательщика по установленной форме",
+                                                            "Ставка налога" : "В белорусских рублях за месяц",
+                                                            "Отчетность" : false,
+                                                            "Периодичность уплаты налога" : "Ежемесячно",
+                                                            "Основные ограничения" : "Деятельность осуществляется физическими лицами самостоятельно без привлечения иных физических лиц по трудовым и (или) гражданско-правовым договорам в интересах потребителей (граждан)",
+                                                            "Ведение учета" : false,
+                                                            "Налоговая база" : "Исходя из осуществляемых видов деятельности и (или) количества сдаваемых жилых комнат в жилых помещениях, количества садовых домиков, дач, предоставленных для краткосрочного проживания, а также продолжительности периода осуществления деятельности",
+                                                            "Иные особенности" : "Осуществление видов деятельности, не относящихся к предпринимательской (п. 3 ст. 337 Налогового кодекса Республики Беларусь)"
+                                                       },
+                                                       category: 'Физическое лицо',
+                                                       features: [],
+                                                       income: 5,
+                                                       staff: 0,
+                                                  },
+                                                  {
+                                                       id: 8,
+                                                       title: 'НПД',
+                                                       text: 'Налог на профессиональный доход',
+                                                       body: {
+                                                                 "Регистрация в качестве ИП": false,
+                                                                 "Как стать плательщиком" : [
+                                                                      {
+                                                                           "Физическое лицо обязано:" : [
+                                                                                'установить приложение «Налог на профессиональный доход». Приложение «Налог на профессиональный доход» размещается на официальном сайте Министерства по налогам и сборам в сети Интернет и доступно для бесплатной установки на смартфон, ноутбук или компьютер, включая планшетный компьютер;',
+                                                                                'проинформировать налоговый орган через приложение о применении налога на профессиональный доход.'
+                                                                           ]
+                                                                      }
+                                                                 ],
+                                                                 "Ставка налога" : [
+                                                                      {
+                                                                           "10% — в отношении профессионального дохода, полученного от:" : [
+                                                                                'физических лиц (независимо от его размера);',
+                                                                                'иностранных организаций и иностранных индивидуальных предпринимателей (независимо от его размера);',
+                                                                                'организаций и индивидуальных предпринимателей, состоящих на учете в налоговых органах Республики Беларусь, в размере, не превышающем 60 000 бел. руб. в целом за год;',
+                                                                           ],
+                                                                           "20 % — в отношении профессионального дохода, полученного от:" : [
+                                                                                'организаций и индивидуальных предпринимателей, состоящих на учете в налоговых органах Республики Беларусь, в размере, превысившем 60 000 бел. руб. в целом за год'
+                                                                           ]
+                                                                      }
+                                                                 ],
+                                                                 "Отчетность" : false,
+                                                                 "Периодичность уплаты налога" : "Ежемесячно",
+                                                                 "Основные ограничения" : "Определенные виды деятельности",
+                                                                 "Ведение учета" : false,
+                                                                 "Налоговая база" : "Денежное выражение валовой выручки",
+                                                                 "Иные особенности" : [
+                                                                      {
+                                                                           "Уплата налога на профессиональный доход: заменяет уплату:" : [
+                                                                                'подоходного налога с физических лиц;', 
+                                                                                'сбора за осуществление ремесленной деятельности;', 
+                                                                                'единого налога с индивидуальных предпринимателей и иных физических лиц;'
+                                                                           ],
+                                                                           "Включает в себя:" : [
+                                                                                'обязательные страховые взносы в бюджет государственного внебюджетного фонда социальной защиты населения Республики Беларусь для физических лиц.'
+                                                                           ],
+                                                                           "Для физических лиц, впервые зарегистрированных в качестве плательщика налога на профессиональный доход, предусмотрена льгота в виде налогового вычета в размере 2 000 бел. руб. Для плательщика, являющегося получателем пенсии, ставка налога с 10% (20%) фактически уменьшается до 4% (8%) за счет освобождения от уплаты обязательных страховых взносов в бюджет государственного внебюджетного фонда социальной защиты населения Республики Беларусь" : ''
+                                                                      }
+                                                                 ]
+                                                            },
+                                                       category: 'Физическое лицо',
+                                                       features: [],
+                                                       income: 5,
+                                                       staff: 0,
+                                                  },
+                                                  ]
+                                                  this.listItems = dataFilter
+                                                  this.filterList = this.listItems
                                              }
                                              catch (error) {
-                                                  console.log('There was an error', error)
+                                                  console.log(error)
                                              }
                                         },
-                                        delel() {
-                                             this.listItems.pop()
+                                        initSlider() {
+
+                                             $(".js-range-slider-income").ionRangeSlider({
+                                                  skin: 'round',
+                                                  type: "double",
+                                                  from: 0,
+                                                  from_fixed: true,
+                                                  to: 0,
+                                                  min: 0,
+                                                  max: 5,
+                                                  grid: true,
+                                                  grid_num: 5,
+                                                  postfix: ' млн',
+                                                  step: 0.05,
+                                                  max_postfix: '+ ',
+                                                  force_edges: true,
+                                                  onChange: function () {
+                                                       document.querySelectorAll('.js-irs-0 .irs-from').forEach(el => {
+                                                            el.innerHTML = '0'
+                                                       })
+                                                  },
+                                             });
+
+                                             $(".js-range-slider-staff").ionRangeSlider({
+                                                  skin: "round",
+                                                  type: "double",
+                                                  from: 0,
+                                                  from_fixed: true,
+                                                  to: 0,
+                                                  min: 0,
+                                                  max: 60,
+                                                  grid: true,
+                                                  grid_num: 6,
+                                                  step: 1,
+                                                  max_postfix: '+ ',
+                                                  force_edges: true,
+                                             });
+
+
+
+                                        },
+                                        modifyEl() {
+                                             try {
+                                                  document.querySelectorAll(".js-irs-0 .irs-grid-text").forEach(el => {
+                                                       if (el.innerHTML != '0' && el.innerHTML != '5') {
+                                                            el.innerHTML = el.innerHTML + ' млн'
+                                                       }
+                                                       if (el.innerHTML == '5') {
+                                                            el.innerHTML = ' '
+                                                       }
+                                                  })
+                                                  document.querySelectorAll('.js-irs-0 .irs-from').forEach(el => {
+                                                       el.innerHTML = '0'
+                                                  })
+                                             }
+                                             catch (error) {
+                                                  console.log(error)
+                                             }
+
+                                             try {
+                                                  document.querySelectorAll(".js-irs-1 .irs-grid-text").forEach(el => {
+                                                       if (el.innerHTML == '500') {
+                                                            el.innerHTML = ' '
+                                                       }
+                                                  })
+                                             }
+                                             catch (error) {
+                                                  console.log(error)
+                                             }
+
+                                             try {
+
+
+                                                  document.querySelectorAll('.js-irs-0 .irs-to').forEach(el => {
+                                                       el.addEventListener('DOMSubtreeModified', (e) => {
+                                                            // add " * 1000000 " in the end of next line if data if millions (now in short form - 1.2)
+                                                            this.income = Math.fround($('.js-range-slider-income').prop("value").replace(/0;/g, '')).toFixed(2)
+                                                       })
+                                                  })
+
+                                                  document.querySelectorAll('.js-irs-1 .irs-to').forEach(el => {
+                                                       el.addEventListener('DOMSubtreeModified', (e) => {
+                                                            this.staff = parseInt($('.js-range-slider-staff').prop("value").replace(/0;/g, ''))
+                                                       })
+                                                  })
+                                             }
+                                             catch (error) {
+                                                  console.log(error)
+                                             }
+                                        },
+                                        filterEl() {
+
+                                             try {
+                                                  this.isEmpty = false
+
+                                                  let sortedFilter = this.filterRule.special.sort()
+                                                  // console.log('sortedFilter', sortedFilter)
+                                                  const newList = this.listItems.filter(el => {
+                                                       let sortedItems = el.features.slice().sort()
+                                                       // console.log('sortedItems', sortedItems)
+
+                                                       if (this.filterRule.category === '' && this.filterRule.special.length == 0) {
+                                                            return el.income >= this.filterRule.income
+                                                                 && el.staff >= this.filterRule.staff
+
+                                                       } else
+                                                            if (this.filterRule.category !== '' && this.filterRule.special.length !== 0) {
+
+                                                                 return el.income >= this.filterRule.income
+                                                                      && el.staff >= this.filterRule.staff
+                                                                      && el.category === this.filterRule.category
+                                                                      && this.filterRule.special.some(fit => el.features.includes(fit))
+                                                                 // && JSON.stringify(sortedFilter) === JSON.stringify(sortedItems)
+
+                                                            }
+                                                            else if (this.filterRule.category === '' && this.filterRule.special.length !== 0) {
+                                                                 return el.income >= this.filterRule.income
+                                                                      && el.staff >= this.filterRule.staff
+                                                                      && this.filterRule.special.some(fit => el.features.includes(fit))
+                                                                 // && JSON.stringify(sortedFilter) === JSON.stringify(sortedItems)
+                                                            }
+                                                            else {
+                                                                 return el.income >= this.filterRule.income
+                                                                      && el.staff >= this.filterRule.staff
+                                                                      && el.category === this.filterRule.category
+                                                            }
+                                                  })
+
+                                                  // const newList = this.listItems.filter(el => {
+                                                  //      return this.filterRule.special.some((f) => {
+                                                  //           return f === el.features
+                                                  //      })
+                                                  // })
+
+                                                  // const newList = this.listItems.filter(obj => {
+                                                  //      return obj.income <= this.filterRule.income &&
+                                                  //           obj.staff <= this.filterRule.staff &&
+                                                  //           obj.category === this.filterRule.category &&
+                                                  //           obj.features.some(f => this.filterRule.special.includes(f));
+                                                  // });
+
+
+                                                  this.filterList = newList
+                                                  if (newList.length === 0) {
+                                                       this.isEmpty = true
+                                                  }
+
+                                             }
+
+                                             catch (error) {
+                                                  console.log(error)
+                                             }
+
+
+                                        },
+
+                                        categoriesFlag(category) {
+                                             if (this.filterRule.category == category) {
+                                                  this.filterRule.category = ''
+                                                  this.checkCategories = ''
+                                                  this.filterEl()
+                                             }
+
+                                        },
+
+                                        specialFlag(special, event) {
+
+                                             if (event.target.checked) {
+                                                  // console.log('isSelected' + special);
+                                                  this.filterRule.special.push(special)
+
+
+                                             } else
+                                                  if (!event.target.checked) {
+                                                       // console.log('Unselecded' + special);
+                                                       let indexFeature = this.filterRule.special.indexOf(special)
+                                                       if (indexFeature !== -1) {
+                                                            this.filterRule.special.splice(indexFeature, 1);
+                                                       }
+                                                  }
+
+                                             this.filterEl()
+                                        },
+                                        resetForm() {
+                                             // this.filterRule.income = 5
+                                             // this.filterRule.staff = 500
+                                             // this.filterRule.category = ''
+                                             // this.filterRule.special = []
+                                             // this.checkCategories = ''
+                                             // this.checkFeatures = ''
+                                             // document.querySelectorAll('.irs-bar').forEach(el => {
+                                             //      el.style.width = '95.5%'
+                                             // })
+                                             // document.querySelectorAll('.irs-handle.to').forEach(el => {
+                                             //      el.style.left = "92.5%"
+                                             // })
+                                             // document.querySelectorAll('.irs-to').forEach(el => {
+                                             //      el.style.left = "90%"
+                                             // })
+
+                                             // this.initSlider()
+                                             // document.querySelector('.filter-form').reset()
+                                             location.reload()
+                                             // this.filterEl()
                                         }
                                    },
                                    mounted() {
                                         this.getData()
+                                        this.initSlider()
+                                        this.modifyEl()
                                    }
                               })
                          </script>
-
                     </div>
                </section>
           </main>
@@ -433,6 +990,10 @@
 <script
         src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/js/tempusdominus-bootstrap-4.min.js"></script>
+
 
 <script src="js/script.min.js"></script>
 </body>

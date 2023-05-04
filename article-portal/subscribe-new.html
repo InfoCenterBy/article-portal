@@ -14,15 +14,18 @@
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
       <link rel="stylesheet"
             href="https://cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.min.css">
-      <!--Plugin CSS file with desired skin-->
+
+      <!--Range silder CSS-->
       <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css" />
 
-      <!--jQuery-->
+      <!--Range slider JavaScript-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-      <!--Plugin JavaScript file-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
+
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/css/tempusdominus-bootstrap-4.min.css">
+
 
       <link rel="stylesheet" href="css/style.min.css" />
 </head>
@@ -291,7 +294,27 @@
                                              <p class="color-gray-dark">Выберите из предложенных ниже нужный Вам период
                                                   предоставления доступа к интернет-ресурсу padatak.by</p>
                                              <hr>
-                                             <div class="subsribe-wrapper">
+                                             <div class="row">
+                                                  <div class="form-group col-md-6 subscribe-date my-2 my-md-0">
+                                                       <label for="date">Ваша подписка заканчивается</label>
+                                                       <div class="input-group date mt-1" id="dateEnd" data-target-input="nearest">
+                                                            <input type="text" class="form-control datetimepicker-input border-right-0" data-target="#dateEnd" disabled value="03.05.2023"/>
+                                                            <div class="input-group-text" data-target="#dateEnd" data-toggle="dateEnd">
+                                                                 <i class="bi bi-calendar"></i>
+                                                            </div>
+                                                       </div>
+                                                  </div>
+                                                  <div class="form-group col-md-6 subscribe-date my-2 my-md-0">
+                                                       <label for="date">Продлить подписку с</label>
+                                                       <div class="input-group date mt-1" id="datetimepicker" data-target-input="nearest">
+                                                            <input type="text" class="form-control datetimepicker-input border-right-0" data-target="#datetimepicker" />
+                                                            <div class="input-group-text" data-target="#datetimepicker" data-toggle="datetimepicker" >
+                                                                 <i class="bi bi-calendar"></i>
+                                                            </div>
+                                                       </div>
+                                                  </div>
+                                             </div>
+                                             <div class="subsribe-wrapper mt-5">
                                                   <div class="subsribe-card">
                                                        <div class="subsribe-card__title">30 дней</div>
                                                        <hr class="subsribe-card__hr-gold">
@@ -989,6 +1012,10 @@
 <script
         src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/js/tempusdominus-bootstrap-4.min.js"></script>
+
 
 <script src="js/script.min.js"></script>
 </body>
