@@ -276,7 +276,7 @@ var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
 })
 
 let today = new Date();
-let minDate = today.setDate(today.getDate() + 1);
+let minDate = today.setDate(today.getDate());
 
 // $('#datePickerStart').datetimepicker({
 //   useCurrent: false,
