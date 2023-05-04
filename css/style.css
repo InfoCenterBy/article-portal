@@ -5511,6 +5511,67 @@ td.vertical-bottom {
   margin: 0 auto;
 }
 
+.subscribe-date .datetimepicker-input {
+  border-right: none;
+}
+
+.subscribe-date .input-group-text {
+  background: none;
+  border-left: none;
+}
+
+.subscribe-date .input-group:has(.form-control:focus) {
+  -webkit-box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+          box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  border-radius: 0.25rem;
+}
+
+.subscribe-date .input-group:has(.form-control:focus) .input-group-text {
+  border-color: #86b7fe;
+}
+
+.subscribe-date .form-control:focus {
+  border-color: #86b7fe;
+  outline: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.subscribe-date .input-group:has(.form-control:disabled) .form-control,
+.subscribe-date .input-group:has(.form-control:disabled) .input-group-text {
+  background: transparent;
+  color: #D1D2D4;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  font-weight: 400;
+}
+
+.subscribe-date .input-group:has(.form-control:disabled) ::-webkit-input-placeholder {
+  color: #D1D2D4;
+}
+
+.subscribe-date .input-group:has(.form-control:disabled) ::-moz-placeholder {
+  color: #D1D2D4;
+}
+
+.subscribe-date .input-group:has(.form-control:disabled) :-ms-input-placeholder {
+  color: #D1D2D4;
+}
+
+.subscribe-date .input-group:has(.form-control:disabled) ::-ms-input-placeholder {
+  color: #D1D2D4;
+}
+
+.subscribe-date .input-group:has(.form-control:disabled) ::placeholder {
+  color: #D1D2D4;
+}
+
+.subscribe-date .input-group:has(.form-control:disabled) .bi {
+  color: #D1D2D4;
+}
+
 @media (min-width: 576px) {
   .border-sm-top {
     border-top: 1px solid #e3e7eb !important;
