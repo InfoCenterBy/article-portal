@@ -833,6 +833,8 @@ $(function () {
       close: 'bi bi-x', // Иконка "Закрыть"
     },
     minDate: minDate,
-    theme: 'bootstrap'
+    theme: 'bootstrap',
+    language: 'ru',
+    locale: 'ru'
   });
 });
