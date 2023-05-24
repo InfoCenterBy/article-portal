@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ru">
+@@include('_head.html',{
+"title":"Личный кабинет"
+})
+
+<body>
+     <div class="wrapper">
+          @@include('_header.html',{})
+          <main class="page">
+               <nav aria-label="breadcrumb">
+                    <div class='container'>
+                         <ol class="breadcrumb">
+                              <li class="breadcrumb-item"><a href="main.html"><i class="bi bi-house"></i></a></li>
+                              <li class="breadcrumb-item active"><a href="">Сервисы</a></li>
+                              <li class="breadcrumb-item active" aria-current="page"><a href="">Единый реестр налоговых консультантов</a></li>
+                         </ol>
+                    </div>
+               </nav>
+               <section class="mb-5">
+                    <div class='container'>
+                         <div class="sidebar-wrapper">
+                              <div class="sidebar-wrapper__content access-content">
+                                   <h1 class="h1">Единый реестр налоговых консультантов</h1>
+
+                                   <h4 class="h4">Поиск по реестру</h4>
+                                   <!-- access table start  -->
+                                   <div class="access-table">
+                                        <table>
+                                             <tbody>
+                                                  <tr>
+                                                       <td>Статус заказа</td>
+                                                       <td>Номер заказа</td>
+                                                       <td>Дата оформления</td>
+                                                       <td>Период доступа</td>
+                                                       <td>Счет на оплату</td>
+                                                       <td>Акт</td>
+                                                  </tr>
+                                                  <tr>
+                                                       <td>
+                                                            <div class="access-block-status access-status-active">
+                                                                 Доступ активен
+                                                            </div>
+                                                       </td>
+                                                       <td>
+                                                            №364
+                                                       </td>
+                                                       <td>
+                                                            10.02.2023
+                                                       </td>
+                                                       <td>
+                                                            90 дней
+                                                       </td>
+                                                       <td>
+                                                            <a href=""><i class="bi bi-paperclip"></i> Скачать счет</a>
+                                                       </td>
+                                                       <td>
+                                                            <a href=""><i class="bi bi-paperclip"></i> Скачать акт</a>
+                                                       </td>
+                                                  </tr>
+                                                  <tr>
+                                                       <td>
+                                                            <div class="access-block-status access-status-expire">
+                                                                 Истек срок доступа
+                                                            </div>
+                                                       </td>
+                                                       <td>
+                                                            №359
+                                                       </td>
+                                                       <td>
+                                                            01.02.2023
+                                                       </td>
+                                                       <td>
+                                                            30 дней
+                                                       </td>
+                                                       <td>
+                                                            <a href=""><i class="bi bi-paperclip"></i> Скачать счет</a>
+                                                       </td>
+                                                       <td>
+                                                            <a href=""><i class="bi bi-paperclip"></i> Скачать акт</a>
+                                                       </td>
+                                                  </tr>
+                                                  <tr>
+                                                       <td>
+                                                            <div class="access-block-status access-status-npaid">
+                                                                 Не оплачен
+                                                            </div>
+                                                       </td>
+                                                       <td>
+                                                            №180
+                                                       </td>
+                                                       <td>
+                                                            03.12.2023
+                                                       </td>
+                                                       <td>
+                                                            90 дней
+                                                       </td>
+                                                       <td>
+                                                            <a href=""><i class="bi bi-paperclip"></i> Скачать счет</a>
+                                                       </td>
+                                                       <td></td>
+                                                  </tr>
+                                             </tbody>
+                                        </table>
+                                   </div>
+                                   <!-- access table end  -->
+
+                                   <!-- mobile access card start -->
+                                   <div class="access-table-mobile">
+                                        <div class="access-table-card d-flex flex-row justify-content-between">
+                                             <div class="access-block-status-block d-flex align-items-start p-2">
+                                                  <div class="access-block-status access-status-active">
+                                                       Доступ активен
+                                                  </div>
+                                             </div>
+                                             <div class="d-flex flex-column ms-2 p-2 w-100">
+                                                  <div class="access-table-card__data">
+                                                       <span>Номер заказа</span>
+                                                       <span>№364</span>
+                                                  </div>
+                                                  <div class="access-table-card__data">
+                                                       <span>Дата оформления</span>
+                                                       <span>10.02.2023</span>
+                                                  </div>
+                                                  <div class="access-table-card__data">
+                                                       <span>Период доступа</span>
+                                                       <span>90 дней</span>
+                                                  </div>
+                                                  <div class="access-table-card__data">
+                                                       <span>Счет на оплату</span>
+                                                       <a href=""><i class="bi bi-paperclip"></i> Скачать счет</a>
+                                                  </div>
+                                                  <div class="access-table-card__data">
+                                                       <span>Акт</span>
+                                                       <a href=""><i class="bi bi-paperclip"></i> Скачать акт</a>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                   </div>
+                                   <div class="access-table-mobile">
+                                        <div class="access-table-card d-flex flex-row justify-content-between">
+                                             <div
+                                                  class="access-block-status-block d-flex align-items-start p-2 flex-column">
+                                                  <div class="access-block-status access-status-npaid">
+                                                       Не оплачен
+                                                  </div>
+                                                  <div class="access-block-status access-status-npaid">
+                                                       Истек срок доступа
+                                                  </div>
+                                             </div>
+                                             <div class="d-flex flex-column ms-2 p-2 w-100">
+                                                  <div class="access-table-card__data">
+                                                       <span>Номер заказа</span>
+                                                       <span>№364</span>
+                                                  </div>
+                                                  <div class="access-table-card__data">
+                                                       <span>Дата оформления</span>
+                                                       <span>10.02.2023</span>
+                                                  </div>
+                                                  <div class="access-table-card__data">
+                                                       <span>Период доступа</span>
+                                                       <span>90 дней</span>
+                                                  </div>
+                                                  <div class="access-table-card__data">
+                                                       <span>Счет на оплату</span>
+                                                       <a href=""><i class="bi bi-paperclip"></i> Скачать счет</a>
+                                                  </div>
+                                                  <div class="access-table-card__data">
+                                                       <span>Акт</span>
+                                                       <a href=""><i class="bi bi-paperclip"></i> Скачать акт</a>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                   </div>
+                                   <!-- mobile card end -->
+                              </div>
+                         </div>
+                    </div>
+               </section>
+          </main>
+          @@include('_footer.html',{})
+     </div>
+     @@include('_js.html',{})
+</body>
+
+</html>
