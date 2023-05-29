@@ -587,18 +587,18 @@ body {
     border-right: none;
   }
   .input-group-text{
-    background: none; 
+    background: none;
     border-left: none;
   }
   .input-group:has(.form-control:focus){
-    box-shadow: 0 0 0 .25rem rgba(13,110,253,.25);
+    box-shadow: 0 0 0 .25rem rgba(253, 169, 13, 0.25);
     border-radius: .25rem;
     .input-group-text{
-      border-color: #86b7fe;
+      border-color: var(--color-gold);
     }
   }
   .form-control:focus{
-      border-color: #86b7fe;
+      border-color: var(--color-gold);
       outline: 0;
       box-shadow: none;
   }
@@ -615,5 +615,27 @@ body {
     .bi{
       color: #D1D2D4;
     }
+  }
+}
+
+.registry-content{
+  #datetimepicker{
+    margin-top: 10px !important;
+    .datetimepicker-input{
+      padding: 15px;
+      border-color: var(--color-gray) !important;
+      border-radius: 0;
+      &:focus{
+        border-color: var(--color-gold) !important;
+      }
+    }
+    .input-group-text{
+      padding: 15px;
+      border-radius: 0;
+      
+    }
+  }
+  .button_empty{
+    padding: 15px;
   }
 }
