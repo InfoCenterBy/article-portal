@@ -638,4 +638,14 @@ body {
   .button_empty{
     padding: 15px;
   }
+  .dropdown-menu{
+    .form-check-input:focus{
+      box-shadow: 0 0 0 .25rem rgba(253, 169, 13, 0.25);
+      border-color: var(--color-gold);
+    }
+    .form-check-input:checked{
+      background-color: var(--color-gold);
+      border-color: var(--color-gold);
+    }
+  }
 }

@@ -60,12 +60,12 @@
                                         <div class="col-md-4 my-2 collapse" id="collapseFilter">
                                              <div class="form-group subscribe-date my-2 my-md-0">
                                                   <label for="date">Продлить подписку с</label>
-                                                  <div class="input-group date mt-1" id="datetimepicker" data-target-input="nearest">
+                                                  <!-- <div class="input-group date mt-1" id="datetimepicker" data-target-input="nearest">
                                                        <input type="text" class="form-control datetimepicker-input border-right-0" data-target="#datetimepicker"  placeholder="01.01.1917">
                                                        <div class="input-group-text" data-target="#datetimepicker" data-toggle="datetimepicker">
                                                             <i class="bi bi-calendar"></i>
                                                        </div>
-                                                  </div>
+                                                  </div> -->
                                              </div>
                                         </div>
                                         <div class="col-md-4 my-2 collapse" id="collapseFilter">
@@ -95,12 +95,89 @@
                                         <table>
                                              <tbody>
                                                   <tr>
-                                                       <td>Статус заказа</td>
-                                                       <td>Номер заказа</td>
-                                                       <td>Дата оформления</td>
-                                                       <td>Период доступа</td>
-                                                       <td>Счет на оплату</td>
-                                                       <td>Акт</td>
+                                                       <td>Номер аттестата</td>
+                                                       <td>Фамилия, имя, отчество налогового консультанта</td>
+                                                       <td>
+                                                            Дата выдачи
+                                                            <div class="input-group date mt-1" id="datetimepicker" data-target-input="nearest">
+                                                                 <input type="text" class="form-control datetimepicker-input border-right-0" data-target="#datetimepicker"  placeholder="01.01.1917">
+                                                                 <div class="input-group-text" data-target="#datetimepicker" data-toggle="datetimepicker">
+                                                                      <i class="bi bi-calendar"></i>
+                                                                 </div>
+                                                            </div>
+                                                       </td>
+                                                       <td>
+                                                            <div class="dropdown">
+                                                                 <button 
+                                                                      class="d-flex flex-row align-items-center"
+                                                                      type="button" 
+                                                                      data-bs-toggle="dropdown" 
+                                                                      aria-expanded="false">
+                                                                           Право на оказание услуг по налоговому консультированию
+                                                                           <div class="dropdown-toggle ms-2"></div>
+                                                                 </button>
+                                                                 <div class="dropdown-menu px-3">
+                                                                      <div class="form-check">
+                                                                           <input type="checkbox" class="form-check-input" id="dropdownCheck1">
+                                                                           <label class="form-check-label" for="dropdownCheck1">
+                                                                                Индивидуальных предпринимателей
+                                                                           </label>
+                                                                      </div>
+                                                                      <div class="form-check">
+                                                                           <input type="checkbox" class="form-check-input" id="dropdownCheck2">
+                                                                           <label class="form-check-label" for="dropdownCheck2">
+                                                                                Физ. лиц
+                                                                           </label>
+                                                                      </div>
+                                                                      <div class="form-check">
+                                                                           <input type="checkbox" class="form-check-input" id="dropdownCheck3">
+                                                                           <label class="form-check-label" for="dropdownCheck3">
+                                                                                Организаций
+                                                                           </label>
+                                                                      </div>
+                                                                 </div>
+                                                            </div>
+                                                       </td>
+                                                       <td>Контактная информация</td>
+                                                       <td>Сведения о практике налогового консультанта</td>
+                                                       <td>
+                                                            <div class="dropdown">
+                                                                 <button 
+                                                                      class="d-flex flex-row align-items-center"
+                                                                      type="button" 
+                                                                      data-bs-toggle="dropdown" 
+                                                                      aria-expanded="false">
+                                                                           Статус
+                                                                           <div class="ms-2 dropdown-toggle "></div>
+                                                                 </button>
+                                                                 <div class="dropdown-menu px-3">
+                                                                      <div class="form-check">
+                                                                           <input type="checkbox" class="form-check-input" id="dropdownCheck4">
+                                                                           <label class="form-check-label" for="dropdownCheck4">
+                                                                                Активен
+                                                                           </label>
+                                                                      </div>
+                                                                      <div class="form-check">
+                                                                           <input type="checkbox" class="form-check-input" id="dropdownCheck5">
+                                                                           <label class="form-check-label" for="dropdownCheck5">
+                                                                                Приостановлен
+                                                                           </label>
+                                                                      </div>
+                                                                      <div class="form-check">
+                                                                           <input type="checkbox" class="form-check-input" id="dropdownCheck6">
+                                                                           <label class="form-check-label" for="dropdownCheck6">
+                                                                                Прекращен
+                                                                           </label>
+                                                                      </div>
+                                                                      <div class="form-check">
+                                                                           <input type="checkbox" class="form-check-input" id="dropdownCheck7">
+                                                                           <label class="form-check-label" for="dropdownCheck7">
+                                                                                Аннулирован
+                                                                           </label>
+                                                                      </div>
+                                                                 </div>
+                                                            </div>
+                                                       </td>
                                                   </tr>
                                                   <tr>
                                                        <td>
@@ -123,6 +200,7 @@
                                                        <td>
                                                             <a href=""><i class="bi bi-paperclip"></i> Скачать акт</a>
                                                        </td>
+                                                       <td></td>
                                                   </tr>
                                                   <tr>
                                                        <td>
@@ -145,6 +223,7 @@
                                                        <td>
                                                             <a href=""><i class="bi bi-paperclip"></i> Скачать акт</a>
                                                        </td>
+                                                       <td></td>
                                                   </tr>
                                                   <tr>
                                                        <td>
@@ -164,6 +243,7 @@
                                                        <td>
                                                             <a href=""><i class="bi bi-paperclip"></i> Скачать счет</a>
                                                        </td>
+                                                       <td></td>
                                                        <td></td>
                                                   </tr>
                                              </tbody>

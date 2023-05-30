@@ -2480,17 +2480,16 @@
         display: none;
       }
     }
-    table{
+    table>:not(#datetimepicker table){
       width: 100%;
       border: 1px solid var(--color-gray);
       tr:first-child{
         border-bottom: 1px solid #E5E7EB;
         background: #FAF9FA;
-        
       }
       tr, td{
         text-align: left;
-        padding: 16px 0 16px 16px;
+        padding: 16px;
         .bi-paperclip{
           color: var(--color-blue-light);
         }
