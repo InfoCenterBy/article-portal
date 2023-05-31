@@ -285,7 +285,7 @@ let minDate = today.setDate(today.getDate());
 // });
 
 $(function () {
-  $('#datetimepicker').datetimepicker({
+  $('#datetimepicker, #datefilter').datetimepicker({
     format: 'DD.MM.YYYY', // Формат даты
     icons: {
       time: 'bi bi-clock', // Иконка времени

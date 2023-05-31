@@ -2475,12 +2475,17 @@
   }
   .access-table{
     display: block;
-    &{
+    &:not(.reg-table){
       @media (max-width: 600px) {
         display: none;
       }
     }
-    table>:not(#datetimepicker table){
+    &.reg-table{
+      @media (max-width: 1000px) {
+        display: none;
+      }
+    }
+    table{
       width: 100%;
       border: 1px solid var(--color-gray);
       tr:first-child{
@@ -2490,11 +2495,15 @@
       tr, td{
         text-align: left;
         padding: 16px;
+        @media (max-width: 1200px) {
+          padding: 8px;
+        }
         .bi-paperclip{
           color: var(--color-blue-light);
         }
       }
       td:empty::after{
+        text-align: center;
         content: "⚊";
         color: var(--color-gray-dark);
       }
@@ -2518,6 +2527,7 @@
       }
     }
   }
+  
   .access-table-mobile{
     display: none;
     align-items: flex-start;
@@ -2530,6 +2540,9 @@
     .access-table-card{
       border: 1px solid var(--color-gray);
       // padding: 16px;
+      &:not(:first-child){
+        border-top: none;
+      }
       width: 100%;
       
       .d-flex:first-child{
@@ -2568,6 +2581,26 @@
 
       }
     }
+  }
+}
+
+.datetimepicker-wrapper{
+  tr{
+    background-color: var(--color-white) !important;
+  }
+  td{
+    padding: 5px !important;
+    &.active {
+      background-color: var(--color-gold) !important;
+    }
+  }
+}
+#datefilter{
+  .datetimepicker-input{
+    display: none;
+  }
+  .bi{
+    color: var(--color-black);
   }
 }
 
