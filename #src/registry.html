@@ -60,7 +60,7 @@
                                         <div class="col-md-4 my-2 collapse" id="collapseSearch">
                                              <div class="form-group subscribe-date my-2 my-md-0">
                                                   <label for="date">Дата выдачи</label>
-                                                  <div class="input-group date mt-1 datetimepicker-wrapper" id="datetimepicker" data-target-input="nearest">
+                                                  <div class="input-group date mt-1 datetimepicker-wrapper datetimepicker-reg" id="datetimepicker" data-target-input="nearest">
                                                        <input type="text" class="form-control datetimepicker-input border-right-0" data-target="#datetimepicker"  placeholder="01.01.1917">
                                                        <div class="input-group-text" data-target="#datetimepicker" data-toggle="datetimepicker">
                                                             <i class="bi bi-calendar"></i>
@@ -85,77 +85,12 @@
                                              </button>
                                         </div>
                                         <div class="col-md-6 row px-0 mx-0">
-                                             <div class="col-md-6 my-2 d-flex flex-column justify-content-end align-items-end" 
-                                                  type="button" 
-                                                  data-bs-toggle="collapse" 
-                                                  data-bs-target="#collapseFilter" 
-                                                  aria-expanded="false" 
-                                                  aria-controls="collapseFilter">
-                                                  <div class="collapse" id="collapseFilter">
-                                                       <div class="card card-body">
-                                                            Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
-                                                       </div>
-                                                  </div>
-                                                  <button class="w-100 button button_empty"><span>Фильтр</span> <i class="bi bi-filter"></i></button>
-                                             </div>
-                                             <div class="col-md-6 my-2 d-flex flex-column justify-content-start align-items-start" 
-                                                  type="button" 
-                                                  data-bs-toggle="collapse" 
-                                                  data-bs-target="#collapseSort" 
-                                                  aria-expanded="false" 
-                                                  aria-controls="collapseSort">
-                                                  <div class="collapse" id="collapseSort">
-                                                       <div class="card card-body">
-                                                            Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
-                                                       </div>
-                                                  </div>
-                                                  <button class="w-100 button button_empty"><span>Сортировка</span> <i class="bi bi-funnel"></i></button>
-                                             </div>
-                                        </div>
-                                        
-                                        <div class="col-md-6 my-2 d-flex flex-column justify-content-center align-items-center">
-                                             <button class="w-100 button">Применить</button>
-                                        </div>
-                                        
-                                        <div class="col-md-6 my-2 d-flex flex-column justify-content-center align-items-center">
-                                             <button class="w-100 button button-gray">Сбросить заданные параметры</button>
-                                        </div>
-                                        
-                                   </div>
-
-
-
-                                   <!-- access table start  -->
-                                   <div class="access-table reg-table">
-                                        <table>
-                                             <tbody>
-                                                  <tr>
-                                                       <td>Номер аттестата</td>
-                                                       <td>Фамилия, имя, отчество налогового консультанта</td>
-                                                       <td>
-                                                            <div class="d-flex flex-row align-items-center justify-content-center">
-                                                                 <span>Дата выдачи</span>
-                                                                 <div class="input-group date ms-2 datetimepicker-wrapper" id="datefilter" data-target-input="nearest">
-                                                                      <input type="text" 
-                                                                           class="datetimepicker-input border-right-0" 
-                                                                           data-target="#datefilter"  placeholder="01.01.1917">
-                                                                      <div data-target="#datefilter" data-toggle="datetimepicker">
-                                                                           <i class="bi bi-calendar-week"></i>
-                                                                      </div>
-                                                                 </div>
-                                                            </div>
-                                                       </td>
-                                                       <td>
-                                                            <div class="dropdown">
-                                                                 <button 
-                                                                      class="d-flex flex-row align-items-center"
-                                                                      type="button" 
-                                                                      data-bs-toggle="dropdown" 
-                                                                      aria-expanded="false">
-                                                                           Право на оказание услуг по налоговому консультированию
-                                                                           <div class="dropdown-toggle ms-2"></div>
-                                                                 </button>
-                                                                 <div class="dropdown-menu px-3">
+                                             <div class="col-md-6 my-2 d-flex flex-column justify-content-end align-items-end">
+                                                  <div class="collapse w-100" id="collapseFilter">
+                                                       <div class="card card-body w-100 d-flex flex-column">
+                                                            <div class="">
+                                                                 <strong>Право на оказание услуг по налоговому консультированию</strong>
+                                                                 <div class="mt-2">
                                                                       <div class="form-check">
                                                                            <input type="checkbox" class="form-check-input" id="dropdownCheck1">
                                                                            <label class="form-check-label" for="dropdownCheck1">
@@ -176,11 +111,148 @@
                                                                       </div>
                                                                  </div>
                                                             </div>
+                                                            <div class="mt-3">
+                                                                 <strong>Статус</strong>
+                                                                 <div class="mt-2">
+                                                                      <div class="form-check">
+                                                                           <input type="checkbox" class="form-check-input" id="dropdownCheck4">
+                                                                           <label class="form-check-label" for="dropdownCheck4">
+                                                                                Активен
+                                                                           </label>
+                                                                      </div>
+                                                                      <div class="form-check">
+                                                                           <input type="checkbox" class="form-check-input" id="dropdownCheck5">
+                                                                           <label class="form-check-label" for="dropdownCheck5">
+                                                                                Приостановлен
+                                                                           </label>
+                                                                      </div>
+                                                                      <div class="form-check">
+                                                                           <input type="checkbox" class="form-check-input" id="dropdownCheck6">
+                                                                           <label class="form-check-label" for="dropdownCheck6">
+                                                                                Прекращен
+                                                                           </label>
+                                                                      </div>
+                                                                      <div class="form-check">
+                                                                           <input type="checkbox" class="form-check-input" id="dropdownCheck7">
+                                                                           <label class="form-check-label" for="dropdownCheck7">
+                                                                                Аннулирован
+                                                                           </label>
+                                                                      </div>
+                                                                 </div>
+                                                            </div>
+                                                       </div>
+                                                  </div>
+                                                  <button   class="w-100 button button_empty"
+                                                            type="button" 
+                                                            data-bs-toggle="collapse" 
+                                                            data-bs-target="#collapseFilter" 
+                                                            aria-expanded="false" 
+                                                            aria-controls="collapseFilter">
+                                                       <span>Фильтрация</span> <i class="bi bi-filter"></i>
+                                                  </button>
+                                             </div>
+                                             <div class="col-md-6 my-2 d-flex flex-column justify-content-end align-items-end">
+                                                  <div class="collapse w-100" id="collapseSort">
+                                                       <div class="card card-body d-flex flex-column w-100">
+                                                            <div class="reg-sort-wrapper d-flex flex-row flex-wrap align-items-center">
+                                                                 <strong>Номер аттестата</strong>
+                                                                 <div class="d-flex flex-row">
+                                                                      <div class="mx-2">
+                                                                           <input type="radio" name="upDownSort" id="sortDown">
+                                                                           <label for="sortDown">
+                                                                                <i class="bi bi-sort-down-alt"></i>
+                                                                           </label>
+                                                                      </div>
+                                                                      <div class="mx-2">
+                                                                           <input type="radio" name="upDownSort" id="sortUp">
+                                                                           <label for="sortUp">
+                                                                                <i class="bi bi-sort-up-alt"></i>
+                                                                           </label>
+                                                                      </div>
+                                                                 </div>
+                                                            </div>
+                                                       </div>
+                                                  </div>
+                                                  <button   class="w-100 button button_empty" 
+                                                            type="button" 
+                                                            data-bs-toggle="collapse" 
+                                                            data-bs-target="#collapseSort" 
+                                                            aria-expanded="false" 
+                                                            aria-controls="collapseSort">
+                                                       <span>Сортировка</span> <i class="bi bi-funnel"></i>
+                                                  </button>
+                                             </div>
+                                        </div>
+                                        
+                                        <div class="col-md-6 my-2 d-flex flex-column justify-content-end align-items-end">
+                                             <button class="w-100 button">Применить</button>
+                                        </div>
+                                        
+                                        <div class="col-md-6 my-2 d-flex flex-column justify-content-end align-items-end">
+                                             <button class="w-100 button button-gray">Сбросить заданные параметры</button>
+                                        </div>
+                                        
+                                   </div>
+
+
+
+                                   <!-- access table start  -->
+                                   <div class="access-table reg-table">
+                                        <table>
+                                             <tbody>
+                                                  <tr>
+                                                       <td>Номер аттестата</td>
+                                                       <td>Фамилия, имя, отчество налогового консультанта</td>
+                                                       <td>
+                                                            <div class="d-flex flex-row align-items-center justify-content-center">
+                                                                 <span>Дата выдачи</span>
+                                                                 <!-- <div class="input-group date ms-2 datetimepicker-wrapper" id="datefilter" data-target-input="nearest">
+                                                                      <input type="text" 
+                                                                           class="datetimepicker-input border-right-0" 
+                                                                           data-target="#datefilter"  placeholder="01.01.1917">
+                                                                      <div data-target="#datefilter" data-toggle="datetimepicker">
+                                                                           <i class="bi bi-calendar-week"></i>
+                                                                      </div>
+                                                                 </div> -->
+                                                            </div>
+                                                       </td>
+                                                       <td>
+                                                            <div class="dropdown">
+                                                                 <button 
+                                                                      class="d-flex flex-row align-items-center"
+                                                                      type="button" 
+                                                                      data-bs-toggle="dropdown" 
+                                                                      aria-expanded="false">
+                                                                           Право на оказание услуг по налоговому консультированию
+                                                                           <!-- <div class="dropdown-toggle ms-2"></div> -->
+                                                                 </button>
+                                                                 <!-- <div class="dropdown-menu px-3">
+                                                                      <div class="form-check">
+                                                                           <input type="checkbox" class="form-check-input" id="dropdownCheck1">
+                                                                           <label class="form-check-label" for="dropdownCheck1">
+                                                                                Индивидуальных предпринимателей
+                                                                           </label>
+                                                                      </div>
+                                                                      <div class="form-check">
+                                                                           <input type="checkbox" class="form-check-input" id="dropdownCheck2">
+                                                                           <label class="form-check-label" for="dropdownCheck2">
+                                                                                Физ. лиц
+                                                                           </label>
+                                                                      </div>
+                                                                      <div class="form-check">
+                                                                           <input type="checkbox" class="form-check-input" id="dropdownCheck3">
+                                                                           <label class="form-check-label" for="dropdownCheck3">
+                                                                                Организаций
+                                                                           </label>
+                                                                      </div>
+                                                                 </div> -->
+                                                            </div>
                                                        </td>
                                                        <td>Контактная информация</td>
                                                        <td>Сведения о практике налогового консультанта</td>
                                                        <td>
-                                                            <div class="dropdown">
+                                                            Статус
+                                                            <!-- <div class="dropdown">
                                                                  <button 
                                                                       class="d-flex flex-row align-items-center"
                                                                       type="button" 
@@ -215,7 +287,7 @@
                                                                            </label>
                                                                       </div>
                                                                  </div>
-                                                            </div>
+                                                            </div> -->
                                                        </td>
                                                   </tr>
                                                   <tr>
@@ -300,47 +372,61 @@
                                    <!-- access table end  -->
 
                                    <!-- mobile access card start -->
-                                   <div class="access-table-mobile">
+                                   <div class="access-table-mobile reg-table">
                                         <div class="access-table-card d-flex flex-row justify-content-between">
-                                             <div class="access-block-status-block d-flex align-items-start p-2">
-                                                  <div class="access-block-status access-status-active">
-                                                       Доступ активен
+                                             <div class="access-table-card__title 
+                                                       d-flex flex-wrap 
+                                                       flex-column align-items-start 
+                                                       justify-content-start p-1 col-4">
+                                                  <div class="">
+                                                       <strong>Номер аттестата:</strong><br>
+                                                       <span class="mt-1">0000093</span>
+                                                  </div>
+                                                  <div class="mt-2">
+                                                       <strong>Статус:</strong>
+                                                       <div class="access-block-status access-status-npaid mt-1">
+                                                            Прекращен
+                                                       </div>
                                                   </div>
                                              </div>
-                                             <div class="d-flex flex-column ms-2 p-2 w-100">
+                                             <div class="d-flex flex-column ms-1 p-1 w-100 col">
                                                   <div class="access-table-card__data">
-                                                       <span>Номер заказа</span>
-                                                       <span>№364</span>
+                                                       <span>Фамилия, имя, отчество налогового консультанта</span>
+                                                       <span>
+                                                            Лапицкая   
+                                                            Людмила Александровна
+                                                       </span>
                                                   </div>
                                                   <div class="access-table-card__data">
-                                                       <span>Дата оформления</span>
-                                                       <span>10.02.2023</span>
+                                                       <span>Дата выдачи</span>
+                                                       <span>17.08.2018</span>
                                                   </div>
                                                   <div class="access-table-card__data">
-                                                       <span>Период доступа</span>
-                                                       <span>90 дней</span>
+                                                       <span>Право на оказание услуг по налоговому консультированию</span>
+                                                       <span>индивидуальных предпринимателей и физических лиц</span>
                                                   </div>
                                                   <div class="access-table-card__data">
-                                                       <span>Счет на оплату</span>
-                                                       <a href=""><i class="bi bi-paperclip"></i> Скачать счет</a>
+                                                       <span>Контактная информация</span>
+                                                       <div class="d-flex flex-column">
+                                                            <span>8-029-137-09-59</span>
+                                                            <span>Lusi.net@bk.ru</span>
+                                                       </div>
                                                   </div>
                                                   <div class="access-table-card__data">
-                                                       <span>Акт</span>
-                                                       <a href=""><i class="bi bi-paperclip"></i> Скачать акт</a>
+                                                       <span>Сведения о практике налогового консультанта</span>
+                                                       <p>
+                                                            Государственное предприятие "Информационно-издательский центр по налогам и сборам"
+                                                       </p>
                                                   </div>
                                              </div>
                                         </div>
                                    </div>
-                                   <div class="access-table-mobile">
+                                   <div class="access-table-mobile reg-table">
                                         <div class="access-table-card d-flex flex-row justify-content-between">
                                              <div
                                                   class="access-block-status-block d-flex align-items-start p-2 flex-column">
-                                                  <div class="access-block-status access-status-npaid">
-                                                       Не оплачен
-                                                  </div>
-                                                  <div class="access-block-status access-status-npaid">
-                                                       Истек срок доступа
-                                                  </div>
+                                                  
+                                                  
                                              </div>
                                              <div class="d-flex flex-column ms-2 p-2 w-100">
                                                   <div class="access-table-card__data">

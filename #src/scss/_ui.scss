@@ -2540,6 +2540,9 @@
     display: none;
     align-items: flex-start;
     width: 100%;
+    &:not(:first-child){
+      margin-top: 8px;
+    }
     &{
       @media (max-width: 600px) {
         display: flex;
@@ -2565,14 +2568,14 @@
           color: var(--color-gray-dark);
         }
         @include adaptiv-value("font-size", 14, 12, 1);
-        span:first-child{
+        & :first-child{
           max-width: 150px;
           width: 100%;
           font-weight: 600;
           @include adaptiv-value("margin-right", 15, 8, 1);
         }
-        span:nth-child(2){
-          text-align: center;
+        & :nth-child(2){
+          text-align: right;
           color: var(--color-gray-dark);
         }
         a{
@@ -2586,15 +2589,38 @@
       .access-block-status-block{
         max-width: 85px;
         width: 100%;
-
+        font-size: 14px;
       }
     }
   }
 }
 .reg-table{
   padding: 0 12px;
+  .access-table-card{
+    &__title{
+      @include adaptiv-value("font-size", 14, 12, 1);
+    }
+    &__data{
+      display: flex;
+      flex-direction: column;
+      & :nth-child(2){
+        text-align: left !important;
+        color: var(--color-gray-dark);
+      }
+    }
+  }
 }
-
+.access-table-mobile.reg-table{
+  @media (max-width: 1000px) {
+    display: flex;
+  }
+  @media (max-width: 400px) {
+    .access-block-status{
+      padding: 2px 2px;
+    }
+  }
+  
+}
 .datetimepicker-wrapper{
   tr{
     background-color: var(--color-white) !important;
@@ -2606,14 +2632,14 @@
     }
   }
 }
-#datefilter{
-  .datetimepicker-input{
-    display: none;
-  }
-  .bi{
-    color: var(--color-black);
-  }
-}
+// #datefilter{
+//   .datetimepicker-input{
+//     display: none;
+//   }
+//   .bi{
+//     color: var(--color-black);
+//   }
+// }
 
 // .irs--round .irs-min, .irs--round .irs-max{
 //   &::after, &::before{
@@ -2844,6 +2870,19 @@
     border-bottom: 0 !important;
     border-left: 0 !important;
     border-right: 0 !important;
+  }
+}
+
+.reg-sort-wrapper{
+  .bi{
+    font-size: 28px;
+  }
+  input[type=radio]{
+    display: none;
+  }
+  input[type=radio]:checked + label{
+    color: var(--color-gold);
+    // border: 1px solid var(--color-gold);
   }
 }
 
