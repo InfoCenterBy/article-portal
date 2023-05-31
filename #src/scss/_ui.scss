@@ -181,6 +181,14 @@
       background-color: rgba(3, 74, 102, 0.2);
     }
   }
+  &-gray{
+    background-color: var(--color-gray);
+    color: var(--color-black);
+    &:hover {
+      background-color: rgba(209, 210, 212, 0.5);
+      color: var(--color-black);
+    }
+  }
 }
 
 .button-small {
@@ -2582,6 +2590,9 @@
       }
     }
   }
+}
+.reg-table{
+  padding: 0 12px;
 }
 
 .datetimepicker-wrapper{
