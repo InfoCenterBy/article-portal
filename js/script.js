@@ -819,7 +819,7 @@ let minDate = today.setDate(today.getDate());
 // });
 
 $(function () {
-  $('#datetimepicker').datetimepicker({
+  $('#datetimepicker.datetimepicker-cont').datetimepicker({
     format: 'DD.MM.YYYY', // Формат даты
     icons: {
       time: 'bi bi-clock', // Иконка времени
@@ -833,6 +833,23 @@ $(function () {
       close: 'bi bi-x', // Иконка "Закрыть"
     },
     minDate: minDate,
+    theme: 'bootstrap',
+    language: 'ru',
+    locale: 'ru'
+  });
+  $('#datetimepicker.datetimepicker-reg').datetimepicker({
+    format: 'DD.MM.YYYY', // Формат даты
+    icons: {
+      time: 'bi bi-clock', // Иконка времени
+      date: 'bi bi-calendar', // Иконка календаря
+      up: 'bi bi-chevron-up', // Иконка вверх
+      down: 'bi bi-chevron-down', // Иконка вниз
+      previous: 'bi bi-chevron-left', // Иконка стрелки влево
+      next: 'bi bi-chevron-right', // Иконка стрелки вправо
+      today: 'bi bi-calendar-check', // Иконка "Сегодня"
+      clear: 'bi bi-trash', // Иконка "Очистить"
+      close: 'bi bi-x', // Иконка "Закрыть"
+    },
     theme: 'bootstrap',
     language: 'ru',
     locale: 'ru'

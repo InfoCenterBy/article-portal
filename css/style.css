@@ -364,6 +364,16 @@ body._lock {
   background-color: rgba(3, 74, 102, 0.2);
 }
 
+.button-gray {
+  background-color: var(--color-gray);
+  color: var(--color-black);
+}
+
+.button-gray:hover {
+  background-color: rgba(209, 210, 212, 0.5);
+  color: var(--color-black);
+}
+
 .button-small {
   padding: 5px 10px;
   font-size: 16px;
@@ -2322,7 +2332,7 @@ body._lock {
 .access-content .access-table table tr,
 .access-content .access-table table td {
   text-align: left;
-  padding: 16px 0 16px 16px;
+  padding: 16px;
 }
 
 .access-content .access-table table tr .bi-paperclip,
@@ -2331,6 +2341,7 @@ body._lock {
 }
 
 .access-content .access-table table td:empty::after {
+  text-align: center;
   content: "⚊";
   color: var(--color-gray-dark);
 }
@@ -2365,9 +2376,17 @@ body._lock {
   width: 100%;
 }
 
+.access-content .access-table-mobile:not(:first-child) {
+  margin-top: 8px;
+}
+
 .access-content .access-table-mobile .access-table-card {
   border: 1px solid var(--color-gray);
   width: 100%;
+}
+
+.access-content .access-table-mobile .access-table-card:not(:first-child) {
+  border-top: none;
 }
 
 .access-content .access-table-mobile .access-table-card .d-flex:first-child {
@@ -2390,15 +2409,15 @@ body._lock {
   color: var(--color-gray-dark);
 }
 
-.access-content .access-table-mobile .access-table-card__data span:first-child {
+.access-content .access-table-mobile .access-table-card__data :first-child {
   max-width: 150px;
   width: 100%;
   font-weight: 600;
   margin-right: 15px;
 }
 
-.access-content .access-table-mobile .access-table-card__data span:nth-child(2) {
-  text-align: center;
+.access-content .access-table-mobile .access-table-card__data :nth-child(2) {
+  text-align: right;
   color: var(--color-gray-dark);
 }
 
@@ -2414,6 +2433,42 @@ body._lock {
 .access-content .access-table-mobile .access-table-card .access-block-status-block {
   max-width: 85px;
   width: 100%;
+  font-size: 14px;
+}
+
+.reg-table {
+  padding: 0 12px;
+}
+
+.reg-table .access-table-card__title {
+  font-size: 14px;
+}
+
+.reg-table .access-table-card__data {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.reg-table .access-table-card__data :nth-child(2) {
+  text-align: left !important;
+  color: var(--color-gray-dark);
+}
+
+.datetimepicker-wrapper tr {
+  background-color: var(--color-white) !important;
+}
+
+.datetimepicker-wrapper td {
+  padding: 5px !important;
+}
+
+.datetimepicker-wrapper td.active {
+  background-color: var(--color-gold) !important;
 }
 
 .taxation-filter .card-wrapper {
@@ -2577,6 +2632,18 @@ body._lock {
 
 .taxation-filter .card-scope.row {
   margin-left: 0 !important;
+}
+
+.reg-sort-wrapper .bi {
+  font-size: 28px;
+}
+
+.reg-sort-wrapper input[type=radio] {
+  display: none;
+}
+
+.reg-sort-wrapper input[type=radio]:checked + label {
+  color: var(--color-gold);
 }
 
 p {
@@ -5521,17 +5588,17 @@ td.vertical-bottom {
 }
 
 .subscribe-date .input-group:has(.form-control:focus) {
-  -webkit-box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
-          box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  -webkit-box-shadow: 0 0 0 0.25rem rgba(253, 169, 13, 0.25);
+          box-shadow: 0 0 0 0.25rem rgba(253, 169, 13, 0.25);
   border-radius: 0.25rem;
 }
 
 .subscribe-date .input-group:has(.form-control:focus) .input-group-text {
-  border-color: #86b7fe;
+  border-color: var(--color-gold);
 }
 
 .subscribe-date .form-control:focus {
-  border-color: #86b7fe;
+  border-color: var(--color-gold);
   outline: 0;
   -webkit-box-shadow: none;
           box-shadow: none;
@@ -5570,6 +5637,40 @@ td.vertical-bottom {
 
 .subscribe-date .input-group:has(.form-control:disabled) .bi {
   color: #D1D2D4;
+}
+
+.registry-content .datetimepicker-wrapper {
+  margin-top: 10px !important;
+}
+
+.registry-content .datetimepicker-wrapper .datetimepicker-input {
+  padding: 15px;
+  border-color: var(--color-gray) !important;
+  border-radius: 0;
+}
+
+.registry-content .datetimepicker-wrapper .datetimepicker-input:focus {
+  border-color: var(--color-gold) !important;
+}
+
+.registry-content .datetimepicker-wrapper .input-group-text {
+  padding: 15px;
+  border-radius: 0;
+}
+
+.registry-content .button {
+  padding: 15px;
+}
+
+.registry-content .form-check-input:focus {
+  -webkit-box-shadow: 0 0 0 0.25rem rgba(253, 169, 13, 0.25);
+          box-shadow: 0 0 0 0.25rem rgba(253, 169, 13, 0.25);
+  border-color: var(--color-gold);
+}
+
+.registry-content .form-check-input:checked {
+  background-color: var(--color-gold);
+  border-color: var(--color-gold);
 }
 
 @media (min-width: 576px) {
@@ -5792,8 +5893,12 @@ td.vertical-bottom {
     font-size: calc(12px + 2 * ((100vw - 320px) / 1200));
   }
 
-  .access-content .access-table-mobile .access-table-card__data span:first-child {
+  .access-content .access-table-mobile .access-table-card__data :first-child {
     margin-right: calc(8px + 7 * ((100vw - 320px) / 1200));
+  }
+
+  .reg-table .access-table-card__title {
+    font-size: calc(12px + 2 * ((100vw - 320px) / 1200));
   }
 
   .taxation-filter .card-wrapper {
@@ -5818,6 +5923,13 @@ td.vertical-bottom {
 
   .blank-notifications {
     padding-bottom: calc(0px + 30 * ((100vw - 320px) / 1200));
+  }
+}
+
+@media (max-width: 1200px) {
+  .access-content .access-table table tr,
+  .access-content .access-table table td {
+    padding: 8px;
   }
 }
 
@@ -5971,6 +6083,18 @@ td.vertical-bottom {
 @media (max-width: 1100px) and (max-width: 576px) {
   .form-documents__wrapper {
     padding: 70px 15px 15px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .access-content .access-table.reg-table {
+    display: none;
+  }
+
+  .access-table-mobile.reg-table {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
   }
 }
 
@@ -6357,7 +6481,7 @@ td.vertical-bottom {
 }
 
 @media (max-width: 600px) {
-  .access-content .access-table {
+  .access-content .access-table:not(.reg-table) {
     display: none;
   }
 
@@ -6679,6 +6803,12 @@ td.vertical-bottom {
 
   .dropdown-menu-notifications {
     min-width: 310px;
+  }
+}
+
+@media (max-width: 400px) {
+  .access-table-mobile.reg-table .access-block-status {
+    padding: 2px 2px;
   }
 }
 
