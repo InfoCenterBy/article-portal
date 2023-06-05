@@ -48,6 +48,7 @@ let { src, dest } = require('gulp'),
 	ttf2woff2 = require('gulp-ttf2woff2'),
 	fonter = require('gulp-fonter'),
 	deploy = require('gulp-gh-pages');
+	strip = require('gulp-strip-comments');
 
 function browserSync(done) {
 	browsersync.init({
@@ -62,6 +63,7 @@ function browserSync(done) {
 function html() {
 	return src(path.src.html)
 		.pipe(fileinclude())
+		.pipe(strip())
 		.pipe(dest(path.build.html))
 		.pipe(browsersync.stream())
 }

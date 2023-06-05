@@ -17,10 +17,12 @@
                          </ol>
                     </div>
                </nav>
+               
                <section class="mb-5">
                     <div class='container'>
                          <div class="sidebar-wrapper">
-                              <div class="sidebar-wrapper__content access-content registry-content">
+                              
+                              <form class="sidebar-wrapper__content access-content registry-content" id="regForm">
                                    <h1 class="h1">Единый реестр налоговых консультантов</h1>
 
                                    <h4 class="h4">Поиск по реестру</h4>
@@ -35,31 +37,49 @@
                                         <div class="col-md-6 h-100 my-2">
                                              <div class="">
                                                   <div class="label">Право на оказание услуг по налоговому консультированию</div>
-                                                  <select class="select">
-                                                       <option></option>
-                                                       <option>1</option>
-                                                       <option>2</option>
-                                                       <option>3</option>
-                                                       <option>4</option>
-                                                       <option>5</option>
-                                                  </select>
+                                                  <div class="multiple-select-wrapper">
+                                                       <select id="multipleRule" multiple="multiple">
+                                                            <option value="value1">Индивидуальных предпринимателей и физических лиц</option>
+                                                            <option value="value2">Организаций</option>
+                                                            <option value="value3">Организаций, индивидуальных предпринимателей и физических лиц</option>
+                                                       </select>
+                                                  </div>
                                              </div>
                                         </div>
-                                        <div class="col-md-4 my-2 collapse" id="collapseSearch">
+                                        <div class="col-md-4 h-100 my-2">
+                                             <div class="">
+                                                  <div class="label">Статус</div>
+                                                  <div class="multiple-select-wrapper">
+                                                       <select id="multipleStatus" multiple="multiple">
+                                                            <option value="value1">Активен</option>
+                                                            <option value="value2">Приостановлен</option>
+                                                            <option value="value3">Прекращен</option>
+                                                            <option value="value4">Аннулирован</option>
+                                                       </select>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                        <div class="col-md-4 my-2 " id="collapseSearch">
                                              <div class="input">
-                                                  <label for="tel">Контактная информация</label>
-                                                  <input type="text" id="tel" placeholder="+375 (17) 11-11-11">
+                                                  <label for="regTel">Контактная информация(телефон)</label>
+                                                  <input type="text" id="regTel" placeholder="+375 (17) 11-11-11">
                                              </div>
                                         </div>
-                                        <div class="col-md-4 my-2 collapse" id="collapseSearch">
+                                        <div class="col-md-4 my-2 " id="collapseSearch">
+                                             <div class="input">
+                                                  <label for="regTel">Контактная информация(почта)</label>
+                                                  <input type="text" id="regEmail" placeholder="email@mail.com">
+                                             </div>
+                                        </div>
+                                        <div class="col-md-4 my-2 " id="collapseSearch">
                                              <div class="input">
                                                   <label for="numCertificate">Номер аттестата</label>
                                                   <input type="text" id="numCertificate" placeholder="00000001">
                                              </div>
                                         </div>
-                                        <div class="col-md-4 my-2 collapse" id="collapseSearch">
-                                             <div class="form-group subscribe-date my-2 my-md-0">
-                                                  <label for="date">Дата выдачи</label>
+                                        <div class="col-md-4 my-2 row px-0 mx-0" id="collapseSearch">
+                                             <div class="form-group subscribe-date my-2 my-md-0 col-md-6">
+                                                  <label for="date">Дата выдачи от</label>
                                                   <div class="input-group date mt-1 datetimepicker-wrapper datetimepicker-reg" id="datetimepicker" data-target-input="nearest">
                                                        <input type="text" class="form-control datetimepicker-input border-right-0" data-target="#datetimepicker"  placeholder="01.01.1917">
                                                        <div class="input-group-text" data-target="#datetimepicker" data-toggle="datetimepicker">
@@ -67,14 +87,23 @@
                                                        </div>
                                                   </div>
                                              </div>
+                                             <div class="form-group subscribe-date my-2 my-md-0 col-md-6">
+                                                  <label for="date">Дата выдачи до</label>
+                                                  <div class="input-group date mt-1 datetimepicker-wrapper datetimepicker-reg" id="datetimepickerEnd" data-target-input="nearest">
+                                                       <input type="text" class="form-control datetimepicker-input border-right-0" data-target="#datetimepickerEnd"  placeholder="01.01.1917">
+                                                       <div class="input-group-text" data-target="#datetimepickerEnd" data-toggle="datetimepicker">
+                                                            <i class="bi bi-calendar"></i>
+                                                       </div>
+                                                  </div>
+                                             </div>
                                         </div>
-                                        <div class="col-md-4 my-2 collapse" id="collapseSearch">
+                                        <div class="col-md-4 my-2 " id="collapseSearch">
                                              <div class="input">
                                                   <label for="aboutPlace">Сведения о практике налогового консультанта</label>
                                                   <input type="text" id="aboutPlace" placeholder="Название учреждения">
                                              </div>
                                         </div>
-                                        <div class="col-md-6 my-2 my-2 d-flex flex-column justify-content-end align-items-end" 
+                                        <!-- <div class="col-md-6 my-2 my-2 d-flex flex-column justify-content-end align-items-end" 
                                              type="button" 
                                              data-bs-toggle="collapse" 
                                              data-bs-target="#collapseSearch" 
@@ -83,8 +112,8 @@
                                              <button class="w-100 button button_empty" >
                                                   <span>Расширенный поиск</span>
                                              </button>
-                                        </div>
-                                        <div class="col-md-6 row px-0 mx-0">
+                                        </div> -->
+                                        <!-- <div class="col-md-6 row px-0 mx-0">
                                              <div class="col-md-6 my-2 d-flex flex-column justify-content-end align-items-end">
                                                   <div class="collapse w-100" id="collapseFilter">
                                                        <div class="card card-body w-100 d-flex flex-column">
@@ -182,14 +211,14 @@
                                                        <span>Сортировка</span> <i class="bi bi-funnel"></i>
                                                   </button>
                                              </div>
-                                        </div>
+                                        </div> -->
                                         
                                         <div class="col-md-6 my-2 d-flex flex-column justify-content-end align-items-end">
                                              <button class="w-100 button">Применить</button>
                                         </div>
                                         
                                         <div class="col-md-6 my-2 d-flex flex-column justify-content-end align-items-end">
-                                             <button class="w-100 button button-gray">Сбросить заданные параметры</button>
+                                             <button class="w-100 button button-gray" id="regRest">Сбросить заданные параметры</button>
                                         </div>
                                         
                                    </div>
@@ -421,7 +450,7 @@
                                              </div>
                                         </div>
                                    </div>
-                                   <div class="access-table-mobile reg-table">
+                                   <!-- <div class="access-table-mobile reg-table">
                                         <div class="access-table-card d-flex flex-row justify-content-between">
                                              <div
                                                   class="access-block-status-block d-flex align-items-start p-2 flex-column">
@@ -451,9 +480,9 @@
                                                   </div>
                                              </div>
                                         </div>
-                                   </div>
+                                   </div> -->
                                    <!-- mobile card end -->
-                              </div>
+                              </form>
                          </div>
                     </div>
                </section>

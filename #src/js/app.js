@@ -303,6 +303,26 @@ $(function () {
     language: 'ru',
     locale: 'ru'
   });
+
+  $('#datetimepickerEnd').datetimepicker({
+    format: 'DD.MM.YYYY', // Формат даты
+    icons: {
+      time: 'bi bi-clock', // Иконка времени
+      date: 'bi bi-calendar', // Иконка календаря
+      up: 'bi bi-chevron-up', // Иконка вверх
+      down: 'bi bi-chevron-down', // Иконка вниз
+      previous: 'bi bi-chevron-left', // Иконка стрелки влево
+      next: 'bi bi-chevron-right', // Иконка стрелки вправо
+      today: 'bi bi-calendar-check', // Иконка "Сегодня"
+      clear: 'bi bi-trash', // Иконка "Очистить"
+      close: 'bi bi-x', // Иконка "Закрыть"
+    },
+    minDate: minDate,
+    theme: 'bootstrap',
+    language: 'ru',
+    locale: 'ru'
+  });
+
   $('#datetimepicker.datetimepicker-reg').datetimepicker({
     format: 'DD.MM.YYYY', // Формат даты
     icons: {
@@ -321,3 +341,37 @@ $(function () {
     locale: 'ru'
   });
 });
+
+$(document).ready(function() {
+  $("#regTel").mask("+375 (99) 999-99-99");
+
+  $('#multipleStatus').multiselect(
+    {
+      buttonClass: 'multiple-select-custom',
+      buttonWidth: '100%',
+      nSelectedText: ' Статуса выбрано',
+      allSelectedText: 'Все статусы выбраны'
+      // buttonText: function(options, select) {
+      //   return 'Выберите Статус';
+      // },
+    }
+  );
+  
+  $('#multipleRule').multiselect(
+    {
+      buttonClass: 'multiple-select-custom',
+      buttonWidth: '100%',
+      nSelectedText: ' Прав выбрано',
+      allSelectedText: 'Все права выбраны'
+      // buttonText: function(options, select) {
+      //   return 'Выберите Статус';
+      // },
+    }
+  );
+
+  $('.multiselect-selected-text').text('Ничего не выбрано')
+});
+
+document.querySelector('#regRest').addEventListener('click', ()=>{
+  document.querySelector('#regForm').reset()
+})
