@@ -2,4 +2,5 @@
 @@include('libs/jquery.maskedinput.min.js', {})
 @@include('files/sliders.js', {})
 @@include('files/dynamic_adapt.js', {})
+@@include('libs/bootstrap-multiselect.min.js', {})
 @@include('app.js', {})
