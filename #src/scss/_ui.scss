@@ -2632,6 +2632,16 @@
     }
   }
 }
+.multiple-select-wrapper{
+  width: 100%;
+  border: 1px solid var(--color-gray);
+}
+.multiple-select-custom{
+  padding: 15px;
+  background-color: transparent;
+  text-align: left !important;
+}
+
 // #datefilter{
 //   .datetimepicker-input{
 //     display: none;
