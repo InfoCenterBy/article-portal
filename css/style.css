@@ -6801,11 +6801,16 @@ td.vertical-bottom {
 
   .modal-reg-table td {
     padding: 8px 5px;
+  }
+
+  .modal-reg-table td .access-block-status,
+  .modal-reg-table td {
     font-size: 14px;
   }
 }
 
 @media (max-width: 550px) and (max-width: 1520px) {
+  .modal-reg-table td .access-block-status,
   .modal-reg-table td {
     font-size: calc(10px + 4 * ((100vw - 320px) / 1200));
   }
