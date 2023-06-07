@@ -2466,6 +2466,10 @@ body._lock {
   -webkit-appearance: none;
 }
 
+.modal-reg-table table {
+  width: 100%;
+}
+
 .modal-reg-table td {
   border: 1px solid #D1D2D4;
   padding: 16px 10px;
@@ -6793,6 +6797,17 @@ td.vertical-bottom {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+  }
+
+  .modal-reg-table td {
+    padding: 8px 5px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 550px) and (max-width: 1520px) {
+  .modal-reg-table td {
+    font-size: calc(10px + 4 * ((100vw - 320px) / 1200));
   }
 }
 
