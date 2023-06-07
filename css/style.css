@@ -2459,6 +2459,23 @@ body._lock {
   color: var(--color-gray-dark);
 }
 
+.reg-table [type=button],
+.reg-table [type=reset],
+.reg-table [type=submit],
+.reg-table button {
+  -webkit-appearance: none;
+}
+
+.modal-reg-table td {
+  border: 1px solid #D1D2D4;
+  padding: 16px 10px;
+}
+
+.modal-reg-table td a {
+  display: block;
+  color: var(--color-black);
+}
+
 .datetimepicker-wrapper tr {
   background-color: var(--color-white) !important;
 }
