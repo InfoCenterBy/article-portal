@@ -46,7 +46,7 @@
                                                   </div>
                                              </div>
                                         </div>
-                                        <div class="col-md-4 h-100 my-2">
+                                        <div class="col-md-4 col-sm-6 h-100 my-2">
                                              <div class="">
                                                   <div class="label">Статус</div>
                                                   <div class="multiple-select-wrapper">
@@ -59,25 +59,25 @@
                                                   </div>
                                              </div>
                                         </div>
-                                        <div class="col-md-4 my-2 " id="collapseSearch">
+                                        <div class="col-md-4 col-sm-6 my-2 " id="collapseSearch">
                                              <div class="input">
                                                   <label for="regTel">Контактная информация(телефон)</label>
                                                   <input type="text" id="regTel" placeholder="+375 (17) 11-11-11">
                                              </div>
                                         </div>
-                                        <div class="col-md-4 my-2 " id="collapseSearch">
+                                        <div class="col-md-4 col-sm-6 my-2 " id="collapseSearch">
                                              <div class="input">
                                                   <label for="regTel">Контактная информация(почта)</label>
                                                   <input type="text" id="regEmail" placeholder="email@mail.com">
                                              </div>
                                         </div>
-                                        <div class="col-md-4 my-2 " id="collapseSearch">
+                                        <div class="col-md-4 col-sm-6 my-2 " id="collapseSearch">
                                              <div class="input">
                                                   <label for="numCertificate">Номер аттестата</label>
                                                   <input type="text" id="numCertificate" placeholder="00000001">
                                              </div>
                                         </div>
-                                        <div class="col-md-4 my-2 row px-0 mx-0" id="collapseSearch">
+                                        <div class="col-md-4 col-sm-12 my-2 row px-0 mx-0" id="collapseSearch">
                                              <div class="form-group subscribe-date my-2 my-md-0 col-md-6">
                                                   <label for="date">Дата выдачи от</label>
                                                   <div class="input-group date mt-1 datetimepicker-wrapper datetimepicker-reg" id="datetimepicker" data-target-input="nearest">
@@ -97,7 +97,7 @@
                                                   </div>
                                              </div>
                                         </div>
-                                        <div class="col-md-4 my-2 " id="collapseSearch">
+                                        <div class="col-md-4 col-sm-6 my-2 " id="collapseSearch">
                                              <div class="input">
                                                   <label for="aboutPlace">Сведения о практике налогового консультанта</label>
                                                   <input type="text" id="aboutPlace" placeholder="Название учреждения">
@@ -223,39 +223,96 @@
                                         
                                    </div>
 
+                                   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                                             <div class="modal-content">
+                                                  <div class="modal-header">
+                                                       <h1 class="modal-title fs-5" id="exampleModalLabel">Сазонова Анжелика Владимировна</h1>
+                                                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                  </div>
+                                                  <div class="modal-body modal-reg-table">
+                                                       <table>
+                                                            <tbody>
+                                                                 <tr>
+                                                                      <td>Фамилия, имя, отчество налогового консультанта</td>
+                                                                      <td>Сазонова Анжелика Владимировна</td>
+                                                                 </tr>
+                                                                 <tr>
+                                                                      <td>Статус</td>
+                                                                      <td>
+                                                                           <div class="d-flex">
+                                                                                <div class="access-block-status access-status-active">
+                                                                                     Активен
+                                                                                </div>
+                                                                           </div>
+                                                                      </td>
+                                                                 </tr>
+                                                                 <tr>
+                                                                      <td>Номер аттестата</td>
+                                                                      <td>0000100</td>
+                                                                 </tr>
+                                                                 <tr>
+                                                                      <td>Дата выдачи квалификационного аттестата налогового консультанта</td>
+                                                                      <td>17.08.2018</td>
+                                                                 </tr>
+                                                                 <tr>
+                                                                      <td>Направление квалификационного экзамена, по итогам которого выдан квалификационный аттестат</td>
+                                                                      <td>налоговое консультирование индивидуальных предпринимателей и физических лиц</td>
+                                                                 </tr>
+                                                                 <tr>
+                                                                      <td>Дата приостановления действия квалификационного аттестата налогового консультанта</td>
+                                                                      <td>23.07.2020</td>
+                                                                 </tr>
+                                                                 <tr>
+                                                                      <td>Дата возобновления действия квалификационного аттестата налогового консультанта</td>
+                                                                      <td>30.07.2020</td>
+                                                                 </tr>
+                                                                 <tr>
+                                                                      <td>Контактная информация налогового консультанта</td>
+                                                                      <td>
+                                                                           <a href="tel:80172691864">8-017-269-18-64</a>
+                                                                           <a href="mailto:seminar-nalogbel@mail.ru">seminar-nalogbel@mail.ru</a>
+                                                                      </td>
+                                                                 </tr>
+                                                            </tbody>
+                                                       </table>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                   </div>
 
-
-                                   <!-- access table start  -->
-                                   <div class="access-table reg-table">
+                                   <!-- reg table start  -->
+                                   <div class="access-table reg-table mt-3">
                                         <table>
                                              <tbody>
                                                   <tr>
                                                        <td>Номер аттестата</td>
                                                        <td>Фамилия, имя, отчество налогового консультанта</td>
                                                        <td>
-                                                            <div class="d-flex flex-row align-items-center justify-content-center">
-                                                                 <span>Дата выдачи</span>
-                                                                 <!-- <div class="input-group date ms-2 datetimepicker-wrapper" id="datefilter" data-target-input="nearest">
+                                                            Дата выдачи
+                                                            <!-- <div class="d-flex flex-row align-items-center justify-content-center">
+                                                                 <span></span>
+                                                                 <div class="input-group date ms-2 datetimepicker-wrapper" id="datefilter" data-target-input="nearest">
                                                                       <input type="text" 
                                                                            class="datetimepicker-input border-right-0" 
                                                                            data-target="#datefilter"  placeholder="01.01.1917">
                                                                       <div data-target="#datefilter" data-toggle="datetimepicker">
                                                                            <i class="bi bi-calendar-week"></i>
                                                                       </div>
-                                                                 </div> -->
-                                                            </div>
+                                                                 </div>
+                                                            </div> -->
                                                        </td>
                                                        <td>
-                                                            <div class="dropdown">
+                                                            <!-- <div class="dropdown">
                                                                  <button 
                                                                       class="d-flex flex-row align-items-center"
                                                                       type="button" 
                                                                       data-bs-toggle="dropdown" 
                                                                       aria-expanded="false">
-                                                                           Право на оказание услуг по налоговому консультированию
-                                                                           <!-- <div class="dropdown-toggle ms-2"></div> -->
+                                                                           
+                                                                           <div class="dropdown-toggle ms-2"></div>
                                                                  </button>
-                                                                 <!-- <div class="dropdown-menu px-3">
+                                                                 <div class="dropdown-menu px-3">
                                                                       <div class="form-check">
                                                                            <input type="checkbox" class="form-check-input" id="dropdownCheck1">
                                                                            <label class="form-check-label" for="dropdownCheck1">
@@ -274,8 +331,9 @@
                                                                                 Организаций
                                                                            </label>
                                                                       </div>
-                                                                 </div> -->
-                                                            </div>
+                                                                 </div>
+                                                            </div> -->
+                                                            Право на оказание услуг по налоговому консультированию
                                                        </td>
                                                        <td>Контактная информация</td>
                                                        <td>Сведения о практике налогового консультанта</td>
@@ -319,7 +377,7 @@
                                                             </div> -->
                                                        </td>
                                                   </tr>
-                                                  <tr>
+                                                  <tr type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                        <td>
                                                             0000093
                                                        </td>
@@ -345,7 +403,7 @@
                                                             </div>
                                                        </td>
                                                   </tr>
-                                                  <tr>
+                                                  <tr type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                        <td>
                                                             00000100
                                                        </td>
@@ -398,7 +456,7 @@
                                              </tbody>
                                         </table>
                                    </div>
-                                   <!-- access table end  -->
+                                   <!-- reg table end  -->
 
                                    <!-- mobile access card start -->
                                    <div class="access-table-mobile reg-table">

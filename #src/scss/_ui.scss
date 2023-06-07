@@ -2609,6 +2609,9 @@
       }
     }
   }
+  [type=button], [type=reset], [type=submit], button {
+    -webkit-appearance: none;
+  }
 }
 .access-table-mobile.reg-table{
   @media (max-width: 1000px) {
@@ -2619,7 +2622,25 @@
       padding: 2px 2px;
     }
   }
-  
+}
+.modal-reg-table{
+  table{
+    width: 100%;
+  }
+  td{
+    border: 1px solid #D1D2D4;
+    padding: 16px 10px;
+    @media (max-width: 550px) {
+      padding: 8px 5px;
+      .access-block-status, &{
+        @include adaptiv-value("font-size", 14, 10, 1);
+      }
+    }
+    a{
+      display: block;
+      color: var(--color-black);
+    }
+  }
 }
 .datetimepicker-wrapper{
   tr{
