@@ -17,7 +17,7 @@ const showOverlay = () => {
 
 const hideOverlay = () => {
   body.classList.remove("_lock");
-  wrapper.classList.remove("_overlay");
+  // wrapper.classList.remove("_overlay");
 };
 
 const showMenu = () => {
@@ -372,6 +372,19 @@ $(document).ready(function() {
   $('.multiselect-selected-text').text('Ничего не выбрано')
 });
 
-document.querySelector('#regRest').addEventListener('click', ()=>{
-  document.querySelector('#regForm').reset()
-})
+let regForm = document.querySelector('#regRest')
+if(regForm){
+  regForm.addEventListener('click', ()=>{
+    document.querySelector('#regForm').reset()
+  })
+}
+
+
+const menu_btn = document.querySelector("#menu-btn");
+const sidebar = document.querySelector("#sidebar");
+const container = document.querySelector(".new-container");
+menu_btn.addEventListener("click", () => {
+  console.log('clicked')
+  sidebar.classList.toggle("active-nav");
+  container.classList.toggle("active-container");
+});
