@@ -595,7 +595,7 @@ const showOverlay = () => {
 
 const hideOverlay = () => {
   body.classList.remove("_lock");
-  wrapper.classList.remove("_overlay");
+  // wrapper.classList.remove("_overlay");
 };
 
 const showMenu = () => {
@@ -950,6 +950,35 @@ $(document).ready(function() {
   $('.multiselect-selected-text').text('Ничего не выбрано')
 });
 
-document.querySelector('#regRest').addEventListener('click', ()=>{
-  document.querySelector('#regForm').reset()
+let regForm = document.querySelector('#regRest')
+if(regForm){
+  regForm.addEventListener('click', ()=>{
+    document.querySelector('#regForm').reset()
+  })
+}
+
+
+const menu_btn = document.querySelector("#menu-btn");
+const sidebar = document.querySelector("#sidebar");
+const container = document.querySelector(".nav-container");
+if(menu_btn){
+  menu_btn.addEventListener("click", () => {
+    console.log('clicked')
+    sidebar.classList.toggle("active-nav");
+    container.classList.toggle("active-container");
+  });
+}
+
+
+let testArray = [{id: '00001', name: 'dfsf'}, {id: '00002', name: 'dsfqerq'}, {id: '00003', name: 'dswqefqerq'}, {id: '000100', name: 'dewr12sfqerq'}]
+
+
+function FilterByNumber(arr, id){
+  console.log(arr.filter(el => el.id === id))
+}
+
+// FilterByNumber(testArray, '00001')
+
+document.querySelector('#numCertificate').addEventListener('change', ()=>{
+  console.log('this', this.document.querySelector('#numCertificate').value)
 })

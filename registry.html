@@ -7,6 +7,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.cdnfonts.com/css/pt-serif" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
       <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
@@ -24,6 +25,7 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/css/tempusdominus-bootstrap-4.min.css">
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/1.1.2/css/bootstrap-multiselect.min.css" integrity="sha512-fZNmykQ6RlCyzGl9he+ScLrlU0LWeaR6MO/Kq9lelfXOw54O63gizFMSD5fVgZvU1YfDIc6mxom5n60qJ1nCrQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet" />
       <link rel="stylesheet" href="css/style.min.css" />
 </head>
 
@@ -239,13 +241,13 @@
                                    <h4 class="h4">Поиск по реестру</h4>
 
                                    <div class="row mx-0 px-0">
-                                        <div class="col-md-6 h-100 my-2">
+                                        <div class="col-md-6 h-100 my-2 ps-0">
                                              <div class="input">
                                                   <label for="nameConsl">Фамилия, имя, отчество налогового консультанта</label>
                                                   <input type="text" id="nameConsl" placeholder="Иванова">
                                              </div>
                                         </div>
-                                        <div class="col-md-6 h-100 my-2">
+                                        <div class="col-md-6 h-100 my-2 pe-0">
                                              <div class="">
                                                   <div class="label">Право на оказание услуг по налоговому консультированию</div>
                                                   <div class="multiple-select-wrapper">
@@ -257,7 +259,7 @@
                                                   </div>
                                              </div>
                                         </div>
-                                        <div class="col-md-4 col-sm-6 h-100 my-2">
+                                        <div class="col-md-4 col-sm-12 h-100 my-2 collapse ps-0" id="collapseSearch">
                                              <div class="">
                                                   <div class="label">Статус</div>
                                                   <div class="multiple-select-wrapper">
@@ -270,25 +272,25 @@
                                                   </div>
                                              </div>
                                         </div>
-                                        <div class="col-md-4 col-sm-6 my-2 " id="collapseSearch">
+                                        <div class="col-md-4 col-sm-12 my-2 collapse " id="collapseSearch">
                                              <div class="input">
                                                   <label for="regTel">Контактная информация(телефон)</label>
                                                   <input type="text" id="regTel" placeholder="+375 (17) 11-11-11">
                                              </div>
                                         </div>
-                                        <div class="col-md-4 col-sm-6 my-2 " id="collapseSearch">
+                                        <div class="col-md-4 col-sm-12 my-2 collapse pe-0" id="collapseSearch">
                                              <div class="input">
                                                   <label for="regTel">Контактная информация(почта)</label>
                                                   <input type="text" id="regEmail" placeholder="email@mail.com">
                                              </div>
                                         </div>
-                                        <div class="col-md-4 col-sm-6 my-2 " id="collapseSearch">
+                                        <div class="col-md-4 col-sm-12 my-2 collapse ps-0" id="collapseSearch">
                                              <div class="input">
                                                   <label for="numCertificate">Номер аттестата</label>
                                                   <input type="text" id="numCertificate" placeholder="00000001">
                                              </div>
                                         </div>
-                                        <div class="col-md-4 col-sm-12 my-2 row px-0 mx-0" id="collapseSearch">
+                                        <div class="col-md-8 col-sm-12 my-2 row px-0 mx-0 collapse pe-0" id="collapseSearch">
                                              <div class="form-group subscribe-date my-2 my-md-0 col-md-6">
                                                   <label for="date">Дата выдачи от</label>
                                                   <div class="input-group date mt-1 datetimepicker-wrapper datetimepicker-reg" id="datetimepicker" data-target-input="nearest">
@@ -298,7 +300,7 @@
                                                        </div>
                                                   </div>
                                              </div>
-                                             <div class="form-group subscribe-date my-2 my-md-0 col-md-6">
+                                             <div class="form-group subscribe-date my-2 my-md-0 col-md-6 pe-0">
                                                   <label for="date">Дата выдачи до</label>
                                                   <div class="input-group date mt-1 datetimepicker-wrapper datetimepicker-reg" id="datetimepickerEnd" data-target-input="nearest">
                                                        <input type="text" class="form-control datetimepicker-input border-right-0" data-target="#datetimepickerEnd"  placeholder="01.01.1917">
@@ -308,19 +310,29 @@
                                                   </div>
                                              </div>
                                         </div>
-                                        <div class="col-md-4 col-sm-6 my-2 " id="collapseSearch">
+                                        <div class="col-md-12 col-sm-12 my-2 collapse px-0" id="collapseSearch">
                                              <div class="input">
                                                   <label for="aboutPlace">Сведения о практике налогового консультанта</label>
                                                   <input type="text" id="aboutPlace" placeholder="Название учреждения">
                                              </div>
                                         </div>
-
-                                                                                <div class="col-md-6 my-2 d-flex flex-column justify-content-end align-items-end">
-                                             <button class="w-100 button">Применить</button>
+                                        <div class="col-md-4 my-2 d-flex flex-column justify-content-end align-items-end ps-0" 
+                                             type="button"
+                                             data-bs-toggle="collapse" 
+                                             data-bs-target="#collapseSearch" 
+                                             aria-expanded="false" 
+                                             aria-controls="collapseSearch">
+                                             <button type="button" class="w-100 button button_empty h-100" >
+                                                  <span>Расширенный поиск</span>
+                                             </button>
                                         </div>
 
-                                                                                <div class="col-md-6 my-2 d-flex flex-column justify-content-end align-items-end">
-                                             <button class="w-100 button button-gray" id="regRest">Сбросить заданные параметры</button>
+                                                                                <div class="col-md-4 my-2 d-flex flex-column justify-content-end align-items-end">
+                                             <button class="w-100 button h-100">Применить</button>
+                                        </div>
+
+                                                                                <div class="col-md-4 my-2 d-flex flex-column justify-content-end align-items-end pe-0">
+                                             <button class="w-100 button button-gray h-100" id="regRest">Сбросить заданные параметры</button>
                                         </div>
 
                                                                            </div>
