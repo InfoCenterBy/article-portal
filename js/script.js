@@ -928,7 +928,8 @@ $(document).ready(function() {
       buttonClass: 'multiple-select-custom',
       buttonWidth: '100%',
       nSelectedText: ' Статуса выбрано',
-      allSelectedText: 'Все статусы выбраны'
+      allSelectedText: 'Все статусы выбраны',
+      nonSelectedText: 'Ничего не выбрано'
       // buttonText: function(options, select) {
       //   return 'Выберите Статус';
       // },
@@ -940,7 +941,8 @@ $(document).ready(function() {
       buttonClass: 'multiple-select-custom',
       buttonWidth: '100%',
       nSelectedText: ' Прав выбрано',
-      allSelectedText: 'Все права выбраны'
+      allSelectedText: 'Все права выбраны',
+      nonSelectedText: 'Ничего не выбрано'
       // buttonText: function(options, select) {
       //   return 'Выберите Статус';
       // },
