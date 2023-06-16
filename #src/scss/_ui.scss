@@ -2595,7 +2595,6 @@
   }
 }
 .reg-table{
-  padding: 0 12px;
   .access-table-card{
     &__title{
       @include adaptiv-value("font-size", 14, 12, 1);

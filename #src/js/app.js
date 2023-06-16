@@ -350,7 +350,8 @@ $(document).ready(function() {
       buttonClass: 'multiple-select-custom',
       buttonWidth: '100%',
       nSelectedText: ' Статуса выбрано',
-      allSelectedText: 'Все статусы выбраны'
+      allSelectedText: 'Все статусы выбраны',
+      nonSelectedText: 'Ничего не выбрано'
       // buttonText: function(options, select) {
       //   return 'Выберите Статус';
       // },
@@ -362,7 +363,8 @@ $(document).ready(function() {
       buttonClass: 'multiple-select-custom',
       buttonWidth: '100%',
       nSelectedText: ' Прав выбрано',
-      allSelectedText: 'Все права выбраны'
+      allSelectedText: 'Все права выбраны',
+      nonSelectedText: 'Ничего не выбрано'
       // buttonText: function(options, select) {
       //   return 'Выберите Статус';
       // },
@@ -382,9 +384,26 @@ if(regForm){
 
 const menu_btn = document.querySelector("#menu-btn");
 const sidebar = document.querySelector("#sidebar");
-const container = document.querySelector(".new-container");
-menu_btn.addEventListener("click", () => {
-  console.log('clicked')
-  sidebar.classList.toggle("active-nav");
-  container.classList.toggle("active-container");
-});
+const container = document.querySelector(".nav-container");
+if(menu_btn){
+  menu_btn.addEventListener("click", () => {
+    console.log('clicked')
+    sidebar.classList.toggle("active-nav");
+    container.classList.toggle("active-container");
+  });
+}
+
+
+let testArray = [{id: '00001', name: 'dfsf'}, {id: '00002', name: 'dsfqerq'}, {id: '00003', name: 'dswqefqerq'}, {id: '000100', name: 'dewr12sfqerq'}]
+
+
+function FilterByNumber(arr, id){
+  console.log(arr.filter(el => el.id === id))
+}
+
+let numCertificate = document.querySelector('#numCertificate')
+if(numCertificate){
+  numCertificate.addEventListener('change', ()=>{
+    FilterByNumber(testArray, this.numCertificate.value)
+  })
+}

@@ -5,6 +5,7 @@
 :root {
   --color-white: #ffffff;
   --color-black: #000000;
+  --color-nav-black: #282828;
   --color-gold: #c47a2c;
   --color-gold-light: #f9b974;
   --color-gray: #d1d2d4;
@@ -17,6 +18,7 @@
   --color-indigo: #5EB1FF;
   --color-green-status-background: #CEF8E0;
   --color-green-status: #008F5D;
+  --color-white-gray: #FAF9FA;
 }
 
 //<Шрифт по умолчанию>==========================================================================================
@@ -648,7 +650,17 @@ body {
       background-color: var(--color-gold);
       border-color: var(--color-gold);
     }
+    .col-md-4, .col-md-6, .col-md-8, .col-md-12{
+      @media (max-width: 765px) {
+        padding: 0 0;
+      }
+    }
 }
 
 // new-main
-@import '_new-main.scss'
+@import '_new-main.scss';
+
+
+.ff-pt-serif{
+  font-family: 'PT Serif';
+}
