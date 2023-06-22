@@ -9,6 +9,7 @@
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.cdnfonts.com/css/pt-serif" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=PT+Serif" />
       <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
@@ -29,24 +30,393 @@
       <link rel="stylesheet" href="css/style.min.css" />
 </head>
 <body>
-     <nav class="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column" id="sidebar">
-     <ul class="nav flex-column text-white w-100">
-          <li href="#" class="nav-link">
-               <i class="bx bxs-dashboard"></i>
-               <span class="mx-2">Home</span>
-          </li>
-          <li href="#" class="nav-link">
-               <i class="bx bx-user-check"></i>
-               <span class="mx-2">Profile</span>
-          </li>
-          <li href="#" class="nav-link">
-               <i class="bx bx-conversation"></i>
-               <span class="mx-2">Contact</span>
-          </li>
-     </ul>
+     <header class="new-header">
+     <img src="../../img/padatak-logo.png" alt="padatak-logo">
+     <div class="new-header-search w-100 mx-2">
+     <input type="text" name="searchBar" id="searchBar" placeholder="Поиск">
+     <i class="bi bi-search"></i>
+</div>
+     <div class="">
+          <span>Телефон для консультации:</span> <br>
+          <span class="color-gold ff-pt-serif">+375 (17) 269-19-03</span>
+     </div>
+     <div class="d-flex flex-row  justify-content-center">
+          <div class="header-button header-button-enter flex-row align-items-center">
+               <span>Вход и регистрация</span>
+               <div class="header-button__hr"></div>
+               <i class="icon-circle-user"></i>
+          </div>
+          <div class="header-button header-button-subscribe flex-row align-items-center">
+               <span>Оформить доступ</span>
+               <div class="header-button__hr"></div>
+               <i class="icon-gem"></i>
+          </div>
+     </div>
+</header>
+     <nav class="side-navbar active-nav d-flex justify-content-start flex-wrap flex-column" id="sidebar">
+     <div class="nav main-nav flex-column w-100">
+          <div href="#" class="nav-link">
+               <a href="" class="nav-link__icon">
+                    <i class="icon-ballot"></i>
+               </a>
+               <div class="nav-link__text">
+                    <a href="" class="nav-link__text-sub d-flex">Аналитические материалы</a>
+                    <div class="nav-link__list d-flex flex-column">
+                         <a href="">Организациям</a>
+                         <a href="">Индивидуальным предпринимателям</a>
+                         <a href="">Физическим лицам</a>
+                    </div>
+               </div>
+          </div>
+          <div href="#" class="nav-link">
+               <a href="" class="nav-link__icon">
+                    <i class="icon-envelope-open-text"></i>
+               </a>
+               <div class="nav-link__text">
+                    <span class="nav-link__text-sub">Новости</span>
+               </div>
+          </div>
+          <div href="#" class="nav-link">
+               <a href="" class="nav-link__icon">
+                    <i class="icon-file-invoice"></i>
+               </a>
+               <div class="nav-link__text">
+                    <span class="nav-link__text-sub">Налоговый календарь</span>
+               </div>
+          </div>
+          <div href="#" class="nav-link">
+               <a href="" class="nav-link__icon">
+                    <i class="icon-calendar-lines"></i>
+               </a>
+               <div class="nav-link__text">
+                    <span class="nav-link__text-sub">Справочная информация</span>
+               </div>
+          </div>
+          <div href="#" class="nav-link">
+               <a href="" class="nav-link__icon">
+                    <i class="icon-table-layout"></i>
+               </a>
+               <div class="nav-link__text">
+                    <span class="nav-link__text-sub">Сервисы</span>
+               </div>
+          </div>
+          <div href="#" class="nav-link">
+               <a href="" class="nav-link__icon">
+                    <i class="icon-calculator"></i>
+               </a>
+               <div class="nav-link__text">
+                    <span class="nav-link__text-sub">Формы документов</span>
+               </div>
+          </div>
+     </div>
+     <hr>
 </nav>
-     <div class="nav-container active-container ">
-          <a class="" id="menu-btn"><i class="bi bi-chevron-left"></i></a>
+     <div class="nav-container active-container">
+          <a class="" id="menu-btn"><i class="bi bi-chevron-right"></i></a>
+          <div class="main-content">
+               <section class="main-section row w-100 justify-content-between">
+     <div class="color-gray-dark col-md-4 my-4 d-flex flex-row flex-wrap justify-content-md-start fs-14">
+          <div class="fin-block">
+               <span>USD:</span>
+               <strong>2.5931</strong>
+          </div>
+          <div class="fin-block">
+               <span>EUR:</span>
+               <strong>2.7589</strong>
+          </div>
+          <div class="fin-block">
+               <span>RUB:</span>
+               <strong>4.2823</strong>
+          </div>
+     </div>
+     <div class="color-gray-dark col-md-8 my-4 d-flex flex-row flex-wrap justify-content-md-end fs-14">
+          <div class="fin-block">
+               <span>Базовая величина:</span>
+               <strong>32 BYN</strong>
+          </div>
+          <div class="fin-block">
+               <span>Базовая арендная величина:</span> 
+               <strong>16,9 BYN</strong>
+          </div>
+          <div class="fin-block">
+               <span>Базовая ставка:</span>
+               <strong>210 BYN</strong>
+          </div>
+     </div>
+</section>
+               <hr class="my-0">
+               <div class="main-section mt-4 row">
+                    <div class="col-xl-8 my-2 px-0">
+                         <div class="section-accent " id="popularBlock">
+                              <span class="ff-pt-serif fs-28">Популярное за неделю</span>
+                              <div class="mt-1"></div>
+                              <div class="main-list-hashtag">
+     <div class="main-list-hashtag__wrapper">
+          <a class="button-hover" href="#">
+               <span class="button-hover__hover-wrap"></span>
+               <div class="button-hover__text">#Сбор за размещение рекламы</div>
+          </a>
+          <a class="button-hover" href="#">
+               <span class="button-hover__hover-wrap"></span>
+               <div class="button-hover__text">#Маркировка</div>
+          </a>
+          <a class="button-hover" href="#">
+               <span class="button-hover__hover-wrap"></span>
+               <span class="button-hover__text">#Кассовое оборудование</span>
+          </a>
+          <a class="button-hover" href="#">
+               <span class="button-hover__hover-wrap"></span>
+               <span class="button-hover__text">#Расчет больничных</span>
+          </a>
+          <a class="button-hover" href="#">
+               <span class="button-hover__hover-wrap"></span>
+               <span class="button-hover__text">#Государственное реглирование</span>
+          </a>
+          <a class="button-hover" href="#">
+               <span class="button-hover__hover-wrap"></span>
+               <span class="button-hover__text">#УСН</span>
+          </a>
+          <a class="button-hover" href="#">
+               <span class="button-hover__hover-wrap"></span>
+               <div class="button-hover__text">#Сбор за размещение рекламы</div>
+          </a>
+          <a class="button-hover" href="#">
+               <span class="button-hover__hover-wrap"></span>
+               <div class="button-hover__text">#Маркировка</div>
+          </a>
+          <a class="button-hover" href="#">
+               <span class="button-hover__hover-wrap"></span>
+               <span class="button-hover__text">#Кассовое оборудование</span>
+          </a>
+          <a class="button-hover" href="#">
+               <span class="button-hover__hover-wrap"></span>
+               <span class="button-hover__text">#Расчет больничных</span>
+          </a>
+          <a class="button-hover" href="#">
+               <span class="button-hover__hover-wrap"></span>
+               <span class="button-hover__text">#Государственное реглирование</span>
+          </a>
+          <a class="button-hover" href="#">
+               <span class="button-hover__hover-wrap"></span>
+               <span class="button-hover__text">#УСН</span>
+          </a>
+          <a class="button-hover" href="#">
+               <span class="button-hover__hover-wrap"></span>
+               <span class="button-hover__text">#Отпуск</span>
+          </a>
+          <a class="button-hover" href="#">
+               <span class="button-hover__hover-wrap"></span>
+               <span class="button-hover__text">#Больничные</span>
+          </a>
+     </div>
+</div>
+                              <span class="ff-pt-serif fs-28 d-block mt-4">Для кого</span>
+                              <div class="popular-wrapper">
+     <div class="row">
+          <div class="col-xl-4 d-flex justify-content-center my-2">
+               <a href="" class="popular-block">
+                    <picture>
+                         <source media="(min-width: 910px)" srcset="../../img/new-main/pop-org.svg">
+                         <img src="../../img/new-main/pop-org.png" alt="popular-img-org">
+                    </picture>
+                    <span class="popular-block__title">Организациям</span>
+               </a>
+          </div>
+          <div class="col-xl-4 d-flex justify-content-center my-2">
+               <a href="" class="popular-block">
+                    <picture>
+                         <source media="(min-width: 910px)" srcset="../../img/new-main/pop-ip.svg">
+                         <img src="../../img/new-main/pop-ip.png" alt="popular-img-ip">
+                    </picture>
+                    <span class="popular-block__title">Индивидуальным предпринимателям</span>
+               </a>
+          </div>
+          <div class="col-xl-4 d-flex justify-content-center my-2">
+               <a href="" class="popular-block">
+                    <picture>
+                         <source media="(min-width: 910px)" srcset="../../img/new-main/pop-fis.svg">
+                         <img src="../../img/new-main/pop-fis.png" alt="popular-img-fis">
+                    </picture>
+                    <span class="popular-block__title">Физическим лицам</span>
+               </a>
+          </div>
+     </div>
+</div>
+
+                         </div>
+                    </div>
+
+                                        <div class="col-xl-4 px-xl-2 px-0 my-2 d-flex">
+                         <div class="news-wrapper">
+     <div class="d-flex flex-row flex-wrap align-items-end justify-content-between">
+          <span class="ff-pt-serif fs-28">Новости</span>
+          <a href="" class="mb-1 arrow-link">
+               <span>Все новости</span>
+               <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </a>
+     </div>
+     <div class="news-list mt-3">
+          <div class="news-block">
+               <div class="news-block__date">
+                    7 апреля 
+               </div>
+               <div class="news-block__text">
+                    <p>
+                         Совмин установил предельные значения выручки для получения малым и средним бизнесом господдержки
+                    </p>
+               </div>
+          </div>
+          <div class="news-block">
+               <div class="news-block__date">
+                    6 апреля 
+               </div>
+               <div class="news-block__text">
+                    <p>
+                         10 апреля начальник отдела предпринимательства комитета экономики Мингорисполкома проведет «прямую телефонную линию»
+                    </p>
+               </div>
+          </div>
+          <div class="news-block">
+               <div class="news-block__date">
+                    5 апреля 
+               </div>
+               <div class="news-block__text">
+                    <p>
+                         Бесплатная онлайн-трансляция на актуальную тему «Новации в законодательстве 
+                         об использовании кассового и иного оборудования при приеме средств платежа. 
+                         Реализация товаров, подлежащих маркировке, в розничной торговле с 1 июля 2025 г.»
+                    </p>
+               </div>
+          </div>
+          <div class="news-block">
+               <div class="news-block__date">
+                    4 апреля 
+               </div>
+               <div class="news-block__text">
+                    <p>
+                         Совмин установил предельные значения выручки для получения малым и средним бизнесом господдержки
+                    </p>
+               </div>
+          </div>
+          <div class="news-block">
+               <div class="news-block__date">
+                    2 апреля 
+               </div>
+               <div class="news-block__text">
+                    <p>
+                         10 апреля начальник отдела предпринимательства комитета экономики Мингорисполкома проведет «прямую телефонную линию»
+                    </p>
+               </div>
+          </div>
+          <div class="news-block">
+               <div class="news-block__date">
+                    2 апреля 
+               </div>
+               <div class="news-block__text">
+                    <p>
+                         10 апреля начальник отдела предпринимательства комитета экономики Мингорисполкома проведет «прямую телефонную линию»
+                    </p>
+               </div>
+          </div>
+          <div class="news-block">
+               <div class="news-block__date">
+                    2 апреля 
+               </div>
+               <div class="news-block__text">
+                    <p>
+                         10 апреля начальник отдела предпринимательства комитета экономики Мингорисполкома проведет «прямую телефонную линию»
+                    </p>
+               </div>
+          </div>
+          <div class="news-block">
+               <div class="news-block__date">
+                    2 апреля 
+               </div>
+               <div class="news-block__text">
+                    <p>
+                         10 апреля начальник отдела предпринимательства комитета экономики Мингорисполкома проведет «прямую телефонную линию»
+                    </p>
+               </div>
+          </div>
+          <div class="news-block">
+               <div class="news-block__date">
+                    2 апреля 
+               </div>
+               <div class="news-block__text">
+                    <p>
+                         10 апреля начальник отдела предпринимательства комитета экономики Мингорисполкома проведет «прямую телефонную линию»
+                    </p>
+               </div>
+          </div>
+          <div class="news-block">
+               <div class="news-block__date">
+                    2 апреля 
+               </div>
+               <div class="news-block__text">
+                    <p>
+                         10 апреля начальник отдела предпринимательства комитета экономики Мингорисполкома проведет «прямую телефонную линию»
+                    </p>
+               </div>
+          </div>
+     </div>
+</div>
+                    </div>
+               </div>
+               <div class="main-section">
+                    <div class="d-flex flex-row flex-wrap justify-content-between align-items-center">
+                         <span class="ff-pt-serif fs-28 my-2">Подборки по темам</span>
+                         <a href="" class="arrow-link mt-3 my-2">
+                              <span>Все темы</span>
+                              <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                         </a>
+                    </div>
+                    <div class="row row-container">
+                         <div class="col-xl-3 col-lg-6 my-2 d-flex">
+                              <a href="#" class="theme-block w-100" target="_blank">
+                                   <strong>Оплата труда</strong>
+                              </a>
+                         </div>
+                         <div class="col-xl-3 col-lg-6 my-2 d-flex">
+                              <a href="#" class="theme-block w-100" target="_blank">
+                                   <strong>Учет запасов 2023</strong>
+                              </a>
+                         </div>
+                         <div class="col-xl-3 col-lg-6 my-2 d-flex">
+                              <a href="#" class="theme-block w-100" target="_blank">
+                                   <strong>Валютное регулирование 2023</strong>
+                              </a>
+                         </div>
+                         <div class="col-xl-3 col-lg-6 my-2 d-flex">
+                              <a href="#" class="theme-block w-100" target="_blank">
+                                   <strong>Персонифицированный учет в 2023 году</strong>
+                              </a>
+                         </div>
+                    </div>
+               </div>
+               <div class="mt-4"></div>
+               <div class="main-section">
+     <div class="section-accent">
+          <div class="d-flex flex-row align-items-center">
+               <i class="bi bi-lock-fill me-2 color-gold"></i>
+               <span class="ff-pt-serif fs-28">Актуальные статьи по теме «Практика налогообложения»</span>
+          </div>
+          <div class="swiper actual-list">
+               <div class="swiper-wrapper">
+                    <div class="swiper-slide py-5">Slide 1</div>
+                    <div class="swiper-slide py-5">Slide 2</div>
+                    <div class="swiper-slide py-5">Slide 3</div>
+               </div>
+               <div class="swiper-pagination"></div>
+
+               <div class="swiper-button-prev"></div>
+               <div class="swiper-button-next"></div>
+
+               <div class="swiper-scrollbar"></div>
+          </div>
+
+               </div>
+</div>
+          </div>
      </div>
      <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
         crossorigin="anonymous"></script>
