@@ -1005,8 +1005,9 @@ if(numCertificate){
 }
 
 const swiper = new Swiper('.actual-list', {
+  slidesPerView: 4,
   speed: 400,
-  spaceBetween: 100,
+  spaceBetween: 16,
   navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
@@ -1016,6 +1017,23 @@ const swiper = new Swiper('.actual-list', {
     type: 'bullets',
     clickable: true
   },
+  breakpoints: {
+    // when window width is >= 320px
+    320: {
+      slidesPerView: 1,
+      spaceBetween: 8
+    },
+    // when window width is >= 1100px
+    1100: {
+      slidesPerView: 3,
+      spaceBetween: 8
+    },
+    // when window width is >= 1300px
+    1300: {
+      slidesPerView: 4,
+      spaceBetween: 16
+    }
+  }
 });
 
 
