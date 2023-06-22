@@ -130,6 +130,7 @@ body {
 //</ОСНОВНОЙ БЛОК>====================================================================================================
 .main-list-hashtag {
   overflow: hidden;
+  margin-left: -10px;
 
   // .main-list-hashtag__wrapper
   &__wrapper {
@@ -137,20 +138,17 @@ body {
     flex-wrap: wrap;
 
     .button-hover {
-      margin: 0px 10px 10px 0px;
+      margin: 2px 5px;
+      border-radius: 10px;
+      @include adaptiv-value('font-size', 14, 12, 1);
     }
 
-    @media (max-width: $md2+px) {
-      overflow-x: scroll;
-      flex-wrap: nowrap;
+    @media (max-width: #{$md2 + px}) {
+      // overflow-x: scroll;
+      // flex-wrap: nowrap;
 
       .button-hover {
-        margin: 0px 10px 0px 0px;
-        overflow: visible;
-
-        &:last-child {
-            margin: 0;
-        }
+        margin: 2px 4px;
 
         &__hover-wrap {
           display: none;
@@ -663,4 +661,8 @@ body {
 
 .ff-pt-serif{
   font-family: 'PT Serif';
+}
+.fs-28{
+  @include adaptiv-value('font-size', 28, 20, 1);
+  @include adaptiv-value('line-height', 37, 29, 1);
 }
