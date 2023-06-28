@@ -14,13 +14,14 @@
                @@include('./new-main/main-components/_fin.html')
                <hr class="my-0">
                <div class="main-section mt-4 row">
-                    <div class="col-xl-8 my-2 px-0">
+                    <div class="col-xl-8 my-2 px-0 d-flex">
                          <div class="section-accent " id="popularBlock">
-                              <span class="ff-pt-serif fs-28">Популярное за неделю</span>
+                              @@include('./new-main/main-components/_popular-blocks.html')
+                              <div class="mt-2"></div>
+                              <span class="ff-pt-serif fs-28">Актуальные темы</span>
                               <div class="mt-1"></div>
                               @@include('./new-main/main-components/_list-hashtag.html')
-                              <span class="ff-pt-serif fs-28 d-block mt-4">Для кого</span>
-                              @@include('./new-main/main-components/_popular-blocks.html')
+                              <!-- <span class="ff-pt-serif fs-28 d-block mt-4">Для кого</span> -->
                          </div>
                     </div>
                     
@@ -63,7 +64,18 @@
                </div>
                <div class="mt-4"></div>
                @@include('./new-main/main-components/_actual-article.html')
+               <div class="mt-4"></div>
+               @@include('./new-main/main-components/_media-section.html')
+               <div class="mt-4"></div>
+               @@include('./new-main/main-components/_video-section.html')
+               <div class="mt-4"></div>
+               <div class="main-section">
+                    <span class="ff-pt-serif fs-28">Полезные сервисы</span>
+                    @@include('./new-main/main-components/_service-section.html')
+               </div>
           </div>
+          <div class="my-5"></div>
+          @@include('./new-main/main-components/_new-footer.html')
      </div>
      @@include('_js.html',{})
 </body>
