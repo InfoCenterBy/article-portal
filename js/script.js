@@ -1004,7 +1004,7 @@ if(numCertificate){
   })
 }
 
-const swiper = new Swiper('#actualList', {
+const actualList = new Swiper('#actualList', {
   slidesPerView: 4,
   speed: 400,
   spaceBetween: 16,

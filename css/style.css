@@ -5798,10 +5798,6 @@ i {
   line-height: 17px;
 }
 
-body {
-  height: 3000vh;
-}
-
 .side-navbar {
   width: 364px;
   height: 100%;
@@ -5812,6 +5808,7 @@ body {
   transition: all ease-out 0.3s;
   border: 1px solid var(--color-gray);
   padding: 16px 24px;
+  top: 112px;
 }
 
 .side-navbar .nav-hidden {
@@ -5933,6 +5930,14 @@ body {
   transition: all ease-out 0.3s;
   margin-left: 74px;
   border-left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
 }
 
 .nav-container #menu-btn {
@@ -5964,7 +5969,7 @@ body {
   width: 36px;
   height: 36px;
   position: fixed;
-  margin-top: 50px;
+  margin-top: 160px;
   -webkit-transition: all ease-out 0.3s;
   -o-transition: all ease-out 0.3s;
   transition: all ease-out 0.3s;
@@ -5994,6 +5999,10 @@ body {
   width: 100%;
   border-top: 1px solid var(--color-gray);
   margin-top: 112px;
+  min-height: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
 }
 
 .main-content .row {
@@ -6004,6 +6013,12 @@ body {
   opacity: 1;
   width: 100%;
   border-bottom: 1px solid var(--color-gray);
+}
+
+.footer {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
 }
 
 .main-section {
@@ -6574,6 +6589,45 @@ body {
   background-color: rgba(3, 74, 102, 0.3);
 }
 
+.service-block {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 27px;
+  border: 1px solid var(--color-gray);
+  border-radius: 10px;
+}
+
+.service-block * {
+  -webkit-transition: all ease-out 0.3s;
+  -o-transition: all ease-out 0.3s;
+  transition: all ease-out 0.3s;
+}
+
+.service-block:hover {
+  border: 1px solid transparent;
+  background-color: var(--color-gold);
+}
+
+.service-block:hover span,
+.service-block:hover i {
+  color: var(--color-white);
+}
+
+.service-block i {
+  color: var(--color-gold);
+  font-size: 24px;
+  line-height: 24px;
+}
+
+.service-block span {
+  display: block;
+  color: var(--color-gray-dark);
+  margin-top: 12px;
+  font-size: 18px;
+  line-height: 24px;
+}
+
 .ff-pt-serif {
   font-family: "PT Serif";
 }
@@ -6919,6 +6973,14 @@ body {
 
   .media-accent-block span {
     line-height: calc(16px + 4 * ((100vw - 320px) / 1200));
+  }
+
+  .service-block span {
+    font-size: calc(14px + 4 * ((100vw - 320px) / 1200));
+  }
+
+  .service-block span {
+    line-height: calc(20px + 4 * ((100vw - 320px) / 1200));
   }
 
   .fs-28 {
