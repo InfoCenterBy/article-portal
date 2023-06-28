@@ -7,10 +7,10 @@
      width: 364px;
      height: 100%;
      position: fixed;
-     margin-left: -290px;
+     margin-left: -266px;
      transition: all ease-out 0.3s;
      border: 1px solid var(--color-gray);
-     padding: 16px 24px;
+     padding: 16px 8px 16px 0;
      .nav-hidden{
           display: none;
      }
@@ -21,6 +21,9 @@
           }
      }
      top: 112px;
+     hr{
+          margin-right: 16px;
+     }
 }
 .nav-link{
      display: flex;
@@ -42,9 +45,28 @@
           font-size: 24px;
           color: var(--color-nav-black);
      }
+     &__icon{
+          background-color: var(--color-white-gray);
+          border-radius: 10px;
+          border: 1px solid var(--color-gray);
+          transition: all ease-out .3s;
+          &:hover{
+               background-color: var(--color-gold-light);
+               i{
+                    color: var(--color-white);
+               }
+          }
+          i{
+               color: var(--color-gold);
+          }
+     }
+     &__icon, &__icon-simple{
+          padding: 10px 12px;
+     }
 }
 .active-nav {
      margin-left: 0;
+     padding: 16px 24px;
      .nav-link{
           display: flex;
           justify-content: flex-start;
@@ -69,17 +91,7 @@
                     margin: 6px 0;
                }
           }
-          &__icon{
-               background-color: var(--color-white-gray);
-               border-radius: 10px;
-               border: 1px solid var(--color-gray);
-               i{
-                    color: var(--color-gold);
-               }
-          }
-          &__icon, &__icon-simple{
-               padding: 10px 12px;
-          }
+          
           &__text-sub{
                font-weight: 600;
           }
@@ -96,20 +108,20 @@
 
 .nav-container {
      transition: all ease-out 0.3s;
-     margin-left: 74px;
+     margin-left: 98px;
      border-left: 0;
      display: flex;
      flex-direction: column;
      height: 100%;
      #menu-btn{
-          margin-left: -20px;
+          margin-left: -18px;
      }
 }
 /* for main section */
 .active-container {
      margin-left: 364px;
      #menu-btn{
-          margin-left: -20px;
+          margin-left: -18px;
           .bi{
                transition: all ease-out .3s;
                transform: rotate(180deg);
@@ -139,6 +151,7 @@
      display: flex;
      flex-direction: column;
      align-items: center;
+     justify-content: space-between;
      width: 100%;
      border-top: 1px solid var(--color-gray);
      margin-top: 112px;
@@ -415,7 +428,8 @@
 	&__title {
           display: grid;
           place-items: center;
-          hyphens:auto;
+          hyphens: auto;
+          word-wrap: break-word;
           font-weight: 600;
           width: 100%;
           @include adaptiv-value('font-size', 18, 14, 1);
