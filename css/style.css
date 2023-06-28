@@ -5969,7 +5969,7 @@ i {
   width: 36px;
   height: 36px;
   position: fixed;
-  margin-top: 160px;
+  margin-top: 152px;
   -webkit-transition: all ease-out 0.3s;
   -o-transition: all ease-out 0.3s;
   transition: all ease-out 0.3s;
@@ -6185,8 +6185,10 @@ i {
 }
 
 .news-block {
+  display: block;
   margin-right: 10px;
   border-bottom: 1px solid var(--color-gray);
+  color: var(--color-nav-black);
 }
 
 .news-block:not(:first-child) {
@@ -6206,6 +6208,10 @@ i {
 
 .news-block__text p {
   margin-bottom: 16px;
+}
+
+.news-block:hover {
+  color: var(--color-gold);
 }
 
 .arrow-link {
@@ -6265,7 +6271,11 @@ i {
 }
 
 .popular-block:hover {
-  border: 1px solid var(--color-gold);
+  border: 1px solid var(--color-gold-light);
+}
+
+.popular-block:hover .popular-block__title {
+  background-color: var(--color-gold-light);
 }
 
 .popular-block picture,
@@ -6279,7 +6289,9 @@ i {
 .popular-block__title {
   display: grid;
   place-items: center;
-  text-align: center;
+  -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto;
   font-weight: 600;
   width: 100%;
   font-size: 18px;
@@ -6288,6 +6300,9 @@ i {
   background-color: var(--color-blue-light);
   height: 100%;
   color: var(--color-white-gray);
+  -webkit-transition: all ease-out 0.3s;
+  -o-transition: all ease-out 0.3s;
+  transition: all ease-out 0.3s;
 }
 
 .theme-block {
@@ -6571,6 +6586,14 @@ i {
   place-items: center;
   text-align: center;
   width: 100%;
+  -webkit-transition: all ease-out 0.3s;
+  -o-transition: all ease-out 0.3s;
+  transition: all ease-out 0.3s;
+  color: var(--color-black);
+}
+
+.media-accent-block:hover {
+  color: var(--color-gold);
 }
 
 .media-accent-block img {
@@ -6582,6 +6605,9 @@ i {
   font-size: 18px;
   line-height: 20px;
   font-weight: 500;
+  -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto;
 }
 
 .media-accent-block-orange {
@@ -6995,9 +7021,22 @@ i {
   }
 }
 
+@media (max-width: 1500px) {
+  .popular-block picture,
+  .popular-block img {
+    max-width: 250px;
+  }
+}
+
 @media (max-width: 1410px) {
   .news-wrapper {
     padding: 12px 8px;
+  }
+}
+
+@media (max-width: 1350px) {
+  .header-tel {
+    display: none;
   }
 }
 
@@ -7016,6 +7055,16 @@ i {
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
+  }
+
+  .popular-block picture,
+  .popular-block img {
+    max-width: 150px;
+    top: 0;
+  }
+
+  .popular-block__title {
+    padding: 20px 10px;
   }
 }
 
