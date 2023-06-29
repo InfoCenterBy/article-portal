@@ -30,11 +30,19 @@
       <link rel="stylesheet" href="css/style.min.css" />
 </head>
 <body>
-     <header class="new-header">
-     <picture>
-          <source media="(min-width: 960px)" srcset="./img/padatak-logo.png">
-          <img src="./img/padatak-logo-mobile.png" alt="padatak-logo" >
-     </picture>
+     <header class="new-header d-flex flex-row justify-content-between align-items-center">
+     <div class="d-flex flex-row align-items-center">
+          <div class="mobile-menu me-2">
+               <button type="button" class="bi bi-list" id="mobile-button"></button>
+               <div class="mobile-nav">
+     dsfsdfsdf
+</div>
+          </div>
+          <picture>
+               <source media="(min-width: 960px)" srcset="./img/padatak-logo.png">
+               <img src="./img/padatak-logo-mobile.png" alt="padatak-logo" >
+          </picture>
+     </div>
      <div class="header-hide">
           <form class="new-header-search w-100 mx-2">
      <input type="text" name="searchBar" id="searchBar" placeholder="Поиск">
@@ -52,9 +60,45 @@
                <button class="modal-mobile-button mx-2" type="button" data-bs-toggle="modal" data-bs-target="#searchModal">
                     <i class="bi bi-search"></i>
                </button>
-               <button class="modal-mobile-button mx-2" type="button" data-bs-toggle="modal" data-bs-target="#searchModal">
+               <button class="modal-mobile-button btn-dropdown show mx-2" 
+                         type="button" data-bs-toggle="dropdown" aria-expanded="true" data-bs-auto-close="outside" >
                     <i class="icon-circle-user"></i>
                </button>
+               <div class="dropdown-menu dropdown-menu-login dropdown-menu-end p-3" data-popper-placement="bottom-end" >
+     <div class="dropdown-menu-wrapper">
+          <form id="form-login">
+               <div class="input mb-3">
+                    <label for="email-login">Email <span>*</span></label>
+                    <input type="text" id="email-login" class="_email _required" placeholder="Ваш email">
+                    <div class="input__text-error"><i class="bi bi-exclamation-triangle me-2"></i>Электронная почта не может быть пустой</div>
+                    <div class="input__text-error-email"><i class="bi bi-exclamation-triangle me-2"></i>Адрес электоронной почты должен заканчиваться на @**.**</div>
+               </div>
+               <div class="input mb-3">
+                    <label for="password-login">Пароль <span>*</span></label>
+                    <div class="input__password">
+                         <input type="password" id="password-login" class="_required" placeholder="Введите пароль">
+                         <i class="icon-password bi bi-eye-slash"></i>
+                    </div>
+                    <div class="input__text-error"><i class="bi bi-exclamation-triangle me-2"></i>Пароль не может быть пустым</div>
+               </div>
+               <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div class="checkbox">
+                         <input type="checkbox" id="remember-me">
+                         <label class="checkbox__label" for="remember-me">
+                              <span class="checkbox__label_text">Запомнить меня</span>
+                         </label>
+                    </div>
+                    <a href="#" class="link link_blue-light">Забыли пароль?</a>
+               </div>
+               <div class="mb-2">
+                    <a href="main-login.html" class="button w-100">Войти</a>
+               </div>
+               <div>
+                    <a href="login.html" class="button button_empty w-100">Зарегистрироваться</a>
+               </div>
+          </form>
+     </div>
+</div>
           </div>
           <div class="header-button header-button-enter flex-row align-items-center">
                <span>Вход и регистрация</span>
@@ -68,20 +112,17 @@
           </div>
      </div>
 </header>
-
-<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+     <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
      <div class="modal-dialog">
           <div class="modal-content">
-               <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-               </div>
-               <div class="modal-body">
+               <div class="modal-body d-flex flex-row align-items-center justify-content-between">
                     <form class="new-header-search w-100 mx-2">
                          <input type="text" name="searchBar" id="searchBar" placeholder="Поиск">
                          <button type="submit">
                               <i class="bi bi-search"></i>
                          </button>
                     </form>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                </div>
           </div>
      </div>

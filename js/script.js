@@ -1105,7 +1105,15 @@ if(actualBook){
   })
 }
 
+const mobileBtn = document.querySelector('#mobile-button')
+const mobileMenu = document.querySelector('.mobile-nav')
 
+if(mobileBtn){
+  mobileBtn.addEventListener('click', ()=>{
+    mobileMenu.classList.toggle('mobile-menu-show')
+    mobileBtn.classList.toggle('bi-x-lg')
+  })
+}
 
 
 

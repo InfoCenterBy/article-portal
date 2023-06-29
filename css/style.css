@@ -6078,19 +6078,6 @@ i {
 }
 
 .new-header {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   padding: 18px 24px;
   width: 100%;
   position: fixed;
@@ -6725,6 +6712,48 @@ i {
   margin-top: 12px;
   font-size: 18px;
   line-height: 24px;
+}
+
+.mobile-menu {
+  display: none;
+}
+
+.mobile-menu #mobile-button {
+  position: relative;
+  z-index: 11;
+  font-size: 31px;
+  font-weight: 600;
+  color: var(--color-gray-dark);
+}
+
+.mobile-menu .mobile-nav {
+  inset: 0 0;
+  position: absolute;
+  z-index: 10;
+  opacity: 0;
+  display: none;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--color-white);
+  padding-top: 113px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: all ease-out 0.3s;
+  -o-transition: all ease-out 0.3s;
+  transition: all ease-out 0.3s;
+  overflow: hidden;
+}
+
+.mobile-menu .mobile-menu-show {
+  opacity: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .ff-pt-serif {
@@ -7455,6 +7484,10 @@ i {
     display: none;
   }
 
+  .new-header-search {
+    max-width: 90%;
+  }
+
   .header-button-enter {
     display: none;
   }
@@ -8069,6 +8102,14 @@ i {
         -ms-flex-direction: column;
             flex-direction: column;
   }
+
+  .new-header-search {
+    max-width: 80%;
+  }
+
+  .mobile-menu {
+    display: block;
+  }
 }
 
 @media (max-width: 550px) {
@@ -8137,6 +8178,13 @@ i {
 @media (max-width: 400px) {
   .access-table-mobile.reg-table .access-block-status {
     padding: 2px 2px;
+  }
+}
+
+@media (max-width: 390px) {
+  .new-header picture,
+  .new-header img {
+    display: none;
   }
 }
 
