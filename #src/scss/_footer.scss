@@ -17,11 +17,11 @@
 		margin: 36px 0px 0px 0px;
 		a {
 			font-size: 18px;
-			color: var(--color-gold);
+			color: var(--color-gold-light);
 			font-weight: 600;
 			text-transform: uppercase;
 			&:hover {
-				color: var(--color-gold-light);
+				color: var(--color-gold);
 			}
 		}
 	}
@@ -40,23 +40,23 @@
 	// .menu-footer__title
 	&__title {
 		font-size: 18px;
-		color: var(--color-gold);
+		color: var(--color-gold-light);
 		font-weight: 600;
 	}
 	// .menu-footer__link
 	&__link {
 		font-size: 18px;
-		color: var(--color-gold);
+		color: var(--color-gold-light);
 		font-weight: 600;
 		&:hover {
-			color: var(--color-gold-light);
+			color: var(--color-gold);
 		}
 	}
 	// .menu-footer__button
 	&__button {
 		display: none;
 		@media (max-width: $md3+px) {
-		    display: block;
+		    	display: block;
 			padding: 0px 16px;
 			color: var(--color-gold);
 

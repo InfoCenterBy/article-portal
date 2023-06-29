@@ -5,6 +5,7 @@
 })
 <body>
      @@include('./new-main/main-components/_new-header.html')
+     @@include('./new-main/main-components/_search-modal.html')
      @@include('./new-main/main-components/_nav.html')
      <div class="nav-container active-container">
           <!-- Nav Button -->
@@ -12,7 +13,7 @@
           <!--Nav Button -->
           <div class="main-content">
                @@include('./new-main/main-components/_fin.html')
-               <hr class="my-0">
+               <hr class="my-0 d-md-block d-none">
                <div class="main-section mt-4 row">
                     <div class="col-xl-8 my-2 px-0 d-flex">
                          <div class="section-accent " id="popularBlock">
@@ -30,7 +31,7 @@
                     </div>
                </div>
                <div class="main-section">
-                    <div class="d-flex flex-row flex-wrap justify-content-between align-items-center">
+                    <div class="d-flex flex-row flex-wrap justify-content-between align-items-center flex-wrap">
                          <span class="ff-pt-serif fs-28 my-2">Подборки по темам</span>
                          <a href="" class="arrow-link mt-3 my-2">
                               <span>Все темы</span>

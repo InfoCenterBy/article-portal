@@ -401,7 +401,7 @@ if(newsList){
 const menu_btn = document.querySelector("#menu-btn");
 const sidebar = document.querySelector("#sidebar");
 const containerNav = document.querySelector(".nav-container");
-if(menu_btn){
+if(menu_btn && $(window).width() > 860){
   menu_btn.addEventListener("click", () => {
     sidebar.classList.toggle("active-nav");
     containerNav.classList.toggle("active-container");
@@ -410,6 +410,24 @@ if(menu_btn){
     },300);
   });
 }
+
+
+function hideSidenav(){
+  if($(window).width() < 860){
+    sidebar.classList.remove('active-nav')
+    containerNav.classList.remove('active-container')
+  }
+  else{
+    sidebar.classList.add('active-nav')
+    containerNav.classList.add('active-container')
+  }
+}
+
+if(sidebar){
+  window.addEventListener('load', hideSidenav)
+  window.addEventListener('resize', hideSidenav)
+}
+
 
 
 let testArray = [{id: '00001', name: 'dfsf'}, {id: '00002', name: 'dsfqerq'}, {id: '00003', name: 'dswqefqerq'}, {id: '000100', name: 'dewr12sfqerq'}]
@@ -490,7 +508,34 @@ const videoList = new Swiper('.video-list', {
   }
 });
 
+let actualBook = document.querySelectorAll('#actualBook')
 
+if(actualBook){
+  actualBook.forEach(el=> {
+    el.addEventListener('click', () => {
+      // if(el.classList.contains('bookmark-checked')){
+      //   el.classList.toggle('bi-bookmark')
+      //   el.classList.toggle('bookmark-checked')
+      // }
+      // else{
+        
+      // }
+      el.classList.toggle('bi-bookmark')
+      el.classList.toggle('bookmark-checked')
+      el.classList.toggle('bi-bookmark-star')
+    })
+  })
+}
+
+const mobileBtn = document.querySelector('#mobile-button')
+const mobileMenu = document.querySelector('.mobile-nav')
+
+if(mobileBtn){
+  mobileBtn.addEventListener('click', ()=>{
+    mobileMenu.classList.toggle('mobile-menu-show')
+    mobileBtn.classList.toggle('bi-x-lg')
+  })
+}
 
 
 
