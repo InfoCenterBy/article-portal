@@ -35,23 +35,27 @@
           <source media="(min-width: 960px)" srcset="./img/padatak-logo.png">
           <img src="./img/padatak-logo-mobile.png" alt="padatak-logo" >
      </picture>
-     <form class="new-header-search w-100 mx-2">
+     <div class="header-hide">
+          <form class="new-header-search w-100 mx-2">
      <input type="text" name="searchBar" id="searchBar" placeholder="Поиск">
      <button type="submit">
           <i class="bi bi-search"></i>
      </button>
 </form>
+     </div>
      <div class="header-tel">
           <span>Телефон для консультации:</span> <br>
           <span class="color-gold ff-pt-serif">+375 (17) 269-19-03</span>
      </div>
-     <div class="d-flex flex-row  justify-content-center">
-          <button class="modal-mobile-button mx-2" type="button" data-bs-toggle="modal" data-bs-target="#searchModal">
-               <i class="bi bi-search"></i>
-          </button>
-          <button class="modal-mobile-button mx-2" type="button" data-bs-toggle="modal" data-bs-target="#searchModal">
-               <i class="icon-circle-user"></i>
-          </button>
+     <div class="d-flex flex-row header-mobile-menu justify-content-center">
+          <div class="d-flex flex-row">
+               <button class="modal-mobile-button mx-2" type="button" data-bs-toggle="modal" data-bs-target="#searchModal">
+                    <i class="bi bi-search"></i>
+               </button>
+               <button class="modal-mobile-button mx-2" type="button" data-bs-toggle="modal" data-bs-target="#searchModal">
+                    <i class="icon-circle-user"></i>
+               </button>
+          </div>
           <div class="header-button header-button-enter flex-row align-items-center">
                <span>Вход и регистрация</span>
                <div class="header-button__hr"></div>
@@ -69,20 +73,20 @@
      <div class="modal-dialog">
           <div class="modal-content">
                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="searchModalLabel">Modal title</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                </div>
                <div class="modal-body">
-                    ...
-               </div>
-               <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <form class="new-header-search w-100 mx-2">
+                         <input type="text" name="searchBar" id="searchBar" placeholder="Поиск">
+                         <button type="submit">
+                              <i class="bi bi-search"></i>
+                         </button>
+                    </form>
                </div>
           </div>
      </div>
 </div>
-     <nav class="side-navbar active-nav d-flex justify-content-start flex-wrap flex-column" id="sidebar">
+     <nav class="side-navbar active-nav justify-content-start flex-wrap flex-column" id="sidebar">
      <div class="nav main-nav flex-column w-100">
           <div href="#" class="nav-link">
                <a href="" class="nav-link__icon">
