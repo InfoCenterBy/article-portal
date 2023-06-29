@@ -6072,6 +6072,10 @@ i {
   text-align: right;
 }
 
+.fin-block {
+  white-space: nowrap;
+}
+
 .fin-block strong {
   display: inline;
   white-space: nowrap;
@@ -6735,18 +6739,15 @@ i {
   width: 100%;
   height: 100vh;
   background-color: var(--color-white);
-  padding-top: 113px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-transition: all ease-out 0.3s;
   -o-transition: all ease-out 0.3s;
   transition: all ease-out 0.3s;
   overflow: hidden;
+  padding: 113px 28px 0 28px;
 }
 
 .mobile-menu .mobile-menu-show {
@@ -6754,6 +6755,42 @@ i {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.mobile-nav-block {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.mobile-nav-block:not(:first-child) {
+  margin-top: 20px;
+}
+
+.mobile-nav-block__icon {
+  margin-right: 15px;
+  font-size: 24px;
+  color: var(--color-gold);
+}
+
+.mobile-nav-block__text a {
+  color: var(--color-gold);
+}
+
+.mobile-nav-block__text a:hover {
+  color: var(--color-gold);
+}
+
+.mobile-nav-block__sub-text {
+  margin-top: 10px;
+}
+
+.mobile-nav-block__sub-text a {
+  color: var(--color-nav-black);
+}
+
+.mobile-nav-block__sub-text a:hover {
+  color: var(--color-nav-black);
 }
 
 .ff-pt-serif {
