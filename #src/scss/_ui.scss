@@ -2185,7 +2185,7 @@
   gap: 30px;
   width: 100%;
   justify-content: space-between;
-  @media (max-width: 740px) {
+  @media (max-width: 1240px) {
     &{
       grid-template-columns: 1fr;
       justify-content: center;
@@ -2193,6 +2193,8 @@
   }
 }
 .subsribe-card {
+  transition: all ease-out .3s;
+  border-radius: 10px;
   &:hover{
     border: 1px solid var(--color-gold);
   }
@@ -2240,6 +2242,9 @@
   }
   &__hr-gold{
     border-top: 3px solid var(--color-gold) !important;
+  }
+  .button{
+    border-radius: 10px;
   }
 }
 

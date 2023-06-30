@@ -1,5 +1,87 @@
+html{
+     height: auto;
+}
 .acc-logo-lg{
      picture,img{
           max-width: 578px;
+     }
+}
+
+.func-block{
+     display: block;
+     border: 1px solid var(--color-gray);
+     color: var(--color-black);
+     border-radius: 10px;
+     padding: 35px 33px 25px 33px;
+     transition: all ease-out .3s;
+     &:hover{
+          color: var(--color-white);
+          border: 1px solid var(--color-gold);
+          background-color: var(--color-gold-light);
+     }
+     &:hover &__icon{
+          picture, img{
+               filter: brightness(0) invert(100%);
+          }
+     }
+     @media (max-width: 960px) {
+          padding: 15px 13px 5px 13px;
+     }
+     &__icon{
+          picture,img{
+               max-width: 71px;
+               max-height: 71px;
+          }
+     }
+     &__text{
+          margin-top: 15px;
+     }
+}
+
+.acc-form{
+     background: rgba(249, 185, 116, 0.30);
+     @media (max-width: 960px) {
+          padding: 12px;
+     }
+     input{
+          background-color: var(--color-white);
+          border: 1px solid var(--color-gray-dark);
+          border-radius: 4px;
+          padding: 16px;
+          color: var(--color-gray-dark);
+     }
+     .button{
+          border-radius: 10px;
+     }
+}
+
+.acc-form, .faq-block{
+     border-radius: 10px;
+     padding: 32px;
+}
+
+.faq-block{
+     border: 1px solid var(--color-gold-light);
+     picture,
+          img {
+               max-width: 433px;
+               width: 100%;
+          }
+}
+.faq-info{
+     &__icon{
+          font-size: 28px;
+          line-height: 28px;
+          color: var(--color-gold);
+     }
+     &__text{
+          transition: all ease-out .3s;
+          &,a{
+               font-size: 18px;
+               color: var(--color-nav-black);
+          }
+          &:hover, a:hover{
+               color: var(--color-gold);
+          }
      }
 }

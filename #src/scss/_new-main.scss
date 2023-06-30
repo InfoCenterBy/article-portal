@@ -3,6 +3,9 @@
      @include adaptiv-value('font-size', 14, 11, 1);
      @include adaptiv-value('line-height', 17, 14, 1);
 }
+.fs-44{
+     @include adaptiv-value('font-size', 44, 22, 1);
+}
 .side-navbar {
      display: flex;
      width: 364px;
