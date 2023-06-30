@@ -6516,6 +6516,14 @@ i {
           justify-content: space-between;
 }
 
+.video-list .slider-text {
+  color: var(--color-nav-black);
+}
+
+.video-list .slider-text:hover {
+  color: var(--color-nav-black);
+}
+
 .media-section .row {
   margin-left: -12px;
   margin-right: -12px;
@@ -6791,6 +6799,11 @@ i {
 
 .mobile-nav-block__sub-text a:hover {
   color: var(--color-nav-black);
+}
+
+.acc-logo-lg picture,
+.acc-logo-lg img {
+  max-width: 578px;
 }
 
 .ff-pt-serif {
