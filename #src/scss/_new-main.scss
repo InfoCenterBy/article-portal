@@ -666,6 +666,12 @@
           min-height: 152px;
           justify-content: space-between;
      }
+     .slider-text{
+          color: var(--color-nav-black);
+          &:hover{
+               color: var(--color-nav-black);
+          }
+     }
 }
 
 .media-section{
