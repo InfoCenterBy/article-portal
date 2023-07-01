@@ -1112,6 +1112,13 @@ if(mobileBtn){
   mobileBtn.addEventListener('click', ()=>{
     mobileMenu.classList.toggle('mobile-menu-show')
     mobileBtn.classList.toggle('bi-x-lg')
+    if(mobileMenu.classList.contains('mobile-menu-show')){
+      document.querySelector('body').style.overflow = 'hidden'
+      console.log('yes')
+    }
+    else{
+      document.querySelector('body').style.overflow = 'auto'
+    }
   })
 }
 
