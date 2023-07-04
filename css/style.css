@@ -501,6 +501,7 @@ body._lock {
   white-space: nowrap;
   display: inline-block;
   overflow: hidden;
+  border-radius: 10px;
 }
 
 .button-hover:hover {
@@ -5229,7 +5230,7 @@ td.vertical-bottom {
 
 .main-list-has ag__wrapper .button-hover {
   margin: 2px 5px;
-  border-radius: 10px;
+  border-radius: 10px !important;
   font-size: 14px;
 }
 
@@ -6917,6 +6918,10 @@ html {
 .fs-28 {
   font-size: 28px;
   line-height: 37px;
+}
+
+.border-10 {
+  border-radius: 10px;
 }
 
 @media (min-width: 576px) {
