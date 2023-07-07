@@ -779,9 +779,9 @@
      place-items: center;
      text-align: center;
      width: 100%;
-     transition: all ease-out .3s;
+     &,*{transition: all ease-out .3s;}
      color: var(--color-black);
-     &:hover{
+     &:hover *{
           color: var(--color-gold);
      }
      img{
@@ -793,6 +793,14 @@
           @include adaptiv-value('line-height', 20, 16, 1);
           font-weight: 500;
           hyphens:auto;
+     }
+     &__inner{
+          img{
+               object-fit: contain;
+               max-width: 209px;
+               width: 100%;
+               max-height: 48px;
+          }
      }
 }
 

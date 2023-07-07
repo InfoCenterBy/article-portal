@@ -318,6 +318,7 @@
   white-space: nowrap;
   display: inline-block;
   overflow: hidden;
+  border-radius: 10px;
 
   &:hover {
     color: var(--color-black);

@@ -139,7 +139,7 @@ body {
 
     .button-hover {
       margin: 2px 5px;
-      border-radius: 10px;
+      border-radius: 10px !important;
       @include adaptiv-value('font-size', 14, 12, 1);
     }
 
@@ -666,4 +666,8 @@ body {
 .fs-28{
   @include adaptiv-value('font-size', 28, 20, 1);
   @include adaptiv-value('line-height', 37, 29, 1);
+}
+
+.border-10{
+  border-radius: 10px;
 }

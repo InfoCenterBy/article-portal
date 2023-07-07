@@ -1,0 +1,134 @@
+<div class="main-section">
+     <div class="section-accent">
+          
+          <div class="" id="vueCalendar">
+               <v-calendar 
+               borderless 
+               :attributes='attributes'
+               :min-date="minDate"
+               :max-date="maxDate"
+               ></v-calendar>
+               <test-comp></test-comp>
+          </div>
+
+          <template id="test-comp-template">
+               <div>
+                    <b v-if="message != null">{{ message }}</b>
+               </div>
+          </template>
+          <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+          <script src="https://unpkg.com/vue@2"></script>
+          <script src="https://unpkg.com/@popperjs/core@2"></script>
+          <script src="https://unpkg.com/v-calendar"></script>
+          <script>
+          // import TestComp from './TestComp.vue';
+          Vue.component('v-calendar', window.VCalendar)
+          Vue.component('testComp', {
+               template: '#test-comp-template',
+               data() {
+                    return {
+                         message: null,
+                    };
+               },
+               methods: {
+                    // async isDayOff(){
+                    //      const responce = await fetch('https://isdayoff.ru/230703?cc=BY', {
+                    //           mode: 'no-cors',
+                    //      })
+                    //      console.log('responce', responce)
+                    // },
+               },
+               mounted() {
+                    axios.get('https://isdayoff.ru/today')
+                    .then(response => {
+                         if(response.data == '0'){
+                              this.message = 'Work'
+                         }
+                         else{
+                              this.message = 'DayOff'
+                         }
+                         this.response = response.data;
+                         console.log('response:', this.response);
+                    })
+                         .catch(error => {
+                         console.error('Error:', error);
+                    });
+               }
+          });
+
+          new Vue({
+               el: '#vueCalendar',
+               props: {
+                    name: String
+               },
+               components: {
+               },
+               data() {
+                    return{
+                         isOn: 'false',
+                         dates: [],
+                         selectedDate: null,
+                         attributes: [
+                              {
+                                   dot: true,
+                                   dates: [
+                                        new Date(2023, 6, 1),
+                                        new Date(2023, 6, 10),
+                                        new Date(2023, 6, 22),
+                                   ],
+                              },
+                              {
+                                   dot: 'red',
+                                   dates: [
+                                        new Date(2023, 6, 4),
+                                        new Date(2023, 6, 10),
+                                        new Date(2023, 6, 15),
+                                   ],
+                              },
+                              {
+                                   dot: {
+                                   style: {
+                                             backgroundColor: 'brown',
+                                        },
+                                   },
+                                   dates: [
+                                        new Date(2023, 6, 12),
+                                        new Date(2023, 6, 26),
+                                        new Date(2023, 6, 15),
+                                   ],
+                              },
+                         ],
+                         minDate: null,
+                         maxDate: null,
+                    }
+               },
+               watch: {},
+               computed: {
+                    
+               },
+               methods: {
+                    test(){
+                         this.isOn= 'true'
+                    },
+                    fillDates(){
+                         // this.dates = Array.from(Array(35).keys())
+                         console.log('parent', this.message)
+                    },
+                    calcMinDate(){
+                         let lastDay =  new Date(new Date().getFullYear(), new Date().getMonth() - 1, 1)
+                         this.minDate = lastDay
+                    },
+                    calcMaxDate(){
+                         let firstDay =  new Date(new Date().getFullYear(), new Date().getMonth() + 2, 0)
+                         this.maxDate = firstDay
+                    }
+               },
+               mounted() {
+                    this.fillDates()
+                    this.calcMinDate()
+                    this.calcMaxDate()
+               }
+          })
+          </script>
+     </div>
+</div>
