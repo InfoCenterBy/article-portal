@@ -8,12 +8,15 @@
                :min-date="minDate"
                :max-date="maxDate"
                ></v-calendar>
-               <test-comp></test-comp>
+               <test-comp @message-updated="updateMessage"></test-comp>
+               <div v-if="messageFromChild">
+                    {{ messageFromChild }}
+               </div>
           </div>
 
           <template id="test-comp-template">
                <div>
-                    <b v-if="message != null">{{ message }}</b>
+                    <!-- <b v-if="message != null">{{ message }}</b> -->
                </div>
           </template>
           <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -37,69 +40,153 @@
                     //      })
                     //      console.log('responce', responce)
                     // },
+                    checkDate(){
+                         axios.get('https://isdayoff.ru/today')
+                              .then(response => {
+                                   if(response.data == '0'){
+                                        this.message = 'Work'
+                                   }
+                                   else{
+                                        this.message = 'DayOff'
+                                   }
+                                   this.response = response.data;
+                                   console.log('response:', this.response);
+                                   this.$emit('message-updated', this.message);
+                              })
+                                   .catch(error => {
+                                   console.error('Error:', error);
+                              });
+                    }
                },
                mounted() {
-                    axios.get('https://isdayoff.ru/today')
-                    .then(response => {
-                         if(response.data == '0'){
-                              this.message = 'Work'
-                         }
-                         else{
-                              this.message = 'DayOff'
-                         }
-                         this.response = response.data;
-                         console.log('response:', this.response);
-                    })
-                         .catch(error => {
-                         console.error('Error:', error);
-                    });
+                    this.checkDate()
                }
           });
 
           new Vue({
                el: '#vueCalendar',
-               props: {
-                    name: String
-               },
+               // props: {
+               //      name: String
+               // },
                components: {
                },
                data() {
                     return{
                          isOn: 'false',
-                         dates: [],
-                         selectedDate: null,
-                         attributes: [
+                         // placeholder data
+                         dates: [
                               {
-                                   dot: true,
-                                   dates: [
-                                        new Date(2023, 6, 1),
-                                        new Date(2023, 6, 10),
-                                        new Date(2023, 6, 22),
-                                   ],
+                                   date: '2023-06-04',
+                                   pay: true,
+                                   show: true,
+                                   weekDay: false,
+                                   addText: '',
+                                   description: {
+                                        status: true,
+                                        text: ''
+                                   }
                               },
                               {
-                                   dot: 'red',
-                                   dates: [
-                                        new Date(2023, 6, 4),
-                                        new Date(2023, 6, 10),
-                                        new Date(2023, 6, 15),
-                                   ],
+                                   date: '2023-06-15',
+                                   pay: true,
+                                   show: true,
+                                   weekDay: true,
+                                   addText: '',
+                                   description: {
+                                        status: true,
+                                        text: ''
+                                   }
                               },
                               {
-                                   dot: {
-                                   style: {
-                                             backgroundColor: 'brown',
-                                        },
-                                   },
-                                   dates: [
-                                        new Date(2023, 6, 12),
-                                        new Date(2023, 6, 26),
-                                        new Date(2023, 6, 15),
-                                   ],
+                                   date: '2023-06-10',
+                                   pay: false,
+                                   show: true,
+                                   weekDay: false,
+                                   addText: '',
+                                   description: {
+                                        status: true,
+                                        text: ''
+                                   }
+                              },
+                              {
+                                   date: '2023-06-12',
+                                   pay: true,
+                                   show: false,
+                                   weekDay: false,
+                                   addText: '',
+                                   description: {
+                                        status: true,
+                                        text: ''
+                                   }
+                              },
+                              {
+                                   date: '2023-06-26',
+                                   pay: true,
+                                   show: false,
+                                   weekDay: false,
+                                   addText: '',
+                                   description: {
+                                        status: true,
+                                        text: ''
+                                   }
                               },
                          ],
+                         selectedDate: null,
+                         attributes: [],
+                         // [
+                         //      {
+                         //           dot: {
+                         //                style: {
+                         //                          backgroundColor: '#C47A2C',
+                         //                     },
+                         //           },
+                         //           popover: {
+                         //                visibility: 'hover',
+                         //                // hideIndicator: true,
+                         //                label: 'Take Noah to basketball practice.',
+                         //           },
+                         //           dates: [
+                         //                new Date(2023, 6, 4),
+                         //                new Date(2023, 6, 10),
+                         //                new Date(2023, 6, 15),
+                         //           ],
+                         //      },
+                         //      {
+                         //           dot: {
+                         //                style: {
+                         //                          backgroundColor: '#034A66',
+                         //                     },
+                         //           },
+                         //           popover: {
+                         //                visibility: 'hover',
+                         //                // hideIndicator: true,
+                         //                label: 'Test',
+                         //           },
+                         //           dates: [
+                         //                new Date(2023, 6, 12),
+                         //                new Date(2023, 6, 26),
+                         //                new Date(2023, 6, 15),
+                         //           ],
+                         //      },
+                         //      // {
+                         //      // highlight: {
+                         //      //      style:{
+                         //      //           backgroundColor: 'transparent',
+                         //      //           border: ' 2px solid #F9B974',
+                         //      //           borderRadius: '8px',
+                         //      //           fontWeight: '500',
+                         //      //           color: 'red'
+                         //      //      }
+                         //      // },
+                         //      // dates: [
+                         //      //      new Date(),
+                         //      // ],
+                         //      // },
+                         // ],
+                         
                          minDate: null,
                          maxDate: null,
+                         messageFromChild: null,
                     }
                },
                watch: {},
@@ -107,12 +194,15 @@
                     
                },
                methods: {
+                    updateMessage(message) {
+                         this.messageFromChild = message
+                    },
                     test(){
                          this.isOn= 'true'
                     },
                     fillDates(){
                          // this.dates = Array.from(Array(35).keys())
-                         console.log('parent', this.message)
+                         console.log('parent', this.messageFromChild)
                     },
                     calcMinDate(){
                          let lastDay =  new Date(new Date().getFullYear(), new Date().getMonth() - 1, 1)
@@ -121,12 +211,50 @@
                     calcMaxDate(){
                          let firstDay =  new Date(new Date().getFullYear(), new Date().getMonth() + 2, 0)
                          this.maxDate = firstDay
-                    }
+                    },
+                    getDates(){
+                         this.dates.forEach(el => {
+                              try{
+                                   var splitedRule = el.date.split('-')
+                                   var formattedDate = new Date(splitedRule[0], splitedRule[1], splitedRule[2])
+                              }
+                              catch(err){
+                                   console.log('Error in date format', err)
+                              }
+                              // console.log('formattedDate', formattedDate)
+                              let checkValidDateRule = formattedDate instanceof Date && !isNaN(formattedDate)
+
+                              if(checkValidDateRule){
+                                   if(el.show === true){
+                                        this.attributes.push({
+                                             dates: formattedDate,
+                                             dot: {
+                                                  style:{
+                                                       backgroundColor: '#C47A2C'
+                                                  }
+                                             }
+                                        })
+                                   }
+                                   if(el.pay === true){
+                                        this.attributes.push({
+                                             dates: formattedDate,
+                                             dot: {
+                                                  style:{
+                                                       backgroundColor: '#034A66'
+                                                  }
+                                             }
+                                        })
+                                   }
+                              }
+                              console.log('attr', this.attributes)
+                         });
+                    },
                },
                mounted() {
                     this.fillDates()
                     this.calcMinDate()
                     this.calcMaxDate()
+                    this.getDates()
                }
           })
           </script>
