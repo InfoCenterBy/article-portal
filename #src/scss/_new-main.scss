@@ -206,6 +206,9 @@
 .section-accent, .section-accent-orange{
      padding: 30px;
      border-radius: 10px;
+     @media (max-width: 650px) {
+          padding: 10px;
+     }
 }
 
 .section-accent{

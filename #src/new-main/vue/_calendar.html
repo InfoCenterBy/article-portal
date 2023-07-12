@@ -1,17 +1,29 @@
 <div class="main-section">
      <div class="section-accent">
           
-          <div class="" id="vueCalendar">
-               <v-calendar 
-               borderless 
-               :attributes='attributes'
-               :min-date="minDate"
-               :max-date="maxDate"
-               ></v-calendar>
-               <test-comp @message-updated="updateMessage"></test-comp>
-               <div v-if="messageFromChild">
-                    {{ messageFromChild }}
+          <div class="row row-container" id="vueCalendar">
+               <div class="col-xl-6">
+                    <v-calendar 
+                    borderless 
+                    :attributes='attributes'
+                    :min-date="minDate"
+                    :max-date="maxDate"
+                    @dayclick="onDayClick"
+                    ></v-calendar>
+                    <test-comp @message-updated="updateMessage"></test-comp>
+                    <div v-if="messageFromChild">
+                         {{ messageFromChild }}
+                    </div>
+                    <div class="" v-if="selectedDate === null">
+                         Ничего не выбрано
+                    </div>
+                    <div class="" v-if="selectedDate">
+                         <div class="" v-if="selectedDate !== null">
+                              {{selectedDate}}
+                         </div>
+                    </div>
                </div>
+               <div class="col-xxl-6"></div>
           </div>
 
           <template id="test-comp-template">
@@ -183,15 +195,12 @@
                          //      // ],
                          //      // },
                          // ],
-                         
                          minDate: null,
                          maxDate: null,
                          messageFromChild: null,
                     }
                },
-               watch: {},
-               computed: {
-                    
+               watch: {
                },
                methods: {
                     updateMessage(message) {
@@ -246,8 +255,12 @@
                                         })
                                    }
                               }
-                              console.log('attr', this.attributes)
+                              // console.log('attr', this.attributes)
                          });
+                    },
+                    onDayClick(day) {
+                         // day.date if need date in selected
+                         this.selectedDate = day.id
                     },
                },
                mounted() {
