@@ -23,7 +23,18 @@
                          </div>
                     </div>
                </div>
-               <div class="col-xxl-6"></div>
+               <div class="col-xxl-6">
+                    <div class="" v-for="info in dates">
+                         <div class="" v-for="(value, key) in info">
+                              <div class="" v-if="key === 'addText' && value instanceof Object && !NaN">
+                                   {{value?.text}}
+                              </div>
+                              <div class="" v-else>
+                                   {{key}}--{{value}}
+                              </div>
+                         </div>
+                    </div>
+               </div>
           </div>
 
           <template id="test-comp-template">
@@ -92,7 +103,11 @@
                                    pay: true,
                                    show: true,
                                    weekDay: false,
-                                   addText: '',
+                                   addText:  {
+                                        text: '(за исключением нерезидентов)',
+                                        category: 'pay'
+                                   },
+                                   everyDay: false,
                                    description: {
                                         status: true,
                                         text: ''
@@ -103,7 +118,11 @@
                                    pay: true,
                                    show: true,
                                    weekDay: true,
-                                   addText: '',
+                                   addText: {
+                                        text: '',
+                                        category: ''
+                                   },
+                                   everyDay: true,
                                    description: {
                                         status: true,
                                         text: ''
@@ -114,7 +133,11 @@
                                    pay: false,
                                    show: true,
                                    weekDay: false,
-                                   addText: '',
+                                   addText: {
+                                        text: '',
+                                        category: ''
+                                   },
+                                   everyDay: false,
                                    description: {
                                         status: true,
                                         text: ''
@@ -125,7 +148,11 @@
                                    pay: true,
                                    show: false,
                                    weekDay: false,
-                                   addText: '',
+                                   addText: {
+                                        text: '',
+                                        category: ''
+                                   },
+                                   everyDay: false,
                                    description: {
                                         status: true,
                                         text: ''
@@ -136,7 +163,11 @@
                                    pay: true,
                                    show: false,
                                    weekDay: false,
-                                   addText: '',
+                                   addText: {
+                                        text: '',
+                                        category: ''
+                                   },
+                                   everyDay: false,
                                    description: {
                                         status: true,
                                         text: ''
@@ -198,6 +229,8 @@
                          minDate: null,
                          maxDate: null,
                          messageFromChild: null,
+                         everyDayArr: [],
+                         monthArr: []
                     }
                },
                watch: {
@@ -233,7 +266,7 @@
                               // console.log('formattedDate', formattedDate)
                               let checkValidDateRule = formattedDate instanceof Date && !isNaN(formattedDate)
 
-                              if(checkValidDateRule){
+                              if(checkValidDateRule && el.everyDay !== true){
                                    if(el.show === true){
                                         this.attributes.push({
                                              dates: formattedDate,
@@ -241,7 +274,12 @@
                                                   style:{
                                                        backgroundColor: '#C47A2C'
                                                   }
-                                             }
+                                             },
+                                             popover: {
+                                                  visibility: 'hover',
+                                                  // hideIndicator: true,
+                                                  label: el.addText.category === 'show' ? 'Представление' + ' ' + el.addText.text : 'Представление',
+                                             },
                                         })
                                    }
                                    if(el.pay === true){
@@ -251,7 +289,12 @@
                                                   style:{
                                                        backgroundColor: '#034A66'
                                                   }
-                                             }
+                                             },
+                                             popover: {
+                                                  visibility: 'hover',
+                                                  // hideIndicator: true,
+                                                  label: el.addText.category === 'pay' ? 'Уплата' + ' ' + el.addText.text : 'Уплата',
+                                             },
                                         })
                                    }
                               }
@@ -262,12 +305,23 @@
                          // day.date if need date in selected
                          this.selectedDate = day.id
                     },
+                    filterDays(){
+                         this.dates.filter(el=>{
+                              if(el.everyDay !== true){
+                                   this.monthArr.push(el)
+                              }
+                              else{
+                                   this.everyDayArr.push(el)
+                              }
+                         })
+                    },
                },
                mounted() {
                     this.fillDates()
                     this.calcMinDate()
                     this.calcMaxDate()
                     this.getDates()
+                    this.filterDays()
                }
           })
           </script>
