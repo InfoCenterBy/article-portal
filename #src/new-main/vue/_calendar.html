@@ -2,7 +2,7 @@
      <div class="section-accent">
           
           <div class="row row-container" id="vueCalendar">
-               <div class="col-xl-6">
+               <div class="col-xxl-6">
                     <v-calendar 
                     borderless 
                     :attributes='attributes'
@@ -24,14 +24,51 @@
                     </div>
                </div>
                <div class="col-xxl-6">
-                    <div class="" v-for="info in dates">
+                    <strong>Ежедневно</strong>
+                    <div class="row row-container" v-for="info in everyDayArr">
                          <div class="" v-for="(value, key) in info">
-                              <div class="" v-if="key === 'addText' && value instanceof Object && !NaN">
-                                   {{value?.text}}
+                              <div class="">
+                                   <div class="" v-if="key === 'pay' && value === true">
+                                        Уплата
+                                   </div>
+                                   <div class="" v-if="key === 'show' && value === true">
+                                        Представление
+                                   </div>
                               </div>
-                              <div class="" v-else>
+                         </div>
+                         <hr>
+                    </div>
+                    <strong>Остальное</strong>
+                    <div class="row row-container" v-for="info in sortedDates">
+                         <div class="row row-container" v-for="(value, key) in info">
+                              
+                              <!-- <div class="" v-else>
                                    {{key}}--{{value}}
+                              </div> -->
+                              <!-- <div class="" v-if="key === 'everyDay' && value === true">
+                                   Ежедневно
+                              </div> -->
+                              <div class="col-xxl-6">
+                                   <div class="" v-if="key === 'pay' && value === true">
+                                        Уплата
+                                   </div>
+                                   <div class="" v-if="key === 'show' && value === true">
+                                        Представление
+                                   </div>
                               </div>
+                              <div class="col-xxl-6 d-flex flex-column">
+                                   <span>
+                                        <div class="" v-if="key === 'date'">
+                                             {{value}}
+                                        </div>
+                                   </span>
+                                   <p v-if="key === 'addText' && value instanceof Object && !NaN">
+                                        {{value?.text}}
+                                   </p>
+                              </div>
+                         </div>
+                         <div class="">
+                              <hr>
                          </div>
                     </div>
                </div>
@@ -230,7 +267,8 @@
                          maxDate: null,
                          messageFromChild: null,
                          everyDayArr: [],
-                         monthArr: []
+                         monthArr: [], 
+                         sortedDates: []
                     }
                },
                watch: {
@@ -313,6 +351,9 @@
                               else{
                                    this.everyDayArr.push(el)
                               }
+                         })
+                         this.sortedDates = this.monthArr.sort((a, b)=>{
+                              return Number(new Date(a.date)) - Number(new Date(b.date))
                          })
                     },
                },
