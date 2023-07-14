@@ -25,22 +25,27 @@
                </div>
                <div class="col-xxl-6">
                     <strong>Ежедневно</strong>
-                    <div class="row row-container" v-for="info in everyDayArr">
-                         <div class="" v-for="(value, key) in info">
-                              <div class="">
-                                   <div class="" v-if="key === 'pay' && value === true">
-                                        Уплата
-                                   </div>
-                                   <div class="" v-if="key === 'show' && value === true">
-                                        Представление
-                                   </div>
+                    <div class="" v-for="info in everyDayArr">
+                         <div class="">
+                              <div class="" v-if="info.show === true">
+                                   Представление
+                              </div>
+                              
+                              <div v-if="info.show === true && info.addText.category === 'show'">
+                                   {{info.addText.text}}
                               </div>
                          </div>
-                         <hr>
+                         <div>
+                              <div class="" v-if="info.pay === true">
+                                   Уплата
+                              </div>
+                              <div v-if="info.pay === true && info.addText.category === 'pay'">
+                                   &nbsp;{{info.addText.text}}
+                              </div>
+                         </div>
+                         <hr class="d-block my-2">
                     </div>
-                    <strong>Остальное</strong>
-                    <div class="row row-container" v-for="info in sortedDates">
-                         <div class="row row-container" v-for="(value, key) in info">
+                    <div class="" v-for="info in sortedDates">
                               
                               <!-- <div class="" v-else>
                                    {{key}}--{{value}}
@@ -48,28 +53,38 @@
                               <!-- <div class="" v-if="key === 'everyDay' && value === true">
                                    Ежедневно
                               </div> -->
-                              <div class="col-xxl-6">
-                                   <div class="" v-if="key === 'pay' && value === true">
-                                        Уплата
+                              <div class="">
+                                   <strong>
+                                        {{info.date}}
+                                   </strong>
+                              </div>
+                              <div class="">
+                                   <div class="d-flex flex-row">
+                                        <div class="" v-if="info.pay === true">
+                                             Уплата
+                                        </div>
+
+                                        <div v-if="info.pay === true && info.addText.category === 'pay'">
+                                             &nbsp;{{info.addText.text}}
+                                        </div>
                                    </div>
-                                   <div class="" v-if="key === 'show' && value === true">
-                                        Представление
+                                   
+                                   <div class="d-flex flex-row">
+                                        <div class="" v-if="info.show === true">
+                                             Представление
+                                        </div>
+                                        
+                                        <div v-if="info.show === true && info.addText.category === 'show'">
+                                             {{info.addText.text}}
+                                        </div>
                                    </div>
                               </div>
                               <div class="col-xxl-6 d-flex flex-column">
-                                   <span>
-                                        <div class="" v-if="key === 'date'">
-                                             {{value}}
-                                        </div>
-                                   </span>
-                                   <p v-if="key === 'addText' && value instanceof Object && !NaN">
-                                        {{value?.text}}
-                                   </p>
+                                   
                               </div>
-                         </div>
-                         <div class="">
+                         <!-- <div class="">
                               <hr>
-                         </div>
+                         </div> -->
                     </div>
                </div>
           </div>

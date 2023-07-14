@@ -27,7 +27,7 @@
      width: auto !important;
      font-weight: 500 !important;
      transition: all ease-out .3s;
-     &:hover{
+     &:hover, &:focus{
           background-color: var(--color-gold-light) !important;
      }
 }
@@ -83,7 +83,7 @@
 .weekday-1,.weekday-7{
      .vc-day-content{
           color:  var(--color-gold-light);
-          &:hover{
+          &:hover, &:focus{
                color: var(--color-nav-black);
           }
      }
@@ -93,4 +93,8 @@
      .vc-day-content{
           border: 2px solid var(--color-gold-light);
      }
+}
+
+.vc-container{
+     width: 100% !important;
 }
