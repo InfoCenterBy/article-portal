@@ -2,27 +2,43 @@
      <div class="section-accent">
           
           <div class="row row-container" id="vueCalendar">
-               <div class="">
-                    <input type="radio" name="calendarType" id="calendarOrg" v-model="typeMode" value="calendarOrg" v-on:click="changeType('calendarOrg')">
-                    <label for="calendarOrg">Организациям</label>
-                    <input type="radio" name="calendarType" id="calendarIP" v-model="typeMode" value="calendarIP" v-on:click="changeType('calendarIP')">
-                    <label for="calendarIP">ИП</label>
-               </div>
+               
                <div class="col-xxl-6">
+                    <div class="calendar-tabs-wrapper d-flex flex-column">
+                         <div class="d-flex flex-row justify-content-around w-100">
+                              <input type="radio" 
+                              name="calendarType" 
+                              id="calendarOrg" 
+                              v-model="typeMode" 
+                              value="calendarOrg" 
+                              v-on:click="this.typeMode = 'calendarOrg'">
+                              <label for="calendarOrg" class="tab-toggle">Организациям</label>
+                              <input type="radio" 
+                                   name="calendarType" 
+                                   id="calendarIP" 
+                                   v-model="typeMode" 
+                                   value="calendarIP" 
+                                   v-on:click="this.typeMode = 'calendarIP'">
+                              <label for="calendarIP" class="tab-toggle">ИП</label>
+                         </div>
+                         <div class="tab-underline-accent"></div>
+                         <div class="tab-underline w-100"></div>
+                    </div>
                     <v-calendar 
                     borderless 
                     :attributes='attributes'
                     :min-date="minDate"
                     :max-date="maxDate"
                     @dayclick="onDayClick"
+                    class="mt-3"
                     ></v-calendar>
-                    <test-comp @message-updated="updateMessage"></test-comp>
+                    <!-- <test-comp @message-updated="updateMessage"></test-comp>
                     <div v-if="messageFromChild">
                          {{ messageFromChild }}
-                    </div>
-                    <div class="" v-if="selectedDate === null">
+                    </div> -->
+                    <!-- <div class="" v-if="selectedDate === null">
                          Ничего не выбрано
-                    </div>
+                    </div> -->
                     <div class="" v-if="selectedDate">
                          <div class="" v-if="selectedDate !== null">
                               {{selectedDate}}
@@ -104,9 +120,9 @@
                     </div>
                     
                </div>
-               <div class="calendar-time-block" v-for="(value, key) in weekTime">
+               <!-- <div class="calendar-time-block" v-for="(value, key) in weekTime">
                     <div>{{ key }}--{{value}}</div>
-               </div>
+               </div> -->
           </div>
 
           <template id="test-comp-template">
@@ -118,8 +134,7 @@
           <script src="https://unpkg.com/vue@2"></script>
           <script src="https://unpkg.com/@popperjs/core@2"></script>
           <script src="https://unpkg.com/v-calendar"></script>
-          <script async>
-          // import TestComp from './TestComp.vue';
+          <script >
           Vue.component('v-calendar', window.VCalendar)
           Vue.component('testComp', {
                template: '#test-comp-template',
@@ -184,7 +199,7 @@
                                         desPay: 'Налог на доходы иностранных организаций, не осуществляющих деятельность в Республике Беларусь через постоянное представительство',
                                         desShow: 'Утилизационный сбор'
                                    },
-                                   dateCategory: 'calendarIP'
+                                   dateCategory: 'calendarOrg'
                               },
                               {
                                    date: '2023-06-15',
@@ -250,6 +265,167 @@
                                    },
                                    dateCategory: 'calendarOrg'
                               },
+                              {
+                                   date: '2023-06-01',
+                                   pay: true,
+                                   show: true,
+                                   weekDay: true,
+                                   addText: {
+                                   text: '(за исключением нерезидентов)',
+                                   category: 'pay',
+                                   },
+                                   everyDay: false,
+                                   description: {
+                                   desPay: 'Налог на прибыль',
+                                   desShow: 'Утилизационный сбор',
+                                   },
+                                   dateCategory: 'calendarIP',
+                                   },
+                                   {
+                                   date: '2023-06-05',
+                                   pay: false,
+                                   show: true,
+                                   weekDay: false,
+                                   addText: {
+                                   text: '',
+                                   category: '',
+                                   },
+                                   everyDay: true,
+                                   description: {
+                                   desPay: 'НДС',
+                                   desShow: 'Оффшорный сбор',
+                                   },
+                                   dateCategory: 'calendarIP',
+                                   },
+                                   {
+                                   date: '2023-06-10',
+                                   pay: true,
+                                   show: false,
+                                   weekDay: false,
+                                   addText: {
+                                   text: '',
+                                   category: '',
+                                   },
+                                   everyDay: false,
+                                   description: {
+                                   desPay: 'Акцизный сбор',
+                                   desShow: 'НДС',
+                                   },
+                                   dateCategory: 'calendarIP',
+                                   },
+                                   {
+                                   date: '2023-06-15',
+                                   pay: true,
+                                   show: true,
+                                   weekDay: false,
+                                   addText: {
+                                   text: '',
+                                   category: '',
+                                   },
+                                   everyDay: false,
+                                   description: {
+                                   desPay: 'Налог на имущество организаций',
+                                   desShow: 'Акцизный сбор',
+                                   },
+                                   dateCategory: 'calendarIP',
+                                   },
+                                   {
+                                   date: '2023-06-20',
+                                   pay: true,
+                                   show: false,
+                                   weekDay: true,
+                                   addText: {
+                                   text: '',
+                                   category: '',
+                                   },
+                                   everyDay: true,
+                                   description: {
+                                   desPay: 'Утилизационный сбор',
+                                   desShow: 'Налог на имущество физических лиц',
+                                   },
+                                   dateCategory: 'calendarIP',
+                                   },
+                                   {
+                                   date: '2023-06-25',
+                                   pay: false,
+                                   show: true,
+                                   weekDay: true,
+                                   addText: {
+                                   text: '',
+                                   category: '',
+                                   },
+                                   everyDay: true,
+                                   description: {
+                                   desPay: 'Акцизный сбор',
+                                   desShow: 'Налог на добавленную стоимость',
+                                   },
+                                   dateCategory: 'calendarIP',
+                                   },
+                                   {
+                                   date: '2023-06-30',
+                                   pay: false,
+                                   show: false,
+                                   weekDay: false,
+                                   addText: {
+                                   text: '',
+                                   category: '',
+                                   },
+                                   everyDay: true,
+                                   description: {
+                                   desPay: 'Налог на доходы физических лиц',
+                                   desShow: 'Утилизационный сбор',
+                                   },
+                                   dateCategory: 'calendarIP',
+                                   },
+                                   {
+                                   date: '2023-08-05',
+                                   pay: true,
+                                   show: true,
+                                   weekDay: true,
+                                   addText: {
+                                   text: '',
+                                   category: '',
+                                   },
+                                   everyDay: false,
+                                   description: {
+                                   desPay: 'Налог на доходы иностранных организаций',
+                                   desShow: 'Акцизный сбор',
+                                   },
+                                   dateCategory: 'calendarIP',
+                                   },
+                                   {
+                                   date: '2023-08-10',
+                                   pay: true,
+                                   show: false,
+                                   weekDay: true,
+                                   addText: {
+                                   text: '',
+                                   category: '',
+                                   },
+                                   everyDay: true,
+                                   description: {
+                                   desPay: 'Оффшорный сбор',
+                                   desShow: 'Налог на прибыль',
+                                   },
+                                   dateCategory: 'calendarIP',
+                                   },
+                                   {
+                                   date: '2023-08-15',
+                                   pay: false,
+                                   show: true,
+                                   weekDay: true,
+                                   addText: {
+                                   text: '',
+                                   category: '',
+                                   },
+                                   everyDay: false,
+                                   description: {
+                                   desPay: 'НДС',
+                                   desShow: 'Акцизный сбор',
+                                   },
+                                   dateCategory: 'calendarIP',
+                                   },
+
                          ],
                          selectedDate: null,
                          typeMode:'calendarOrg',
@@ -276,8 +452,59 @@
                     }
                },
                computed: {
-                    computedAttributes() {
-                         const attributes = []
+                    computedWeekTime(){
+                         const weekTime = {}
+                         this.weekTime = {
+                              sumDays: 31,
+                         }
+                         return weekTime
+                    }
+               },
+               watch: {
+                    // watchChange(typeMode){
+                    //      this.changeType()
+                    // }
+                    typeMode(newVal) {
+                         this.attributes = []
+                         this.dateToShow = this.checkedDates.filter(el => {
+                              return el.dateCategory === newVal;
+                         });
+                         this.setAttributes()
+                         this.changeType()
+                    },
+               },
+               methods: {
+                    updateMessage(message) {
+                         this.messageFromChild = message
+                    },
+                    test(){
+                         this.isOn= 'true'
+                    },
+                    fillDates(){
+                         // this.dates = Array.from(Array(35).keys())
+                         console.log('parent', this.messageFromChild)
+                    },
+                    calcMinDate(){
+                         let lastDay =  new Date(new Date().getFullYear(), new Date().getMonth() - 1, 1)
+                         this.minDate = lastDay
+                    },
+                    calcMaxDate(){
+                         let firstDay =  new Date(new Date().getFullYear(), new Date().getMonth() + 2, 0)
+                         this.maxDate = firstDay
+                    },
+                    onDayClick(day) {
+                         // day.date if need date in selected
+                         this.selectedDate = day.id
+                    },
+                    checkDate(){
+                         this.dates.filter(el=>{
+                              let dateObj = new Date(el.date) 
+                              if(dateObj instanceof Date && !isNaN(dateObj)){
+                                   this.checkedDates.push(el)
+                              }
+                         })
+                    },
+                    setAttributes() {
                          this.filterDays()
                          this.dateToShow.forEach(el => {
                               try{
@@ -323,56 +550,6 @@
                               }
                               // console.log('attr', this.attributes)
                          })
-                         return attributes
-                    },
-                    computedWeekTime(){
-                         const weekTime = {}
-                         this.weekTime = {
-                              sumDays: 31,
-                         }
-                         return weekTime
-                    }
-               },
-               watch: {
-                    // watchChange(typeMode){
-                    //      this.changeType()
-                    // }
-                    typeMode(newVal) {
-                         this.dateToShow = this.checkedDates.filter(el => {
-                              return el.dateCategory === newVal;
-                         });
-                    },
-               },
-               methods: {
-                    updateMessage(message) {
-                         this.messageFromChild = message
-                    },
-                    test(){
-                         this.isOn= 'true'
-                    },
-                    fillDates(){
-                         // this.dates = Array.from(Array(35).keys())
-                         console.log('parent', this.messageFromChild)
-                    },
-                    calcMinDate(){
-                         let lastDay =  new Date(new Date().getFullYear(), new Date().getMonth() - 1, 1)
-                         this.minDate = lastDay
-                    },
-                    calcMaxDate(){
-                         let firstDay =  new Date(new Date().getFullYear(), new Date().getMonth() + 2, 0)
-                         this.maxDate = firstDay
-                    },
-                    onDayClick(day) {
-                         // day.date if need date in selected
-                         this.selectedDate = day.id
-                    },
-                    checkDate(){
-                         this.dates.filter(el=>{
-                              let dateObj = new Date(el.date) 
-                              if(dateObj instanceof Date && !isNaN(dateObj)){
-                                   this.checkedDates.push(el)
-                              }
-                         })
                     },
                     filterDays(){
                          this.monthArr = []
@@ -390,8 +567,9 @@
                               return Number(new Date(a.date)) - Number(new Date(b.date))
                          })
                     },
-                    changeType(val){
-                         this.attributes = []
+                    changeType(){
+                         let underLine = document.querySelector('.tab-underline-accent')
+                         underLine.classList.toggle('tab-underline-checked')
                          this.dateToShow = this.checkedDates.filter(el=>{
                               return el.dateCategory === this.typeMode
                          })
@@ -402,7 +580,7 @@
                     this.calcMinDate()
                     this.calcMaxDate()
                     this.changeType()
-                    this.filterDays()
+                    this.setAttributes()
                }
           })
           </script>

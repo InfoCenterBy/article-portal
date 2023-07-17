@@ -98,3 +98,39 @@
 .vc-container{
      width: 100% !important;
 }
+.vc-container{
+     border: none !important;
+}
+
+.calendar-tabs-wrapper{
+     width: 100%;
+     display: flex;
+     input[type='radio']{
+          display: none;
+     }
+     label{
+          cursor: pointer;
+          z-index: 3;
+          &:hover{
+          }
+     }
+     .tab-underline{
+          z-index: 2;
+          width: 100%;
+          height: 2px;
+          background-color: var(--color-gray);
+     }
+     .tab-underline-accent{
+          z-index: 3;
+          position: relative;
+          background-color: var(--color-gold);
+          width: 50%;
+          height: 2px;
+          top: 2px;
+          transition: all ease-out .3s;
+          transform: translate(100%);
+     }
+     .tab-underline-accent.tab-underline-checked{
+          transform: translateX(0%);
+     }
+}
