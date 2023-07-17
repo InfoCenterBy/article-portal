@@ -2,6 +2,12 @@
      <div class="section-accent">
           
           <div class="row row-container" id="vueCalendar">
+               <div class="">
+                    <input type="radio" name="calendarType" id="calendarOrg" v-model="typeMode" value="calendarOrg" v-on:click="changeType('calendarOrg')">
+                    <label for="calendarOrg">Организациям</label>
+                    <input type="radio" name="calendarType" id="calendarIP" v-model="typeMode" value="calendarIP" v-on:click="changeType('calendarIP')">
+                    <label for="calendarIP">ИП</label>
+               </div>
                <div class="col-xxl-6">
                     <v-calendar 
                     borderless 
@@ -24,23 +30,29 @@
                     </div>
                </div>
                <div class="col-xxl-6">
-                    <strong>Ежедневно</strong>
+                    <strong v-if="everyDayArr.length !== 0">Ежедневно</strong>
                     <div class="" v-for="info in everyDayArr">
-                         <div class="">
+                         <div class="d-flex flex-row">
                               <div class="" v-if="info.show === true">
                                    Представление
                               </div>
-                              
                               <div v-if="info.show === true && info.addText.category === 'show'">
                                    {{info.addText.text}}
                               </div>
+                              <div class="" v-if="info.description">
+                                   {{info.description.desShow}}
+                              </div>
+
                          </div>
-                         <div>
+                         <div class="d-flex flex-row">
                               <div class="" v-if="info.pay === true">
                                    Уплата
                               </div>
                               <div v-if="info.pay === true && info.addText.category === 'pay'">
                                    &nbsp;{{info.addText.text}}
+                              </div>
+                              <div class="" v-if="info.description">
+                                   {{info.description.desPay}}
                               </div>
                          </div>
                          <hr class="d-block my-2">
@@ -60,22 +72,26 @@
                               </div>
                               <div class="">
                                    <div class="d-flex flex-row">
-                                        <div class="" v-if="info.pay === true">
-                                             Уплата
+                                        <div class="" v-if="info.show === true">
+                                             Представление
                                         </div>
-
-                                        <div v-if="info.pay === true && info.addText.category === 'pay'">
+                                        <div v-if="info.show === true && info.addText.category === 'show'">
                                              &nbsp;{{info.addText.text}}
+                                        </div>
+                                        <div class="" v-if="info.description">
+                                             {{info.description.desShow}}
                                         </div>
                                    </div>
                                    
                                    <div class="d-flex flex-row">
-                                        <div class="" v-if="info.show === true">
-                                             Представление
+                                        <div class="" v-if="info.pay === true">
+                                             Уплата
                                         </div>
-                                        
-                                        <div v-if="info.show === true && info.addText.category === 'show'">
-                                             {{info.addText.text}}
+                                        <div v-if="info.pay === true && info.addText.category === 'pay'">
+                                             &nbsp;{{info.addText.text}}
+                                        </div>
+                                        <div class="" v-if="info.description">
+                                             {{info.description.desPay}}
                                         </div>
                                    </div>
                               </div>
@@ -86,6 +102,10 @@
                               <hr>
                          </div> -->
                     </div>
+                    
+               </div>
+               <div class="calendar-time-block" v-for="(value, key) in weekTime">
+                    <div>{{ key }}--{{value}}</div>
                </div>
           </div>
 
@@ -98,7 +118,7 @@
           <script src="https://unpkg.com/vue@2"></script>
           <script src="https://unpkg.com/@popperjs/core@2"></script>
           <script src="https://unpkg.com/v-calendar"></script>
-          <script>
+          <script async>
           // import TestComp from './TestComp.vue';
           Vue.component('v-calendar', window.VCalendar)
           Vue.component('testComp', {
@@ -115,7 +135,7 @@
                     //      })
                     //      console.log('responce', responce)
                     // },
-                    checkDate(){
+                    checkWeekDay(){
                          axios.get('https://isdayoff.ru/today')
                               .then(response => {
                                    if(response.data == '0'){
@@ -134,7 +154,7 @@
                     }
                },
                mounted() {
-                    this.checkDate()
+                    this.checkWeekDay()
                }
           });
 
@@ -161,9 +181,10 @@
                                    },
                                    everyDay: false,
                                    description: {
-                                        status: true,
-                                        text: ''
-                                   }
+                                        desPay: 'Налог на доходы иностранных организаций, не осуществляющих деятельность в Республике Беларусь через постоянное представительство',
+                                        desShow: 'Утилизационный сбор'
+                                   },
+                                   dateCategory: 'calendarIP'
                               },
                               {
                                    date: '2023-06-15',
@@ -176,9 +197,10 @@
                                    },
                                    everyDay: true,
                                    description: {
-                                        status: true,
-                                        text: ''
-                                   }
+                                        desPay: 'Оффшорный сбор',
+                                        desShow: 'НДС'
+                                   },
+                                   dateCategory: 'calendarOrg'
                               },
                               {
                                    date: '2023-06-10',
@@ -191,9 +213,10 @@
                                    },
                                    everyDay: false,
                                    description: {
-                                        status: true,
-                                        text: ''
-                                   }
+                                        desPay: '',
+                                        desShow: ''
+                                   },
+                                   dateCategory: 'calendarOrg'
                               },
                               {
                                    date: '2023-06-12',
@@ -206,9 +229,10 @@
                                    },
                                    everyDay: false,
                                    description: {
-                                        status: true,
-                                        text: ''
-                                   }
+                                        desPay:'',
+                                        desShow:''
+                                   },
+                                   dateCategory: 'calendarOrg'
                               },
                               {
                                    date: '2023-06-26',
@@ -221,94 +245,41 @@
                                    },
                                    everyDay: false,
                                    description: {
-                                        status: true,
-                                        text: ''
-                                   }
+                                        desPay:'',
+                                        desShow: ''
+                                   },
+                                   dateCategory: 'calendarOrg'
                               },
                          ],
                          selectedDate: null,
+                         typeMode:'calendarOrg',
                          attributes: [],
-                         // [
-                         //      {
-                         //           dot: {
-                         //                style: {
-                         //                          backgroundColor: '#C47A2C',
-                         //                     },
-                         //           },
-                         //           popover: {
-                         //                visibility: 'hover',
-                         //                // hideIndicator: true,
-                         //                label: 'Take Noah to basketball practice.',
-                         //           },
-                         //           dates: [
-                         //                new Date(2023, 6, 4),
-                         //                new Date(2023, 6, 10),
-                         //                new Date(2023, 6, 15),
-                         //           ],
-                         //      },
-                         //      {
-                         //           dot: {
-                         //                style: {
-                         //                          backgroundColor: '#034A66',
-                         //                     },
-                         //           },
-                         //           popover: {
-                         //                visibility: 'hover',
-                         //                // hideIndicator: true,
-                         //                label: 'Test',
-                         //           },
-                         //           dates: [
-                         //                new Date(2023, 6, 12),
-                         //                new Date(2023, 6, 26),
-                         //                new Date(2023, 6, 15),
-                         //           ],
-                         //      },
-                         //      // {
-                         //      // highlight: {
-                         //      //      style:{
-                         //      //           backgroundColor: 'transparent',
-                         //      //           border: ' 2px solid #F9B974',
-                         //      //           borderRadius: '8px',
-                         //      //           fontWeight: '500',
-                         //      //           color: 'red'
-                         //      //      }
-                         //      // },
-                         //      // dates: [
-                         //      //      new Date(),
-                         //      // ],
-                         //      // },
-                         // ],
                          minDate: null,
                          maxDate: null,
                          messageFromChild: null,
                          everyDayArr: [],
                          monthArr: [], 
-                         sortedDates: []
+                         sortedDates: [],
+                         checkedDates: [],
+                         dateToShow: [],
+                         weekTime: {
+                              sumDays: 0,
+                              workFive: 0,
+                              workSix: 0,
+                              offFive: 0,
+                              offSix: 0,
+                              timeFiveWeek40: 0,
+                              timeFiveWeek35: 0,
+                              timeSixWeek40: 0,
+                              timeSixWeek35: 0,
+                         }
                     }
                },
-               watch: {
-               },
-               methods: {
-                    updateMessage(message) {
-                         this.messageFromChild = message
-                    },
-                    test(){
-                         this.isOn= 'true'
-                    },
-                    fillDates(){
-                         // this.dates = Array.from(Array(35).keys())
-                         console.log('parent', this.messageFromChild)
-                    },
-                    calcMinDate(){
-                         let lastDay =  new Date(new Date().getFullYear(), new Date().getMonth() - 1, 1)
-                         this.minDate = lastDay
-                    },
-                    calcMaxDate(){
-                         let firstDay =  new Date(new Date().getFullYear(), new Date().getMonth() + 2, 0)
-                         this.maxDate = firstDay
-                    },
-                    getDates(){
-                         this.dates.forEach(el => {
+               computed: {
+                    computedAttributes() {
+                         const attributes = []
+                         this.filterDays()
+                         this.dateToShow.forEach(el => {
                               try{
                                    var splitedRule = el.date.split('-')
                                    var formattedDate = new Date(splitedRule[0], splitedRule[1], splitedRule[2])
@@ -318,7 +289,6 @@
                               }
                               // console.log('formattedDate', formattedDate)
                               let checkValidDateRule = formattedDate instanceof Date && !isNaN(formattedDate)
-
                               if(checkValidDateRule && el.everyDay !== true){
                                    if(el.show === true){
                                         this.attributes.push({
@@ -352,14 +322,63 @@
                                    }
                               }
                               // console.log('attr', this.attributes)
+                         })
+                         return attributes
+                    },
+                    computedWeekTime(){
+                         const weekTime = {}
+                         this.weekTime = {
+                              sumDays: 31,
+                         }
+                         return weekTime
+                    }
+               },
+               watch: {
+                    // watchChange(typeMode){
+                    //      this.changeType()
+                    // }
+                    typeMode(newVal) {
+                         this.dateToShow = this.checkedDates.filter(el => {
+                              return el.dateCategory === newVal;
                          });
+                    },
+               },
+               methods: {
+                    updateMessage(message) {
+                         this.messageFromChild = message
+                    },
+                    test(){
+                         this.isOn= 'true'
+                    },
+                    fillDates(){
+                         // this.dates = Array.from(Array(35).keys())
+                         console.log('parent', this.messageFromChild)
+                    },
+                    calcMinDate(){
+                         let lastDay =  new Date(new Date().getFullYear(), new Date().getMonth() - 1, 1)
+                         this.minDate = lastDay
+                    },
+                    calcMaxDate(){
+                         let firstDay =  new Date(new Date().getFullYear(), new Date().getMonth() + 2, 0)
+                         this.maxDate = firstDay
                     },
                     onDayClick(day) {
                          // day.date if need date in selected
                          this.selectedDate = day.id
                     },
-                    filterDays(){
+                    checkDate(){
                          this.dates.filter(el=>{
+                              let dateObj = new Date(el.date) 
+                              if(dateObj instanceof Date && !isNaN(dateObj)){
+                                   this.checkedDates.push(el)
+                              }
+                         })
+                    },
+                    filterDays(){
+                         this.monthArr = []
+                         this.everyDayArr = []
+                         this.sortedDates = []
+                         this.dateToShow.filter(el=>{
                               if(el.everyDay !== true){
                                    this.monthArr.push(el)
                               }
@@ -371,12 +390,18 @@
                               return Number(new Date(a.date)) - Number(new Date(b.date))
                          })
                     },
+                    changeType(val){
+                         this.attributes = []
+                         this.dateToShow = this.checkedDates.filter(el=>{
+                              return el.dateCategory === this.typeMode
+                         })
+                    },
                },
                mounted() {
-                    this.fillDates()
+                    this.checkDate()
                     this.calcMinDate()
                     this.calcMaxDate()
-                    this.getDates()
+                    this.changeType()
                     this.filterDays()
                }
           })
