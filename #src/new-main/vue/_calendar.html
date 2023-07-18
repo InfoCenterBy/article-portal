@@ -4,7 +4,8 @@
           <div class="row row-container" id="vueCalendar">
                
                <div class="col-xxl-6">
-                    <button @click="testCheck">get current month</button>
+                    <!-- <button @click="testCheck">get current month</button> -->
+                    <div class="">{{currentMonth}}</div>
                     <div class="calendar-tabs-wrapper d-flex flex-column">
                          <div class="d-flex flex-row justify-content-around w-100">
                               <input type="radio" 
@@ -464,6 +465,7 @@
                               timeSixWeek35: 0,
                          },
                          monthTitle: '',
+                         currentMonth: 0
                     }
                },
                computed: {
@@ -586,8 +588,11 @@
                     changeType(){
                          let underLine = document.querySelector('.tab-underline-accent')
                          underLine.classList.toggle('tab-underline-checked')
+                         console.log('filter', this.checkedDates.filter(el=>{
+                              return new Date(el.date).getMonth() === this.currentMonth
+                         }))
                          this.dateToShow = this.checkedDates.filter(el=>{
-                              return el.dateCategory === this.typeMode
+                              return el.dateCategory === this.typeMode 
                          })
                     },
                     formatTitle(){
@@ -601,18 +606,28 @@
                          this.monthTitle = filteredTitle.join('')
                     },
                     checkMonth(){
+                         const target = this
+                         const calendar = this.$refs.calendar
                          let arrow = document.querySelectorAll('.vc-arrow')
                          arrow.forEach(function(el){
-                              el.addEventListener('click', ()=>{
-                                   let firstDay = document.querySelector('.vc-day.day-1')
-                                   console.log('firstDay', firstDay)
+                              el.addEventListener('click', function(){
+                                   // let firstDay = document.querySelector('.vc-day.day-1')
+                                   // console.log('firstDay', firstDay)
+                                   let newCurrentMonth = calendar.pages[0].month;
+                                   target.setNewMonth(newCurrentMonth)
                               })
                          })
                     },
-                    testCheck(){
-                         const calendar = this.$refs.calendar
-                         console.log(calendar.pages)
-                    },
+                    setNewMonth(newCurrentMonth){
+                         this.currentMonth = newCurrentMonth
+                         console.log('this.currentMonth', this.currentMonth)
+                    }
+                    // testCheck(){
+                    //      const calendar = this.$refs.calendar
+                    //      console.log('calendar.pages', calendar.pages[0])
+                    //      console.log('calendar',calendar)
+                    //      console.log('getPageDays', calendar.pageForThisMonth())
+                    // },
                },
                mounted() { 
                     this.checkDate()
@@ -622,7 +637,7 @@
                     this.setAttributes()
                     this.formatTitle()
                     this.checkMonth()
-                    this.testCheck()
+                    this.currentMonth = new Date().getMonth() + 1
                }
           })
           </script>
