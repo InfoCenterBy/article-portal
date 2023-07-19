@@ -7037,6 +7037,58 @@ html {
   width: 100% !important;
 }
 
+.vc-container {
+  border: none !important;
+}
+
+.calendar-tabs-wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.calendar-tabs-wrapper input[type=radio] {
+  display: none;
+}
+
+.calendar-tabs-wrapper label {
+  cursor: pointer;
+  z-index: 3;
+}
+
+.calendar-tabs-wrapper .tab-underline {
+  z-index: 2;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-gray);
+}
+
+.calendar-tabs-wrapper .tab-underline-accent {
+  z-index: 3;
+  position: relative;
+  background-color: var(--color-gold);
+  width: 50%;
+  height: 2px;
+  top: 2px;
+  -webkit-transition: all ease-out 0.3s;
+  -o-transition: all ease-out 0.3s;
+  transition: all ease-out 0.3s;
+  -webkit-transform: translate(100%);
+      -ms-transform: translate(100%);
+          transform: translate(100%);
+}
+
+.calendar-tabs-wrapper .tab-underline-accent.tab-underline-checked {
+  -webkit-transform: translateX(0%);
+      -ms-transform: translateX(0%);
+          transform: translateX(0%);
+}
+
+.is-interactive {
+  display: none !important;
+}
+
 @media (min-width: 576px) {
   .border-sm-top {
     border-top: 1px solid #e3e7eb !important;
