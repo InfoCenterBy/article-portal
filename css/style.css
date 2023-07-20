@@ -6927,6 +6927,11 @@ html {
   line-height: 37px;
 }
 
+.fs-24 {
+  font-size: 24px;
+  line-height: normal;
+}
+
 .border-10 {
   border-radius: 10px;
 }
@@ -7108,6 +7113,31 @@ html {
 .calendar-content {
   scrollbar-face-color: #D9D9D9;
   scrollbar-track-color: transparent;
+}
+
+.calendar-wrapper {
+  padding: 16px;
+  background-color: var(--color-white);
+  border-radius: 20px;
+  border: 1px solid var(--color-gray);
+}
+
+.calendar-dot {
+  display: inline-block;
+  border-radius: 50%;
+}
+
+.calendar-dot-pay {
+  background-color: var(--color-blue-light);
+}
+
+.calendar-dot-show {
+  background-color: var(--color-gold);
+}
+
+.calendar-content .calendar-dot {
+  width: 12px;
+  height: 12px;
 }
 
 @media (min-width: 576px) {
@@ -7467,6 +7497,10 @@ html {
 
   .fs-28 {
     line-height: calc(29px + 8 * ((100vw - 320px) / 1200));
+  }
+
+  .fs-24 {
+    font-size: calc(16px + 8 * ((100vw - 320px) / 1200));
   }
 }
 
@@ -8485,6 +8519,10 @@ html {
 
   .mobile-menu {
     display: block;
+  }
+
+  .calendar-wrapper {
+    padding: 4px;
   }
 }
 
