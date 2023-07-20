@@ -494,6 +494,7 @@
                     },
                     currentMonth(newVal){
                          this.setAttributes()
+                         this.calcTime()
                     }
                },
                methods: {
@@ -651,6 +652,40 @@
                          const currentPage = this.$refs.calendar.pages[0]
                          console.log(currentPage)
                          console.log('monthComps', currentPage.monthComps)
+                         let d = new Date(currentPage.monthComps.year, currentPage.monthComps.month, 0);
+                         let getTot = currentPage.monthComps.days
+                         this.weekTime.sumDays = getTot
+                         // console.log(daysInMonth(d.getMonth(),d.getFullYear()))
+                         let sat = new Array();
+                         let sun = new Array();
+                         let allOff = new Array()
+
+                         for(let i=1;i<=getTot;i++){
+                              let newDate = new Date(d.getFullYear(),d.getMonth(),i)
+                         // console.log(i+"-"+newDate.getDay());
+                              if(newDate.getDay()==0){
+                                   sat.push(i)
+                              }
+                              if(newDate.getDay()==6){
+                                   sun.push(i)
+                              }
+                              if(newDate.getDay() == 0 || newDate.getDay() == 6){
+                                   allOff.push(i)
+                              }
+                         }
+                         
+                         this.weekTime.workFive = getTot - allOff.length
+                         this.weekTime.workSix = getTot - sun.length
+                         this.weekTime.offFive = allOff.length
+                         this.weekTime.offSix = sun.length
+                         this.weekTime.timeFiveWeek40 = 8 * this.weekTime.workFive
+                         this.weekTime.timeFiveWeek35 = 7 * this.weekTime.workFive
+                         this.weekTime.timeSixWeek40 = 6.66 * this.weekTime.workSix
+                         this.weekTime.timeSixWeek35 = 5.83 * this.weekTime.workSix
+                         
+                         console.log('sat', sat);
+                         // console.log(sun);
+                         console.log('allOff', allOff)
                     }
                     // testCheck(){
                     //      const calendar = this.$refs.calendar
@@ -667,8 +702,8 @@
                     this.currentMonth = new Date().getMonth() + 1
                     this.changeType()
                     this.setAttributes()
-                    this.formatTitle(new Date()),
-                    this.calcTime()
+                    this.formatTitle(new Date())
+                    // this.calcTime()
                }
           })
           </script>
