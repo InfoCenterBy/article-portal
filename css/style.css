@@ -6013,11 +6013,6 @@ i {
   cursor: pointer;
 }
 
-.nav-container input {
-  border-radius: 2rem;
-  padding: 2px 20px;
-}
-
 .main-content {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -7089,6 +7084,32 @@ html {
   display: none !important;
 }
 
+.calendar-content {
+  max-height: 326px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 25px;
+}
+
+.calendar-content::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+.calendar-content::-webkit-scrollbar-thumb {
+  background: #D9D9D9;
+}
+
+.calendar-content::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 4px;
+}
+
+.calendar-content {
+  scrollbar-face-color: #D9D9D9;
+  scrollbar-track-color: transparent;
+}
+
 @media (min-width: 576px) {
   .border-sm-top {
     border-top: 1px solid #e3e7eb !important;
@@ -7689,6 +7710,10 @@ html {
 
   .vc-day-layer {
     left: 28px !important;
+  }
+
+  .calendar-content {
+    padding-right: 5px;
   }
 }
 

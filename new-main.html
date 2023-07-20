@@ -943,8 +943,7 @@
 
                     <div class="row row-container" id="vueCalendar">
 
-                              <div class="col-xxl-6">
-                    <div class="">{{currentMonth}}</div>
+                              <div class="col-xxl-6 flex-grow-1">
                     <div class="calendar-tabs-wrapper d-flex flex-column">
                          <div class="d-flex flex-row justify-content-around w-100">
                               <input type="radio" 
@@ -980,84 +979,79 @@
                          </div>
                     </div>
                </div>
-               <div class="col-xxl-6">
-                    <strong>События в <span v-if="monthTitle">{{monthTitle}}</span> 2023 года</strong>
-                    <p>
-                         <strong v-if="everyDayArr.length !== 0">Ежедневно</strong>
-                    </p>
-                    <div class="" v-for="info in everyDayArr">
-                         <div class="d-flex flex-row w-100">
-                              <div class="d-flex flex-column">
-                                   <div class="" v-if="info.show === true">
-                                        Представление
+               <div class="col-xxl-6 ">
+                    <strong>События в <span v-if="monthTitle">{{monthTitle}}</span> <span v-if="yearTitle">{{yearTitle}}</span> года</strong>
+                    <div class="calendar-content">
+                         <p>
+                              <strong v-if="everyDayArr.length !== 0">Ежедневно</strong>
+                         </p>
+                         <div class="my-3" v-for="info in everyDayArr">
+                              <div class="row row-container">
+                                   <div class="d-flex flex-row col-md-6" v-if="info.show === true">
+                                        <div class="">
+                                             Представление
+                                        </div>
+                                        <div v-if="info.show === true && info.addText.category === 'show'">
+                                             {{info.addText.text}}
+                                        </div>
                                    </div>
-                                   <div v-if="info.show === true && info.addText.category === 'show'">
-                                        {{info.addText.text}}
+                                   <div class="col-md-6" v-if="info.description">
+                                        {{info.description.desShow}}
                                    </div>
                               </div>
-                              <div class="" v-if="info.description">
-                                   {{info.description.desShow}}
+                              <div class="row row-container">
+                                   <div class="d-flex flex-row col-md-6" v-if="info.pay === true">
+                                        <div class="">
+                                             Уплата
+                                        </div>
+                                        <div v-if="info.pay === true && info.addText.category === 'pay'">
+                                             &nbsp;{{info.addText.text}}
+                                        </div>
+                                   </div>
+                                   <div class="col-md-6" v-if="info.description">
+                                        {{info.description.desPay}}
+                                   </div>
                               </div>
+                              <hr class="d-block mt-2">
                          </div>
-                         <div class="d-flex flex-row w-100">
-                              <div class="d-flex flex-column">
-                                   <div class="" v-if="info.pay === true">
-                                        Уплата
-                                   </div>
-                                   <div v-if="info.pay === true && info.addText.category === 'pay'">
-                                        &nbsp;{{info.addText.text}}
-                                   </div>
-                              </div>
-                              <div class="" v-if="info.description">
-                                   {{info.description.desPay}}
-                              </div>
-                         </div>
-                         <hr class="d-block my-2">
-                    </div>
-                    <div class="" v-for="info in sortedDates">
-
-                              <div class="">
+                         <div class="my-3" v-for="info in sortedDates">
+                              <div class="" :id="'date' + info?.date.split('-').join('')">
                                    <strong>
                                         {{info.date}}
                                    </strong>
                               </div>
                               <div class="">
-                                   <div class="d-flex flex-row w-100">
-                                        <div class="d-flex flex-column">
-                                             <div class="" v-if="info.show === true">
+                                   <div class="row row-container">
+                                        <div class="d-flex flex-row col-md-6" v-if="info.show === true">
+                                             <div class="" >
                                                   Представление
                                              </div>
                                              <div v-if="info.show === true && info.addText.category === 'show'">
                                                   &nbsp;{{info.addText.text}}
                                              </div>
                                         </div>
-                                        <div class="" v-if="info.description">
+                                        <div class="col-md-6" v-if="info.description">
                                              {{info.description.desShow}}
                                         </div>
                                    </div>
-
-                                                                      <div class="d-flex flex-row w-100">
-                                        <div class="d-flex flex-row">
-                                             <div class="d-flex flex-column">
-                                                  <div class="" v-if="info.pay === true">
-                                                       Уплата
-                                                  </div>
-                                                  <div v-if="info.pay === true && info.addText.category === 'pay'">
-                                                       &nbsp;{{info.addText.text}}
-                                                  </div>                                                  
+                                   <div class="row row-container">
+                                        <div class="d-flex flex-row col-md-6" v-if="info.pay === true">
+                                             <div class="" >
+                                                  Уплата
                                              </div>
-                                             <div class="" v-if="info.description">
-                                                  {{info.description.desPay}}
-                                             </div>
+                                             <div v-if="info.pay === true && info.addText.category === 'pay'">
+                                                  &nbsp;{{info.addText.text}}
+                                             </div>    
+                                        </div>                                              
+                                        <div class="col-md-6" v-if="info.description">
+                                             {{info.description.desPay}}
                                         </div>
                                    </div>
                               </div>
-                              <div class="col-xxl-6 d-flex flex-column">
-
-                                                                 </div>
+                              <hr class="d-block mt-2">
+                         </div>
                     </div>
-
-                                   </div>
+               </div>
           </div>
 
           <template id="test-comp-template">
@@ -1120,7 +1114,7 @@
                          // placeholder data
                          dates: [
                               {
-                                   date: '2023-06-04',
+                                   date: '2023-07-04',
                                    pay: true,
                                    show: true,
                                    weekDay: false,
@@ -1136,7 +1130,23 @@
                                    dateCategory: 'calendarOrg'
                               },
                               {
-                                   date: '2023-06-15',
+                                   date: '2023-07-28',
+                                   pay: true,
+                                   show: true,
+                                   weekDay: false,
+                                   addText:  {
+                                        text: '(за исключением нерезидентов)',
+                                        category: 'pay'
+                                   },
+                                   everyDay: false,
+                                   description: {
+                                        desPay: 'Налог на доходы иностранных организаций, не осуществляющих деятельность в Республике Беларусь через постоянное представительство',
+                                        desShow: 'Утилизационный сбор'
+                                   },
+                                   dateCategory: 'calendarOrg'
+                              },
+                              {
+                                   date: '2023-07-15',
                                    pay: true,
                                    show: true,
                                    weekDay: true,
@@ -1152,7 +1162,23 @@
                                    dateCategory: 'calendarOrg'
                               },
                               {
-                                   date: '2023-06-10',
+                                   date: '2023-07-25',
+                                   pay: true,
+                                   show: true,
+                                   weekDay: true,
+                                   addText: {
+                                        text: '',
+                                        category: ''
+                                   },
+                                   everyDay: false,
+                                   description: {
+                                        desPay: 'Оффшорный сбор',
+                                        desShow: 'НДС'
+                                   },
+                                   dateCategory: 'calendarOrg'
+                              },
+                              {
+                                   date: '2023-08-10',
                                    pay: false,
                                    show: true,
                                    weekDay: false,
@@ -1163,12 +1189,12 @@
                                    everyDay: false,
                                    description: {
                                         desPay: '',
-                                        desShow: ''
+                                        desShow: 'Текст'
                                    },
                                    dateCategory: 'calendarOrg'
                               },
                               {
-                                   date: '2023-06-12',
+                                   date: '2023-07-12',
                                    pay: true,
                                    show: false,
                                    weekDay: false,
@@ -1178,13 +1204,13 @@
                                    },
                                    everyDay: false,
                                    description: {
-                                        desPay:'',
+                                        desPay:'Утилизационный сбор',
                                         desShow:''
                                    },
                                    dateCategory: 'calendarOrg'
                               },
                               {
-                                   date: '2023-06-26',
+                                   date: '2023-08-26',
                                    pay: true,
                                    show: false,
                                    weekDay: false,
@@ -1194,13 +1220,13 @@
                                    },
                                    everyDay: false,
                                    description: {
-                                        desPay:'',
+                                        desPay:'Утилизационный сбор',
                                         desShow: ''
                                    },
                                    dateCategory: 'calendarOrg'
                               },
                               {
-                                   date: '2023-06-01',
+                                   date: '2023-07-01',
                                    pay: true,
                                    show: true,
                                    weekDay: true,
@@ -1216,7 +1242,7 @@
                                    dateCategory: 'calendarIP',
                                    },
                                    {
-                                   date: '2023-06-05',
+                                   date: '2023-07-05',
                                    pay: false,
                                    show: true,
                                    weekDay: false,
@@ -1226,13 +1252,13 @@
                                    },
                                    everyDay: true,
                                    description: {
-                                   desPay: 'НДС',
+                                   desPay: '',
                                    desShow: 'Оффшорный сбор',
                                    },
                                    dateCategory: 'calendarIP',
                                    },
                                    {
-                                   date: '2023-06-10',
+                                   date: '2023-08-10',
                                    pay: true,
                                    show: false,
                                    weekDay: false,
@@ -1243,12 +1269,12 @@
                                    everyDay: false,
                                    description: {
                                    desPay: 'Акцизный сбор',
-                                   desShow: 'НДС',
+                                   desShow: '',
                                    },
                                    dateCategory: 'calendarIP',
                                    },
                                    {
-                                   date: '2023-06-15',
+                                   date: '2023-07-15',
                                    pay: true,
                                    show: true,
                                    weekDay: false,
@@ -1264,7 +1290,7 @@
                                    dateCategory: 'calendarIP',
                                    },
                                    {
-                                   date: '2023-06-20',
+                                   date: '2023-07-20',
                                    pay: true,
                                    show: false,
                                    weekDay: true,
@@ -1275,12 +1301,12 @@
                                    everyDay: true,
                                    description: {
                                    desPay: 'Утилизационный сбор',
-                                   desShow: 'Налог на имущество физических лиц',
+                                   desShow: '',
                                    },
                                    dateCategory: 'calendarIP',
                                    },
                                    {
-                                   date: '2023-06-25',
+                                   date: '2023-08-25',
                                    pay: false,
                                    show: true,
                                    weekDay: true,
@@ -1290,15 +1316,15 @@
                                    },
                                    everyDay: true,
                                    description: {
-                                   desPay: 'Акцизный сбор',
+                                   desPay: '',
                                    desShow: 'Налог на добавленную стоимость',
                                    },
                                    dateCategory: 'calendarIP',
                                    },
                                    {
-                                   date: '2023-06-30',
+                                   date: '2023-07-30',
                                    pay: false,
-                                   show: false,
+                                   show: true,
                                    weekDay: false,
                                    addText: {
                                    text: '',
@@ -1306,13 +1332,13 @@
                                    },
                                    everyDay: true,
                                    description: {
-                                   desPay: 'Налог на доходы физических лиц',
+                                   desPay: '',
                                    desShow: 'Утилизационный сбор',
                                    },
                                    dateCategory: 'calendarIP',
                                    },
                                    {
-                                   date: '2023-08-05',
+                                   date: '2023-07-05',
                                    pay: true,
                                    show: true,
                                    weekDay: true,
@@ -1339,27 +1365,10 @@
                                    everyDay: true,
                                    description: {
                                    desPay: 'Оффшорный сбор',
-                                   desShow: 'Налог на прибыль',
+                                   desShow: '',
                                    },
                                    dateCategory: 'calendarIP',
                                    },
-                                   {
-                                   date: '2023-08-15',
-                                   pay: false,
-                                   show: true,
-                                   weekDay: true,
-                                   addText: {
-                                   text: '',
-                                   category: '',
-                                   },
-                                   everyDay: false,
-                                   description: {
-                                   desPay: 'НДС',
-                                   desShow: 'Акцизный сбор',
-                                   },
-                                   dateCategory: 'calendarIP',
-                                   },
-
                          ],
                          selectedDate: null,
                          typeMode:'calendarOrg',
@@ -1384,7 +1393,8 @@
                               timeSixWeek35: 0,
                          },
                          monthTitle: '',
-                         currentMonth: 0
+                         currentMonth: 0,
+                         yearTitle: ''
                     }
                },
                computed: {
@@ -1403,11 +1413,15 @@
                     typeMode(newVal) {
                          this.attributes = []
                          this.dateToShow = this.checkedDates.filter(el => {
-                              return el.dateCategory === newVal;
+                              let months = new Date(el.date).getMonth() + 1
+                              return el.dateCategory === newVal && months == this.currentMonth
                          });
                          this.setAttributes()
                          this.changeType()
                     },
+                    currentMonth(newVal){
+                         this.setAttributes()
+                    }
                },
                methods: {
                     updateMessage(message) {
@@ -1430,9 +1444,33 @@
                     },
                     onDayClick(day) {
                          // day.date if need date in selected
-                         this.selectedDate = day.id
-                         console.log('this.selectedDate = day.id', day)
-                    },
+                         this.selectedDate = day.date
+                         // console.log('this.selectedDate = day.id', {
+                         //      year: new Date(day.date).toLocaleString('ru', {
+                         //           year: 'numeric',
+                         //      }),
+                         //      month: new Date(day.date).toLocaleString('ru', {
+                         //           month: 'numeric',
+                         //      }),
+                         //      day: new Date(day.date).toLocaleString('ru', {
+                         //           day: 'numeric',
+                         //      }),
+                         // })
+                         let blockId = '#date' + day.id.split('-').join('')
+                         // $('.calendar-content').stop().animate({
+                         //      scrollTop: $(blockId).offset().top // класс объекта к которому приезжаем
+                         // }, 500);
+                         let elToScroll = document.querySelector(blockId)
+                         let coord = elToScroll.getBoundingClientRect()
+
+                         document.querySelector(blockId).scrollIntoView({
+                              behavior : 'smooth',
+                              block : 'center',
+                         })
+                         // document.querySelector('.calendar-content').scroll({top: coord.top - elToScroll.offsetHeight - 100, left: coord.left, behavior: 'smooth'})
+                         // document.querySelector('.calendar-content #date' + blockId).scrollIntoView()
+
+                                             },
                     checkDate(){
                          this.dates.filter(el=>{
                               let dateObj = new Date(el.date) 
@@ -1443,15 +1481,15 @@
                     },
                     setAttributes() {
                          this.filterDays()
+                         this.attributes = []
                          this.dateToShow.forEach(el => {
                               try{
                                    var splitedRule = el.date.split('-')
-                                   var formattedDate = new Date(splitedRule[0], splitedRule[1], splitedRule[2])
+                                   var formattedDate = new Date(splitedRule[0], new Number(splitedRule[1]) - 1, splitedRule[2])
                               }
                               catch(err){
                                    console.log('Error in date format', err)
                               }
-                              // console.log('formattedDate', formattedDate)
                               let checkValidDateRule = formattedDate instanceof Date && !isNaN(formattedDate)
                               if(checkValidDateRule && el.everyDay !== true){
                                    if(el.show === true){
@@ -1485,7 +1523,6 @@
                                         })
                                    }
                               }
-                              // console.log('attr', this.attributes)
                          })
                     },
                     filterDays(){
@@ -1507,22 +1544,29 @@
                     changeType(){
                          let underLine = document.querySelector('.tab-underline-accent')
                          underLine.classList.toggle('tab-underline-checked')
-                         console.log('filter', this.checkedDates.filter(el=>{
-                              return new Date(el.date).getMonth() === this.currentMonth
-                         }))
+                         this.filterDateToShow()
+                    },
+                    filterDateToShow(){
                          this.dateToShow = this.checkedDates.filter(el=>{
-                              return el.dateCategory === this.typeMode 
+                              let months = new Date(el.date).getMonth() + 1
+                              return el.dateCategory === this.typeMode && months == this.currentMonth
                          })
                     },
-                    formatTitle(){
-                         let localMonth = new Date().toLocaleString('ru', {
-                              month: 'long',
-                         })
-                         let splitedTitle = localMonth.split('')
+                    formatTitle(val){
+                         let localMonth = {
+                              month: new Date(val).toLocaleString('ru', {
+                                   month: 'long',
+                              }),
+                              year: new Date(val).toLocaleString('ru', {
+                                   year: 'numeric',
+                              }) 
+                         }
+                         let splitedTitle = localMonth.month.split('')
                          let filteredTitle = splitedTitle.filter(el=> el !== 'ь')
                          filteredTitle.push('е')
                          filteredTitle.join('')
                          this.monthTitle = filteredTitle.join('')
+                         this.yearTitle = localMonth.year
                     },
                     checkMonth(){
                          const target = this
@@ -1534,12 +1578,13 @@
                                    // console.log('firstDay', firstDay)
                                    let newCurrentMonth = calendar.pages[0].month;
                                    target.setNewMonth(newCurrentMonth)
+                                   target.filterDateToShow()
+                                   target.formatTitle(new Date(calendar.pages[0].year, calendar.pages[0].month - 1, 1).toISOString())
                               })
                          })
                     },
                     setNewMonth(newCurrentMonth){
                          this.currentMonth = newCurrentMonth
-                         console.log('this.currentMonth', this.currentMonth)
                     }
                     // testCheck(){
                     //      const calendar = this.$refs.calendar
@@ -1552,11 +1597,11 @@
                     this.checkDate()
                     this.calcMinDate()
                     this.calcMaxDate()
-                    this.changeType()
-                    this.setAttributes()
-                    this.formatTitle()
                     this.checkMonth()
                     this.currentMonth = new Date().getMonth() + 1
+                    this.changeType()
+                    this.setAttributes()
+                    this.formatTitle(new Date())
                }
           })
           </script>
