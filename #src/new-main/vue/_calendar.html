@@ -1,129 +1,129 @@
 <div class="main-section">
      <div class="section-accent">
           
-          <div class="row row-container" id="vueCalendar">
-               
-               <div class="col-xxl-6 flex-grow-1">
-                    <!-- <button @click="testCheck">get current month</button> -->
-                    <!-- <div class="">{{currentMonth}}</div> -->
-                    <div class="calendar-tabs-wrapper d-flex flex-column">
-                         <div class="d-flex flex-row justify-content-around w-100">
-                              <input type="radio" 
-                              name="calendarType" 
-                              id="calendarOrg" 
-                              v-model="typeMode" 
-                              value="calendarOrg" 
-                              v-on:click="this.typeMode = 'calendarOrg'">
-                              <label for="calendarOrg" class="tab-toggle w-100 d-flex justify-content-center">Организациям</label>
-                              <input type="radio" 
+          <div class="" id="vueCalendar">
+               <div class="calendar-wrapper row row-container">
+                    <div class="col-xxl-6">
+                         <!-- <button @click="testCheck">get current month</button> -->
+                         <!-- <div class="">{{currentMonth}}</div> -->
+                         <div class="calendar-tabs-wrapper d-flex flex-column">
+                              <div class="d-flex flex-row justify-content-around w-100">
+                                   <input type="radio" 
                                    name="calendarType" 
-                                   id="calendarIP" 
+                                   id="calendarOrg" 
                                    v-model="typeMode" 
-                                   value="calendarIP" 
-                                   v-on:click="this.typeMode = 'calendarIP'">
-                              <label for="calendarIP" class="tab-toggle w-100 d-flex justify-content-center">ИП</label>
+                                   value="calendarOrg" 
+                                   v-on:click="this.typeMode = 'calendarOrg'">
+                                   <label for="calendarOrg" class="tab-toggle w-100 d-flex justify-content-center">Организациям</label>
+                                   <input type="radio" 
+                                        name="calendarType" 
+                                        id="calendarIP" 
+                                        v-model="typeMode" 
+                                        value="calendarIP" 
+                                        v-on:click="this.typeMode = 'calendarIP'">
+                                   <label for="calendarIP" class="tab-toggle w-100 d-flex justify-content-center">ИП</label>
+                              </div>
+                              <div class="tab-underline-accent"></div>
+                              <div class="tab-underline w-100"></div>
                          </div>
-                         <div class="tab-underline-accent"></div>
-                         <div class="tab-underline w-100"></div>
+                         <v-calendar 
+                         borderless 
+                         :attributes='attributes'
+                         :min-date="minDate"
+                         :max-date="maxDate"
+                         @dayclick="onDayClick"
+                         class="mt-3"
+                         ref="calendar"
+                         ></v-calendar>
+                         <!-- <test-comp @message-updated="updateMessage"></test-comp>
+                         <div v-if="messageFromChild">
+                              {{ messageFromChild }}
+                         </div> -->
+                         <!-- <div class="" v-if="selectedDate === null">
+                              Ничего не выбрано
+                         </div> -->
+                         <div class="" v-if="selectedDate">
+                              <div class="" v-if="selectedDate !== null">
+                                   {{selectedDate}}
+                              </div>
+                         </div>
                     </div>
-                    <v-calendar 
-                    borderless 
-                    :attributes='attributes'
-                    :min-date="minDate"
-                    :max-date="maxDate"
-                    @dayclick="onDayClick"
-                    class="mt-3"
-                    ref="calendar"
-                    ></v-calendar>
-                    <!-- <test-comp @message-updated="updateMessage"></test-comp>
-                    <div v-if="messageFromChild">
-                         {{ messageFromChild }}
-                    </div> -->
-                    <!-- <div class="" v-if="selectedDate === null">
-                         Ничего не выбрано
-                    </div> -->
-                    <div class="" v-if="selectedDate">
-                         <div class="" v-if="selectedDate !== null">
-                              {{selectedDate}}
-                         </div>
-                    </div>
-               </div>
-               <div class="col-xxl-6 ">
-                    <strong>События в <span v-if="monthTitle">{{monthTitle}}</span> <span v-if="yearTitle">{{yearTitle}}</span> года</strong>
-                    <div class="calendar-content">
-                         <p>
-                              <strong v-if="everyDayArr.length !== 0">Ежедневно</strong>
-                         </p>
-                         <div class="my-3" v-for="info in everyDayArr">
-                              <div class="row row-container">
-                                   <div class="d-flex flex-row col-md-6" v-if="info.show === true">
-                                        <div class="">
-                                             Представление
-                                        </div>
-                                        <div v-if="info.show === true && info.addText.category === 'show'">
-                                             {{info.addText.text}}
-                                        </div>
-                                   </div>
-                                   <div class="col-md-6" v-if="info.description">
-                                        {{info.description.desShow}}
-                                   </div>
-                              </div>
-                              <div class="row row-container">
-                                   <div class="d-flex flex-row col-md-6" v-if="info.pay === true">
-                                        <div class="">
-                                             Уплата
-                                        </div>
-                                        <div v-if="info.pay === true && info.addText.category === 'pay'">
-                                             &nbsp;{{info.addText.text}}
-                                        </div>
-                                   </div>
-                                   <div class="col-md-6" v-if="info.description">
-                                        {{info.description.desPay}}
-                                   </div>
-                              </div>
-                              <hr class="d-block mt-2">
-                         </div>
-                         <div class="my-3" v-for="info in sortedDates">
-                              <div class="" :id="'date' + info?.date.split('-').join('')">
-                                   <strong>
-                                        {{info.date}}
-                                   </strong>
-                              </div>
-                              <div class="">
+                    <div class="col-xxl-6 ">
+                         <strong class="ff-pt-serif fs-24">События в <span v-if="monthTitle">{{monthTitle}}</span> <span v-if="yearTitle">{{yearTitle}}</span> года</strong>
+                         <div class="calendar-content mt-3">
+                              <strong v-if="everyDayArr.length !== 0" class="ff-pt-serif">Ежедневно</strong>
+                              <div class="mt-2"></div>
+                              <div class="my-2" v-for="info in everyDayArr">
                                    <div class="row row-container">
-                                        <div class="d-flex flex-row col-md-6" v-if="info.show === true">
-                                             <div class="" >
-                                                  Представление
-                                             </div>
-                                             <div v-if="info.show === true && info.addText.category === 'show'">
-                                                  &nbsp;{{info.addText.text}}
-                                             </div>
+                                        <div class="col-md-6" v-if="info.show === true">
+                                             <div class="calendar-dot calendar-dot-show me-1"></div>
+                                             Представление
+                                             <span v-if="info.show === true && info.addText.category === 'show'">
+                                                  {{info.addText.text}}
+                                             </span>
                                         </div>
                                         <div class="col-md-6" v-if="info.description">
                                              {{info.description.desShow}}
                                         </div>
                                    </div>
                                    <div class="row row-container">
-                                        <div class="d-flex flex-row col-md-6" v-if="info.pay === true">
-                                             <div class="" >
-                                                  Уплата
-                                             </div>
-                                             <div v-if="info.pay === true && info.addText.category === 'pay'">
+                                        <div class="col-md-6" v-if="info.pay === true">
+                                             <div class="calendar-dot calendar-dot-pay me-1"></div>
+                                             Уплата
+                                             <span v-if="info.pay === true && info.addText.category === 'pay'">
                                                   &nbsp;{{info.addText.text}}
-                                             </div>    
-                                        </div>                                              
+                                             </span>
+                                        </div>
                                         <div class="col-md-6" v-if="info.description">
                                              {{info.description.desPay}}
                                         </div>
                                    </div>
+                                   <hr class="d-block mt-2">
                               </div>
-                              <hr class="d-block mt-2">
+                              <div class="my-2" v-for="info in sortedDates">
+                                   <div class="" :id="'date' + info?.date.split('-').join('')">
+                                        <strong class="ff-pt-serif">
+                                             {{info.date}}
+                                        </strong>
+                                   </div>
+                                   <div class="mt-2"></div>
+                                   <div class="mt-2">
+                                        <div class="row row-container">
+                                             <div class="col-md-6" v-if="info.show === true">
+                                                  <div class="calendar-dot calendar-dot-show me-1"></div>
+                                                  Представление
+                                                  <span v-if="info.show === true && info.addText.category === 'show'">
+                                                       &nbsp;{{info.addText.text}}
+                                                  </span>
+                                             </div>
+                                             <div class="col-md-6" v-if="info.description">
+                                                  {{info.description.desShow}}
+                                             </div>
+                                        </div>
+                                        <div class="row row-container">
+                                             <div class="col-md-6" v-if="info.pay === true">
+                                                  <div class="calendar-dot calendar-dot-pay me-1"></div>
+                                                  Уплата
+                                                  <span v-if="info.pay === true && info.addText.category === 'pay'">
+                                                       &nbsp;{{info.addText.text}}
+                                                  </span>    
+                                             </div>                                              
+                                             <div class="col-md-6" v-if="info.description">
+                                                  {{info.description.desPay}}
+                                             </div>
+                                        </div>
+                                   </div>
+                                   <hr class="d-block mt-2">
+                              </div>
                          </div>
                     </div>
                </div>
                <!-- <div class="calendar-time-block" v-for="(value, key) in weekTime">
                     <div>{{ key }}--{{value}}</div>
                </div> -->
+               <div class="" v-for="(value, key) in weekTime">
+                    {{key}}-{{value}}
+               </div>
           </div>
 
           <template id="test-comp-template">
@@ -213,7 +213,7 @@
                                    },
                                    everyDay: false,
                                    description: {
-                                        desPay: 'Налог на доходы иностранных организаций, не осуществляющих деятельность в Республике Беларусь через постоянное представительство',
+                                        desPay: 'На доходы налог иностранных организаций, не осуществляющих деятельность в Республике Беларусь через постоянное представительство',
                                         desShow: 'Утилизационный сбор'
                                    },
                                    dateCategory: 'calendarOrg'
@@ -518,26 +518,19 @@
                     onDayClick(day) {
                          // day.date if need date in selected
                          this.selectedDate = day.date
-                         // console.log('this.selectedDate = day.id', {
-                         //      year: new Date(day.date).toLocaleString('ru', {
-                         //           year: 'numeric',
-                         //      }),
-                         //      month: new Date(day.date).toLocaleString('ru', {
-                         //           month: 'numeric',
-                         //      }),
-                         //      day: new Date(day.date).toLocaleString('ru', {
-                         //           day: 'numeric',
-                         //      }),
-                         // })
-                         let blockId = '#date' + day.id.split('-').join('')
-                         // $('.calendar-content').stop().animate({
-                         //      scrollTop: $(blockId).offset().top // класс объекта к которому приезжаем
-                         // }, 500);
-                         let elToScroll = document.querySelector(blockId)
-                         let coord = elToScroll.getBoundingClientRect()
-                         document.querySelector('.calendar-content').scroll({top: coord.top - elToScroll.offsetHeight - 100, left: coord.left, behavior: 'smooth'})
-                         // document.querySelector('.calendar-content #date' + blockId).scrollIntoView()
                          
+                         let blockId = '#date' + day.id.split('-').join('')
+                         let elToScroll = document.querySelector(blockId)
+                         var is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+                         if(elToScroll && !is_safari){
+                              elToScroll.scrollIntoView({
+                                   behavior : 'smooth',
+                                   block : 'center',
+                              })
+                         }
+                         if(elToScroll && is_safari){
+                              elToScroll.scrollIntoView(false)
+                         }
                     },
                     checkDate(){
                          this.dates.filter(el=>{
@@ -653,6 +646,11 @@
                     },
                     setNewMonth(newCurrentMonth){
                          this.currentMonth = newCurrentMonth
+                    },
+                    calcTime(){
+                         const currentPage = this.$refs.calendar.pages[0]
+                         console.log(currentPage)
+                         console.log('monthComps', currentPage.monthComps)
                     }
                     // testCheck(){
                     //      const calendar = this.$refs.calendar
@@ -669,7 +667,8 @@
                     this.currentMonth = new Date().getMonth() + 1
                     this.changeType()
                     this.setAttributes()
-                    this.formatTitle(new Date())
+                    this.formatTitle(new Date()),
+                    this.calcTime()
                }
           })
           </script>

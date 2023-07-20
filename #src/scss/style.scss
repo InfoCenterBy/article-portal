@@ -668,6 +668,11 @@ body {
   @include adaptiv-value('line-height', 37, 29, 1);
 }
 
+.fs-24{
+  @include adaptiv-value('font-size', 24, 16, 1);
+  line-height: normal;
+}
+
 .border-10{
   border-radius: 10px;
 }
