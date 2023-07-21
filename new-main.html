@@ -1061,16 +1061,19 @@
                     </div>
                </div>
                <div class="row row-container mt-3">
-                    <div class="col-xxl-4">
-                         <div class="d-flex flex-column justify-content-between">
-                              <div class="calendar-today">
-
+                    <div class="col-xxl-4 d-flex flex-column justify-content-between">
+                         <div class="calendar-today">
+                              <span class="color-nav-black d-block">Сегодня</span>
+                              <div class="mt-2">
+                                   <i class="bi bi-calendar color-gold fs-14 me-1"></i>
+                                   <span class="color-gold fs-24 ff-pt-serif">{{weekTime.todayDate.dateNumber}}</span>
+                                   <span class="fs-24 ff-pt-serif">({{weekTime.todayDate.dayOfWeek}})</span>
                               </div>
-                              <div class="work-time-elem d-flex flex-row align-items-center">
-                                   <span class="fs-16 color-nav-black">Календарные дни</span>
-                                   <div class="time-underline mt-2 mx-2"></div>
-                                   <span class="color-gold fs-18">{{weekTime.sumDays}}</span>
-                              </div>
+                         </div>
+                         <div class="work-time-elem d-flex flex-row align-items-center">
+                              <span class="fs-16 color-nav-black">Календарные дни</span>
+                              <div class="time-underline mt-2 mx-2"></div>
+                              <span class="color-gold fs-18">{{weekTime.sumDays}}</span>
                          </div>
                     </div>
                     <div class="col-xxl-4 d-flex flex-column justify-content-between">
@@ -1477,7 +1480,7 @@
                               timeSixWeek40: 0,
                               timeSixWeek35: 0,
                               todayDate: {
-                                   date: '',
+                                   dateNumber: '',
                                    dayOfWeek: '',
                               },
                          },
@@ -1707,6 +1710,23 @@
                                                   console.log('sat', sat);
                          // console.log(sun);
                          console.log('allOff', allOff)
+                    },
+                    setToday(){
+                         const days = [
+                              'воскресенье',
+                              'понедельник',
+                              'вторник',
+                              'среда',
+                              'четверг',
+                              'пятница',
+                              'суббота'
+                         ];
+                         let day = new Date()
+                         let textDay = day.getDay()
+                         let numberDay = day.toLocaleDateString().split('.')
+                         this.weekTime.todayDate.dayOfWeek = days[textDay]
+                         this.weekTime.todayDate.dateNumber = numberDay[0] + '.' + numberDay[1]
+                         // + ' ' + day.toLocaleString('default', {month: 'long'}) if need text month
                     }
                     // testCheck(){
                     //      const calendar = this.$refs.calendar
@@ -1725,6 +1745,7 @@
                     this.setAttributes()
                     this.formatTitle(new Date())
                     // this.calcTime()
+                    this.setToday()
                }
           })
           </script>

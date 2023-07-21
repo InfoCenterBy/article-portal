@@ -7169,6 +7169,13 @@ html {
   border-bottom: 1px dashed var(--color-gold);
 }
 
+.calendar-today {
+  border-radius: 20px;
+  border: 1px solid var(--color-gray);
+  background-color: var(--color-white);
+  padding: 32px 24px;
+}
+
 @media (min-width: 576px) {
   .border-sm-top {
     border-top: 1px solid #e3e7eb !important;
