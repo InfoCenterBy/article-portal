@@ -677,4 +677,18 @@ body {
   border-radius: 10px;
 }
 
+.fs-18{
+  @include adaptiv-value('font-size', 18, 14, 1);
+  line-height: normal;
+}
+
+.fs-16{
+  @include adaptiv-value('font-size', 16, 14, 1);
+  line-height: normal
+}
+
+.color-nav-black{
+  color: var(--color-nav-black)
+}
+
 @import 'calendar.scss';

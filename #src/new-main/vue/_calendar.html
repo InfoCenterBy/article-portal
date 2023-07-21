@@ -48,7 +48,7 @@
                               </div>
                          </div>
                     </div>
-                    <div class="col-xxl-6 ">
+                    <div class="col-xxl-6">
                          <strong class="ff-pt-serif fs-24">События в <span v-if="monthTitle">{{monthTitle}}</span> <span v-if="yearTitle">{{yearTitle}}</span> года</strong>
                          <div class="calendar-content mt-3">
                               <strong v-if="everyDayArr.length !== 0" class="ff-pt-serif">Ежедневно</strong>
@@ -56,7 +56,7 @@
                               <div class="my-2" v-for="info in everyDayArr">
                                    <div class="row row-container">
                                         <div class="col-md-6" v-if="info.show === true">
-                                             <div class="calendar-dot calendar-dot-show me-1"></div>
+                                             <div class="calendar-dot calendar-dot-sm calendar-dot-show me-1"></div>
                                              Представление
                                              <span v-if="info.show === true && info.addText.category === 'show'">
                                                   {{info.addText.text}}
@@ -68,7 +68,7 @@
                                    </div>
                                    <div class="row row-container">
                                         <div class="col-md-6" v-if="info.pay === true">
-                                             <div class="calendar-dot calendar-dot-pay me-1"></div>
+                                             <div class="calendar-dot calendar-dot-sm calendar-dot-pay me-1"></div>
                                              Уплата
                                              <span v-if="info.pay === true && info.addText.category === 'pay'">
                                                   &nbsp;{{info.addText.text}}
@@ -90,7 +90,7 @@
                                    <div class="mt-2">
                                         <div class="row row-container">
                                              <div class="col-md-6" v-if="info.show === true">
-                                                  <div class="calendar-dot calendar-dot-show me-1"></div>
+                                                  <div class="calendar-dot calendar-dot-sm calendar-dot-show me-1"></div>
                                                   Представление
                                                   <span v-if="info.show === true && info.addText.category === 'show'">
                                                        &nbsp;{{info.addText.text}}
@@ -102,7 +102,7 @@
                                         </div>
                                         <div class="row row-container">
                                              <div class="col-md-6" v-if="info.pay === true">
-                                                  <div class="calendar-dot calendar-dot-pay me-1"></div>
+                                                  <div class="calendar-dot calendar-dot-sm calendar-dot-pay me-1"></div>
                                                   Уплата
                                                   <span v-if="info.pay === true && info.addText.category === 'pay'">
                                                        &nbsp;{{info.addText.text}}
@@ -117,13 +117,104 @@
                               </div>
                          </div>
                     </div>
+                    
+               </div>
+               <div class="w-100 row row-container mt-2">
+                    <div class="col-xxl-6 col-12 d-flex align-items-center my-1">
+                         <div class="calendar-dot calendar-dot-lg calendar-dot-pay me-1"></div>
+                         <span class="color-gray-dark fs-14">Уплата налогов, сборов и неналоговых платежей</span>
+                    </div>
+                    <div class="col-xxl-6 col-12 d-flex align-items-center my-1">
+                         <div class="calendar-dot calendar-dot-lg calendar-dot-show me-1"></div>
+                         <span class="color-gray-dark fs-14">Представление деклараций</span>
+                    </div>
                </div>
                <!-- <div class="calendar-time-block" v-for="(value, key) in weekTime">
                     <div>{{ key }}--{{value}}</div>
                </div> -->
-               <div class="" v-for="(value, key) in weekTime">
-                    {{key}}-{{value}}
+               <div class="row row-container mt-3">
+                    <div class="col-xxl-4 d-flex flex-column justify-content-between">
+                         <div class="calendar-today">
+                              <span class="color-nav-black d-block">Сегодня</span>
+                              <div class="mt-2">
+                                   <i class="bi bi-calendar color-gold fs-14 me-1"></i>
+                                   <span class="color-gold fs-24 ff-pt-serif">{{weekTime.todayDate.dateNumber}}</span>
+                                   <span class="fs-24 ff-pt-serif">({{weekTime.todayDate.dayOfWeek}})</span>
+                              </div>
+                         </div>
+                         <div class="work-time-elem d-flex flex-row align-items-center">
+                              <span class="fs-16 color-nav-black">Календарные дни</span>
+                              <div class="time-underline mt-2 mx-2"></div>
+                              <span class="color-gold fs-18">{{weekTime.sumDays}}</span>
+                         </div>
+                    </div>
+                    <div class="col-xxl-4 d-flex flex-column justify-content-between">
+                         <div class="work-day-block">
+                              <strong class="fs-16 d-block">
+                                   Рабочие дни:
+                              </strong>
+                              <div class="work-time-elem d-flex flex-row align-items-center my-1">
+                                   <span class="fs-16 color-nav-black">по пятидневной рабочей неделе</span>
+                                   <div class="time-underline mt-2 mx-2"></div>
+                                   <span class="color-gold fs-18">{{weekTime.workFive}}</span>
+                              </div>
+                              <div class="work-time-elem d-flex flex-row align-items-center my-1">
+                                   <span class="fs-16 color-nav-black">по шестидневной рабочей неделе</span>
+                                   <div class="time-underline mt-2 mx-2"></div>
+                                   <span class="color-gold fs-18">{{weekTime.workSix}}</span>
+                              </div>
+                         </div>
+                         <div class="work-day-block mt-2">
+                              <strong class="fs-16 d-block">
+                                   Нерабочие дни (выходные и праздничные дни): 
+                              </strong>
+                              <div class="work-time-elem d-flex flex-row align-items-center my-1">
+                                   <span class="fs-16 color-nav-black">по пятидневной рабочей неделе</span>
+                                   <div class="time-underline mt-2 mx-2"></div>
+                                   <span class="color-gold fs-18">{{weekTime.offFive}}</span>
+                              </div>
+                              <div class="work-time-elem d-flex flex-row align-items-center my-1">
+                                   <span class="fs-16 color-nav-black">по шестидневной рабочей неделе</span>
+                                   <div class="time-underline mt-2 mx-2"></div>
+                                   <span class="color-gold fs-18">{{weekTime.offSix}}</span>
+                              </div>
+                         </div>
+                    </div>
+                    <div class="col-xxl-4 d-flex flex-column justify-content-between">
+                         <div class="work-day-block">
+                              <strong class="fs-16 d-block">
+                                   Расчетная норма рабочего времени (в часах):
+                              </strong>
+                              <span class="fw-bold fs-14">для пятидневной рабочей недели:</span>
+                              <div class="work-time-elem d-flex flex-row align-items-center my-1">
+                                   <span class="fs-16 color-nav-black">при 40-часовой рабочей неделе</span>
+                                   <div class="time-underline mt-2 mx-2"></div>
+                                   <span class="color-gold fs-18">{{weekTime.timeFiveWeek40}}</span>
+                              </div>
+                              <div class="work-time-elem d-flex flex-row align-items-center my-1">
+                                   <span class="fs-16 color-nav-black">при 35-часовой рабочей неделе</span>
+                                   <div class="time-underline mt-2 mx-2"></div>
+                                   <span class="color-gold fs-18">{{weekTime.timeFiveWeek35}}</span>
+                              </div>
+                         </div>
+                         <div class="work-day-block mt-2">
+                              <span class="fw-bold fs-14">для шестидневной рабочей недели:</span>
+                              <div class="work-time-elem d-flex flex-row align-items-center my-1">
+                                   <span class="fs-16 color-nav-black">при 40-часовой рабочей неделе</span>
+                                   <div class="time-underline mt-2 mx-2"></div>
+                                   <span class="color-gold fs-18">{{weekTime.timeSixWeek40}}</span>
+                              </div>
+                              <div class="work-time-elem d-flex flex-row align-items-center my-1">
+                                   <span class="fs-16 color-nav-black">при 35-часовой рабочей неделе</span>
+                                   <div class="time-underline mt-2 mx-2"></div>
+                                   <span class="color-gold fs-18">{{weekTime.timeSixWeek35}}</span>
+                              </div>
+                         </div>
+                    </div>
                </div>
+               <!-- <div class="" v-for="(value, key) in weekTime">
+                    {{key}}-{{value}}
+               </div> -->
           </div>
 
           <template id="test-comp-template">
@@ -151,7 +242,7 @@
                     //      })
                     //      console.log('responce', responce)
                     // },
-                    checkWeekDay(){
+                    checkweekend(){
                          axios.get('https://isdayoff.ru/today')
                               .then(response => {
                                    if(response.data == '0'){
@@ -170,7 +261,7 @@
                     }
                },
                mounted() {
-                    this.checkWeekDay()
+                    this.checkweekend()
                }
           });
 
@@ -190,7 +281,7 @@
                                    date: '2023-07-04',
                                    pay: true,
                                    show: true,
-                                   weekDay: false,
+                                   weekend: false,
                                    addText:  {
                                         text: '(за исключением нерезидентов)',
                                         category: 'pay'
@@ -206,7 +297,7 @@
                                    date: '2023-07-28',
                                    pay: true,
                                    show: true,
-                                   weekDay: false,
+                                   weekend: false,
                                    addText:  {
                                         text: '(за исключением нерезидентов)',
                                         category: 'pay'
@@ -222,7 +313,7 @@
                                    date: '2023-07-15',
                                    pay: true,
                                    show: true,
-                                   weekDay: true,
+                                   weekend: false,
                                    addText: {
                                         text: '',
                                         category: ''
@@ -238,7 +329,7 @@
                                    date: '2023-07-25',
                                    pay: true,
                                    show: true,
-                                   weekDay: true,
+                                   weekend: false,
                                    addText: {
                                         text: '',
                                         category: ''
@@ -254,7 +345,7 @@
                                    date: '2023-08-10',
                                    pay: false,
                                    show: true,
-                                   weekDay: false,
+                                   weekend: false,
                                    addText: {
                                         text: '',
                                         category: ''
@@ -270,7 +361,7 @@
                                    date: '2023-07-12',
                                    pay: true,
                                    show: false,
-                                   weekDay: false,
+                                   weekend: false,
                                    addText: {
                                         text: '',
                                         category: ''
@@ -283,10 +374,10 @@
                                    dateCategory: 'calendarOrg'
                               },
                               {
-                                   date: '2023-08-26',
+                                   date: '2023-08-25',
                                    pay: true,
                                    show: false,
-                                   weekDay: false,
+                                   weekend: false,
                                    addText: {
                                         text: '',
                                         category: ''
@@ -299,10 +390,10 @@
                                    dateCategory: 'calendarOrg'
                               },
                               {
-                                   date: '2023-07-01',
+                                   date: '2023-07-06',
                                    pay: true,
                                    show: true,
-                                   weekDay: true,
+                                   weekend: false,
                                    addText: {
                                    text: '(за исключением нерезидентов)',
                                    category: 'pay',
@@ -318,7 +409,7 @@
                                    date: '2023-07-05',
                                    pay: false,
                                    show: true,
-                                   weekDay: false,
+                                   weekend: false,
                                    addText: {
                                    text: '',
                                    category: '',
@@ -334,7 +425,7 @@
                                    date: '2023-08-10',
                                    pay: true,
                                    show: false,
-                                   weekDay: false,
+                                   weekend: false,
                                    addText: {
                                    text: '',
                                    category: '',
@@ -347,10 +438,10 @@
                                    dateCategory: 'calendarIP',
                                    },
                                    {
-                                   date: '2023-07-15',
+                                   date: '2023-07-14',
                                    pay: true,
                                    show: true,
-                                   weekDay: false,
+                                   weekend: false,
                                    addText: {
                                    text: '',
                                    category: '',
@@ -366,7 +457,7 @@
                                    date: '2023-07-20',
                                    pay: true,
                                    show: false,
-                                   weekDay: true,
+                                   weekend: false,
                                    addText: {
                                    text: '',
                                    category: '',
@@ -382,7 +473,7 @@
                                    date: '2023-08-25',
                                    pay: false,
                                    show: true,
-                                   weekDay: true,
+                                   weekend: false,
                                    addText: {
                                    text: '',
                                    category: '',
@@ -398,7 +489,7 @@
                                    date: '2023-07-30',
                                    pay: false,
                                    show: true,
-                                   weekDay: false,
+                                   weekend: false,
                                    addText: {
                                    text: '',
                                    category: '',
@@ -414,7 +505,7 @@
                                    date: '2023-07-05',
                                    pay: true,
                                    show: true,
-                                   weekDay: true,
+                                   weekend: false,
                                    addText: {
                                    text: '',
                                    category: '',
@@ -430,7 +521,7 @@
                                    date: '2023-08-10',
                                    pay: true,
                                    show: false,
-                                   weekDay: true,
+                                   weekend: false,
                                    addText: {
                                    text: '',
                                    category: '',
@@ -464,10 +555,14 @@
                               timeFiveWeek35: 0,
                               timeSixWeek40: 0,
                               timeSixWeek35: 0,
+                              todayDate: {
+                                   dateNumber: '',
+                                   dayOfWeek: '',
+                              },
                          },
                          monthTitle: '',
                          currentMonth: 0,
-                         yearTitle: ''
+                         yearTitle: '',
                     }
                },
                computed: {
@@ -659,6 +754,11 @@
                          let sat = new Array();
                          let sun = new Array();
                          let allOff = new Array()
+                         let originOff
+
+                         this.dates.filter(el=>{
+                              if(el.weekend === true) console.log('el', el)
+                         })
 
                          for(let i=1;i<=getTot;i++){
                               let newDate = new Date(d.getFullYear(),d.getMonth(),i)
@@ -680,12 +780,29 @@
                          this.weekTime.offSix = sun.length
                          this.weekTime.timeFiveWeek40 = 8 * this.weekTime.workFive
                          this.weekTime.timeFiveWeek35 = 7 * this.weekTime.workFive
-                         this.weekTime.timeSixWeek40 = 6.66 * this.weekTime.workSix
-                         this.weekTime.timeSixWeek35 = 5.83 * this.weekTime.workSix
+                         this.weekTime.timeSixWeek40 = Math.ceil(40/6 * this.weekTime.workSix)
+                         this.weekTime.timeSixWeek35 = Math.ceil(35/6 * this.weekTime.workSix)
                          
                          console.log('sat', sat);
                          // console.log(sun);
                          console.log('allOff', allOff)
+                    },
+                    setToday(){
+                         const days = [
+                              'воскресенье',
+                              'понедельник',
+                              'вторник',
+                              'среда',
+                              'четверг',
+                              'пятница',
+                              'суббота'
+                         ];
+                         let day = new Date()
+                         let textDay = day.getDay()
+                         let numberDay = day.toLocaleDateString().split('.')
+                         this.weekTime.todayDate.dayOfWeek = days[textDay]
+                         this.weekTime.todayDate.dateNumber = numberDay[0] + '.' + numberDay[1]
+                         // + ' ' + day.toLocaleString('default', {month: 'long'}) if need text month
                     }
                     // testCheck(){
                     //      const calendar = this.$refs.calendar
@@ -696,7 +813,7 @@
                },
                mounted() { 
                     this.checkDate()
-                    this.calcMinDate()
+                    // this.calcMinDate()
                     this.calcMaxDate()
                     this.checkMonth()
                     this.currentMonth = new Date().getMonth() + 1
@@ -704,6 +821,7 @@
                     this.setAttributes()
                     this.formatTitle(new Date())
                     // this.calcTime()
+                    this.setToday()
                }
           })
           </script>
