@@ -6936,6 +6936,20 @@ html {
   border-radius: 10px;
 }
 
+.fs-18 {
+  font-size: 18px;
+  line-height: normal;
+}
+
+.fs-16 {
+  font-size: 16px;
+  line-height: normal;
+}
+
+.color-nav-black {
+  color: var(--color-nav-black);
+}
+
 .vc-day {
   margin: 5px;
 }
@@ -7135,9 +7149,24 @@ html {
   background-color: var(--color-gold);
 }
 
-.calendar-content .calendar-dot {
+.calendar-dot-sm {
   width: 12px;
   height: 12px;
+}
+
+.calendar-dot-lg {
+  width: 18px;
+  height: 18px;
+}
+
+.work-time-elem span {
+  font-weight: 500;
+}
+
+.time-underline {
+  width: 100%;
+  max-width: 30%;
+  border-bottom: 1px dashed var(--color-gold);
 }
 
 @media (min-width: 576px) {
@@ -7501,6 +7530,14 @@ html {
 
   .fs-24 {
     font-size: calc(16px + 8 * ((100vw - 320px) / 1200));
+  }
+
+  .fs-18 {
+    font-size: calc(14px + 4 * ((100vw - 320px) / 1200));
+  }
+
+  .fs-16 {
+    font-size: calc(14px + 2 * ((100vw - 320px) / 1200));
   }
 }
 
