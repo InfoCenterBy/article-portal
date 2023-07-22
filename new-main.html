@@ -1723,7 +1723,7 @@
                          ];
                          let day = new Date()
                          let textDay = day.getDay()
-                         let numberDay = day.toLocaleDateString().split('/')
+                         let numberDay = day.toLocaleDateString('en-GB').split('/')
                          this.weekTime.todayDate.dayOfWeek = days[textDay]
                          this.weekTime.todayDate.dateNumber = numberDay[0] + '.' + numberDay[1]
                          // + ' ' + day.toLocaleString('default', {month: 'long'}) if need text month
