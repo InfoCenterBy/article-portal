@@ -133,7 +133,7 @@
                     <div>{{ key }}--{{value}}</div>
                </div> -->
                <div class="row row-container mt-3">
-                    <div class="col-xxl-4 d-flex flex-column justify-content-between">
+                    <div class="col-xxl-4 d-flex flex-column justify-content-between my-1">
                          <div class="calendar-today">
                               <span class="color-nav-black d-block">Сегодня</span>
                               <div class="mt-2">
@@ -142,23 +142,23 @@
                                    <span class="fs-24 ff-pt-serif">({{weekTime.todayDate.dayOfWeek}})</span>
                               </div>
                          </div>
-                         <div class="work-time-elem d-flex flex-row align-items-center">
+                         <div class="work-time-elem d-flex flex-row align-items-center justify-content-between">
                               <span class="fs-16 color-nav-black">Календарные дни</span>
                               <div class="time-underline mt-2 mx-2"></div>
                               <span class="color-gold fs-18">{{weekTime.sumDays}}</span>
                          </div>
                     </div>
-                    <div class="col-xxl-4 d-flex flex-column justify-content-between">
+                    <div class="col-xxl-4 d-flex flex-column justify-content-between my-1">
                          <div class="work-day-block">
                               <strong class="fs-16 d-block">
                                    Рабочие дни:
                               </strong>
-                              <div class="work-time-elem d-flex flex-row align-items-center my-1">
+                              <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
                                    <span class="fs-16 color-nav-black">по пятидневной рабочей неделе</span>
                                    <div class="time-underline mt-2 mx-2"></div>
                                    <span class="color-gold fs-18">{{weekTime.workFive}}</span>
                               </div>
-                              <div class="work-time-elem d-flex flex-row align-items-center my-1">
+                              <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
                                    <span class="fs-16 color-nav-black">по шестидневной рабочей неделе</span>
                                    <div class="time-underline mt-2 mx-2"></div>
                                    <span class="color-gold fs-18">{{weekTime.workSix}}</span>
@@ -168,12 +168,12 @@
                               <strong class="fs-16 d-block">
                                    Нерабочие дни (выходные и праздничные дни): 
                               </strong>
-                              <div class="work-time-elem d-flex flex-row align-items-center my-1">
+                              <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
                                    <span class="fs-16 color-nav-black">по пятидневной рабочей неделе</span>
                                    <div class="time-underline mt-2 mx-2"></div>
                                    <span class="color-gold fs-18">{{weekTime.offFive}}</span>
                               </div>
-                              <div class="work-time-elem d-flex flex-row align-items-center my-1">
+                              <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
                                    <span class="fs-16 color-nav-black">по шестидневной рабочей неделе</span>
                                    <div class="time-underline mt-2 mx-2"></div>
                                    <span class="color-gold fs-18">{{weekTime.offSix}}</span>
@@ -186,12 +186,12 @@
                                    Расчетная норма рабочего времени (в часах):
                               </strong>
                               <span class="fw-bold fs-14">для пятидневной рабочей недели:</span>
-                              <div class="work-time-elem d-flex flex-row align-items-center my-1">
+                              <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
                                    <span class="fs-16 color-nav-black">при 40-часовой рабочей неделе</span>
                                    <div class="time-underline mt-2 mx-2"></div>
                                    <span class="color-gold fs-18">{{weekTime.timeFiveWeek40}}</span>
                               </div>
-                              <div class="work-time-elem d-flex flex-row align-items-center my-1">
+                              <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
                                    <span class="fs-16 color-nav-black">при 35-часовой рабочей неделе</span>
                                    <div class="time-underline mt-2 mx-2"></div>
                                    <span class="color-gold fs-18">{{weekTime.timeFiveWeek35}}</span>
@@ -199,12 +199,12 @@
                          </div>
                          <div class="work-day-block mt-2">
                               <span class="fw-bold fs-14">для шестидневной рабочей недели:</span>
-                              <div class="work-time-elem d-flex flex-row align-items-center my-1">
+                              <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
                                    <span class="fs-16 color-nav-black">при 40-часовой рабочей неделе</span>
                                    <div class="time-underline mt-2 mx-2"></div>
                                    <span class="color-gold fs-18">{{weekTime.timeSixWeek40}}</span>
                               </div>
-                              <div class="work-time-elem d-flex flex-row align-items-center my-1">
+                              <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
                                    <span class="fs-16 color-nav-black">при 35-часовой рабочей неделе</span>
                                    <div class="time-underline mt-2 mx-2"></div>
                                    <span class="color-gold fs-18">{{weekTime.timeSixWeek35}}</span>
@@ -745,8 +745,8 @@
                     },
                     calcTime(){
                          const currentPage = this.$refs.calendar.pages[0]
-                         console.log(currentPage)
-                         console.log('monthComps', currentPage.monthComps)
+                         // console.log(currentPage)
+                         // console.log('monthComps', currentPage.monthComps)
                          let d = new Date(currentPage.monthComps.year, currentPage.monthComps.month, 0);
                          let getTot = currentPage.monthComps.days
                          this.weekTime.sumDays = getTot
@@ -757,7 +757,7 @@
                          let originOff
 
                          this.dates.filter(el=>{
-                              if(el.weekend === true) console.log('el', el)
+                              // if(el.weekend === true) console.log('el', el)
                          })
 
                          for(let i=1;i<=getTot;i++){
@@ -783,9 +783,9 @@
                          this.weekTime.timeSixWeek40 = Math.ceil(40/6 * this.weekTime.workSix)
                          this.weekTime.timeSixWeek35 = Math.ceil(35/6 * this.weekTime.workSix)
                          
-                         console.log('sat', sat);
+                         // console.log('sat', sat);
                          // console.log(sun);
-                         console.log('allOff', allOff)
+                         // console.log('allOff', allOff)
                     },
                     setToday(){
                          const days = [
@@ -799,7 +799,7 @@
                          ];
                          let day = new Date()
                          let textDay = day.getDay()
-                         let numberDay = day.toLocaleDateString().split('.')
+                         let numberDay = day.toLocaleDateString('en-GB').split('/')
                          this.weekTime.todayDate.dayOfWeek = days[textDay]
                          this.weekTime.todayDate.dateNumber = numberDay[0] + '.' + numberDay[1]
                          // + ' ' + day.toLocaleString('default', {month: 'long'}) if need text month
