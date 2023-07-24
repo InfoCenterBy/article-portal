@@ -780,13 +780,17 @@
                          this.currentMonth = newCurrentMonth
                     },
                     calcETCWeekend(){
+                         const currentPage = this.$refs.calendar.pages[0]
+                         let d = new Date(currentPage.monthComps.year, currentPage.monthComps.month, 0).toLocaleString('default', { month: 'long' });
                          const etcWeekend = this.dates.filter(function(el){
-                                   return el.weekend === true
+                                   let dayWeedendArr = el.date.split('-')
+                                   let dateWeekend = new Date(dayWeedendArr[0], dayWeedendArr[1], 0).toLocaleString('default', { month: 'long' })
+                                   return el.weekend === true && d === dateWeekend
                               }).reduce((acc, current) => {
                                    if (!acc.find((item) => item.weekend === current.weekend)) {
                                         acc.push(current);
                                    }
-                                        return acc;
+                                   return acc;
                          }, [])
                          return etcWeekend
                     },
@@ -803,7 +807,6 @@
                          let allOff = new Array()
                          let originOff = new Array()
                          etcWeekendLength = this.calcETCWeekend()
-                         console.log(etcWeekendLength.length)
                          for(let i=1;i<=getTot;i++){
                               let newDate = new Date(d.getFullYear(),d.getMonth(),i)
                          // console.log(i+"-"+newDate.getDay());
@@ -824,8 +827,8 @@
                          this.weekTime.offSix = sun.length + etcWeekendLength.length
                          this.weekTime.timeFiveWeek40 = 40/5 * this.weekTime.workFive
                          this.weekTime.timeFiveWeek35 = 35/5 * this.weekTime.workFive
-                         this.weekTime.timeSixWeek40 = 40/6 * this.weekTime.workSix
-                         this.weekTime.timeSixWeek35 = 35/6 * this.weekTime.workSix
+                         this.weekTime.timeSixWeek40 = sun.length * 5 + (getTot - sat.length - sun.length - etcWeekendLength.length) * 7
+                         this.weekTime.timeSixWeek35 = sun.length * 5 + (getTot - sat.length - sun.length - etcWeekendLength.length) * 6
                          
                          // console.log('sat', sat);
                          // console.log(sun);
@@ -857,7 +860,7 @@
                },
                mounted() { 
                     this.checkDate()
-                    // this.calcMinDate()
+                    this.calcMinDate()
                     this.calcMaxDate()
                     this.checkMonth()
                     this.currentMonth = new Date().getMonth() + 1
