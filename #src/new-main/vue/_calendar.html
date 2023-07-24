@@ -42,11 +42,11 @@
                          <!-- <div class="" v-if="selectedDate === null">
                               Ничего не выбрано
                          </div> -->
-                         <div class="" v-if="selectedDate">
+                         <!-- <div class="" v-if="selectedDate">
                               <div class="" v-if="selectedDate !== null">
                                    {{selectedDate}}
                               </div>
-                         </div>
+                         </div> -->
                     </div>
                     <div class="col-xxl-6">
                          <strong class="ff-pt-serif fs-24">События в <span v-if="monthTitle">{{monthTitle}}</span> <span v-if="yearTitle">{{yearTitle}}</span> года</strong>
@@ -54,46 +54,13 @@
                               <strong v-if="everyDayArr.length !== 0" class="ff-pt-serif">Ежедневно</strong>
                               <div class="mt-2"></div>
                               <div class="my-2" v-for="info in everyDayArr">
-                                   <div class="row row-container">
-                                        <div class="col-md-6" v-if="info.show === true">
-                                             <div class="calendar-dot calendar-dot-sm calendar-dot-show me-1"></div>
-                                             Представление
-                                             <span v-if="info.show === true && info.addText.category === 'show'">
-                                                  {{info.addText.text}}
-                                             </span>
-                                        </div>
-                                        <div class="col-md-6" v-if="info.description">
-                                             {{info.description.desShow}}
-                                        </div>
-                                   </div>
-                                   <div class="row row-container">
-                                        <div class="col-md-6" v-if="info.pay === true">
-                                             <div class="calendar-dot calendar-dot-sm calendar-dot-pay me-1"></div>
-                                             Уплата
-                                             <span v-if="info.pay === true && info.addText.category === 'pay'">
-                                                  &nbsp;{{info.addText.text}}
-                                             </span>
-                                        </div>
-                                        <div class="col-md-6" v-if="info.description">
-                                             {{info.description.desPay}}
-                                        </div>
-                                   </div>
-                                   <hr class="d-block mt-2">
-                              </div>
-                              <div class="my-2" v-for="info in sortedDates">
-                                   <div class="" :id="'date' + info?.date.split('-').join('')">
-                                        <strong class="ff-pt-serif">
-                                             {{info.date}}
-                                        </strong>
-                                   </div>
-                                   <div class="mt-2"></div>
-                                   <div class="mt-2">
+                                   <div v-if="info.weekend !== true">
                                         <div class="row row-container">
                                              <div class="col-md-6" v-if="info.show === true">
                                                   <div class="calendar-dot calendar-dot-sm calendar-dot-show me-1"></div>
                                                   Представление
                                                   <span v-if="info.show === true && info.addText.category === 'show'">
-                                                       &nbsp;{{info.addText.text}}
+                                                       {{info.addText.text}}
                                                   </span>
                                              </div>
                                              <div class="col-md-6" v-if="info.description">
@@ -106,14 +73,51 @@
                                                   Уплата
                                                   <span v-if="info.pay === true && info.addText.category === 'pay'">
                                                        &nbsp;{{info.addText.text}}
-                                                  </span>    
-                                             </div>                                              
+                                                  </span>
+                                             </div>
                                              <div class="col-md-6" v-if="info.description">
                                                   {{info.description.desPay}}
                                              </div>
                                         </div>
+                                        <hr class="d-block mt-2">
                                    </div>
-                                   <hr class="d-block mt-2">
+                              </div>
+                              <div class="my-2" v-for="info in sortedDates">
+                                   <div v-if="info.weekend !== true">
+                                        <div class="" :id="'date' + info?.date.split('-').join('')">
+                                             <strong class="ff-pt-serif">
+                                                  {{info.date}}
+                                             </strong>
+                                        </div>
+                                        <div class="mt-2"></div>
+                                        <div class="mt-2">
+                                             <div class="row row-container">
+                                                  <div class="col-md-6" v-if="info.show === true">
+                                                       <div class="calendar-dot calendar-dot-sm calendar-dot-show me-1"></div>
+                                                       Представление
+                                                       <span v-if="info.show === true && info.addText.category === 'show'">
+                                                            &nbsp;{{info.addText.text}}
+                                                       </span>
+                                                  </div>
+                                                  <div class="col-md-6" v-if="info.description">
+                                                       {{info.description.desShow}}
+                                                  </div>
+                                             </div>
+                                             <div class="row row-container">
+                                                  <div class="col-md-6" v-if="info.pay === true">
+                                                       <div class="calendar-dot calendar-dot-sm calendar-dot-pay me-1"></div>
+                                                       Уплата
+                                                       <span v-if="info.pay === true && info.addText.category === 'pay'">
+                                                            &nbsp;{{info.addText.text}}
+                                                       </span>    
+                                                  </div>                                              
+                                                  <div class="col-md-6" v-if="info.description">
+                                                       {{info.description.desPay}}
+                                                  </div>
+                                             </div>
+                                        </div>
+                                        <hr class="d-block mt-2">
+                                   </div>
                               </div>
                          </div>
                     </div>
@@ -277,6 +281,38 @@
                          isOn: 'false',
                          // placeholder data
                          dates: [
+                              {
+                                   date: '2023-07-03',
+                                   pay: false,
+                                   show: false,
+                                   weekend: true,
+                                   addText:  {
+                                        text: '',
+                                        category: ''
+                                   },
+                                   everyDay: false,
+                                   description: {
+                                        desPay: '',
+                                        desShow: ''
+                                   },
+                                   dateCategory: 'calendarOrg'
+                              },
+                              {
+                                   date: '2023-07-03',
+                                   pay: false,
+                                   show: false,
+                                   weekend: true,
+                                   addText:  {
+                                        text: '',
+                                        category: ''
+                                   },
+                                   everyDay: false,
+                                   description: {
+                                        desPay: '',
+                                        desShow: ''
+                                   },
+                                   dateCategory: 'calendarIP'
+                              },
                               {
                                    date: '2023-07-04',
                                    pay: true,
@@ -743,23 +779,31 @@
                     setNewMonth(newCurrentMonth){
                          this.currentMonth = newCurrentMonth
                     },
+                    calcETCWeekend(){
+                         const etcWeekend = this.dates.filter(function(el){
+                                   return el.weekend === true
+                              }).reduce((acc, current) => {
+                                   if (!acc.find((item) => item.weekend === current.weekend)) {
+                                        acc.push(current);
+                                   }
+                                        return acc;
+                         }, [])
+                         return etcWeekend
+                    },
                     calcTime(){
                          const currentPage = this.$refs.calendar.pages[0]
                          // console.log(currentPage)
                          // console.log('monthComps', currentPage.monthComps)
                          let d = new Date(currentPage.monthComps.year, currentPage.monthComps.month, 0);
-                         let getTot = currentPage.monthComps.days
+                         const getTot = currentPage.monthComps.days
                          this.weekTime.sumDays = getTot
                          // console.log(daysInMonth(d.getMonth(),d.getFullYear()))
                          let sat = new Array();
                          let sun = new Array();
                          let allOff = new Array()
-                         let originOff
-
-                         this.dates.filter(el=>{
-                              // if(el.weekend === true) console.log('el', el)
-                         })
-
+                         let originOff = new Array()
+                         etcWeekendLength = this.calcETCWeekend()
+                         console.log(etcWeekendLength.length)
                          for(let i=1;i<=getTot;i++){
                               let newDate = new Date(d.getFullYear(),d.getMonth(),i)
                          // console.log(i+"-"+newDate.getDay());
@@ -774,14 +818,14 @@
                               }
                          }
                          
-                         this.weekTime.workFive = getTot - allOff.length
-                         this.weekTime.workSix = getTot - sun.length
-                         this.weekTime.offFive = allOff.length
-                         this.weekTime.offSix = sun.length
-                         this.weekTime.timeFiveWeek40 = 8 * this.weekTime.workFive
-                         this.weekTime.timeFiveWeek35 = 7 * this.weekTime.workFive
-                         this.weekTime.timeSixWeek40 = Math.ceil(40/6 * this.weekTime.workSix)
-                         this.weekTime.timeSixWeek35 = Math.ceil(35/6 * this.weekTime.workSix)
+                         this.weekTime.workFive = getTot - allOff.length - etcWeekendLength.length
+                         this.weekTime.workSix = getTot - sun.length - etcWeekendLength.length
+                         this.weekTime.offFive = allOff.length + etcWeekendLength.length
+                         this.weekTime.offSix = sun.length + etcWeekendLength.length
+                         this.weekTime.timeFiveWeek40 = 40/5 * this.weekTime.workFive
+                         this.weekTime.timeFiveWeek35 = 35/5 * this.weekTime.workFive
+                         this.weekTime.timeSixWeek40 = 40/6 * this.weekTime.workSix
+                         this.weekTime.timeSixWeek35 = 35/6 * this.weekTime.workSix
                          
                          // console.log('sat', sat);
                          // console.log(sun);
