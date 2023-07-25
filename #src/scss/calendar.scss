@@ -212,3 +212,12 @@
      background-color: var(--color-white);
      padding: 32px 24px;
 }
+
+.etc-weekend{
+     .vc-day-content{
+          color:  var(--color-gold-light);
+          &:hover, &:focus{
+               color: var(--color-nav-black);
+          }
+     }
+}
