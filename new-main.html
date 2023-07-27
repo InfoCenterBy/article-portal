@@ -1069,7 +1069,7 @@
                                    <span class="fs-24 ff-pt-serif">({{weekTime.todayDate.dayOfWeek}})</span>
                               </div>
                          </div>
-                         <div class="work-time-elem d-flex flex-row align-items-center justify-content-between">
+                         <div class="work-time-elem d-flex flex-row align-items-center justify-content-between mt-2">
                               <span class="fs-16 color-nav-black">Календарные дни</span>
                               <div class="time-underline mt-2 mx-2"></div>
                               <span class="color-gold fs-18">{{weekTime.sumDays}}</span>
@@ -1214,23 +1214,7 @@
                                         desPay: '',
                                         desShow: ''
                                    },
-                                   dateCategory: 'calendarOrg'
-                              },
-                              {
-                                   date: '2023-07-03',
-                                   pay: false,
-                                   show: false,
-                                   weekend: true,
-                                   addText:  {
-                                        text: '',
-                                        category: ''
-                                   },
-                                   everyDay: false,
-                                   description: {
-                                        desPay: '',
-                                        desShow: ''
-                                   },
-                                   dateCategory: 'calendarIP'
+                                   dateCategory: ''
                               },
                               {
                                    date: '2023-07-04',
@@ -1545,6 +1529,7 @@
                     currentMonth(newVal){
                          this.setAttributes()
                          this.calcTime()
+                         this.markWeekend()
                     }
                },
                methods: {
@@ -1706,7 +1691,7 @@
                                    let dateWeekend = new Date(dayWeedendArr[0], dayWeedendArr[1], 0).toLocaleString('default', { month: 'long' })
                                    return el.weekend === true && d === dateWeekend
                               }).reduce((acc, current) => {
-                                   if (!acc.find((item) => item.weekend === current.weekend)) {
+                                   if (!acc.find((item) => item.weekend === current.weekend && item.date === current.date)) {
                                         acc.push(current);
                                    }
                                    return acc;
@@ -1769,6 +1754,21 @@
                          this.weekTime.todayDate.dayOfWeek = days[textDay]
                          this.weekTime.todayDate.dateNumber = numberDay[0] + '.' + numberDay[1]
                          // + ' ' + day.toLocaleString('default', {month: 'long'}) if need text month
+                    },
+                    markWeekend(){
+                         this.dates.forEach(function(el){
+                              if(el.weekend === true){
+                                   // console.log('el', el)
+                                   // console.log('el.date', el.date)
+                                   // console.log('mark', document.querySelector('.vc-day.id-' + el.date))
+                                   try{
+                                        document.querySelector('.id-' + el.date).classList.add('etc-weekend')
+                                   }
+                                   catch(err){
+                                        // console.log('Error in mark', err)
+                                   }
+                              }
+                         })
                     }
                     // testCheck(){
                     //      const calendar = this.$refs.calendar
@@ -1788,6 +1788,7 @@
                     this.formatTitle(new Date())
                     // this.calcTime()
                     this.setToday()
+                    // this.markWeekend()
                }
           })
           </script>
