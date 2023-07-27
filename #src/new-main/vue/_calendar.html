@@ -55,7 +55,7 @@
                               <div class="mt-2"></div>
                               <div class="my-2" v-for="info in everyDayArr">
                                    <div v-if="info.weekend !== true">
-                                        <div class="row row-container">
+                                        <a class="d-flex calendar-info-block row row-container">
                                              <div class="col-md-6" v-if="info.show === true">
                                                   <div class="calendar-dot calendar-dot-sm calendar-dot-show me-1"></div>
                                                   Представление
@@ -66,8 +66,8 @@
                                              <div class="col-md-6" v-if="info.description">
                                                   {{info.description.desShow}}
                                              </div>
-                                        </div>
-                                        <div class="row row-container">
+                                        </a>
+                                        <a class="d-flex calendar-info-block row row-container">
                                              <div class="col-md-6" v-if="info.pay === true">
                                                   <div class="calendar-dot calendar-dot-sm calendar-dot-pay me-1"></div>
                                                   Уплата
@@ -78,7 +78,7 @@
                                              <div class="col-md-6" v-if="info.description">
                                                   {{info.description.desPay}}
                                              </div>
-                                        </div>
+                                        </a>
                                         <hr class="d-block mt-2">
                                    </div>
                               </div>
@@ -91,7 +91,7 @@
                                         </div>
                                         <div class="mt-2"></div>
                                         <div class="mt-2">
-                                             <div class="row row-container">
+                                             <a class="d-flex calendar-info-block row row-container">
                                                   <div class="col-md-6" v-if="info.show === true">
                                                        <div class="calendar-dot calendar-dot-sm calendar-dot-show me-1"></div>
                                                        Представление
@@ -102,8 +102,8 @@
                                                   <div class="col-md-6" v-if="info.description">
                                                        {{info.description.desShow}}
                                                   </div>
-                                             </div>
-                                             <div class="row row-container">
+                                             </a>
+                                             <a class="d-flex calendar-info-block row row-container">
                                                   <div class="col-md-6" v-if="info.pay === true">
                                                        <div class="calendar-dot calendar-dot-sm calendar-dot-pay me-1"></div>
                                                        Уплата
@@ -114,7 +114,7 @@
                                                   <div class="col-md-6" v-if="info.description">
                                                        {{info.description.desPay}}
                                                   </div>
-                                             </div>
+                                             </a>
                                         </div>
                                         <hr class="d-block mt-2">
                                    </div>
@@ -792,7 +792,6 @@
                          let allOff = new Array()
                          let originOff = new Array()
                          etcWeekendLength = this.calcETCWeekend()
-                         console.log('etcWeekendLength',etcWeekendLength)
                          for(let i=1;i<=getTot;i++){
                               let newDate = new Date(d.getFullYear(),d.getMonth(),i)
                          // console.log(i+"-"+newDate.getDay());
@@ -838,7 +837,7 @@
                          // + ' ' + day.toLocaleString('default', {month: 'long'}) if need text month
                     },
                     markWeekend(){
-                         this.dates.filter(function(el){
+                         this.dates.forEach(function(el){
                               if(el.weekend === true){
                                    // console.log('el', el)
                                    // console.log('el.date', el.date)

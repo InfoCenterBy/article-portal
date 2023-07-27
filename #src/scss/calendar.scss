@@ -221,3 +221,10 @@
           }
      }
 }
+
+.calendar-info-block{
+     color: var(--color-nav-black);
+     &:hover{
+          color: var(--color-gold);
+     }
+}
