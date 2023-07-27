@@ -981,7 +981,7 @@
                               <div class="mt-2"></div>
                               <div class="my-2" v-for="info in everyDayArr">
                                    <div v-if="info.weekend !== true">
-                                        <div class="row row-container">
+                                        <a class="d-flex calendar-info-block row row-container">
                                              <div class="col-md-6" v-if="info.show === true">
                                                   <div class="calendar-dot calendar-dot-sm calendar-dot-show me-1"></div>
                                                   Представление
@@ -992,8 +992,8 @@
                                              <div class="col-md-6" v-if="info.description">
                                                   {{info.description.desShow}}
                                              </div>
-                                        </div>
-                                        <div class="row row-container">
+                                        </a>
+                                        <a class="d-flex calendar-info-block row row-container">
                                              <div class="col-md-6" v-if="info.pay === true">
                                                   <div class="calendar-dot calendar-dot-sm calendar-dot-pay me-1"></div>
                                                   Уплата
@@ -1004,7 +1004,7 @@
                                              <div class="col-md-6" v-if="info.description">
                                                   {{info.description.desPay}}
                                              </div>
-                                        </div>
+                                        </a>
                                         <hr class="d-block mt-2">
                                    </div>
                               </div>
@@ -1017,7 +1017,7 @@
                                         </div>
                                         <div class="mt-2"></div>
                                         <div class="mt-2">
-                                             <div class="row row-container">
+                                             <a class="d-flex calendar-info-block row row-container">
                                                   <div class="col-md-6" v-if="info.show === true">
                                                        <div class="calendar-dot calendar-dot-sm calendar-dot-show me-1"></div>
                                                        Представление
@@ -1028,8 +1028,8 @@
                                                   <div class="col-md-6" v-if="info.description">
                                                        {{info.description.desShow}}
                                                   </div>
-                                             </div>
-                                             <div class="row row-container">
+                                             </a>
+                                             <a class="d-flex calendar-info-block row row-container">
                                                   <div class="col-md-6" v-if="info.pay === true">
                                                        <div class="calendar-dot calendar-dot-sm calendar-dot-pay me-1"></div>
                                                        Уплата
@@ -1040,7 +1040,7 @@
                                                   <div class="col-md-6" v-if="info.description">
                                                        {{info.description.desPay}}
                                                   </div>
-                                             </div>
+                                             </a>
                                         </div>
                                         <hr class="d-block mt-2">
                                    </div>

@@ -7185,6 +7185,14 @@ html {
   color: var(--color-nav-black);
 }
 
+.calendar-info-block {
+  color: var(--color-nav-black);
+}
+
+.calendar-info-block:hover {
+  color: var(--color-gold);
+}
+
 @media (min-width: 576px) {
   .border-sm-top {
     border-top: 1px solid #e3e7eb !important;
