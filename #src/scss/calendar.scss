@@ -223,8 +223,13 @@
 }
 
 .calendar-info-block{
+     cursor: pointer;
      color: var(--color-nav-black);
      &:hover{
           color: var(--color-gold);
      }
+}
+
+.vc-day-popover-row-indicator{
+     --blue-500: var(--color-nav-black)
 }
