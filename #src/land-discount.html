@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+@@include('_head.html',{
+"title":"Акция"
+})
+<body>
+     @@include('./new-main/main-components/_new-header.html')
+     @@include('./new-main/main-components/_search-modal.html')
+     @@include('./new-main/main-components/_nav.html')
+     <div class="nav-container active-container">
+          <!-- Nav Button -->
+          <a class="" id="menu-btn"><i class="bi bi-chevron-right"></i></a>
+          <!--Nav Button -->
+          <div class="main-content">
+               <div class="main-section mt-4">
+                    @@include('./land-discount/_date-highlight.html',{
+                         "title":"1 октября - 22 декабря 2023 года"
+                    })
+               </div>
+               <div class="main-section mt-4">
+                    @@include('./land-discount/_banner-main.html')
+               </div>
+               <div class="main-section mt-5">
+                    @@include('./land-discount/_quote-block.html')
+               </div>
+          </div>
+          <div class="my-5"></div>
+          @@include('./new-main/main-components/_new-footer.html')
+     </div>
+     @@include('_js.html',{})
+</body>
+</html>
