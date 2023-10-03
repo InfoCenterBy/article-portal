@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+      <title>Акция</title>
+      <meta charset="UTF-8" />
+      <meta name="format-detection" content="telephone=no" />
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.cdnfonts.com/css/pt-serif" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=PT+Serif" />
+      <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+      <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.min.css">
+
+      <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css" />
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
+
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/css/tempusdominus-bootstrap-4.min.css">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/1.1.2/css/bootstrap-multiselect.min.css" integrity="sha512-fZNmykQ6RlCyzGl9he+ScLrlU0LWeaR6MO/Kq9lelfXOw54O63gizFMSD5fVgZvU1YfDIc6mxom5n60qJ1nCrQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet" />
+      <link rel="stylesheet" href="css/style.min.css" />
+</head>
+<body>
+     <header class="new-header d-flex flex-row justify-content-between align-items-center">
+     <div class="d-flex flex-row align-items-center">
+          <div class="mobile-menu me-2">
+               <button type="button" class="bi bi-list" id="mobile-button"></button>
+               <div class="mobile-nav">
+     <div class="mobile-nav-block  d-flex flex-row">
+          <div class="mobile-nav-block__icon">
+               <i class="icon-ballot"></i>
+          </div>
+          <div class="mobile-nav-block__text">
+               <a href="">
+                    <strong>Аналитические материалы</strong>
+               </a>
+               <div class="mobile-nav-block__sub-text d-flex flex-column">
+                    <a href="">Организациям</a>
+                    <a href="">Индивидуальным предпринимателям</a>
+                    <a href="">Физическим лицам</a>
+               </div>
+          </div>
+     </div>
+     <div class="mobile-nav-block  d-flex flex-row">
+          <div class="mobile-nav-block__icon">
+               <i class="icon-envelope-open-text"></i>
+          </div>
+          <div class="mobile-nav-block__text">
+               <a href="">
+                    <strong>Новости</strong>
+               </a>
+          </div>
+     </div>
+     <div class="mobile-nav-block  d-flex flex-row">
+          <div class="mobile-nav-block__icon">
+               <i class="icon-file-invoice"></i>
+          </div>
+          <div class="mobile-nav-block__text">
+               <a href="">
+                    <strong>Налоговый календарь</strong>
+               </a>
+          </div>
+     </div>
+     <a class="subcribe-btn mt-5" href="#">
+          Оформить доступ
+     </a>
+     <div class="d-flex flex-column justify-content-center text-center mt-2">
+          <span class="d-block">Телефон для консультации:</span>
+          <a class="color-gold d-block ff-pt-serif" href="tel:+375172691903">+375 (17) 269-19-03</a>
+     </div>
+</div>
+          </div>
+          <picture>
+               <source media="(min-width: 960px)" srcset="./img/padatak-logo.png">
+               <img src="./img/padatak-logo-mobile.png" alt="padatak-logo" >
+          </picture>
+     </div>
+     <div class="header-hide">
+          <form class="new-header-search w-100 mx-2">
+     <input type="text" name="searchBar" id="searchBar" placeholder="Поиск">
+     <button type="submit">
+          <i class="bi bi-search"></i>
+     </button>
+</form>
+     </div>
+     <div class="header-tel">
+          <span>Телефон для консультации:</span> <br>
+          <span class="color-gold ff-pt-serif">+375 (17) 269-19-03</span>
+     </div>
+     <div class="d-flex flex-row header-mobile-menu justify-content-center">
+          <div class="d-flex flex-row">
+               <button class="modal-mobile-button mx-2" type="button" data-bs-toggle="modal" data-bs-target="#searchModal">
+                    <i class="bi bi-search"></i>
+               </button>
+               <button class="modal-mobile-button btn-dropdown show mx-2" 
+                         type="button" data-bs-toggle="dropdown" aria-expanded="true" data-bs-auto-close="outside" >
+                    <i class="icon-circle-user"></i>
+               </button>
+               <div class="dropdown-menu dropdown-menu-login dropdown-menu-end p-3" data-popper-placement="bottom-end" >
+     <div class="dropdown-menu-wrapper">
+          <form id="form-login">
+               <div class="input mb-3">
+                    <label for="email-login">Email <span>*</span></label>
+                    <input type="text" id="email-login" class="_email _required" placeholder="Ваш email">
+                    <div class="input__text-error"><i class="bi bi-exclamation-triangle me-2"></i>Электронная почта не может быть пустой</div>
+                    <div class="input__text-error-email"><i class="bi bi-exclamation-triangle me-2"></i>Адрес электоронной почты должен заканчиваться на @**.**</div>
+               </div>
+               <div class="input mb-3">
+                    <label for="password-login">Пароль <span>*</span></label>
+                    <div class="input__password">
+                         <input type="password" id="password-login" class="_required" placeholder="Введите пароль">
+                         <i class="icon-password bi bi-eye-slash"></i>
+                    </div>
+                    <div class="input__text-error"><i class="bi bi-exclamation-triangle me-2"></i>Пароль не может быть пустым</div>
+               </div>
+               <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div class="checkbox">
+                         <input type="checkbox" id="remember-me">
+                         <label class="checkbox__label" for="remember-me">
+                              <span class="checkbox__label_text">Запомнить меня</span>
+                         </label>
+                    </div>
+                    <a href="#" class="link link_blue-light">Забыли пароль?</a>
+               </div>
+               <div class="mb-2">
+                    <a href="main-login.html" class="button w-100">Войти</a>
+               </div>
+               <div>
+                    <a href="login.html" class="button button_empty w-100">Зарегистрироваться</a>
+               </div>
+          </form>
+     </div>
+</div>
+          </div>
+          <div class="header-button header-button-enter flex-row align-items-center"  
+               type="button" class="how" data-bs-toggle="dropdown" aria-expanded="true" data-bs-auto-close="outside">
+               <span>Иванова И.И.</span>
+               <div class="header-button__hr"></div>
+               <i class="icon-circle-user"></i>
+          </div>
+          <div class="dropdown-menu dropdown-menu-user dropdown-menu-end py-2 border-10" 
+               data-popper-placement="bottom-end">
+               <div class="dropdown-menu-wrapper">
+                    <div class="dropdown-arrow"></div>
+                    <ul class="ps-0 mb-0">
+                         <li><a href="profile.html" class="py-2 px-3 d-block"><i class="bi bi-person me-3"></i>Профиль</a></li>
+                         <li><a href="favorites.html" class="py-2 px-3 d-block"><i class="bi bi-bookmark me-3"></i>Избранное</a></li>
+                         <li><a href="browsing-history.html" class="py-2 px-3 d-block"><i class="bi bi-clock me-3"></i>История просмотров</a></li>
+                         <li><a href="subscription.html" class="py-2 px-3 d-block"><i class="bi bi-unlock me-3"></i>Управление подпиской</a></li>
+                         <li><a href="settings.html" class="py-2 px-3 d-block"><i class="bi bi-gear me-3"></i>Настройки</a></li>
+                    </ul>
+                    <hr class="my-2">
+                    <a href="new-main.html" class="py-2 px-3 d-block"><i class="bi bi-box-arrow-right me-3"></i>Выйти</a>
+               </div>
+          </div>
+          <div class="header-button header-button-subscribe flex-row align-items-center">
+               <span>Оформить доступ</span>
+               <div class="header-button__hr"></div>
+               <i class="icon-gem"></i>
+          </div>
+     </div>
+</header>
+     <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+     <div class="modal-dialog">
+          <div class="modal-content">
+               <div class="modal-body d-flex flex-row align-items-center justify-content-between">
+                    <form class="new-header-search w-100 mx-2">
+                         <input type="text" name="searchBar" id="searchBar" placeholder="Поиск">
+                         <button type="submit">
+                              <i class="bi bi-search"></i>
+                         </button>
+                    </form>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+          </div>
+     </div>
+</div>
+     <nav class="side-navbar active-nav justify-content-start flex-column" id="sidebar">
+     <div class="nav main-nav flex-column w-100">
+          <div href="#" class="nav-link">
+               <a href="" class="nav-link__icon">
+                    <i class="icon-ballot"></i>
+               </a>
+               <div class="nav-link__text">
+                    <a href="" class="nav-link__text-sub d-flex">Аналитические материалы</a>
+                    <div class="nav-link__list d-flex flex-column">
+                         <a href="">Организациям</a>
+                         <a href="">Индивидуальным предпринимателям</a>
+                         <a href="">Физическим лицам</a>
+                    </div>
+               </div>
+          </div>
+          <div href="#" class="nav-link">
+               <a href="" class="nav-link__icon">
+                    <i class="icon-envelope-open-text"></i>
+               </a>
+               <div class="nav-link__text">
+                    <a href="" class="nav-link__text-sub">Новости</a>
+               </div>
+          </div>
+          <div href="#" class="nav-link">
+               <a href="" class="nav-link__icon">
+                    <i class="icon-file-invoice"></i>
+               </a>
+               <div class="nav-link__text">
+                    <a href="" class="nav-link__text-sub">Налоговый календарь</a>
+               </div>
+          </div>
+          <div href="#" class="nav-link">
+               <a href="" class="nav-link__icon">
+                    <i class="icon-calendar-lines"></i>
+               </a>
+               <div class="nav-link__text">
+                    <a href="" class="nav-link__text-sub">Справочная информация</a>
+               </div>
+          </div>
+          <div href="#" class="nav-link">
+               <a href="" class="nav-link__icon">
+                    <i class="icon-table-layout"></i>
+               </a>
+               <div class="nav-link__text">
+                    <a href="" class="nav-link__text-sub">Сервисы</a>
+               </div>
+          </div>
+          <div href="#" class="nav-link">
+               <a href="" class="nav-link__icon">
+                    <i class="icon-calculator"></i>
+               </a>
+               <div class="nav-link__text">
+                    <a href="" class="nav-link__text-sub">Формы документов</a>
+               </div>
+          </div>
+     </div>
+     <hr>
+     <div href="#" class="nav-link">
+          <a href="" class="nav-link__icon-simple">
+               <i class="icon-attribution-pen"></i>
+          </a>
+          <div class="nav-link__text">
+               <a href="">Авторам</a>
+          </div>
+     </div>
+     <div href="#" class="nav-link">
+          <a href="" class="nav-link__icon-simple">
+               <i class="icon-megaphone"></i>
+          </a>
+          <div class="nav-link__text">
+               <a href="">Рекламодателям</span>
+          </div>
+     </div>
+     <a class="nav-hidden subcribe-btn mt-3" href="#">
+          Оформить доступ
+     </a>
+     <div class="nav-hidden text-center mt-2">
+          <span class="d-block">Телефон для консультации:</span>
+          <a class="color-gold d-block ff-pt-serif" href="tel:+375172691903">+375 (17) 269-19-03</a>
+     </div>
+</nav>
+     <div class="nav-container active-container">
+          <a class="" id="menu-btn"><i class="bi bi-chevron-right"></i></a>
+          <div class="main-content">
+               <div class="main-section mt-4">
+                    <div class="date-highlight py-2 px-3">
+     <i class="bi bi-calendar-range"></i><span class="ms-2">1 октября - 22 декабря 2023 года</span>
+</div>
+               </div>
+               <div class="main-section mt-4">
+                    <div class="banner-main row">
+     <div class="col-xl-6">
+          <h1 class="banner-main__title">
+               360 дней доступа <br> к padatak.by<br>за 108 рублей
+          </h1>
+          <p class="mt-3">
+               Специальное предложение для организаций и физических лиц, в том числе 
+               индивидуальных предпринимателей, которые являются или являлись подписчиками 
+               журнала «Консультант предпринимателя» в печатной форме или в форме электронного издания в период с 2009 по 2023 годы
+          </p>
+          <div class="row row-container">
+               <div class="col-xl-6 my-2 d-flex">
+                    <a class="btn-orange py-3 px-4 w-100" href="#">
+                         Оформить доступ
+                    </a>
+               </div>
+               <div class="col-xl-6 my-2 d-flex">
+                    <a class="btn-outline py-3 px-4 w-100" href="#">
+                         Подробнее об акции
+                    </a>
+               </div>
+          </div>
+     </div>
+     <div class="col-xl-6 d-none d-xl-block">
+          <picture>
+               <source media="(min-width: 960px)" srcset="./img/new-main/acc-prev-lg.svg" class="w-100">
+               <img src="./img/new-main/acc-prev-lg.png" alt="acc-prev-lg" class="w-100">
+          </picture>
+     </div>
+</div>
+               </div>
+               <div class="main-section mt-5">
+                    <div class="quote-block">
+     <p>
+          <b class="fs-28">
+               С ЦИФРОЙ – К НОВЫМ ГОРИЗОНТАМ!
+          </b>
+     </p>
+     <p>
+          Редакция журнала «Консультант предпринимателя» информирует своихподписчиков – и тех, 
+          кто выписывал его совсем недолго, и тех, кто на протяжении всехлет выхода журнала оставался нашим 
+          верным другом (а таких тоже немало!), – о том,что с 1 января 2024 года «Консультант предпринимателя» 
+          прекращает издаваться.
+     </p>
+     <p>
+          Мы благодарим всех подписчиков, рядом и вместе с которыми журнал и егоредакция 
+          росли и развивались! Эти рост и развитие позволили накопитьпрофессиональный 
+          и творческий потенциал для реализации нового проекта, сделатьважный шаг – от буквы к 
+          цифре. На рынке информации для профессионалов нашаЦифровая платформа о налогах и 
+          бухгалтерском учете padatak.by уже заявила осебе и готова предложить вам новые 
+          возможности сотрудничества, новые преимуществаделовой коммуникации. Именно на 
+          развитие этого проекта и будут направлены усилияредакционной команды журнала 
+          «Консультант предпринимателя» вместе с группойдругих специалистов, участие 
+          которых требуется для развития цифровой платформы.
+     </p>
+     <p>
+          Уже сейчас можно говорить о том, что новый формат получения информации и 
+          работы с нею более удобный и функциональный. И мы приглашаем всех 
+          подписчиковжурнала «Консультант предпринимателя» присоединиться к 
+          padatak.by. В настоящеевремя это можно сделать на акционных – более 
+          выгодных! – условиях. В этомслучае вы получаете не только архив 
+          аналитических материалов журнала начиная с 2019года, но также 
+          преимущества от использования функционала цифровой платформы, 
+          интерактивных сервисов, которые наверняка пригодятся любому 
+          индивидуальному предпринимателю или бухгалтеру, ведущему 
+          учет для ИП.
+     </p>
+     <p>
+          Цифровая платформа о налогах и бухгалтерском учете 
+          padatak.by – Ваш проводникв мир налоговой грамотности!
+     </p>
+     <p>
+          <b>Встретимся в цифре!</b>
+     </p>
+     <p class="color-gray-dark">
+          Смильгин Алексей Юрьевич, главный редактор
+     </p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+               </div>
+               <div class="main-section mt-5">
+                    <div class="row">
+                         <div class="col-xl-4">
+                              <span class="fs-44 ff-pt-serif fw-bold">Условия акции</span>
+                              <p class="fs-20 mt-3 color-gray-dark">
+                                   Скидка на доступ к цифровой платформе о налогах и бухгалтерском учете 
+                                   «padatak.by» предоставляется при выполнении следующих условий:
+                              </p>
+                         </div>
+                         <div class="col-xl-8">
+                              <ul class="list-num">
+     <ol>
+          <div class="list-num__cirle">
+               1
+          </div>
+          <div>
+               <p class="mb-2">
+                    Являться подписчиком журнала «Консультант предпринимателя» в печатной форме 
+                    или в форме электронного издания в период с 2009 по 2023 годы.
+               </p>
+               <p>
+                    Если подписка на журнал «Консультант предпринимателя» в печатной форме была 
+                    оформлена через РУП «Белпочта», скидка предоставляется при условии предоставления 
+                    документа, подтверждающего факт оформления (оплаты) подписки
+               </p>
+          </div>
+     </ol>
+     <ol>
+          <div class="list-num__cirle">
+               2
+          </div>
+          <p>
+               Оформить в период с 01.10.2023 по 22.12.2023 доступ к цифровой 
+               платформе о налогах и бухгалтерском учете «padatak.by» 
+               продолжительностью 360 календарных дней
+          </p>
+     </ol>
+     <ol>
+          <div class="list-num__cirle">
+               3
+          </div>
+          <p>
+               Оплатить услугу по предоставлению доступа к цифровой платформе о налогах 
+               и бухгалтерском учете «padatak.by» единовременно и полностью на основании 
+               счёта-фактуры в течении 5 (пяти) календарных дней с даты оформления счёта-фактуры
+          </p>
+     </ol>
+     <ol>
+          <div class="list-num__cirle">
+               *
+          </div>
+          <p>
+               Доступ к цифровой платформе о налогах и бухгалтерском учете «padatak.by» 
+               предоставляется начиная с 1 января 2024 года
+          </p>
+     </ol>
+</ul>
+
+<a class="btn-orange py-3 px-4 col-xl-6 col-12 mt-4" href="#">
+     Оформить доступ
+</a>
+                         </div>
+                    </div>
+               </div>
+               <div class="main-section mt-5">
+                    <div class="text-center">
+                         <span class="fs-44 ff-pt-serif fw-bold">
+                              О платформе
+                         </span>
+                    </div>
+                    <div class="row mt-4">
+                         <div class="about-platform">
+     <div class="row">
+          <div class="col-lg-3 d-flex flex-column align-items-center about-platform__elem my-2">
+               <span class="about-platform__title">
+                    1900+
+               </span>
+               <span class="about-platform__sub mt-2">
+                    аналитических материалов
+               </span>
+          </div>
+          <div class="col-lg-3 d-flex flex-column align-items-center about-platform__elem my-2">
+               <span class="about-platform__title">
+                    100+
+               </span>
+               <span class="about-platform__sub mt-2">
+                    форм и образцов документов
+               </span>
+          </div>
+          <div class="col-lg-3 d-flex flex-column align-items-center about-platform__elem my-2">
+               <span class="about-platform__title">
+                    600+
+               </span>
+               <span class="about-platform__sub mt-2">
+                    ответов на вопросы пользователей 
+               </span>
+          </div>
+          <div class="col-lg-3 d-flex flex-column align-items-center about-platform__elem my-2">
+               <span class="about-platform__title">
+                    60+
+               </span>
+               <span class="about-platform__sub mt-2">
+                    видеоматериалов в Медиатеке
+               </span>
+          </div>
+     </div>
+</div>
+                    </div>
+               </div>
+               <div class="main-section mt-5">
+                    <div class="advantages-list-block">
+                         <div class="row justify-content-between">
+                              <div class="col-xl-5 my-2">
+                                   <picture class="w-100">
+                                        <source media="(min-width: 960px)" srcset="./img/land-discount/pref-img.svg">
+                                        <img src="./img/land-discount/pref-img.png" alt="pref-img" class="w-100">
+                                   </picture>
+                                   <p class="color-gray-dark fs-20 mt-4">
+                                        Кроме аналитических материалов, цифровая платформа предлагает большое количество 
+                                        новых функций и интерактивных сервисов, которые могут пригодиться индивидуальному 
+                                        предпринимателю или бухгалтеру, ведущему учет ИП, в ежедневной работе 
+                                        и станут настоящими помощниками в решении его вопросов!
+                                   </p>
+                                   <div class="col-xl-6 col-12">
+                                        <a class="btn-orange py-3 px-4" href="#">
+                                             Оформить доступ
+                                        </a>
+                                   </div>
+                              </div>
+                              <div class="col-xl-6 my-2">
+                                   <ul class="advantages-list">
+     <li>
+          <i class="bi bi-check-circle-fill"></i>
+          <span>Ежедневное обновление платформы</span>
+     </li>
+     <li>
+          <i class="bi bi-check-circle-fill"></i>
+          <span>Аналитические материалы от экспертов</span>
+     </li>
+     <li>
+          <i class="bi bi-check-circle-fill"></i>
+          <span>Компетентные и авторитетные авторы</span>
+     </li>
+     <li>
+          <i class="bi bi-check-circle-fill"></i>
+          <span>Медиатека для бухгалтеров и ИП</span>
+     </li>
+     <li>
+          <i class="bi bi-check-circle-fill"></i>
+          <span>Формы и образцы документов</span>
+     </li>
+     <li>
+          <i class="bi bi-check-circle-fill"></i>
+          <span>Интерактивные сервисы в помощь пользователям</span>
+     </li>
+</ul>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+               <div class="main-section mt-5">
+                    <div class="text-center">
+                         <span class="fs-44 ff-pt-serif fw-bold">
+                              Преимущества и возможности платформы
+                         </span>
+                    </div>
+                    <div class="mt-4"></div>
+                    <div class="advantages-table">
+     <div class="row">
+          <div class="col-xl-3"></div>
+          <div class="col-xl-9">
+               <div class="row">
+                    <div class="col-xl-4 d-flex flex-column my-3">
+                         <div class="offer-block w-100">
+                              <p>
+                                   Журнал «Консультант предпринимателя» <br>(печатная версия)
+                              </p>
+                         </div>
+                         <div class="w-100 d-block d-xl-none mt-2">
+                              <div class="advantages-table__elem my-1 advantages-table__elem-orange row">
+                                   <div class="col-xl-3 col-10">
+                                        Печатный журнал
+                                   </div>
+                                   <div class="col-xl-9 col-2 d-flex align-items-center">
+                                        <div class="w-100 d-flex align-items-center justify-content-center">
+                                             <i class="bi bi-check-circle-fill"></i>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+                    <div class="col-xl-4 d-flex flex-column my-3">
+                         <div class="offer-block w-100">
+                              <p>
+                                   Журнал «Консультант предпринимателя» <br>(электронная версия)
+                              </p>
+                         </div>
+                         <div class="w-100 d-block d-xl-none mt-2">
+                              <div class="advantages-table__elem my-1 advantages-table__elem-orange row">
+                                   <div class="col-xl-3 col-10">
+                                        Электронный журнал
+                                   </div>
+                                   <div class="col-xl-9 col-2 d-flex align-items-center">
+                                        <div class="w-100 d-flex align-items-center justify-content-center">
+                                             <i class="bi bi-check-circle-fill"></i>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+                    <div class="col-xl-4 d-flex flex-column my-3">
+                         <div class="offer-block offer-block-special w-100">
+                              <div class="offer-block__title">Специальное предложение</div>
+                              <p>
+                                   Цифровая платформа о налогах и бухгалтерском учете «padatak.by»
+                              </p>
+                              <div class="d-flex flex-xxl-row flex-column align-items-xxl-center justify-content-between">
+                                   <div class="offer-block-special__cost-before order order-xxl-1 order-2">583,2</div>
+                                   <div class="offer-block-special__cost-now ms-xxl-3 order-xxl-2 order-1">
+                                        108 BYN
+                                   </div>
+                              </div>
+                              <div class="offer-block-special__time mt-2">
+                                   360 дней
+                              </div>
+                         </div>
+                         <div class="w-100 d-block d-xl-none mt-2">
+                              <div class="advantages-table__elem my-1 advantages-table__elem-orange row mt-2">
+                                   <div class="col-xl-3 col-10 d-flex align-items-center justify-content-between">
+                                        Архив материалов с 2019 года
+                                   </div>
+                                   <div class="col-xl-9 col-2 d-flex align-items-center">
+                                        <div class="w-100 d-flex align-items-center justify-content-center">
+                                             <i class="bi bi-check-circle-fill"></i>
+                                        </div>
+                                   </div>
+                              </div>
+                              <div class="advantages-table__elem my-1 advantages-table__elem-orange row mt-2">
+                                   <div class="col-xl-3 col-10 d-flex align-items-center justify-content-between">
+                                        Еженедельные рассылки
+                                   </div>
+                                   <div class="col-xl-9 col-2 d-flex align-items-center">
+
+                                        <div class="w-100 d-flex align-items-center justify-content-center">
+                                             <i class="bi bi-check-circle-fill"></i>
+                                        </div>
+
+                                                                           </div>
+                              </div>
+                              <div class="advantages-table__elem my-1 advantages-table__elem-orange row mt-2">
+                                   <div class="col-xl-3 col-10 d-flex align-items-center justify-content-between">
+                                        Поиск и удобная навигация
+                                   </div>
+                                   <div class="col-xl-9 col-2 d-flex align-items-center">
+
+                                                                                <div class="w-100 d-flex align-items-center justify-content-center">
+                                             <i class="bi bi-check-circle-fill"></i>
+                                        </div>
+                                   </div>
+                              </div>
+                              <div class="advantages-table__elem my-1 advantages-table__elem-orange row mt-2">
+                                   <div class="col-xl-3 d-flex align-items-center col-10 justify-content-between">
+                                        Сервис «Медиатека» 
+                                        <i class="bi bi-question-circle ms-3" tabindex="0" role="button" data-bs-toggle="popover"
+                                             data-bs-trigger="focus" data-bs-placement="top"
+                                             data-bs-content="Доступ к разделу «Медиатека» с записями вебинаров, конференций, актуальных прямых эфиров для индивидуальных предпринимателей"></i>
+                                   </div>
+                                   <div class="col-xl-9 col-2 d-flex align-items-center">
+                                        <div class="w-100 d-flex align-items-center justify-content-center">
+                                             <i class="bi bi-check-circle-fill"></i>
+                                        </div>
+                                   </div>
+                              </div>
+                              <div class="advantages-table__elem my-1 advantages-table__elem-orange row mt-2">
+                                   <div class="col-xl-3 d-flex align-items-center col-10 justify-content-between">
+                                        Сервис «Вопрос-ответ»
+                                        <i class="bi bi-question-circle ms-3" tabindex="0" role="button" data-bs-toggle="popover"
+                                             data-bs-trigger="focus" data-bs-placement="top"
+                                             data-bs-content="Доступ к разделу «Доступ к рубрике «Вопрос–ответ» с анализом актуальных тем и практических ситуаций нашими экспертами"></i>
+                                   </div>
+                                   <div class="col-xl-9 col-2 d-flex align-items-center">
+                                        <div class="w-100 d-flex align-items-center justify-content-center">
+                                             <i class="bi bi-check-circle-fill"></i>
+                                        </div>
+                                   </div>
+                              </div>
+                              <div class="advantages-table__elem my-1 advantages-table__elem-orange row mt-2">
+                                   <div class="col-xl-3 d-flex align-items-center col-10 justify-content-between">
+                                        Формы документов
+                                        <i class="bi bi-question-circle ms-3" tabindex="0" role="button" data-bs-toggle="popover"
+                                             data-bs-trigger="focus" data-bs-placement="top"
+                                             data-bs-content="Формы и образцы документов для физических лиц, ИП и организаций"></i>
+                                   </div>
+                                   <div class="col-xl-9 col-2 d-flex align-items-center">
+                                        <div class="w-100 d-flex align-items-center justify-content-center">
+                                             <i class="bi bi-check-circle-fill"></i>
+                                        </div>
+                                   </div>
+                              </div>
+                              <div class="advantages-table__elem my-1 advantages-table__elem-orange row mt-2">
+                                   <div class="col-xl-3 d-flex align-items-center col-10 justify-content-between">
+                                        Форум
+                                        <i class="bi bi-question-circle ms-3" tabindex="0" role="button" data-bs-toggle="popover"
+                                             data-bs-trigger="focus" data-bs-placement="top"
+                                             data-bs-content="Форум для обсуждения вопросов из практики с коллегами и экспертами"></i>
+                                   </div>
+                                   <div class="col-xl-9 col-2 d-flex align-items-center">
+                                        <div class="w-100 d-flex align-items-center justify-content-center">
+                                             <i class="bi bi-check-circle-fill"></i>
+                                        </div>
+                                   </div>
+                              </div>
+                              <div class="advantages-table__elem my-1 advantages-table__elem-orange row mt-2">
+                                   <div class="col-xl-3 d-flex align-items-center col-10 justify-content-between">
+                                        Интерактивный налоговый календарь
+                                        <i class="bi bi-question-circle ms-3" tabindex="0" role="button" data-bs-toggle="popover"
+                                             data-bs-trigger="focus" data-bs-placement="top"
+                                             data-bs-content="Налоговый календарь для ИП со сроками сдачи отчетности и уплаты налогов"></i>
+                                   </div>
+                                   <div class="col-xl-9 col-2 d-flex align-items-center">
+                                        <div class="w-100 d-flex align-items-center justify-content-center">
+                                             <i class="bi bi-check-circle-fill"></i>
+                                        </div>
+                                   </div>
+                              </div>
+                              <div class="advantages-table__elem my-1 advantages-table__elem-orange row mt-2">
+                                   <div class="col-xl-3 col-10 d-flex align-items-center justify-content-between">
+                                        Ежедневные обновления
+                                   </div>
+                                   <div class="col-xl-9 col-2 d-flex align-items-center">
+                                        <div class="w-100 d-flex align-items-center justify-content-center">
+                                             <i class="bi bi-check-circle-fill"></i>
+                                        </div>
+                                   </div>
+                              </div>
+                              <div class="advantages-table__elem my-1 advantages-table__elem-orange row mt-2">
+                                   <div class="col-xl-3 d-flex align-items-center col-10 justify-content-between">
+                                        Добавление в закладки
+                                        <i class="bi bi-question-circle ms-3" tabindex="0" role="button" data-bs-toggle="popover"
+                                             data-bs-trigger="focus" data-bs-placement="top"
+                                             data-bs-content="Удобный личный кабинет с возможностью добавлять статьи в закладки для быстрого доступа к ним"></i>
+                                   </div>
+                                   <div class="col-xl-9 col-2 d-flex align-items-center">
+                                        <div class="w-100 d-flex align-items-center justify-content-center">
+                                             <i class="bi bi-check-circle-fill"></i>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+     <div class="w-100 d-xl-block d-none">
+          <div class="advantages-table__elem my-1 advantages-table__elem-orange row">
+               <div class="col-xl-3">
+                    Печатный журнал
+               </div>
+               <div class="col-xl-9">
+                    <div class="row">
+                         <div class="col-xl-4">
+                              <div class="w-100 d-flex align-items-center justify-content-center">
+                                   <i class="bi bi-check-circle-fill"></i>
+                              </div>
+                         </div>
+                         <div class="col-xl-4">
+                              <div class="w-100 d-flex align-items-center justify-content-center"></div>
+                         </div>
+                         <div class="col-xl-4">
+                              <div class="w-100 d-flex align-items-center justify-content-center"></div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+          <div class="advantages-table__elem my-1 advantages-table__elem-gray row">
+               <div class="col-xl-3">
+                    Электронный журнал
+               </div>
+               <div class="col-xl-9">
+                    <div class="row">
+                         <div class="col-xl-4">
+                              <div class="w-100 d-flex align-items-center justify-content-center"></div>
+                         </div>
+                         <div class="col-xl-4">
+                              <div class="w-100 d-flex align-items-center justify-content-center">
+                                   <i class="bi bi-check-circle-fill"></i>
+                              </div>
+                         </div>
+                         <div class="col-xl-4">
+                              <div class="w-100 d-flex align-items-center justify-content-center"></div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+          <div class="advantages-table__elem my-1 advantages-table__elem-orange row">
+               <div class="col-xl-3">
+                    Архив материалов с 2019 года
+               </div>
+               <div class="col-xl-9">
+                    <div class="row">
+                         <div class="col-xl-4">
+                              <div class="w-100 d-flex align-items-center justify-content-center">
+                              </div>
+                         </div>
+                         <div class="col-xl-4">
+                              <div class="w-100 d-flex align-items-center justify-content-center"></div>
+                         </div>
+                         <div class="col-xl-4">
+                              <div class="w-100 d-flex align-items-center justify-content-center">
+                                   <i class="bi bi-check-circle-fill"></i>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+          <div class="advantages-table__elem my-1 advantages-table__elem-gray row">
+               <div class="col-xl-3">
+                    Еженедельные рассылки
+               </div>
+               <div class="col-xl-9">
+                    <div class="row">
+                         <div class="col-xl-4">
+                              <div class="w-100 d-flex align-items-center justify-content-center"></div>
+                         </div>
+                         <div class="col-xl-4">
+                              <div class="w-100 d-flex align-items-center justify-content-center">
+
+                                                                 </div>
+                         </div>
+                         <div class="col-xl-4">
+                              <div class="w-100 d-flex align-items-center justify-content-center">
+                                   <i class="bi bi-check-circle-fill"></i>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+          <div class="advantages-table__elem my-1 advantages-table__elem-orange row">
+               <div class="col-xl-3">
+                    Поиск и удобная навигация
+               </div>
+               <div class="col-xl-9">
+                    <div class="row">
+                         <div class="col-xl-4">
+                              <div class="w-100 d-flex align-items-center justify-content-center">
+
+                                                                 </div>
+                         </div>
+                         <div class="col-xl-4">
+                              <div class="w-100 d-flex align-items-center justify-content-center"></div>
+                         </div>
+                         <div class="col-xl-4">
+                              <div class="w-100 d-flex align-items-center justify-content-center">
+                                   <i class="bi bi-check-circle-fill"></i>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+          <div class="advantages-table__elem my-1 advantages-table__elem-gray row">
+               <div class="col-xl-3 d-flex align-items-start">
+                    Сервис «Медиатека» 
+                    <i class="bi bi-question-circle ms-3" tabindex="0" role="button" data-bs-toggle="popover"
+                         data-bs-trigger="focus" data-bs-placement="top"
+                         data-bs-content="Доступ к разделу «Медиатека» с записями вебинаров, конференций, актуальных прямых эфиров для индивидуальных предпринимателей"></i>
+               </div>
+               <div class="col-xl-9">
+                    <div class="row">
+                         <div class="col-xl-4">
+                              <div class="w-100 d-flex align-items-center justify-content-center"></div>
+                         </div>
+                         <div class="col-xl-4">
+                              <div class="w-100 d-flex align-items-center justify-content-center">
+                              </div>
+                         </div>
+                         <div class="col-xl-4">
+                              <div class="w-100 d-flex align-items-center justify-content-center">
+                                   <i class="bi bi-check-circle-fill"></i>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+          <div class="advantages-table__elem my-1 advantages-table__elem-orange row">
+               <div class="col-xl-3 d-flex align-items-start">
+                    Сервис «Вопрос-ответ»
+                    <i class="bi bi-question-circle ms-3" tabindex="0" role="button" data-bs-toggle="popover"
+                         data-bs-trigger="focus" data-bs-placement="top"
+                         data-bs-content="Доступ к разделу «Доступ к рубрике «Вопрос–ответ» с анализом актуальных тем и практических ситуаций нашими экспертами"></i>
+               </div>
+               <div class="col-xl-9">
+                    <div class="row">
+                         <div class="col-xl-4">
+                              <div class="w-100 d-flex align-items-center justify-content-center">
+
+                                                                 </div>
+                         </div>
+                         <div class="col-xl-4">
+                              <div class="w-100 d-flex align-items-center justify-content-center"></div>
+                         </div>
+                         <div class="col-xl-4">
+                              <div class="w-100 d-flex align-items-center justify-content-center">
+                                   <i class="bi bi-check-circle-fill"></i>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+          <div class="advantages-table__elem my-1 advantages-table__elem-gray row">
+               <div class="col-xl-3 d-flex align-items-start">
+                    Формы документов
+                    <i class="bi bi-question-circle ms-3" tabindex="0" role="button" data-bs-toggle="popover"
+                         data-bs-trigger="focus" data-bs-placement="top"
+                         data-bs-content="Формы и образцы документов для физических лиц, ИП и организаций"></i>
+               </div>
+               <div class="col-xl-9">
+                    <div class="row">
+                         <div class="col-xl-4">
+                              <div class="w-100 d-flex align-items-center justify-content-center"></div>
+                         </div>
+                         <div class="col-xl-4">
+                              <div class="w-100 d-flex align-items-center justify-content-center">
+
+                                                                 </div>
+                         </div>
+                         <div class="col-xl-4">
+                              <div class="w-100 d-flex align-items-center justify-content-center">
+                                   <i class="bi bi-check-circle-fill"></i>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+          <div class="advantages-table__elem my-1 advantages-table__elem-orange row">
+               <div class="col-xl-3 d-flex align-items-start">
+                    Форум
+                    <i class="bi bi-question-circle ms-3" tabindex="0" role="button" data-bs-toggle="popover"
+                         data-bs-trigger="focus" data-bs-placement="top"
+                         data-bs-content="Форум для обсуждения вопросов из практики с коллегами и экспертами"></i>
+               </div>
+               <div class="col-xl-9">
+                    <div class="row">
+                         <div class="col-xl-4">
+                              <div class="w-100 d-flex align-items-center justify-content-center">
+
+                                                                 </div>
+                         </div>
+                         <div class="col-xl-4">
+                              <div class="w-100 d-flex align-items-center justify-content-center"></div>
+                         </div>
+                         <div class="col-xl-4">
+                              <div class="w-100 d-flex align-items-center justify-content-center">
+                                   <i class="bi bi-check-circle-fill"></i>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+          <div class="advantages-table__elem my-1 advantages-table__elem-gray row">
+               <div class="col-xl-3 d-flex align-items-start">
+                    Интерактивный налоговый календарь
+                    <i class="bi bi-question-circle ms-3" tabindex="0" role="button" data-bs-toggle="popover"
+                         data-bs-trigger="focus" data-bs-placement="top"
+                         data-bs-content="Налоговый календарь для ИП со сроками сдачи отчетности и уплаты налогов"></i>
+               </div>
+               <div class="col-xl-9">
+                    <div class="row">
+                         <div class="col-xl-4">
+                              <div class="w-100 d-flex align-items-center justify-content-center"></div>
+                         </div>
+                         <div class="col-xl-4">
+                              <div class="w-100 d-flex align-items-center justify-content-center">
+
+                                                                 </div>
+                         </div>
+                         <div class="col-xl-4">
+                              <div class="w-100 d-flex align-items-center justify-content-center">
+                                   <i class="bi bi-check-circle-fill"></i>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+          <div class="advantages-table__elem my-1 advantages-table__elem-orange row">
+               <div class="col-xl-3">
+                    Ежедневные обновления
+               </div>
+               <div class="col-xl-9">
+                    <div class="row">
+                         <div class="col-xl-4">
+                              <div class="w-100 d-flex align-items-center justify-content-center">
+
+                                                                 </div>
+                         </div>
+                         <div class="col-xl-4">
+                              <div class="w-100 d-flex align-items-center justify-content-center"></div>
+                         </div>
+                         <div class="col-xl-4">
+                              <div class="w-100 d-flex align-items-center justify-content-center">
+                                   <i class="bi bi-check-circle-fill"></i>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+          <div class="advantages-table__elem my-1 advantages-table__elem-gray row">
+               <div class="col-xl-3 d-flex align-items-start">
+                    Добавление в закладки
+                    <i class="bi bi-question-circle ms-3" tabindex="0" role="button" data-bs-toggle="popover"
+                         data-bs-trigger="focus" data-bs-placement="top"
+                         data-bs-content="Удобный личный кабинет с возможностью добавлять статьи в закладки для быстрого доступа к ним"></i>
+               </div>
+               <div class="col-xl-9">
+                    <div class="row">
+                         <div class="col-xl-4">
+                              <div class="w-100 d-flex align-items-center justify-content-center"></div>
+                         </div>
+                         <div class="col-xl-4">
+                              <div class="w-100 d-flex align-items-center justify-content-center">
+
+                                                                 </div>
+                         </div>
+                         <div class="col-xl-4">
+                              <div class="w-100 d-flex align-items-center justify-content-center">
+                                   <i class="bi bi-check-circle-fill"></i>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+     <div class="w-100 d-flex justify-content-end mt-4">
+          <div class="col-xl-3 col-12">
+               <a class="btn-orange py-3 px-4" href="#">
+                    Оформить доступ
+               </a>
+          </div>
+     </div>
+</div>
+
+
+               </div>
+               <div class="main-section mt-5">
+                    <div class="text-center">
+                         <span class="fs-44 ff-pt-serif fw-bold">
+                              Ответы на часто задаваемые вопросы
+                         </span>
+                    </div>
+                    <div class="mt-4"></div>
+                    <div class="faq-block-land">
+     <div class="accordion" id="accordionExample">
+          <div class="accordion-item my-2">
+               <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                         Как подтвердить, что являлся подписчиком журнала «Консультант предпринимателя» ?
+                    </button>
+               </h2>
+               <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                         Предоставить редакции на электронную почту ppp@info-center.by 
+                         копию документа, подтверждающего факт оформления (оплаты) подписки.
+                         Если подписка на журнал «Консультант предпринимателя» в печатной 
+                         форме была оформлена через РУП «Белпочта», скидка предоставляется 
+                         при условии предоставления документа, подтверждающего факт оформления (оплаты) подписки.
+                    </div>
+               </div>
+          </div>
+          <div class="accordion-item my-2">
+               <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                         Как оплатить доступ к цифровой платформе «padatak.by»?
+                    </button>
+               </h2>
+               <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                         Оплатить доступ к платформе можно либо c помощью оплаты счет-фактуры либо через систему ЕРИП. <br>
+                         Для оплаты через ЕРИП: <br>
+                         1. Выберите пункт ЕРИП в интернет-банкинге, мобильном приложении или терминале <br>
+                         2. Далее выберите последовательно пункты: <br>
+                              &nbsp;&nbsp;&nbsp;&nbsp;Система «Расчет» (ЕРИП) <br>
+                              &nbsp;&nbsp;&nbsp;&nbsp;Информационные услуги <br>
+                              &nbsp;&nbsp;&nbsp;&nbsp;Деловая информация <br>
+                              &nbsp;&nbsp;&nbsp;&nbsp;Инфо-центр по налогам и сборам <br>
+                              &nbsp;&nbsp;&nbsp;&nbsp;Доступ к Padatak.by <br>
+                         3. Введите код платежа для оплаты в ЕРИП:  (ваш номер заказа) <br>
+                         4. Проверьте корректность информации <br>
+                         5. Совершите платеж
+                    </div>
+               </div>
+          </div>
+          <div class="accordion-item my-2">
+               <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                         Как оформить доступ к цифровой платформе «padatak.by»?
+                    </button>
+               </h2>
+               <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                         Чтобы оформить доступ, нажмите на кнопку «Оформить доступ». 
+                         Далее зарегистрируйтесь, если у вас еще нет аккаунта на платформе, либо авторизуйтесь, если вы уже зарегестрированы. <br>
+                         В форме оформления доступа на первом этапе выберите период подписки.<br>
+                         На втором этапе введите ваши данные - email, телефон, ФИО контактного лица и УНП. <br>
+                         На третьем этапе проверьте введенные данные и, если все корректно, подтвердите 
+                         оформление заказа, нажав на кнопку «Оформить заказ». <br>
+                         После этого во всплывающем окне Вы увидите номер вашего заказа и возможность 
+                         выбрать способ оплаты - по счет-фактуре либо через систему ЕРИП. Также 
+                         сформированная счет-фактура будет доступна для скачивания в личном кабинете 
+                         пользователя на платформе во вкладке «Управление доступом». <br>
+                    </div>
+               </div>
+          </div>
+     </div>
+</div>
+               </div>
+          </div>
+          <div class="my-5"></div>
+          <footer class="footer">
+     <div class="container">
+          <div class="footer__body">
+               <div class="row g-4">
+                    <div class="col-xl-3 col-md-6">
+                         <nav class="menu-footer">
+                              <div class="menu-footer__collapse">
+                                   <a href="forms-of-documents.html" class="menu-footer__link">Формы документов</a>
+                                   <button class="menu-footer__button collapsed" data-bs-toggle="collapse" data-bs-target="#footer-forms-doc-collapse" aria-expanded="false" aria-current="true">
+                                        <i class="bi bi-chevron-down"></i>
+                                   </button>
+                              </div>
+                              <ul class="submenu-footer collapse" id="footer-forms-doc-collapse">
+                                   <li><a href="#" class="submenu-footer__link">Для физических лиц</a></li>
+                                   <li><a href="#" class="submenu-footer__link">Для индивидуальных предпринимателей</a></li>
+                                   <li><a href="#" class="submenu-footer__link">Для юридических лиц</a></li>
+                              </ul>
+                         </nav>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                         <nav class="menu-footer">
+                              <div class="menu-footer__collapse">
+                                   <a href="articles.html" class="menu-footer__link">Статьи</a>
+                                   <button class="menu-footer__button collapsed" data-bs-toggle="collapse" data-bs-target="#footer-articles-collapse" aria-expanded="false" aria-current="true">
+                                        <i class="bi bi-chevron-down"></i>
+                                   </button>
+                              </div>
+                              <ul class="submenu-footer collapse" id="footer-articles-collapse">
+                                   <li><a href="#" class="submenu-footer__link">Налогообложение ИП</a></li>
+                                   <li><a href="#" class="submenu-footer__link">Налогообложение организаций</a></li>
+                                   <li><a href="item-section.html" class="submenu-footer__link">Бухгалтерский учет</a></li>
+                                   <li><a href="#" class="submenu-footer__link">Государственное регулирование</a></li>
+                              </ul>
+                         </nav>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                         <nav class="menu-footer">
+                              <div class="menu-footer__collapse">
+                                   <a href="#" class="menu-footer__link">Справочная информация</a>
+                                   <button class="menu-footer__button collapsed" data-bs-toggle="collapse" data-bs-target="#footer-ref-info-collapse" aria-expanded="false" aria-current="true">
+                                        <i class="bi bi-chevron-down"></i>
+                                   </button>
+                              </div>
+                              <ul class="submenu-footer collapse" id="footer-ref-info-collapse">
+                                   <li><a href="#" class="submenu-footer__link">Курсы валют</a></li>
+                                   <li><a href="#" class="submenu-footer__link">Налоговый календарь</a></li>
+                                   <li><a href="#" class="submenu-footer__link">Основные показатели</a></li>
+                                   <li><a href="#" class="submenu-footer__link">Проверка контрагента</a></li>
+                              </ul>
+                         </nav>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                         <nav class="menu-footer">
+                              <div class="menu-footer__collapse">
+                                   <div class="menu-footer__title">Контакты</div>
+                                   <button class="menu-footer__button collapsed" data-bs-toggle="collapse" data-bs-target="#footer-contacts-collapse" aria-expanded="false" aria-current="true">
+                                        <i class="bi bi-chevron-down"></i>
+                                   </button>
+                              </div>
+                              <ul class="submenu-footer collapse" id="footer-contacts-collapse">
+                                   <li>
+                                        <a href="https://yandex.by/maps/157/minsk/?from=api-maps&amp;ll=27.574767%2C53.913305&amp;mode=poi&amp;poi%5Bpoint%5D=27.574228%2C53.913730&amp;poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D76571038512&amp;utm_source=api-maps&amp;z=18.18" class="submenu-footer__link" target="_blank"><i class="bi bi-geo-alt me-2"></i>г.
+                                             Минск, пр-т. Машерова, 7</a></li>
+                                   <li><i class="bi bi-list-ol me-2"></i>УНП 190819036</li>
+                                   <li><a href="mailto:info@info-center.by" class="submenu-footer__link"><i class="bi bi-envelope me-2"></i>info@info-center.by</a></li>
+                                   <li><a href="tel:375172691903" class="submenu-footer__link"><i class="bi bi-telephone me-2"></i>+375 (17) 269 19 03</a></li>
+                              </ul>
+                         </nav>
+                         <div class="footer__subscribe">
+                              <a href="#">ОФОРМИТЬ ДОСТУП К ЦИФРОВОЙ ПЛАТФОРМЕ<i class="bi bi-box-arrow-up-right ms-2"></i></a>
+                         </div>
+                    </div>
+               </div>
+          </div>
+          <div class="footer-bottom">
+               <a href="main.html" class="footer-bottom__logo">Республиканское унитарное предприятие
+                    «Информационно-издательский центр по налогам и сборам»</a>
+               <div class="footer-bottom__copyright">© 2023 Все права защищены</div>
+          </div>
+     </div>
+</footer>
+     </div>
+     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+        integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+
+<script
+        src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/js/tempusdominus-bootstrap-4.min.js"></script>
+
+
+<script src="js/script.min.js"></script>
+</body>
+</html>
