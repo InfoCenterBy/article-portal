@@ -2992,6 +2992,28 @@ body._lock {
           box-shadow: none;
 }
 
+.default-modal {
+  color: var(--color-nav-black);
+}
+
+.default-modal .modal-header {
+  border-bottom: 0;
+}
+
+.default-modal__icon {
+  font-size: 72px;
+  line-height: normal;
+  color: var(--color-gold);
+}
+
+.default-modal .button {
+  border-radius: 10px;
+}
+
+.default-modal a {
+  color: var(--color-blue-light);
+}
+
 p {
   margin-bottom: 24px;
 }
@@ -9157,6 +9179,10 @@ html {
     background-color: var(--color-gold);
     color: var(--color-white);
     border-color: transparent;
+  }
+
+  .hover-orange:hover {
+    color: var(--color-gold);
   }
 }
 
