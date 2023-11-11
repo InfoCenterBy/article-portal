@@ -184,6 +184,7 @@
           </div>
      </div>
 </div>
+
      <nav class="side-navbar active-nav justify-content-start flex-column" id="sidebar">
      <div class="nav main-nav flex-column w-100">
           <div href="#" class="nav-link">
@@ -265,7 +266,39 @@
           <a class="color-gold d-block ff-pt-serif" href="tel:+375172691903">+375 (17) 269-19-03</a>
      </div>
 </nav>
-     <div class="nav-container active-container">
+
+
+
+          <div class="nav-container active-container">
+          <script defer>
+               const sidebar = document.querySelector('#sidebar');
+               const containerNav = document.querySelector('.nav-container');
+               if (localStorage.sideBar != 'true') {
+                    console.log('nav false');
+                    sidebar.classList.remove('active-nav');
+                    containerNav.classList.remove('active-container');
+               }
+               function hideSidenav() {
+                    if ($(window).width() < 860) {
+                         sidebar.classList.remove('active-nav');
+                         containerNav.classList.remove('active-container');
+                    } else if (localStorage.sideBar == 'true' && $(window).width() < 860) {
+                         sidebar.classList.remove('active-nav');
+                         containerNav.classList.remove('active-container');
+                    } else if (localStorage.sideBar == 'true') {
+                         sidebar.classList.remove('active-nav');
+                         containerNav.classList.remove('active-container');
+                    }
+                    else{
+                         sidebar.classList.add('active-nav');
+                         containerNav.classList.add('active-container');
+                    }
+               }
+               if (sidebar) {
+                    window.onload = hideSidenav()
+                    window.addEventListener('resize', hideSidenav);
+               }
+          </script>
           <a class="" id="menu-btn"><i class="bi bi-chevron-right"></i></a>
           <div class="main-content">
                <section class="main-section row w-100 justify-content-between">
@@ -1855,7 +1888,8 @@
 </div>
                </div>
           </div>
-          <div class="my-5"></div>
+
+                    <div class="my-5"></div>
           <footer class="footer">
      <div class="container">
           <div class="footer__body">
