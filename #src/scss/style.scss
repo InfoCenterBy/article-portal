@@ -40,6 +40,9 @@ $md4: 576;
 
 $mainColor: var(--color-black);
 
+$mouse-device: '(hover: hover) and (pointer: fine)';
+
+
 //</ПЕРЕМЕННЫЕ>===========================================================================================================
 
 //<ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>===============================================================================================
@@ -673,6 +676,11 @@ body {
   line-height: normal;
 }
 
+.fs-20{
+  @include adaptiv-value('font-size', 20, 16, 1);
+  line-height: normal;
+}
+
 .border-10{
   border-radius: 10px;
 }
@@ -690,5 +698,6 @@ body {
 .color-nav-black{
   color: var(--color-nav-black)
 }
+
 
 @import 'calendar.scss';
