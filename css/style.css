@@ -4329,6 +4329,24 @@ td.vertical-bottom {
   color: var(--color-gold);
 }
 
+.footer__payments .footer__subscribe {
+  margin: 0;
+}
+
+.footer__payments-item {
+  display: grid;
+  place-items: center;
+  background-color: var(--color-white-gray);
+  padding: 4px 6px;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.footer__payments-item img {
+  width: 80%;
+  max-height: 1.875rem;
+}
+
 .menu-footer__collapse {
   margin: 0px 0px 24px 0px;
   display: -webkit-box;
