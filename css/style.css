@@ -4329,6 +4329,12 @@ td.vertical-bottom {
   color: var(--color-gold);
 }
 
+.footer__payments {
+  border: 1px solid var(--color-white-gray);
+  padding: 32px 30px;
+  border-radius: 30px;
+}
+
 .footer__payments .footer__subscribe {
   margin: 0;
 }
@@ -7982,6 +7988,10 @@ html {
 
   .quote-block {
     padding: 18px 28px;
+  }
+
+  .footer__payments {
+    padding: 12px 8px;
   }
 
   .popular-block {
