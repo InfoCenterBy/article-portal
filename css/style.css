@@ -3039,10 +3039,6 @@ body._lock {
   width: 88px;
 }
 
-.interest-block__img picture svg {
-  outline: 1px solid red;
-}
-
 .interest-block__content {
   margin-left: 20px;
   display: -webkit-box;
