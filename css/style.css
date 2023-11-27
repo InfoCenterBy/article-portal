@@ -3022,7 +3022,7 @@ body._lock {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  padding: 28px;
+  padding: 28px 20px;
   border: 1px solid var(--color-gold);
   border-radius: 20px;
   -webkit-box-pack: start;
@@ -3037,6 +3037,10 @@ body._lock {
 
 .interest-block__img picture {
   width: 88px;
+}
+
+.interest-block__img img {
+  width: 100%;
 }
 
 .interest-block__content {
