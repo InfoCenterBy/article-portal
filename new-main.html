@@ -83,6 +83,11 @@
                <source media="(min-width: 960px)" srcset="./img/padatak-logo.png">
                <img src="./img/padatak-logo-mobile.png" alt="padatak-logo" >
           </picture>
+          <div class="ms-2">
+               <span class="color-gray fs-20">
+                    12+
+               </span>
+          </div>
      </div>
      <div class="header-hide">
           <form class="new-header-search w-100 mx-2">
@@ -1006,6 +1011,7 @@
                          @dayclick="onDayClick"
                          class="mt-3"
                          ref="calendar"
+                         :disabled-dates="disabledDates"
                          ></v-calendar>
                     </div>
                     <div class="col-xxl-6">
@@ -1235,7 +1241,7 @@
                          // placeholder data
                          dates: [
                               {
-                                   date: '2023-07-03',
+                                   date: '2023-12-03',
                                    pay: false,
                                    show: false,
                                    weekend: true,
@@ -1251,7 +1257,7 @@
                                    dateCategory: ''
                               },
                               {
-                                   date: '2023-07-04',
+                                   date: '2023-12-04',
                                    pay: true,
                                    show: true,
                                    weekend: false,
@@ -1267,7 +1273,7 @@
                                    dateCategory: 'calendarOrg'
                               },
                               {
-                                   date: '2023-07-28',
+                                   date: '2023-12-28',
                                    pay: true,
                                    show: true,
                                    weekend: false,
@@ -1283,7 +1289,7 @@
                                    dateCategory: 'calendarOrg'
                               },
                               {
-                                   date: '2023-07-15',
+                                   date: '2023-12-15',
                                    pay: true,
                                    show: true,
                                    weekend: false,
@@ -1299,7 +1305,7 @@
                                    dateCategory: 'calendarOrg'
                               },
                               {
-                                   date: '2023-07-25',
+                                   date: '2023-12-25',
                                    pay: true,
                                    show: true,
                                    weekend: false,
@@ -1315,7 +1321,7 @@
                                    dateCategory: 'calendarOrg'
                               },
                               {
-                                   date: '2023-08-10',
+                                   date: '2024-01-10',
                                    pay: false,
                                    show: true,
                                    weekend: false,
@@ -1331,7 +1337,7 @@
                                    dateCategory: 'calendarOrg'
                               },
                               {
-                                   date: '2023-07-12',
+                                   date: '2023-12-12',
                                    pay: true,
                                    show: false,
                                    weekend: false,
@@ -1347,7 +1353,7 @@
                                    dateCategory: 'calendarOrg'
                               },
                               {
-                                   date: '2023-08-25',
+                                   date: '2024-01-25',
                                    pay: true,
                                    show: false,
                                    weekend: false,
@@ -1363,7 +1369,7 @@
                                    dateCategory: 'calendarOrg'
                               },
                               {
-                                   date: '2023-07-06',
+                                   date: '2023-12-06',
                                    pay: true,
                                    show: true,
                                    weekend: false,
@@ -1379,7 +1385,7 @@
                                    dateCategory: 'calendarIP',
                                    },
                                    {
-                                   date: '2023-07-05',
+                                   date: '2023-12-05',
                                    pay: false,
                                    show: true,
                                    weekend: false,
@@ -1395,7 +1401,7 @@
                                    dateCategory: 'calendarIP',
                                    },
                                    {
-                                   date: '2023-08-10',
+                                   date: '2024-01-10',
                                    pay: true,
                                    show: false,
                                    weekend: false,
@@ -1411,7 +1417,7 @@
                                    dateCategory: 'calendarIP',
                                    },
                                    {
-                                   date: '2023-07-14',
+                                   date: '2023-12-14',
                                    pay: true,
                                    show: true,
                                    weekend: false,
@@ -1427,7 +1433,7 @@
                                    dateCategory: 'calendarIP',
                                    },
                                    {
-                                   date: '2023-07-20',
+                                   date: '2023-12-20',
                                    pay: true,
                                    show: false,
                                    weekend: false,
@@ -1443,7 +1449,7 @@
                                    dateCategory: 'calendarIP',
                                    },
                                    {
-                                   date: '2023-08-25',
+                                   date: '2024-01-25',
                                    pay: false,
                                    show: true,
                                    weekend: false,
@@ -1459,7 +1465,7 @@
                                    dateCategory: 'calendarIP',
                                    },
                                    {
-                                   date: '2023-07-30',
+                                   date: '2023-12-30',
                                    pay: false,
                                    show: true,
                                    weekend: false,
@@ -1475,7 +1481,7 @@
                                    dateCategory: 'calendarIP',
                                    },
                                    {
-                                   date: '2023-07-05',
+                                   date: '2023-12-05',
                                    pay: true,
                                    show: true,
                                    weekend: false,
@@ -1491,7 +1497,7 @@
                                    dateCategory: 'calendarIP',
                                    },
                                    {
-                                   date: '2023-08-10',
+                                   date: '2024-01-10',
                                    pay: true,
                                    show: false,
                                    weekend: false,
@@ -1536,6 +1542,7 @@
                          monthTitle: '',
                          currentMonth: 0,
                          yearTitle: '',
+                         disabledDates : []
                     }
                },
                computed: {
@@ -1570,8 +1577,20 @@
                     updateMessage(message) {
                          this.messageFromChild = message
                     },
-                    test(){
-                         this.isOn= 'true'
+                    disableDate(){
+                         // this.isOn= 'true'
+                         let disDateArr = []
+                         // , '02/05/2024'
+                         let arrOfDate = ['01/01/2024', '01/02/2024', '01/07/2024']
+                         try {
+                              arrOfDate.forEach(el => {
+                                   disDateArr.push(new Date(el))
+                              });
+                         } catch (error) {
+                              console.log('error in disable dates', error)
+                         }
+                         this.disabledDates = disDateArr
+                         // console.log('this.dis', this.disabledDates)
                     },
                     fillDates(){
                          // this.dates = Array.from(Array(35).keys())
@@ -1734,12 +1753,15 @@
                     },
                     calcTime(){
                          const currentPage = this.$refs.calendar.pages[0]
-                         // console.log(currentPage)
-                         // console.log('monthComps', currentPage.monthComps)
+                         console.log('currentPage', currentPage)
+                         console.log('monthComps', currentPage.monthComps)
                          let d = new Date(currentPage.monthComps.year, currentPage.monthComps.month, 0);
-                         const getTot = currentPage.monthComps.days
+                         let getTot = currentPage.monthComps.days
                          this.weekTime.sumDays = getTot
-                         // console.log(daysInMonth(d.getMonth(),d.getFullYear()))
+
+
+
+                                                                           // console.log(daysInMonth(d.getMonth(),d.getFullYear()))
                          let sat = new Array();
                          let sun = new Array();
                          let allOff = new Array()
@@ -1759,10 +1781,26 @@
                               }
                          }
 
+                         let disNumber = 0
+                         try {
+                              const disabledDatesThisMonth = this.disabledDates.filter(date => date.getMonth() + 1 === currentPage.monthComps.month);
+                              disabledDatesThisMonth.forEach(el => {
+                                   console.log('el.getMonth()', el.getMonth());
+
+                                   if (el.getDay() !== 0) {
+                                        disNumber++
+                                   }
+                              });
+                              getTot = getTot - disNumber
+                              console.log('getTotal', getTot)
+                         } catch (error) {
+                              console.log('error in calcTime with disDates', error);
+                         }
+
                                                   this.weekTime.workFive = getTot - allOff.length - etcWeekendLength.length
                          this.weekTime.workSix = getTot - sun.length - etcWeekendLength.length
-                         this.weekTime.offFive = allOff.length + etcWeekendLength.length
-                         this.weekTime.offSix = sun.length + etcWeekendLength.length
+                         this.weekTime.offFive = allOff.length + etcWeekendLength.length + disNumber
+                         this.weekTime.offSix = sun.length + etcWeekendLength.length + disNumber
                          this.weekTime.timeFiveWeek40 = 40/5 * this.weekTime.workFive
                          this.weekTime.timeFiveWeek35 = 35/5 * this.weekTime.workFive
                          this.weekTime.timeSixWeek40 = sun.length * 5 + (getTot - sat.length - sun.length - etcWeekendLength.length) * 7
@@ -1811,7 +1849,8 @@
                     //      console.log('getPageDays', calendar.pageForThisMonth())
                     // },
                },
-               mounted() { 
+               mounted() {
+                    this.disableDate()
                     this.checkDate()
                     this.calcMinDate()
                     this.calcMaxDate()
