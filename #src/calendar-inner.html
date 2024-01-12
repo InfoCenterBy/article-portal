@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+@@include('_head.html',{
+"title":"Главная"
+})
+
+<body>
+     @@include('./new-main/main-components/_new-header.html')
+     @@include('./new-main/main-components/_search-modal.html')
+     @@include('./new-main/main-components/_nav.html')
+
+     <div class="nav-container active-container">
+          <script defer>
+               const sidebar = document.querySelector('#sidebar');
+               const containerNav = document.querySelector('.nav-container');
+               if (localStorage.sideBar != 'true') {
+                    sidebar.classList.remove('active-nav');
+                    containerNav.classList.remove('active-container');
+               }
+               function hideSidenav() {
+                    if (localStorage.sideBar != 'true') {
+                         localStorage.sideBar = 'false'
+                    }
+                    if ($(window).width() < 860) {
+                         sidebar.classList.remove('active-nav');
+                         containerNav.classList.remove('active-container');
+                    } else if (localStorage.sideBar == 'true' && $(window).width() < 860) {
+                         sidebar.classList.remove('active-nav');
+                         containerNav.classList.remove('active-container');
+                    } else if (localStorage.sideBar == 'true') {
+                         sidebar.classList.remove('active-nav');
+                         containerNav.classList.remove('active-container');
+                    }
+                    else {
+                         sidebar.classList.add('active-nav');
+                         containerNav.classList.add('active-container');
+                    }
+               }
+               if (sidebar) {
+                    window.onload = hideSidenav()
+                    window.addEventListener('resize', hideSidenav);
+               }
+          </script>
+          <!-- Nav Button -->
+          <a class="" id="menu-btn"><i class="bi bi-chevron-right"></i></a>
+          <!--Nav Button -->
+          <div class="main-content">
+               <section class="main-section">
+                    <nav aria-label="breadcrumb">
+                         <ol class="breadcrumb">
+                              <li class="breadcrumb-item"><a href="main.html"><i class="bi bi-house"></i></a></li>
+                              <li class="breadcrumb-item"><a href="#">Справочная информация</a></li>
+                              <li class="breadcrumb-item active" aria-current="page">Налоговый календарь</li>
+                         </ol>
+                    </nav>
+               </section>
+               <div class="mt-4"></div>
+               @@include('./new-main/vue/_calendar-inner.html')
+               <div class="mt-4"></div>
+          </div>
+          <div class="my-5"></div>
+          @@include('./new-main/main-components/_new-footer.html')
+     </div>
+     @@include('_js.html',{})
+     </body>
+</html>

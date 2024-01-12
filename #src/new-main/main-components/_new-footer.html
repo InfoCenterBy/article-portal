@@ -1,5 +1,6 @@
 <footer class="footer">
-     <div class="container">
+     <div class="main-section">
+          <!-- container deleted -->
           <div class="footer__body">
                <div class="row g-4">
                     <div class="col-xl-3 col-md-6">
@@ -21,31 +22,33 @@
                          <nav class="menu-footer">
                               <div class="menu-footer__collapse">
                                    <a href="articles.html" class="menu-footer__link">Сервисы</a>
-                                   <button class="menu-footer__button collapsed" data-bs-toggle="collapse" data-bs-target="#footer-articles-collapse" aria-expanded="false" aria-current="true">
-                                        <i class="bi bi-chevron-down"></i>
-                                   </button>
                               </div>
-                              <ul class="submenu-footer collapse" id="footer-articles-collapse">
-                                   <li><a href="#" class="submenu-footer__link">Налогообложение ИП</a></li>
-                                   <li><a href="#" class="submenu-footer__link">Налогообложение организаций</a></li>
-                                   <li><a href="item-section.html" class="submenu-footer__link">Бухгалтерский учет</a></li>
-                                   <li><a href="#" class="submenu-footer__link">Государственное регулирование</a></li>
-                              </ul>
+                         </nav>
+                         <nav class="menu-footer mt-4 mt-xl-0">
+                              <div class="menu-footer__collapse">
+                                   <a href="articles.html" class="menu-footer__link">Формы документов</a>
+                              </div>
+                         </nav>
+                         <nav class="menu-footer mt-4 mt-xl-0">
+                              <div class="menu-footer__collapse">
+                                   <a href="articles.html" class="menu-footer__link">Справочная информация</a>
+                              </div>
                          </nav>
                     </div>
                     <div class="col-xl-3 col-md-6">
                          <nav class="menu-footer">
                               <div class="menu-footer__collapse">
-                                   <a href="#" class="menu-footer__link">Справочная информация</a>
+                                   <a href="#" class="menu-footer__link">Информация о платформе</a>
                                    <button class="menu-footer__button collapsed" data-bs-toggle="collapse" data-bs-target="#footer-ref-info-collapse" aria-expanded="false" aria-current="true">
                                         <i class="bi bi-chevron-down"></i>
                                    </button>
                               </div>
                               <ul class="submenu-footer collapse" id="footer-ref-info-collapse">
-                                   <li><a href="#" class="submenu-footer__link">Курсы валют</a></li>
-                                   <li><a href="#" class="submenu-footer__link">Налоговый календарь</a></li>
-                                   <li><a href="#" class="submenu-footer__link">Основные показатели</a></li>
-                                   <li><a href="#" class="submenu-footer__link">Проверка контрагента</a></li>
+                                   <li><a href="#" class="submenu-footer__link">Публичный договор</a></li>
+                                   <li><a href="#" class="submenu-footer__link">Политика обработки cookies</a></li>
+                                   <li><a href="#" class="submenu-footer__link">Политика обработки персональных данных</a></li>
+                                   <li><a href="#" class="submenu-footer__link">Пользовательское соглашение</a></li>
+                                   <li><a href="#" class="submenu-footer__link">Оплата доступа</a></li>
                               </ul>
                          </nav>
                     </div>
@@ -59,20 +62,96 @@
                               </div>
                               <ul class="submenu-footer collapse" id="footer-contacts-collapse">
                                    <li>
-                                        <a href="https://yandex.by/maps/157/minsk/?from=api-maps&amp;ll=27.574767%2C53.913305&amp;mode=poi&amp;poi%5Bpoint%5D=27.574228%2C53.913730&amp;poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D76571038512&amp;utm_source=api-maps&amp;z=18.18" class="submenu-footer__link" target="_blank"><i class="bi bi-geo-alt me-2"></i>г.
-                                             Минск, пр-т. Машерова, 7</a></li>
-                                   <li><i class="bi bi-list-ol me-2"></i>УНП 190819036</li>
-                                   <li><a href="mailto:info@info-center.by" class="submenu-footer__link"><i class="bi bi-envelope me-2"></i>info@info-center.by</a></li>
-                                   <li><a href="tel:375172691903" class="submenu-footer__link"><i class="bi bi-telephone me-2"></i>+375 (17) 269 19 03</a></li>
+                                        <a href="https://yandex.by/maps/157/minsk/?from=api-maps&amp;ll=27.574767%2C53.913305&amp;mode=poi&amp;poi%5Bpoint%5D=27.574228%2C53.913730&amp;poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D76571038512&amp;utm_source=api-maps&amp;z=18.18" class="submenu-footer__link d-flex flex-row" target="_blank">
+                                             <i class="bi bi-geo-alt me-2"></i>
+                                             <span>
+                                                  г.Минск, пр-т. Машерова, 7
+                                             </span>
+                                        </a>
+                                   </li>
+                                   <li>
+                                        <a href="mailto:info@info-center.by" class="submenu-footer__link">
+                                             <i class="bi bi-envelope me-2"></i>
+                                             info@info-center.by
+                                        </a>
+                                   </li>
+                                   <li>
+                                        <a href="tel:375172691903" class="submenu-footer__link">
+                                             <i class="bi bi-telephone me-2"></i>
+                                             +375 (17) 269 19 03
+                                        </a>
+                                   </li>
+                                   <li>
+                                        <div class="d-flex flex-row">
+                                             <i class="bi bi-clock me-2"></i>
+                                             <span>
+                                                  Пн. – Чт.: с 8:45 до 18:00 <br>
+                                                  Пт.: с 8:45 до 16:45
+                                             </span>
+                                        </div>
+                                   </li>
+                                   <li>
+                                        <div class="d-flex flex-row">
+                                             <i class="bi bi-list-ol me-2"></i>
+                                             <span>
+                                                  Регистрация №190819036 <br>
+                                                  от 29.03.2007 Минским горисполкомом
+                                             </span>
+                                        </div>
+                                   </li>
                               </ul>
                          </nav>
-                         <div class="footer__subscribe">
-                              <a href="#">ОФОРМИТЬ ДОСТУП К ЦИФРОВОЙ ПЛАТФОРМЕ<i class="bi bi-box-arrow-up-right ms-2"></i></a>
+                    </div>
+                    <div class="col-12">
+                         <div class="footer__payments d-flex flex-row flex-wrap justify-content-between align-items-center">
+                              <div class="footer__subscribe d-flex align-items-center my-2">
+                                   <a href="#">ОФОРМИТЬ ДОСТУП К ЦИФРОВОЙ ПЛАТФОРМЕ<i class="bi bi-box-arrow-up-right ms-2"></i></a>
+                              </div>
+                              <div class="d-flex flex-row flex-wrap flex-md-wrap-no my-2">
+                                   <span>Принимаем <br class="d-none d-md-block my-1"> к оплате:</span>
+                                   <div class="row g-2 ms-lg-2 justify-content-start my-1">
+                                        <div class="col-md col-3 d-flex my-1">
+                                             <div class="footer__payments-item">
+                                                  <img src="./img/pay-logos/pay-logo-1.png" alt="ipay">
+                                             </div>
+                                        </div>
+                                        <div class="col-md col-3 d-flex my-1">
+                                             <div class="footer__payments-item">
+                                                  <img src="./img/pay-logos/pay-logo-2.png" alt="erip">
+                                             </div>
+                                        </div>
+                                        <div class="col-md col-3 d-flex my-1">
+                                             <div class="footer__payments-item">
+                                                  <img src="./img/pay-logos/pay-logo-3.png" alt="mir">
+                                             </div>
+                                        </div>
+                                        <div class="col-md col-3 d-flex my-1">
+                                             <div class="footer__payments-item">
+                                                  <img src="./img/pay-logos/pay-logo-4.png" alt="mastercard">
+                                             </div>
+                                        </div>
+                                        <div class="col-md col-3 d-flex my-1">
+                                             <div class="footer__payments-item">
+                                                  <img src="./img/pay-logos/pay-logo-5.png" alt="visa">
+                                             </div>
+                                        </div>
+                                        <div class="col-md col-3 d-flex my-1">
+                                             <div class="footer__payments-item">
+                                                  <img src="./img/pay-logos/pay-logo-6.png" alt="assist">
+                                             </div>
+                                        </div>
+                                        <div class="col-md col-3 d-flex my-1">
+                                             <div class="footer__payments-item">
+                                                  <img src="./img/pay-logos/pay-logo-7.png" alt="belcart">
+                                             </div>
+                                        </div>
+                                   </div>
+                              </div>
                          </div>
                     </div>
                </div>
           </div>
-          <div class="footer-bottom">
+          <div class="footer-bottom border-0">
                <a href="main.html" class="footer-bottom__logo">Республиканское унитарное предприятие
                     «Информационно-издательский центр по налогам и сборам»</a>
                <div class="footer-bottom__copyright">© 2023 Все права защищены</div>

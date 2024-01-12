@@ -405,9 +405,9 @@ if (menu_btn && $(window).width() > 860) {
      menu_btn.addEventListener('click', () => {
           sidebar.classList.toggle('active-nav');
           if (sidebar.classList.contains('active-nav')) {
-               localStorage.setItem('sideBar', 'true');
+               localStorage.setItem('sideBar', 'false');
           } else {
-               localStorage.sideBar = 'false';
+               localStorage.sideBar = 'true';
           }
           containerNav.classList.toggle('active-container');
 

@@ -47,8 +47,9 @@
                @@include('./new-main/main-components/_fin.html')
                <hr class="my-0 d-md-block d-none">
                <div class="main-section mt-4 row">
-                    <div class="col-xl-8 my-2 px-0 d-flex">
-                         <div class="section-accent " id="popularBlock">
+                    <div class="col-xxl-7 col-xl-12 my-2 px-0 d-flex">
+                         <div class="section-accent w-100"> 
+                              <!-- id="popularBlock" -->
                               @@include('./new-main/main-components/_popular-blocks.html')
                               <div class="mt-2"></div>
                               <span class="ff-pt-serif fs-28">Актуальные темы</span>
@@ -58,8 +59,9 @@
                          </div>
                     </div>
                     
-                    <div class="col-xl-4 px-xl-2 px-0 my-2 d-flex">
-                         @@include('./new-main/main-components/_news.html')
+                    <div class="col-xxl-5 col-xl-12 px-xxl-2 px-0 my-2 d-flex">
+                         <!-- @@include('./new-main/main-components/_news.html') -->
+                         @@include('./new-main/main-components/_try-blocks.html')
                     </div>
                </div>
                <div class="main-section">
@@ -102,7 +104,7 @@
                <div class="mt-4"></div>
                @@include('./new-main/main-components/_video-section.html')
                <div class="mt-4"></div>
-               @@include('./new-main/vue/_calendar.html')
+               @@include('./new-main/vue/_calendar-inner.html')
                <div class="mt-4"></div>
                <div class="main-section">
                     <span class="ff-pt-serif fs-28">Полезные сервисы</span>

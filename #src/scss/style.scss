@@ -666,6 +666,9 @@ body {
 .ff-pt-serif{
   font-family: 'PT Serif';
 }
+.ff-inter{
+  font-family: $fontFamily;
+}
 .fs-28{
   @include adaptiv-value('font-size', 28, 20, 1);
   @include adaptiv-value('line-height', 37, 29, 1);
