@@ -3089,6 +3089,10 @@ body._lock {
   border: 1px solid transparent;
 }
 
+.border-20 {
+  border-radius: 20px;
+}
+
 p {
   margin-bottom: 24px;
 }

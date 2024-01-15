@@ -1,9 +1,9 @@
 <div class="main-section">
           <div class="d-flex flex-row flex-wrap align-items-center justify-content-between">
                <div class="">
-                    <span class="ff-inter fs-28">
+                    <strong class="ff-inter fs-28">
                          Налоговый календарь
-                    </span>
+                    </strong>
                </div>
                <div class="">
                     <a href="" target="_blank" rel="noopener noreferrer" 
@@ -14,37 +14,36 @@
                </div>
           </div>
           <div class="mt-4" id="vueCalendar">
-               <div class="calendar-wrapper row row-container">
-                    <div class="col-xxl-6">
-                         <!-- <button @click="testCheck">get current month</button> -->
-                         <!-- <div class="">{{currentMonth}}</div> -->
+               <div class="calendar-wrapper row row-container border-0">
+                    <div class="col-12">
                          <div class="calendar-tabs-wrapper d-flex flex-column">
                               <div class="d-flex flex-row justify-content-around w-100">
-                                   <input type="radio" 
-                                   name="calendarType" 
-                                   id="calendarOrg" 
-                                   v-model="typeMode" 
-                                   value="calendarOrg" 
-                                   v-on:click="this.typeMode = 'calendarOrg'">
-                                   <label for="calendarOrg" class="tab-toggle w-100 d-flex justify-content-center">Организациям</label>
-                                   <input type="radio" 
-                                        name="calendarType" 
-                                        id="calendarIP" 
-                                        v-model="typeMode" 
-                                        value="calendarIP" 
+                                   <input type="radio" name="calendarType" id="calendarOrg" v-model="typeMode" value="calendarOrg"
+                                        v-on:click="this.typeMode = 'calendarOrg'">
+                                   <label for="calendarOrg" class="tab-toggle w-100 d-flex justify-content-start color-gray-dark px-3">
+                                        Налоговый календарь организации
+                                   </label>
+                                   <input type="radio" name="calendarType" id="calendarIP" v-model="typeMode" value="calendarIP"
                                         v-on:click="this.typeMode = 'calendarIP'">
-                                   <label for="calendarIP" class="tab-toggle w-100 d-flex justify-content-center">ИП</label>
+                                   <label for="calendarIP" class="tab-toggle w-100 d-flex justify-content-start color-gray-dark px-3">
+                                        Налоговый календарь индивидуального предпринимателя
+                                   </label>
                               </div>
                               <div class="tab-underline-accent"></div>
                               <div class="tab-underline w-100"></div>
                          </div>
+                    </div>
+                    <div class="mt-4"></div>
+                    <div class="col-xxl-6 border border-1 border-20 my-1">
+                         <!-- <button @click="testCheck">get current month</button> -->
+                         <!-- <div class="">{{currentMonth}}</div> -->
+                         
                          <v-calendar 
                          borderless 
                          :attributes='attributes'
                          :min-date="minDate"
                          :max-date="maxDate"
                          @dayclick="onDayClick"
-                         class="mt-3"
                          ref="calendar"
                          :disabled-dates="disabledDates"
                          ></v-calendar>
@@ -61,9 +60,113 @@
                               </div>
                          </div> -->
                     </div>
+                    <div class="col-xxl-6 d-flex flex-column my-1">
+                         <div class="calendar-today">
+                              <span class="color-nav-black d-block">Сегодня</span>
+                              <div class="mt-2">
+                                   <i class="bi bi-calendar color-gold fs-14 me-1"></i>
+                                   <span class="color-gold fs-24 ff-pt-serif">{{weekTime.todayDate?.dateNumber}}</span>
+                                   <span class="fs-24 ff-pt-serif">({{weekTime.todayDate?.dayOfWeek}})</span>
+                              </div>
+                         </div>
+                         <div class="col-12 d-flex align-items-center mt-4">
+                              <div class="calendar-dot calendar-dot-lg calendar-dot-pay me-1"></div>
+                              <span class="color-gray-dark fs-14">Уплата налогов, сборов и неналоговых платежей</span>
+                         </div>
+                         <div class="col-12 d-flex align-items-center mt-3">
+                              <div class="calendar-dot calendar-dot-lg calendar-dot-show me-1"></div>
+                              <span class="color-gray-dark fs-14">Представление деклараций</span>
+                         </div>
+                    
+                    </div>
+                    
+               </div>
+
+               <div class="col-xxl-5 col-12">
+                    
+               </div>
+               <!-- <div class="calendar-time-block" v-for="(value, key) in weekTime">
+                    <div>{{ key }}--{{value}}</div>
+               </div> -->
+               <div class="row row-container">
+                    <div class="col-xxl-5">
+                         <div class="work-time-elem d-flex flex-row align-items-center justify-content-between mt-2">
+                              <span class="fs-16 color-nav-black">Календарные дни</span>
+                              <div class="time-underline mt-2 mx-2"></div>
+                              <span class="color-gold fs-18">{{weekTime.sumDays}}</span>
+                         </div>
+                    </div>
+                    <div class="col-xxl-7"></div>
+                    <div class="col-12 mt-3"></div>
+                    <div class="col-xxl-5 d-flex flex-column justify-content-between my-1">
+                         <div class="work-day-block">
+                              <span class="fs-16 d-block">
+                                   Рабочие дни:
+                              </span>
+                              <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
+                                   <span class="fs-16 color-nav-black">по пятидневной рабочей неделе</span>
+                                   <div class="time-underline mt-2 mx-2"></div>
+                                   <span class="color-gold fs-18">{{weekTime.workFive}}</span>
+                              </div>
+                              <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
+                                   <span class="fs-16 color-nav-black">по шестидневной рабочей неделе</span>
+                                   <div class="time-underline mt-2 mx-2"></div>
+                                   <span class="color-gold fs-18">{{weekTime.workSix}}</span>
+                              </div>
+                         </div>
+                         <div class="work-day-block mt-2">
+                              <span class="fs-16 d-block">
+                                   Нерабочие дни (выходные и праздничные дни): 
+                              </span>
+                              <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
+                                   <span class="fs-16 color-nav-black">по пятидневной рабочей неделе</span>
+                                   <div class="time-underline mt-2 mx-2"></div>
+                                   <span class="color-gold fs-18">{{weekTime.offFive}}</span>
+                              </div>
+                              <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
+                                   <span class="fs-16 color-nav-black">по шестидневной рабочей неделе</span>
+                                   <div class="time-underline mt-2 mx-2"></div>
+                                   <span class="color-gold fs-18">{{weekTime.offSix}}</span>
+                              </div>
+                         </div>
+                    </div>
+                    <div class="col-xxl-5 d-flex flex-column justify-content-between">
+                         <div class="work-day-block">
+                              <span class="fs-16 d-block">
+                                   Расчетная норма рабочего времени (в часах):
+                              </span>
+                              <span class="fs-14">для пятидневной рабочей недели:</span>
+                              <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
+                                   <span class="fs-16 color-nav-black">при 40-часовой рабочей неделе</span>
+                                   <div class="time-underline mt-2 mx-2"></div>
+                                   <span class="color-gold fs-18">{{weekTime.timeFiveWeek40}}</span>
+                              </div>
+                              <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
+                                   <span class="fs-16 color-nav-black">при 35-часовой рабочей неделе</span>
+                                   <div class="time-underline mt-2 mx-2"></div>
+                                   <span class="color-gold fs-18">{{weekTime.timeFiveWeek35}}</span>
+                              </div>
+                         </div>
+                         <div class="work-day-block mt-2">
+                              <span class="fs-14">для шестидневной рабочей недели:</span>
+                              <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
+                                   <span class="fs-16 color-nav-black">при 40-часовой рабочей неделе</span>
+                                   <div class="time-underline mt-2 mx-2"></div>
+                                   <span class="color-gold fs-18">{{weekTime.timeSixWeek40}}</span>
+                              </div>
+                              <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
+                                   <span class="fs-16 color-nav-black">при 35-часовой рабочей неделе</span>
+                                   <div class="time-underline mt-2 mx-2"></div>
+                                   <span class="color-gold fs-18">{{weekTime.timeSixWeek35}}</span>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+               <div class="row mt-5">
                     <div class="col-xxl-6">
-                         <strong class="ff-pt-serif fs-24">События в <span v-if="monthTitle">{{monthTitle}}</span> <span v-if="yearTitle">{{yearTitle}}</span> года</strong>
-                         <div class="calendar-content mt-3">
+                         <strong class="ff-pt-serif fs-24">События в
+                              <span v-if="monthTitle">{{monthTitle}}</span> <span v-if="yearTitle">{{yearTitle}}</span> года</strong>
+                         <div class="calendar-content ">
                               <strong v-if="everyDayArr.length !== 0" class="ff-pt-serif">Ежедневно</strong>
                               <div class="mt-2"></div>
                               <div class="my-2" v-for="info in everyDayArr">
@@ -131,8 +234,8 @@
                                                        Уплата
                                                        <span v-if="info.pay === true && info.addText.category === 'pay'">
                                                             &nbsp;{{info.addText.text}}
-                                                       </span>    
-                                                  </div>                                              
+                                                       </span>
+                                                  </div>
                                                   <div class="col-md-6" v-if="info.description">
                                                        {{info.description.desPay}}
                                                   </div>
@@ -146,153 +249,18 @@
                               </div>
                          </div>
                     </div>
-                    
-               </div>
-               <div class="w-100 row row-container mt-2">
-                    <div class="col-xxl-6 col-12 d-flex align-items-center my-1">
-                         <div class="calendar-dot calendar-dot-lg calendar-dot-pay me-1"></div>
-                         <span class="color-gray-dark fs-14">Уплата налогов, сборов и неналоговых платежей</span>
-                    </div>
-                    <div class="col-xxl-6 col-12 d-flex align-items-center my-1">
-                         <div class="calendar-dot calendar-dot-lg calendar-dot-show me-1"></div>
-                         <span class="color-gray-dark fs-14">Представление деклараций</span>
-                    </div>
-               </div>
-               <!-- <div class="calendar-time-block" v-for="(value, key) in weekTime">
-                    <div>{{ key }}--{{value}}</div>
-               </div> -->
-               <div class="row row-container mt-3">
-                    <div class="col-xxl-4 d-flex flex-column justify-content-between my-1">
-                         <div class="calendar-today">
-                              <span class="color-nav-black d-block">Сегодня</span>
-                              <div class="mt-2">
-                                   <i class="bi bi-calendar color-gold fs-14 me-1"></i>
-                                   <span class="color-gold fs-24 ff-pt-serif">{{weekTime.todayDate?.dateNumber}}</span>
-                                   <span class="fs-24 ff-pt-serif">({{weekTime.todayDate?.dayOfWeek}})</span>
-                              </div>
-                         </div>
-                         <div class="work-time-elem d-flex flex-row align-items-center justify-content-between mt-2">
-                              <span class="fs-16 color-nav-black">Календарные дни</span>
-                              <div class="time-underline mt-2 mx-2"></div>
-                              <span class="color-gold fs-18">{{weekTime.sumDays}}</span>
-                         </div>
-                    </div>
-                    <div class="col-xxl-4 d-flex flex-column justify-content-between my-1">
-                         <div class="work-day-block">
-                              <strong class="fs-16 d-block">
-                                   Рабочие дни:
-                              </strong>
-                              <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
-                                   <span class="fs-16 color-nav-black">по пятидневной рабочей неделе</span>
-                                   <div class="time-underline mt-2 mx-2"></div>
-                                   <span class="color-gold fs-18">{{weekTime.workFive}}</span>
-                              </div>
-                              <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
-                                   <span class="fs-16 color-nav-black">по шестидневной рабочей неделе</span>
-                                   <div class="time-underline mt-2 mx-2"></div>
-                                   <span class="color-gold fs-18">{{weekTime.workSix}}</span>
-                              </div>
-                         </div>
-                         <div class="work-day-block mt-2">
-                              <strong class="fs-16 d-block">
-                                   Нерабочие дни (выходные и праздничные дни): 
-                              </strong>
-                              <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
-                                   <span class="fs-16 color-nav-black">по пятидневной рабочей неделе</span>
-                                   <div class="time-underline mt-2 mx-2"></div>
-                                   <span class="color-gold fs-18">{{weekTime.offFive}}</span>
-                              </div>
-                              <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
-                                   <span class="fs-16 color-nav-black">по шестидневной рабочей неделе</span>
-                                   <div class="time-underline mt-2 mx-2"></div>
-                                   <span class="color-gold fs-18">{{weekTime.offSix}}</span>
-                              </div>
-                         </div>
-                    </div>
-                    <div class="col-xxl-4 d-flex flex-column justify-content-between">
-                         <div class="work-day-block">
-                              <strong class="fs-16 d-block">
-                                   Расчетная норма рабочего времени (в часах):
-                              </strong>
-                              <span class="fw-bold fs-14">для пятидневной рабочей недели:</span>
-                              <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
-                                   <span class="fs-16 color-nav-black">при 40-часовой рабочей неделе</span>
-                                   <div class="time-underline mt-2 mx-2"></div>
-                                   <span class="color-gold fs-18">{{weekTime.timeFiveWeek40}}</span>
-                              </div>
-                              <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
-                                   <span class="fs-16 color-nav-black">при 35-часовой рабочей неделе</span>
-                                   <div class="time-underline mt-2 mx-2"></div>
-                                   <span class="color-gold fs-18">{{weekTime.timeFiveWeek35}}</span>
-                              </div>
-                         </div>
-                         <div class="work-day-block mt-2">
-                              <span class="fw-bold fs-14">для шестидневной рабочей недели:</span>
-                              <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
-                                   <span class="fs-16 color-nav-black">при 40-часовой рабочей неделе</span>
-                                   <div class="time-underline mt-2 mx-2"></div>
-                                   <span class="color-gold fs-18">{{weekTime.timeSixWeek40}}</span>
-                              </div>
-                              <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
-                                   <span class="fs-16 color-nav-black">при 35-часовой рабочей неделе</span>
-                                   <div class="time-underline mt-2 mx-2"></div>
-                                   <span class="color-gold fs-18">{{weekTime.timeSixWeek35}}</span>
-                              </div>
-                         </div>
-                    </div>
                </div>
                <!-- <div class="" v-for="(value, key) in weekTime">
                     {{key}}-{{value}}
                </div> -->
           </div>
 
-          <template id="test-comp-template">
-               <div>
-                    <!-- <b v-if="message != null">{{ message }}</b> -->
-               </div>
-          </template>
           <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
           <script src="https://unpkg.com/vue@2"></script>
           <script src="https://unpkg.com/@popperjs/core@2"></script>
           <script src="https://unpkg.com/v-calendar"></script>
           <script >
           Vue.component('v-calendar', window.VCalendar)
-          Vue.component('testComp', {
-               template: '#test-comp-template',
-               data() {
-                    return {
-                         message: null,
-                    };
-               },
-               methods: {
-                    // async isDayOff(){
-                    //      const responce = await fetch('https://isdayoff.ru/230703?cc=BY', {
-                    //           mode: 'no-cors',
-                    //      })
-                    //      console.log('responce', responce)
-                    // },
-                    checkweekend(){
-                         axios.get('https://isdayoff.ru/today')
-                              .then(response => {
-                                   if(response.data == '0'){
-                                        this.message = 'Work'
-                                   }
-                                   else{
-                                        this.message = 'DayOff'
-                                   }
-                                   this.response = response.data;
-                                   console.log('response:', this.response);
-                                   this.$emit('message-updated', this.message);
-                              })
-                                   .catch(error => {
-                                   console.error('Error:', error);
-                              });
-                    }
-               },
-               mounted() {
-                    this.checkweekend()
-               }
-          });
           new Vue({
                el: '#vueCalendar',
                // props: {
@@ -609,6 +577,7 @@
                          yearTitle: '',
                          disabledDates : [], 
                          mode: null,
+                         selectedMonth: '',
                     }
                },
                computed: {
@@ -783,6 +752,7 @@
                          filteredTitle.join('')
                          this.monthTitle = filteredTitle.join('')
                          this.yearTitle = localMonth.year
+                         this.selectedMonth = localMonth.month
                     },
                     checkMonth(){
                          const target = this
@@ -933,10 +903,10 @@
                     this.setToday()
                     // this.markWeekend()
                     const urlParams = new URLSearchParams(window.location.search)
-                    this.mode = urlParams.get('mode')
+                    this.typeMode = urlParams.get('mode')
                     this.selectedDate = urlParams.get('date')
                     this.selectedType = urlParams.get('type')
-                    console.log('mode', this.mode, 'date', this.selectedDate, 'type', this.selectedType)
+                    console.log('mode', this.typeMode, 'date', this.selectedDate, 'type', this.selectedType)
                }
           })
           </script>
