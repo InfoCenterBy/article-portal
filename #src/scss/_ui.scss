@@ -3366,3 +3366,19 @@
 .border-20{
   border-radius: 20px;
 }
+
+.white-btn{
+  border-radius: 10px;
+  border: 1px solid var(--color-gray);
+  padding: 12px 24px;
+  color: var(--color-nav-black);
+  font-weight: 400;
+  @media (max-width: 960px) {
+    padding: 6px 12px;
+  }
+  @media (hover) {
+    &:hover{
+      color: red;
+    }
+  }
+}

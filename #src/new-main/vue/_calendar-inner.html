@@ -162,6 +162,93 @@
                          </div>
                     </div>
                </div>
+               <div class="d-flex flex-row flex-wrap g-2 justify-content-between align-items-center mt-5">
+                    <div class="my-2">
+                         <strong class="fs-20 ff-inter color-nav-black">
+                              Налоговый календарь на {{selectedMonth}} {{yearTitle}} года
+                         </strong>
+                    </div>
+                    <div class="my-2">
+                         <a class="white-btn" download="" href="">
+                              <span>Скачать в PDF</span>
+                              <i class="bi bi-download"></i>
+                         </a>
+                    </div>
+               </div>
+               <div class="calendar-table mt-5">
+                    <table class="table">
+                         <tbody>
+                              <tr>
+                                   <td>
+                                        Дата, день недели
+                                        (не позднее)
+                                   </td>
+                                   <td>
+                                        Уплата и (или) представление декларации или отчета
+                                   </td>
+                                   <td colspan="2">
+                                        Вид налога, сбора и неналогового платежа, по которым производятся уплата и представление декларации, наименование прочих
+                                        отчетов
+                                   </td>
+                              </tr>
+
+                              <tr v-if="everyDayArr.length !== 0 && info.weekend !== true" v-for="info in everyDayArr">
+                                   <td>
+                                        Ежедневно
+                                   </td>
+                                   <td v-if="info.show === true">
+                                        Представление 
+                                        <span v-if="info.show === true && info.addText.category === 'show'">
+                                             <br>{{info.addText.text}}
+                                        </span>
+                                   </td>
+                                   <td v-if="info.show === true && info.description" colspan="2">
+                                        {{info.description.desShow}}
+                                   </td>
+
+                                   <td v-if="info.pay === true">
+                                        Уплата
+                                        <span v-if="info.pay === true && info.addText.category === 'pay'">
+                                             <br>{{info.addText.text}}
+                                        </span>
+                                   </td>
+                                   <td v-if="info.pay === true && info.description">
+                                        {{info.description.desPay}}
+                                   </td>
+                              </tr>
+                              
+                              <tr v-if="info.weekend !== true" v-for="info in tableDates">
+                                   <td :id="'date' + info?.date.split('-').join('')">
+                                        {{info.date}}
+                                   </td>
+                                   <td v-if="info.show === true">
+                                        Представление
+                                        <span v-if="info.show === true && info.addText.category === 'show'">
+                                             <br>{{info.addText.text}}
+                                        </span>
+                                   </td>
+                                   <td colspan="2" v-if="info.show === true && info.description">
+                                        {{info.description.desShow}}
+                                   </td>
+                                   <td v-if="info.pay === true">
+                                        Уплата
+                                        <span v-if="info.pay === true && info.addText.category === 'pay'">
+                                             <br>{{info.addText.text}}
+                                        </span>
+                                   </td>
+                                   <td colspan="2" v-if="info.pay === true && info.description">
+                                        {{info.description.desPay}}
+                                   </td>
+                              </tr>
+                              
+                              <tr v-if="sortedDates == 0 && everyDayArr == 0">
+                                   <td colspan="4" class="text-center fs-24">
+                                        <strong>Информация отсутствует</strong>
+                                   </td>
+                              </tr>
+                         </tbody>
+                    </table>
+               </div>
                <div class="row mt-5">
                     <div class="col-xxl-6">
                          <strong class="ff-pt-serif fs-24">События в
@@ -578,6 +665,7 @@
                          disabledDates : [], 
                          mode: null,
                          selectedMonth: '',
+                         tableDates: []
                     }
                },
                computed: {
@@ -725,6 +813,21 @@
                          this.sortedDates = this.monthArr.sort((a, b)=>{
                               return Number(new Date(a.date)) - Number(new Date(b.date))
                          })
+                         this.tableDates = this.monthArr.reduce((accumulator, currentValue) => {
+                              if (currentValue.show === true && currentValue.pay === true) {
+                                   // Разделяем элемент на два с обратными значениями show и pay
+                                   const showItem = { ...currentValue, pay: false };
+                                   const payItem = { ...currentValue, show: false };
+                                   accumulator.push(showItem, payItem);
+                              } else {
+                                   // Оставляем элемент без изменений
+                                   accumulator.push(currentValue);
+                              }
+                              return accumulator;
+                         }, [])
+                         this.tableDates = this.tableDates.sort((a, b) => {
+                              return Number(new Date(a.date)) - Number(new Date(b.date));
+                         });
                     },
                     changeType(){
                          let underLine = document.querySelector('.tab-underline-accent')

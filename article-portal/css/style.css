@@ -3093,6 +3093,14 @@ body._lock {
   border-radius: 20px;
 }
 
+.white-btn {
+  border-radius: 10px;
+  border: 1px solid var(--color-gray);
+  padding: 12px 24px;
+  color: var(--color-nav-black);
+  font-weight: 400;
+}
+
 p {
   margin-bottom: 24px;
 }
@@ -8412,6 +8420,10 @@ html {
     font-size: 16px;
   }
 
+  .white-btn {
+    padding: 6px 12px;
+  }
+
   .fin-wrapper {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -9313,6 +9325,12 @@ html {
     border: 1px solid var(--color-blue-light);
     background-color: var(--color-white-gray);
     color: var(--color-blue-light);
+  }
+}
+
+@media (hover) {
+  .white-btn:hover {
+    color: red;
   }
 }
 
