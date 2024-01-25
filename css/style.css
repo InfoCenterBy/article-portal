@@ -3105,11 +3105,11 @@ body._lock {
 }
 
 .calendar-table {
-  overflow-y: visible;
+  overflow-x: auto;
 }
 
 .calendar-table .table {
-  overflow: visible;
+  width: 100%;
 }
 
 .calendar-table .table td {

@@ -1265,7 +1265,7 @@
                               return new Date()
                          }
                     },
-                    getUrlParam(){
+                    async getUrlParam(){
                          const urlParams = new URLSearchParams(window.location.search)
                          try {
                               const modeParam = urlParams.get('mode')
@@ -1275,9 +1275,12 @@
 
                               const dateParam = urlParams.get('date')
                               if (dateParam) {
-                                   this.validUrlDate(dateParam)
-                                   this.selectedDate = dateParam
-                                   this.moveToDate(this.validUrlDate(dateParam))
+                                   const target = this
+                                   target.moveToDate(target.validUrlDate(dateParam))
+                                   target.selectedDate = dateParam
+                                   setTimeout(()=>{
+                                        target.scrollToDate(dateParam)
+                                   }, 100)
                               }
 
                               const typeParam = urlParams.get('type')
@@ -1289,7 +1292,8 @@
                          }
                          console.log('mode', this.typeMode, 'date', this.selectedDate, 'type', this.selectedType)
                     },
-                    // testCheck(){
+
+                                        // testCheck(){
                     //      const calendar = this.$refs.calendar
                     //      console.log('calendar.pages', calendar.pages[0])
                     //      console.log('calendar',calendar)
@@ -1299,13 +1303,28 @@
                          const calendar = this.$refs.calendar
                          console.log('this.$refs.calendar', this.$refs.calendar)
                          calendar.focusDate(date);
-
-                                                  let newCurrentMonth = calendar.pages[0].month;
+                         let newCurrentMonth = calendar.pages[0].month;
                          this.setNewMonth(newCurrentMonth)
                          this.filterDateToShow()
                          this.formatTitle(new Date(calendar.pages[0].year, calendar.pages[0].month - 1, 1).toISOString())
 
                          // calendar.focusDate(date);
+
+                    },
+                    scrollToDate(date){
+                         let blockId = '#date' + '-' + date
+                         console.log('blockId', blockId)
+                         let elToScroll = document.querySelector(blockId)
+                         var is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+                         if (elToScroll && !is_safari) {
+                              elToScroll.scrollIntoView({
+                                   behavior: 'smooth',
+                                   block: 'center',
+                              })
+                         }
+                         if (elToScroll && is_safari) {
+                              elToScroll.scrollIntoView(false)
+                         }
                     }
                },
                mounted() {
@@ -1322,7 +1341,8 @@
                     this.setToday()
                     // this.markWeekend()
                     this.getUrlParam()
-               }
+
+                                   }
           })
           </script>
 </div>
