@@ -360,7 +360,8 @@
                                         <div class="tab-underline w-100"></div>
                                    </div>
                               </div>
-                              <div class="mt-4 col-12"></div>
+                              <div class="mt-4 col-12">
+                              </div>
                               <div class="col-xxl-6 border border-1 border-20 my-1">
 
                                                        <v-calendar borderless :attributes='attributes' :min-date="minDate" :max-date="maxDate"
@@ -500,7 +501,7 @@
 
                                                             <template v-if="everyDayArr.length !== 0 && info.weekend !== true" v-for="info in everyDayArr">
                                              <tr>
-                                                  <td>
+                                                  <td v-if="info.show === true" :id="'date' + '-' + info?.date">
                                                        Ежедневно
                                                   </td>
                                                   <td v-if="info.show === true">
@@ -519,7 +520,7 @@
                                                   </td>
                                              </tr>
                                              <tr>
-                                                  <td>
+                                                  <td v-if="info.pay === true" :id="'date' + '-' + info?.date">
                                                        Ежедневно
                                                   </td>
                                                   <td v-if="info.pay === true">
@@ -541,7 +542,7 @@
 
 
                                                                                 <tr v-if="info.weekend !== true" v-for="info in tableDates">
-                                             <td :id="'date' + info?.date.split('-').join('')">
+                                             <td :id="'date' + '-' + info?.date">
                                                   {{info.date}}
                                              </td>
                                              <td v-if="info.show === true">
@@ -951,7 +952,7 @@
                          this.setAttributes()
                          this.calcTime()
                          this.markWeekend()
-                    }
+                    },
                },
                methods: {
                     updateMessage(message) {
@@ -1116,7 +1117,7 @@
                     },
                     checkMonth(){
                          const target = this
-                         const calendar = this.$refs.calendar
+                         const calendar = target.$refs.calendar
                          let arrow = document.querySelectorAll('.vc-arrow')
                          arrow.forEach(function(el){
                               el.addEventListener('click', function(){
@@ -1242,6 +1243,28 @@
                               }
                          })
                     },
+                    validUrlDate(date){
+                         const currentDate = new Date()
+                         currentDate.setDate(1)
+
+                         let prevMonth;
+                         if (currentDate.getMonth() === 0) {
+
+                                                            prevMonth = new Date(currentDate.getFullYear() - 1, 11, 1)
+                         } else {
+                              prevMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1)
+                         }
+
+                         const nextMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 2, 0)
+
+                         const dateToCheck = new Date(date)
+
+                         if (dateToCheck >= prevMonth && dateToCheck <= nextMonth) {
+                              return dateToCheck
+                         } else {
+                              return new Date()
+                         }
+                    },
                     getUrlParam(){
                          const urlParams = new URLSearchParams(window.location.search)
                          try {
@@ -1252,7 +1275,9 @@
 
                               const dateParam = urlParams.get('date')
                               if (dateParam) {
+                                   this.validUrlDate(dateParam)
                                    this.selectedDate = dateParam
+                                   this.moveToDate(this.validUrlDate(dateParam))
                               }
 
                               const typeParam = urlParams.get('type')
@@ -1263,13 +1288,25 @@
                               console.log('error in getUrlParam', error)
                          }
                          console.log('mode', this.typeMode, 'date', this.selectedDate, 'type', this.selectedType)
-                    }
+                    },
                     // testCheck(){
                     //      const calendar = this.$refs.calendar
                     //      console.log('calendar.pages', calendar.pages[0])
                     //      console.log('calendar',calendar)
                     //      console.log('getPageDays', calendar.pageForThisMonth())
                     // },
+                    moveToDate(date){
+                         const calendar = this.$refs.calendar
+                         console.log('this.$refs.calendar', this.$refs.calendar)
+                         calendar.focusDate(date);
+
+                                                  let newCurrentMonth = calendar.pages[0].month;
+                         this.setNewMonth(newCurrentMonth)
+                         this.filterDateToShow()
+                         this.formatTitle(new Date(calendar.pages[0].year, calendar.pages[0].month - 1, 1).toISOString())
+
+                         // calendar.focusDate(date);
+                    }
                },
                mounted() {
                     this.disableDate()

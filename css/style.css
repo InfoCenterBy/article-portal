@@ -3104,6 +3104,14 @@ body._lock {
   transition: all ease-out 0.3s;
 }
 
+.calendar-table {
+  overflow-y: visible;
+}
+
+.calendar-table .table {
+  overflow: visible;
+}
+
 .calendar-table .table td {
   padding: 16px;
   font-size: 14px;
@@ -3130,6 +3138,51 @@ body._lock {
 
 .calendar-table .table tr:not(:first-child) td:first-child {
   color: var(--color-nav-black);
+}
+
+.archive-card {
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid var(--color-gray);
+  background-color: var(--color-white);
+  -webkit-transition: all ease-out 0.3s;
+  -o-transition: all ease-out 0.3s;
+  transition: all ease-out 0.3s;
+  color: var(--color-nav-black);
+  font-size: 16px;
+}
+
+.archive-card__info .bi {
+  font-size: 48px;
+}
+
+.archive-card__date {
+  font-size: 14px;
+  color: var(--color-gray-dark);
+}
+
+.archive-card__type {
+  border-radius: 4px;
+  border: 1px solid var(--color-gray-dark);
+  padding: 5px 15px;
+  color: var(--color-gray-dark);
+  font-size: 14px;
+}
+
+.archive-card .bi-download {
+  font-size: 24px;
+}
+
+.archive-card:not(:first-of-type) {
+  margin-top: 16px;
+}
+
+.fw-600 {
+  font-weight: 600;
+}
+
+.fw-500 {
+  font-weight: 500;
 }
 
 p {
@@ -9368,6 +9421,11 @@ html {
   .white-btn:hover {
     background-color: var(--color-gold);
     color: var(--color-white-gray);
+  }
+
+  .archive-card:hover {
+    border-color: var(--color-gold);
+    color: var(--color-gold);
   }
 }
 
