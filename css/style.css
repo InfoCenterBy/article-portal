@@ -3185,6 +3185,14 @@ body._lock {
   font-weight: 500;
 }
 
+.archive-sidebar {
+  border-left: 1px solid #dee2e6;
+}
+
+.border-radius-4 {
+  border-radius: 4px;
+}
+
 p {
   margin-bottom: 24px;
 }
@@ -8178,6 +8186,10 @@ html {
 
   .try-btn {
     padding: 6px 20px;
+  }
+
+  .archive-sidebar {
+    border-left: 0;
   }
 
   .footer__payments {
