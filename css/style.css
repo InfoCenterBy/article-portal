@@ -3136,6 +3136,12 @@ body._lock {
   border-top-right-radius: 20px;
 }
 
+.calendar-table .table tr:not(:first-child) {
+  -webkit-transition: all ease-out 0.3s;
+  -o-transition: all ease-out 0.3s;
+  transition: all ease-out 0.3s;
+}
+
 .calendar-table .table tr:not(:first-child) td:first-child {
   color: var(--color-nav-black);
 }

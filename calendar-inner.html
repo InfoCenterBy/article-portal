@@ -329,7 +329,8 @@
                               <strong class="ff-inter fs-28">
                                    Налоговый календарь
                               </strong>
-                         </div>
+
+                                                       </div>
                          <div class="">
                               <a href="archive.html" target="_blank" rel="noopener noreferrer"
                                    class="color-gray-dark d-flex flex-row align-items-center hover-orange">
@@ -541,9 +542,9 @@
                                         </template>
 
 
-                                                                                <tr v-if="info.weekend !== true" v-for="info in tableDates">
-                                             <td :id="'date' + '-' + info?.date">
-                                                  {{info.date}}
+                                                                                <tr v-if="info.weekend !== true" v-for="info in tableDates" :id="'date' + '-' + info?.date">
+                                             <td >
+                                                  <span>{{info.date}}</span>
                                              </td>
                                              <td v-if="info.show === true">
                                                   Представление
@@ -582,6 +583,50 @@
                                         </tr>
                                    </tbody>
                               </table>
+
+                              <table class="table mt-5">
+                                   <tbody>
+                                        <tr>
+                                             <td>
+                                                  Дата, день недели
+                                                  (не позднее)
+                                             </td>
+                                             <td>
+                                                  Уплата и (или) представление декларации или отчета
+                                             </td>
+                                             <td colspan="2">
+                                                  Вид налога, сбора и неналогового платежа, по которым производятся уплата и представление
+                                                  декларации, наименование прочих
+                                                  отчетов
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td>
+                                                  Ежедневно
+                                             </td>
+                                             <td>
+                                                  Уплата
+                                                  (за исключением нерезидентов)
+                                             </td>
+                                             <td colspan="2">
+                                                  Налог на доходы иностранных организаций, не осуществляющих деятельность в Республике Беларусь через постоянное
+                                                  представительство
+                                                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque dolores deleniti iste suscipit cupiditate earum, atque
+                                                  odit doloremque sit voluptatibus in saepe perferendis neque dignissimos quae ut nam iusto. Odio.
+                                             </td>
+                                        </tr>
+                                   </tbody>
+                              </table>
+                              <div class="paywall">
+     <div class="paywall__header mb-3">
+          <div class="paywall__title"><i class="bi bi-lock me-4"></i>Налоговый календарь находится в платном доступе</div>
+     </div>
+     <div class="paywall__text mb-4">Для просмотра налогового календаря необходимо иметь доступ к платформе</div>
+     <div class="mb-4 text-center">
+          <a href="#" class="button border-10">Оформить подписку</a>
+     </div>
+     <div class="paywall__link">Уже есть подписка? <a href="#">Авторизуйтесь</a></div>
+</div>
                          </div>
                     </div>
                </div>
@@ -947,6 +992,7 @@
                          });
                          this.setAttributes()
                          this.changeType()
+                         this.changeUrlTab(newVal)
                     },
                     currentMonth(newVal){
                          this.setAttributes()
@@ -988,8 +1034,8 @@
                     onDayClick(day) {
                          // day.date if need date in selected
                          this.selectedDate = day.date
-
-                                                  let blockId = '#date' + day.id.split('-').join('')
+                         console.log('day', day)
+                         let blockId = '#date' + '-' + day.id
                          let elToScroll = document.querySelector(blockId)
                          var is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
                          if(elToScroll && !is_safari){
@@ -1001,6 +1047,16 @@
                          if(elToScroll && is_safari){
                               elToScroll.scrollIntoView(false)
                          }
+                         let allElem = document.querySelectorAll(blockId)
+                         allElem.forEach(el => {
+                              el.style.backgroundColor = 'rgba(249, 185, 116, .3)'
+                         });
+                         setTimeout(() => {
+                              allElem.forEach(el => {
+                                   el.style.backgroundColor = 'transparent'
+                              });
+                         }, 2000);
+                         this.changeUrlDay(day)
                     },
                     checkDate(){
                          this.dates.filter(el=>{
@@ -1313,8 +1369,8 @@
                     },
                     scrollToDate(date){
                          let blockId = '#date' + '-' + date
-                         console.log('blockId', blockId)
-                         let elToScroll = document.querySelector(blockId)
+
+                                                  let elToScroll = document.querySelector(blockId)
                          var is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
                          if (elToScroll && !is_safari) {
                               elToScroll.scrollIntoView({
@@ -1324,6 +1380,66 @@
                          }
                          if (elToScroll && is_safari) {
                               elToScroll.scrollIntoView(false)
+                         }
+                    },
+                    changeUrlDay(day){
+                         // console.log('changeUrl day', day)
+                         // console.log('history', history)
+                         // console.log('window.location.href', window.location.href.toString())
+                         // history.pushState(null, null, '/new-page.html');
+
+                         const currentUrl = window.location.href
+
+                         const dateParamIndex = currentUrl.indexOf('date=')
+
+                         if (dateParamIndex !== -1) {
+                              const dateValueStartIndex = dateParamIndex + 5 
+
+                              const dateValueEndIndex = currentUrl.indexOf('&', dateValueStartIndex) !== -1 
+                              ? currentUrl.indexOf('&', dateValueStartIndex) 
+                              : currentUrl.length
+
+                              const currentDateValue = currentUrl.substring(dateValueStartIndex, dateValueEndIndex)
+
+                              const newDateValue = day.id; 
+                              const newUrl = currentUrl.replace(`date=${currentDateValue}`, `date=${newDateValue}`)
+
+                              // console.log('Старый URL:', currentUrl)
+                              // console.log('Новый URL:', newUrl)
+                              history.pushState(null, null, newUrl);
+                         } else {
+                              // console.log('В URL адресе не найден параметр date.')
+                         }
+                    },
+                    changeUrlTab(newVal){
+                         const currentUrl = window.location.href
+                         const modeParamIndex = currentUrl.indexOf('mode=')
+
+                         if (modeParamIndex !== -1) {
+
+                              const modeValueStartIndex = modeParamIndex + 5
+
+
+                              const modeValueEndIndex = currentUrl.indexOf('&', modeValueStartIndex) !== -1
+                                   ? currentUrl.indexOf('&', modeValueStartIndex)
+                                   : currentUrl.length
+
+
+                              const currentModeValue = currentUrl.substring(modeValueStartIndex, modeValueEndIndex)
+
+
+                              // const newModeValue = currentModeValue === 'calendarIP' 
+                              // ? 'calendarOrg' 
+                              // : 'calendarIP'
+
+
+                              const newUrl = currentUrl.replace(`mode=${currentModeValue}`, `mode=${newVal}`)
+
+                              history.pushState(null, null, newUrl)
+                              // console.log('Старый URL:', currentUrl)
+                              // console.log('Новый URL:', newUrl)
+                         } else {
+                              // console.log('В URL адресе не найден параметр mode.')
                          }
                     }
                },
@@ -1341,8 +1457,7 @@
                     this.setToday()
                     // this.markWeekend()
                     this.getUrlParam()
-
-                                   }
+               }
           })
           </script>
 </div>
