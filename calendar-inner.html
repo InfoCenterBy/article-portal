@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-      <title>Главная</title>
+      <title>Налоговый календарь</title>
       <meta charset="UTF-8" />
       <meta name="format-detection" content="telephone=no" />
       <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -323,7 +323,7 @@
                <div class="mt-4"></div>
                <div class="main-section">
           <div class="row">
-               <div class="col-xxl-10 d-flex flex-column">
+               <div class="col-xxl-10 col-xl-9 d-flex flex-column">
                     <div class="d-flex flex-row flex-wrap align-items-center justify-content-between">
                          <div class="">
                               <strong class="ff-inter fs-28">
@@ -501,8 +501,8 @@
                                         </tr>
 
                                                             <template v-if="everyDayArr.length !== 0 && info.weekend !== true" v-for="info in everyDayArr">
-                                             <tr>
-                                                  <td v-if="info.show === true" :id="'date' + '-' + info?.date">
+                                             <tr >
+                                                  <td v-if="info.show === true">
                                                        Ежедневно
                                                   </td>
                                                   <td v-if="info.show === true">
@@ -521,7 +521,7 @@
                                                   </td>
                                              </tr>
                                              <tr>
-                                                  <td v-if="info.pay === true" :id="'date' + '-' + info?.date">
+                                                  <td v-if="info.pay === true">
                                                        Ежедневно
                                                   </td>
                                                   <td v-if="info.pay === true">
@@ -617,6 +617,7 @@
                                         </tr>
                                    </tbody>
                               </table>
+                              <div class="my-5"></div>
                               <div class="paywall">
      <div class="paywall__header mb-3">
           <div class="paywall__title"><i class="bi bi-lock me-4"></i>Налоговый календарь находится в платном доступе</div>
@@ -630,7 +631,7 @@
                          </div>
                     </div>
                </div>
-               <div class="col-xxl-2 d-xxl-flex d-none">
+               <div class="col-xxl-2 col-xl-3 d-xl-flex d-none">
                     <div class="border-start ps-3">
                          <div class="">
                               <a href="#" target="_blank" rel="noopener noreferrer">
@@ -1150,6 +1151,10 @@
                          let underLine = document.querySelector('.tab-underline-accent')
                          underLine.classList.toggle('tab-underline-checked')
                          this.filterDateToShow()
+                         // let date = new Date();
+                         // let nowDate = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear()
+                         // console.log("new Date()", new Date().toISOString())
+                         // this.changeUrlDay()
                     },
                     filterDateToShow(){
                          this.dateToShow = this.checkedDates.filter(el=>{
