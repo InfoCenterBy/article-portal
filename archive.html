@@ -322,13 +322,16 @@
                     </div>
                </section>
                <div class="mt-4"></div>
-               <div class="main-section">
-     <div class="row">
+               <div class="main-section" >
+     <div class="row" id="app">
           <div class="col-xxl-9 col-xl-8 d-flex flex-column order-xl-1 order-2">
                <div class="d-flex flex-row flex-wrap align-items-center justify-content-between">
                     <div class="my-2">
                          <strong class="ff-inter fs-28">
-                              Архив налоговых календарей
+                              Архив налоговых календарей 
+                              <span class="color-gray-dark">
+                                   {{filteredData?.length}}
+                              </span>
                          </strong>
                     </div>
                     <div class="my-2">
@@ -339,21 +342,26 @@
                     </div>
                </div>
                <div class="mt-4">
-                    <div class="d-flex flex-column w-100">
-                         <a class="archive-card d-flex justify-content-between align-items-center w-100" href="">
+                    <transition-group tag="div" class="d-flex flex-column w-100" name="archive-card">
+                         <a 
+                         v-for="item in filteredData" 
+                         :key="item.id" 
+                         class="archive-card d-flex justify-content-between align-items-center w-100" 
+                         href="">
                               <div class="archive-card__info d-flex flex-row align-items-center">
                                    <div class="">
                                         <i class="bi bi-file-earmark-pdf"></i>
                                    </div>
                                    <div class="d-flex flex-column ms-3 align-items-start">
                                         <div class="archive-card__title">
-                                             Налоговый календарь январь 2024
+                                             Налоговый календарь {{item.month}} {{item.year}}
                                         </div>
                                         <div class="archive-card__date mt-2">
-                                             15.12.2024
+                                             {{item.date}}
                                         </div>
                                         <div class="archive-card__type mt-3">
-                                             Организациям
+                                             <span v-if="item.tag === 'org'">Организациям</span>
+                                             <span v-if="item.tag === 'ip'">Индивидуальным предпринимателям</span>
                                         </div>
                                    </div>
                               </div>
@@ -361,29 +369,9 @@
                                    <i class="bi bi-download"></i>
                               </div>
                          </a>
-                         <a class="archive-card d-flex justify-content-between align-items-center w-100" href="">
-                              <div class="archive-card__info d-flex flex-row align-items-center">
-                                   <div class="">
-                                        <i class="bi bi-file-earmark-pdf"></i>
+                    </transition-group>
+
                                    </div>
-                                   <div class="d-flex flex-column ms-3 align-items-start">
-                                        <div class="archive-card__title">
-                                             Налоговый календарь декабрь 2023
-                                        </div>
-                                        <div class="archive-card__date mt-2">
-                                             15.12.2024
-                                        </div>
-                                        <div class="archive-card__type mt-3">
-                                             Индивидуальным предпринимателям
-                                        </div>
-                                   </div>
-                              </div>
-                              <div class="">
-                                   <i class="bi bi-download"></i>
-                              </div>
-                         </a>
-                    </div>
-               </div>
           </div>
           <div class="col-xxl-3 col-xl-4 d-flex order-xl-2 order-1">
                <div class="archive-sidebar ps-3 w-100">
@@ -399,19 +387,19 @@
                          <div class="mt-4">
                               <span class="color-blue-light fw-500 fs-16">Плательщик</span>
                               <div class="checkbox mt-3 ps-3">
-                                   <input type="checkbox" id="RefInfo01">
+                                   <input type="checkbox" id="RefInfo01" v-model="orgChecked" value="org">
                                    <label class="checkbox__label" for="RefInfo01">
                                         Организации
                                         &ensp;
-                                        <span class="color-gray-dark">(13)</span>
+                                        <span class="color-gray-dark">({{tagsNum?.orgCount}})</span>
                                    </label>
                               </div>
                               <div class="checkbox mt-3 ps-3">
-                                   <input type="checkbox" id="RefInfo02">
+                                   <input type="checkbox" id="RefInfo02" v-model="ipChecked" value="ip">
                                    <label class="checkbox__label" for="RefInfo02">
                                         Индивидуальные предприниматели
                                         &ensp;
-                                        <span class="color-gray-dark">(13)</span>
+                                        <span class="color-gray-dark">({{tagsNum?.ipCount}})</span>
                                    </label>
                               </div>
                          </div>
@@ -421,40 +409,16 @@
                                    <div class="label">с</div>
                                    <div class="row row-container">
                                         <div class="col-xxl-6 my-2">
-                                             <select class="select border-radius-4">
-                                                  <option value="" selected>
-                                                       Январь
-                                                  </option>
-                                                  <option>
-                                                       Февраль
-                                                  </option>
-                                                  <option>
-                                                       Март
-                                                  </option>
-                                                  <option>
-                                                       Апрель
-                                                  </option>
-                                                  <option>
-                                                       Май
+                                             <select class="select border-radius-4" v-model="selectedMonthStart">
+                                                  <option v-for="item in currentMonthList" :value="item.num" >
+                                                       {{item.title}}
                                                   </option>
                                              </select>
                                         </div>
                                         <div class="col-xxl-6 my-2">
-                                             <select class="select border-radius-4">
-                                                  <option value="" selected>
-                                                       2024
-                                                  </option>
-                                                  <option>
-                                                       2025
-                                                  </option>
-                                                  <option>
-                                                       2026
-                                                  </option>
-                                                  <option>
-                                                       2027
-                                                  </option>
-                                                  <option>
-                                                       2028
+                                             <select class="select border-radius-4" v-model="selectedYearStart">
+                                                  <option v-for="item in currentYearList" :value="item">
+                                                       {{item}}
                                                   </option>
                                              </select>
                                         </div>
@@ -464,40 +428,16 @@
                                    <div class="label">по</div>
                                    <div class="row row-container">
                                         <div class="col-xxl-6 my-2">
-                                             <select class="select border-radius-4">
-                                                  <option value="" selected>
-                                                       Январь
-                                                  </option>
-                                                  <option>
-                                                       Февраль
-                                                  </option>
-                                                  <option>
-                                                       Март
-                                                  </option>
-                                                  <option>
-                                                       Апрель
-                                                  </option>
-                                                  <option>
-                                                       Май
+                                             <select class="select border-radius-4" v-model="selectedMonthEnd">
+                                                  <option v-for="item in currentMonthList" :value="item.num">
+                                                       {{item.title}}
                                                   </option>
                                              </select>
                                         </div>
                                         <div class="col-xxl-6 my-2">
-                                             <select class="select border-radius-4">
-                                                  <option value="" selected>
-                                                       2024
-                                                  </option>
-                                                  <option>
-                                                       2025
-                                                  </option>
-                                                  <option>
-                                                       2026
-                                                  </option>
-                                                  <option>
-                                                       2027
-                                                  </option>
-                                                  <option>
-                                                       2028
+                                             <select class="select border-radius-4" v-model="selectedYearEnd">
+                                                  <option v-for="item in currentYearList" :value="item">
+                                                       {{item}}
                                                   </option>
                                              </select>
                                         </div>
@@ -508,6 +448,161 @@
                </div>
           </div>
      </div>
+     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+     <script type="application/javascript">
+          const vueApp = new Vue({
+               el: '#app',
+               components: {
+               },
+               data() {
+                    return {
+                         mainData: [
+                              {
+                                   id: 1,
+                                   date: '15.01.2024',
+                                   tag: 'org'
+                              },
+                              {
+                                   id: 2,
+                                   date: '15.12.2023',
+                                   tag: 'ip'
+                              },
+                              {
+                                   id: 3,
+                                   date: '15.02.2024',
+                                   tag: 'ip'
+                              },
+                         ],
+                         monthList : [
+                              'январь', 'февраль', 'март', 'апрель', 'май', 'июнь',
+                              'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь'
+                         ],
+                         transformedData : [],
+                         currentMonthList: [],
+                         currentYearList: [],
+                         tagsNum: {
+                              orgCount: 0,
+                              ipCount: 0,
+                         },
+                         selectedMonthStart: 1,
+                         selectedMonthEnd: 12,
+                         selectedYearStart: 2023,
+                         selectedYearEnd: 2024,
+                         orgChecked: false,
+                         ipChecked: false,
+                    }
+               },
+               watch: {
+               },
+               methods: {
+                    transformData(){
+                         try {
+                              const transformedData = this.mainData.map(item => {
+                                   const dateParts = item.date.split('.');
+                                   const monthIndex = parseInt(dateParts[1]) - 1;
+                                   return {
+                                        id: item.id,
+                                        month: this.monthList[monthIndex],
+                                        year: dateParts[2],
+                                        date: item.date,
+                                        tag: item.tag
+                                   }
+                              })
+                              this.transformedData = transformedData
+                         } catch (error) {
+                              console.log('error in transforming data', error)
+                         }
+                    },
+                    getCurrentMonthList() {
+                         const monthMap = {
+                              'январь': 1,
+                              'февраль': 2,
+                              'март': 3,
+                              'апрель': 4,
+                              'май': 5,
+                              'июнь': 6,
+                              'июль': 7,
+                              'август': 8,
+                              'сентябрь': 9,
+                              'октябрь': 10,
+                              'ноябрь': 11,
+                              'декабрь': 12
+                         };
+
+                         try {
+                              this.currentMonthList = this.transformedData
+                                   .map(item => ({ num: monthMap[item.month.toLowerCase()], title: item.month }))
+                                   .sort((a, b) => a.num - b.num);
+                         } catch (error) {
+                              console.log('error in formating currentMonthList', error)
+                         }
+                    },
+                    getCurrentYearList() {
+                         try {
+                              this.currentYearList = [...new Set(this.transformedData.map(item => item.year))]
+                                   .sort((a, b) => parseInt(a) - parseInt(b));
+                         } catch (error) {
+                              console.log('error in formating currentYearList', error);
+                         }
+                    }, 
+                    countTags() {
+                         let ipCount = 0;
+                         let orgCount = 0;
+                         this.transformedData.forEach(item => {
+                              if (item.tag === 'ip') {
+                                   ipCount++;
+                              } else if (item.tag === 'org') {
+                                   orgCount++;
+                              }
+                         });
+
+                         this.tagsNum.ipCount = ipCount
+                         this.tagsNum.orgCount = orgCount
+                    }
+               },
+               computed: {
+                    filteredData() {
+                         let filteredData = this.transformedData;
+
+                         // Фильтрация по выбранным организациям и индивидуальным предпринимателям
+
+                                                  if (this.orgChecked) {
+                              filteredData = filteredData.filter(item => item.tag === 'org');
+                         }
+
+                         if (this.ipChecked) {
+                              filteredData = filteredData.filter(item => item.tag === 'ip');
+                         }
+
+                         if (this.orgChecked && this.ipChecked) {
+                              filteredData = this.transformedData
+                         }
+
+                         // Фильтрация по выбранным месяцам и годам
+                         filteredData = filteredData.filter(item => {
+                              const dateParts = item.date.split('.');
+                              const month = parseInt(dateParts[1]);
+                              const year = parseInt(dateParts[2]);
+
+                              const startYearMonth = this.selectedYearStart * 12 + this.selectedMonthStart;
+                              const endYearMonth = this.selectedYearEnd * 12 + this.selectedMonthEnd;
+
+                              const currentYearMonth = year * 12 + month;
+
+                              return currentYearMonth >= startYearMonth && currentYearMonth <= endYearMonth;
+                         });
+
+                         return filteredData;
+                    }
+               },
+               mounted() {
+                    this.transformData()
+                    this.getCurrentMonthList()
+                    this.getCurrentYearList()
+                    this.countTags()
+               },
+          })
+     </script>
 </div>
                <div class="mt-4"></div>
           </div>
