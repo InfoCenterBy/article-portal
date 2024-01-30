@@ -315,7 +315,7 @@
                               <ol class="breadcrumb">
                                    <li class="breadcrumb-item"><a href="main.html"><i class="bi bi-house"></i></a></li>
                                    <li class="breadcrumb-item"><a href="#">Справочная информация</a></li>
-                                   <li class="breadcrumb-item"><a href="#">Налоговый календарь</a></li>
+                                   <li class="breadcrumb-item"><a href="./calendar-inner.html">Налоговый календарь</a></li>
                                    <li class="breadcrumb-item active" aria-current="page">Архив налоговых календарей</li>
                               </ol>
                          </nav>
@@ -546,9 +546,43 @@
                          }
                     }, 
                     countTags() {
-                         let ipCount = 0;
-                         let orgCount = 0;
-                         this.transformedData.forEach(item => {
+
+                                             }
+               },
+               computed: {
+                    filteredData() {
+                         let ipCount = 0
+                         let orgCount = 0
+                         let filteredData = this.transformedData
+
+                         // Фильтрация по выбранным организациям и индивидуальным предпринимателям
+
+                                                  if (this.orgChecked) {
+                              filteredData = filteredData.filter(item => item.tag === 'org')
+                         }
+
+                         if (this.ipChecked) {
+                              filteredData = filteredData.filter(item => item.tag === 'ip')
+                         }
+
+                         if (this.orgChecked && this.ipChecked) {
+                              filteredData = this.transformedData
+                         }
+
+                         // Фильтрация по выбранным месяцам и годам
+                         filteredData = filteredData.filter(item => {
+                              const dateParts = item.date.split('.')
+                              const month = parseInt(dateParts[1])
+                              const year = parseInt(dateParts[2])
+
+                              const startYearMonth = this.selectedYearStart * 12 + this.selectedMonthStart
+                              const endYearMonth = this.selectedYearEnd * 12 + this.selectedMonthEnd
+
+                              const currentYearMonth = year * 12 + month
+
+                              return currentYearMonth >= startYearMonth && currentYearMonth <= endYearMonth
+                         });
+                         filteredData.forEach(item => {
                               if (item.tag === 'ip') {
                                    ipCount++;
                               } else if (item.tag === 'org') {
@@ -558,40 +592,6 @@
 
                          this.tagsNum.ipCount = ipCount
                          this.tagsNum.orgCount = orgCount
-                    }
-               },
-               computed: {
-                    filteredData() {
-                         let filteredData = this.transformedData;
-
-                         // Фильтрация по выбранным организациям и индивидуальным предпринимателям
-
-                                                  if (this.orgChecked) {
-                              filteredData = filteredData.filter(item => item.tag === 'org');
-                         }
-
-                         if (this.ipChecked) {
-                              filteredData = filteredData.filter(item => item.tag === 'ip');
-                         }
-
-                         if (this.orgChecked && this.ipChecked) {
-                              filteredData = this.transformedData
-                         }
-
-                         // Фильтрация по выбранным месяцам и годам
-                         filteredData = filteredData.filter(item => {
-                              const dateParts = item.date.split('.');
-                              const month = parseInt(dateParts[1]);
-                              const year = parseInt(dateParts[2]);
-
-                              const startYearMonth = this.selectedYearStart * 12 + this.selectedMonthStart;
-                              const endYearMonth = this.selectedYearEnd * 12 + this.selectedMonthEnd;
-
-                              const currentYearMonth = year * 12 + month;
-
-                              return currentYearMonth >= startYearMonth && currentYearMonth <= endYearMonth;
-                         });
-
                          return filteredData;
                     }
                },
