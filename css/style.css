@@ -9258,6 +9258,10 @@ html {
     margin-left: 0;
   }
 
+  .modal-mobile-button {
+    font-size: 24px;
+  }
+
   .header-mobile-menu {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -9270,6 +9274,11 @@ html {
 
   .new-header-search {
     max-width: 80%;
+  }
+
+  .header-button {
+    padding: 2px 4px;
+    margin: 5px 2px;
   }
 
   .mobile-menu {
