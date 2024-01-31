@@ -334,11 +334,11 @@
                               </span>
                          </strong>
                     </div>
-                    <div class="my-2">
-                         <a class="white-btn" download="" href="">
+                    <div class="my-2" v-if="filteredData.length !== 0">
+                         <button class="white-btn" href="" >
                               <span>Скачать весь архив в PDF</span>
                               <i class="bi bi-download"></i>
-                         </a>
+                         </button>
                     </div>
                </div>
                <div class="mt-4">
@@ -591,6 +591,7 @@
                          }
                     }, 
                     resetForm(){
+                         window.history.replaceState({}, '', location.pathname)
                          location.reload()
                     },
                     findMinMaxYear(){
