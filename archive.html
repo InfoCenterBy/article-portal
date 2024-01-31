@@ -380,7 +380,7 @@
                               <span class="my-2 fs-20 color-gold fw-600">
                                    Фильтры
                               </span>
-                              <button class="my-2 fs-16 color-gray-dark">
+                              <button class="my-2 fs-16 color-gray-dark"  @click="resetForm()">
                                    Очистить все
                               </button>
                          </div>
@@ -486,19 +486,44 @@
                          },
                          selectedMonthStart: 1,
                          selectedMonthEnd: 12,
-                         selectedYearStart: 2023,
-                         selectedYearEnd: 2024,
+                         selectedYearStart: null,
+                         selectedYearEnd: null,
                          orgChecked: false,
                          ipChecked: false,
                     }
                },
                watch: {
+                    orgChecked() { this.updateURL() },
+                    ipChecked() { this.updateURL() },
+                    selectedMonthStart() { this.updateURL() },
+                    selectedMonthEnd() { this.updateURL() },
+                    selectedYearStart() { this.updateURL() },
+                    selectedYearEnd() { this.updateURL() }
                },
                methods: {
+                    updateURL() {
+                         const params = new URLSearchParams()
+                         params.set('orgChecked', this.orgChecked)
+                         params.set('ipChecked', this.ipChecked)
+                         params.set('selectedMonthStart', this.selectedMonthStart)
+                         params.set('selectedMonthEnd', this.selectedMonthEnd)
+                         params.set('selectedYearStart', this.selectedYearStart)
+                         params.set('selectedYearEnd', this.selectedYearEnd)
+                         window.history.replaceState({}, '', `${location.pathname}?${params}`)
+                    },
+                    loadParamsFromURL() {
+                         const urlParams = new URLSearchParams(window.location.search)
+                         this.orgChecked = urlParams.get('orgChecked') === 'true'
+                         this.ipChecked = urlParams.get('ipChecked') === 'true'
+                         this.selectedMonthStart = parseInt(urlParams.get('selectedMonthStart')) || 1
+                         this.selectedMonthEnd = parseInt(urlParams.get('selectedMonthEnd')) || 12
+                         this.selectedYearStart = parseInt(urlParams.get('selectedYearStart')) || this.selectedYearStart
+                         this.selectedYearEnd = parseInt(urlParams.get('selectedYearEnd')) || this.selectedYearEnd
+                    },
                     transformData(){
                          try {
                               const transformedData = this.mainData.map(item => {
-                                   const dateParts = item.date.split('.');
+                                   const dateParts = item.date.split('.')
                                    const monthIndex = parseInt(dateParts[1]) - 1;
                                    return {
                                         id: item.id,
@@ -508,7 +533,17 @@
                                         tag: item.tag
                                    }
                               })
+                              transformedData.sort((a, b) => {
+                                   if (a.year !== b.year) {
+                                        return parseInt(a.year) - parseInt(b.year)
+                                   }
+                                   const aMonthIndex = this.monthList.indexOf(a.month)
+                                   const bMonthIndex = this.monthList.indexOf(b.month)
+                                   return aMonthIndex - bMonthIndex
+                              });
+
                               this.transformedData = transformedData
+
                          } catch (error) {
                               console.log('error in transforming data', error)
                          }
@@ -532,7 +567,7 @@
                          try {
                               this.currentMonthList = this.transformedData
                                    .map(item => ({ num: monthMap[item.month.toLowerCase()], title: item.month }))
-                                   .sort((a, b) => a.num - b.num);
+                                   .sort((a, b) => a.num - b.num)
                          } catch (error) {
                               console.log('error in formating currentMonthList', error)
                          }
@@ -540,14 +575,26 @@
                     getCurrentYearList() {
                          try {
                               this.currentYearList = [...new Set(this.transformedData.map(item => item.year))]
-                                   .sort((a, b) => parseInt(a) - parseInt(b));
+                                   .sort((a, b) => parseInt(a) - parseInt(b))
                          } catch (error) {
-                              console.log('error in formating currentYearList', error);
+                              console.log('error in formating currentYearList', error)
                          }
                     }, 
-                    countTags() {
+                    resetForm(){
+                         location.reload()
+                    },
+                    findMinMaxYear(){
+                         if (!this.transformedData || this.transformedData.length === 0) {
+                              return null;
+                         }
 
-                                             }
+                         const years = this.transformedData.map(item => parseInt(item.year));
+                         const minYear = Math.min(...years);
+                         const maxYear = Math.max(...years);
+
+                         this.selectedYearStart = minYear
+                         this.selectedYearEnd = maxYear
+                    }
                },
                computed: {
                     filteredData() {
@@ -555,43 +602,34 @@
                          let orgCount = 0
                          let filteredData = this.transformedData
 
-                         // Фильтрация по выбранным организациям и индивидуальным предпринимателям
-
-                                                  if (this.orgChecked) {
-                              filteredData = filteredData.filter(item => item.tag === 'org')
-                         }
-
-                         if (this.ipChecked) {
-                              filteredData = filteredData.filter(item => item.tag === 'ip')
-                         }
-
-                         if (this.orgChecked && this.ipChecked) {
-                              filteredData = this.transformedData
-                         }
-
-                         // Фильтрация по выбранным месяцам и годам
                          filteredData = filteredData.filter(item => {
                               const dateParts = item.date.split('.')
                               const month = parseInt(dateParts[1])
                               const year = parseInt(dateParts[2])
-
                               const startYearMonth = this.selectedYearStart * 12 + this.selectedMonthStart
                               const endYearMonth = this.selectedYearEnd * 12 + this.selectedMonthEnd
-
                               const currentYearMonth = year * 12 + month
-
                               return currentYearMonth >= startYearMonth && currentYearMonth <= endYearMonth
                          });
+
                          filteredData.forEach(item => {
                               if (item.tag === 'ip') {
-                                   ipCount++;
+                                   ipCount++
                               } else if (item.tag === 'org') {
-                                   orgCount++;
+                                   orgCount++
                               }
                          });
-
                          this.tagsNum.ipCount = ipCount
                          this.tagsNum.orgCount = orgCount
+
+                         if (this.orgChecked && this.ipChecked) {
+                              filteredData = filteredData.filter(item => item.tag === 'org' || item.tag === 'ip')
+                         } else if (this.orgChecked) {
+                              filteredData = filteredData.filter(item => item.tag === 'org')
+                         } else if (this.ipChecked) {
+                              filteredData = filteredData.filter(item => item.tag === 'ip')
+                         }
+
                          return filteredData;
                     }
                },
@@ -599,7 +637,8 @@
                     this.transformData()
                     this.getCurrentMonthList()
                     this.getCurrentYearList()
-                    this.countTags()
+                    this.findMinMaxYear()
+                    this.loadParamsFromURL()
                },
           })
      </script>

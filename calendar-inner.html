@@ -1022,7 +1022,7 @@
                     },
                     fillDates(){
                          // this.dates = Array.from(Array(35).keys())
-                         console.log('parent', this.messageFromChild)
+                         // console.log('parent', this.messageFromChild)
                     },
                     calcMinDate(){
                          let lastDay =  new Date(new Date().getFullYear(), new Date().getMonth() - 1, 1)
@@ -1035,7 +1035,7 @@
                     onDayClick(day) {
                          // day.date if need date in selected
                          this.selectedDate = day.date
-                         console.log('day', day)
+                         // console.log('day', day)
                          let blockId = '#date' + '-' + day.id
                          let elToScroll = document.querySelector(blockId)
                          var is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
@@ -1214,8 +1214,8 @@
                     },
                     calcTime(){
                          const currentPage = this.$refs.calendar.pages[0]
-                         console.log('currentPage', currentPage)
-                         console.log('monthComps', currentPage.monthComps)
+                         // console.log('currentPage', currentPage)
+                         // console.log('monthComps', currentPage.monthComps)
                          let d = new Date(currentPage.monthComps.year, currentPage.monthComps.month, 0);
                          let getTot = currentPage.monthComps.days
                          this.weekTime.sumDays = getTot
@@ -1246,14 +1246,14 @@
                          try {
                               const disabledDatesThisMonth = this.disabledDates.filter(date => date.getMonth() + 1 === currentPage.monthComps.month)
                               disabledDatesThisMonth.forEach(el => {
-                                   console.log('el.getMonth()', el.getMonth())
+                                   // console.log('el.getMonth()', el.getMonth())
 
                                    if (el.getDay() !== 0) {
                                         disNumber++
                                    }
                               });
                               getTot = getTot - disNumber
-                              console.log('getTotal', getTot)
+                              // console.log('getTotal', getTot)
                          } catch (error) {
                               console.log('error in calcTime with disDates', error)
                          }
@@ -1364,7 +1364,7 @@
                               console.log('error in getUrlParam', error);
                          }
 
-                         console.log('mode', this.typeMode, 'date', this.selectedDate, 'type', this.selectedType);
+                         // console.log('mode', this.typeMode, 'date', this.selectedDate, 'type', this.selectedType);
                     },
 
                                         // testCheck(){
@@ -1375,7 +1375,7 @@
                     // },
                     moveToDate(date){
                          const calendar = this.$refs.calendar
-                         console.log('this.$refs.calendar', this.$refs.calendar)
+                         // console.log('this.$refs.calendar', this.$refs.calendar)
                          calendar.focusDate(date);
                          let newCurrentMonth = calendar.pages[0].month;
                          this.setNewMonth(newCurrentMonth)
