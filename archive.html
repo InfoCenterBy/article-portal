@@ -370,8 +370,16 @@
                               </div>
                          </a>
                     </transition-group>
-
-                                   </div>
+                    <div class="d-flex flex-column justify-content-center align-items-center" v-if="filteredData.length === 0">
+                         <p class="h5 text-center color-gray-dark">
+                              По выбранным условиям
+                              нет
+                              подходящего элемента.
+                              Попробуйте изменить условия выбора.
+                         </p>
+                         <img src="img/default-search.gif" alt="default-search">
+                    </div>
+               </div>
           </div>
           <div class="col-xxl-3 col-xl-4 d-flex order-xl-2 order-1">
                <div class="archive-sidebar ps-3 w-100">
@@ -389,15 +397,19 @@
                               <div class="checkbox mt-3 ps-3">
                                    <input type="checkbox" id="RefInfo01" v-model="orgChecked" value="org">
                                    <label class="checkbox__label" for="RefInfo01">
-                                        <span>Организации</span>
-                                        <span class="color-gray-dark">&ensp;({{tagsNum?.orgCount}})</span>
+                                        <div class="d-flex flex-row justify-content-between w-100">
+                                             <span>Организации</span>
+                                             <span class="color-gray-dark">&ensp;({{tagsNum?.orgCount}})</span>
+                                        </div>
                                    </label>
                               </div>
                               <div class="checkbox mt-3 ps-3">
                                    <input type="checkbox" id="RefInfo02" v-model="ipChecked" value="ip">
-                                   <label class="checkbox__label" for="RefInfo02">
-                                        <span>Индивидуальные <br> предприниматели</span>
-                                        <span class="color-gray-dark">&ensp;({{tagsNum?.ipCount}})</span>
+                                   <label class="checkbox__label " for="RefInfo02">
+                                        <div class="d-flex flex-row justify-content-between w-100">
+                                             <span>Индивидуальные <br> предприниматели</span>
+                                             <span class="color-gray-dark">&ensp;({{tagsNum?.ipCount}})</span>
+                                        </div>
                                    </label>
                               </div>
                          </div>
@@ -533,11 +545,11 @@
                               })
                               transformedData.sort((a, b) => {
                                    if (a.year !== b.year) {
-                                        return parseInt(a.year) - parseInt(b.year)
+                                        return parseInt(b.year) - parseInt(a.year)
                                    }
                                    const aMonthIndex = this.monthList.indexOf(a.month)
                                    const bMonthIndex = this.monthList.indexOf(b.month)
-                                   return aMonthIndex - bMonthIndex
+                                   return bMonthIndex - aMonthIndex
                               });
 
                               this.transformedData = transformedData
