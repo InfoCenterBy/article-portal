@@ -9377,6 +9377,12 @@ html {
   }
 }
 
+@media (max-width: 340px) {
+  .header-button {
+    margin: 0 0;
+  }
+}
+
 @media (hover: hover) {
   .decor:hover {
     -webkit-box-shadow: 4px 4px transparent, 5px 5px var(--color-gold);
