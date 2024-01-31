@@ -544,7 +544,8 @@
 
                                                                                 <tr v-if="info.weekend !== true" v-for="info in tableDates" :id="'date' + '-' + info?.date">
                                              <td >
-                                                  <span>{{info.date}}</span>
+                                                  <span>{{info.date}}</span> <br>
+                                                  <span class="color-gray-dark">{{info?.dayOfWeek}}</span>
                                              </td>
                                              <td v-if="info.show === true">
                                                   Представление
@@ -1128,17 +1129,18 @@
                                    this.everyDayArr.push(el)
                               }
                          })
+                         this.monthArr.forEach(item => {
+                              item.dayOfWeek = this.getRussianDayOfWeek(item.date);
+                         });
                          this.sortedDates = this.monthArr.sort((a, b)=>{
                               return Number(new Date(a.date)) - Number(new Date(b.date))
                          })
                          this.tableDates = this.monthArr.reduce((accumulator, currentValue) => {
                               if (currentValue.show === true && currentValue.pay === true) {
-                                   // Разделяем элемент на два с обратными значениями show и pay
                                    const showItem = { ...currentValue, pay: false };
                                    const payItem = { ...currentValue, show: false };
                                    accumulator.push(showItem, payItem);
                               } else {
-                                   // Оставляем элемент без изменений
                                    accumulator.push(currentValue);
                               }
                               return accumulator;
@@ -1146,6 +1148,10 @@
                          this.tableDates = this.tableDates.sort((a, b) => {
                               return Number(new Date(a.date)) - Number(new Date(b.date));
                          });
+                    },
+                    getRussianDayOfWeek(date) {
+                         const daysOfWeek = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'];
+                         return daysOfWeek[new Date(date).getDay()];
                     },
                     changeType(){
                          let underLine = document.querySelector('.tab-underline-accent')
