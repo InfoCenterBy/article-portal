@@ -408,14 +408,14 @@
                                    <div class="row row-container">
                                         <div class="col-xxl-6 my-2">
                                              <select class="select border-radius-4" v-model="selectedMonthStart">
-                                                  <option v-for="item in currentMonthList" :value="item.num" >
+                                                  <option v-for="item in currentMonthList" :value="item.num"  class="color-nav-black">
                                                        {{item.title}}
                                                   </option>
                                              </select>
                                         </div>
                                         <div class="col-xxl-6 my-2">
                                              <select class="select border-radius-4" v-model="selectedYearStart">
-                                                  <option v-for="item in currentYearList" :value="item">
+                                                  <option v-for="item in currentYearList" :value="item" class="color-nav-black">
                                                        {{item}}
                                                   </option>
                                              </select>
@@ -427,14 +427,14 @@
                                    <div class="row row-container">
                                         <div class="col-xxl-6 my-2">
                                              <select class="select border-radius-4" v-model="selectedMonthEnd">
-                                                  <option v-for="item in currentMonthList" :value="item.num">
+                                                  <option v-for="item in currentMonthList" :value="item.num" class="color-nav-black">
                                                        {{item.title}}
                                                   </option>
                                              </select>
                                         </div>
                                         <div class="col-xxl-6 my-2">
                                              <select class="select border-radius-4" v-model="selectedYearEnd">
-                                                  <option v-for="item in currentYearList" :value="item">
+                                                  <option v-for="item in currentYearList" :value="item" class="color-nav-black">
                                                        {{item}}
                                                   </option>
                                              </select>
