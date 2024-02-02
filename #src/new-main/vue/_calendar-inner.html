@@ -1,14 +1,15 @@
 <div class="main-section">
           <div class="row">
-               <div class="col-xxl-10 d-flex flex-column">
+               <div class="col-xxl-10 col-xl-9 d-flex flex-column">
                     <div class="d-flex flex-row flex-wrap align-items-center justify-content-between">
                          <div class="">
                               <strong class="ff-inter fs-28">
                                    Налоговый календарь
                               </strong>
+                              
                          </div>
                          <div class="">
-                              <a href="" target="_blank" rel="noopener noreferrer"
+                              <a href="archive.html" target="_blank" rel="noopener noreferrer"
                                    class="color-gray-dark d-flex flex-row align-items-center hover-orange">
                                    <span>Архив налоговых календарей</span>
                                    <i class="bi bi-arrow-right ms-2"></i>
@@ -37,7 +38,11 @@
                                         <div class="tab-underline w-100"></div>
                                    </div>
                               </div>
-                              <div class="mt-4 col-12"></div>
+                              <div class="mt-4 col-12">
+                                   <!-- <button @click="moveToDate('2023-12-26')">
+                                        sdfsdf
+                                   </button> -->
+                              </div>
                               <div class="col-xxl-6 border border-1 border-20 my-1">
                                    <!-- <button @click="testCheck">get current month</button> -->
                                    <!-- <div class="">{{currentMonth}}</div> -->
@@ -167,12 +172,12 @@
                                         Налоговый календарь на {{selectedMonth}} {{yearTitle}} года
                                    </strong>
                               </div>
-                              <div class="my-2">
+                              <!-- <div class="my-2">
                                    <a class="white-btn" download="" href="">
                                         <span>Скачать в PDF</span>
                                         <i class="bi bi-download"></i>
                                    </a>
-                              </div>
+                              </div> -->
                          </div>
                          <div class="calendar-table mt-5">
                               <table class="table">
@@ -193,8 +198,9 @@
                                         </tr>
                     
                                         <template v-if="everyDayArr.length !== 0 && info.weekend !== true" v-for="info in everyDayArr">
-                                             <tr>
-                                                  <td>
+                                             <tr >
+                                                  <!-- :id="'date' + '-' + info?.date" -->
+                                                  <td v-if="info.show === true">
                                                        Ежедневно
                                                   </td>
                                                   <td v-if="info.show === true">
@@ -213,7 +219,8 @@
                                                   </td>
                                              </tr>
                                              <tr>
-                                                  <td>
+                                                  <!-- :id="'date' + '-' + info?.date" -->
+                                                  <td v-if="info.pay === true">
                                                        Ежедневно
                                                   </td>
                                                   <td v-if="info.pay === true">
@@ -234,9 +241,10 @@
                                         </template>
                     
                     
-                                        <tr v-if="info.weekend !== true" v-for="info in tableDates">
-                                             <td :id="'date' + info?.date.split('-').join('')">
-                                                  {{info.date}}
+                                        <tr v-if="info.weekend !== true" v-for="info in tableDates" :id="'date' + '-' + info?.date">
+                                             <td >
+                                                  <span>{{info.date}}</span> <br>
+                                                  <span class="color-gray-dark">{{info?.dayOfWeek}}</span>
                                              </td>
                                              <td v-if="info.show === true">
                                                   Представление
@@ -275,6 +283,42 @@
                                         </tr>
                                    </tbody>
                               </table>
+
+                              <table class="table mt-5">
+                                   <tbody>
+                                        <tr>
+                                             <td>
+                                                  Дата, день недели
+                                                  (не позднее)
+                                             </td>
+                                             <td>
+                                                  Уплата и (или) представление декларации или отчета
+                                             </td>
+                                             <td colspan="2">
+                                                  Вид налога, сбора и неналогового платежа, по которым производятся уплата и представление
+                                                  декларации, наименование прочих
+                                                  отчетов
+                                             </td>
+                                        </tr>
+                                        <tr>
+                                             <td>
+                                                  Ежедневно
+                                             </td>
+                                             <td>
+                                                  Уплата
+                                                  (за исключением нерезидентов)
+                                             </td>
+                                             <td colspan="2">
+                                                  Налог на доходы иностранных организаций, не осуществляющих деятельность в Республике Беларусь через постоянное
+                                                  представительство
+                                                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque dolores deleniti iste suscipit cupiditate earum, atque
+                                                  odit doloremque sit voluptatibus in saepe perferendis neque dignissimos quae ut nam iusto. Odio.
+                                             </td>
+                                        </tr>
+                                   </tbody>
+                              </table>
+                              <div class="my-5"></div>
+                              @@include('../main-components/_pay-wall.html')
                          </div>
                          <!-- <div class="row mt-5">
                                                        <div class="col-xxl-6">
@@ -369,7 +413,7 @@
                                                   </div> -->
                     </div>
                </div>
-               <div class="col-xxl-2 d-xxl-flex d-none">
+               <div class="col-xxl-2 col-xl-3 d-xl-flex d-none">
                     <div class="border-start ps-3">
                          <div class="">
                               <a href="#" target="_blank" rel="noopener noreferrer">
@@ -399,7 +443,7 @@
                          // placeholder data
                          dates: [
                               {
-                                   date: '2023-12-03',
+                                   date: '2024-01-03',
                                    pay: false,
                                    show: false,
                                    weekend: true,
@@ -415,7 +459,7 @@
                                    dateCategory: ''
                               },
                               {
-                                   date: '2023-12-04',
+                                   date: '2024-01-04',
                                    pay: true,
                                    show: true,
                                    weekend: false,
@@ -433,7 +477,7 @@
                                    dateCategory: 'calendarOrg'
                               },
                               {
-                                   date: '2023-12-28',
+                                   date: '2024-12-28',
                                    pay: true,
                                    show: true,
                                    weekend: false,
@@ -451,7 +495,7 @@
                                    dateCategory: 'calendarOrg'
                               },
                               {
-                                   date: '2023-12-15',
+                                   date: '2024-12-15',
                                    pay: true,
                                    show: true,
                                    weekend: false,
@@ -467,7 +511,7 @@
                                    dateCategory: 'calendarOrg'
                               },
                               {
-                                   date: '2023-12-25',
+                                   date: '2024-12-25',
                                    pay: true,
                                    show: true,
                                    weekend: false,
@@ -499,7 +543,7 @@
                                    dateCategory: 'calendarOrg'
                               },
                               {
-                                   date: '2023-12-12',
+                                   date: '2024-12-12',
                                    pay: true,
                                    show: false,
                                    weekend: false,
@@ -531,7 +575,7 @@
                                    dateCategory: 'calendarOrg'
                               },
                               {
-                                   date: '2023-12-06',
+                                   date: '2024-12-06',
                                    pay: true,
                                    show: true,
                                    weekend: false,
@@ -547,7 +591,7 @@
                                    dateCategory: 'calendarIP',
                                    },
                                    {
-                                   date: '2023-12-05',
+                                   date: '2024-12-05',
                                    pay: false,
                                    show: true,
                                    weekend: false,
@@ -579,7 +623,7 @@
                                    dateCategory: 'calendarIP',
                                    },
                                    {
-                                   date: '2023-12-14',
+                                   date: '2024-12-14',
                                    pay: true,
                                    show: true,
                                    weekend: false,
@@ -595,7 +639,7 @@
                                    dateCategory: 'calendarIP',
                                    },
                                    {
-                                   date: '2023-12-20',
+                                   date: '2024-12-20',
                                    pay: true,
                                    show: false,
                                    weekend: false,
@@ -627,7 +671,7 @@
                                    dateCategory: 'calendarIP',
                                    },
                                    {
-                                   date: '2023-12-30',
+                                   date: '2024-12-30',
                                    pay: false,
                                    show: true,
                                    weekend: false,
@@ -643,7 +687,7 @@
                                    dateCategory: 'calendarIP',
                                    },
                                    {
-                                   date: '2023-12-05',
+                                   date: '2024-12-05',
                                    pay: true,
                                    show: true,
                                    weekend: false,
@@ -731,12 +775,13 @@
                          });
                          this.setAttributes()
                          this.changeType()
+                         this.changeUrlTab(newVal)
                     },
                     currentMonth(newVal){
                          this.setAttributes()
                          this.calcTime()
                          this.markWeekend()
-                    }
+                    },
                },
                methods: {
                     updateMessage(message) {
@@ -759,7 +804,7 @@
                     },
                     fillDates(){
                          // this.dates = Array.from(Array(35).keys())
-                         console.log('parent', this.messageFromChild)
+                         // console.log('parent', this.messageFromChild)
                     },
                     calcMinDate(){
                          let lastDay =  new Date(new Date().getFullYear(), new Date().getMonth() - 1, 1)
@@ -772,8 +817,8 @@
                     onDayClick(day) {
                          // day.date if need date in selected
                          this.selectedDate = day.date
-                         
-                         let blockId = '#date' + day.id.split('-').join('')
+                         // console.log('day', day)
+                         let blockId = '#date' + '-' + day.id
                          let elToScroll = document.querySelector(blockId)
                          var is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
                          if(elToScroll && !is_safari){
@@ -785,6 +830,19 @@
                          if(elToScroll && is_safari){
                               elToScroll.scrollIntoView(false)
                          }
+                         this.highlightDay(blockId)
+                         this.changeUrlDay(day)
+                    },
+                    highlightDay(blockId){
+                         let allElem = document.querySelectorAll(blockId)
+                         allElem.forEach(el => {
+                              el.style.backgroundColor = 'rgba(249, 185, 116, .3)'
+                         });
+                         setTimeout(() => {
+                              allElem.forEach(el => {
+                                   el.style.backgroundColor = 'transparent'
+                              });
+                         }, 2000);
                     },
                     checkDate(){
                          this.dates.filter(el=>{
@@ -852,17 +910,18 @@
                                    this.everyDayArr.push(el)
                               }
                          })
+                         this.monthArr.forEach(item => {
+                              item.dayOfWeek = this.getRussianDayOfWeek(item.date);
+                         });
                          this.sortedDates = this.monthArr.sort((a, b)=>{
                               return Number(new Date(a.date)) - Number(new Date(b.date))
                          })
                          this.tableDates = this.monthArr.reduce((accumulator, currentValue) => {
                               if (currentValue.show === true && currentValue.pay === true) {
-                                   // Разделяем элемент на два с обратными значениями show и pay
                                    const showItem = { ...currentValue, pay: false };
                                    const payItem = { ...currentValue, show: false };
                                    accumulator.push(showItem, payItem);
                               } else {
-                                   // Оставляем элемент без изменений
                                    accumulator.push(currentValue);
                               }
                               return accumulator;
@@ -871,10 +930,18 @@
                               return Number(new Date(a.date)) - Number(new Date(b.date));
                          });
                     },
+                    getRussianDayOfWeek(date) {
+                         const daysOfWeek = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'];
+                         return daysOfWeek[new Date(date).getDay()];
+                    },
                     changeType(){
                          let underLine = document.querySelector('.tab-underline-accent')
                          underLine.classList.toggle('tab-underline-checked')
                          this.filterDateToShow()
+                         // let date = new Date();
+                         // let nowDate = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear()
+                         // console.log("new Date()", new Date().toISOString())
+                         // this.changeUrlDay()
                     },
                     filterDateToShow(){
                          this.dateToShow = this.checkedDates.filter(el=>{
@@ -901,7 +968,7 @@
                     },
                     checkMonth(){
                          const target = this
-                         const calendar = this.$refs.calendar
+                         const calendar = target.$refs.calendar
                          let arrow = document.querySelectorAll('.vc-arrow')
                          arrow.forEach(function(el){
                               el.addEventListener('click', function(){
@@ -934,8 +1001,8 @@
                     },
                     calcTime(){
                          const currentPage = this.$refs.calendar.pages[0]
-                         console.log('currentPage', currentPage)
-                         console.log('monthComps', currentPage.monthComps)
+                         // console.log('currentPage', currentPage)
+                         // console.log('monthComps', currentPage.monthComps)
                          let d = new Date(currentPage.monthComps.year, currentPage.monthComps.month, 0);
                          let getTot = currentPage.monthComps.days
                          this.weekTime.sumDays = getTot
@@ -966,14 +1033,14 @@
                          try {
                               const disabledDatesThisMonth = this.disabledDates.filter(date => date.getMonth() + 1 === currentPage.monthComps.month)
                               disabledDatesThisMonth.forEach(el => {
-                                   console.log('el.getMonth()', el.getMonth())
+                                   // console.log('el.getMonth()', el.getMonth())
 
                                    if (el.getDay() !== 0) {
                                         disNumber++
                                    }
                               });
                               getTot = getTot - disNumber
-                              console.log('getTotal', getTot)
+                              // console.log('getTotal', getTot)
                          } catch (error) {
                               console.log('error in calcTime with disDates', error)
                          }
@@ -1027,34 +1094,160 @@
                               }
                          })
                     },
-                    getUrlParam(){
-                         const urlParams = new URLSearchParams(window.location.search)
+                    validUrlDate(date){
+                         const currentDate = new Date()
+                         currentDate.setDate(1)
+
+                         let prevMonth;
+                         if (currentDate.getMonth() === 0) {
+                              prevMonth = new Date(currentDate.getFullYear() - 1, 11, 1)
+                         } else {
+                              prevMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1)
+                         }
+
+                         const nextMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 2, 0)
+
+                         const dateToCheck = new Date(date)
+
+                         if (dateToCheck >= prevMonth && dateToCheck <= nextMonth) {
+                              return dateToCheck
+                         } else {
+                              return new Date()
+                         }
+                    },
+                    async getUrlParam() {
+                         const urlParams = new URLSearchParams(window.location.search);
+
                          try {
-                              const modeParam = urlParams.get('mode')
-                              if (modeParam) {
-                                   this.typeMode = modeParam
+                              let modeParam = urlParams.get('mode');
+                              if (!modeParam) {
+                                   modeParam = 'calendarOrg';
+                                   urlParams.set('mode', modeParam);
                               }
 
-                              const dateParam = urlParams.get('date')
-                              if (dateParam) {
-                                   this.selectedDate = dateParam
+                              let dateParam = urlParams.get('date');
+                              if (!dateParam) {
+                                   const today = new Date();
+                                   dateParam = `${today.getFullYear()}-${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`;
+                                   urlParams.set('date', dateParam);
                               }
 
-                              const typeParam = urlParams.get('type')
+                              window.history.replaceState({}, '', `${window.location.pathname}?${urlParams}`);
+
+                              this.typeMode = modeParam;
+                              const target = this;
+                              target.moveToDate(target.validUrlDate(dateParam));
+                              target.selectedDate = dateParam;
+
+                              setTimeout(() => {
+                                   target.scrollToDate(dateParam);
+                              }, 100);
+
+                              const typeParam = urlParams.get('type');
                               if (typeParam) {
-                                   this.selectedType = typeParam
+                                   this.selectedType = typeParam;
                               }
                          } catch (error) {
-                              console.log('error in getUrlParam', error)
+                              console.log('error in getUrlParam', error);
                          }
-                         console.log('mode', this.typeMode, 'date', this.selectedDate, 'type', this.selectedType)
-                    }
+
+                         // console.log('mode', this.typeMode, 'date', this.selectedDate, 'type', this.selectedType);
+                    },
+                    
                     // testCheck(){
                     //      const calendar = this.$refs.calendar
                     //      console.log('calendar.pages', calendar.pages[0])
                     //      console.log('calendar',calendar)
                     //      console.log('getPageDays', calendar.pageForThisMonth())
                     // },
+                    moveToDate(date){
+                         const calendar = this.$refs.calendar
+                         // console.log('this.$refs.calendar', this.$refs.calendar)
+                         calendar.focusDate(date);
+                         let newCurrentMonth = calendar.pages[0].month;
+                         this.setNewMonth(newCurrentMonth)
+                         this.filterDateToShow()
+                         this.formatTitle(new Date(calendar.pages[0].year, calendar.pages[0].month - 1, 1).toISOString())
+
+                         // calendar.focusDate(date);
+
+                    },
+                    scrollToDate(date){
+                         let blockId = '#date' + '-' + date
+                         
+                         let elToScroll = document.querySelector(blockId)
+                         var is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+                         if (elToScroll && !is_safari) {
+                              elToScroll.scrollIntoView({
+                                   behavior: 'smooth',
+                                   block: 'center',
+                              })
+                         }
+                         if (elToScroll && is_safari) {
+                              elToScroll.scrollIntoView(false)
+                         }
+                         this.highlightDay(blockId)
+                    },
+                    changeUrlDay(day){
+                         // console.log('changeUrl day', day)
+                         // console.log('history', history)
+                         // console.log('window.location.href', window.location.href.toString())
+                         // history.pushState(null, null, '/new-page.html');
+
+                         const currentUrl = window.location.href
+
+                         const dateParamIndex = currentUrl.indexOf('date=')
+
+                         if (dateParamIndex !== -1) {
+                              const dateValueStartIndex = dateParamIndex + 5 
+
+                              const dateValueEndIndex = currentUrl.indexOf('&', dateValueStartIndex) !== -1 
+                              ? currentUrl.indexOf('&', dateValueStartIndex) 
+                              : currentUrl.length
+
+                              const currentDateValue = currentUrl.substring(dateValueStartIndex, dateValueEndIndex)
+
+                              const newDateValue = day.id; 
+                              const newUrl = currentUrl.replace(`date=${currentDateValue}`, `date=${newDateValue}`)
+
+                              // console.log('Старый URL:', currentUrl)
+                              // console.log('Новый URL:', newUrl)
+                              history.pushState(null, null, newUrl);
+                         } else {
+                              // console.log('В URL адресе не найден параметр date.')
+                         }
+                    },
+                    changeUrlTab(newVal){
+                         const currentUrl = window.location.href
+                         const modeParamIndex = currentUrl.indexOf('mode=')
+
+                         if (modeParamIndex !== -1) {
+
+                              const modeValueStartIndex = modeParamIndex + 5
+
+
+                              const modeValueEndIndex = currentUrl.indexOf('&', modeValueStartIndex) !== -1
+                                   ? currentUrl.indexOf('&', modeValueStartIndex)
+                                   : currentUrl.length
+
+
+                              const currentModeValue = currentUrl.substring(modeValueStartIndex, modeValueEndIndex)
+
+
+                              // const newModeValue = currentModeValue === 'calendarIP' 
+                              // ? 'calendarOrg' 
+                              // : 'calendarIP'
+
+
+                              const newUrl = currentUrl.replace(`mode=${currentModeValue}`, `mode=${newVal}`)
+
+                              history.pushState(null, null, newUrl)
+                              // console.log('Старый URL:', currentUrl)
+                              // console.log('Новый URL:', newUrl)
+                         } else {
+                              // console.log('В URL адресе не найден параметр mode.')
+                         }
+                    }
                },
                mounted() {
                     this.disableDate()

@@ -69,7 +69,7 @@
                               <div class="mt-2"></div>
                               <div class="my-2" v-for="info in everyDayArr">
                                    <div v-if="info.weekend !== true">
-                                        <a class="d-flex calendar-info-block row row-container" href="" target="_blank">
+                                        <a class="d-flex calendar-info-block row row-container" :href="'./calendar-inner.html?&' + 'mode=' + info.dateCategory + '&date=' + info.date" target="_blank">
                                              <div class="col-md-5" v-if="info.show === true">
                                                   <div class="calendar-dot calendar-dot-sm calendar-dot-show me-1"></div>
                                                   Представление
@@ -84,7 +84,7 @@
                                                   <i class="bi bi-arrow-right"></i>
                                              </div>
                                         </a>
-                                        <a class="d-flex calendar-info-block row row-container" href="" target="_blank">
+                                        <a class="d-flex calendar-info-block row row-container" :href="'./calendar-inner.html?&' + 'mode=' + info.dateCategory + '&date=' + info.date" target="_blank">
                                              <div class="col-md-5" v-if="info.pay === true">
                                                   <div class="calendar-dot calendar-dot-sm calendar-dot-pay me-1"></div>
                                                   Уплата
@@ -111,7 +111,7 @@
                                         </div>
                                         <div class="mt-2"></div>
                                         <div class="mt-2">
-                                             <a class="d-flex calendar-info-block row row-container" href="" target="_blank">
+                                             <a class="d-flex calendar-info-block row row-container" :href="'./calendar-inner.html?&' + 'mode=' + info.dateCategory + '&date=' + info.date" target="_blank">
                                                   <div class="col-md-5" v-if="info.show === true">
                                                        <div class="calendar-dot calendar-dot-sm calendar-dot-show me-1"></div>
                                                        Представление
@@ -126,7 +126,7 @@
                                                        <i class="bi bi-arrow-right"></i>
                                                   </div>
                                              </a>
-                                             <a class="d-flex calendar-info-block row row-container" href="" target="_blank">
+                                             <a class="d-flex calendar-info-block row row-container" :href="'./calendar-inner.html?&' + 'mode=' + info.dateCategory + '&date=' + info.date" target="_blank">
                                                   <div class="col-md-5" v-if="info.pay === true">
                                                        <div class="calendar-dot calendar-dot-sm calendar-dot-pay me-1"></div>
                                                        Уплата

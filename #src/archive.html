@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 @@include('_head.html',{
-"title":"Налоговый календарь"
+"title":"Архив налоговых календарей"
 })
 
 <body>
@@ -51,18 +51,20 @@
                               <ol class="breadcrumb">
                                    <li class="breadcrumb-item"><a href="main.html"><i class="bi bi-house"></i></a></li>
                                    <li class="breadcrumb-item"><a href="#">Справочная информация</a></li>
-                                   <li class="breadcrumb-item active" aria-current="page">Налоговый календарь</li>
+                                   <li class="breadcrumb-item"><a href="./calendar-inner.html">Налоговый календарь</a></li>
+                                   <li class="breadcrumb-item active" aria-current="page">Архив налоговых календарей</li>
                               </ol>
                          </nav>
                     </div>
                </section>
                <div class="mt-4"></div>
-               @@include('./new-main/vue/_calendar-inner.html')
+               @@include('./new-main/vue/_archive-filter.html')
                <div class="mt-4"></div>
           </div>
           <div class="my-5"></div>
           @@include('./new-main/main-components/_new-footer.html')
      </div>
      @@include('_js.html',{})
-     </body>
+</body>
+
 </html>

@@ -284,6 +284,9 @@
      @media (max-width: 810px) {
           display: block;
      }
+     @media (max-width: 560px) {
+          font-size: 24px;
+     }
 }
 
 .header-mobile-menu{
@@ -349,6 +352,13 @@
           i{
                display: none;
           }
+     }
+     @media (max-width: 560px) {
+          padding: 2px 4px;
+          margin: 5px 2px;
+     }
+     @media (max-width: 340px) {
+          margin: 0 0;
      }
 }
 
