@@ -357,9 +357,10 @@
                                              Налоговый календарь {{item.month}} {{item.year}}
                                         </div>
                                         <div class="archive-card__date mt-2">
-                                             {{item.date}}
+                                             <span class="color-nav-black">Дата размещения: </span>{{item.publicDate}}
                                         </div>
-                                        <div class="archive-card__type mt-3">
+
+                                                                                <div class="archive-card__type mt-3">
                                              <span v-if="item.tag === 'org'">Организациям</span>
                                              <span v-if="item.tag === 'ip'">Индивидуальным предпринимателям</span>
                                         </div>
@@ -470,16 +471,19 @@
                               {
                                    id: 1,
                                    date: '15.01.2024',
+                                   publicDate: '15.01.2024',
                                    tag: 'org'
                               },
                               {
                                    id: 2,
                                    date: '15.12.2023',
+                                   publicDate: '15.12.2023',
                                    tag: 'ip'
                               },
                               {
                                    id: 3,
                                    date: '15.02.2024',
+                                   publicDate: '15.02.2024',
                                    tag: 'ip'
                               },
                          ],
@@ -540,7 +544,8 @@
                                         month: this.monthList[monthIndex],
                                         year: dateParts[2],
                                         date: item.date,
-                                        tag: item.tag
+                                        tag: item.tag,
+                                        publicDate: item.publicDate
                                    }
                               })
                               transformedData.sort((a, b) => {
