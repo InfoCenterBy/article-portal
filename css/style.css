@@ -7734,6 +7734,10 @@ html {
   height: 18px;
 }
 
+.calendar-dot-pay-show {
+  background-color: var(--color-red);
+}
+
 .work-time-elem span {
   font-weight: 500;
 }
