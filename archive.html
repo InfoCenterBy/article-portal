@@ -486,6 +486,12 @@
                                    publicDate: '15.02.2024',
                                    tag: 'ip'
                               },
+                              {
+                                   id: 4,
+                                   date: '15.02.2023',
+                                   publicDate: '15.02.2023',
+                                   tag: 'ip'
+                              },
                          ],
                          monthList : [
                               'январь', 'февраль', 'март', 'апрель', 'май', 'июнь',
@@ -580,9 +586,11 @@
                          };
 
                          try {
-                              this.currentMonthList = this.transformedData
-                                   .map(item => ({ num: monthMap[item.month.toLowerCase()], title: item.month }))
-                                   .sort((a, b) => a.num - b.num)
+                              const uniqueMonthList = [...new Set(this.transformedData.map(item => item.month.toLowerCase()))];
+
+                              this.currentMonthList = uniqueMonthList
+                                   .map(month => ({ num: monthMap[month], title: month }))
+                                   .sort((a, b) => a.num - b.num);
                          } catch (error) {
                               console.log('error in formating currentMonthList', error)
                          }
