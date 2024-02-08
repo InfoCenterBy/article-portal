@@ -335,7 +335,7 @@
                          </strong>
                     </div>
                     <div class="my-2" v-if="filteredData.length !== 0">
-                         <button class="white-btn" href="" >
+                         <button class="white-btn" href="" @click="sendID()">
                               <span>Скачать весь архив в PDF</span>
                               <i class="bi bi-download"></i>
                          </button>
@@ -510,6 +510,7 @@
                          selectedYearEnd: null,
                          orgChecked: false,
                          ipChecked: false,
+                         idList: [],
                     }
                },
                watch: {
@@ -618,6 +619,9 @@
 
                          this.selectedYearStart = minYear
                          this.selectedYearEnd = maxYear
+                    },
+                    sendID(){
+
                     }
                },
                computed: {
@@ -653,7 +657,7 @@
                          } else if (this.ipChecked) {
                               filteredData = filteredData.filter(item => item.tag === 'ip')
                          }
-
+                         this.idList = filteredData.map(obj => obj.id)
                          return filteredData;
                     }
                },
