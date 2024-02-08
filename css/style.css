@@ -7610,6 +7610,11 @@ html {
   --gray-400: #f9b974 !important;
 }
 
+.vc-container .vc-day-content:hover,
+.vc-container .vc-day-content:focus {
+  --gray-400: #282828 !important;
+}
+
 .is-today .vc-day-content {
   border: 2px solid var(--color-gold-light);
 }
