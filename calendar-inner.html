@@ -387,6 +387,10 @@
                                         <div class="calendar-dot calendar-dot-lg calendar-dot-show me-1"></div>
                                         <span class="color-gray-dark fs-14">Представление деклараций</span>
                                    </div>
+                                   <div class="col-12 d-flex align-items-center mt-3">
+                                        <div class="calendar-dot calendar-dot-lg calendar-dot-pay-show me-1"></div>
+                                        <span class="color-gray-dark fs-14">Представление и Уплата</span>
+                                   </div>
                               </div>
 
 
@@ -569,6 +573,21 @@
                                                        {{info.description.desPayFull}}
                                                   </p>
                                              </td>
+
+                                             <td v-if="info.payShow === true">
+                                                  Представление и уплата
+                                                  <span v-if="info.payShow === true && info.addText.category === 'payShow'">
+                                                       <br>{{info.addText.text}}
+                                                  </span>
+                                             </td>
+                                             <td colspan="2" v-if="info.payShow === true && info.description">
+                                                  <span class="color-blue-light">
+                                                       {{info.description.desPayShow}}
+                                                  </span> <br>
+                                                  <p>
+                                                       {{info.description.desPayShowFull}}
+                                                  </p>
+                                             </td>
                                         </tr>
 
                                                             <tr v-if="sortedDates == 0 && everyDayArr == 0">
@@ -655,26 +674,11 @@
                          isOn: 'false',
                          // placeholder data
                          dates: [
-                              {
-                                   date: '2024-01-03',
-                                   pay: false,
-                                   show: false,
-                                   weekend: true,
-                                   addText: {
-                                        text: '',
-                                        category: ''
-                                   },
-                                   everyDay: false,
-                                   description: {
-                                        desPay: '',
-                                        desShow: ''
-                                   },
-                                   dateCategory: ''
-                              },
+
                               {
                                    date: '2024-02-05',
                                    pay: true,
-                                   show: true,
+                                   show: false,
                                    payShow: true,
                                    weekend: false,
                                    addText: {
@@ -684,13 +688,16 @@
                                    everyDay: false,
                                    description: {
                                         desPay: 'Налог на доходы иностранных организаций, не осуществляющих деятельность в Республике Беларусь через постоянное представительство',
-                                        desShow: 'Утилизационный сбор'
+                                        desShow: '',
+                                        desPayShow: 'Утилизационный сбор',
+                                        desPayFull: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias corrupti quam dicta saepe adipisci mollitia nulla praesentium eaque quisquam possimus accusamus placeat quia, animi, optio sint quidem corporis tempore quo!',
+                                        desPayShowFull: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias corrupti quam dicta saepe adipisci mollitia nulla praesentium eaque quisquam possimus accusamus placeat quia, animi, optio sint quidem corporis tempore quo!'
                                    },
                                    dateCategory: 'calendarOrg'
                               },
                               {
                                    date: '2024-01-29',
-                                   pay: true,
+                                   pay: false,
                                    show: true,
                                    payShow: true,
                                    weekend: false,
@@ -700,32 +707,38 @@
                                    },
                                    everyDay: false,
                                    description: {
-                                        desPay: 'На доходы налог иностранных организаций, не осуществляющих деятельность в Республике Беларусь через постоянное представительство',
-                                        desShow: 'Утилизационный сбор'
+                                        desPay: '',
+                                        desShow: 'Утилизационный сбор',
+                                        desPayShow: 'На доходы налог иностранных организаций, не осуществляющих деятельность в Республике Беларусь через постоянное представительство',
+                                        desShowFull: 'Alias corrupti quam dicta saepe adipisci mollitia nulla praesentium eaque quisquam possimus accusamus placeat quia, animi, optio sint quidem corporis tempore quo!',
+                                        desPayShowFull: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. praesentium eaque quisquam possimus accusamus placeat quia, animi, optio sint quidem corporis tempore quo!'
                                    },
                                    dateCategory: 'calendarOrg'
                               },
                               {
                                    date: '2024-02-15',
                                    pay: true,
-                                   show: true,
+                                   show: false,
                                    payShow: true,
                                    weekend: false,
                                    addText: {
-                                        text: '',
-                                        category: ''
+                                        text: 'Доп текст',
+                                        category: 'payShow'
                                    },
-                                   everyDay: true,
+                                   everyDay: false,
                                    description: {
                                         desPay: 'Оффшорный сбор',
-                                        desShow: 'НДС'
+                                        desShow: '',
+                                        desPayShow: 'Текст описания',
+                                        desPayFull: 'nulla praesentium eaque quisquam possimus accusamus placeat quia, animi, optio sint quidem corporis tempore quo!',
+                                        desPayShowFull: 'adipisicing elit. praesentium eaque quisquam possimus accusamus placeat quia, animi, optio sint quidem corporis tempore quo!'
                                    },
                                    dateCategory: 'calendarOrg'
                               },
                               {
-                                   date: '2024-02-25',
+                                   date: '2024-02-23',
                                    pay: true,
-                                   show: true,
+                                   show: false,
                                    payShow: true,
                                    weekend: false,
                                    addText: {
@@ -735,12 +748,15 @@
                                    everyDay: false,
                                    description: {
                                         desPay: 'Оффшорный сбор',
-                                        desShow: 'НДС'
+                                        desShow: '',
+                                        desPayShow: 'Текст описания',
+                                        desPayFull: 'nulla praesentium eaque quisquam possimus accusamus placeat quia, animi, optio sint quidem corporis tempore quo!',
+                                        desPayShowFull: 'adipisicing elit. praesentium eaque quisquam possimus accusamus placeat quia, animi, optio sint quidem corporis tempore quo!'
                                    },
                                    dateCategory: 'calendarOrg'
                               },
                               {
-                                   date: '2024-02-10',
+                                   date: '2024-02-09',
                                    pay: false,
                                    show: true,
                                    weekend: false,
@@ -751,7 +767,8 @@
                                    everyDay: false,
                                    description: {
                                         desPay: '',
-                                        desShow: 'Текст'
+                                        desShow: 'Текст',
+                                        desShowFull: 'Alias corrupti quam dicta saepe adipisci mollitia nulla praesentium eaque quisquam possimus accusamus tempore quo!'
                                    },
                                    dateCategory: 'calendarOrg'
                               },
@@ -774,7 +791,7 @@
                               {
                                    date: '2024-01-25',
                                    pay: true,
-                                   show: false,
+                                   show: true,
                                    weekend: false,
                                    addText: {
                                         text: '',
@@ -783,14 +800,16 @@
                                    everyDay: false,
                                    description: {
                                         desPay: 'Утилизационный сбор',
-                                        desShow: ''
+                                        desShow: 'Текст',
+                                        desPayFull: 'Описание',
+                                        desShowFull: 'Описание'
                                    },
                                    dateCategory: 'calendarOrg'
                               },
                               {
                                    date: '2024-02-06',
                                    pay: true,
-                                   show: true,
+                                   show: false,
                                    payShow: true,
                                    weekend: false,
                                    addText: {
@@ -800,7 +819,8 @@
                                    everyDay: false,
                                    description: {
                                         desPay: 'Налог на прибыль',
-                                        desShow: 'Утилизационный сбор',
+                                        desShow: '',
+                                        desPayShow: 'Текст описания'
                                    },
                                    dateCategory: 'calendarIP',
                               },
@@ -821,7 +841,7 @@
                                    dateCategory: 'calendarIP',
                               },
                               {
-                                   date: '2024-02-10',
+                                   date: '2024-02-09',
                                    pay: true,
                                    show: false,
                                    weekend: false,
@@ -837,8 +857,8 @@
                                    dateCategory: 'calendarIP',
                               },
                               {
-                                   date: '2024-01-14',
-                                   pay: true,
+                                   date: '2024-01-12',
+                                   pay: false,
                                    show: true,
                                    payShow: true,
                                    weekend: false,
@@ -848,8 +868,9 @@
                                    },
                                    everyDay: false,
                                    description: {
-                                        desPay: 'Налог на имущество организаций',
+                                        desPay: '',
                                         desShow: 'Акцизный сбор',
+                                        desPayShow: 'Текст описания'
                                    },
                                    dateCategory: 'calendarIP',
                               },
@@ -903,7 +924,7 @@
                               },
                               {
                                    date: '2024-01-05',
-                                   pay: true,
+                                   pay: false,
                                    show: true,
                                    payShow: true,
                                    weekend: false,
@@ -913,8 +934,9 @@
                                    },
                                    everyDay: false,
                                    description: {
-                                        desPay: 'Налог на доходы иностранных организаций',
+                                        desPay: '',
                                         desShow: 'Акцизный сбор',
+                                        desPayShow: 'Текст описания'
                                    },
                                    dateCategory: 'calendarIP',
                               },
@@ -932,6 +954,7 @@
                                    description: {
                                         desPay: 'Оффшорный сбор',
                                         desShow: '',
+                                        desPayShow: 'Текст описания'
                                    },
                                    dateCategory: 'calendarIP',
                               },
@@ -970,6 +993,7 @@
                          selectedMonth: '',
                          tableDates: [],
                          previousHighlightedElements: null,
+                         disDateArr: [],
                     }
                },
                computed: {
@@ -1011,7 +1035,7 @@
                     updateMessage(message) {
                          this.messageFromChild = message
                     },
-                    disableDate(){
+                    disableDate() {
                          // this.isOn= 'true'
                          let disDateArr = []
                          // , '02/05/2024'
@@ -1023,6 +1047,9 @@
                          } catch (error) {
                               console.log('error in disable dates', error)
                          }
+                         this.disDateArr = disDateArr
+                         disDateArr = [{ weekdays: [1, 7] }, ...disDateArr]
+                         console.log('disabledDates', disDateArr)
                          this.disabledDates = disDateArr
                          // console.log('this.dis', this.disabledDates)
                     },
@@ -1094,12 +1121,24 @@
                                    console.log('Error in date format', err)
                               }
                               let checkValidDateRule = formattedDate instanceof Date && !isNaN(formattedDate)
-                              if(checkValidDateRule && el.everyDay !== true){
-                                   if(el.show === true && el.payShow !== true){
+                              if (checkValidDateRule && el.everyDay !== true) {
+                                   this.attributes.push(
+                                        {
+                                             content: {
+                                                  style: {
+                                                       color: '#282828'
+                                                  },
+                                             },
+                                             dates: [
+                                                  new Date(2024, 1, 17),
+                                             ],
+                                        }
+                                   )
+                                   if (el.show === true) {
                                         this.attributes.push({
                                              dates: formattedDate,
                                              dot: {
-                                                  style:{
+                                                  style: {
                                                        backgroundColor: '#C47A2C'
                                                   }
                                              },
@@ -1110,11 +1149,11 @@
                                              },
                                         })
                                    }
-                                   if(el.pay === true && el.payShow !== true){
+                                   if (el.pay === true) {
                                         this.attributes.push({
                                              dates: formattedDate,
                                              dot: {
-                                                  style:{
+                                                  style: {
                                                        backgroundColor: '#034A66'
                                                   }
                                              },
@@ -1125,7 +1164,7 @@
                                              },
                                         })
                                    }
-                                   if(el.payShow === true){
+                                   if (el.payShow === true) {
                                         this.attributes.push({
                                              dates: formattedDate,
                                              dot: {
@@ -1140,7 +1179,7 @@
                                         })
                                    }
                               }
-                         })
+                              })
                     },
                     filterDays(){
                          this.monthArr = []
@@ -1155,16 +1194,24 @@
                               }
                          })
                          this.monthArr.forEach(item => {
-                              item.dayOfWeek = this.getRussianDayOfWeek(item.date);
+                              item.dayOfWeek = this.getRussianDayOfWeek(item.date)
                          });
                          this.sortedDates = this.monthArr.sort((a, b)=>{
                               return Number(new Date(a.date)) - Number(new Date(b.date))
                          })
                          this.tableDates = this.monthArr.reduce((accumulator, currentValue) => {
                               if (currentValue.show === true && currentValue.pay === true) {
-                                   const showItem = { ...currentValue, pay: false };
-                                   const payItem = { ...currentValue, show: false };
-                                   accumulator.push(showItem, payItem);
+                                   const showItem = { ...currentValue, pay: false }
+                                   const payItem = { ...currentValue, show: false }
+                                   accumulator.push(showItem, payItem)
+                              } else if(currentValue.show === true && currentValue.payShow === true) {
+                                   const payShowItem = { ...currentValue, show: false }
+                                   const showItem = { ...currentValue, payShow: false }
+                                   accumulator.push(showItem, payShowItem)
+                              } else if (currentValue.pay === true && currentValue.payShow === true) {
+                                   const payShowItem = { ...currentValue, pay: false }
+                                   const payItem = { ...currentValue, payShow: false }
+                                   accumulator.push(payItem, payShowItem)
                               } else {
                                    accumulator.push(currentValue);
                               }
