@@ -7606,16 +7606,8 @@ html {
   position: absolute !important;
 }
 
-.weekday-1 .vc-day-content,
-.weekday-7 .vc-day-content {
-  color: var(--color-gold-light);
-}
-
-.weekday-1 .vc-day-content:hover,
-.weekday-1 .vc-day-content:focus,
-.weekday-7 .vc-day-content:hover,
-.weekday-7 .vc-day-content:focus {
-  color: var(--color-nav-black);
+.vc-container {
+  --gray-400: #f9b974 !important;
 }
 
 .is-today .vc-day-content {
@@ -7939,6 +7931,22 @@ html {
   }
 }
 
+@media (min-width: 1610px) {
+  .col-xxxl-6 {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+    width: 50%;
+  }
+}
+
+@media (max-width: 1610px) {
+  .row-container-xxxl {
+    margin-left: -12px !important;
+    margin-right: -12px !important;
+  }
+}
+
 @media (max-width: 1520px) {
   .subscribe-tabs-section .nav-step__content p .title {
     font-size: calc(12px + 6 * ((100vw - 320px) / 1200));
@@ -8187,13 +8195,6 @@ html {
 @media (max-width: 1410px) {
   .news-wrapper {
     padding: 12px 8px;
-  }
-}
-
-@media (max-width: 1400px) {
-  .row-container-xxl {
-    margin-left: -12px !important;
-    margin-right: -12px !important;
   }
 }
 

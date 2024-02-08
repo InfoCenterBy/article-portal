@@ -363,14 +363,14 @@
                               </div>
                               <div class="mt-4 col-12">
                               </div>
-                              <div class="col-xxl-6 border border-1 border-20 my-1">
+                              <div class="col-xxxl-6 border border-1 border-20 my-1">
 
                                                        <v-calendar borderless :attributes='attributes' :min-date="minDate" :max-date="maxDate"
                                         @dayclick="onDayClick" ref="calendar" :disabled-dates="disabledDates"></v-calendar>
                               </div>
 
-                                                  <div class="col-xxl-6">
-                                   <div class="calendar-today mt-2 row-container-xxl border border-1">
+                                                  <div class="col-xxxl-6">
+                                   <div class="calendar-today mt-2 row-container-xxxl border border-1">
                                         <span class="color-nav-black d-block">Сегодня</span>
                                         <div class="mt-2">
                                              <i class="bi bi-calendar color-gold fs-14 me-1"></i>
@@ -476,7 +476,7 @@
                                    </strong>
                               </div>
                          </div>
-                         <div class="calendar-table mt-5">
+                         <div class="calendar-table mt-2">
                               <table class="table">
                                    <tbody>
                                         <tr>
@@ -579,7 +579,7 @@
                                    </tbody>
                               </table>
 
-                              <table class="table mt-5">
+                              <table class="table mt-2">
                                    <tbody>
                                         <tr>
                                              <td>
@@ -969,7 +969,7 @@
                          mode: null,
                          selectedMonth: '',
                          tableDates: [],
-                         // previousHighlightedElements: null,
+                         previousHighlightedElements: null,
                     }
                },
                computed: {
@@ -994,11 +994,17 @@
                          this.setAttributes()
                          this.changeType()
                          this.changeUrlTab(newVal)
+
+                                                  this.highlightDay(null)
+                         this.previousHighlightedElements = null
                     },
                     currentMonth(newVal){
                          this.setAttributes()
                          this.calcTime()
                          this.markWeekend()
+
+                         this.highlightDay(null)
+                         this.previousHighlightedElements = null
                     },
                },
                methods: {

@@ -1290,23 +1290,8 @@
                          isOn: 'false',
                          // placeholder data
                          dates: [
-                              {
-                                   date: '2024-01-03',
-                                   pay: false,
-                                   show: false,
-                                   weekend: true,
-                                   addText: {
-                                        text: '',
-                                        category: ''
-                                   },
-                                   everyDay: false,
-                                   description: {
-                                        desPay: '',
-                                        desShow: ''
-                                   },
-                                   dateCategory: ''
-                              },
-                              {
+
+                                                            {
                                    date: '2024-02-05',
                                    pay: true,
                                    show: false,
@@ -1610,6 +1595,7 @@
                          yearTitle: '',
                          disabledDates : [], 
                          mode: null,
+                         disDateArr: [],
                     }
                },
                computed: {
@@ -1656,12 +1642,15 @@
                          } catch (error) {
                               console.log('error in disable dates', error)
                          }
+                         this.disDateArr = disDateArr
+                         disDateArr = [{ weekdays: [1, 7] },...disDateArr ]
+                         console.log('disabledDates', disDateArr)
                          this.disabledDates = disDateArr
                          // console.log('this.dis', this.disabledDates)
                     },
                     fillDates(){
                          // this.dates = Array.from(Array(35).keys())
-                         console.log('parent', this.messageFromChild)
+                         // console.log('parent', this.messageFromChild)
                     },
                     calcMinDate(){
                          let lastDay =  new Date(new Date().getFullYear(), new Date().getMonth() - 1, 1)
@@ -1709,6 +1698,18 @@
                               }
                               let checkValidDateRule = formattedDate instanceof Date && !isNaN(formattedDate)
                               if (checkValidDateRule && el.everyDay !== true) {
+                                   this.attributes.push(
+                                        {
+                                             content: {
+                                                  style: {
+                                                       color: '#282828'
+                                                  },
+                                             },
+                                             dates: [
+                                                  new Date(2024, 1, 17),
+                                             ],
+                                        }
+                                   )
                                    if (el.show === true) {
                                         this.attributes.push({
                                              dates: formattedDate,
@@ -1840,9 +1841,7 @@
                          let getTot = currentPage.monthComps.days
                          this.weekTime.sumDays = getTot
 
-
-
-                                                                           // console.log(daysInMonth(d.getMonth(),d.getFullYear()))
+                         // console.log(daysInMonth(d.getMonth(),d.getFullYear()))
                          let sat = new Array();
                          let sun = new Array();
                          let allOff = new Array()
@@ -1864,10 +1863,9 @@
 
                          let disNumber = 0
                          try {
-                              const disabledDatesThisMonth = this.disabledDates.filter(date => date.getMonth() + 1 === currentPage.monthComps.month)
+                              const disabledDatesThisMonth = this.disDateArr.filter(date => date.getMonth() + 1 === currentPage.monthComps.month)
                               disabledDatesThisMonth.forEach(el => {
-                                   console.log('el.getMonth()', el.getMonth())
-
+                                   // console.log('el.getMonth()', el.getMonth())
                                    if (el.getDay() !== 0) {
                                         disNumber++
                                    }
@@ -1951,7 +1949,7 @@
                     this.mode = urlParams.get('mode')
                     this.selectedDate = urlParams.get('date')
                     this.selectedType = urlParams.get('type')
-                    console.log('mode', this.mode, 'date', this.selectedDate, 'type', this.selectedType)
+                    // console.log('mode', this.mode, 'date', this.selectedDate, 'type', this.selectedType)
                }
           })
           </script>
