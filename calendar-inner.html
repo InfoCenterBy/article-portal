@@ -994,6 +994,7 @@
                          tableDates: [],
                          previousHighlightedElements: null,
                          disDateArr: [],
+                         allOff: []
                     }
                },
                computed: {
@@ -1304,7 +1305,7 @@
                          let sat = new Array();
                          let sun = new Array();
                          let allOff = new Array()
-                         let originOff = new Array()
+
                          etcWeekendLength = this.calcETCWeekend()
                          for(let i=1;i<=getTot;i++){
                               let newDate = new Date(d.getFullYear(),d.getMonth(),i)
