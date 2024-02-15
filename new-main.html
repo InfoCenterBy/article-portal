@@ -1266,7 +1266,7 @@
                                         this.message = 'DayOff'
                                    }
                                    this.response = response.data;
-                                   console.log('response:', this.response);
+                                   // console.log('response:', this.response);
                                    this.$emit('message-updated', this.message);
                               })
                                    .catch(error => {
@@ -1597,7 +1597,8 @@
                          mode: null,
                          disDateArr: [],
                          allOff: [],
-                         selectedDisDates: []
+                         selectedDisDates: [],
+                         transDates: ['2024-02-17']
                     }
                },
                computed: {
@@ -1608,8 +1609,7 @@
                          }
                          return weekTime
                     },
-
-                                        setToday() {
+                    setToday() {
                          let timeObj= { dayOfWeek: '', dateNumber: ''}
                          const days = [
                               'воскресенье',
@@ -1650,7 +1650,6 @@
                          this.setAttributes()
                          this.calcTime()
                          this.markWeekend()
-                         // this.setToday()
                          this.processTimeDates()
                     }
                },
@@ -1673,7 +1672,7 @@
                          }
 
                          this.disDateArr = disDateArr
-                         console.log('disDateArr', disDateArr)
+                         // console.log('disDateArr', disDateArr)
                          disDateArr = [{ weekdays: [1, 7] },...disDateArr ]
                          this.disabledDates = disDateArr
                          // console.log('this.dis', this.disabledDates)
@@ -1715,6 +1714,9 @@
                               }
                          })
                     },
+                    checkValidDateRule(date){
+                         return date instanceof Date && !isNaN(date)
+                    },
                     setAttributes() {
                          this.filterDays()
                          this.attributes = []
@@ -1722,8 +1724,8 @@
                               try {
                                    var splitedRule = el.date.split('-')
                                    var formattedDate = new Date(splitedRule[0], new Number(splitedRule[1]) - 1, splitedRule[2])
-                                   let checkValidDateRule = formattedDate instanceof Date && !isNaN(formattedDate)
-                                   if (checkValidDateRule && !el.everyDay) {
+
+                                                                      if (this.checkValidDateRule(formattedDate) && !el.everyDay) {
 
                                         if (el.show === true) {
                                              this.attributes.push({
@@ -1765,14 +1767,39 @@
                                                   },
                                                   popover: {
                                                        visibility: 'hover',
-                                                       // label: el.addText.category === 'pay' ? 'Уплата' + ' ' + el.addText.text : 'Уплата',
+                                                       label: 'Представление и уплата',
                                                   },
                                              })
                                         }
                                    }
-
-                                                                 } catch (err) {
+                              } catch (err) {
                                    console.log('Error in date format', err)
+                              }
+                         })
+                         this.setTransAttr()
+                    },
+                    setTransAttr(){
+                         const currentPage = this.$refs.calendar.pages[0]
+                         let transDatesToShow = []
+                         transDatesToShow = this.transDates.filter(el => new Date(el).getMonth() + 1 === currentPage.month)
+                         transDatesToShow.forEach(el=>{
+                              try {
+                                   if(this.checkValidDateRule(new Date(el))){
+                                        this.attributes.push(
+                                             {
+                                                  content:{
+                                                       style:{
+                                                            color: '#282828'
+                                                       }
+                                                  },
+                                                  dates: [
+                                                       el
+                                                  ]
+                                             }
+                                        )
+                                   }
+                              } catch (error) {
+                                   console.log('Error in trans date to show', error)
                               }
                          })
                     },
@@ -1865,9 +1892,9 @@
                          return false;
                     },
                     isDateInMonth(date, month) {
-                         console.log('we are here isDateInMonth');
+                         // console.log('we are here isDateInMonth');
                          const dateMonth = date.getMonth() + 1;
-                         console.log('dateMonth === month', dateMonth, month);
+                         // console.log('dateMonth === month', dateMonth, month);
                          return dateMonth === month;
                     },
                     processTimeDates() {
@@ -1914,11 +1941,11 @@
                               nowDate.setDate(nowDate.getDate())
                               // console.log('prevDate', nowDate)
                               if (this.isSunday(nowDate)) {
-                                   console.log('we are here sun')
+                                   // console.log('we are here sun')
                                    this.weekTime.timeSixWeek40--
                                    this.weekTime.timeSixWeek35--
                               } else if (this.isSaturday(nowDate)) {
-                                   console.log('we are here sat')
+                                   // console.log('we are here sat')
                                    this.weekTime.timeFiveWeek40--
                                    this.weekTime.timeFiveWeek35--
                               } else {
