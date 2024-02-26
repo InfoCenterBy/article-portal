@@ -499,7 +499,7 @@
                                         </tr>
 
                                                             <template v-if="everyDayArr.length !== 0 && info.weekend !== true" v-for="info in everyDayArr">
-                                             <tr >
+                                             <tr>
                                                   <td v-if="info.show === true">
                                                        Ежедневно
                                                   </td>
@@ -534,6 +534,25 @@
                                                        </span> <br>
                                                        <p>
                                                             {{info.description.desPayFull}}
+                                                       </p>
+                                                  </td>
+                                             </tr>
+                                             <tr>
+                                                  <td v-if="info.payShow === true">
+                                                       Ежедневно
+                                                  </td>
+                                                  <td v-if="info.payShow === true">
+                                                       Представление и уплата
+                                                       <span v-if="info.payShow === true && info.addText.category === 'payShow'">
+                                                            <br>{{info.addText.text}}
+                                                       </span>
+                                                  </td>
+                                                  <td v-if="info.payShow === true && info.description">
+                                                       <span class="color-blue-light">
+                                                            {{info.description.desPayShow}}
+                                                       </span> <br>
+                                                       <p>
+                                                            {{info.description.desPayShowFull}}
                                                        </p>
                                                   </td>
                                              </tr>
@@ -677,7 +696,7 @@
 
                               {
                                    date: '2024-02-05',
-                                   pay: true,
+                                   pay: false,
                                    show: false,
                                    payShow: true,
                                    weekend: false,
@@ -687,10 +706,10 @@
                                    },
                                    everyDay: false,
                                    description: {
-                                        desPay: 'Налог на доходы иностранных организаций, не осуществляющих деятельность в Республике Беларусь через постоянное представительство',
+                                        // desPay: 'Налог на доходы иностранных организаций, не осуществляющих деятельность в Республике Беларусь через постоянное представительство',
                                         desShow: '',
                                         desPayShow: 'Утилизационный сбор',
-                                        desPayFull: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias corrupti quam dicta saepe adipisci mollitia nulla praesentium eaque quisquam possimus accusamus placeat quia, animi, optio sint quidem corporis tempore quo!',
+                                        // desPayFull: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias corrupti quam dicta saepe adipisci mollitia nulla praesentium eaque quisquam possimus accusamus placeat quia, animi, optio sint quidem corporis tempore quo!',
                                         desPayShowFull: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias corrupti quam dicta saepe adipisci mollitia nulla praesentium eaque quisquam possimus accusamus placeat quia, animi, optio sint quidem corporis tempore quo!'
                                    },
                                    dateCategory: 'calendarOrg'
@@ -732,6 +751,26 @@
                                         desPayShow: 'Текст описания',
                                         desPayFull: 'nulla praesentium eaque quisquam possimus accusamus placeat quia, animi, optio sint quidem corporis tempore quo!',
                                         desPayShowFull: 'adipisicing elit. praesentium eaque quisquam possimus accusamus placeat quia, animi, optio sint quidem corporis tempore quo!'
+                                   },
+                                   dateCategory: 'calendarOrg'
+                              },
+                              {
+                                   date: '2024-02-15',
+                                   pay: true,
+                                   show: false,
+                                   payShow: true,
+                                   weekend: false,
+                                   addText: {
+                                        text: '',
+                                        category: ''
+                                   },
+                                   everyDay: false,
+                                   description: {
+                                        desPay: 'Оффшорный сбор 1',
+                                        desShow: '',
+                                        desPayShow: 'Текст описания 1',
+                                        desPayFull: 'nulla praesentium eaque quisquam possimus accusamus placeat quia, animi, optio sint quidem corporis tempore quo! 1',
+                                        desPayShowFull: 'adipisicing elit. praesentium eaque quisquam possimus accusamus placeat quia, animi, optio sint quidem corporis tempore quo! '
                                    },
                                    dateCategory: 'calendarOrg'
                               },
@@ -1148,48 +1187,52 @@
                                    var formattedDate = new Date(splitedRule[0], new Number(splitedRule[1]) - 1, splitedRule[2])
 
                                    if (this.checkValidDateRule(formattedDate) && !el.everyDay) {
+                                        let existingItem = this.attributes.find(item => item.dates.getTime() === formattedDate.getTime() && item.dot.style.backgroundColor === '#C47A2C');
+                                        if (!existingItem && el.show === true) {
+                                             this.attributes.push({
+                                                  dates: formattedDate,
+                                                  dot: {
+                                                  style: {
+                                                       backgroundColor: '#C47A2C'
+                                                  }
+                                                  },
+                                                  popover: {
+                                                  visibility: 'hover',
+                                                  // hideIndicator: true,
+                                                  label: el.addText.category === 'show' ? 'Представление' + ' ' + el.addText.text : 'Представление',
+                                                  },
+                                             })
+                                        }
 
-                                        if (el.show === true) {
+                                                                                existingItem = this.attributes.find(item => item.dates.getTime() === formattedDate.getTime() && item.dot.style.backgroundColor === '#034A66');
+                                        if (!existingItem && el.pay === true) {
                                              this.attributes.push({
                                                   dates: formattedDate,
                                                   dot: {
-                                                       style: {
-                                                            backgroundColor: '#C47A2C'
-                                                       }
+                                                  style: {
+                                                       backgroundColor: '#034A66'
+                                                  }
                                                   },
                                                   popover: {
-                                                       visibility: 'hover',
-                                                       // hideIndicator: true,
-                                                       label: el.addText.category === 'show' ? 'Представление' + ' ' + el.addText.text : 'Представление',
+                                                  visibility: 'hover',
+                                                  // hideIndicator: true,
+                                                  label: el.addText.category === 'pay' ? 'Уплата' + ' ' + el.addText.text : 'Уплата',
                                                   },
                                              })
                                         }
-                                        if (el.pay === true) {
+
+                                                                                existingItem = this.attributes.find(item => item.dates.getTime() === formattedDate.getTime() && item.dot.style.backgroundColor === '#D24344');
+                                        if (!existingItem && el.payShow === true) {
                                              this.attributes.push({
                                                   dates: formattedDate,
                                                   dot: {
-                                                       style: {
-                                                            backgroundColor: '#034A66'
-                                                       }
+                                                  style: {
+                                                       backgroundColor: '#D24344'
+                                                  }
                                                   },
                                                   popover: {
-                                                       visibility: 'hover',
-                                                       // hideIndicator: true,
-                                                       label: el.addText.category === 'pay' ? 'Уплата' + ' ' + el.addText.text : 'Уплата',
-                                                  },
-                                             })
-                                        }
-                                        if (el.payShow === true) {
-                                             this.attributes.push({
-                                                  dates: formattedDate,
-                                                  dot: {
-                                                       style: {
-                                                            backgroundColor: '#D24344'
-                                                       }
-                                                  },
-                                                  popover: {
-                                                       visibility: 'hover',
-                                                       label: 'Представление и уплата',
+                                                  visibility: 'hover',
+                                                  label: 'Представление и уплата',
                                                   },
                                              })
                                         }
@@ -1413,39 +1456,39 @@
 
                     },
                     calcTime() {
-                         const currentPage = this.$refs.calendar.pages[0];
-                         const year = currentPage.monthComps.year;
-                         const month = currentPage.monthComps.month;
-                         const daysInMonth = new Date(year, month, 0).getDate();
-                         const sat = [];
-                         const sun = [];
-                         const allOff = [];
+                         const currentPage = this.$refs.calendar.pages[0]
+                         const year = currentPage.monthComps.year
+                         const month = currentPage.monthComps.month
+                         const daysInMonth = new Date(year, month, 0).getDate()
+                         const sat = []
+                         const sun = []
+                         const allOff = []
 
-                         let disNumber = 0;
+                         let disNumber = 0
 
                          for (let i = 1; i <= daysInMonth; i++) {
-                              const newDate = new Date(year, month - 1, i);
-                              const dayOfWeek = newDate.getDay();
+                              const newDate = new Date(year, month - 1, i)
+                              const dayOfWeek = newDate.getDay()
 
                               if (dayOfWeek === 0) sun.push(newDate);
                               if (dayOfWeek === 6) sat.push(newDate);
-                              if (dayOfWeek === 0 || dayOfWeek === 6) allOff.push(newDate);
+                              if (dayOfWeek === 0 || dayOfWeek === 6) allOff.push(newDate)
                          }
 
                          this.allOff = allOff;
 
-                         const disabledDatesThisMonth = this.disDateArr.filter(date => date.getMonth() + 1 === month);
+                         const disabledDatesThisMonth = this.disDateArr.filter(date => date.getMonth() + 1 === month)
                          this.selectedDisDates = disabledDatesThisMonth;
 
                          disabledDatesThisMonth.forEach(el => {
-                              if (el.getDay() !== 0) disNumber++;
+                              if (el.getDay() !== 0) disNumber++
                          });
 
-                         const etcWeekendLength = this.calcETCWeekend();
+                         const etcWeekendLength = this.calcETCWeekend()
 
-                         const getTot = daysInMonth - disNumber;
-                         const workFive = getTot - allOff.length - etcWeekendLength.length;
-                         const workSix = getTot - sun.length - etcWeekendLength.length;
+                         const getTot = daysInMonth - disNumber
+                         const workFive = getTot - allOff.length - etcWeekendLength.length
+                         const workSix = getTot - sun.length - etcWeekendLength.length
 
                          this.weekTime = {
                               sumDays: daysInMonth,
@@ -1458,7 +1501,7 @@
                               timeSixWeek40: sun.length * 5 + (getTot - sat.length - sun.length - etcWeekendLength.length) * 7,
                               timeSixWeek35: sun.length * 5 + (getTot - sat.length - sun.length - etcWeekendLength.length) * 6,
                               todayDate: { dayOfWeek: '', dateNumber: '' }
-                         };
+                         }
                     },
                     markWeekend(){
                          this.dates.forEach(function(el){
