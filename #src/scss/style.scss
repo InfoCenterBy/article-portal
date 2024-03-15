@@ -702,5 +702,9 @@ body {
   color: var(--color-nav-black)
 }
 
+.fs-32{
+  @include adaptiv-value('font-size', 32, 28, 1);
+}
+
 
 @import 'calendar.scss';

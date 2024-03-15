@@ -922,4 +922,10 @@
      }
 }
 
-
+.main-content{
+     .row-default{
+          margin-top: calc(var(--bs-gutter-y)* -1);
+          margin-right: calc(var(--bs-gutter-x) / -2);
+          margin-left: calc(var(--bs-gutter-x) / -2);
+     }
+}

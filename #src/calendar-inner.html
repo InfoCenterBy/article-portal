@@ -10,37 +10,7 @@
      @@include('./new-main/main-components/_nav.html')
 
      <div class="nav-container active-container">
-          <script defer>
-               const sidebar = document.querySelector('#sidebar');
-               const containerNav = document.querySelector('.nav-container');
-               if (localStorage.sideBar != 'true') {
-                    sidebar.classList.remove('active-nav');
-                    containerNav.classList.remove('active-container');
-               }
-               function hideSidenav() {
-                    if (localStorage.sideBar != 'true') {
-                         localStorage.sideBar = 'false'
-                    }
-                    if ($(window).width() < 860) {
-                         sidebar.classList.remove('active-nav');
-                         containerNav.classList.remove('active-container');
-                    } else if (localStorage.sideBar == 'true' && $(window).width() < 860) {
-                         sidebar.classList.remove('active-nav');
-                         containerNav.classList.remove('active-container');
-                    } else if (localStorage.sideBar == 'true') {
-                         sidebar.classList.remove('active-nav');
-                         containerNav.classList.remove('active-container');
-                    }
-                    else {
-                         sidebar.classList.add('active-nav');
-                         containerNav.classList.add('active-container');
-                    }
-               }
-               if (sidebar) {
-                    window.onload = hideSidenav()
-                    window.addEventListener('resize', hideSidenav);
-               }
-          </script>
+          
           <!-- Nav Button -->
           <a class="" id="menu-btn"><i class="bi bi-chevron-right"></i></a>
           <!--Nav Button -->

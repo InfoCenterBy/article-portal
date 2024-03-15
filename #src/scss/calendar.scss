@@ -80,14 +80,30 @@
      position: absolute !important;
 }
 
-.weekday-1,.weekday-7{
+// .weekday-1,.weekday-7{
+//      .vc-day-content{
+//           color:  var(--color-gold-light);
+//           &:hover, &:focus{
+//                color: var(--color-nav-black);
+//           }
+//      }
+// }
+.vc-container{
+     --gray-400: #f9b974 !important;
      .vc-day-content{
-          color:  var(--color-gold-light);
           &:hover, &:focus{
-               color: var(--color-nav-black);
+               --gray-400: #282828 !important;
           }
      }
 }
+// .vc-container{
+//      .vc-day-content.is-disabled{
+//           color:  var(--color-gold-light);
+//           &:hover, &:focus{
+//                color: var(--color-nav-black);
+//           }
+//      }
+// }
 
 .is-today{
      .vc-day-content{
@@ -235,4 +251,11 @@
 
 .vc-day-popover-row-indicator{
      --blue-500: var(--color-nav-black)
+}
+
+@media (min-width: 1610px){
+     .col-xxxl-6 {
+          flex: 0 0 auto;
+          width: 50%;
+     }
 }

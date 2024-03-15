@@ -69,8 +69,8 @@
                               <div class="mt-2"></div>
                               <div class="my-2" v-for="info in everyDayArr">
                                    <div v-if="info.weekend !== true">
-                                        <a class="d-flex calendar-info-block row row-container" :href="'./calendar-inner.html?&' + 'mode=' + info.dateCategory + '&date=' + info.date" target="_blank">
-                                             <div class="col-md-5" v-if="info.show === true">
+                                        <a v-if="info.show === true" class="d-flex calendar-info-block row row-container" :href="'./calendar-inner.html?&' + 'mode=' + info.dateCategory + '&date=' + info.date" target="_blank">
+                                             <div class="col-md-5" >
                                                   <div class="calendar-dot calendar-dot-sm calendar-dot-show me-1"></div>
                                                   Представление
                                                   <span v-if="info.show === true && info.addText.category === 'show'">
@@ -84,8 +84,8 @@
                                                   <i class="bi bi-arrow-right"></i>
                                              </div>
                                         </a>
-                                        <a class="d-flex calendar-info-block row row-container" :href="'./calendar-inner.html?&' + 'mode=' + info.dateCategory + '&date=' + info.date" target="_blank">
-                                             <div class="col-md-5" v-if="info.pay === true">
+                                        <a v-if="info.pay === true" class="d-flex calendar-info-block row row-container" :href="'./calendar-inner.html?&' + 'mode=' + info.dateCategory + '&date=' + info.date" target="_blank">
+                                             <div class="col-md-5" >
                                                   <div class="calendar-dot calendar-dot-sm calendar-dot-pay me-1"></div>
                                                   Уплата
                                                   <span v-if="info.pay === true && info.addText.category === 'pay'">
@@ -99,6 +99,21 @@
                                                   <i class="bi bi-arrow-right"></i>
                                              </div>
                                         </a>
+                                        <a v-if="info.payShow === true" class="d-flex calendar-info-block row row-container" :href="'./calendar-inner.html?&' + 'mode=' + info.dateCategory + '&date=' + info.date" target="_blank">
+                                             <div class="col-md-5" >
+                                                  <div class="calendar-dot calendar-dot-sm calendar-dot-pay-show me-1"></div>
+                                                  Представление и уплата
+                                                  <span v-if="info.payShow === true && info.addText.category === 'payShow'">
+                                                       &nbsp;{{info.addText.text}}
+                                                  </span>
+                                             </div>
+                                             <div class="col-md-6" v-if="info.description">
+                                                  {{info.description.desPayShow}}
+                                             </div>
+                                             <div class="col-md-1" v-if="info.description.desPayShow">
+                                                  <i class="bi bi-arrow-right"></i>
+                                             </div>
+                                        </a>
                                         <hr class="d-block mt-2">
                                    </div>
                               </div>
@@ -109,10 +124,10 @@
                                                   {{info.date}}
                                              </strong>
                                         </div>
-                                        <div class="mt-2">
+                                        <div class="">
                                              <a 
                                              v-if="info.show === true"
-                                             class="d-flex calendar-info-block row row-container" 
+                                             class="d-flex calendar-info-block row row-container mt-2" 
                                              :href="'./calendar-inner.html?&' + 'mode=' + info.dateCategory + '&date=' + info.date" 
                                              target="_blank">
                                                   <div class="col-md-5">
@@ -131,7 +146,7 @@
                                              </a>
                                              <a 
                                              v-if="info.pay === true"
-                                             class="d-flex calendar-info-block row row-container" 
+                                             class="d-flex calendar-info-block row row-container mt-2" 
                                              :href="'./calendar-inner.html?&' + 'mode=' + info.dateCategory + '&date=' + info.date" 
                                              target="_blank">
                                                   <div class="col-md-5">
@@ -150,11 +165,11 @@
                                              </a>
                                              <a 
                                              v-if="info.payShow === true"
-                                             class="d-flex calendar-info-block row row-container"
+                                             class="d-flex calendar-info-block row row-container mt-2"
                                              :href="'./calendar-inner.html?&' + 'mode=' + info.dateCategory + '&date=' + info.date" target="_blank">
                                                   <div class="col-md-5">
                                                        <div class="calendar-dot calendar-dot-sm calendar-dot-pay-show me-1"></div>
-                                                       Уплата и Представление
+                                                       Представление и уплата  
                                                        <!-- <span v-if="info.pay === true && info.addText.category === 'pay'">
                                                             &nbsp;{{info.addText.text}}
                                                        </span> -->
@@ -185,7 +200,7 @@
                     </div>
                     <div class="col-xxl-4 col-12 d-flex align-items-center my-1">
                          <div class="calendar-dot calendar-dot-lg calendar-dot-pay-show me-1"></div>
-                         <span class="color-gray-dark fs-14">Представление и Уплата</span>
+                         <span class="color-gray-dark fs-14">Представление и уплата</span>
                     </div>
                </div>
                <!-- <div class="calendar-time-block" v-for="(value, key) in weekTime">
@@ -197,8 +212,8 @@
                               <span class="color-nav-black d-block">Сегодня</span>
                               <div class="mt-2">
                                    <i class="bi bi-calendar color-gold fs-14 me-1"></i>
-                                   <span class="color-gold fs-24 ff-pt-serif">{{weekTime.todayDate?.dateNumber}}</span>
-                                   <span class="fs-24 ff-pt-serif">({{weekTime.todayDate?.dayOfWeek}})</span>
+                                   <span class="color-gold fs-24 ff-pt-serif">{{setToday?.dateNumber}}</span>
+                                   <span class="fs-24 ff-pt-serif">({{setToday?.dayOfWeek}})</span>
                               </div>
                          </div>
                          <div class="work-time-elem d-flex flex-row align-items-center justify-content-between mt-2">
@@ -311,7 +326,7 @@
                                         this.message = 'DayOff'
                                    }
                                    this.response = response.data;
-                                   console.log('response:', this.response);
+                                   // console.log('response:', this.response);
                                    this.$emit('message-updated', this.message);
                               })
                                    .catch(error => {
@@ -335,25 +350,10 @@
                          isOn: 'false',
                          // placeholder data
                          dates: [
-                              {
-                                   date: '2024-01-03',
-                                   pay: false,
-                                   show: false,
-                                   weekend: true,
-                                   addText: {
-                                        text: '',
-                                        category: ''
-                                   },
-                                   everyDay: false,
-                                   description: {
-                                        desPay: '',
-                                        desShow: ''
-                                   },
-                                   dateCategory: ''
-                              },
+                              
                               {
                                    date: '2024-02-05',
-                                   pay: true,
+                                   pay: false,
                                    show: false,
                                    payShow: true,
                                    weekend: false,
@@ -361,11 +361,11 @@
                                         text: '(за исключением нерезидентов)',
                                         category: 'pay'
                                    },
-                                   everyDay: false,
+                                   everyDay: true,
                                    description: {
                                         desPay: 'Налог на доходы иностранных организаций, не осуществляющих деятельность в Республике Беларусь через постоянное представительство',
                                         desShow: '',
-                                        desPayShow: 'Утилизационный сбор'
+                                        desPayShow: 'Проверка'
                                    },
                                    dateCategory: 'calendarOrg'
                               },
@@ -420,6 +420,24 @@
                                         desPay: 'Оффшорный сбор',
                                         desShow: '',
                                         desPayShow: 'Текст описания'
+                                   },
+                                   dateCategory: 'calendarOrg'
+                              },
+                              {
+                                   date: '2024-02-25',
+                                   pay: true,
+                                   show: false,
+                                   payShow: true,
+                                   weekend: false,
+                                   addText: {
+                                        text: '',
+                                        category: ''
+                                   },
+                                   everyDay: false,
+                                   description: {
+                                        desPay: 'Оффшорный сбор 2',
+                                        desShow: '',
+                                        desPayShow: 'Текст описания 2'
                                    },
                                    dateCategory: 'calendarOrg'
                               },
@@ -655,6 +673,10 @@
                          yearTitle: '',
                          disabledDates : [], 
                          mode: null,
+                         disDateArr: [],
+                         allOff: [],
+                         selectedDisDates: [],
+                         transDates: ['2024-02-17']
                     }
                },
                computed: {
@@ -664,7 +686,30 @@
                               sumDays: 31,
                          }
                          return weekTime
-                    }
+                    },
+                    setToday() {
+                         let timeObj= { dayOfWeek: '', dateNumber: ''}
+                         const days = [
+                              'воскресенье',
+                              'понедельник',
+                              'вторник',
+                              'среда',
+                              'четверг',
+                              'пятница',
+                              'суббота'
+                         ];
+                         let day = new Date()
+                         let textDay = day.getDay()
+                         let numberDay = day.toLocaleDateString('en-GB').split('/')
+                         try {
+                              timeObj.dayOfWeek = days[textDay]
+                              timeObj.dateNumber = numberDay[0] + '.' + numberDay[1]
+                         } catch (error) {
+                              console.log('setToday error', error)
+                         }
+                         return timeObj
+                         // + ' ' + day.toLocaleString('default', {month: 'long'}) if need text month
+                    },
                },
                watch: {
                     // watchChange(typeMode){
@@ -683,6 +728,7 @@
                          this.setAttributes()
                          this.calcTime()
                          this.markWeekend()
+                         this.processTimeDates()
                     }
                },
                methods: {
@@ -693,20 +739,25 @@
                          // this.isOn= 'true'
                          let disDateArr = []
                          // , '02/05/2024'
-                         let arrOfDate = ['01/01/2024', '01/02/2024', '01/07/2024']
+                         let arrOfDate = ['2024-01-01', '2024-01-02', '2024-01-07', '2024-03-08', '2024-05-01', '2024-05-09', '2024-05-14', '2024-07-03',]
                          try {
                               arrOfDate.forEach(el => {
+                                   el+='T00:00:00' //if time is not define
                                    disDateArr.push(new Date(el))
                               });
                          } catch (error) {
                               console.log('error in disable dates', error)
                          }
+
+                         this.disDateArr = disDateArr
+                         // console.log('disDateArr', disDateArr)
+                         disDateArr = [{ weekdays: [1, 7] },...disDateArr ]
                          this.disabledDates = disDateArr
                          // console.log('this.dis', this.disabledDates)
                     },
                     fillDates(){
                          // this.dates = Array.from(Array(35).keys())
-                         console.log('parent', this.messageFromChild)
+                         // console.log('parent', this.messageFromChild)
                     },
                     calcMinDate(){
                          let lastDay =  new Date(new Date().getFullYear(), new Date().getMonth() - 1, 1)
@@ -741,63 +792,96 @@
                               }
                          })
                     },
+                    checkValidDateRule(date){
+                         return date instanceof Date && !isNaN(date)
+                    },
                     setAttributes() {
                          this.filterDays()
                          this.attributes = []
                          this.dateToShow.forEach(el => {
-                              try{
+                              try {
                                    var splitedRule = el.date.split('-')
                                    var formattedDate = new Date(splitedRule[0], new Number(splitedRule[1]) - 1, splitedRule[2])
-                              }
-                              catch(err){
-                                   console.log('Error in date format', err)
-                              }
-                              let checkValidDateRule = formattedDate instanceof Date && !isNaN(formattedDate)
-                              if (checkValidDateRule && el.everyDay !== true) {
-                                   if (el.show === true) {
-                                        this.attributes.push({
-                                             dates: formattedDate,
-                                             dot: {
+
+                                   if (this.checkValidDateRule(formattedDate) && !el.everyDay) {
+                                        let existingItem = this.attributes.find(item => item.dates.getTime() === formattedDate.getTime() && item.dot.style.backgroundColor === '#C47A2C');
+                                        if (!existingItem && el.show === true) {
+                                             this.attributes.push({
+                                                  dates: formattedDate,
+                                                  dot: {
                                                   style: {
                                                        backgroundColor: '#C47A2C'
                                                   }
-                                             },
-                                             popover: {
+                                                  },
+                                                  popover: {
                                                   visibility: 'hover',
                                                   // hideIndicator: true,
                                                   label: el.addText.category === 'show' ? 'Представление' + ' ' + el.addText.text : 'Представление',
-                                             },
-                                        })
-                                   }
-                                   if (el.pay === true) {
-                                        this.attributes.push({
-                                             dates: formattedDate,
-                                             dot: {
+                                                  },
+                                             })
+                                        }
+                                        
+                                        existingItem = this.attributes.find(item => item.dates.getTime() === formattedDate.getTime() && item.dot.style.backgroundColor === '#034A66');
+                                        if (!existingItem && el.pay === true) {
+                                             this.attributes.push({
+                                                  dates: formattedDate,
+                                                  dot: {
                                                   style: {
                                                        backgroundColor: '#034A66'
                                                   }
-                                             },
-                                             popover: {
+                                                  },
+                                                  popover: {
                                                   visibility: 'hover',
                                                   // hideIndicator: true,
                                                   label: el.addText.category === 'pay' ? 'Уплата' + ' ' + el.addText.text : 'Уплата',
-                                             },
-                                        })
-                                   }
-                                   if (el.payShow === true) {
-                                        this.attributes.push({
-                                             dates: formattedDate,
-                                             dot: {
+                                                  },
+                                             })
+                                        }
+                                        
+                                        existingItem = this.attributes.find(item => item.dates.getTime() === formattedDate.getTime() && item.dot.style.backgroundColor === '#D24344');
+                                        if (!existingItem && el.payShow === true) {
+                                             this.attributes.push({
+                                                  dates: formattedDate,
+                                                  dot: {
                                                   style: {
                                                        backgroundColor: '#D24344'
                                                   }
-                                             },
-                                             popover: {
+                                                  },
+                                                  popover: {
                                                   visibility: 'hover',
-                                                  // label: el.addText.category === 'pay' ? 'Уплата' + ' ' + el.addText.text : 'Уплата',
-                                             },
-                                        })
+                                                  label: 'Представление и уплата',
+                                                  },
+                                             })
+                                        }
                                    }
+                              } catch (err) {
+                                   console.log('Error in date format', err)
+                              }
+                         })
+                         this.setTransAttr()
+                    },
+                    setTransAttr(){
+                         const currentPage = this.$refs.calendar.pages[0]
+                         let transDatesToShow = []
+                         transDatesToShow = this.transDates.filter(el => new Date(el).getMonth() + 1 === currentPage.month)
+                         transDatesToShow.forEach(el=>{
+                              try {
+                                   if(this.checkValidDateRule(new Date(el))){
+                                        this.attributes.push(
+                                             {
+                                                  content:{
+                                                       style:{
+                                                            color: '#282828'
+                                                       }
+                                                  },
+                                                  dates: [
+                                                       el
+                                                  ]
+                                             }
+                                        )
+                                   }
+                              } catch (error) {
+                                   console.log('Error in trans date to show', error)
                               }
                          })
                     },
@@ -877,85 +961,147 @@
                          }, [])
                          return etcWeekend
                     },
-                    calcTime(){
-                         const currentPage = this.$refs.calendar.pages[0]
-                         console.log('currentPage', currentPage)
-                         console.log('monthComps', currentPage.monthComps)
-                         let d = new Date(currentPage.monthComps.year, currentPage.monthComps.month, 0);
-                         let getTot = currentPage.monthComps.days
-                         this.weekTime.sumDays = getTot
-                         
-                         
-
-                         // console.log(daysInMonth(d.getMonth(),d.getFullYear()))
-                         let sat = new Array();
-                         let sun = new Array();
-                         let allOff = new Array()
-                         let originOff = new Array()
-                         etcWeekendLength = this.calcETCWeekend()
-                         for(let i=1;i<=getTot;i++){
-                              let newDate = new Date(d.getFullYear(),d.getMonth(),i)
-                         // console.log(i+"-"+newDate.getDay());
-                              if(newDate.getDay()==0){
-                                   sat.push(i)
-                              }
-                              if(newDate.getDay()==6){
-                                   sun.push(i)
-                              }
-                              if(newDate.getDay() == 0 || newDate.getDay() == 6){
-                                   allOff.push(i)
-                              }
+                    isSunday(date) {
+                         if (date.getDay() === 0) {
+                              return true;
                          }
-
-                         let disNumber = 0
-                         try {
-                              const disabledDatesThisMonth = this.disabledDates.filter(date => date.getMonth() + 1 === currentPage.monthComps.month)
-                              disabledDatesThisMonth.forEach(el => {
-                                   console.log('el.getMonth()', el.getMonth())
-
-                                   if (el.getDay() !== 0) {
-                                        disNumber++
-                                   }
-                              });
-                              getTot = getTot - disNumber
-                              console.log('getTotal', getTot)
-                         } catch (error) {
-                              console.log('error in calcTime with disDates', error)
-                         }
-                         
-                         this.weekTime.workFive = getTot - allOff.length - etcWeekendLength.length
-                         this.weekTime.workSix = getTot - sun.length - etcWeekendLength.length
-                         this.weekTime.offFive = allOff.length + etcWeekendLength.length + disNumber
-                         this.weekTime.offSix = sun.length + etcWeekendLength.length + disNumber
-                         this.weekTime.timeFiveWeek40 = 40/5 * this.weekTime.workFive
-                         this.weekTime.timeFiveWeek35 = 35/5 * this.weekTime.workFive
-                         this.weekTime.timeSixWeek40 = sun.length * 5 + (getTot - sat.length - sun.length - etcWeekendLength.length) * 7
-                         this.weekTime.timeSixWeek35 = sun.length * 5 + (getTot - sat.length - sun.length - etcWeekendLength.length) * 6
-                         
-                         // console.log('sat', sat);
-                         // console.log(sun);
-                         // console.log('allOff', allOff)
+                         return false;
                     },
-                    setToday(){
-                         const days = [
-                              'воскресенье',
-                              'понедельник',
-                              'вторник',
-                              'среда',
-                              'четверг',
-                              'пятница',
-                              'суббота'
-                         ];
-                         let day = new Date()
-                         let textDay = day.getDay()
-                         let numberDay = day.toLocaleDateString('en-GB').split('/')
-                         try {
-                              this.weekTime.todayDate.dayOfWeek = days[textDay]
-                              this.weekTime.todayDate.dateNumber = numberDay[0] + '.' + numberDay[1]
-                         } catch (error) {
-                              console.log('setToday error', error)
+                    isSaturday(date) {
+                         if (date.getDay() === 6) {
+                              return true;
                          }
-                         // + ' ' + day.toLocaleString('default', {month: 'long'}) if need text month
+                         return false;
+                    },
+                    isDateInMonth(date, month) {
+                         // console.log('we are here isDateInMonth');
+                         const dateMonth = date.getMonth() + 1;
+                         // console.log('dateMonth === month', dateMonth, month);
+                         return dateMonth === month;
+                    },
+                    processTimeDates() {
+                         this.selectedDisDates.forEach(element => {
+                              // debugger
+                              this.checkPrevDate(element)
+                         })
+                    },
+                    checkPrevDate(element){
+                         let prevDate = new Date(element)
+                         prevDate.setDate(prevDate.getDate() - 1)
+                         // console.log('prevDate', prevDate)
+                         
+                         if(
+                              this.isDateInMonth(prevDate, this.$refs.calendar.pages[0].monthComps.month)
+                              && this.checkWork(prevDate, null, this.disDateArr)
+                         ){
+                              this.checkWeekend(element)
+                         }
+                         else{
+                              console.log('we are not here');
+                         }
+                         // {
+                         //      if (this.isSunday(prevDate)) {
+                         //           console.log('we are here sun')
+                         //           this.weekTime.timeSixWeek40--
+                         //           this.weekTime.timeSixWeek35--
+                         //      } else if (this.isSaturday(prevDate)) {
+                         //           console.log('we are here sat')
+                         //           this.weekTime.timeFiveWeek40--
+                         //           this.weekTime.timeFiveWeek35--
+                         //      } else {
+                         //           this.weekTime.timeSixWeek40--
+                         //           this.weekTime.timeSixWeek35--
+                         //           this.weekTime.timeFiveWeek40--
+                         //           this.weekTime.timeFiveWeek35--
+                         //           //todo: дополнить проверку функцией написанной ниже(или нет, пока не решил) 
+                         //      }
+                         // }
+                    },
+                    checkWeekend(element){
+                              // console.log('element', element)
+                              let nowDate = new Date(element)
+                              nowDate.setDate(nowDate.getDate())
+                              // console.log('prevDate', nowDate)
+                              if (this.isSunday(nowDate)) {
+                                   // console.log('we are here sun')
+                                   this.weekTime.timeSixWeek40--
+                                   this.weekTime.timeSixWeek35--
+                              } else if (this.isSaturday(nowDate)) {
+                                   // console.log('we are here sat')
+                                   this.weekTime.timeFiveWeek40--
+                                   this.weekTime.timeFiveWeek35--
+                              } else {
+                                   this.weekTime.timeSixWeek40--
+                                   this.weekTime.timeSixWeek35--
+                                   this.weekTime.timeFiveWeek40--
+                                   this.weekTime.timeFiveWeek35--
+                                   //todo: дополнить проверку функцией написанной ниже(или нет, пока не решил) 
+                              }
+                    },
+                    checkWork(dateString, firstArr, secondArr) {
+                         const targetDate = new Date(dateString)
+                         // console.log('targetDate', targetDate);
+                         const foundInAllOff = firstArr?.some(date => date.getTime() === targetDate.getTime())
+                         const foundInDisDateArr = secondArr?.some(date => date.getTime() === targetDate.getTime())
+
+                         if (foundInAllOff && foundInDisDateArr) {
+                              return false
+                         } else if (foundInAllOff) {
+                              return false
+                         } else if (foundInDisDateArr) {
+                              return false
+                         } else {
+                              return true
+                         }
+
+                    },
+                    calcTime() {
+                         const currentPage = this.$refs.calendar.pages[0];
+                         const year = currentPage.monthComps.year;
+                         const month = currentPage.monthComps.month;
+                         const daysInMonth = new Date(year, month, 0).getDate();
+                         const sat = [];
+                         const sun = [];
+                         const allOff = [];
+
+                         let disNumber = 0;
+
+                         for (let i = 1; i <= daysInMonth; i++) {
+                              const newDate = new Date(year, month - 1, i);
+                              const dayOfWeek = newDate.getDay();
+
+                              if (dayOfWeek === 0) sun.push(newDate);
+                              if (dayOfWeek === 6) sat.push(newDate);
+                              if (dayOfWeek === 0 || dayOfWeek === 6) allOff.push(newDate);
+                         }
+
+                         this.allOff = allOff;
+
+                         const disabledDatesThisMonth = this.disDateArr.filter(date => date.getMonth() + 1 === month);
+                         this.selectedDisDates = disabledDatesThisMonth;
+
+                         disabledDatesThisMonth.forEach(el => {
+                              if (el.getDay() !== 0) disNumber++;
+                         });
+
+                         const etcWeekendLength = this.calcETCWeekend();
+
+                         const getTot = daysInMonth - disNumber;
+                         const workFive = getTot - allOff.length - etcWeekendLength.length;
+                         const workSix = getTot - sun.length - etcWeekendLength.length;
+
+                         this.weekTime = {
+                              sumDays: daysInMonth,
+                              workFive,
+                              workSix,
+                              offFive: allOff.length + etcWeekendLength.length + disNumber,
+                              offSix: sun.length + etcWeekendLength.length + disNumber,
+                              timeFiveWeek40: (40 / 5) * workFive,
+                              timeFiveWeek35: (35 / 5) * workFive,
+                              timeSixWeek40: sun.length * 5 + (getTot - sat.length - sun.length - etcWeekendLength.length) * 7,
+                              timeSixWeek35: sun.length * 5 + (getTot - sat.length - sun.length - etcWeekendLength.length) * 6,
+                              todayDate:{ dayOfWeek:'', dateNumber:'' }
+                         };
                     },
                     markWeekend(){
                          this.dates.forEach(function(el){
@@ -990,13 +1136,9 @@
                     this.setAttributes()
                     this.formatTitle(new Date())
                     // this.calcTime()
-                    this.setToday()
+                    // this.setToday()
                     // this.markWeekend()
-                    const urlParams = new URLSearchParams(window.location.search)
-                    this.mode = urlParams.get('mode')
-                    this.selectedDate = urlParams.get('date')
-                    this.selectedType = urlParams.get('type')
-                    console.log('mode', this.mode, 'date', this.selectedDate, 'type', this.selectedType)
+                    // const urlParams = new URLSearchParams(window.location.search)
                }
           })
           </script>

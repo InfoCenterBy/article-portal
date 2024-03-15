@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+@@include('_head.html',{
+"title":"Добавление пользователей"
+})
+
+<body>
+     @@include('./new-main/main-components/_new-header.html')
+     @@include('./new-main/main-components/_search-modal.html')
+     @@include('./new-main/main-components/_nav.html')
+
+     <div class="nav-container active-container">
+          <!-- Nav Button -->
+          <a class="" id="menu-btn"><i class="bi bi-chevron-right"></i></a>
+          <!--Nav Button -->
+          <div class="main-content">
+               <section class="main-section">
+                    <div class="row">
+                         <nav aria-label="breadcrumb" class="col-12">
+                              <ol class="breadcrumb">
+                                   <li class="breadcrumb-item"><a href="main.html"><i class="bi bi-house"></i></a></li>
+                                   <li class="breadcrumb-item active"><a href="#">Добавление пользователей</a></li>
+                              </ol>
+                         </nav>
+                    </div>
+               </section>
+               <section class="main-section mt-5">
+                    <div class="">
+                         <div class="">
+                              <b class="fs-32">Добавление пользователей</b>
+                         </div>
+
+                         <div class="mt-4"></div>
+
+                         <div class="row row-default">
+                              <div class="col-12">
+                                   <b class="fs-20">Пользователь 1</b>
+                              </div>
+                              <div class="mt-3"></div>
+                              <div class="row row-default col-xl-6 my-2 d-flex align-content-start">
+                                   <div class="col-12 d-flex">
+                                        <label for="emailInput1">
+                                             E-mail <span class="color-red">*</span>
+                                        </label>
+                                   </div>
+                                   <div class="col-xl-6 d-flex my-2">
+                                        <div class="input w-100">
+                                             <input type="text" name="" id="emailInput1" class="_required border-10"
+                                             placeholder="E-mail">
+                                             <div class="input__text-error">
+                                                  <i class="bi bi-exclamation-triangle me-2"></i>
+                                                  Поле не может быть пустым
+                                             </div>
+                                        </div>
+                                   </div>
+                                   <div class="col-xl-6 d-flex my-2">
+                                        <button type="button" class="button px-lg-4 py-3 px-2 w-100 border-10">Подтвердить</button>
+                                   </div>
+                                   <div class="col-12 mt-2">
+                                        <span class="color-gray fs-14">Email подтвержден</span>
+                                   </div>
+                                   <div class="col-12 mt-3">
+                                        <span class="color-gold">Код подтверждения отправлен на указанный e-mail</span>
+                                   </div>
+
+                                   <div class="col-12 d-flex mt-4">
+                                        <label for="codeInput">
+                                             Код подтверждения <span class="color-red">*</span>
+                                        </label>
+                                   </div>
+                                   <div class="col-12 d-flex my-2">
+                                        <div class="input w-100">
+                                             <input type="text" name="" id="codeInput" class="_required border-10"
+                                             placeholder="Код">
+                                             <div class="input__text-error">
+                                                  <i class="bi bi-exclamation-triangle me-2"></i>
+                                                  Поле не может быть пустым
+                                             </div>
+                                        </div>
+                                   </div>
+                                   <div class="col-12 fs-14">
+                                        <span>Не получили код?</span>
+                                        <a href="" class="color-gold">Запросить код повторно</a>
+                                   </div>
+                                   <div class="col-xl-6 d-flex mt-4">
+                                        <button type="button" class="button px-lg-4 py-3 px-2 w-100 border-10">Подтвердить</button>
+                                   </div>
+                              </div>
+
+                              <div class="row row-default col-xl-6 my-2 d-flex align-content-start">
+                                   <div class="col-12">
+                                        <label for="telInput1">
+                                             Телефон <span class="color-red">*</span>
+                                        </label>
+                                   </div>
+                                   <div class="col-xl-6 d-flex my-2">
+                                        <div class="input w-100">
+                                             <input type="tel" name="" id="telInput1" class="_required border-10"
+                                             placeholder="+375 (__) ___-____"
+                                             >
+                                             <div class="input__text-error">
+                                                  <i class="bi bi-exclamation-triangle me-2"></i>
+                                                  Поле не может быть пустым
+                                             </div>
+                                        </div>
+                                   </div>
+                                   <div class="col-xl-6 d-flex my-2">
+                                        <button type="button" class="button px-lg-4 py-3 px-2 w-100 border-10">Подтвердить</button>
+                                   </div>
+
+                                   <div class="col-12 mt-3">
+                                        <span class="color-gold">Код подтверждения отправлен по СМС</span>
+                                   </div>
+                              </div>
+                         </div>
+
+                         <div class="mt-5"></div>
+
+                         
+                         <div class="row row-default">
+                              <div class="col-12">
+                                   <b class="fs-20">Пользователь 2</b>
+                              </div>
+                              <div class="mt-3"></div>
+     
+                              <div class="row row-default col-xl-6 my-2">
+                                   <div class="col-12">
+                                        <label for="emailInput2">
+                                             E-mail <span class="color-red">*</span>
+                                        </label>
+                                   </div>
+                                   
+                                   <div class="col-xl-6 d-flex my-2">
+                                        <div class="input w-100">
+                                             <input type="text" name="" id="emailInput2" class="_required border-10"
+                                             placeholder="E-mail">
+                                             <div class="input__text-error">
+                                                  <i class="bi bi-exclamation-triangle me-2"></i>
+                                                  Поле не может быть пустым
+                                             </div>
+                                        </div>
+                                   </div>
+                                   <div class="col-xl-6 d-flex my-2">
+                                        <button type="button" class="button px-lg-4 py-3 px-2 w-100 border-10">Подтвердить</button>
+                                   </div>
+                              </div>
+
+                              <div class="row row-default col-xl-6 my-2">
+                                   <div class="col-12">
+                                        <label for="telInput2">
+                                             Телефон <span class="color-red">*</span>
+                                        </label>
+                                   </div>
+                                   <div class="col-xl-6 d-flex my-2">
+                                        <div class="input w-100">
+                                             <input type="tel" name="" id="telInput2" class="_required border-10"
+                                             placeholder="+375 (__) ___-____"
+                                             >
+                                             <div class="input__text-error">
+                                                  <i class="bi bi-exclamation-triangle me-2"></i>
+                                                  Поле не может быть пустым
+                                             </div>
+                                        </div>
+                                   </div>
+                                   <div class="col-xl-6 d-flex my-2">
+                                        <button type="button" class="button px-lg-4 py-3 px-2 w-100 border-10">Подтвердить</button>
+                                   </div>
+                              </div>
+                              
+                         </div>
+                         <div class="my-5"></div>
+                         <div class="row justify-content-center">
+                              <div class="col-xl-4">
+                                   <button type="button" class="button px-lg-4 py-3 px-2 border-10 w-100" disabled>Далее</button>
+                              </div>
+                         </div>
+                    </div>
+               </section>
+               <div class="mt-4"></div>
+          </div>
+          <div class="my-5"></div>
+          <div class="my-5"></div>
+          @@include('./new-main/main-components/_new-footer.html')
+     </div>
+     @@include('_js.html',{})
+     </body>
+</html>
