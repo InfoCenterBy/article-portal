@@ -7387,6 +7387,12 @@ i {
   color: var(--color-nav-black);
 }
 
+.main-content .row-default {
+  margin-top: calc(var(--bs-gutter-y) * -1);
+  margin-right: calc(var(--bs-gutter-x) / -2);
+  margin-left: calc(var(--bs-gutter-x) / -2);
+}
+
 html {
   height: auto;
 }
@@ -7523,6 +7529,10 @@ html {
 
 .color-nav-black {
   color: var(--color-nav-black);
+}
+
+.fs-32 {
+  font-size: 32px;
 }
 
 .vc-day {
@@ -8183,6 +8193,10 @@ html {
 
   .fs-16 {
     font-size: calc(14px + 2 * ((100vw - 320px) / 1200));
+  }
+
+  .fs-32 {
+    font-size: calc(28px + 4 * ((100vw - 320px) / 1200));
   }
 }
 

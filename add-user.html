@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-      <title>Архив налоговых календарей</title>
+      <title>Добавление пользователей</title>
       <meta charset="UTF-8" />
       <meta name="format-detection" content="telephone=no" />
       <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -276,7 +276,6 @@
 
 
      <div class="nav-container active-container">
-
           <a class="" id="menu-btn"><i class="bi bi-chevron-right"></i></a>
           <div class="main-content">
                <section class="main-section">
@@ -284,365 +283,163 @@
                          <nav aria-label="breadcrumb" class="col-12">
                               <ol class="breadcrumb">
                                    <li class="breadcrumb-item"><a href="main.html"><i class="bi bi-house"></i></a></li>
-                                   <li class="breadcrumb-item"><a href="#">Справочная информация</a></li>
-                                   <li class="breadcrumb-item"><a href="./calendar-inner.html">Налоговый календарь</a></li>
-                                   <li class="breadcrumb-item active" aria-current="page">Архив налоговых календарей</li>
+                                   <li class="breadcrumb-item active"><a href="#">Добавление пользователей</a></li>
                               </ol>
                          </nav>
                     </div>
                </section>
-               <div class="mt-4"></div>
-               <div class="main-section" >
-     <div class="row" id="app">
-          <div class="col-xxl-9 col-xl-8 d-flex flex-column order-xl-1 order-2">
-               <div class="d-flex flex-row flex-wrap align-items-center justify-content-between">
-                    <div class="my-2">
-                         <strong class="ff-inter fs-28">
-                              Архив налоговых календарей 
-                              <span class="color-gray-dark">
-                                   {{filteredData?.length}}
-                              </span>
-                         </strong>
-                    </div>
-                    <div class="my-2" v-if="filteredData.length !== 0">
-                         <button class="white-btn" href="" @click="sendID()">
-                              <span>Скачать весь архив в PDF</span>
-                              <i class="bi bi-download"></i>
-                         </button>
-                    </div>
-               </div>
-               <div class="mt-4">
-                    <transition-group tag="div" class="d-flex flex-column w-100" name="archive-card">
-                         <a 
-                         v-for="item in filteredData" 
-                         :key="item.id" 
-                         class="archive-card d-flex justify-content-between align-items-center w-100" 
-                         href="">
-                              <div class="archive-card__info d-flex flex-row align-items-center">
-                                   <div class="">
-                                        <i class="bi bi-file-earmark-pdf"></i>
-                                   </div>
-                                   <div class="d-flex flex-column ms-md-3 ms-1 align-items-start">
-                                        <div class="archive-card__title">
-                                             Налоговый календарь {{item.month}} {{item.year}}
-                                        </div>
-                                        <div class="archive-card__date mt-2">
-                                             <span class="color-nav-black">Дата размещения: </span>{{item.publicDate}}
-                                        </div>
+               <section class="main-section mt-5">
+                    <div class="">
+                         <div class="">
+                              <b class="fs-32">Добавление пользователей</b>
+                         </div>
 
-                                                                                <div class="archive-card__type mt-3">
-                                             <span v-if="item.tag === 'org'">Организациям</span>
-                                             <span v-if="item.tag === 'ip'">Индивидуальным предпринимателям</span>
+                         <div class="mt-4"></div>
+
+                         <div class="row row-default">
+                              <div class="col-12">
+                                   <b class="fs-20">Пользователь 1</b>
+                              </div>
+                              <div class="mt-3"></div>
+                              <div class="row row-default col-xl-6 my-2 d-flex align-content-start">
+                                   <div class="col-12 d-flex">
+                                        <label for="emailInput1">
+                                             E-mail <span class="color-red">*</span>
+                                        </label>
+                                   </div>
+                                   <div class="col-xl-6 d-flex my-2">
+                                        <div class="input w-100">
+                                             <input type="text" name="" id="emailInput1" class="_required border-10"
+                                             placeholder="E-mail">
+                                             <div class="input__text-error">
+                                                  <i class="bi bi-exclamation-triangle me-2"></i>
+                                                  Поле не может быть пустым
+                                             </div>
                                         </div>
                                    </div>
-                              </div>
-                              <div class="">
-                                   <i class="bi bi-download"></i>
-                              </div>
-                         </a>
-                    </transition-group>
-                    <div class="d-flex flex-column justify-content-center align-items-center" v-if="filteredData.length === 0">
-                         <p class="h5 text-center color-gray-dark">
-                              По выбранным условиям
-                              нет
-                              подходящего элемента.
-                              Попробуйте изменить условия выбора.
-                         </p>
-                         <img src="img/default-search.gif" alt="default-search">
-                    </div>
-               </div>
-          </div>
-          <div class="col-xxl-3 col-xl-4 d-flex order-xl-2 order-1">
-               <div class="archive-sidebar ps-3 w-100">
-                    <div class="d-flex flex-column w-100">
-                         <div class="d-flex justify-content-between flex-wrap">
-                              <span class="my-2 fs-20 color-gold fw-600">
-                                   Фильтры
-                              </span>
-                              <button class="my-2 fs-16 color-gray-dark"  @click="resetForm()">
-                                   Очистить все
-                              </button>
-                         </div>
-                         <div class="mt-4">
-                              <span class="color-blue-light fw-500 fs-16">Плательщик</span>
-                              <div class="checkbox mt-3 ps-3">
-                                   <input type="checkbox" id="RefInfo01" v-model="orgChecked" value="org">
-                                   <label class="checkbox__label" for="RefInfo01">
-                                        <div class="d-flex flex-row justify-content-between w-100">
-                                             <span>Организации</span>
-                                             <span class="color-gray-dark">&ensp;({{tagsNum?.orgCount}})</span>
-                                        </div>
-                                   </label>
-                              </div>
-                              <div class="checkbox mt-3 ps-3">
-                                   <input type="checkbox" id="RefInfo02" v-model="ipChecked" value="ip">
-                                   <label class="checkbox__label " for="RefInfo02">
-                                        <div class="d-flex flex-row justify-content-between w-100">
-                                             <span>Индивидуальные <br> предприниматели</span>
-                                             <span class="color-gray-dark">&ensp;({{tagsNum?.ipCount}})</span>
-                                        </div>
-                                   </label>
-                              </div>
-                         </div>
-                         <div class="mt-4">
-                              <span class="color-blue-light fw-500 fs-16">Период</span>
-                              <div class="mt-3">
-                                   <div class="label">с</div>
-                                   <div class="row row-container">
-                                        <div class="col-xxl-6 my-2">
-                                             <select class="select border-radius-4" v-model="selectedMonthStart">
-                                                  <option v-for="item in currentMonthList" :value="item.num"  class="color-nav-black">
-                                                       {{item.title}}
-                                                  </option>
-                                             </select>
-                                        </div>
-                                        <div class="col-xxl-6 my-2">
-                                             <select class="select border-radius-4" v-model="selectedYearStart">
-                                                  <option v-for="item in currentYearList" :value="item" class="color-nav-black">
-                                                       {{item}}
-                                                  </option>
-                                             </select>
+                                   <div class="col-xl-6 d-flex my-2">
+                                        <button type="button" class="button px-lg-4 py-3 px-2 w-100 border-10">Подтвердить</button>
+                                   </div>
+                                   <div class="col-12 mt-3">
+                                        <span class="color-gold">Код подтверждения отправлен на указанный e-mail</span>
+                                   </div>
+
+                                   <div class="col-12 d-flex mt-4">
+                                        <label for="codeInput">
+                                             Код подтверждения <span class="color-red">*</span>
+                                        </label>
+                                   </div>
+                                   <div class="col-12 d-flex my-2">
+                                        <div class="input w-100">
+                                             <input type="text" name="" id="codeInput" class="_required border-10"
+                                             placeholder="Код">
+                                             <div class="input__text-error">
+                                                  <i class="bi bi-exclamation-triangle me-2"></i>
+                                                  Поле не может быть пустым
+                                             </div>
                                         </div>
                                    </div>
+                                   <div class="col-12 fs-14">
+                                        <span>Не получили код?</span>
+                                        <a href="" class="color-gold">Запросить код повторно</a>
+                                   </div>
+                                   <div class="col-xl-6 d-flex mt-4">
+                                        <button type="button" class="button px-lg-4 py-3 px-2 w-100 border-10">Подтвердить</button>
+                                   </div>
                               </div>
-                              <div class="mt-2">
-                                   <div class="label">по</div>
-                                   <div class="row row-container">
-                                        <div class="col-xxl-6 my-2">
-                                             <select class="select border-radius-4" v-model="selectedMonthEnd">
-                                                  <option v-for="item in currentMonthList" :value="item.num" class="color-nav-black">
-                                                       {{item.title}}
-                                                  </option>
-                                             </select>
+
+                              <div class="row row-default col-xl-6 my-2 d-flex align-content-start">
+                                   <div class="col-12">
+                                        <label for="telInput1">
+                                             Телефон <span class="color-red">*</span>
+                                        </label>
+                                   </div>
+                                   <div class="col-xl-6 d-flex my-2">
+                                        <div class="input w-100">
+                                             <input type="tel" name="" id="telInput1" class="_required border-10"
+                                             placeholder="+375 (__) ___-____"
+                                             >
+                                             <div class="input__text-error">
+                                                  <i class="bi bi-exclamation-triangle me-2"></i>
+                                                  Поле не может быть пустым
+                                             </div>
                                         </div>
-                                        <div class="col-xxl-6 my-2">
-                                             <select class="select border-radius-4" v-model="selectedYearEnd">
-                                                  <option v-for="item in currentYearList" :value="item" class="color-nav-black">
-                                                       {{item}}
-                                                  </option>
-                                             </select>
-                                        </div>
+                                   </div>
+                                   <div class="col-xl-6 d-flex my-2">
+                                        <button type="button" class="button px-lg-4 py-3 px-2 w-100 border-10">Подтвердить</button>
+                                   </div>
+
+                                   <div class="col-12 mt-3">
+                                        <span class="color-gold">Код подтверждения отправлен по СМС</span>
                                    </div>
                               </div>
                          </div>
+
+                         <div class="mt-5"></div>
+
+
+                                                  <div class="row row-default">
+                              <div class="col-12">
+                                   <b class="fs-20">Пользователь 2</b>
+                              </div>
+                              <div class="mt-3"></div>
+
+                                   <div class="row row-default col-xl-6 my-2">
+                                   <div class="col-12">
+                                        <label for="emailInput2">
+                                             E-mail <span class="color-red">*</span>
+                                        </label>
+                                   </div>
+
+                                                                      <div class="col-xl-6 d-flex my-2">
+                                        <div class="input w-100">
+                                             <input type="text" name="" id="emailInput2" class="_required border-10"
+                                             placeholder="E-mail">
+                                             <div class="input__text-error">
+                                                  <i class="bi bi-exclamation-triangle me-2"></i>
+                                                  Поле не может быть пустым
+                                             </div>
+                                        </div>
+                                   </div>
+                                   <div class="col-xl-6 d-flex my-2">
+                                        <button type="button" class="button px-lg-4 py-3 px-2 w-100 border-10">Подтвердить</button>
+                                   </div>
+                              </div>
+
+                              <div class="row row-default col-xl-6 my-2">
+                                   <div class="col-12">
+                                        <label for="telInput2">
+                                             Телефон <span class="color-red">*</span>
+                                        </label>
+                                   </div>
+                                   <div class="col-xl-6 d-flex my-2">
+                                        <div class="input w-100">
+                                             <input type="tel" name="" id="telInput2" class="_required border-10"
+                                             placeholder="+375 (__) ___-____"
+                                             >
+                                             <div class="input__text-error">
+                                                  <i class="bi bi-exclamation-triangle me-2"></i>
+                                                  Поле не может быть пустым
+                                             </div>
+                                        </div>
+                                   </div>
+                                   <div class="col-xl-6 d-flex my-2">
+                                        <button type="button" class="button px-lg-4 py-3 px-2 w-100 border-10">Подтвердить</button>
+                                   </div>
+                              </div>
+
+                                                       </div>
+                         <div class="my-5"></div>
+                         <div class="row justify-content-center">
+                              <div class="col-xl-4">
+                                   <button type="button" class="button px-lg-4 py-3 px-2 border-10 w-100" disabled>Далее</button>
+                              </div>
+                         </div>
                     </div>
-               </div>
-          </div>
-     </div>
-     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-     <script type="application/javascript">
-          const vueApp = new Vue({
-               el: '#app',
-               components: {
-               },
-               data() {
-                    return {
-                         mainData: [
-                              {
-                                   id: 1,
-                                   date: '15.01.2024',
-                                   publicDate: '15.01.2024',
-                                   tag: 'org'
-                              },
-                              {
-                                   id: 2,
-                                   date: '15.12.2023',
-                                   publicDate: '15.12.2023',
-                                   tag: 'ip'
-                              },
-                              {
-                                   id: 3,
-                                   date: '15.02.2024',
-                                   publicDate: '15.02.2024',
-                                   tag: 'ip'
-                              },
-                              {
-                                   id: 4,
-                                   date: '15.02.2023',
-                                   publicDate: '15.02.2023',
-                                   tag: 'ip'
-                              },
-                         ],
-                         monthList : [
-                              'январь', 'февраль', 'март', 'апрель', 'май', 'июнь',
-                              'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь'
-                         ],
-                         transformedData : [],
-                         currentMonthList: [],
-                         currentYearList: [],
-                         tagsNum: {
-                              orgCount: 0,
-                              ipCount: 0,
-                         },
-                         selectedMonthStart: 1,
-                         selectedMonthEnd: 12,
-                         selectedYearStart: null,
-                         selectedYearEnd: null,
-                         orgChecked: false,
-                         ipChecked: false,
-                         idList: [],
-                    }
-               },
-               watch: {
-                    orgChecked() { this.updateURL() },
-                    ipChecked() { this.updateURL() },
-                    selectedMonthStart() { this.updateURL() },
-                    selectedMonthEnd() { this.updateURL() },
-                    selectedYearStart() { this.updateURL() },
-                    selectedYearEnd() { this.updateURL() }
-               },
-               methods: {
-                    updateURL() {
-                         const params = new URLSearchParams()
-                         params.set('orgChecked', this.orgChecked)
-                         params.set('ipChecked', this.ipChecked)
-                         params.set('selectedMonthStart', this.selectedMonthStart)
-                         params.set('selectedMonthEnd', this.selectedMonthEnd)
-                         params.set('selectedYearStart', this.selectedYearStart)
-                         params.set('selectedYearEnd', this.selectedYearEnd)
-                         window.history.replaceState({}, '', `${location.pathname}?${params}`)
-                    },
-                    loadParamsFromURL() {
-                         const urlParams = new URLSearchParams(window.location.search)
-                         this.orgChecked = urlParams.get('orgChecked') === 'true'
-                         this.ipChecked = urlParams.get('ipChecked') === 'true'
-                         this.selectedMonthStart = parseInt(urlParams.get('selectedMonthStart')) || 1
-                         this.selectedMonthEnd = parseInt(urlParams.get('selectedMonthEnd')) || 12
-                         this.selectedYearStart = parseInt(urlParams.get('selectedYearStart')) || this.selectedYearStart
-                         this.selectedYearEnd = parseInt(urlParams.get('selectedYearEnd')) || this.selectedYearEnd
-                    },
-                    transformData(){
-                         try {
-                              const transformedData = this.mainData.map(item => {
-                                   const dateParts = item.date.split('.')
-                                   const monthIndex = parseInt(dateParts[1]) - 1;
-                                   return {
-                                        id: item.id,
-                                        month: this.monthList[monthIndex],
-                                        year: dateParts[2],
-                                        date: item.date,
-                                        tag: item.tag,
-                                        publicDate: item.publicDate
-                                   }
-                              })
-                              transformedData.sort((a, b) => {
-                                   if (a.year !== b.year) {
-                                        return parseInt(b.year) - parseInt(a.year)
-                                   }
-                                   const aMonthIndex = this.monthList.indexOf(a.month)
-                                   const bMonthIndex = this.monthList.indexOf(b.month)
-                                   return bMonthIndex - aMonthIndex
-                              });
-
-                              this.transformedData = transformedData
-
-                         } catch (error) {
-                              console.log('error in transforming data', error)
-                         }
-                    },
-                    getCurrentMonthList() {
-                         const monthMap = {
-                              'январь': 1,
-                              'февраль': 2,
-                              'март': 3,
-                              'апрель': 4,
-                              'май': 5,
-                              'июнь': 6,
-                              'июль': 7,
-                              'август': 8,
-                              'сентябрь': 9,
-                              'октябрь': 10,
-                              'ноябрь': 11,
-                              'декабрь': 12
-                         };
-
-                         try {
-                              const uniqueMonthList = [...new Set(this.transformedData.map(item => item.month.toLowerCase()))];
-
-                              this.currentMonthList = uniqueMonthList
-                                   .map(month => ({ num: monthMap[month], title: month }))
-                                   .sort((a, b) => a.num - b.num);
-                         } catch (error) {
-                              console.log('error in formating currentMonthList', error)
-                         }
-                    },
-                    getCurrentYearList() {
-                         try {
-                              this.currentYearList = [...new Set(this.transformedData.map(item => item.year))]
-                                   .sort((a, b) => parseInt(a) - parseInt(b))
-                         } catch (error) {
-                              console.log('error in formating currentYearList', error)
-                         }
-                    }, 
-                    resetForm(){
-                         window.history.replaceState({}, '', location.pathname)
-                         location.reload()
-                    },
-                    findMinMaxYear(){
-                         if (!this.transformedData || this.transformedData.length === 0) {
-                              return null;
-                         }
-
-                         const years = this.transformedData.map(item => parseInt(item.year));
-                         const minYear = Math.min(...years);
-                         const maxYear = Math.max(...years);
-
-                         this.selectedYearStart = minYear
-                         this.selectedYearEnd = maxYear
-                    },
-                    sendID(){
-                         console.log('list id', this.idList)
-                    }
-               },
-               computed: {
-                    filteredData() {
-                         let ipCount = 0
-                         let orgCount = 0
-                         let filteredData = this.transformedData
-
-                         filteredData = filteredData.filter(item => {
-                              const dateParts = item.date.split('.')
-                              const month = parseInt(dateParts[1])
-                              const year = parseInt(dateParts[2])
-                              const startYearMonth = this.selectedYearStart * 12 + this.selectedMonthStart
-                              const endYearMonth = this.selectedYearEnd * 12 + this.selectedMonthEnd
-                              const currentYearMonth = year * 12 + month
-                              return currentYearMonth >= startYearMonth && currentYearMonth <= endYearMonth
-                         });
-
-                         filteredData.forEach(item => {
-                              if (item.tag === 'ip') {
-                                   ipCount++
-                              } else if (item.tag === 'org') {
-                                   orgCount++
-                              }
-                         });
-                         this.tagsNum.ipCount = ipCount
-                         this.tagsNum.orgCount = orgCount
-
-                         if (this.orgChecked && this.ipChecked) {
-                              filteredData = filteredData.filter(item => item.tag === 'org' || item.tag === 'ip')
-                         } else if (this.orgChecked) {
-                              filteredData = filteredData.filter(item => item.tag === 'org')
-                         } else if (this.ipChecked) {
-                              filteredData = filteredData.filter(item => item.tag === 'ip')
-                         }
-                         this.idList = filteredData.map(obj => obj.id)
-                         return filteredData;
-                    }
-               },
-               mounted() {
-                    this.transformData()
-                    this.getCurrentMonthList()
-                    this.getCurrentYearList()
-                    this.findMinMaxYear()
-                    this.loadParamsFromURL()
-               },
-          })
-     </script>
-</div>
+               </section>
                <div class="mt-4"></div>
           </div>
+          <div class="my-5"></div>
           <div class="my-5"></div>
           <footer class="footer">
      <div class="main-section">
@@ -823,6 +620,5 @@
 
 
 <script src="js/script.min.js"></script>
-</body>
-
+     </body>
 </html>
