@@ -2,24 +2,34 @@
 
 @import "mixins";
 
+
+$colorsMap: (
+    'white': '#ffffff', 
+    'black': '#000000', 
+    'nav-black': '#282828', 
+    'gold': '#c47a2c', 
+    'gold-light': '#f9b974', 
+    'gray': '#d1d2d4', 
+    'gray-dark': '#818181',  
+    'blue': '#040926',
+    'blue-light': '#034A66',
+    'red': '#D24344',
+    'green': '#48B16E',
+    'orange': '#F9B974',
+    'indigo': '#5EB1FF',
+    'green-status-background': '#CEF8E0',
+    'green-status': '#008F5D',
+    'white-gray': '#FAF9FA',
+    'gold-semi-light': '#FDEAD5'
+);
+
 :root {
-  --color-white: #ffffff;
-  --color-black: #000000;
-  --color-nav-black: #282828;
-  --color-gold: #c47a2c;
-  --color-gold-light: #f9b974;
-  --color-gray: #d1d2d4;
-  --color-gray-dark: #818181;
-  --color-blue: #040926;
-  --color-blue-light: #034A66;
-  --color-red: #D24344;
-  --color-green: #48B16E;
-  --color-orange: #F9B974;
-  --color-indigo: #5EB1FF;
-  --color-green-status-background: #CEF8E0;
-  --color-green-status: #008F5D;
-  --color-white-gray: #FAF9FA;
+  @each $name, $color in $colorsMap {
+    --color-#{$name}: #{$color};
+  }
 }
+
+@import './colors';
 
 //<Шрифт по умолчанию>==========================================================================================
 $fontFamily: 'Inter', sans-serif;
@@ -706,5 +716,75 @@ body {
   @include adaptiv-value('font-size', 32, 28, 1);
 }
 
+.fs-40{
+  @include adaptiv-value('font-size', 40, 28, 1);
+}
+
+.bg-gold-light{
+  background-color: var(--color-gold-light);
+}
+
+.bg-color-gray{
+  background-color: var(--color-gray);
+}
+
+.bg-gold-light-opacity-30{
+  background-color: rgb(249, 185, 116, .3);
+}
+
+.bg-color-white{
+  background-color: var(--color-white);
+}
+
+.gap-20{
+  gap: 20px
+}
+
+.mt-100{
+  margin-top: 100px;
+}
+
+.subcribe-demo-modal{
+  .modal-content{
+    border: 1px solid transparent;
+    background-color: var(--color-blue-light);
+    border-radius: 10px;
+    color: #FAF9FA;
+    @media (min-width: 576px){
+      background-image: url('../img/new-main/subDemoBG.png');
+      background-repeat: no-repeat;
+      background-size: 50%;
+      background-position: 115% 115%;
+    }
+  }
+  @media (min-width: 576px){
+    .modal-dialog {
+        max-width: 600px;
+        min-height: 480px
+    }
+  }
+  .btn-close {
+    opacity: 1;
+    color: #FAF9FA;
+    background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23FAF9FA'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+  }
+  .modal-header{
+    border-bottom: 0;
+  }
+  .modal-footer{
+    border-top: 0;
+  }
+}
+
+.bg-color-light-blue{
+  background-color: #28647C;
+}
+
+.p-12{
+  padding: 12px
+}
+
 
 @import 'calendar.scss';
+
+@import '_prod-calendar.scss';

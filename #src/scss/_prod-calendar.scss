@@ -1,0 +1,79 @@
+
+@media (min-width: 1610px){
+     .col-xxxl-3 {
+          flex: 0 0 auto;
+          width: 25%;
+     }
+}
+
+@media (min-width: 1610px){
+     .col-xxxl-4 {
+          flex: 0 0 auto;
+          width: 33.3333333333%;
+     }
+}
+
+@media (min-width: 1610px){
+     .col-xxxl-5 {
+          flex: 0 0 auto;
+          width: 41.6666666667%;
+     }
+}
+
+@media (min-width: 1610px) {
+     .col-xxxl-7{
+          flex: 0 0 auto;
+          width: 58.3333333333%;
+     }
+}
+
+@media (min-width: 1610px) {
+     .col-xxxl-8{
+          flex: 0 0 auto;
+          width: 66.6666666667%;
+     }
+}
+
+@media (min-width: 1610px) {
+     .col-xxxl-9{
+          flex: 0 0 auto;
+          width: 75%;
+     }
+}
+
+.prod-calendar{
+     .vc-day-content{
+          padding: 8px 12px;
+          @media (max-width: 960px) {
+               padding: 8px 10px;
+          }
+     }
+     .vc-arrow.is-disabled{
+          display: none;
+     }
+}
+
+.weekend-block{
+     height: 100%;
+     &__list{
+          max-height: 150px;
+          height: 100%;
+          overflow-y: scroll;
+          &::-webkit-scrollbar {
+               width: 4px;
+          }
+          /* Track */
+          &::-webkit-scrollbar-track {
+               background: transparent
+          }
+          /* Handle */
+          &::-webkit-scrollbar-thumb {
+               background: var(--color-gray);
+               border-radius: 20px;
+          }
+          /* Handle on hover */
+          &::-webkit-scrollbar-thumb:hover {
+               // background: #555; 
+          }
+     }
+}

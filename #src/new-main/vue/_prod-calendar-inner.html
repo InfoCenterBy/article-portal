@@ -1,0 +1,254 @@
+<div class="main-section">
+     
+     <div id="app">
+          <!-- <div class="" v-for="el in test">
+               <v-calendar borderless :id="el" :key="el"></v-calendar>
+          </div> -->
+          <div class="row">
+               <div class="col-xxxl-8 my-2 d-flex align-items-start flex-column">
+                    <div class="d-flex flex-row flex-wrap flex-xxl-nowrap gap-xl-4 gap-3 w-100">
+                         <div class="d-flex border border-1 border-20 overflow-hidden w-100">
+                              <!-- :min-page='{month: new Date().getMonth() + 1, year: 2024}' -->
+                              <keep-alive>
+                                   <v-calendar 
+                                   borderless 
+                                   class="prod-calendar"
+                                   :max-page='{month: new Date().getMonth() + 1, year: new Date().getFullYear()}' 
+                                   :masks="{title:'MMMM', weekdays: 'WW'}"
+                                   ></v-calendar>
+                              </keep-alive>
+                              <test-comp src="./_test.html"></test-comp>
+                         </div>
+                         <div class="w-100 d-flex flex-column">
+                              <div class="calendar-today border border-1 p-xxl-4 p-lg-3 p-2">
+                                   <span class="color-nav-black d-block">Сегодня</span> 
+                                   <!-- <keep-alive> -->
+                                        <div class="mt-2 fs-24 ff-pt-serif">
+                                             <!-- <i class="bi bi-calendar color-gold fs-14 me-1"></i>  -->
+                                             <span class="color-gold fw-600">{{setToday?.dayNum}}</span>
+                                             <span class="color-gold fw-600">{{monthTitle}}</span> 
+                                             <span class="">({{setToday?.dayOfWeek}})</span>
+                                        </div>
+                                   <!-- </keep-alive> -->
+                              </div>
+                              <div class="weekend-block border border-1 border-20 p-xxl-4 p-lg-3 p-2 mt-3">
+                                   <div class="weekend-block__list">
+                                        <div class="d-flex flex-column gap-2">
+                                             <div class="w-100 d-flex align-items-start justify-content-start">
+                                                  <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div> 
+                                                  <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
+                                             </div>
+                                             <div class="w-100 d-flex align-items-start justify-content-start">
+                                                  <div class="calendar-dot calendar-dot-lg calendar-dot-show me-2"></div> 
+                                                  <span class="color-gray-dark fs-14">Предпраздничный день. Время работы сокращено на 1 час</span>
+                                             </div>
+                                             <div class="mt-3"></div>
+                                             <div class="w-100 d-flex align-items-start justify-content-start">
+                                                  <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div> 
+                                                  <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
+                                             </div>
+                                             <div class="w-100 d-flex align-items-start justify-content-start">
+                                                  <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div> 
+                                                  <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
+                                             </div>
+                                             <div class="w-100 d-flex align-items-start justify-content-start">
+                                                  <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div> 
+                                                  <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
+                                             </div>
+                                             <div class="w-100 d-flex align-items-start justify-content-start">
+                                                  <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div> 
+                                                  <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
+                                             </div>
+                                             <div class="w-100 d-flex align-items-start justify-content-start">
+                                                  <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div> 
+                                                  <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
+                                             </div>
+                                             <div class="w-100 d-flex align-items-start justify-content-start">
+                                                  <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div> 
+                                                  <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
+                                             </div>
+                                             <div class="w-100 d-flex align-items-start justify-content-start">
+                                                  <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div> 
+                                                  <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
+                                             </div>
+
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+                    <div class="row mt-4">
+                         <div class="col-xxl-5">
+                              <div class="work-time-elem d-flex flex-row align-items-center justify-content-between mt-2">
+                                   <span class="fs-16 color-nav-black">Календарные дни</span>
+                                   <div class="time-underline mt-2 mx-2"></div>
+                                   <span class="color-gold fs-18">{{weekTime?.sumDays}}</span>
+                              </div>
+                         </div>
+                         <div class="col-xxl-7"></div>
+                         <div class="col-12 mt-3"></div>
+                         <div class="col-xxl-6 d-flex flex-column justify-content-between my-1">
+                              <div class="work-day-block">
+                                   <span class="fs-16 d-block">
+                                        Рабочие дни:
+                                   </span>
+                                   <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
+                                        <span class="fs-16 color-nav-black">по пятидневной рабочей неделе</span>
+                                        <div class="time-underline mt-2 mx-2"></div>
+                                        <span class="color-gold fs-18">{{weekTime?.workFive}}</span>
+                                   </div>
+                                   <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
+                                        <span class="fs-16 color-nav-black">по шестидневной рабочей неделе</span>
+                                        <div class="time-underline mt-2 mx-2"></div>
+                                        <span class="color-gold fs-18">{{weekTime?.workSix}}</span>
+                                   </div>
+                              </div>
+                              <div class="work-day-block mt-2">
+                                   <span class="fs-16 d-block">
+                                        Нерабочие дни (выходные и праздничные дни):
+                                   </span>
+                                   <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
+                                        <span class="fs-16 color-nav-black">по пятидневной рабочей неделе</span>
+                                        <div class="time-underline mt-2 mx-2"></div>
+                                        <span class="color-gold fs-18">{{weekTime?.offFive}}</span>
+                                   </div>
+                                   <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
+                                        <span class="fs-16 color-nav-black">по шестидневной рабочей неделе</span>
+                                        <div class="time-underline mt-2 mx-2"></div>
+                                        <span class="color-gold fs-18">{{weekTime?.offSix}}</span>
+                                   </div>
+                              </div>
+                         </div>
+                         <div class="col-xxl-6 d-flex flex-column justify-content-between">
+                              <div class="work-day-block">
+                                   <span class="fs-16 d-block">
+                                        Расчетная норма рабочего времени (в часах):
+                                   </span>
+                                   <span class="fs-14">для пятидневной рабочей недели:</span>
+                                   <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
+                                        <span class="fs-16 color-nav-black">при 40-часовой рабочей неделе</span>
+                                        <div class="time-underline mt-2 mx-2"></div>
+                                        <span class="color-gold fs-18">{{weekTime?.timeFiveWeek40}}</span>
+                                   </div>
+                                   <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
+                                        <span class="fs-16 color-nav-black">при 35-часовой рабочей неделе</span>
+                                        <div class="time-underline mt-2 mx-2"></div>
+                                        <span class="color-gold fs-18">{{weekTime?.timeFiveWeek35}}</span>
+                                   </div>
+                              </div>
+                              <div class="work-day-block mt-2">
+                                   <span class="fs-14">для шестидневной рабочей недели:</span>
+                                   <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
+                                        <span class="fs-16 color-nav-black">при 40-часовой рабочей неделе</span>
+                                        <div class="time-underline mt-2 mx-2"></div>
+                                        <span class="color-gold fs-18">{{weekTime?.timeSixWeek40}}</span>
+                                   </div>
+                                   <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
+                                        <span class="fs-16 color-nav-black">при 35-часовой рабочей неделе</span>
+                                        <div class="time-underline mt-2 mx-2"></div>
+                                        <span class="color-gold fs-18">{{weekTime?.timeSixWeek35}}</span>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+               <div class="col-xxxl-4 my-2 d-flex">
+                    <div class="d-flex flex-column bg-gold-light-opacity-30 p-4 border-20 w-100">
+                         <div class="">
+                              <h3 class="fs-24 fw-600 ff-inter">Норма рабочего времени на 2024 год</h3>
+                         </div>
+                         <div class="mt-3 d-flex flex-column gap-4">
+                              <a href="" class="bg-color-white p-xl-4 p-md-3 p-2 w-100 border-10 d-flex flex-column align-items-center gap-1">
+                                   <picture>
+                                        <source media="(min-width: 960px)" srcset="./img/new-main/proizFive.svg">
+                                        <img src="./img/new-main/proizFive.png" alt="">
+                                   </picture>
+                                   <span class="d-block ff-pt-serif fs-18 color-gray-dark">
+                                        Пятидневной недели
+                                   </span>
+                              </a>
+                              <a href="" class="bg-color-white p-xl-4 p-md-3 p-2 w-100 border-10 d-flex flex-column align-items-center gap-1">
+                                   <picture>
+                                        <source media="(min-width: 960px)" srcset="./img/new-main/proizSix.svg">
+                                        <img src="./img/new-main/proizSix.png" alt="">
+                                   </picture>
+                                   <span class="d-block ff-pt-serif fs-18 color-gray-dark">
+                                        Пятидневной недели
+                                   </span>
+                              </a>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+     <script src="https://unpkg.com/vue@2"></script>
+     <script src="https://unpkg.com/@popperjs/core@2"></script>
+     <script src="https://unpkg.com/v-calendar"></script>
+     <!-- <script src="./js/test.js"></script> -->
+     <script>
+          Vue.component('test-comp', {
+          })
+          // Vue.component('v-calendar', window.VCalendar)
+          new Vue({
+               el: '#app',
+               data() {
+                    return{
+                         test: [0,1,2,3,4,5,6,7,8,9,10,11,12],
+                         monthTitle: '',
+                    }
+               },
+               computed:{
+                    setToday() {
+                         let timeObj = { dayOfWeek: '', dateNumber: '' }
+                         const days = [
+                              'воскресенье',
+                              'понедельник',
+                              'вторник',
+                              'среда',
+                              'четверг',
+                              'пятница',
+                              'суббота'
+                         ];
+                         let day = new Date()
+                         let textDay = day.getDay()
+                         let numberDay = day.toLocaleDateString('en-GB').split('/')
+                         this.formatTitle(day)
+                         try {
+                              timeObj.dayOfWeek = days[textDay]
+                              timeObj.dateNumber = numberDay[0] + '.' + numberDay[1]
+                              timeObj.dayNum = numberDay[0]
+                              timeObj.monthString = day.toLocaleString('default', {month: 'long'})
+                         } catch (error) {
+                              console.log('setToday error', error)
+                         }
+                         return timeObj
+                         // + ' ' + day.toLocaleString('default', {month: 'long'}) if need text month
+                    },
+               },
+               watch:{},
+               methods:{
+                    formatTitle(val){
+                         let localMonth = {
+                              month: new Date(val).toLocaleString('ru', {
+                                   month: 'long',
+                              }),
+                         }
+                         let splitedTitle = localMonth.month.split('')
+                         let filteredTitle = []
+                         // let filteredTitle = splitedTitle.filter(el=> el !== 'ь')
+                         if(splitedTitle.includes('ь')){
+                              filteredTitle = splitedTitle.filter(el=> el !== 'ь')
+                              filteredTitle.push('я')
+                         } else{
+                              filteredTitle = splitedTitle
+                              filteredTitle.push('а')
+                         }
+                         filteredTitle.join('')
+                         this.monthTitle = filteredTitle.join('')
+                    },
+               },
+               mounted() {}
+          })
+     </script>
+</div>

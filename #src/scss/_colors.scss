@@ -1,0 +1,20 @@
+@each $name, $color in $colorsMap {
+	.bg-#{$name}{
+          background-color: #{$color};
+     }
+     .color-#{$name}{
+          color: #{$color};
+     }
+     // .hover-#{$name}{
+     //      @include hover('color', #{$color});
+     // }
+     // .hover-bg-#{$name}{
+     //      @include hover('background-color', #{$color});
+     // }
+     // .border-1-5-#{$name}{
+     //      border: 1.5px solid #{$color};
+     // }
+     // .border-color-#{$name}{
+     //      border-color: #{$color};
+     // }
+}

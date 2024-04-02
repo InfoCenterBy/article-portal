@@ -61,53 +61,6 @@
   font-size: 14px;
 }
 
-.color-gold {
-  color: var(--color-gold);
-}
-
-.color-blue {
-  color: var(--color-blue);
-}
-
-.color-blue-light {
-  color: var(--color-blue-light);
-}
-
-.color-gray-dark {
-  color: var(--color-gray-dark);
-}
-
-.color-red {
-  color: var(--color-red);
-}
-
-.color-green {
-  color: var(--color-green);
-}
-
-.color-orange {
-  color: var(--color-orange);
-}
-
-.color-indigo {
-  color: var(--color-indigo);
-}
-
-.color-gray{
-  color: var(--color-gray)
-}
-
-.border-gray {
-  border: 1px solid var(--color-gray);
-}
-
-.border-bottom-gray {
-  border-bottom: 1px solid var(--color-gray);
-}
-
-.border-top-gray {
-  border-top: 1px solid var(--color-gray);
-}
 
 .link {
   font-size: 16px;
@@ -3468,6 +3421,10 @@
   &:not(:first-of-type){
     margin-top: 16px;
   }
+}
+
+.fw-700{
+  font-weight: 700;
 }
 
 .fw-600{
