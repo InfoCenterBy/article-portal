@@ -17,6 +17,143 @@
   --color-green-status-background: #CEF8E0;
   --color-green-status: #008F5D;
   --color-white-gray: #FAF9FA;
+  --color-gold-semi-light: #FDEAD5;
+}
+
+.bg-white {
+  background-color: #ffffff;
+}
+
+.color-white {
+  color: #ffffff;
+}
+
+.bg-black {
+  background-color: #000000;
+}
+
+.color-black {
+  color: #000000;
+}
+
+.bg-nav-black {
+  background-color: #282828;
+}
+
+.color-nav-black {
+  color: #282828;
+}
+
+.bg-gold {
+  background-color: #c47a2c;
+}
+
+.color-gold {
+  color: #c47a2c;
+}
+
+.bg-gold-light {
+  background-color: #f9b974;
+}
+
+.color-gold-light {
+  color: #f9b974;
+}
+
+.bg-gray {
+  background-color: #d1d2d4;
+}
+
+.color-gray {
+  color: #d1d2d4;
+}
+
+.bg-gray-dark {
+  background-color: #818181;
+}
+
+.color-gray-dark {
+  color: #818181;
+}
+
+.bg-blue {
+  background-color: #040926;
+}
+
+.color-blue {
+  color: #040926;
+}
+
+.bg-blue-light {
+  background-color: #034A66;
+}
+
+.color-blue-light {
+  color: #034A66;
+}
+
+.bg-red {
+  background-color: #D24344;
+}
+
+.color-red {
+  color: #D24344;
+}
+
+.bg-green {
+  background-color: #48B16E;
+}
+
+.color-green {
+  color: #48B16E;
+}
+
+.bg-orange {
+  background-color: #F9B974;
+}
+
+.color-orange {
+  color: #F9B974;
+}
+
+.bg-indigo {
+  background-color: #5EB1FF;
+}
+
+.color-indigo {
+  color: #5EB1FF;
+}
+
+.bg-green-status-background {
+  background-color: #CEF8E0;
+}
+
+.color-green-status-background {
+  color: #CEF8E0;
+}
+
+.bg-green-status {
+  background-color: #008F5D;
+}
+
+.color-green-status {
+  color: #008F5D;
+}
+
+.bg-white-gray {
+  background-color: #FAF9FA;
+}
+
+.color-white-gray {
+  color: #FAF9FA;
+}
+
+.bg-gold-semi-light {
+  background-color: #FDEAD5;
+}
+
+.color-gold-semi-light {
+  color: #FDEAD5;
 }
 
 * {
@@ -240,54 +377,6 @@ body._lock {
 
 .fz-14 {
   font-size: 14px;
-}
-
-.color-gold {
-  color: var(--color-gold);
-}
-
-.color-blue {
-  color: var(--color-blue);
-}
-
-.color-blue-light {
-  color: var(--color-blue-light);
-}
-
-.color-gray-dark {
-  color: var(--color-gray-dark);
-}
-
-.color-red {
-  color: var(--color-red);
-}
-
-.color-green {
-  color: var(--color-green);
-}
-
-.color-orange {
-  color: var(--color-orange);
-}
-
-.color-indigo {
-  color: var(--color-indigo);
-}
-
-.color-gray {
-  color: var(--color-gray);
-}
-
-.border-gray {
-  border: 1px solid var(--color-gray);
-}
-
-.border-bottom-gray {
-  border-bottom: 1px solid var(--color-gray);
-}
-
-.border-top-gray {
-  border-top: 1px solid var(--color-gray);
 }
 
 .link {
@@ -3181,6 +3270,10 @@ body._lock {
 
 .archive-card:not(:first-of-type) {
   margin-top: 16px;
+}
+
+.fw-700 {
+  font-weight: 700;
 }
 
 .fw-600 {
@@ -7535,6 +7628,63 @@ html {
   font-size: 32px;
 }
 
+.fs-40 {
+  font-size: 40px;
+}
+
+.bg-gold-light {
+  background-color: var(--color-gold-light);
+}
+
+.bg-color-gray {
+  background-color: var(--color-gray);
+}
+
+.bg-gold-light-opacity-30 {
+  background-color: rgba(249, 185, 116, 0.3);
+}
+
+.bg-color-white {
+  background-color: var(--color-white);
+}
+
+.gap-20 {
+  gap: 20px;
+}
+
+.mt-100 {
+  margin-top: 100px;
+}
+
+.subcribe-demo-modal .modal-content {
+  border: 1px solid transparent;
+  background-color: var(--color-blue-light);
+  border-radius: 10px;
+  color: #FAF9FA;
+}
+
+.subcribe-demo-modal .btn-close {
+  opacity: 1;
+  color: #FAF9FA;
+  background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23FAF9FA'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+}
+
+.subcribe-demo-modal .modal-header {
+  border-bottom: 0;
+}
+
+.subcribe-demo-modal .modal-footer {
+  border-top: 0;
+}
+
+.bg-color-light-blue {
+  background-color: #28647C;
+}
+
+.p-12 {
+  padding: 12px;
+}
+
 .vc-day {
   margin: 5px;
 }
@@ -7731,14 +7881,20 @@ html {
   background-color: var(--color-gold);
 }
 
+.calendar-dot-weekend {
+  background-color: var(--color-gold-light);
+}
+
 .calendar-dot-sm {
   width: 12px;
   height: 12px;
+  min-width: 12px;
 }
 
 .calendar-dot-lg {
   width: 18px;
   height: 18px;
+  min-width: 18px;
 }
 
 .calendar-dot-pay-show {
@@ -7782,6 +7938,40 @@ html {
 
 .vc-day-popover-row-indicator {
   --blue-500: var(--color-nav-black);
+}
+
+.prod-calendar .vc-day-content {
+  padding: 8px 12px;
+}
+
+.prod-calendar .vc-arrow.is-disabled {
+  display: none;
+}
+
+.weekend-block {
+  height: 100%;
+}
+
+.weekend-block__list {
+  max-height: 150px;
+  height: 100%;
+  overflow-y: scroll;
+  /* Track */
+  /* Handle */
+  /* Handle on hover */
+}
+
+.weekend-block__list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.weekend-block__list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.weekend-block__list::-webkit-scrollbar-thumb {
+  background: var(--color-gray);
+  border-radius: 20px;
 }
 
 @media (min-width: 576px) {
@@ -7839,6 +8029,18 @@ html {
     border-bottom: 0 !important;
     border-left: 0 !important;
     border-right: 0 !important;
+  }
+
+  .subcribe-demo-modal .modal-content {
+    background-image: url("../img/new-main/subDemoBG.png");
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: 115% 115%;
+  }
+
+  .subcribe-demo-modal .modal-dialog {
+    max-width: 600px;
+    min-height: 480px;
   }
 }
 
@@ -7952,6 +8154,48 @@ html {
         -ms-flex: 0 0 auto;
             flex: 0 0 auto;
     width: 50%;
+  }
+
+  .col-xxxl-3 {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+    width: 25%;
+  }
+
+  .col-xxxl-4 {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+    width: 33.3333333333%;
+  }
+
+  .col-xxxl-5 {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+    width: 41.6666666667%;
+  }
+
+  .col-xxxl-7 {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+    width: 58.3333333333%;
+  }
+
+  .col-xxxl-8 {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+    width: 66.6666666667%;
+  }
+
+  .col-xxxl-9 {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+    width: 75%;
   }
 }
 
@@ -8197,6 +8441,10 @@ html {
 
   .fs-32 {
     font-size: calc(28px + 4 * ((100vw - 320px) / 1200));
+  }
+
+  .fs-40 {
+    font-size: calc(28px + 12 * ((100vw - 320px) / 1200));
   }
 }
 
@@ -8627,6 +8875,10 @@ html {
 
   .acc-form {
     padding: 12px;
+  }
+
+  .prod-calendar .vc-day-content {
+    padding: 8px 10px;
   }
 }
 
