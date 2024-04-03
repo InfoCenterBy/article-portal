@@ -8440,7 +8440,7 @@ html {
   }
 
   .fs-32 {
-    font-size: calc(28px + 4 * ((100vw - 320px) / 1200));
+    font-size: calc(24px + 8 * ((100vw - 320px) / 1200));
   }
 
   .fs-40 {
