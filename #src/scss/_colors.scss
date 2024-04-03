@@ -1,3 +1,5 @@
+$mouse-device: '(hover: hover) and (pointer: fine)';
+
 @each $name, $color in $colorsMap {
 	.bg-#{$name}{
           background-color: #{$color};
@@ -5,9 +7,13 @@
      .color-#{$name}{
           color: #{$color};
      }
-     // .hover-#{$name}{
-     //      @include hover('color', #{$color});
-     // }
+     .hover-#{$name}{
+          @media #{$mouse-device} {
+               &:hover{
+                    color: #{$color};
+               }
+          }
+     }
      // .hover-bg-#{$name}{
      //      @include hover('background-color', #{$color});
      // }

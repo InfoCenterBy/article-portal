@@ -713,7 +713,7 @@ body {
 }
 
 .fs-32{
-  @include adaptiv-value('font-size', 32, 28, 1);
+  @include adaptiv-value('font-size', 32, 24, 1);
 }
 
 .fs-40{
