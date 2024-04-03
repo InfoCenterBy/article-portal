@@ -7373,6 +7373,9 @@ i {
   padding: 27px;
   border: 1px solid var(--color-gray);
   border-radius: 10px;
+  -webkit-transition: all ease-out 0.3s;
+  -o-transition: all ease-out 0.3s;
+  transition: all ease-out 0.3s;
 }
 
 .service-block * {
@@ -7484,6 +7487,18 @@ i {
   margin-top: calc(var(--bs-gutter-y) * -1);
   margin-right: calc(var(--bs-gutter-x) / -2);
   margin-left: calc(var(--bs-gutter-x) / -2);
+}
+
+.transition-3 {
+  -webkit-transition: all ease-out 0.3s;
+  -o-transition: all ease-out 0.3s;
+  transition: all ease-out 0.3s;
+}
+
+.transition-none {
+  -webkit-transition: none;
+  -o-transition: none;
+  transition: none;
 }
 
 html {
@@ -9659,6 +9674,113 @@ html {
   }
 }
 
+@media (hover: hover) and (pointer: fine) {
+  .hover-white:hover {
+    color: #ffffff;
+  }
+
+  .hover-black:hover {
+    color: #000000;
+  }
+
+  .hover-nav-black:hover {
+    color: #282828;
+  }
+
+  .hover-gold:hover {
+    color: #c47a2c;
+  }
+
+  .hover-gold-light:hover {
+    color: #f9b974;
+  }
+
+  .hover-gray:hover {
+    color: #d1d2d4;
+  }
+
+  .hover-gray-dark:hover {
+    color: #818181;
+  }
+
+  .hover-blue:hover {
+    color: #040926;
+  }
+
+  .hover-blue-light:hover {
+    color: #034A66;
+  }
+
+  .hover-red:hover {
+    color: #D24344;
+  }
+
+  .hover-green:hover {
+    color: #48B16E;
+  }
+
+  .hover-orange:hover {
+    color: #F9B974;
+  }
+
+  .hover-indigo:hover {
+    color: #5EB1FF;
+  }
+
+  .hover-green-status-background:hover {
+    color: #CEF8E0;
+  }
+
+  .hover-green-status:hover {
+    color: #008F5D;
+  }
+
+  .hover-white-gray:hover {
+    color: #FAF9FA;
+  }
+
+  .hover-gold-semi-light:hover {
+    color: #FDEAD5;
+  }
+
+  .btn-orange:hover {
+    background-color: transparent;
+    color: var(--color-gold);
+    border-color: var(--color-gold);
+  }
+
+  .btn-outline:hover {
+    background-color: var(--color-gold);
+    color: var(--color-white);
+    border-color: transparent;
+  }
+
+  .hover-orange:hover {
+    color: var(--color-gold);
+  }
+
+  .try-btn:hover {
+    background-color: var(--color-gold);
+    color: var(--color-white);
+  }
+
+  .try-btn-blue:hover {
+    border: 1px solid var(--color-blue-light);
+    background-color: var(--color-white-gray);
+    color: var(--color-blue-light);
+  }
+
+  .white-btn:hover {
+    background-color: var(--color-gold);
+    color: var(--color-white-gray);
+  }
+
+  .archive-card:hover {
+    border-color: var(--color-gold);
+    color: var(--color-gold);
+  }
+}
+
 @media (hover: hover) {
   .decor:hover {
     -webkit-box-shadow: 4px 4px transparent, 5px 5px var(--color-gold);
@@ -9724,45 +9846,6 @@ html {
   .item-question-answer:hover .item-question-answer__read {
     opacity: 1;
     visibility: visible;
-  }
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .btn-orange:hover {
-    background-color: transparent;
-    color: var(--color-gold);
-    border-color: var(--color-gold);
-  }
-
-  .btn-outline:hover {
-    background-color: var(--color-gold);
-    color: var(--color-white);
-    border-color: transparent;
-  }
-
-  .hover-orange:hover {
-    color: var(--color-gold);
-  }
-
-  .try-btn:hover {
-    background-color: var(--color-gold);
-    color: var(--color-white);
-  }
-
-  .try-btn-blue:hover {
-    border: 1px solid var(--color-blue-light);
-    background-color: var(--color-white-gray);
-    color: var(--color-blue-light);
-  }
-
-  .white-btn:hover {
-    background-color: var(--color-gold);
-    color: var(--color-white-gray);
-  }
-
-  .archive-card:hover {
-    border-color: var(--color-gold);
-    color: var(--color-gold);
   }
 }
 
