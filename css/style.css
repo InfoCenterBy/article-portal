@@ -7501,6 +7501,62 @@ i {
   transition: none;
 }
 
+.line-top .bi-check-circle-fill {
+  background-color: var(--color-white);
+  height: 23px;
+  font-size: 24px;
+}
+
+.line-top__line {
+  width: 2px;
+  background-color: var(--color-gray);
+  height: 120%;
+  position: relative;
+  z-index: -2;
+  top: -1px;
+}
+
+.line-top__date {
+  min-width: 130px;
+  text-align: left;
+}
+
+.line-top__date p {
+  width: 100%;
+}
+
+.line-top .line-block {
+  max-width: 39px;
+  width: 100%;
+}
+
+.cash-about-block {
+  border: 1px solid #D1D2D4;
+  background-color: var(--color-white);
+  -webkit-transition: all ease-out 0.3s;
+  -o-transition: all ease-out 0.3s;
+  transition: all ease-out 0.3s;
+}
+
+.cash-about-block p {
+  -webkit-transition: all ease-out 0.3s;
+  -o-transition: all ease-out 0.3s;
+  transition: all ease-out 0.3s;
+  color: var(--color-nav-black);
+}
+
+.cash-about-block-disabled {
+  cursor: not-allowed;
+}
+
+.cash-about-block-disabled p {
+  color: var(--color-gray-dark);
+}
+
+.landing-cash-section .service-block span {
+  color: var(--color-nav-black);
+}
+
 html {
   height: auto;
 }
@@ -8151,6 +8207,10 @@ html {
     -o-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
   }
+
+  .line-top__date {
+    text-align: right;
+  }
 }
 
 @media (min-width: 1100px) {
@@ -8160,6 +8220,12 @@ html {
 
   .form-documents__button-close {
     display: none;
+  }
+}
+
+@media (min-width: 1200px) {
+  .line-top__date {
+    min-width: 170px;
   }
 }
 
@@ -9679,68 +9745,136 @@ html {
     color: #ffffff;
   }
 
+  .hover-border-white:hover {
+    border-color: #ffffff;
+  }
+
   .hover-black:hover {
     color: #000000;
+  }
+
+  .hover-border-black:hover {
+    border-color: #000000;
   }
 
   .hover-nav-black:hover {
     color: #282828;
   }
 
+  .hover-border-nav-black:hover {
+    border-color: #282828;
+  }
+
   .hover-gold:hover {
     color: #c47a2c;
+  }
+
+  .hover-border-gold:hover {
+    border-color: #c47a2c;
   }
 
   .hover-gold-light:hover {
     color: #f9b974;
   }
 
+  .hover-border-gold-light:hover {
+    border-color: #f9b974;
+  }
+
   .hover-gray:hover {
     color: #d1d2d4;
+  }
+
+  .hover-border-gray:hover {
+    border-color: #d1d2d4;
   }
 
   .hover-gray-dark:hover {
     color: #818181;
   }
 
+  .hover-border-gray-dark:hover {
+    border-color: #818181;
+  }
+
   .hover-blue:hover {
     color: #040926;
+  }
+
+  .hover-border-blue:hover {
+    border-color: #040926;
   }
 
   .hover-blue-light:hover {
     color: #034A66;
   }
 
+  .hover-border-blue-light:hover {
+    border-color: #034A66;
+  }
+
   .hover-red:hover {
     color: #D24344;
+  }
+
+  .hover-border-red:hover {
+    border-color: #D24344;
   }
 
   .hover-green:hover {
     color: #48B16E;
   }
 
+  .hover-border-green:hover {
+    border-color: #48B16E;
+  }
+
   .hover-orange:hover {
     color: #F9B974;
+  }
+
+  .hover-border-orange:hover {
+    border-color: #F9B974;
   }
 
   .hover-indigo:hover {
     color: #5EB1FF;
   }
 
+  .hover-border-indigo:hover {
+    border-color: #5EB1FF;
+  }
+
   .hover-green-status-background:hover {
     color: #CEF8E0;
+  }
+
+  .hover-border-green-status-background:hover {
+    border-color: #CEF8E0;
   }
 
   .hover-green-status:hover {
     color: #008F5D;
   }
 
+  .hover-border-green-status:hover {
+    border-color: #008F5D;
+  }
+
   .hover-white-gray:hover {
     color: #FAF9FA;
   }
 
+  .hover-border-white-gray:hover {
+    border-color: #FAF9FA;
+  }
+
   .hover-gold-semi-light:hover {
     color: #FDEAD5;
+  }
+
+  .hover-border-gold-semi-light:hover {
+    border-color: #FDEAD5;
   }
 
   .btn-orange:hover {
@@ -9778,6 +9912,22 @@ html {
   .archive-card:hover {
     border-color: var(--color-gold);
     color: var(--color-gold);
+  }
+
+  .cash-about-block:not(.cash-about-block-disabled):hover {
+    border-color: var(--color-gold);
+  }
+
+  .cash-about-block:not(.cash-about-block-disabled):hover p {
+    color: var(--color-gold);
+  }
+
+  .landing-cash-section .service-block span:hover {
+    color: var(--color-white);
+  }
+
+  .landing-cash-section .service-block:hover span {
+    color: var(--color-white);
   }
 }
 
