@@ -1,0 +1,140 @@
+<div class="main-section fixed-bottom m-auto">
+     <div class="alert border-color-gold border-10 border-1 bg-white alert-dismissible fade show p-lg-4 p-2 cookie-alert" role="alert">
+          <div class="w-100 d-flex flex-row flex-wrap justify-content-between align-content-center gap-3">
+               <div class="col-lg-7">
+                    <p class="mb-0">
+                         Мы используем файлы cookie для улучшения работы сайта.
+                         Подробную информацию вы найдете в <a href="" class="color-gold fw-semibold hover-gold-light transition-3"
+                              target="_blank" rel="noopener noreferrer">Политике в отношении обработки куки (cookies)
+                         </a>
+                    </p>
+                    <a class="d-block color-gold fw-semibold mt-1 hover-gold-light transition-3" data-toggle="modal" data-target="#cookieModal"
+                         type="button">
+                         Настроить cookies
+                    </a>
+               </div>
+               <div class="d-flex flex-row gap-lg-3 gap-2 flex-wrap align-items-center fs-16">
+                    <button class="new-btn">Принять все</button>
+                    <button class="try-btn" type="button" data-dismiss="alert"
+                         aria-label="Close">Отклонить все</button>
+               </div>
+          </div>
+     </div>
+</div>
+
+
+<div class="modal modal-lg fade cookie-modal" id="cookieModal" tabindex="-1" aria-labelledby="cookieModalLabel"
+     aria-hidden="true">
+     <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content border-0 p-lg-4 p-2">
+               <div class="modal-header border-0 align-items-start">
+                    <h2 class="h2-section fs-24  text-uppercase fw-semibold" id="cookieModalLabel">Настроить
+                         cookies</h2>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+               </div>
+               <div class="modal-body pt-0">
+                    <p class="">
+                         Мы используем файлы cookies, для улучшения пользовательского опыта и повышения качества функционирования сайта.
+                    </p>
+                    <div class="accordion bg-transparent d-flex flex-column gap-3 accordion-question"
+                         id="accordionCookie">
+                         <div class="accordion-item overflow-hidden">
+                              <h2 class="accordion-header  d-flex flex-row">
+                                   <button
+                                        class="accordion-button fw-semibold collapsed bg-transparent after-no d-flex flex-row flex-wrap gap-2 align-items-end"
+                                        type="button" data-toggle="collapse" data-target="#collapseOneCookie"
+                                        aria-expanded="true" aria-controls="collapseOneCookie">
+                                        <span>Необходимые</span>
+                                        <b class="fs-14 color-gold">Всегда активно</b>
+                                   </button>
+                                   <div
+                                        class="form-check form-switch d-flex justify-content-center align-content-center col-sm-1 col-2 fs-20 p-0 m-0">
+                                        <input class="form-check-input m-auto cursor-pointer" type="checkbox"
+                                             role="switch" id="flexSwitchCheckCheckedOne" checked disabled>
+                                   </div>
+                                   <button class="accordion-button fw-semibold collapsed bg-transparent w-auto ps-2"
+                                        type="button" data-toggle="collapse" data-target="#collapseOneCookie"
+                                        aria-expanded="true" aria-controls="collapseOneCookie">
+                                   </button>
+                              </h2>
+                              <div id="collapseOneCookie" class="accordion-collapse collapse"
+                                   data-parent="#accordionCookie">
+                                   <div class="accordion-body">
+                                        Обеспечивают корректную работу сайта, позволят посетителям
+                                        передвигаться по сайту и использовать его возможности. Эти
+                                        файлы не идентифицируют посетителей как личность. Если
+                                        посетитель не согласен использовать — данный тип файлов,
+                                        это может оказать влияние нa производительность сайта‚
+                                        или его компонентов.
+                                   </div>
+                              </div>
+                         </div>
+                         <div class="accordion-item overflow-hidden">
+                              <h2 class="accordion-header  d-flex flex-row overflow-hidden">
+                                   <button class="accordion-button fw-semibold collapsed bg-transparent after-no"
+                                        type="button" data-toggle="collapse" data-target="#collapseTwoCookie"
+                                        aria-expanded="false" aria-controls="collapseTwoCookie">
+                                        Функциональные
+                                   </button>
+                                   <div
+                                        class="form-check form-switch d-flex justify-content-center align-content-center col-sm-1 col-2 fs-20 p-0 m-0">
+                                        <input class="form-check-input m-auto cursor-pointer" type="checkbox"
+                                             role="switch" id="flexSwitchCheckCheckedTwo">
+                                   </div>
+                                   <button class="accordion-button fw-semibold collapsed bg-transparent w-auto ps-2"
+                                        type="button" data-toggle="collapse" data-target="#collapseTwoCookie"
+                                        aria-expanded="true" aria-controls="collapseOneCookie">
+                                   </button>
+                              </h2>
+                              <div id="collapseTwoCookie" class="accordion-collapse collapse"
+                                   data-parent="#accordionCookie">
+                                   <div class="accordion-body">
+                                        позволяют обеспечить индивидуальный опыт использования сайта
+                                        и устанавливаются в ответ на действия субъекта персональных —
+                                        данных. Функциональные куки позволяют индивидуально подбирать
+                                        содержание сайта для посетителей. Если посетитель блокирует этот
+                                        тип файлов, то это может повлиять на производительность
+                                        и функциональность сайта и может ограничить доступ к контенту на сайте;
+                                   </div>
+                              </div>
+                         </div>
+                         <div class="accordion-item overflow-hidden">
+                              <h2 class="accordion-header  d-flex flex-row">
+                                   <button class="accordion-button fw-semibold collapsed bg-transparent after-no"
+                                        type="button" data-toggle="collapse" data-target="#collapseThreeCookie"
+                                        aria-expanded="false" aria-controls="collapseThreeCookie">
+                                        Статистические
+                                   </button>
+                                   <div
+                                        class="form-check form-switch d-flex justify-content-center align-content-center col-sm-1 col-2 fs-20 p-0 m-0">
+                                        <input class="form-check-input m-auto cursor-pointer" type="checkbox"
+                                             role="switch" id="flexSwitchCheckCheckedThree">
+                                   </div>
+                                   <button class="accordion-button fw-semibold collapsed bg-transparent w-auto ps-2"
+                                        type="button" data-toggle="collapse" data-target="#collapseThreeCookie"
+                                        aria-expanded="false" aria-controls="collapseThreeCookie">
+                                   </button>
+                              </h2>
+                              <div id="collapseThreeCookie" class="accordion-collapse collapse"
+                                   data-parent="#accordionCookie">
+                                   <div class="accordion-body">
+                                        позволяют хранить историю посещений страниц сайта
+                                        в целях повышения качества его функционирования,
+                                        чтобы определить наиболее и наименее популярные страницы.
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+               <div class="modal-footer border-0 justify-content-between row">
+                    <div class="d-flex col-lg-6 gap-2 flex-lg-nowrap flex-wrap">
+                         <button class="new-btn w-100 px-lg-3 py-lg-2 px-2 py-2">Принять все</button>
+                         <button class="try-btn w-100 px-lg-3 py-lg-2 px-2 py-2">Отклонить все</button>
+                    </div>
+                    <div class="d-flex col-lg-4">
+                         <button class="try-btn w-100 px-lg-3 py-lg-2 px-2 py-2">Сохранить настройки</button>
+                    </div>
+               </div>
+          </div>
+     </div>
+</div>

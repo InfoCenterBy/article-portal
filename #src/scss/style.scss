@@ -20,7 +20,8 @@ $colorsMap: (
     'green-status-background': '#CEF8E0',
     'green-status': '#008F5D',
     'white-gray': '#FAF9FA',
-    'gold-semi-light': '#FDEAD5'
+    'gold-semi-light': '#FDEAD5',
+    'white-text': '#FAFAFA',
 );
 
 :root {
@@ -788,3 +789,5 @@ body {
 @import 'calendar.scss';
 
 @import '_prod-calendar.scss';
+
+@import '_cookie.scss';

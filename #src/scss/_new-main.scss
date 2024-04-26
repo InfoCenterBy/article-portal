@@ -940,3 +940,77 @@
 .transition-none{
      transition: none;
 }
+
+.line-top {
+     .bi-check-circle-fill{
+          background-color: var(--color-white);
+          height: 23px;
+          font-size: 24px;
+     }
+     &__line {
+          width: 2px;
+          background-color: var(--color-gray);
+          height: 120%;
+          position: relative;
+          z-index: -2;
+          top: -1px;
+     }
+     &__date{
+          min-width: 130px;
+          text-align: left;
+          p{
+               width: 100%;
+          }
+          @media (min-width: 992px) {
+               text-align: right;
+          }
+          @media (min-width: 1200px) {
+               min-width: 170px;
+          }
+     }
+     .line-block{
+          max-width: 39px;
+          width: 100%;
+     }
+}
+
+.cash-about-block{
+     border:1px solid #D1D2D4;
+     background-color: var(--color-white);
+     transition: all ease-out .3s;
+     p{
+          transition: all ease-out .3s;
+          color: var(--color-nav-black);
+     }
+     @media #{$mouse-device} {
+          &:not(.cash-about-block-disabled):hover{
+               border-color: var(--color-gold);
+               p{
+                    color: var(--color-gold);
+               }
+          }
+     }
+     &-disabled{
+          cursor: not-allowed;
+          p{
+               color: var(--color-gray-dark);
+          }
+     }
+}
+
+.landing-cash-section{
+     .service-block span{
+          color: var(--color-nav-black);
+          @media #{$mouse-device} {
+               &:hover{
+                    color: var(--color-white);
+               }
+          }
+     }
+     @media #{$mouse-device} {
+          .service-block:hover span{
+               color: var(--color-white);
+          }
+     }
+}
+
