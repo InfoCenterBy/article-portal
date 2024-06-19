@@ -7935,12 +7935,12 @@ html {
   position: absolute !important;
 }
 
-.vc-container {
+.inner-calendar .vc-container {
   --gray-400: #f9b974 !important;
 }
 
-.vc-container .vc-day-content:hover,
-.vc-container .vc-day-content:focus {
+.inner-calendar .vc-container .vc-day-content:hover,
+.inner-calendar .vc-container .vc-day-content:focus {
   --gray-400: #282828 !important;
 }
 
@@ -8141,6 +8141,20 @@ html {
 .weekend-block__list::-webkit-scrollbar-thumb {
   background: var(--color-gray);
   border-radius: 20px;
+}
+
+.prod-calendar-container .vc-container {
+  --orange-900: #F9B974;
+}
+
+.prod-calendar-container .prod-calendar-etc .vc-day-content:hover,
+.prod-calendar-container .prod-calendar-etc .vc-day-content:focus {
+  background-color: var(--color-white-gray) !important;
+}
+
+.prod-calendar-container .prod-calendar-current-month .vc-pane-layout {
+  border-radius: 20px;
+  background-color: rgba(3, 74, 102, 0.0705882353);
 }
 
 .cookie-modal .btn-close:focus {

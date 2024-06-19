@@ -88,11 +88,13 @@
 //           }
 //      }
 // }
-.vc-container{
-     --gray-400: #f9b974 !important;
-     .vc-day-content{
-          &:hover, &:focus{
-               --gray-400: #282828 !important;
+.inner-calendar{
+     .vc-container{
+          --gray-400: #f9b974 !important;
+          .vc-day-content{
+               &:hover, &:focus{
+                    --gray-400: #282828 !important;
+               }
           }
      }
 }

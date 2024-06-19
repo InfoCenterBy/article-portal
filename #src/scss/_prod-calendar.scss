@@ -77,3 +77,26 @@
           }
      }
 }
+
+.prod-calendar-etc{
+     
+}
+
+.prod-calendar-container{
+     .vc-container{
+          --orange-900: #F9B974;
+     }
+     .prod-calendar-etc{
+          .vc-day-content{
+               &:hover,&:focus{
+                    background-color: var(--color-white-gray) !important;
+               }
+          }
+     }
+     .prod-calendar-current-month{
+          .vc-pane-layout{
+               border-radius: 20px;
+               background-color: #034A6612;
+          }
+     }
+}
