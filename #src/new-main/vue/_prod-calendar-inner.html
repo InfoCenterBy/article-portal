@@ -1,209 +1,254 @@
 <div class="main-section">
      
      <div id="app" class="prod-calendar-container">
-          <div class="row">
-               <div class="col-xxxl-8 my-2 d-flex align-items-start flex-column">
-                    <div class="d-flex flex-row flex-wrap flex-xxl-nowrap gap-xl-4 gap-3 w-100">
-                         <div class="d-flex border border-1 border-20 overflow-hidden w-100">
-                              <!-- :min-page='{month: new Date().getMonth() + 1, year: 2024}' -->
-                              <!-- <keep-alive> -->
-                                   <v-calendar 
-                                        borderless 
-                                        class="prod-calendar"
-                                        :max-page='{month: new Date().getMonth() + 1, year: new Date().getFullYear()}' 
-                                        :masks="{title:'MMMM', weekdays: 'WW'}"
-                                        locale="ru"
-                                   ></v-calendar>
-                              <!-- </keep-alive> -->
-                              <!-- <test-comp src="./_test.html"></test-comp> -->
-                         </div>
-                         <div class="w-100 d-flex flex-column">
-                              <div class="calendar-today border border-1 p-xxl-4 p-lg-3 p-2">
-                                   <span class="color-nav-black d-block">Сегодня</span> 
+          <div class="d-flex flex-column justify-content-center align-items-center mt-5" v-if="preloader">
+               <div class="my-5"></div>
+               <div class="spinner"></div>
+               <!-- <div class="">Идет загрузка</div> -->
+               <div class="my-5"></div>
+          </div>
+          <div class="" v-show="preloader !== true">
+               <div class="row opacity-0" :class="{ 'opacity-100': preloader !== true }">
+                    <div class="col-xxxl-8 my-2 d-flex align-items-start flex-column">
+                         <div class="d-flex flex-row flex-wrap flex-xxl-nowrap gap-xl-4 gap-3 w-100">
+                              <div class="d-flex border border-1 border-20 overflow-hidden w-100">
+                                   <!-- :min-page='{month: new Date().getMonth() + 1, year: 2024}' -->
                                    <!-- <keep-alive> -->
+                                   <v-calendar borderless class="prod-calendar"
+                                        :max-page='{month: new Date().getMonth() + 1, year: new Date().getFullYear()}'
+                                        :masks="{title:'MMMM', weekdays: 'WW'}" locale="ru"></v-calendar>
+                                   <!-- </keep-alive> -->
+                                   <!-- <test-comp src="./_test.html"></test-comp> -->
+                              </div>
+                              <div class="w-100 d-flex flex-column">
+                                   <div class="calendar-today border border-1 p-xxl-4 p-lg-3 p-2">
+                                        <span class="color-nav-black d-block">Сегодня</span>
+                                        <!-- <keep-alive> -->
                                         <div class="mt-2 fs-24 ff-pt-serif">
                                              <!-- <i class="bi bi-calendar color-gold fs-14 me-1"></i>  -->
                                              <span class="color-gold fw-600">{{setToday?.dayNum}}</span>
-                                             <span class="color-gold fw-600">{{monthTitle}}</span> 
+                                             <span class="color-gold fw-600">{{monthTitle}}</span>
                                              <span class="">({{setToday?.dayOfWeek}})</span>
                                         </div>
-                                   <!-- </keep-alive> -->
-                              </div>
-                              <div class="weekend-block border border-1 border-20 p-xxl-4 p-lg-3 p-2 mt-3">
-                                   <div class="weekend-block__list">
-                                        <div class="d-flex flex-column gap-2">
-                                             <div class="w-100 d-flex align-items-start justify-content-start">
-                                                  <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div> 
-                                                  <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
+                                        <!-- </keep-alive> -->
+                                   </div>
+                                   <div class="weekend-block border border-1 border-20 p-xxl-4 p-lg-3 p-2 mt-3">
+                                        <div class="weekend-block__list">
+                                             <div class="d-flex flex-column gap-2">
+                                                  <div class="w-100 d-flex align-items-start justify-content-start">
+                                                       <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div>
+                                                       <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
+                                                  </div>
+                                                  <div class="w-100 d-flex align-items-start justify-content-start">
+                                                       <div class="calendar-dot calendar-dot-lg calendar-dot-show me-2"></div>
+                                                       <span class="color-gray-dark fs-14">Предпраздничный день. Время работы сокращено
+                                                            на 1 час</span>
+                                                  </div>
+                                                  <div class="mt-3"></div>
+                                                  <div class="w-100 d-flex align-items-start justify-content-start">
+                                                       <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div>
+                                                       <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
+                                                  </div>
+                                                  <div class="w-100 d-flex align-items-start justify-content-start">
+                                                       <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div>
+                                                       <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
+                                                  </div>
+                                                  <div class="w-100 d-flex align-items-start justify-content-start">
+                                                       <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div>
+                                                       <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
+                                                  </div>
+                                                  <div class="w-100 d-flex align-items-start justify-content-start">
+                                                       <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div>
+                                                       <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
+                                                  </div>
+                                                  <div class="w-100 d-flex align-items-start justify-content-start">
+                                                       <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div>
+                                                       <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
+                                                  </div>
+                                                  <div class="w-100 d-flex align-items-start justify-content-start">
+                                                       <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div>
+                                                       <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
+                                                  </div>
+                                                  <div class="w-100 d-flex align-items-start justify-content-start">
+                                                       <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div>
+                                                       <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
+                                                  </div>
+               
                                              </div>
-                                             <div class="w-100 d-flex align-items-start justify-content-start">
-                                                  <div class="calendar-dot calendar-dot-lg calendar-dot-show me-2"></div> 
-                                                  <span class="color-gray-dark fs-14">Предпраздничный день. Время работы сокращено на 1 час</span>
-                                             </div>
-                                             <div class="mt-3"></div>
-                                             <div class="w-100 d-flex align-items-start justify-content-start">
-                                                  <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div> 
-                                                  <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
-                                             </div>
-                                             <div class="w-100 d-flex align-items-start justify-content-start">
-                                                  <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div> 
-                                                  <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
-                                             </div>
-                                             <div class="w-100 d-flex align-items-start justify-content-start">
-                                                  <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div> 
-                                                  <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
-                                             </div>
-                                             <div class="w-100 d-flex align-items-start justify-content-start">
-                                                  <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div> 
-                                                  <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
-                                             </div>
-                                             <div class="w-100 d-flex align-items-start justify-content-start">
-                                                  <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div> 
-                                                  <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
-                                             </div>
-                                             <div class="w-100 d-flex align-items-start justify-content-start">
-                                                  <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div> 
-                                                  <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
-                                             </div>
-                                             <div class="w-100 d-flex align-items-start justify-content-start">
-                                                  <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div> 
-                                                  <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
-                                             </div>
-
                                         </div>
                                    </div>
                               </div>
                          </div>
+                         <!-- <div class="row mt-4">
+                                        <div class="col-xxl-5">
+                                             <div class="work-time-elem d-flex flex-row align-items-center justify-content-between mt-2">
+                                                  <span class="fs-16 color-nav-black">Календарные дни</span>
+                                                  <div class="time-underline mt-2 mx-2"></div>
+                                                  <span class="color-gold fs-18">{{weekTime?.sumDays}}</span>
+                                             </div>
+                                        </div>
+                                        <div class="col-xxl-7"></div>
+                                        <div class="col-12 mt-3"></div>
+                                        <div class="col-xxl-6 d-flex flex-column justify-content-between my-1">
+                                             <div class="work-day-block">
+                                                  <span class="fs-16 d-block">
+                                                       Рабочие дни:
+                                                  </span>
+                                                  <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
+                                                       <span class="fs-16 color-nav-black">по пятидневной рабочей неделе</span>
+                                                       <div class="time-underline mt-2 mx-2"></div>
+                                                       <span class="color-gold fs-18">{{weekTime?.workFive}}</span>
+                                                  </div>
+                                                  <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
+                                                       <span class="fs-16 color-nav-black">по шестидневной рабочей неделе</span>
+                                                       <div class="time-underline mt-2 mx-2"></div>
+                                                       <span class="color-gold fs-18">{{weekTime?.workSix}}</span>
+                                                  </div>
+                                             </div>
+                                             <div class="work-day-block mt-2">
+                                                  <span class="fs-16 d-block">
+                                                       Нерабочие дни (выходные и праздничные дни):
+                                                  </span>
+                                                  <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
+                                                       <span class="fs-16 color-nav-black">по пятидневной рабочей неделе</span>
+                                                       <div class="time-underline mt-2 mx-2"></div>
+                                                       <span class="color-gold fs-18">{{weekTime?.offFive}}</span>
+                                                  </div>
+                                                  <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
+                                                       <span class="fs-16 color-nav-black">по шестидневной рабочей неделе</span>
+                                                       <div class="time-underline mt-2 mx-2"></div>
+                                                       <span class="color-gold fs-18">{{weekTime?.offSix}}</span>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                        <div class="col-xxl-6 d-flex flex-column justify-content-between">
+                                             <div class="work-day-block">
+                                                  <span class="fs-16 d-block">
+                                                       Расчетная норма рабочего времени (в часах):
+                                                  </span>
+                                                  <span class="fs-14">для пятидневной рабочей недели:</span>
+                                                  <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
+                                                       <span class="fs-16 color-nav-black">при 40-часовой рабочей неделе</span>
+                                                       <div class="time-underline mt-2 mx-2"></div>
+                                                       <span class="color-gold fs-18">{{weekTime?.timeFiveWeek40}}</span>
+                                                  </div>
+                                                  <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
+                                                       <span class="fs-16 color-nav-black">при 35-часовой рабочей неделе</span>
+                                                       <div class="time-underline mt-2 mx-2"></div>
+                                                       <span class="color-gold fs-18">{{weekTime?.timeFiveWeek35}}</span>
+                                                  </div>
+                                             </div>
+                                             <div class="work-day-block mt-2">
+                                                  <span class="fs-14">для шестидневной рабочей недели:</span>
+                                                  <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
+                                                       <span class="fs-16 color-nav-black">при 40-часовой рабочей неделе</span>
+                                                       <div class="time-underline mt-2 mx-2"></div>
+                                                       <span class="color-gold fs-18">{{weekTime?.timeSixWeek40}}</span>
+                                                  </div>
+                                                  <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
+                                                       <span class="fs-16 color-nav-black">при 35-часовой рабочей неделе</span>
+                                                       <div class="time-underline mt-2 mx-2"></div>
+                                                       <span class="color-gold fs-18">{{weekTime?.timeSixWeek35}}</span>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                   </div> -->
                     </div>
-                    <!-- <div class="row mt-4">
-                         <div class="col-xxl-5">
-                              <div class="work-time-elem d-flex flex-row align-items-center justify-content-between mt-2">
-                                   <span class="fs-16 color-nav-black">Календарные дни</span>
-                                   <div class="time-underline mt-2 mx-2"></div>
-                                   <span class="color-gold fs-18">{{weekTime?.sumDays}}</span>
+                    <div class="col-xxxl-4 my-2 d-flex">
+                         <div class="d-flex flex-column bg-gold-light-opacity-30 p-4 border-20 w-100">
+                              <div class="">
+                                   <h3 class="fs-24 fw-600 ff-inter">Норма рабочего времени на 2024 год</h3>
                               </div>
-                         </div>
-                         <div class="col-xxl-7"></div>
-                         <div class="col-12 mt-3"></div>
-                         <div class="col-xxl-6 d-flex flex-column justify-content-between my-1">
-                              <div class="work-day-block">
-                                   <span class="fs-16 d-block">
-                                        Рабочие дни:
-                                   </span>
-                                   <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
-                                        <span class="fs-16 color-nav-black">по пятидневной рабочей неделе</span>
-                                        <div class="time-underline mt-2 mx-2"></div>
-                                        <span class="color-gold fs-18">{{weekTime?.workFive}}</span>
-                                   </div>
-                                   <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
-                                        <span class="fs-16 color-nav-black">по шестидневной рабочей неделе</span>
-                                        <div class="time-underline mt-2 mx-2"></div>
-                                        <span class="color-gold fs-18">{{weekTime?.workSix}}</span>
-                                   </div>
+                              <div class="mt-3 d-flex flex-column gap-4">
+                                   <a href=""
+                                        class="bg-color-white p-xl-4 p-md-3 p-2 w-100 border-10 d-flex flex-column align-items-center gap-1">
+                                        <picture>
+                                             <source media="(min-width: 960px)" srcset="./img/new-main/proizFive.svg">
+                                             <img src="./img/new-main/proizFive.png" alt="">
+                                        </picture>
+                                        <span class="d-block ff-pt-serif fs-18 color-gray-dark">
+                                             Пятидневной недели
+                                        </span>
+                                   </a>
+                                   <a href=""
+                                        class="bg-color-white p-xl-4 p-md-3 p-2 w-100 border-10 d-flex flex-column align-items-center gap-1">
+                                        <picture>
+                                             <source media="(min-width: 960px)" srcset="./img/new-main/proizSix.svg">
+                                             <img src="./img/new-main/proizSix.png" alt="">
+                                        </picture>
+                                        <span class="d-block ff-pt-serif fs-18 color-gray-dark">
+                                             Пятидневной недели
+                                        </span>
+                                   </a>
                               </div>
-                              <div class="work-day-block mt-2">
-                                   <span class="fs-16 d-block">
-                                        Нерабочие дни (выходные и праздничные дни):
-                                   </span>
-                                   <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
-                                        <span class="fs-16 color-nav-black">по пятидневной рабочей неделе</span>
-                                        <div class="time-underline mt-2 mx-2"></div>
-                                        <span class="color-gold fs-18">{{weekTime?.offFive}}</span>
-                                   </div>
-                                   <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
-                                        <span class="fs-16 color-nav-black">по шестидневной рабочей неделе</span>
-                                        <div class="time-underline mt-2 mx-2"></div>
-                                        <span class="color-gold fs-18">{{weekTime?.offSix}}</span>
-                                   </div>
-                              </div>
-                         </div>
-                         <div class="col-xxl-6 d-flex flex-column justify-content-between">
-                              <div class="work-day-block">
-                                   <span class="fs-16 d-block">
-                                        Расчетная норма рабочего времени (в часах):
-                                   </span>
-                                   <span class="fs-14">для пятидневной рабочей недели:</span>
-                                   <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
-                                        <span class="fs-16 color-nav-black">при 40-часовой рабочей неделе</span>
-                                        <div class="time-underline mt-2 mx-2"></div>
-                                        <span class="color-gold fs-18">{{weekTime?.timeFiveWeek40}}</span>
-                                   </div>
-                                   <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
-                                        <span class="fs-16 color-nav-black">при 35-часовой рабочей неделе</span>
-                                        <div class="time-underline mt-2 mx-2"></div>
-                                        <span class="color-gold fs-18">{{weekTime?.timeFiveWeek35}}</span>
-                                   </div>
-                              </div>
-                              <div class="work-day-block mt-2">
-                                   <span class="fs-14">для шестидневной рабочей недели:</span>
-                                   <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
-                                        <span class="fs-16 color-nav-black">при 40-часовой рабочей неделе</span>
-                                        <div class="time-underline mt-2 mx-2"></div>
-                                        <span class="color-gold fs-18">{{weekTime?.timeSixWeek40}}</span>
-                                   </div>
-                                   <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
-                                        <span class="fs-16 color-nav-black">при 35-часовой рабочей неделе</span>
-                                        <div class="time-underline mt-2 mx-2"></div>
-                                        <span class="color-gold fs-18">{{weekTime?.timeSixWeek35}}</span>
-                                   </div>
-                              </div>
-                         </div>
-                    </div> -->
-               </div>
-               <div class="col-xxxl-4 my-2 d-flex">
-                    <div class="d-flex flex-column bg-gold-light-opacity-30 p-4 border-20 w-100">
-                         <div class="">
-                              <h3 class="fs-24 fw-600 ff-inter">Норма рабочего времени на 2024 год</h3>
-                         </div>
-                         <div class="mt-3 d-flex flex-column gap-4">
-                              <a href="" class="bg-color-white p-xl-4 p-md-3 p-2 w-100 border-10 d-flex flex-column align-items-center gap-1">
-                                   <picture>
-                                        <source media="(min-width: 960px)" srcset="./img/new-main/proizFive.svg">
-                                        <img src="./img/new-main/proizFive.png" alt="">
-                                   </picture>
-                                   <span class="d-block ff-pt-serif fs-18 color-gray-dark">
-                                        Пятидневной недели
-                                   </span>
-                              </a>
-                              <a href="" class="bg-color-white p-xl-4 p-md-3 p-2 w-100 border-10 d-flex flex-column align-items-center gap-1">
-                                   <picture>
-                                        <source media="(min-width: 960px)" srcset="./img/new-main/proizSix.svg">
-                                        <img src="./img/new-main/proizSix.png" alt="">
-                                   </picture>
-                                   <span class="d-block ff-pt-serif fs-18 color-gray-dark">
-                                        Пятидневной недели
-                                   </span>
-                              </a>
                          </div>
                     </div>
                </div>
-          </div>
-          <div class="row">
-               <div class="col-xxxl-4 col-xxl-6 my-2 d-flex" v-for="(el, index) in monthOrder">
-                    <v-calendar 
-                         :id="el" 
-                         :key="index" 
-                         :max-date="maxPage(el)" 
-                         :min-date="minPage(el)" 
-                         :initial-page="initialPage(el)" 
-                         class="prod-calendar prod-calendar-etc" 
-                         locale="ru" 
-                         :masks="{ title: 'MMMM',weekdays: 'WW' }"
-                         :attributes='innerAttributesProccess'
-                         :class= "[currentDate.getMonth() + 1 === el ? 'prod-calendar-current-month' : '']"
-                         :disabled-dates="innerdisabledDates"
-                         ref="calendar"
-                         
-                         >
-                         <!-- :ref="'calendar' + el" -->
-                         <template #footer>
-                              <!-- @click="test" -->
-                              <button 
+               <div class="row">
+                    <div class="col-xxxl-4 col-xxl-6 my-2 d-flex" v-for="(el, index) in monthOrder">
+                         <v-calendar :id="el" :key="index" :max-date="maxPage(el)" :min-date="minPage(el)"
+                              :initial-page="initialPage(el)" class="prod-calendar prod-calendar-etc" locale="ru"
+                              :masks="{ title: 'MMMM',weekdays: 'WW' }" :attributes='innerAttributesProccess'
+                              :class="[currentDate.getMonth() + 1 === el ? 'prod-calendar-current-month' : '']"
+                              :ref="'calendar' + index"
+                              :disabled-dates="innerdisabledDates" 
                               >
-                                   {{test(index)}}
-                              </button>
-                         </template>
-                    </v-calendar>
+                              <!-- @hook:mounted="test(index)" -->
+                              <!-- :ref="'calendar' + el" -->
+                              <template #footer>
+                                   <!-- @click="test" -->
+                                   {{ moment(el)}}
+                                   <div class="row">
+                                        <div class="col-12">
+                                             <div
+                                                  class="d-flex flex-row align-items-center justify-content-between mt-2">
+                                                  <span class="fs-16 color-nav-black">Календарные дни</span>
+                                                  <div class="time-underline mt-2 mx-1"></div>
+                                                  <span class="color-gold fs-18">{{ sumDaysValue[index] }}</span>
+                                             </div>
+                                        </div>
+                                        <div class="col-12 d-flex flex-column justify-content-between my-1">
+                                             <div class="work-day-block">
+                                                  <div class="work-time-elem">
+                                                       <span class="fs-16 d-block fw-600">
+                                                            Рабочие дни:
+                                                       </span>
+                                                  </div>
+                                                  <div class="d-flex flex-row align-items-center justify-content-between my-1">
+                                                       <span class="fs-14 color-nav-black">по пятидневной рабочей неделе</span>
+                                                       <div class="time-underline mt-2"></div>
+                                                       <!-- <span class="color-gold fs-18">{{weekTime.workFive}}</span> -->
+                                                  </div>
+                                                  <div class="d-flex flex-row align-items-center justify-content-between my-1">
+                                                       <span class="fs-14 color-nav-black">по шестидневной рабочей неделе</span>
+                                                       <div class="time-underline mt-2"></div>
+                                                       <!-- <span class="color-gold fs-18">{{weekTime.workSix}}</span> -->
+                                                  </div>
+                                             </div>
+                                             <div class="work-day-block mt-2">
+                                                  <div class="work-time-elem">
+                                                       <span class="fs-16 d-block fw-600">
+                                                            Нерабочие дни (выходные и праздничные дни):
+                                                       </span>
+                                                  </div>
+                                                  <div class="d-flex flex-row align-items-center justify-content-between my-1">
+                                                       <span class="fs-14 color-nav-black">по пятидневной рабочей неделе</span>
+                                                       <div class="time-underline mt-2"></div>
+                                                       <!-- <span class="color-gold fs-18">{{weekTime.offFive}}</span> -->
+                                                  </div>
+                                                  <div class="d-flex flex-row align-items-center justify-content-between my-1">
+                                                       <span class="fs-14 color-nav-black">по шестидневной рабочей неделе</span>
+                                                       <div class="time-underline mt-2"></div>
+                                                       <!-- <span class="color-gold fs-18">{{weekTime.offSix}}</span> -->
+                                                  </div>
+                                             </div>
+                                        </div>
+                                   </div>
+               
+               
+                              </template>
+                         </v-calendar>
+                    </div>
                </div>
           </div>
      </div>
@@ -211,8 +256,9 @@
      <script src="https://unpkg.com/vue@2"></script>
      <script src="https://unpkg.com/@popperjs/core@2"></script>
      <script src="https://unpkg.com/v-calendar"></script>
+     <script src="https://cdn.jsdelivr.net/npm/moment@2.30.1/moment.min.js"></script>
      <!-- <script src="./js/test.js"></script> -->
-     <script>
+     <script async>
           // Vue.component('test-comp', {
           // })
           // Vue.component('v-calendar', window.VCalendar)
@@ -220,9 +266,9 @@
                el: '#app',
                data() {
                     return{
+                         preloader: true,
                          monthOrder: [1,2,3,4,5,6],
                          monthTitle: '',
-                         yearNow: new Date().getFullYear(),
                          innerAttributes: [
                               {
                                    dates:  {weekdays: [1,7] },
@@ -230,6 +276,8 @@
                               }
                          ],
                          currentDate: new Date(),
+                         sumDaysValue: [],
+                         sumSepareateDays: [],
                     }
                },
                computed:{
@@ -265,9 +313,7 @@
                          return this.innerAttributes
                     },
                     innerdisabledDates(){
-                         return [{
-                                   weekdays: [1,7] ,
-                              }]
+                         return [ '01-03-2024', '01-04-2024']
                     }
                },
                watch:{},
@@ -294,36 +340,141 @@
                     maxPage(order) {
                          let newDate = new Date
                          let monthInOrder = newDate.setMonth(order - 1)
-                         const maxPageObj = { day: 0, month: newDate.getMonth() + 2, year: this.yearNow }
+                         const maxPageObj = { day: 0, month: newDate.getMonth() + 2, year: this.currentDate.getFullYear() }
                          return maxPageObj
                     },
                     minPage(order) {
                          let newDate = new Date
                          let monthInOrder = newDate.setMonth(order - 1)
-                         const minPageObj = { day: 1, month: newDate.getMonth() + 1, year: this.yearNow }
+                         const minPageObj = { day: 1, month: newDate.getMonth() + 1, year: this.currentDate.getFullYear() }
                          return minPageObj
                     },
                     initialPage(order){
                          return null
                     },
-                    test(index){
-                         let currentPage = this.$refs['calendar']
-                         console.log(currentPage, index )
-                         if(index){
-                              // let calendarNum = 'calendar' + el
-                              // let currentPageCopy = currentPage
-                              // if(currentPage.calendar !== undefined){
-                              // }
-                         }
-                         return index
+                    moment(month) {
+
+                         
+                              
+                                   if (month < 1 || month > 12) {
+                                        throw new Error("Wrong month");
+                                   }
+
+                                   let year = this.currentDate.getFullYear()
+
+                                   let startDate = moment({ year: year, month: month - 1, day: 1 });
+                                   let endDate = moment(startDate).endOf('month');
+                                   // console.log(moment(startDate).format('MM-DD-YYYY'));
+                                   let startDateInFormat = moment(startDate).format('MM-DD-YYYY')
+                                   let endDateDateInFormat = moment(endDate).format('MM-DD-YYYY')
+                                   console.log('startDateInFormat', startDateInFormat);
+                                   // console.log(month, moment(startDate).format('MM-DD-YYYY'), moment(endDate).format('MM-DD-YYYY'));
+
+                                   let saturdays = 0;
+                                   let sundays = 0;
+
+                                   while (startDate.isSameOrBefore(endDate)) {
+                                        if (startDate.day() === 6) {
+                                             saturdays++;
+                                        } else if (startDate.day() === 0) {
+                                             sundays++;
+                                        }
+                                        startDate.add(1, 'day');
+                                   }
+
+                                   let totalWeekends = saturdays + sundays
+
+                                   let disabledDatesCount = this.innerdisabledDates.reduce((count, date) => {
+
+                                        let dayInFormat = moment(date, 'MM-DD-YYYY')
+                                        // let momentDate = moment({ 
+                                        //                          year: dayInFormat.get('year'), 
+                                        //                          month: dayInFormat.get('month'), 
+                                        //                          day: dayInFormat.get('date') })
+                                        // console.log(startDateInFormat);
+
+                                        // console.log('momentDate', moment(momentDate).format('MM-DD-YYYY'), moment(startDate).format('MM-DD-YYYY'), moment(endDate).format('MM-DD-YYYY'))
+                                        if (moment(dayInFormat).isBetween(startDateInFormat, endDateDateInFormat, undefined, '[]')) {
+                                             count++;
+                                             console.log('count', count)
+                                        }
+                                        return count;
+                                   }, 0);
+
+                                   // console.log('disabledDatesCount', disabledDatesCount);
+
+
+                                   totalWeekends += disabledDatesCount
+
+
+                                   return {
+                                        saturdays: saturdays,
+                                        sundays: sundays,
+                                        totalWeekends: totalWeekends
+                                        }
+                              
+                         
+
+                         
+
+                    },
+                    // test(index){
+                    //      // let currentPage = this.$refs['calendar']
+                    //      // console.log(currentPage, index, this )
+                    //      // if(index){
+                    //      //      // let calendarNum = 'calendar' + el
+                    //      //      // let currentPageCopy = currentPage
+                    //      //      // if(currentPage.calendar !== undefined){
+                    //      //      // }
+                    //      // }
+                    //      // return index
+                    //      let per = this.$nextTick(() => {
+                    //           let currentPage = this.$refs['calendar' + index];
+                    //           console.log(currentPage, index,);
+                    //           if (index !== undefined) {
+                    //                // ваши дополнительные действия
+                    //           }
+                    //           return currentPage[0]._uid
+                    //      });
+                    //      console.log('per', per);
+                    //      return per
+                    // }
+                    // test(index) {
+                    //      this.$nextTick(() => {
+                    //           let currentPage = this.$refs['calendar' + index];
+                    //           if (currentPage && currentPage[0]) {
+                    //                this.$set(this.sumDaysValue, index, currentPage[0]._uid);
+                    //                console.log(`UID for index ${index}:`, currentPage[0]._uid); // Для отладки
+                    //           }
+                    //      });
+                    // }
+                    initializeUIDs() {
+                         this.$nextTick(() => {
+                              this.monthOrder.forEach((el, index) => {
+                                   let currentPage = this.$refs['calendar' + index]
+                                   
+                                   if (currentPage && currentPage[0]) {
+                                        this.$set(this.sumDaysValue, index, currentPage[0].pages[0].monthComps.days)
+                                        // console.log(`UID for index ${index}:`, currentPage[0])
+                                   }
+                              });
+                         });
                     }
                     // test(el){
                     //      return el
                     // }
                },
                created(){
+                    this.preloader = true
                },
                mounted() {
+                    this.initializeUIDs();
+                    // this.moment()
+                    this.preloader = false
+               },
+               updated() {
+                    this.initializeUIDs();
+                    // this.moment()
                }
           })
      </script>

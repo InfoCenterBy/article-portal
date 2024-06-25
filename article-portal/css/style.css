@@ -3418,6 +3418,40 @@ body._lock {
   content: none;
 }
 
+.spinner {
+  width: 80px;
+  height: 80px;
+  border: 5px solid var(--color-gray);
+  border-top: 6px solid var(--color-gold);
+  border-radius: 100%;
+  -webkit-animation: spin 1s infinite linear;
+          animation: spin 1s infinite linear;
+}
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
 p {
   margin-bottom: 24px;
 }
