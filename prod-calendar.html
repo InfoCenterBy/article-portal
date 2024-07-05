@@ -293,175 +293,299 @@
                <div class="mt-4"></div>
                <div class="main-section">
 
-          <div id="app">
-          <div class="row">
-               <div class="col-xxxl-8 my-2 d-flex align-items-start flex-column">
-                    <div class="d-flex flex-row flex-wrap flex-xxl-nowrap gap-xl-4 gap-3 w-100">
-                         <div class="d-flex border border-1 border-20 overflow-hidden w-100">
-                              <keep-alive>
-                                   <v-calendar 
-                                   borderless 
-                                   class="prod-calendar"
-                                   :max-page='{month: new Date().getMonth() + 1, year: new Date().getFullYear()}' 
-                                   :masks="{title:'MMMM', weekdays: 'WW'}"
-                                   ></v-calendar>
-                              </keep-alive>
-                         </div>
-                         <div class="w-100 d-flex flex-column">
-                              <div class="calendar-today border border-1 p-xxl-4 p-lg-3 p-2">
-                                   <span class="color-nav-black d-block">Сегодня</span> 
+          <div id="app" class="prod-calendar-container">
+          <div class="d-flex flex-column justify-content-center align-items-center mt-5" v-if="preloader">
+               <div class="my-5"></div>
+               <div class="spinner"></div>
+               <div class="my-5"></div>
+          </div>
+          <div class="" v-show="preloader !== true">
+               <div class="row opacity-0" :class="{ 'opacity-100': preloader !== true }">
+                    <div class="col-xxxl-8 my-2 d-flex align-items-start flex-column">
+                         <div class="d-flex flex-row flex-wrap flex-xxl-nowrap gap-xl-4 gap-3 w-100">
+                              <div class="d-flex border border-1 border-20 overflow-hidden w-100">
+                                   <v-calendar borderless class="prod-calendar"
+                                        :max-page='{month: new Date().getMonth() + 1, year: new Date().getFullYear()}'
+                                        :masks="{title:'MMMM', weekdays: 'WW'}" locale="ru"
+                                        :ref="'mainCalendar'"
+                                        >
+                                   </v-calendar>
+                              </div>
+                              <div class="w-100 d-flex flex-column">
+                                   <div class="calendar-today border border-1 p-xxl-4 p-lg-3 p-2">
+                                        <span class="color-nav-black d-block">Сегодня</span>
                                         <div class="mt-2 fs-24 ff-pt-serif">
                                              <span class="color-gold fw-600">{{setToday?.dayNum}}</span>
-                                             <span class="color-gold fw-600">{{monthTitle}}</span> 
+                                             <span class="color-gold fw-600">{{monthTitle}}</span>
                                              <span class="">({{setToday?.dayOfWeek}})</span>
                                         </div>
-                              </div>
-                              <div class="weekend-block border border-1 border-20 p-xxl-4 p-lg-3 p-2 mt-3">
-                                   <div class="weekend-block__list">
-                                        <div class="d-flex flex-column gap-2">
-                                             <div class="w-100 d-flex align-items-start justify-content-start">
-                                                  <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div> 
-                                                  <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
-                                             </div>
-                                             <div class="w-100 d-flex align-items-start justify-content-start">
-                                                  <div class="calendar-dot calendar-dot-lg calendar-dot-show me-2"></div> 
-                                                  <span class="color-gray-dark fs-14">Предпраздничный день. Время работы сокращено на 1 час</span>
-                                             </div>
-                                             <div class="mt-3"></div>
-                                             <div class="w-100 d-flex align-items-start justify-content-start">
-                                                  <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div> 
-                                                  <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
-                                             </div>
-                                             <div class="w-100 d-flex align-items-start justify-content-start">
-                                                  <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div> 
-                                                  <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
-                                             </div>
-                                             <div class="w-100 d-flex align-items-start justify-content-start">
-                                                  <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div> 
-                                                  <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
-                                             </div>
-                                             <div class="w-100 d-flex align-items-start justify-content-start">
-                                                  <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div> 
-                                                  <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
-                                             </div>
-                                             <div class="w-100 d-flex align-items-start justify-content-start">
-                                                  <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div> 
-                                                  <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
-                                             </div>
-                                             <div class="w-100 d-flex align-items-start justify-content-start">
-                                                  <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div> 
-                                                  <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
-                                             </div>
-                                             <div class="w-100 d-flex align-items-start justify-content-start">
-                                                  <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div> 
-                                                  <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
-                                             </div>
+                                   </div>
+                                   <div class="weekend-block border border-1 border-20 p-xxl-4 p-lg-3 p-2 mt-3">
+                                        <div class="weekend-block__list">
+                                             <div class="d-flex flex-column gap-2">
+                                                  <div class="w-100 d-flex align-items-start justify-content-start">
+                                                       <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div>
+                                                       <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
+                                                  </div>
+                                                  <div class="w-100 d-flex align-items-start justify-content-start">
+                                                       <div class="calendar-dot calendar-dot-lg calendar-dot-show me-2"></div>
+                                                       <span class="color-gray-dark fs-14">Предпраздничный день. Время работы сокращено
+                                                            на 1 час</span>
+                                                  </div>
+                                                  <div class="mt-3"></div>
+                                                  <div class="w-100 d-flex align-items-start justify-content-start">
+                                                       <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div>
+                                                       <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
+                                                  </div>
+                                                  <div class="w-100 d-flex align-items-start justify-content-start">
+                                                       <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div>
+                                                       <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
+                                                  </div>
+                                                  <div class="w-100 d-flex align-items-start justify-content-start">
+                                                       <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div>
+                                                       <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
+                                                  </div>
+                                                  <div class="w-100 d-flex align-items-start justify-content-start">
+                                                       <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div>
+                                                       <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
+                                                  </div>
+                                                  <div class="w-100 d-flex align-items-start justify-content-start">
+                                                       <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div>
+                                                       <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
+                                                  </div>
+                                                  <div class="w-100 d-flex align-items-start justify-content-start">
+                                                       <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div>
+                                                       <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
+                                                  </div>
+                                                  <div class="w-100 d-flex align-items-start justify-content-start">
+                                                       <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div>
+                                                       <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
+                                                  </div>
 
+                                                            </div>
                                         </div>
                                    </div>
                               </div>
                          </div>
                     </div>
-                    <div class="row mt-4">
-                         <div class="col-xxl-5">
-                              <div class="work-time-elem d-flex flex-row align-items-center justify-content-between mt-2">
-                                   <span class="fs-16 color-nav-black">Календарные дни</span>
-                                   <div class="time-underline mt-2 mx-2"></div>
-                                   <span class="color-gold fs-18">{{weekTime?.sumDays}}</span>
+                    <div class="col-xxxl-4 my-2 d-flex">
+                         <div class="d-flex flex-column bg-gold-light-opacity-30 p-4 border-20 w-100">
+                              <div class="">
+                                   <h3 class="fs-24 fw-600 ff-inter">Норма рабочего времени на 2024 год</h3>
                               </div>
-                         </div>
-                         <div class="col-xxl-7"></div>
-                         <div class="col-12 mt-3"></div>
-                         <div class="col-xxl-6 d-flex flex-column justify-content-between my-1">
-                              <div class="work-day-block">
-                                   <span class="fs-16 d-block">
-                                        Рабочие дни:
-                                   </span>
-                                   <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
-                                        <span class="fs-16 color-nav-black">по пятидневной рабочей неделе</span>
-                                        <div class="time-underline mt-2 mx-2"></div>
-                                        <span class="color-gold fs-18">{{weekTime?.workFive}}</span>
-                                   </div>
-                                   <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
-                                        <span class="fs-16 color-nav-black">по шестидневной рабочей неделе</span>
-                                        <div class="time-underline mt-2 mx-2"></div>
-                                        <span class="color-gold fs-18">{{weekTime?.workSix}}</span>
-                                   </div>
-                              </div>
-                              <div class="work-day-block mt-2">
-                                   <span class="fs-16 d-block">
-                                        Нерабочие дни (выходные и праздничные дни):
-                                   </span>
-                                   <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
-                                        <span class="fs-16 color-nav-black">по пятидневной рабочей неделе</span>
-                                        <div class="time-underline mt-2 mx-2"></div>
-                                        <span class="color-gold fs-18">{{weekTime?.offFive}}</span>
-                                   </div>
-                                   <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
-                                        <span class="fs-16 color-nav-black">по шестидневной рабочей неделе</span>
-                                        <div class="time-underline mt-2 mx-2"></div>
-                                        <span class="color-gold fs-18">{{weekTime?.offSix}}</span>
-                                   </div>
-                              </div>
-                         </div>
-                         <div class="col-xxl-6 d-flex flex-column justify-content-between">
-                              <div class="work-day-block">
-                                   <span class="fs-16 d-block">
-                                        Расчетная норма рабочего времени (в часах):
-                                   </span>
-                                   <span class="fs-14">для пятидневной рабочей недели:</span>
-                                   <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
-                                        <span class="fs-16 color-nav-black">при 40-часовой рабочей неделе</span>
-                                        <div class="time-underline mt-2 mx-2"></div>
-                                        <span class="color-gold fs-18">{{weekTime?.timeFiveWeek40}}</span>
-                                   </div>
-                                   <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
-                                        <span class="fs-16 color-nav-black">при 35-часовой рабочей неделе</span>
-                                        <div class="time-underline mt-2 mx-2"></div>
-                                        <span class="color-gold fs-18">{{weekTime?.timeFiveWeek35}}</span>
-                                   </div>
-                              </div>
-                              <div class="work-day-block mt-2">
-                                   <span class="fs-14">для шестидневной рабочей недели:</span>
-                                   <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
-                                        <span class="fs-16 color-nav-black">при 40-часовой рабочей неделе</span>
-                                        <div class="time-underline mt-2 mx-2"></div>
-                                        <span class="color-gold fs-18">{{weekTime?.timeSixWeek40}}</span>
-                                   </div>
-                                   <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
-                                        <span class="fs-16 color-nav-black">при 35-часовой рабочей неделе</span>
-                                        <div class="time-underline mt-2 mx-2"></div>
-                                        <span class="color-gold fs-18">{{weekTime?.timeSixWeek35}}</span>
-                                   </div>
+                              <div class="mt-3 d-flex flex-column gap-4">
+                                   <a href=""
+                                        class="bg-color-white p-xl-4 p-md-3 p-2 w-100 border-10 d-flex flex-column align-items-center gap-1">
+                                        <picture>
+                                             <source media="(min-width: 960px)" srcset="./img/new-main/proizFive.svg">
+                                             <img src="./img/new-main/proizFive.png" alt="">
+                                        </picture>
+                                        <span class="d-block ff-pt-serif fs-18 color-gray-dark">
+                                             Пятидневной недели
+                                        </span>
+                                   </a>
+                                   <a href=""
+                                        class="bg-color-white p-xl-4 p-md-3 p-2 w-100 border-10 d-flex flex-column align-items-center gap-1">
+                                        <picture>
+                                             <source media="(min-width: 960px)" srcset="./img/new-main/proizSix.svg">
+                                             <img src="./img/new-main/proizSix.png" alt="">
+                                        </picture>
+                                        <span class="d-block ff-pt-serif fs-18 color-gray-dark">
+                                             Пятидневной недели
+                                        </span>
+                                   </a>
                               </div>
                          </div>
                     </div>
                </div>
-               <div class="col-xxxl-4 my-2 d-flex">
-                    <div class="d-flex flex-column bg-gold-light-opacity-30 p-4 border-20 w-100">
-                         <div class="">
-                              <h3 class="fs-24 fw-600 ff-inter">Норма рабочего времени на 2024 год</h3>
+               <div class="row">
+                    <template v-for="(el, index) in monthOrder">
+                         <template v-if="el == 1 || el == 4 || el == 7 || el == 10">
+                              <div class="col-xxl-8 col-12" :class="[ el > 3 ? 'mt-xxl-5 mt-4' : '']">
+
+                                                                      <div class="">
+                                        <h3 class="fs-24 fw-600">
+                                             {{
+                                                  quarterOrderTitle(el)
+                                             }}
+                                        </h3>
+                                   </div>
+                                   <div class="row row-container">
+                                        <div class="col-xxl-6 d-flex flex-column my-1">
+                                             <div class="d-flex flex-row align-items-center justify-content-between mt-2">
+                                                  <span class="fs-16 color-nav-black">Календарные дни</span>
+                                                  <div class="time-underline mt-2 mx-1"></div>
+                                                  <span class="color-gold fw-500">{{ quarterObj[getQuarterOrderKey(el)].totalDaysInQuarter }}</span>
+                                             </div>
+                                             <div class="work-day-block mt-12">
+                                                  <div class="work-time-elem">
+                                                       <span class="fs-16 d-block fw-600">
+                                                            Рабочие дни:
+                                                       </span>
+                                                  </div>
+                                                  <div class="d-flex flex-row align-items-center justify-content-between my-1">
+                                                       <span class="fs-14 color-nav-black">по пятидневной рабочей неделе</span>
+                                                       <div class="time-underline mt-2"></div>
+                                                       <span class="color-gold fw-500">{{ quarterObj[getQuarterOrderKey(el)].totalWorkFive }}</span>
+                                                  </div>
+                                                  <div class="d-flex flex-row align-items-center justify-content-between my-1">
+                                                       <span class="fs-14 color-nav-black">по шестидневной рабочей неделе</span>
+                                                       <div class="time-underline mt-2"></div>
+                                                       <span class="color-gold fw-500">{{ quarterObj[getQuarterOrderKey(el)].totalWorkSix }}</span>
+                                                  </div>
+                                             </div>
+                                             <div class="work-day-block mt-2">
+                                                  <div class="work-time-elem">
+                                                       <span class="fs-16 d-block fw-600">
+                                                            Нерабочие дни (выходные и праздничные дни):
+                                                       </span>
+                                                  </div>
+                                                  <div class="d-flex flex-row align-items-center justify-content-between my-1">
+                                                       <span class="fs-14 color-nav-black">по пятидневной рабочей неделе</span>
+                                                       <div class="time-underline mt-2"></div>
+                                                       <span class="color-gold fw-500">{{quarterObj[getQuarterOrderKey(el)].totalWeekends}}</span>
+                                                  </div>
+                                                  <div class="d-flex flex-row align-items-center justify-content-between my-1">
+                                                       <span class="fs-14 color-nav-black">по шестидневной рабочей неделе</span>
+                                                       <div class="time-underline mt-2"></div>
+                                                       <span class="color-gold fw-500">{{quarterObj[getQuarterOrderKey(el)].totalSundays}}</span>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                        <div class="col-xxl-6 d-flex flex-column my-1">
+                                             <div class="work-day-block">
+                                                  <div class="work-time-elem">
+                                                       <span class="fs-16 d-block fw-600">
+                                                            Расчетная норма рабочего времени (в часах):
+                                                       </span>
+                                                  </div>
+                                                  <div class="mt-12">
+                                                       <span class="fs-14 color-nav-black fw-600 ">для пятидневной рабочей недели:</span>
+                                                  </div>
+                                                  <div class="d-flex flex-row align-items-center justify-content-between my-1">
+                                                       <span class="fs-14 color-nav-black">при 40-часовой рабочей неделе</span>
+                                                       <div class="time-underline mt-2"></div>
+                                                       <span class="color-gold fw-500">{{quarterObj[getQuarterOrderKey(el)].totalTimeFiveWeek40}}</span>
+                                                  </div>
+                                                  <div class="d-flex flex-row align-items-center justify-content-between my-1">
+                                                       <span class="fs-14 color-nav-black">при 35-часовой рабочей неделе</span>
+                                                       <div class="time-underline mt-2"></div>
+                                                       <span class="color-gold fw-500">{{quarterObj[getQuarterOrderKey(el)].totalTimeFiveWeek35}}</span>
+                                                  </div>
+                                                  <div class="mt-3"></div>
+                                                  <span class="fs-14 color-nav-black fw-600">для шестидневной рабочей недели:</span>
+                                                  <div class="d-flex flex-row align-items-center justify-content-between my-1">
+                                                       <span class="fs-14 color-nav-black">при 40-часовой рабочей неделе</span>
+                                                       <div class="time-underline mt-2"></div>
+                                                       <span class="color-gold fw-500">{{quarterObj[getQuarterOrderKey(el)].totalTimeSixWeek40}}</span>
+                                                  </div>
+                                                  <div class="d-flex flex-row align-items-center justify-content-between my-1">
+                                                       <span class="fs-14 color-nav-black">при 35-часовой рабочей неделе</span>
+                                                       <div class="time-underline mt-2"></div>
+                                                       <span class="color-gold fw-500">{{quarterObj[getQuarterOrderKey(el)].totalTimeSixWeek35}}</span>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                   </div>
+                              </div>
+                              <div class="col-12"></div>
+                         </template>
+                         <div class="col-xxxl-4 col-xxl-6 my-2 d-flex mt-xxl-5 mt-4">
+                              <v-calendar :id="el" :key="index" :max-date="maxPage(el)" :min-date="minPage(el)" :initial-page="initialPage(el)"
+                                   class="prod-calendar prod-calendar-etc" locale="ru" :masks="{ title: 'MMMM',weekdays: 'WW' }"
+                                   :attributes='innerAttributesProccess'
+                                   :class="[currentDate.getMonth() + 1 === el ? 'prod-calendar-current-month' : '']" 
+                                   :ref="'calendar' + index"
+                                   :disabled-dates="innerdisabledDates">
+                                   <template #footer>
+                                        <div class="row mt-3">
+                                             <div class="col-12">
+                                                  <div class="d-flex flex-row align-items-center justify-content-between mt-2">
+                                                       <span class="fs-16 color-nav-black">Календарные дни</span>
+                                                       <div class="time-underline mt-2 mx-1"></div>
+                                                       <span class="color-gold fw-500">{{ calcTimeResults[index].totalDays }}</span>
+                                                  </div>
+                                             </div>
+                                             <div class="col-12 d-flex flex-column justify-content-between my-1">
+                                                  <div class="work-day-block">
+                                                       <div class="work-time-elem">
+                                                            <span class="fs-16 d-block fw-600">
+                                                                 Рабочие дни:
+                                                            </span>
+                                                       </div>
+                                                       <div class="d-flex flex-row align-items-center justify-content-between my-1">
+                                                            <span class="fs-14 color-nav-black">по пятидневной рабочей неделе</span>
+                                                            <div class="time-underline mt-2"></div>
+                                                            <span class="color-gold fw-500">{{ calcTimeResults[index].workFive}}</span>
+                                                       </div>
+                                                       <div class="d-flex flex-row align-items-center justify-content-between my-1">
+                                                            <span class="fs-14 color-nav-black">по шестидневной рабочей неделе</span>
+                                                            <div class="time-underline mt-2"></div>
+                                                            <span class="color-gold fw-500">{{ calcTimeResults[index].workSix}}</span>
+                                                       </div>
+                                                  </div>
+                                                  <div class="work-day-block mt-2">
+                                                       <div class="work-time-elem">
+                                                            <span class="fs-16 d-block fw-600">
+                                                                 Нерабочие дни (выходные и праздничные дни):
+                                                            </span>
+                                                       </div>
+                                                       <div class="d-flex flex-row align-items-center justify-content-between my-1">
+                                                            <span class="fs-14 color-nav-black">по пятидневной рабочей неделе</span>
+                                                            <div class="time-underline mt-2"></div>
+                                                            <span class="color-gold fw-500">{{calcTimeResults[index].totalWeekends}}</span>
+                                                       </div>
+                                                       <div class="d-flex flex-row align-items-center justify-content-between my-1">
+                                                            <span class="fs-14 color-nav-black">по шестидневной рабочей неделе</span>
+                                                            <div class="time-underline mt-2"></div>
+                                                            <span class="color-gold fw-500">{{calcTimeResults[index].sundaysWithDis}}</span>
+                                                       </div>
+                                                  </div>
+                                                  <div class="work-day-block mt-2">
+                                                       <div class="work-time-elem">
+                                                            <span class="fs-16 d-block fw-600">
+                                                                 Расчетная норма рабочего времени (в часах):
+                                                            </span>
+                                                       </div>
+                                                       <span class="fs-14 color-nav-black fw-600 mt-2">для пятидневной рабочей недели:</span>
+                                                       <div class="d-flex flex-row align-items-center justify-content-between my-1">
+                                                            <span class="fs-14 color-nav-black">при 40-часовой рабочей неделе</span>
+                                                            <div class="time-underline mt-2"></div>
+                                                            <span class="color-gold fw-500">{{calcTimeResults[index].timeFiveWeek40}}</span>
+                                                       </div>
+                                                       <div class="d-flex flex-row align-items-center justify-content-between my-1">
+                                                            <span class="fs-14 color-nav-black">при 35-часовой рабочей неделе</span>
+                                                            <div class="time-underline mt-2"></div>
+                                                            <span class="color-gold fw-500">{{calcTimeResults[index].timeFiveWeek35}}</span>
+                                                       </div>
+                                                       <div class="mt-3"></div>
+                                                       <span class="fs-14 color-nav-black fw-600">для шестидневной рабочей недели:</span>
+                                                       <div class="d-flex flex-row align-items-center justify-content-between my-1">
+                                                            <span class="fs-14 color-nav-black">при 40-часовой рабочей неделе</span>
+                                                            <div class="time-underline mt-2"></div>
+                                                            <span class="color-gold fw-500">{{calcTimeResults[index].timeSixWeek40}}</span>
+                                                       </div>
+                                                       <div class="d-flex flex-row align-items-center justify-content-between my-1">
+                                                            <span class="fs-14 color-nav-black">при 35-часовой рабочей неделе</span>
+                                                            <div class="time-underline mt-2"></div>
+                                                            <span class="color-gold fw-500">{{calcTimeResults[index].timeSixWeek35}}</span>
+                                                       </div>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                   </template>
+                              </v-calendar>
                          </div>
-                         <div class="mt-3 d-flex flex-column gap-4">
-                              <a href="" class="bg-color-white p-xl-4 p-md-3 p-2 w-100 border-10 d-flex flex-column align-items-center gap-1">
-                                   <picture>
-                                        <source media="(min-width: 960px)" srcset="./img/new-main/proizFive.svg">
-                                        <img src="./img/new-main/proizFive.png" alt="">
-                                   </picture>
-                                   <span class="d-block ff-pt-serif fs-18 color-gray-dark">
-                                        Пятидневной недели
-                                   </span>
-                              </a>
-                              <a href="" class="bg-color-white p-xl-4 p-md-3 p-2 w-100 border-10 d-flex flex-column align-items-center gap-1">
-                                   <picture>
-                                        <source media="(min-width: 960px)" srcset="./img/new-main/proizSix.svg">
-                                        <img src="./img/new-main/proizSix.png" alt="">
-                                   </picture>
-                                   <span class="d-block ff-pt-serif fs-18 color-gray-dark">
-                                        Пятидневной недели
-                                   </span>
-                              </a>
-                         </div>
+                    </template>
+                    <div class="col-12 d-flex justify-content-center align-content-center opacity-0 mt-4" :class="{ 'opacity-100': preloader !== true }">
+                         <button id="load-more" class="button border-10 d-flex justify-content-center flex-column align-items-center" @click="loadMoreCalendars()">
+                              <template v-if="preloaderInner">
+                                   <div class="spiner spinner-inner"></div>
+                              </template>
+                              <template v-if="!preloaderInner">
+                                   {{monthOrder.length > 6 ? 'Свернуть' : 'Подробнее'}}
+                              </template>
+                         </button>
                     </div>
                </div>
           </div>
@@ -470,7 +594,8 @@
      <script src="https://unpkg.com/vue@2"></script>
      <script src="https://unpkg.com/@popperjs/core@2"></script>
      <script src="https://unpkg.com/v-calendar"></script>
-     <script>
+     <script src="https://cdn.jsdelivr.net/npm/moment@2.30.1/moment.min.js"></script>
+     <script async>
           // Vue.component('test-comp', {
           // })
           // Vue.component('v-calendar', window.VCalendar)
@@ -478,8 +603,78 @@
                el: '#app',
                data() {
                     return{
-                         test: [0,1,2,3,4,5,6,7,8,9,10,11,12],
+                         preloader: true,
+                         preloaderInner: false,
+                         monthOrder: [1,2,3,4,5,6],
                          monthTitle: '',
+                         innerAttributes: [
+                              {
+                                   dates:  {weekdays: [1,7]},
+                                   content: {
+                                        style: {
+                                             color: '#F9B974',
+                                        }
+                                   },
+                              },
+
+                                                       ],
+                         currentDate: new Date(),
+                         sumDaysValue: [],
+                         sumSepareateDays: [],
+                         innerdisabledDates: [
+                              // new Date('01-01-2024'),
+                              // new Date('01-02-2024'),
+                              // new Date('01-07-2024'),
+                              new Date('05-01-2024'),
+                              new Date('05-09-2024'),
+                              new Date('05-14-2024'),
+                         ],
+                         quarterObj:{
+                              first:{
+                                   totalDaysInQuarter: 0,
+                                   totalWorkFive: 0,
+                                   totalWorkSix: 0,
+                                   totalWeekends: 0,
+                                   totalSundays: 0,
+                                   totalTimeFiveWeek40: 0,
+                                   totalTimeFiveWeek35: 0,
+                                   totalTimeSixWeek40: 0,
+                                   totalTimeSixWeek35: 0,
+                              },
+                              second:{
+                                   totalDaysInQuarter: 0,
+                                   totalWorkFive: 0,
+                                   totalWorkSix: 0,
+                                   totalWeekends: 0,
+                                   totalSundays: 0,
+                                   totalTimeFiveWeek40: 0,
+                                   totalTimeFiveWeek35: 0,
+                                   totalTimeSixWeek40: 0,
+                                   totalTimeSixWeek35: 0,
+                              },
+                              third:{
+                                   totalDaysInQuarter: 0,
+                                   totalWorkFive: 0,
+                                   totalWorkSix: 0,
+                                   totalWeekends: 0,
+                                   totalSundays: 0,
+                                   totalTimeFiveWeek40: 0,
+                                   totalTimeFiveWeek35: 0,
+                                   totalTimeSixWeek40: 0,
+                                   totalTimeSixWeek35: 0,
+                              },
+                              fourth:{
+                                   totalDaysInQuarter: 0,
+                                   totalWorkFive: 0,
+                                   totalWorkSix: 0,
+                                   totalWeekends: 0,
+                                   totalSundays: 0,
+                                   totalTimeFiveWeek40: 0,
+                                   totalTimeFiveWeek35: 0,
+                                   totalTimeSixWeek40: 0,
+                                   totalTimeSixWeek35: 0,
+                              }
+                         }
                     }
                },
                computed:{
@@ -509,6 +704,30 @@
                          return timeObj
                          // + ' ' + day.toLocaleString('default', {month: 'long'}) if need text month
                     },
+                    innerAttributesProccess(order){
+                         // push etc attr to main arr if need to add more exeptions, like:
+                         // this.innerAttributes.push({dates:new Date(2024, 0, 1), content:'orange'})
+                         return this.innerAttributes
+                    },
+                    innerdisabledDatesInFormat() {
+                         return this.innerdisabledDates.map(el => {
+                              return moment(el).format()
+                         })
+                    },
+                    calcTimeResults() {
+                         return this.monthOrder.map(el => this.calcTime(el));
+                    },
+
+                                        // innerdisabledDates(){
+                    //      return [
+                    //           '',
+                    //           new Date('05-01-2024'),
+                    //           new Date('05-09-2024'),
+                    //           new Date('05-14-2024'),
+                    //           // new Date('05-08-2024').toISOString(),
+                    //      ]
+                    // }
+                    // new Date('03-01-2024').toISOString()
                },
                watch:{},
                methods:{
@@ -531,8 +750,447 @@
                          filteredTitle.join('')
                          this.monthTitle = filteredTitle.join('')
                     },
+                    maxPage(order) {
+                         let newDate = new Date
+                         let monthInOrder = newDate.setMonth(order - 1)
+                         const maxPageObj = { day: 0, month: newDate.getMonth() + 2, year: this.currentDate.getFullYear() }
+                         return maxPageObj
+                    },
+                    minPage(order) {
+                         let newDate = new Date
+                         let monthInOrder = newDate.setMonth(order - 1)
+                         const minPageObj = { day: 1, month: newDate.getMonth() + 1, year: this.currentDate.getFullYear() }
+                         return minPageObj
+                    },
+                    initialPage(order){
+                         return null
+                    },
+                    dateToFormat(date){
+                         // return moment(date).format()
+                         return date
+                    },
+                    calcTime(month) {
+
+
+
+                                                                                if (month < 1 || month > 12) {
+                              throw new Error("Wrong month");
+                         }
+
+                         let year = this.currentDate.getFullYear()
+
+                                                  // let startDate = moment({ year: year, month: month - 1, day: 1 });
+                         let startDate = moment({ year: year, month: month - 1, day: 1 });
+                         let endDate = moment(startDate).endOf('month');
+                         let totalDaysInMonth = moment(startDate).daysInMonth();
+                         // console.log(moment(startDate).format('MM-DD-YYYY'));
+                         let startDateInFormat = moment(startDate)
+                         let endDateDateInFormat = moment(endDate)
+                         // console.log('startDateInFormat', startDateInFormat, endDateDateInFormat);
+                         // console.log(month, moment(startDate).format('MM-DD-YYYY'), moment(endDate).format('MM-DD-YYYY'));
+
+                         let saturdays = 0;
+                         let sundays = 0;
+
+                         while (startDate.isSameOrBefore(endDate)) {
+                              if (startDate.day() === 6) {
+                                   saturdays++;
+                              } else if (startDate.day() === 0) {
+                                   sundays++;
+                              }
+                              startDate.add(1, 'day');
+                         }
+
+                         let totalWeekends = saturdays + sundays
+
+                         let disabledDatesCount = this.calcSumTime(startDateInFormat, endDateDateInFormat)
+                         // console.log('disabledDatesCount', disabledDatesCount);
+
+                         // console.log('disabledDatesCount', disabledDatesCount);
+
+
+                         totalWeekends += disabledDatesCount.countFive
+
+                         let workFive = totalDaysInMonth - totalWeekends
+
+                         let workSix = totalDaysInMonth - sundays - disabledDatesCount.countSix
+
+                         let sundaysWithDis = sundays + disabledDatesCount.countSix
+
+                         let timeFiveWeek40 = (40 / 5) * workFive - disabledDatesCount.hourCountBoth
+                         let timeFiveWeek35 = (35 / 5) * workFive - disabledDatesCount.hourCountBoth
+                         let timeSixWeek40 = 
+                                             sundays * 5
+                                             + (totalDaysInMonth - saturdays - sundays - disabledDatesCount.countSix)
+                                             * 7 - disabledDatesCount.hourCountBoth - disabledDatesCount.hourCountSix
+                         let timeSixWeek35 = 
+                                             sundays * 5
+                                             + (totalDaysInMonth - saturdays - sundays - disabledDatesCount.countSix)
+                                             * 6 - disabledDatesCount.hourCountBoth - disabledDatesCount.hourCountSix
+
+                         // console.log(totalDaysInMonth)
+
+                         let finalObj = {
+                              totalDays: totalDaysInMonth,
+                              saturdays: saturdays,
+                              sundays: sundays,
+                              totalWeekends: totalWeekends,
+                              sundaysWithDis: sundaysWithDis,
+                              workFive: workFive,
+                              workSix: workSix,
+                              timeFiveWeek40: timeFiveWeek40,
+                              timeFiveWeek35: timeFiveWeek35,
+                              timeSixWeek40: timeSixWeek40,
+                              timeSixWeek35: timeSixWeek35,
+                              // todayDate: { dayOfWeek: '', dateNumber: '' }
+                         }
+
+                         this.updateQuarterObj(month, finalObj)
+
+                         return finalObj
+                    },
+                    updateQuarterObj(month, calcResult) {
+
+                                                  let key = Object.keys(this.quarterObj);
+
+                         if (month <= 3) {
+                              let quarterKey = key[0];
+                              this.quarterObj[quarterKey].totalDaysInQuarter += calcResult.totalDays;
+                              this.quarterObj[quarterKey].totalWorkFive += calcResult.workFive;
+                              this.quarterObj[quarterKey].totalWorkSix += calcResult.workSix;
+                              this.quarterObj[quarterKey].totalWeekends += calcResult.totalWeekends;
+                              this.quarterObj[quarterKey].totalSundays += calcResult.sundaysWithDis;
+                              this.quarterObj[quarterKey].totalTimeFiveWeek40 += calcResult.timeFiveWeek40;
+                              this.quarterObj[quarterKey].totalTimeFiveWeek35 += calcResult.timeFiveWeek35;
+                              this.quarterObj[quarterKey].totalTimeSixWeek40 += calcResult.timeSixWeek40;
+                              this.quarterObj[quarterKey].totalTimeSixWeek35 += calcResult.timeSixWeek35;
+                         } 
+                         if (month <= 6 && month > 3) {
+                              let quarterKey = key[1];
+                              this.quarterObj[quarterKey].totalDaysInQuarter += calcResult.totalDays;
+                              this.quarterObj[quarterKey].totalWorkFive += calcResult.workFive;
+                              this.quarterObj[quarterKey].totalWorkSix += calcResult.workSix;
+                              this.quarterObj[quarterKey].totalWeekends += calcResult.totalWeekends;
+                              this.quarterObj[quarterKey].totalSundays += calcResult.sundaysWithDis;
+                              this.quarterObj[quarterKey].totalTimeFiveWeek40 += calcResult.timeFiveWeek40;
+                              this.quarterObj[quarterKey].totalTimeFiveWeek35 += calcResult.timeFiveWeek35;
+                              this.quarterObj[quarterKey].totalTimeSixWeek40 += calcResult.timeSixWeek40;
+                              this.quarterObj[quarterKey].totalTimeSixWeek35 += calcResult.timeSixWeek35;
+                         }  
+                         if (month <= 9 && month > 6) {
+                              let quarterKey = key[2];
+                              this.quarterObj[quarterKey].totalDaysInQuarter += calcResult.totalDays;
+                              this.quarterObj[quarterKey].totalWorkFive += calcResult.workFive;
+                              this.quarterObj[quarterKey].totalWorkSix += calcResult.workSix;
+                              this.quarterObj[quarterKey].totalWeekends += calcResult.totalWeekends;
+                              this.quarterObj[quarterKey].totalSundays += calcResult.sundaysWithDis;
+                              this.quarterObj[quarterKey].totalTimeFiveWeek40 += calcResult.timeFiveWeek40;
+                              this.quarterObj[quarterKey].totalTimeFiveWeek35 += calcResult.timeFiveWeek35;
+                              this.quarterObj[quarterKey].totalTimeSixWeek40 += calcResult.timeSixWeek40;
+                              this.quarterObj[quarterKey].totalTimeSixWeek35 += calcResult.timeSixWeek35;
+                         }  
+                         if (month <= 12 && month > 9) {
+                              let quarterKey = key[3];
+                              this.quarterObj[quarterKey].totalDaysInQuarter += calcResult.totalDays;
+                              this.quarterObj[quarterKey].totalWorkFive += calcResult.workFive;
+                              this.quarterObj[quarterKey].totalWorkSix += calcResult.workSix;
+                              this.quarterObj[quarterKey].totalWeekends += calcResult.totalWeekends;
+                              this.quarterObj[quarterKey].totalSundays += calcResult.sundaysWithDis;
+                              this.quarterObj[quarterKey].totalTimeFiveWeek40 += calcResult.timeFiveWeek40;
+                              this.quarterObj[quarterKey].totalTimeFiveWeek35 += calcResult.timeFiveWeek35;
+                              this.quarterObj[quarterKey].totalTimeSixWeek40 += calcResult.timeSixWeek40;
+                              this.quarterObj[quarterKey].totalTimeSixWeek35 += calcResult.timeSixWeek35;
+                         }
+
+                                        },
+                    calcSumTime(startDateInFormat, endDateDateInFormat){
+                         const disabledDates = this?.innerdisabledDatesInFormat
+                         const disabledDatesObj = {
+                              countFive: 0,
+                              countSix: 0,
+                              hourCountBoth: 0,
+                              hourCountSix: 0,
+                         }
+
+                         // console.log(disabledDates);
+                         disabledDates?.forEach((date, count) => {
+                              let dayInFormat = moment(date).format()
+                              let previousDay = moment(moment(dayInFormat).clone().subtract(1, 'days')).format()
+                              let nextDay = moment(moment(dayInFormat).add(1, 'days')).format()
+
+                                                            // console.log('dayInFormat', )
+                              // let momentDate = moment({ 
+                              //                          year: dayInFormat.get('year'), 
+                              //                          month: dayInFormat.get('month'), 
+                              //                          day: dayInFormat.get('date') })
+
+                              // console.log('momentDate', moment(momentDate).format('MM-DD-YYYY'), moment(startDate).format('MM-DD-YYYY'), moment(endDate).format('MM-DD-YYYY'))
+                              // console.log('date', dayInFormat, startDateInFormat, endDateDateInFormat, previousDay, nextDay);
+                              //weekend for five week without sat and sun
+                              if (moment(dayInFormat).isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]') && moment(dayInFormat).get('day') != 0 && moment(dayInFormat).get('day') != 6) {
+                                   disabledDatesObj.countFive++;
+                                   // console.log('count', count)
+                              }
+                              //weekend for six week without sun
+                              if (moment(dayInFormat).isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]') && moment(dayInFormat).get('day') != 0) {
+                                   disabledDatesObj.countSix++
+                                   // console.log('count', count)
+                              }
+
+                              // if (moment(dayInFormat).isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]') && moment(dayInFormat).get('day') != 0 && moment(dayInFormat).get('day') != 6) {
+                              //      hourCountBoth++
+                              //      // console.log('count', count)
+                              // }
+
+                              // if (moment(dayInFormat).isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]') && moment(dayInFormat).get('day') != 0) {
+                              //      hourCountSix++
+                              //      // console.log('count', count)
+                              // }
+                              // console.log(previousDay);
+                              if(!disabledDates.includes(previousDay)){
+                                   if (
+                                        moment(previousDay).isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]')
+                                        && moment(previousDay).get('day') != 0
+                                        && moment(previousDay).get('day') != 6) {
+                                        disabledDatesObj.hourCountBoth++
+                                        // console.log('count', count)
+                                   } else if (
+                                        moment(previousDay).isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]')
+                                        && moment(previousDay).get('day') == 6) {
+                                        disabledDatesObj.hourCountSix++
+                                   } else if (
+                                        moment(previousDay) == moment(endDateDateInFormat)
+                                        && moment(nextDay).get('day') != 0) {
+                                        disabledDatesObj.hourCountBoth++
+                                   } else if (
+                                        moment(previousDay) == moment(endDateDateInFormat)
+                                        && moment(nextDay).get('day') != 0
+                                        && moment(nextDay).get('day') == 6) {
+                                        disabledDatesObj.hourCountSix++
+                                   }
+                              }
+
+                              console.log();
+
+
+                                                            // if (moment(dayInFormat).isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]') && moment(dayInFormat).get('day') != 0) {
+                              //      count++;
+                              //      // console.log('count', count)
+                              // }
+
+                              // console.log({
+                              //      countFive: countFive,
+                              //      countSix: countSix,
+                              //      hourCountBoth: hourCountBoth,
+                              //      hourCountSix: hourCountSix,
+                              // });
+
+                         });
+                         // console.log('disabledDates', disabledDatesObj);
+                         return disabledDatesObj
+                    },
+
+                    // test(index){
+                    //      // let currentPage = this.$refs['calendar']
+                    //      // console.log(currentPage, index, this )
+                    //      // if(index){
+                    //      //      // let calendarNum = 'calendar' + el
+                    //      //      // let currentPageCopy = currentPage
+                    //      //      // if(currentPage.calendar !== undefined){
+                    //      //      // }
+                    //      // }
+                    //      // return index
+                    //      let per = this.$nextTick(() => {
+                    //           let currentPage = this.$refs['calendar' + index];
+                    //           console.log(currentPage, index,);
+                    //           if (index !== undefined) {
+                    //                // ваши дополнительные действия
+                    //           }
+                    //           return currentPage[0]._uid
+                    //      });
+                    //      console.log('per', per);
+                    //      return per
+                    // }
+                    // test(index) {
+                    //      this.$nextTick(() => {
+                    //           let currentPage = this.$refs['calendar' + index];
+                    //           if (currentPage && currentPage[0]) {
+                    //                this.$set(this.sumDaysValue, index, currentPage[0]._uid);
+                    //                console.log(`UID for index ${index}:`, currentPage[0]._uid); // Для отладки
+                    //           }
+                    //      });
+                    // }
+                    initializeUIDs() {
+                         // this.$nextTick(() => {
+                              // this.monthOrder.forEach((el, index) => {
+                                   // let currentPage = this.$refs['mainCalendar']
+                                   console.log(this.$refs);
+
+                                                                      // if (currentPage && currentPage[0]) {
+                                   //      this.$set(this.sumDaysValue, index, currentPage[0].pages[0].monthComps.days)
+                                   //      // console.log(`UID for index ${index}:`, currentPage[0])
+                                   // }
+                              // });
+                         // });
+                    },
+                    highlightPrevAndDisDate(){
+                         const disabledDates = this?.innerdisabledDatesInFormat
+
+                         // console.log(disabledDates);
+                         disabledDates?.forEach((date, count) => {
+                              let dayInFormat = moment(date).format()
+                              let previousDay = moment(moment(dayInFormat).clone().subtract(1, 'days')).format()
+                              this.innerAttributes.push(
+                                   {
+                                        dates: previousDay,
+                                        content: {
+                                             style: {
+                                                  color: '#C47A2C',
+                                             }
+                                        },
+                                   },
+                                   {
+                                        dates: dayInFormat,
+                                        content: {
+                                             style: {
+                                                  color: '#F9B974',
+                                             }
+                                        },
+                                   },
+                              )
+                         })
+                         // {
+                         //           dates:  {weekdays: [1,7] },
+                         //           content: {
+                         //                style: {
+                         //                     color: '#F9B974',
+                         //                }
+                         //           }
+                         //      }
+                    },
+                    quarterCalc(){
+                         // this.monthOrder.forEach((month, index) => {
+                         //      if (month <= 3) {
+                         //           Object.keys(this.quarterObj)[0].totalDaysInQuarter += totalDaysInMonth
+                         //           this.quarterObj.first.totalWorkFive += workFive
+                         //           this.quarterObj.first.totalWorkSix += workSix
+                         //           this.quarterObj.first.totalWeekends += totalWeekends
+                         //           this.quarterObj.first.totalSundays += sundaysWithDis
+                         //           this.quarterObj.first.totalTimeFiveWeek40 += timeFiveWeek40
+                         //           this.quarterObj.first.totalTimeFiveWeek35 += timeFiveWeek35
+                         //           this.quarterObj.first.totalTimeSixWeek40 += timeSixWeek40
+                         //           this.quarterObj.first.totalTimeSixWeek35 += timeSixWeek35
+                         //           // console.log(month)
+                         //      }
+                         // })
+
+                                             },
+                    loadMoreCalendars(){
+                         this.preloaderInner = true
+                         setTimeout(() => {
+                              this.pushNewCalendars()
+                              this.quarterObj = {
+                                   first: {
+                                        totalDaysInQuarter: 0,
+                                        totalWorkFive: 0,
+                                        totalWorkSix: 0,
+                                        totalWeekends: 0,
+                                        totalSundays: 0,
+                                        totalTimeFiveWeek40: 0,
+                                        totalTimeFiveWeek35: 0,
+                                        totalTimeSixWeek40: 0,
+                                        totalTimeSixWeek35: 0,
+                                   },
+                                   second: {
+                                        totalDaysInQuarter: 0,
+                                        totalWorkFive: 0,
+                                        totalWorkSix: 0,
+                                        totalWeekends: 0,
+                                        totalSundays: 0,
+                                        totalTimeFiveWeek40: 0,
+                                        totalTimeFiveWeek35: 0,
+                                        totalTimeSixWeek40: 0,
+                                        totalTimeSixWeek35: 0,
+                                   },
+                                   third: {
+                                        totalDaysInQuarter: 0,
+                                        totalWorkFive: 0,
+                                        totalWorkSix: 0,
+                                        totalWeekends: 0,
+                                        totalSundays: 0,
+                                        totalTimeFiveWeek40: 0,
+                                        totalTimeFiveWeek35: 0,
+                                        totalTimeSixWeek40: 0,
+                                        totalTimeSixWeek35: 0,
+                                   },
+                                   fourth: {
+                                        totalDaysInQuarter: 0,
+                                        totalWorkFive: 0,
+                                        totalWorkSix: 0,
+                                        totalWeekends: 0,
+                                        totalSundays: 0,
+                                        totalTimeFiveWeek40: 0,
+                                        totalTimeFiveWeek35: 0,
+                                        totalTimeSixWeek40: 0,
+                                        totalTimeSixWeek35: 0,
+                                   }
+                              }
+                              this.preloaderInner = false
+                         }, );
+                    },
+                    pushNewCalendars(){
+                         if (this.monthOrder.length <= 6) {
+                              this.monthOrder.push(7, 8, 9, 10, 11, 12)
+                         } else {
+                              this.monthOrder = [1, 2, 3, 4, 5, 6]
+                         }
+                    },
+                    quarterOrderTitle(el){
+                         switch (el) {
+                              case 1:
+                                   return 'I квартал';
+                              case 4:
+                                   return 'II квартал';
+                              case 7:
+                                   return 'III квартал';
+                              case 10:
+                                   return 'IV квартал';
+                              default:
+                                   return '';
+                         }
+                    },
+                    getQuarterOrderKey(el) {
+                         switch (el) {
+                              case 1:
+                                   return 'first';
+                              case 4:
+                                   return 'second';
+                              case 7:
+                                   return 'third';
+                              case 10:
+                                   return 'fourth';
+                              default:
+                                   return '';
+                         }
+                    }
+
+                                        // test(el){
+                    //      return el
+                    // }
                },
-               mounted() {}
+               created(){
+                    this.preloader = true
+               },
+               mounted() {
+                    this.initializeUIDs()
+                    // this.moment()
+                    this.highlightPrevAndDisDate()
+                    this.preloader = false
+               },
+               updated() {
+                    this.initializeUIDs()
+                    // this.moment()
+               }
           })
      </script>
 </div>
