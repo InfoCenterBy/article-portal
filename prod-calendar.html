@@ -308,6 +308,9 @@
                                         :max-page='{month: new Date().getMonth() + 1, year: new Date().getFullYear()}'
                                         :masks="{title:'MMMM', weekdays: 'WW'}" locale="ru"
                                         :ref="'mainCalendar'"
+                                        @transition-end="mainCalendarUpdate()"
+                                        :attributes="innerAttributes"
+                                        :disabled-dates="innerdisabledDates"
                                         >
                                    </v-calendar>
                               </div>
@@ -363,6 +366,83 @@
                                                   </div>
 
                                                             </div>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+                         <div class="row row-container mt-4 w-100">
+                              <div class="col-xxl-6 d-flex flex-column my-1">
+                                   <div class="d-flex flex-row align-items-center justify-content-between mt-2">
+                                        <span class="fs-16 color-nav-black">Календарные дни</span>
+                                        <div class="time-underline mt-2 mx-1"></div>
+                                        <span class="color-gold fw-500">{{ mainCalendarTime.totalDays}}</span>
+                                   </div>
+                                   <div class="work-day-block mt-12">
+                                        <div class="work-time-elem">
+                                             <span class="fs-16 d-block fw-600">
+                                                  Рабочие дни:
+                                             </span>
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center justify-content-between my-1">
+                                             <span class="fs-14 color-nav-black">по пятидневной рабочей неделе</span>
+                                             <div class="time-underline mt-2"></div>
+                                             <span class="color-gold fw-500">{{ mainCalendarTime.workFive }}</span>
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center justify-content-between my-1">
+                                             <span class="fs-14 color-nav-black">по шестидневной рабочей неделе</span>
+                                             <div class="time-underline mt-2"></div>
+                                             <span class="color-gold fw-500">{{ mainCalendarTime.workSix }}</span>
+                                        </div>
+                                   </div>
+                                   <div class="work-day-block mt-2">
+                                        <div class="work-time-elem">
+                                             <span class="fs-16 d-block fw-600">
+                                                  Нерабочие дни (выходные и праздничные дни):
+                                             </span>
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center justify-content-between my-1">
+                                             <span class="fs-14 color-nav-black">по пятидневной рабочей неделе</span>
+                                             <div class="time-underline mt-2"></div>
+                                             <span class="color-gold fw-500">{{ mainCalendarTime.totalWeekends}}</span>
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center justify-content-between my-1">
+                                             <span class="fs-14 color-nav-black">по шестидневной рабочей неделе</span>
+                                             <div class="time-underline mt-2"></div>
+                                             <span class="color-gold fw-500">{{ mainCalendarTime.sundaysWithDis}}</span>
+                                        </div>
+                                   </div>
+                              </div>
+                              <div class="col-xxl-6 d-flex flex-column my-1">
+                                   <div class="work-day-block">
+                                        <div class="work-time-elem">
+                                             <span class="fs-16 d-block fw-600">
+                                                  Расчетная норма рабочего времени (в часах):
+                                             </span>
+                                        </div>
+                                        <div class="mt-12">
+                                             <span class="fs-14 color-nav-black fw-600 ">для пятидневной рабочей недели:</span>
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center justify-content-between my-1">
+                                             <span class="fs-14 color-nav-black">при 40-часовой рабочей неделе</span>
+                                             <div class="time-underline mt-2"></div>
+                                             <span class="color-gold fw-500">{{ mainCalendarTime.timeFiveWeek40}}</span>
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center justify-content-between my-1">
+                                             <span class="fs-14 color-nav-black">при 35-часовой рабочей неделе</span>
+                                             <div class="time-underline mt-2"></div>
+                                             <span class="color-gold fw-500">{{ mainCalendarTime.timeFiveWeek35}}</span>
+                                        </div>
+                                        <div class="mt-3"></div>
+                                        <span class="fs-14 color-nav-black fw-600">для шестидневной рабочей недели:</span>
+                                        <div class="d-flex flex-row align-items-center justify-content-between my-1">
+                                             <span class="fs-14 color-nav-black">при 40-часовой рабочей неделе</span>
+                                             <div class="time-underline mt-2"></div>
+                                             <span class="color-gold fw-500">{{ mainCalendarTime.timeSixWeek40}}</span>
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center justify-content-between my-1">
+                                             <span class="fs-14 color-nav-black">при 35-часовой рабочей неделе</span>
+                                             <div class="time-underline mt-2"></div>
+                                             <span class="color-gold fw-500">{{ mainCalendarTime.timeSixWeek35}}</span>
                                         </div>
                                    </div>
                               </div>
@@ -674,7 +754,8 @@
                                    totalTimeSixWeek40: 0,
                                    totalTimeSixWeek35: 0,
                               }
-                         }
+                         },
+                         mainCalendarTime: {}
                     }
                },
                computed:{
@@ -715,7 +796,7 @@
                          })
                     },
                     calcTimeResults() {
-                         return this.monthOrder.map(el => this.calcTime(el));
+                         return this.monthOrder.map(el => this.calcTime(el, 'etc'));
                     },
 
                                         // innerdisabledDates(){
@@ -769,7 +850,7 @@
                          // return moment(date).format()
                          return date
                     },
-                    calcTime(month) {
+                    calcTime(month, type) {
 
 
 
@@ -845,7 +926,9 @@
                               // todayDate: { dayOfWeek: '', dateNumber: '' }
                          }
 
-                         this.updateQuarterObj(month, finalObj)
+                         if(type === 'etc'){
+                              this.updateQuarterObj(month, finalObj)
+                         }
 
                          return finalObj
                     },
@@ -1024,7 +1107,7 @@
                          // this.$nextTick(() => {
                               // this.monthOrder.forEach((el, index) => {
                                    // let currentPage = this.$refs['mainCalendar']
-                                   console.log(this.$refs);
+                                   // console.log('this.$refs', this.$refs.mainCalendar);
 
                                                                       // if (currentPage && currentPage[0]) {
                                    //      this.$set(this.sumDaysValue, index, currentPage[0].pages[0].monthComps.days)
@@ -1172,23 +1255,26 @@
                               default:
                                    return '';
                          }
-                    }
+                    },
 
-                                        // test(el){
-                    //      return el
-                    // }
+                                        mainCalendarUpdate(){
+                         // console.log('we are here', month);
+                         // console.log('this.$refs', this.$refs.mainCalendar.pages[0].month);
+                         this.mainCalendarTime = this.calcTime(this.$refs.mainCalendar.pages[0].month)
+                    }
                },
                created(){
                     this.preloader = true
                },
                mounted() {
-                    this.initializeUIDs()
+                    // this.initializeUIDs()
                     // this.moment()
                     this.highlightPrevAndDisDate()
+                    this.mainCalendarUpdate(this.$refs.mainCalendar.pages[0].month)
                     this.preloader = false
                },
                updated() {
-                    this.initializeUIDs()
+                    // this.initializeUIDs()
                     // this.moment()
                }
           })
