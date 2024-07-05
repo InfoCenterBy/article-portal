@@ -93,9 +93,18 @@
                }
           }
      }
-     .prod-calendar-current-month{
+     .prod-calendar-etc{
           .vc-pane-layout{
                border-radius: 20px;
+          }
+     }
+     .prod-calendar-etc:not(.prod-calendar-current-month){
+          .vc-pane-layout{
+               border: 1px solid var(--color-gray);
+          }
+     }
+     .prod-calendar-current-month{
+          .vc-pane-layout{
                background-color: #034A6612;
           }
      }

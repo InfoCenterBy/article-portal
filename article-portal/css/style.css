@@ -3418,14 +3418,29 @@ body._lock {
   content: none;
 }
 
-.spinner {
-  width: 80px;
-  height: 80px;
-  border: 5px solid var(--color-gray);
-  border-top: 6px solid var(--color-gold);
+.spinner,
+.spinner-inner {
+  border: 5px solid;
+  border-top: 6px solid;
   border-radius: 100%;
   -webkit-animation: spin 1s infinite linear;
           animation: spin 1s infinite linear;
+}
+
+.spinner {
+  width: 80px;
+  height: 80px;
+  border-color: var(--color-gray);
+  border-top-color: var(--color-gold);
+}
+
+.spiner.spinner-inner {
+  border: 3px solid;
+  border-top: 4px solid;
+  width: 24px;
+  height: 24px;
+  border-color: var(--color-gray-dark);
+  border-top-color: var(--color-white);
 }
 
 @-webkit-keyframes spin {
@@ -3450,6 +3465,10 @@ body._lock {
     -webkit-transform: rotate(360deg);
             transform: rotate(360deg);
   }
+}
+
+.mt-12 {
+  margin-top: 0.75rem;
 }
 
 p {
@@ -8186,8 +8205,15 @@ html {
   background-color: var(--color-white-gray) !important;
 }
 
-.prod-calendar-container .prod-calendar-current-month .vc-pane-layout {
+.prod-calendar-container .prod-calendar-etc .vc-pane-layout {
   border-radius: 20px;
+}
+
+.prod-calendar-container .prod-calendar-etc:not(.prod-calendar-current-month) .vc-pane-layout {
+  border: 1px solid var(--color-gray);
+}
+
+.prod-calendar-container .prod-calendar-current-month .vc-pane-layout {
   background-color: rgba(3, 74, 102, 0.0705882353);
 }
 

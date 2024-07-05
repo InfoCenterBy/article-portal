@@ -3494,14 +3494,11 @@
     }
 }
 
-.spinner{
-    width: 80px;
-    height: 80px;
-    
-    border: 5px solid var(--color-gray);
-    border-top: 6px solid var(--color-gold);
+.spinner, .spinner-inner{
+    border: 5px solid;
+    border-top: 6px solid;
     border-radius: 100%;
-    
+
     // position: absolute;
     // top:0;
     // bottom:0;
@@ -3512,10 +3509,33 @@
     animation: spin 1s infinite linear;
 }
 
+.spinner{
+  width: 80px;
+  height: 80px;
+  border-color: var(--color-gray);
+  border-top-color: var(--color-gold);
+}
+
+
+
+
+.spiner.spinner-inner{
+    border: 3px solid;
+    border-top: 4px solid;
+    width: 24px;
+    height: 24px;
+    border-color: var(--color-gray-dark);
+    border-top-color: var(--color-white);
+}
+
 @keyframes spin {
     from{
         transform: rotate(0deg);
     }to{
         transform: rotate(360deg);
     }
+}
+
+.mt-12{
+  margin-top: .75rem;
 }
