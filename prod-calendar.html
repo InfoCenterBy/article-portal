@@ -300,12 +300,29 @@
                <div class="my-5"></div>
           </div>
           <div class="" v-show="preloader !== true">
-               <div class="row opacity-0" :class="{ 'opacity-100': preloader !== true }">
+
+                              <div class="row opacity-0" :class="{ 'opacity-100': preloader !== true }">
+                    <div class="col-12">
+                         <div class="d-flex flex-row flex-wrap gap-2 align-items-center justify-content-between">
+                              <h1 class="fs-32 fw-600">
+                                   Производственный календарь
+                              </h1>
+                              <div class="">
+                                   <a href="" target="_blank" rel="noopener noreferrer"
+                                        class="color-gray-dark d-flex flex-row align-items-center hover-orange">
+                                        <span>Архив производственных календарей</span>
+                                        <i class="bi bi-arrow-right ms-2"></i>
+                                   </a>
+                              </div>
+                         </div>
+                    </div>
+                    <div class="col-12 mt-40"></div>
                     <div class="col-xxxl-8 my-2 d-flex align-items-start flex-column">
                          <div class="d-flex flex-row flex-wrap flex-xxl-nowrap gap-xl-4 gap-3 w-100">
                               <div class="d-flex border border-1 border-20 overflow-hidden w-100">
                                    <v-calendar borderless class="prod-calendar"
-                                        :max-page='{month: new Date().getMonth() + 1, year: new Date().getFullYear()}'
+                                        :max-date="new Date(new Date().getFullYear(), 11, 31, 23, 59, 59, 999)"
+                                        :min-date="new Date(new Date().getFullYear(), 0, 1)"
                                         :masks="{title:'MMMM', weekdays: 'WW'}" locale="ru"
                                         :ref="'mainCalendar'"
                                         @transition-end="mainCalendarUpdate()"
@@ -315,15 +332,14 @@
                                    </v-calendar>
                               </div>
                               <div class="w-100 d-flex flex-column">
-                                   <div class="calendar-today border border-1 p-xxl-4 p-lg-3 p-2">
-                                        <span class="color-nav-black d-block">Сегодня</span>
-                                        <div class="mt-2 fs-24 ff-pt-serif">
-                                             <span class="color-gold fw-600">{{setToday?.dayNum}}</span>
-                                             <span class="color-gold fw-600">{{monthTitle}}</span>
+                                   <div class="calendar-today border border-1 p-xxl-4 p-3">
+                                        <span class="color-gray-dark d-block">Сегодня</span>
+                                        <div class="fs-24 ff-pt-serif">
+                                             <span class="color-gold fw-600">{{setToday?.nowDate}}</span>
                                              <span class="">({{setToday?.dayOfWeek}})</span>
                                         </div>
                                    </div>
-                                   <div class="weekend-block border border-1 border-20 p-xxl-4 p-lg-3 p-2 mt-3">
+                                   <div class="weekend-block border border-1 border-20 p-xxl-4 p-3 mt-3">
                                         <div class="weekend-block__list">
                                              <div class="d-flex flex-column gap-2">
                                                   <div class="w-100 d-flex align-items-start justify-content-start">
@@ -336,36 +352,32 @@
                                                             на 1 час</span>
                                                   </div>
                                                   <div class="mt-3"></div>
-                                                  <div class="w-100 d-flex align-items-start justify-content-start">
-                                                       <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div>
-                                                       <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
+                                                  <div class="">
+                                                       <span class="fw-600">Нерабочие праздничные дни:</span>
                                                   </div>
-                                                  <div class="w-100 d-flex align-items-start justify-content-start">
-                                                       <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div>
-                                                       <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
-                                                  </div>
-                                                  <div class="w-100 d-flex align-items-start justify-content-start">
-                                                       <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div>
-                                                       <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
-                                                  </div>
-                                                  <div class="w-100 d-flex align-items-start justify-content-start">
-                                                       <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div>
-                                                       <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
-                                                  </div>
-                                                  <div class="w-100 d-flex align-items-start justify-content-start">
-                                                       <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div>
-                                                       <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
-                                                  </div>
-                                                  <div class="w-100 d-flex align-items-start justify-content-start">
-                                                       <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div>
-                                                       <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
-                                                  </div>
-                                                  <div class="w-100 d-flex align-items-start justify-content-start">
-                                                       <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div>
-                                                       <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
+                                                  <div class="w-100 d-flex flex-column gap-1 align-items-start justify-content-start" >
+                                                       <div v-if="innerdisabledDatesWithTitleFilteredByCurrentMonth.length == 0">
+                                                            Отсутствуют 
+                                                       </div>
+                                                       <div v-if="innerdisabledDatesWithTitleFilteredByCurrentMonth.length != 0" v-for="(el, index) in innerdisabledDatesWithTitleFilteredByCurrentMonth" class="fs-14">
+                                                            <span class="fw-600">{{ viewDateDay(el.date) }}</span> – <span>{{ el.title }}</span>;
+                                                       </div>
                                                   </div>
 
-                                                            </div>
+                                                  <div class="mt-3"></div>
+                                                  <div class="">
+                                                       <span class="fw-600">Перенос рабочих дней:</span>
+                                                  </div>
+                                                  <div class="w-100 d-flex flex-column gap-1 align-items-start justify-content-start">
+                                                       <div v-if="transferDatesFilteredByCurrentMonth.length == 0">
+                                                            Отсутствуют
+                                                       </div>
+                                                       <div class="" v-if="transferDatesFilteredByCurrentMonth.length != 0" v-for="(el, index) in transferDatesFilteredByCurrentMonth" class="fs-14">
+                                                            с {{viewTranserDates(el).from}} на {{viewTranserDates(el).to}};
+                                                       </div>
+                                                  </div>
+
+                                             </div>
                                         </div>
                                    </div>
                               </div>
@@ -471,17 +483,46 @@
                                              <img src="./img/new-main/proizSix.png" alt="">
                                         </picture>
                                         <span class="d-block ff-pt-serif fs-18 color-gray-dark">
-                                             Пятидневной недели
+                                             Шестидневной недели
                                         </span>
                                    </a>
                               </div>
                          </div>
                     </div>
                </div>
-               <div class="row">
+               <div class="mt-80 d-xxl-block d-none"></div>
+               <div class="mt-40 d-xxl-none d-block"></div>
+               <div class="row opacity-0" :class="{ 'opacity-100': preloader !== true }">
+                    <div class="col-xxxl-8">
+                         <div class="d-flex flex-row flex-wrap justify-content-between align-items-center gap-2">
+                              <h3 class="fs-24 fw-600">
+                                   Производственный календарь на {{new Date().getFullYear()}} год
+                              </h3>
+                              <button href="" class="white-btn">
+                                   <span>
+                                        Скачать календарь на {{new Date().getFullYear()}} год
+                                   </span> <i class="bi bi-download ms-2"></i>
+                              </button>
+                         </div>
+                    </div>
+                    <div class="col-xxl-8 mt-4">
+                         <div class="d-flex flex-row gap-2 flex-wrap">
+                              <div class="d-flex align-items-start justify-content-start">
+                                   <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div>
+                                   <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
+                              </div>
+                              <div class="d-flex align-items-start justify-content-start">
+                                   <div class="calendar-dot calendar-dot-lg calendar-dot-show me-2"></div>
+                                   <span class="color-gray-dark fs-14">Предпраздничный день. Время работы сокращено
+                                        на 1 час</span>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+               <div class="row mt-4">
                     <template v-for="(el, index) in monthOrder">
                          <template v-if="el == 1 || el == 4 || el == 7 || el == 10">
-                              <div class="col-xxl-8 col-12" :class="[ el > 3 ? 'mt-xxl-5 mt-4' : '']">
+                              <div class="col-xxxl-8 col-12" :class="[ el > 3 ? 'mt-xxl-5 mt-4' : '']">
 
                                                                       <div class="">
                                         <h3 class="fs-24 fw-600">
@@ -578,7 +619,7 @@
                                    :ref="'calendar' + index"
                                    :disabled-dates="innerdisabledDates">
                                    <template #footer>
-                                        <div class="row mt-3">
+                                        <div class="row mt-3 row-container">
                                              <div class="col-12">
                                                   <div class="d-flex flex-row align-items-center justify-content-between mt-2">
                                                        <span class="fs-16 color-nav-black">Календарные дни</span>
@@ -668,13 +709,50 @@
                          </button>
                     </div>
                </div>
+               <div class="mt-5 opacity-0" :class="{ 'opacity-100': preloader !== true }">
+                    <div class="row ">
+                         <div class="col-xxl-8 d-flex my-1">
+                              <div class="border border-10 border-1 border-gray p-4 w-100">
+                                   <div class="">
+                                        <h4 class="fs-24 fw-600 color-black">
+                                             Нерабочие праздничные дни:
+                                        </h4>
+                                   </div>
+                                   <template>
+                                        <div class="row row-container mt-3">
+                                             <div v-for="(group, groupIndex) in groupBySix(innerdisabledDatesWithTitle)" :key="groupIndex" class="col-xxl-6 d-flex flex-column gap-2">
+                                                  <div v-for="(el, index) in group" :key="index" class="">
+                                                       <span class="fw-600">{{ viewDateDay(el.date) }}</span> – <span>{{ el.title }}</span>;
+                                                  </div>
+                                             </div>
+                                        </div>
+                                   </template>
+                              </div>
+                         </div>
+                         <div class="col-xxl-4 d-flex my-1">
+                              <div class="border border-10 border-1 border-gray p-4 w-100">
+                                   <div class="">
+                                        <h4 class="fs-24 fw-600 color-black">
+                                             Перенос рабочих дней:
+                                        </h4>
+                                   </div>
+                                   <div class="mt-3"></div>
+                                   <template>
+                                        <div class="" v-for="(el, index) in transferDatesArr">
+                                             с {{viewTranserDates(el).from}} на {{viewTranserDates(el).to}};
+                                        </div>
+                                   </template>
+                              </div>
+                         </div>
+                    </div>
+               </div>
           </div>
      </div>
      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
      <script src="https://unpkg.com/vue@2"></script>
      <script src="https://unpkg.com/@popperjs/core@2"></script>
      <script src="https://unpkg.com/v-calendar"></script>
-     <script src="https://cdn.jsdelivr.net/npm/moment@2.30.1/moment.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment-with-locales.min.js" integrity="sha512-4F1cxYdMiAW98oomSLaygEwmCnIP38pb4Kx70yQYqRwLVCs3DbRumfBq82T08g/4LJ/smbFGFpmeFlQgoDccgg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
      <script async>
           // Vue.component('test-comp', {
           // })
@@ -701,14 +779,7 @@
                          currentDate: new Date(),
                          sumDaysValue: [],
                          sumSepareateDays: [],
-                         innerdisabledDates: [
-                              // new Date('01-01-2024'),
-                              // new Date('01-02-2024'),
-                              // new Date('01-07-2024'),
-                              new Date('05-01-2024'),
-                              new Date('05-09-2024'),
-                              new Date('05-14-2024'),
-                         ],
+                         innerdisabledDates: [],
                          quarterObj:{
                               first:{
                                    totalDaysInQuarter: 0,
@@ -755,32 +826,61 @@
                                    totalTimeSixWeek35: 0,
                               }
                          },
-                         mainCalendarTime: {}
+                         mainCalendarTime: {},
+                         transferDatesArr: [
+                              {
+                                   from: '02-17-2024',
+                                   to: '02-12-2024'
+                              }
+                         ],
+                         innerdisabledDatesWithTitle: [
+                              {
+                                   date: '05-01-2024',
+                                   title: 'Праздник труда'
+                              },
+                              {
+                                   date: '05-09-2024',
+                                   title: 'День Победы'
+                              },
+                              {
+                                   date: '05-14-2024',
+                                   title: 'Радуница'
+                              },
+
+                                                       ],
+                         innerdisabledDatesWithTitleFilteredByCurrentMonth: [],
+                         transferDatesFilteredByCurrentMonth: [],
                     }
                },
                computed:{
                     setToday() {
-                         let timeObj = { dayOfWeek: '', dateNumber: '' }
-                         const days = [
-                              'воскресенье',
-                              'понедельник',
-                              'вторник',
-                              'среда',
-                              'четверг',
-                              'пятница',
-                              'суббота'
-                         ];
-                         let day = new Date()
-                         let textDay = day.getDay()
-                         let numberDay = day.toLocaleDateString('en-GB').split('/')
-                         this.formatTitle(day)
-                         try {
-                              timeObj.dayOfWeek = days[textDay]
-                              timeObj.dateNumber = numberDay[0] + '.' + numberDay[1]
-                              timeObj.dayNum = numberDay[0]
-                              timeObj.monthString = day.toLocaleString('default', {month: 'long'})
-                         } catch (error) {
-                              console.log('setToday error', error)
+                         // let timeObj = { dayOfWeek: '', dateNumber: '' }
+                         // const days = [
+                         //      'воскресенье',
+                         //      'понедельник',
+                         //      'вторник',
+                         //      'среда',
+                         //      'четверг',
+                         //      'пятница',
+                         //      'суббота'
+                         // ];
+                         // let day = new Date()
+                         // let textDay = day.getDay()
+                         // let numberDay = day.toLocaleDateString('en-GB').split('/')
+                         // this.formatTitle(day)
+                         // try {
+                         //      timeObj.dayOfWeek = days[textDay]
+                         //      timeObj.dateNumber = numberDay[0] + '.' + numberDay[1]
+                         //      timeObj.dayNum = numberDay[0]
+                         //      timeObj.monthString = day.toLocaleString('default', {month: 'long'})
+                         // } catch (error) {
+                         //      console.log('setToday error', error)
+                         // }
+                         let nowDate = moment().locale('ru').format('D MMMM')
+                         let dayOfWeek = moment().locale('ru').format('dddd')
+                         let timeObj = {
+                              nowDate: nowDate,
+                              dayOfWeek: dayOfWeek
                          }
                          return timeObj
                          // + ' ' + day.toLocaleString('default', {month: 'long'}) if need text month
@@ -1260,8 +1360,116 @@
                                         mainCalendarUpdate(){
                          // console.log('we are here', month);
                          // console.log('this.$refs', this.$refs.mainCalendar.pages[0].month);
-                         this.mainCalendarTime = this.calcTime(this.$refs.mainCalendar.pages[0].month)
-                    }
+                         const currentMonth = this.$refs.mainCalendar.pages[0].month
+                         this.mainCalendarTime = this.calcTime(currentMonth)
+                         // this.innerdisabledDatesWithTitleFilteredByCurrentMonth(currentMonth)
+                         this.innerdisabledDatesCurrentMonth(this.innerdisabledDatesWithTitle , currentMonth)
+                         this.transferDatesFilteredByCurrentMonthProcess(this.transferDatesArr , currentMonth)
+                    },
+                    innerdisabledDatesCurrentMonth(datesArr, month){
+
+                         const monthString = month.toString().padStart(2, '0')
+
+                         this.innerdisabledDatesWithTitleFilteredByCurrentMonth = datesArr.filter(item => {
+                              const itemMonth = item.date.split('-')[0]
+                              return itemMonth === monthString
+                         });
+                    },
+                    transferDatesFilteredByCurrentMonthProcess(datesArr, month){
+                         const monthString = month.toString().padStart(2, '0');
+
+                         this.transferDatesFilteredByCurrentMonth = datesArr.filter(item => {
+                              const fromMonth = item.from.split('-')[0];
+                              const toMonth = item.to.split('-')[0];
+                              return fromMonth === monthString || toMonth === monthString;
+                         });
+                    },
+                    transferDates(){
+                         this.transferDatesArr.forEach((date, count) => {
+                              let dayInFormatFrom = moment(new Date(date.from)).format()
+                              let dayInFormatTo = moment(new Date(date.to)).format()
+                              this.innerAttributes.push(
+                                   {
+                                        dates: dayInFormatFrom,
+                                        content: {
+                                             style: {
+                                                  color: '#282828',
+                                             }
+                                        },
+                                   },
+                                   {
+                                        dates: dayInFormatTo,
+                                        content: {
+                                             style: {
+                                                  color: '#F9B974',
+                                             }
+                                        },
+                                   },
+                              )
+                         })
+                    },
+                    processInnerDisabeledDates(){
+                         this.innerdisabledDatesWithTitle.forEach((date, count) => {
+                              this.innerdisabledDates.push(new Date(date.date))
+                         })
+                         this.innerdisabledDatesWithTitle.sort((a, b) => {
+                              const dateA = moment(a.date, 'MM-DD-YYYY');
+                              const dateB = moment(b.date, 'MM-DD-YYYY');
+                              return dateA - dateB;
+                         });
+
+                                             },
+                    viewDateDay(date){
+                         let dateInFormat = moment(new Date(date))
+                         let monthName = moment(dateInFormat).locale('ru').format('D MMMM')
+                         return monthName
+                    },
+                    groupBySix(arr) {
+                         const groups = [];
+                              for (let i = 0; i < arr.length; i += 6) {
+                                   groups.push(arr.slice(i, i + 6));
+                              }
+                         return groups;
+                    },
+                    viewTranserDates(date) {
+                         const weekDaysFrom = {
+                              'понедельник': 'понедельника',
+                              'вторник': 'вторника',
+                              'среда': 'среды',
+                              'четверг': 'четверга',
+                              'пятница': 'пятницы',
+                              'суббота': 'субботы',
+                              'воскресенье': 'воскресенья'
+                         };
+
+                         const weekDaysTo = {
+                              'понедельник': 'понедельник',
+                              'вторник': 'вторник',
+                              'среда': 'среду',
+                              'четверг': 'четверг',
+                              'пятница': 'пятницу',
+                              'суббота': 'субботу',
+                              'воскресенье': 'воскресенье'
+                         };
+
+                         let dateFrom = moment(new Date(date.from)).locale('ru');
+                         let dateTo = moment(new Date(date.to)).locale('ru');
+
+                         let dayOfWeekFrom = dateFrom.format('dddd');
+                         let dayOfWeekTo = dateTo.format('dddd');
+
+                         let dayOfWeekFromInCase = weekDaysFrom[dayOfWeekFrom];
+                         let dayOfWeekToInCase = weekDaysTo[dayOfWeekTo];
+
+                         let dateInFormatFrom = `${dayOfWeekFromInCase} ${dateFrom.format('D MMMM')}`;
+                         let dateInFormatTo = `${dayOfWeekToInCase} ${dateTo.format('D MMMM')}`;
+
+                         return {
+                              from: dateInFormatFrom,
+                              to: dateInFormatTo
+                         };
+                    },
+
                },
                created(){
                     this.preloader = true
@@ -1269,8 +1477,56 @@
                mounted() {
                     // this.initializeUIDs()
                     // this.moment()
+                    this.processInnerDisabeledDates()
                     this.highlightPrevAndDisDate()
                     this.mainCalendarUpdate(this.$refs.mainCalendar.pages[0].month)
+                    this.transferDates()
+                    this.quarterObj = {
+                                   first: {
+                                        totalDaysInQuarter: 0,
+                                        totalWorkFive: 0,
+                                        totalWorkSix: 0,
+                                        totalWeekends: 0,
+                                        totalSundays: 0,
+                                        totalTimeFiveWeek40: 0,
+                                        totalTimeFiveWeek35: 0,
+                                        totalTimeSixWeek40: 0,
+                                        totalTimeSixWeek35: 0,
+                                   },
+                                   second: {
+                                        totalDaysInQuarter: 0,
+                                        totalWorkFive: 0,
+                                        totalWorkSix: 0,
+                                        totalWeekends: 0,
+                                        totalSundays: 0,
+                                        totalTimeFiveWeek40: 0,
+                                        totalTimeFiveWeek35: 0,
+                                        totalTimeSixWeek40: 0,
+                                        totalTimeSixWeek35: 0,
+                                   },
+                                   third: {
+                                        totalDaysInQuarter: 0,
+                                        totalWorkFive: 0,
+                                        totalWorkSix: 0,
+                                        totalWeekends: 0,
+                                        totalSundays: 0,
+                                        totalTimeFiveWeek40: 0,
+                                        totalTimeFiveWeek35: 0,
+                                        totalTimeSixWeek40: 0,
+                                        totalTimeSixWeek35: 0,
+                                   },
+                                   fourth: {
+                                        totalDaysInQuarter: 0,
+                                        totalWorkFive: 0,
+                                        totalWorkSix: 0,
+                                        totalWeekends: 0,
+                                        totalSundays: 0,
+                                        totalTimeFiveWeek40: 0,
+                                        totalTimeFiveWeek35: 0,
+                                        totalTimeSixWeek40: 0,
+                                        totalTimeSixWeek35: 0,
+                                   }
+                              }
                     this.preloader = false
                },
                updated() {

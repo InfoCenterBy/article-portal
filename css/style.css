@@ -3471,6 +3471,18 @@ body._lock {
   margin-top: 0.75rem;
 }
 
+.border-gray {
+  border-color: var(--color-gray) !important;
+}
+
+.mt-40 {
+  margin-top: 2.5rem;
+}
+
+.mt-80 {
+  margin-top: 5rem;
+}
+
 p {
   margin-bottom: 24px;
 }
@@ -9879,6 +9891,10 @@ html {
 
   .calendar-wrapper {
     padding: 4px;
+  }
+
+  .prod-calendar .vc-day-content {
+    padding: 5px 3px;
   }
 }
 
