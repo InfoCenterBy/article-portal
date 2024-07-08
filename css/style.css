@@ -8208,13 +8208,13 @@ html {
   border-radius: 20px;
 }
 
-.prod-calendar-container .vc-container {
-  --orange-900: #F9B974;
+.prod-calendar-gray-hover-days .vc-day-content:hover,
+.prod-calendar-gray-hover-days .vc-day-content:focus {
+  background-color: var(--color-white-gray) !important;
 }
 
-.prod-calendar-container .prod-calendar-etc .vc-day-content:hover,
-.prod-calendar-container .prod-calendar-etc .vc-day-content:focus {
-  background-color: var(--color-white-gray) !important;
+.prod-calendar-container .vc-container {
+  --orange-900: #F9B974;
 }
 
 .prod-calendar-container .prod-calendar-etc .vc-pane-layout {
