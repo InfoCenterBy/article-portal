@@ -3475,6 +3475,14 @@ body._lock {
   border-color: var(--color-gray) !important;
 }
 
+.mt-40 {
+  margin-top: 2.5rem;
+}
+
+.mt-80 {
+  margin-top: 5rem;
+}
+
 p {
   margin-bottom: 24px;
 }
@@ -8200,13 +8208,13 @@ html {
   border-radius: 20px;
 }
 
-.prod-calendar-container .vc-container {
-  --orange-900: #F9B974;
+.prod-calendar-gray-hover-days .vc-day-content:hover,
+.prod-calendar-gray-hover-days .vc-day-content:focus {
+  background-color: var(--color-white-gray) !important;
 }
 
-.prod-calendar-container .prod-calendar-etc .vc-day-content:hover,
-.prod-calendar-container .prod-calendar-etc .vc-day-content:focus {
-  background-color: var(--color-white-gray) !important;
+.prod-calendar-container .vc-container {
+  --orange-900: #F9B974;
 }
 
 .prod-calendar-container .prod-calendar-etc .vc-pane-layout {
@@ -8219,6 +8227,17 @@ html {
 
 .prod-calendar-container .prod-calendar-current-month .vc-pane-layout {
   background-color: rgba(3, 74, 102, 0.0705882353);
+}
+
+.prod-calendar-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.prod-calendar-table td {
+  border: 1px solid red;
+  text-align: center;
 }
 
 .cookie-modal .btn-close:focus {
@@ -9883,6 +9902,10 @@ html {
 
   .calendar-wrapper {
     padding: 4px;
+  }
+
+  .prod-calendar .vc-day-content {
+    padding: 5px 3px;
   }
 }
 

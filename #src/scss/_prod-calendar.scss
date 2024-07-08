@@ -47,6 +47,9 @@
           @media (max-width: 960px) {
                padding: 8px 10px;
           }
+          @media (max-width: 560px) {
+               padding: 5px 3px;
+          }
      }
      .vc-arrow.is-disabled{
           display: none;
@@ -82,16 +85,17 @@
      
 }
 
-.prod-calendar-container{
-     .vc-container{
-          --orange-900: #F9B974;
-     }
-     .prod-calendar-etc{
-          .vc-day-content{
+.prod-calendar-gray-hover-days{
+     .vc-day-content{
                &:hover,&:focus{
                     background-color: var(--color-white-gray) !important;
                }
           }
+}
+
+.prod-calendar-container{
+     .vc-container{
+          --orange-900: #F9B974;
      }
      .prod-calendar-etc{
           .vc-pane-layout{
@@ -107,5 +111,15 @@
           .vc-pane-layout{
                background-color: #034A6612;
           }
+     }
+}
+
+.prod-calendar-table{
+     width: 100%;
+     border-collapse:collapse;
+	border-spacing:0;
+     td{
+          border: 1px solid red;
+          text-align: center;
      }
 }
