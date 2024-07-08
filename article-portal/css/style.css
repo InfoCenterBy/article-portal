@@ -3471,6 +3471,10 @@ body._lock {
   margin-top: 0.75rem;
 }
 
+.border-gray {
+  border-color: var(--color-gray) !important;
+}
+
 p {
   margin-bottom: 24px;
 }
