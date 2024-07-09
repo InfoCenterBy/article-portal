@@ -1492,8 +1492,8 @@
                          let dayOfWeekFromInCase = weekDaysFrom[dayOfWeekFrom];
                          let dayOfWeekToInCase = weekDaysTo[dayOfWeekTo];
 
-                         let dateInFormatFrom = `${dayOfWeekFromInCase} ${dateFrom.format('D MMMM')}`;
-                         let dateInFormatTo = `${dayOfWeekToInCase} ${dateTo.format('D MMMM')}`;
+                         let dateInFormatFrom = `${dayOfWeekFromInCase} ${dateFrom.format('D MMMM').toLocaleString()}`;
+                         let dateInFormatTo = `${dayOfWeekToInCase} ${dateTo.format('D MMMM').toLocaleString()}`;
 
                          return {
                               from: dateInFormatFrom,
