@@ -352,6 +352,9 @@
                                         </td>
                                         <td>
                                              {{calcTimeResults[index].sundaysWithDis}}
+                                             <span v-if="calcTimeResults[index].disabledDatesCount.countToAdd">
+                                                  ({{calcTimeResults[index].disabledDatesCount.weekendsWithoutDisDates}} + {{calcTimeResults[index].disabledDatesCount.countToAdd}})
+                                             </span>
                                         </td>
                                         <td>
                                              {{calcTimeResults[index].timeSixWeek40}}
@@ -494,6 +497,10 @@
                                                   <div class="">
                                                        {{calcTimeResults[index].sundaysWithDis}}
 
+                                                                                                              <span v-if="calcTimeResults[index].disabledDatesCount.countToAdd">
+                                                            ({{calcTimeResults[index].disabledDatesCount.weekendsWithoutDisDates}} +
+                                                            {{calcTimeResults[index].disabledDatesCount.countToAdd}})
+                                                       </span>
                                                   </div>
                                              </div>
                                         </div>
@@ -1001,18 +1008,15 @@
                               let timeFiveWeek40 = (40 / 5) * workFive - disabledDatesCount.hourCountBoth
                               let timeFiveWeek35 = (35 / 5) * workFive - disabledDatesCount.hourCountBoth
                               let timeSixWeek40 =
-                                   sundays * 5
-                                   + (totalDaysInMonth - saturdays - sundays - disabledDatesCount.countSix)
-                                   * 7 - disabledDatesCount.hourCountBoth - disabledDatesCount.hourCountSix
+                                   workFive * 7 + saturdays * 5 - disabledDatesCount.hourCountBoth - disabledDatesCount.hourCountSix
                               let timeSixWeek35 =
-                                   sundays * 5
-                                   + (totalDaysInMonth - saturdays - sundays - disabledDatesCount.countSix)
-                                   * 6 - disabledDatesCount.hourCountBoth - disabledDatesCount.hourCountSix
+                                   workFive * 6 + saturdays * 5 - disabledDatesCount.hourCountBoth - disabledDatesCount.hourCountSix
+
                               let monthTitle = moment({ month: month - 1 }).locale('ru').format('MMMM')
 
-                              let weekendsWithoutDisDates= saturdays + sundays - disabledDatesCount.totalWeekendCountFive
+                              let weekendsWithoutDisDates = sundays - disabledDatesCount.totalWeekendCountSix
 
-                              let countToAdd = disabledDatesCount.countFive + disabledDatesCount.totalWeekendCountFive
+                              let countToAdd = disabledDatesCount.countSix + disabledDatesCount.totalWeekendCountSix
 
                               // console.log(totalDaysInMonth)
 
@@ -1036,6 +1040,8 @@
                                    },
                                    // todayDate: { dayOfWeek: '', dateNumber: '' }
                               }
+
+                              console.log('finalObj', finalObj);
 
                               if (type === 'etc') {
                                    this.updateQuarterObj(month, finalObj)
@@ -1169,6 +1175,9 @@
                                    }
                                    if(moment(dayInFormat).isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]') && moment(dayInFormat).get('day') == 0 || moment(dayInFormat).get('day') == 6){
                                         disabledDatesObj.totalWeekendCountFive++
+                                   }
+                                   if(moment(dayInFormat).isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]') && moment(dayInFormat).get('day') == 0){
+                                        disabledDatesObj.totalWeekendCountSix++
                                    }
 
 
