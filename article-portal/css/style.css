@@ -8235,9 +8235,42 @@ html {
   border-spacing: 0;
 }
 
+.prod-calendar-table__highlight {
+  background-color: rgba(3, 74, 102, 0.0705882353);
+}
+
+.prod-calendar-table__header td:first-of-type {
+  border-top-left-radius: 20px;
+  border-right: 1px solid var(--color-gray);
+}
+
+.prod-calendar-table__header td:last-of-type {
+  border-top-right-radius: 20px;
+}
+
+.prod-calendar-table__footer td:first-of-type {
+  border-bottom-left-radius: 20px;
+}
+
+.prod-calendar-table__footer td:last-of-type {
+  border-bottom-right-radius: 20px;
+}
+
 .prod-calendar-table td {
-  border: 1px solid red;
+  padding: 1rem;
   text-align: center;
+}
+
+.prod-calendar-table .border-left {
+  border-left: 1px solid;
+}
+
+.prod-calendar-table .border-righ {
+  border-right: 1px solid;
+}
+
+.bg-blue-transparent {
+  background-color: rgba(3, 74, 102, 0.0705882353);
 }
 
 .cookie-modal .btn-close:focus {
@@ -8785,6 +8818,10 @@ html {
   .popular-block img {
     max-width: 250px;
   }
+
+  .prod-calendar-table td {
+    padding: 0.5rem;
+  }
 }
 
 @media (max-width: 1410px) {
@@ -8853,6 +8890,10 @@ html {
 
   .popular-block__title {
     padding: 20px 10px;
+  }
+
+  .prod-calendar-table td {
+    padding: 0.25rem;
   }
 }
 

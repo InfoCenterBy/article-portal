@@ -10,7 +10,7 @@
           <div class="opacity-0" :class="{ 'opacity-100': preloader !== true }" v-show="preloader !== true">
                <div class="d-flex flex-row flex-wrap gap-2 align-items-center justify-content-between">
                     <h1 class="fs-32 fw-600">
-                         Норма рабочего времени для пятидневной рабочей недели на {{new Date().getFullYear()}}
+                         Норма рабочего времени для шестидневной рабочей недели на {{new Date().getFullYear()}}
                     </h1>
                </div>
                <div class="d-xxl-block d-none mt-40"></div>
@@ -55,19 +55,19 @@
                                              {{ calcTimeResults[index].totalDays }}
                                         </td>
                                         <td>
-                                             {{ calcTimeResults[index].workFive}}
+                                             {{ calcTimeResults[index].workSix}}
                                         </td>
                                         <td>
-                                             {{calcTimeResults[index].totalWeekends}} 
-                                             <span v-if="calcTimeResults[index].disabledDatesCount.countToAdd">
+                                             {{calcTimeResults[index].sundaysWithDis}}
+                                             <!-- <span v-if="calcTimeResults[index].disabledDatesCount.countToAdd">
                                                   ({{calcTimeResults[index].disabledDatesCount.weekendsWithoutDisDates}} + {{calcTimeResults[index].disabledDatesCount.countToAdd}})
-                                             </span>
+                                             </span> -->
                                         </td>
                                         <td>
-                                             {{calcTimeResults[index].timeFiveWeek40}}
+                                             {{calcTimeResults[index].timeSixWeek40}}
                                         </td>
                                         <td>
-                                             {{calcTimeResults[index].timeFiveWeek35}}
+                                             {{calcTimeResults[index].timeSixWeek35}}
                                         </td>
                                    </tr>
                                    <template v-if="index == 2 || index == 5 || index == 8 || index == 11">
@@ -85,16 +85,16 @@
                                                   {{ quarterObj[getQuarterOrderKey(index)].totalDaysInQuarter}}
                                              </td>
                                              <td>
-                                                  {{ quarterObj[getQuarterOrderKey(index)].totalWorkFive}}
+                                                  {{ quarterObj[getQuarterOrderKey(index)].totalWorkSix}}
                                              </td>
                                              <td>
-                                                  {{quarterObj[getQuarterOrderKey(index)].totalWeekends}}
+                                                  {{quarterObj[getQuarterOrderKey(index)].totalSundays}}
                                              </td>
                                              <td>
-                                                  {{quarterObj[getQuarterOrderKey(index)].totalTimeFiveWeek40}}
+                                                  {{quarterObj[getQuarterOrderKey(index)].totalTimeSixWeek40}}
                                              </td>
                                              <td>
-                                                  {{quarterObj[getQuarterOrderKey(index)].totalTimeFiveWeek35}}
+                                                  {{quarterObj[getQuarterOrderKey(index)].totalTimeSixWeek35}}
                                              </td>
                                         </tr>
                                    </template>
@@ -107,16 +107,16 @@
                                                   {{halfYearArr[0].totalDaysInHalf}}
                                              </td>
                                              <td>
-                                                  {{halfYearArr[0].totalWorkFive}}
+                                                  {{halfYearArr[0].totalWorkSix}}
                                              </td>
                                              <td>
-                                                  {{halfYearArr[0].totalWeekends}}
+                                                  {{halfYearArr[0].totalSundays}}
                                              </td>
                                              <td>
-                                                  {{halfYearArr[0].totalTimeFiveWeek40}}
+                                                  {{halfYearArr[0].totalTimeSixWeek40}}
                                              </td>
                                              <td>
-                                                  {{halfYearArr[0].totalTimeFiveWeek35}}
+                                                  {{halfYearArr[0].totalTimeSixWeek35}}
                                              </td>
                                         </tr>
                                    </template>
@@ -129,16 +129,16 @@
                                                   {{halfYearArr[1].totalDaysInHalf}}
                                              </td>
                                              <td>
-                                                  {{halfYearArr[1].totalWorkFive}}
+                                                  {{halfYearArr[1].totalWorkSix}}
                                              </td>
                                              <td>
-                                                  {{halfYearArr[1].totalWeekends}}
+                                                  {{halfYearArr[1].totalSundays}}
                                              </td>
                                              <td>
-                                                  {{halfYearArr[1].totalTimeFiveWeek40}}
+                                                  {{halfYearArr[1].totalTimeSixWeek40}}
                                              </td>
                                              <td>
-                                                  {{halfYearArr[1].totalTimeFiveWeek35}}
+                                                  {{halfYearArr[1].totalTimeSixWeek35}}
                                              </td>
                                         </tr>
                                    </template>
@@ -151,192 +151,20 @@
                                                   {{totalYear.totalDaysInYear}}
                                              </td>
                                              <td>
-                                                  {{totalYear.totalWorkFive}}
+                                                  {{totalYear.totalWorkSix}}
                                              </td>
                                              <td>
-                                                  {{totalYear.totalWeekends}}
+                                                  {{totalYear.totalSundays}}
                                              </td>
                                              <td>
-                                                  {{totalYear.totalTimeFiveWeek40}}
+                                                  {{totalYear.totalTimeSixWeek40}}
                                              </td>
                                              <td>
-                                                  {{totalYear.totalTimeFiveWeek35}}
+                                                  {{totalYear.totalTimeSixWeek35}}
                                              </td>
                                         </tr>
                                    </template>
-                                   <!-- <template v-if="el == 1 || el == 4 || el == 7 || el == 10">
-                                        <div class="col-xxxl-8 col-12" :class="[ el > 3 ? 'mt-xxl-5 mt-4' : '']">
-                              
-                                             <div class="">
-                                                  <h3 class="fs-24 fw-600">
-                                                       
-                                                  </h3>
-                                             </div>
-                                             <div class="row row-container">
-                                                  <div class="col-xxl-6 d-flex flex-column my-1">
-                                                       <div class="d-flex flex-row align-items-center justify-content-between mt-2">
-                                                            <span class="fs-16 color-nav-black">Календарные дни</span>
-                                                            <div class="time-underline mt-2 mx-1"></div>
-                                                            <span class="color-gold fw-500">{{ quarterObj[getQuarterOrderKey(el)].totalDaysInQuarter
-                                                                 }}</span>
-                                                       </div>
-                                                       <div class="work-day-block mt-12">
-                                                            <div class="work-time-elem">
-                                                                 <span class="fs-16 d-block fw-600">
-                                                                      Рабочие дни:
-                                                                 </span>
-                                                            </div>
-                                                            <div class="d-flex flex-row align-items-center justify-content-between my-1">
-                                                                 <span class="fs-14 color-nav-black">по пятидневной рабочей неделе</span>
-                                                                 <div class="time-underline mt-2"></div>
-                                                                 <span class="color-gold fw-500">{{ quarterObj[getQuarterOrderKey(el)].totalWorkFive
-                                                                      }}</span>
-                                                            </div>
-                                                            <div class="d-flex flex-row align-items-center justify-content-between my-1">
-                                                                 <span class="fs-14 color-nav-black">по шестидневной рабочей неделе</span>
-                                                                 <div class="time-underline mt-2"></div>
-                                                                 <span class="color-gold fw-500">{{ quarterObj[getQuarterOrderKey(el)].totalWorkSix
-                                                                      }}</span>
-                                                            </div>
-                                                       </div>
-                                                       <div class="work-day-block mt-2">
-                                                            <div class="work-time-elem">
-                                                                 <span class="fs-16 d-block fw-600">
-                                                                      Нерабочие дни (выходные и праздничные дни):
-                                                                 </span>
-                                                            </div>
-                                                            <div class="d-flex flex-row align-items-center justify-content-between my-1">
-                                                                 <span class="fs-14 color-nav-black">по пятидневной рабочей неделе</span>
-                                                                 <div class="time-underline mt-2"></div>
-                                                                 <span
-                                                                      class="color-gold fw-500">{{quarterObj[getQuarterOrderKey(el)].totalWeekends}}</span>
-                                                            </div>
-                                                            <div class="d-flex flex-row align-items-center justify-content-between my-1">
-                                                                 <span class="fs-14 color-nav-black">по шестидневной рабочей неделе</span>
-                                                                 <div class="time-underline mt-2"></div>
-                                                                 <span
-                                                                      class="color-gold fw-500">{{quarterObj[getQuarterOrderKey(el)].totalSundays}}</span>
-                                                            </div>
-                                                       </div>
-                                                  </div>
-                                                  <div class="col-xxl-6 d-flex flex-column my-1">
-                                                       <div class="work-day-block">
-                                                            <div class="work-time-elem">
-                                                                 <span class="fs-16 d-block fw-600">
-                                                                      Расчетная норма рабочего времени (в часах):
-                                                                 </span>
-                                                            </div>
-                                                            <div class="mt-12">
-                                                                 <span class="fs-14 color-nav-black fw-600 ">для пятидневной рабочей недели:</span>
-                                                            </div>
-                                                            <div class="d-flex flex-row align-items-center justify-content-between my-1">
-                                                                 <span class="fs-14 color-nav-black">при 40-часовой рабочей неделе</span>
-                                                                 <div class="time-underline mt-2"></div>
-                                                                 <span
-                                                                      class="color-gold fw-500">{{quarterObj[getQuarterOrderKey(el)].totalTimeFiveWeek40}}</span>
-                                                            </div>
-                                                            <div class="d-flex flex-row align-items-center justify-content-between my-1">
-                                                                 <span class="fs-14 color-nav-black">при 35-часовой рабочей неделе</span>
-                                                                 <div class="time-underline mt-2"></div>
-                                                                 <span
-                                                                      class="color-gold fw-500">{{quarterObj[getQuarterOrderKey(el)].totalTimeFiveWeek35}}</span>
-                                                            </div>
-                                                            <div class="mt-3"></div>
-                                                            <span class="fs-14 color-nav-black fw-600">для шестидневной рабочей недели:</span>
-                                                            <div class="d-flex flex-row align-items-center justify-content-between my-1">
-                                                                 <span class="fs-14 color-nav-black">при 40-часовой рабочей неделе</span>
-                                                                 <div class="time-underline mt-2"></div>
-                                                                 <span
-                                                                      class="color-gold fw-500">{{quarterObj[getQuarterOrderKey(el)].totalTimeSixWeek40}}</span>
-                                                            </div>
-                                                            <div class="d-flex flex-row align-items-center justify-content-between my-1">
-                                                                 <span class="fs-14 color-nav-black">при 35-часовой рабочей неделе</span>
-                                                                 <div class="time-underline mt-2"></div>
-                                                                 <span
-                                                                      class="color-gold fw-500">{{quarterObj[getQuarterOrderKey(el)].totalTimeSixWeek35}}</span>
-                                                            </div>
-                                                       </div>
-                                                  </div>
-                                             </div>
-                                        </div>
-                                        <div class="col-12"></div>
-                                   </template> -->
-                                   <!-- <div class="row mt-3 row-container">
-                                        <div class="col-12">
-                                             <div class="d-flex flex-row align-items-center justify-content-between mt-2">
-                                                  <span class="fs-16 color-nav-black">Календарные дни</span>
-                                                  <div class="time-underline mt-2 mx-1"></div>
-                                                  <span class="color-gold fw-500"></span>
-                                             </div>
-                                        </div>
-                                        <div class="col-12 d-flex flex-column justify-content-between my-1">
-                                             <div class="work-day-block">
-                                                  <div class="work-time-elem">
-                                                       <span class="fs-16 d-block fw-600">
-                                                            Рабочие дни:
-                                                       </span>
-                                                  </div>
-                                                  <div class="d-flex flex-row align-items-center justify-content-between my-1">
-                                                       <span class="fs-14 color-nav-black">по пятидневной рабочей неделе</span>
-                                                       <div class="time-underline mt-2"></div>
-                                                       <span class="color-gold fw-500"></span>
-                                                  </div>
-                                                  <div class="d-flex flex-row align-items-center justify-content-between my-1">
-                                                       <span class="fs-14 color-nav-black">по шестидневной рабочей неделе</span>
-                                                       <div class="time-underline mt-2"></div>
-                                                       <span class="color-gold fw-500">{{ calcTimeResults[index].workSix}}</span>
-                                                  </div>
-                                             </div>
-                                             <div class="work-day-block mt-2">
-                                                  <div class="work-time-elem">
-                                                       <span class="fs-16 d-block fw-600">
-                                                            Нерабочие дни (выходные и праздничные дни):
-                                                       </span>
-                                                  </div>
-                                                  <div class="d-flex flex-row align-items-center justify-content-between my-1">
-                                                       <span class="fs-14 color-nav-black">по пятидневной рабочей неделе</span>
-                                                       <div class="time-underline mt-2"></div>
-                                                       <span class="color-gold fw-500"></span>
-                                                  </div>
-                                                  <div class="d-flex flex-row align-items-center justify-content-between my-1">
-                                                       <span class="fs-14 color-nav-black">по шестидневной рабочей неделе</span>
-                                                       <div class="time-underline mt-2"></div>
-                                                       <span class="color-gold fw-500">{{calcTimeResults[index].sundaysWithDis}}</span>
-                                                  </div>
-                                             </div>
-                                             <div class="work-day-block mt-2">
-                                                  <div class="work-time-elem">
-                                                       <span class="fs-16 d-block fw-600">
-                                                            Расчетная норма рабочего времени (в часах):
-                                                       </span>
-                                                  </div>
-                                                  <span class="fs-14 color-nav-black fw-600 mt-2">для пятидневной рабочей
-                                                       недели:</span>
-                                                  <div class="d-flex flex-row align-items-center justify-content-between my-1">
-                                                       <span class="fs-14 color-nav-black">при 40-часовой рабочей неделе</span>
-                                                       <div class="time-underline mt-2"></div>
-                                                       <span class="color-gold fw-500"></span>
-                                                  </div>
-                                                  <div class="d-flex flex-row align-items-center justify-content-between my-1">
-                                                       <span class="fs-14 color-nav-black">при 35-часовой рабочей неделе</span>
-                                                       <div class="time-underline mt-2"></div>
-                                                       <span class="color-gold fw-500"></span>
-                                                  </div>
-                                                  <div class="mt-3"></div>
-                                                  <span class="fs-14 color-nav-black fw-600">для шестидневной рабочей недели:</span>
-                                                  <div class="d-flex flex-row align-items-center justify-content-between my-1">
-                                                       <span class="fs-14 color-nav-black">при 40-часовой рабочей неделе</span>
-                                                       <div class="time-underline mt-2"></div>
-                                                       <span class="color-gold fw-500">{{calcTimeResults[index].timeSixWeek40}}</span>
-                                                  </div>
-                                                  <div class="d-flex flex-row align-items-center justify-content-between my-1">
-                                                       <span class="fs-14 color-nav-black">при 35-часовой рабочей неделе</span>
-                                                       <div class="time-underline mt-2"></div>
-                                                       <span class="color-gold fw-500">{{calcTimeResults[index].timeSixWeek35}}</span>
-                                                  </div>
-                                             </div>
-                                        </div>
-                                   </div> -->
+                                   
                               </template>
                          </tbody>
                     </table>
@@ -365,7 +193,7 @@
                                                        (обычные и предпразничные)
                                                   </div>
                                                   <div class="">
-                                                       {{ calcTimeResults[index].workFive}}
+                                                       {{ calcTimeResults[index].workSix}}
                                                   </div>
                                              </div>
                                              <div class="d-flex flex-row flex-wrap justify-content-between gap-1 fs-14 mt-1">
@@ -374,11 +202,12 @@
                                                        (выходные и праздничные)
                                                   </div>
                                                   <div class="">
-                                                       {{calcTimeResults[index].totalWeekends}}
-                                                       <span v-if="calcTimeResults[index].disabledDatesCount.countToAdd">
+                                                       {{calcTimeResults[index].sundaysWithDis}}
+                                                       
+                                                       <!-- <span v-if="calcTimeResults[index].disabledDatesCount.countToAdd">
                                                             ({{calcTimeResults[index].disabledDatesCount.weekendsWithoutDisDates}} +
                                                             {{calcTimeResults[index].disabledDatesCount.countToAdd}})
-                                                       </span>
+                                                       </span> -->
                                                   </div>
                                              </div>
                                         </div>
@@ -391,7 +220,7 @@
                                                        При <b>40-часовой</b> рабочей неделе
                                                   </div>
                                                   <div class="">
-                                                       {{calcTimeResults[index].timeFiveWeek40}}
+                                                       {{calcTimeResults[index].timeSixWeek40}}
                                                   </div>
                                              </div>
                                              <div class="d-flex flex-row flex-wrap justify-content-between gap-1 fs-14 mt-1">
@@ -399,7 +228,7 @@
                                                        При <b>35-часовой</b> рабочей неделе
                                                   </div>
                                                   <div class="">
-                                                       {{calcTimeResults[index].timeFiveWeek35}}
+                                                       {{calcTimeResults[index].timeSixWeek35}}
                                                   </div>
                                              </div>
                                         </div>
@@ -431,7 +260,7 @@
                                                             (обычные и предпразничные)
                                                        </div>
                                                        <div class="">
-                                                            {{ quarterObj[getQuarterOrderKey(index)].totalWorkFive}}
+                                                            {{ quarterObj[getQuarterOrderKey(index)].totalWorkSix}}
                                                        </div>
                                                   </div>
                                                   <div class="d-flex flex-row flex-wrap justify-content-between gap-1 fs-14 mt-1">
@@ -440,7 +269,7 @@
                                                             (выходные и праздничные)
                                                        </div>
                                                        <div class="">
-                                                            {{quarterObj[getQuarterOrderKey(index)].totalWeekends}}
+                                                            {{quarterObj[getQuarterOrderKey(index)].totalSundays}}
                                                        </div>
                                                   </div>
                                              </div>
@@ -453,7 +282,7 @@
                                                             При <b>40-часовой</b> рабочей неделе
                                                        </div>
                                                        <div class="">
-                                                            {{quarterObj[getQuarterOrderKey(index)].totalTimeFiveWeek40}}
+                                                            {{quarterObj[getQuarterOrderKey(index)].totalTimeSixWeek40}}
                                                        </div>
                                                   </div>
                                                   <div class="d-flex flex-row flex-wrap justify-content-between gap-1 fs-14 mt-1">
@@ -461,7 +290,7 @@
                                                             При <b>35-часовой</b> рабочей неделе
                                                        </div>
                                                        <div class="">
-                                                            {{quarterObj[getQuarterOrderKey(index)].totalTimeFiveWeek35}}
+                                                            {{quarterObj[getQuarterOrderKey(index)].totalTimeSixWeek35}}
                                                        </div>
                                                   </div>
                                              </div>
@@ -492,7 +321,7 @@
                                                             (обычные и предпразничные)
                                                        </div>
                                                        <div class="">
-                                                            {{halfYearArr[0].totalWorkFive}}
+                                                            {{halfYearArr[0].totalWorkSix}}
                                                        </div>
                                                   </div>
                                                   <div class="d-flex flex-row flex-wrap justify-content-between gap-1 fs-14 mt-1">
@@ -501,7 +330,7 @@
                                                             (выходные и праздничные)
                                                        </div>
                                                        <div class="">
-                                                            {{halfYearArr[0].totalWeekends}}
+                                                            {{halfYearArr[0].totalSundays}}
                                                        </div>
                                                   </div>
                                              </div>
@@ -514,7 +343,7 @@
                                                             При <b>40-часовой</b> рабочей неделе
                                                        </div>
                                                        <div class="">
-                                                            {{halfYearArr[0].totalTimeFiveWeek40}}
+                                                            {{halfYearArr[0].totalTimeSixWeek40}}
                                                        </div>
                                                   </div>
                                                   <div class="d-flex flex-row flex-wrap justify-content-between gap-1 fs-14 mt-1">
@@ -522,7 +351,7 @@
                                                             При <b>35-часовой</b> рабочей неделе
                                                        </div>
                                                        <div class="">
-                                                            {{halfYearArr[0].totalTimeFiveWeek35}}
+                                                            {{halfYearArr[0].totalTimeSixWeek35}}
                                                        </div>
                                                   </div>
                                              </div>
@@ -554,7 +383,7 @@
                                                             (обычные и предпразничные)
                                                        </div>
                                                        <div class="">
-                                                            {{halfYearArr[1].totalWorkFive}}
+                                                            {{halfYearArr[1].totalWorkSix}}
                                                        </div>
                                                   </div>
                                                   <div class="d-flex flex-row flex-wrap justify-content-between gap-1 fs-14 mt-1">
@@ -563,7 +392,7 @@
                                                             (выходные и праздничные)
                                                        </div>
                                                        <div class="">
-                                                            {{halfYearArr[1].totalWeekends}}
+                                                            {{halfYearArr[1].totalSundays}}
                                                        </div>
                                                   </div>
                                              </div>
@@ -576,7 +405,7 @@
                                                             При <b>40-часовой</b> рабочей неделе
                                                        </div>
                                                        <div class="">
-                                                            {{halfYearArr[1].totalTimeFiveWeek40}}
+                                                            {{halfYearArr[1].totalTimeSixWeek40}}
                                                        </div>
                                                   </div>
                                                   <div class="d-flex flex-row flex-wrap justify-content-between gap-1 fs-14 mt-1">
@@ -584,7 +413,7 @@
                                                             При <b>35-часовой</b> рабочей неделе
                                                        </div>
                                                        <div class="">
-                                                            {{halfYearArr[1].totalTimeFiveWeek35}}
+                                                            {{halfYearArr[1].totalTimeSixWeek35}}
                                                        </div>
                                                   </div>
                                              </div>
@@ -615,7 +444,7 @@
                                                             (обычные и предпразничные)
                                                        </div>
                                                        <div class="">
-                                                            {{totalYear.totalWorkFive}}
+                                                            {{totalYear.totalWorkSix}}
                                                        </div>
                                                   </div>
                                                   <div class="d-flex flex-row flex-wrap justify-content-between gap-1 fs-14 mt-1">
@@ -624,7 +453,7 @@
                                                             (выходные и праздничные)
                                                        </div>
                                                        <div class="">
-                                                            {{totalYear.totalWeekends}}
+                                                            {{totalYear.totalSundays}}
                                                        </div>
                                                   </div>
                                              </div>
@@ -637,7 +466,7 @@
                                                             При <b>40-часовой</b> рабочей неделе
                                                        </div>
                                                        <div class="">
-                                                            {{totalYear.totalTimeFiveWeek40}}
+                                                            {{totalYear.totalTimeSixWeek40}}
                                                        </div>
                                                   </div>
                                                   <div class="d-flex flex-row flex-wrap justify-content-between gap-1 fs-14 mt-1">
@@ -645,7 +474,7 @@
                                                             При <b>35-часовой</b> рабочей неделе
                                                        </div>
                                                        <div class="">
-                                                            {{totalYear.totalTimeFiveWeek35}}
+                                                            {{totalYear.totalTimeSixWeek35}}
                                                        </div>
                                                   </div>
                                              </div>
@@ -837,7 +666,6 @@
                          calcTime(month, type) {
 
 
-
                               if (month < 1 || month > 12) {
                                    throw new Error("Wrong month");
                               }
@@ -881,6 +709,8 @@
                               let workSix = totalDaysInMonth - sundays - disabledDatesCount.countSix
 
                               let sundaysWithDis = sundays + disabledDatesCount.countSix
+
+                              console.log('sundaysWithDis', sundaysWithDis);
 
                               let timeFiveWeek40 = (40 / 5) * workFive - disabledDatesCount.hourCountBoth
                               let timeFiveWeek35 = (35 / 5) * workFive - disabledDatesCount.hourCountBoth
@@ -993,7 +823,8 @@
                                    this.halfYearArr[0].totalTimeFiveWeek35 += calcResult.timeFiveWeek35;
                                    this.halfYearArr[0].totalTimeSixWeek40 += calcResult.timeSixWeek40;
                                    this.halfYearArr[0].totalTimeSixWeek35 += calcResult.timeSixWeek35;
-                              } else {
+                              } 
+                              else {
                                    this.halfYearArr[1].totalDaysInHalf += calcResult.totalDays;
                                    this.halfYearArr[1].totalWorkFive += calcResult.workFive;
                                    this.halfYearArr[1].totalWorkSix += calcResult.workSix;

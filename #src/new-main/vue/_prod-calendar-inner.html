@@ -184,7 +184,7 @@
                                    <h3 class="fs-24 fw-600 ff-inter">Норма рабочего времени на {{new Date().getFullYear()}} год</h3>
                               </div>
                               <div class="mt-3 d-flex flex-column gap-4">
-                                   <a href=""
+                                   <a href="./prod-calendar-five.html"
                                         class="bg-color-white p-xl-4 p-md-3 p-2 w-100 border-10 d-flex flex-column align-items-center gap-1">
                                         <picture>
                                              <source media="(min-width: 960px)" srcset="./img/new-main/proizFive.svg">
@@ -194,7 +194,7 @@
                                              Пятидневной недели
                                         </span>
                                    </a>
-                                   <a href=""
+                                   <a href="./prod-calendar-six.html"
                                         class="bg-color-white p-xl-4 p-md-3 p-2 w-100 border-10 d-flex flex-column align-items-center gap-1">
                                         <picture>
                                              <source media="(min-width: 960px)" srcset="./img/new-main/proizSix.svg">
@@ -553,11 +553,27 @@
                          mainCalendarTime: {},
                          transferDatesArr: [
                               {
-                                   from: '02-17-2024',
-                                   to: '02-12-2024'
+                                   from: '05-13-2024',
+                                   to: '05-18-2024'
+                              },
+                              {
+                                   from: '11-08-2024',
+                                   to: '11-16-2024'
                               }
                          ],
                          innerdisabledDatesWithTitle: [
+                              {
+                                   date: '01-01-2024',
+                                   title: 'Новый год'
+                              },
+                              {
+                                   date: '01-02-2024',
+                                   title: 'Новый год'
+                              },
+                              {
+                                   date: '01-07-2024',
+                                   title: 'Рождество'
+                              },
                               {
                                    date: '05-01-2024',
                                    title: 'Праздник труда'
@@ -570,7 +586,22 @@
                                    date: '05-14-2024',
                                    title: 'Радуница'
                               },
-                              
+                              {
+                                   date: '03-08-2024',
+                                   title: 'Женский день'
+                              },
+                              {
+                                   date: '07-03-2024',
+                                   title: 'День независимости'
+                              },
+                              {
+                                   date: '11-07-2024',
+                                   title: 'Революция'
+                              },
+                              {
+                                   date: '12-25-2024',
+                                   title: 'Рождество'
+                              },
                          ],
                          innerdisabledDatesWithTitleFilteredByCurrentMonth: [],
                          transferDatesFilteredByCurrentMonth: [],
@@ -620,6 +651,8 @@
                          })
                     },
                     calcTimeResults() {
+                         console.log(this.monthOrder.map(el => this.calcTime(el, 'etc')));
+
                          return this.monthOrder.map(el => this.calcTime(el, 'etc'));
                     },
                     
@@ -877,7 +910,9 @@
                                    }
                               }
 
-                              console.log();
+                              if (moment(dayInFormat).isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]') && moment(dayInFormat).get('day') != 0 && this.hasDecember31(startDateInFormat, endDateDateInFormat)) {
+                                   disabledDatesObj.hourCountBoth++;
+                              }
                               
 
                               // if (moment(dayInFormat).isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]') && moment(dayInFormat).get('day') != 0) {
@@ -1193,6 +1228,16 @@
                               to: dateInFormatTo
                          };
                     },
+                    hasDecember31(startDate, endDate) {
+                         const startDateInFormat = moment(startDate, 'MM-DD-YYYY');
+                         const endDateDateInFormat = moment(endDate, 'MM-DD-YYYY');
+                         const december31 = moment('12-31', 'MM-DD');
+
+                         if (december31.isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]')) {
+                              return true;
+                         }
+                         return false;
+                    }
 
                },
                created(){
