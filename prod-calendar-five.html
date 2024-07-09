@@ -464,7 +464,7 @@
                          <div class="d-flex flex-wrap flex-row gap-3 justify-content-center">
                               <template v-for="(el, index) in monthOrder" >
                                    <div class="border-20 border border-color-gray p-md-3 p-2 w-100"  :key="el">
-                                        <h3 class="h3 fs-24">
+                                        <h3 class="h3 fs-24 mb-0">
                                              <b>{{ calcTimeResults[index].monthTitle }}</b>
                                         </h3>
                                         <div class="mt-2">
@@ -526,7 +526,7 @@
                                    </div>
                                    <template v-if="index == 2 || index == 5 || index == 8 || index == 11">
                                         <div class="border-20 p-md-3 p-2 w-100 bg-blue-transparent">
-                                             <h3 class="h3 fs-24">
+                                             <h3 class="h3 fs-24 mb-0">
                                                   <b>
                                                        {{
                                                             quarterOrderTitle(index)
@@ -589,7 +589,7 @@
                                    </template>
                                    <template v-if="index == 5">
                                         <div class="border-20 p-md-3 p-2 w-100 bg-blue-transparent">
-                                             <h3 class="h3 fs-24">
+                                             <h3 class="h3 fs-24 mb-0">
                                                   <b>
                                                        <b>I полугодие</b>
                                                   </b>
@@ -651,7 +651,7 @@
                                                                            </template>
                                    <template v-if="index == 11">
                                         <div class="border-20 p-md-3 p-2 w-100 bg-blue-transparent">
-                                             <h3 class="h3 fs-24">
+                                             <h3 class="h3 fs-24 mb-0">
                                                   <b>
                                                        <b>II полугодие</b>
                                                   </b>
@@ -712,7 +712,7 @@
                                    </template>
                                    <template v-if="index == 11">
                                         <div class="border-20 p-md-3 p-2 w-100 bg-blue-transparent">
-                                             <h3 class="h3 fs-24">
+                                             <h3 class="h3 fs-24 mb-0">
                                                   <b>
                                                        <b>{{new Date().getFullYear()}} год</b>
                                                   </b>
