@@ -923,11 +923,11 @@
                     },
                     innerdisabledDatesInFormat() {
                          return this.innerdisabledDates.map(el => {
-                              return moment(el).format()
+                              return moment(el).format("MM-DD-YYYY")
                          })
                     },
                     calcTimeResults() {
-                         console.log(this.monthOrder.map(el => this.calcTime(el, 'etc')));
+                         // console.log(this.monthOrder.map(el => this.calcTime(el, 'etc')));
 
                          return this.monthOrder.map(el => this.calcTime(el, 'etc'));
                     },
@@ -1252,8 +1252,9 @@
 
                          // console.log(disabledDates);
                          disabledDates?.forEach((date, count) => {
-                              let dayInFormat = moment(date).format()
+                              let dayInFormat = date
                               let previousDay = moment(moment(dayInFormat).clone().subtract(1, 'days')).format()
+                              console.log('highlightPrevAndDisDate', dayInFormat);
                               this.innerAttributes.push(
                                    {
                                         dates: previousDay,
@@ -1451,8 +1452,9 @@
 
                                              },
                     viewDateDay(date){
-                         let dateInFormat = moment(new Date(date))
-                         let monthName = moment(dateInFormat).locale('ru').format('D MMMM')
+                         let dateInFormat = moment(date, 'MM-DD-YYYY').locale('ru')
+                         let monthName = dateInFormat.format('D MMMM')
+                         console.log('viewDateDay', dateInFormat)
                          return monthName
                     },
                     groupBySix(arr) {
@@ -1483,8 +1485,8 @@
                               'воскресенье': 'воскресенье'
                          };
 
-                         let dateFrom = moment(new Date(date.from)).locale('ru');
-                         let dateTo = moment(new Date(date.to)).locale('ru');
+                         let dateFrom = moment(date.from, 'MM-DD-YYYY').locale('ru')
+                         let dateTo = moment(date.to, 'MM-DD-YYYY').locale('ru')
 
                          let dayOfWeekFrom = dateFrom.format('dddd');
                          let dayOfWeekTo = dateTo.format('dddd');
@@ -1492,8 +1494,8 @@
                          let dayOfWeekFromInCase = weekDaysFrom[dayOfWeekFrom];
                          let dayOfWeekToInCase = weekDaysTo[dayOfWeekTo];
 
-                         let dateInFormatFrom = `${dayOfWeekFromInCase} ${dateFrom.format('D MMMM').toLocaleString()}`;
-                         let dateInFormatTo = `${dayOfWeekToInCase} ${dateTo.format('D MMMM').toLocaleString()}`;
+                         let dateInFormatFrom = `${dayOfWeekFromInCase} ${dateFrom.format('D MMMM')}`;
+                         let dateInFormatTo = `${dayOfWeekToInCase} ${dateTo.format('D MMMM')}`;
 
                          return {
                               from: dateInFormatFrom,
