@@ -923,11 +923,11 @@
                     },
                     innerdisabledDatesInFormat() {
                          return this.innerdisabledDates.map(el => {
-                              return moment(el).format("MM-DD-YYYY")
+                              return moment(el).format()
                          })
                     },
                     calcTimeResults() {
-                         // console.log(this.monthOrder.map(el => this.calcTime(el, 'etc')));
+                         console.log(this.monthOrder.map(el => this.calcTime(el, 'etc')));
 
                          return this.monthOrder.map(el => this.calcTime(el, 'etc'));
                     },
@@ -1249,19 +1249,31 @@
                     },
                     highlightPrevAndDisDate(){
                          const disabledDates = this?.innerdisabledDatesInFormat
-
-                         // console.log(disabledDates);
                          disabledDates?.forEach((date, count) => {
-                              let dayInFormat = date
-                              let previousDay = moment(moment(dayInFormat).clone().subtract(1, 'days')).format()
-                              console.log('highlightPrevAndDisDate', dayInFormat);
-                              this.innerAttributes.push(
+                              let dayInFormat = moment(date).format()
+                              let labelDate = this.innerdisabledDatesWithTitle.filter(el=>{
+                                   return moment(el.date).format() == moment(dayInFormat).format()
+                              })
+
+                                                            let previousDay = moment(moment(dayInFormat).clone().subtract(1, 'days')).format() 
+
+                              const transDateArr = this.transferDatesArr.map(el => {
+                                   return moment(el.from).format()
+                              })
+
+                              let disDayPrev = !disabledDates.includes(previousDay)
+                              let transDayPrev = !transDateArr.includes(previousDay)
+
+                                                            this.innerAttributes.push(
                                    {
-                                        dates: previousDay,
+                                        dates: disDayPrev && transDayPrev ? previousDay : null,
                                         content: {
                                              style: {
                                                   color: '#C47A2C',
                                              }
+                                        },
+                                        popover: {
+                                             label: 'Рабочий день сокращен на 1 час',
                                         },
                                    },
                                    {
@@ -1271,6 +1283,9 @@
                                                   color: '#F9B974',
                                              }
                                         },
+                                        popover:{
+                                             label: labelDate[0]?.title
+                                        }
                                    },
                               )
                          })
@@ -1425,15 +1440,18 @@
                                         dates: dayInFormatFrom,
                                         content: {
                                              style: {
-                                                  color: '#282828',
+                                                  color: '#F9B974',
                                              }
+                                        },
+                                        popover: {
+                                             label: `Рабочий день перенесен на ${moment(dayInFormatTo).locale('ru').format('D MMMM')}`,
                                         },
                                    },
                                    {
                                         dates: dayInFormatTo,
                                         content: {
                                              style: {
-                                                  color: '#F9B974',
+                                                  color: '#282828',
                                              }
                                         },
                                    },
@@ -1454,7 +1472,6 @@
                     viewDateDay(date){
                          let dateInFormat = moment(date, 'MM-DD-YYYY').locale('ru')
                          let monthName = dateInFormat.format('D MMMM')
-                         console.log('viewDateDay', dateInFormat)
                          return monthName
                     },
                     groupBySix(arr) {
