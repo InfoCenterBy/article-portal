@@ -1251,7 +1251,7 @@
                               let dayInFormat = moment(date).format()
 
                                                             let labelDate = this.innerdisabledDatesWithTitle.filter(el => {
-                                   return moment(el.date).format() == moment(dayInFormat).format()
+                                   return moment(el.date, 'MM-DD-YYYY').format() == moment(dayInFormat).format()
                               })
 
                               let previousDay = moment(moment(dayInFormat).clone().subtract(1, 'days')).format()
