@@ -927,8 +927,6 @@
                          })
                     },
                     calcTimeResults() {
-                         console.log(this.monthOrder.map(el => this.calcTime(el, 'etc')));
-
                          return this.monthOrder.map(el => this.calcTime(el, 'etc'));
                     },
 
@@ -1247,24 +1245,25 @@
                               // });
                          // });
                     },
-                    highlightPrevAndDisDate(){
+                    highlightPrevAndDisDate() {
                          const disabledDates = this?.innerdisabledDatesInFormat
                          disabledDates?.forEach((date, count) => {
                               let dayInFormat = moment(date).format()
-                              let labelDate = this.innerdisabledDatesWithTitle.filter(el=>{
+
+                                                            let labelDate = this.innerdisabledDatesWithTitle.filter(el => {
                                    return moment(el.date).format() == moment(dayInFormat).format()
                               })
 
-                                                            let previousDay = moment(moment(dayInFormat).clone().subtract(1, 'days')).format() 
+                              let previousDay = moment(moment(dayInFormat).clone().subtract(1, 'days')).format()
 
                               const transDateArr = this.transferDatesArr.map(el => {
-                                   return moment(el.from).format()
+                                   return moment(moment(el.from, 'MM-DD-YYYY').toISOString()).format()
                               })
 
                               let disDayPrev = !disabledDates.includes(previousDay)
                               let transDayPrev = !transDateArr.includes(previousDay)
 
-                                                            this.innerAttributes.push(
+                              this.innerAttributes.push(
                                    {
                                         dates: disDayPrev && transDayPrev ? previousDay : null,
                                         content: {
@@ -1283,7 +1282,7 @@
                                                   color: '#F9B974',
                                              }
                                         },
-                                        popover:{
+                                        popover: {
                                              label: labelDate[0]?.title
                                         }
                                    },
@@ -1433,8 +1432,8 @@
                     },
                     transferDates(){
                          this.transferDatesArr.forEach((date, count) => {
-                              let dayInFormatFrom = moment(new Date(date.from)).format()
-                              let dayInFormatTo = moment(new Date(date.to)).format()
+                              let dayInFormatFrom = moment(date.from, 'MM-DD-YYYY').toISOString()
+                              let dayInFormatTo = moment(date.to, 'MM-DD-YYYY').toISOString()
                               this.innerAttributes.push(
                                    {
                                         dates: dayInFormatFrom,
@@ -1460,7 +1459,8 @@
                     },
                     processInnerDisabeledDates(){
                          this.innerdisabledDatesWithTitle.forEach((date, count) => {
-                              this.innerdisabledDates.push(new Date(date.date))
+                              let isoDate = moment(date.date, 'MM-DD-YYYY').toISOString()
+                              this.innerdisabledDates.push(isoDate)
                          })
                          this.innerdisabledDatesWithTitle.sort((a, b) => {
                               const dateA = moment(a.date, 'MM-DD-YYYY');
