@@ -973,18 +973,31 @@
                     },
                     highlightPrevAndDisDate(){
                          const disabledDates = this?.innerdisabledDatesInFormat
-
-                         // console.log(disabledDates);
                          disabledDates?.forEach((date, count) => {
                               let dayInFormat = moment(date).format()
-                              let previousDay = moment(moment(dayInFormat).clone().subtract(1, 'days')).format()
+                              let labelDate = this.innerdisabledDatesWithTitle.filter(el=>{
+                                   return moment(el.date).format() == moment(dayInFormat).format()
+                              })
+                              
+                              let previousDay = moment(moment(dayInFormat).clone().subtract(1, 'days')).format() 
+
+                              const transDateArr = this.transferDatesArr.map(el => {
+                                   return moment(el.from).format()
+                              })
+
+                              let disDayPrev = !disabledDates.includes(previousDay)
+                              let transDayPrev = !transDateArr.includes(previousDay)
+                              
                               this.innerAttributes.push(
                                    {
-                                        dates: previousDay,
+                                        dates: disDayPrev && transDayPrev ? previousDay : null,
                                         content: {
                                              style: {
                                                   color: '#C47A2C',
                                              }
+                                        },
+                                        popover: {
+                                             label: 'Рабочий день сокращен на 1 час',
                                         },
                                    },
                                    {
@@ -994,6 +1007,9 @@
                                                   color: '#F9B974',
                                              }
                                         },
+                                        popover:{
+                                             label: labelDate[0]?.title
+                                        }
                                    },
                               )
                          })
@@ -1148,15 +1164,18 @@
                                         dates: dayInFormatFrom,
                                         content: {
                                              style: {
-                                                  color: '#282828',
+                                                  color: '#F9B974',
                                              }
+                                        },
+                                        popover: {
+                                             label: `Рабочий день перенесен на ${moment(dayInFormatTo).locale('ru').format('D MMMM')}`,
                                         },
                                    },
                                    {
                                         dates: dayInFormatTo,
                                         content: {
                                              style: {
-                                                  color: '#F9B974',
+                                                  color: '#282828',
                                              }
                                         },
                                    },
@@ -1175,8 +1194,8 @@
                          
                     },
                     viewDateDay(date){
-                         let dateInFormat = moment(new Date(date))
-                         let monthName = moment(dateInFormat).locale('ru').format('D MMMM')
+                         let dateInFormat = moment(date, 'MM-DD-YYYY').locale('ru')
+                         let monthName = dateInFormat.format('D MMMM')
                          return monthName
                     },
                     groupBySix(arr) {
@@ -1207,8 +1226,8 @@
                               'воскресенье': 'воскресенье'
                          };
 
-                         let dateFrom = moment(new Date(date.from)).locale('ru');
-                         let dateTo = moment(new Date(date.to)).locale('ru');
+                         let dateFrom = moment(date.from, 'MM-DD-YYYY').locale('ru')
+                         let dateTo = moment(date.to, 'MM-DD-YYYY').locale('ru')
 
                          let dayOfWeekFrom = dateFrom.format('dddd');
                          let dayOfWeekTo = dateTo.format('dddd');
