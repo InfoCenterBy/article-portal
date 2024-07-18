@@ -520,3 +520,11 @@ if (mobileBtn) {
 		mobileBtn.classList.toggle('bi-x-lg');
 	});
 }
+
+const upBtn = document.querySelector('.up-btn');
+
+if (upBtn) {
+	upBtn.addEventListener('click', () => {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	});
+}
