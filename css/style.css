@@ -7483,7 +7483,8 @@ i {
           flex: 0 0 auto;
 }
 
-.video-list .swiper-slide {
+.video-list .swiper-slide,
+.topic-slider .swiper-slide {
   padding: 25px;
   min-height: 152px;
   -webkit-box-pack: justify;
@@ -7491,11 +7492,13 @@ i {
           justify-content: space-between;
 }
 
-.video-list .slider-text {
+.video-list .slider-text,
+.topic-slider .slider-text {
   color: var(--color-nav-black);
 }
 
-.video-list .slider-text:hover {
+.video-list .slider-text:hover,
+.topic-slider .slider-text:hover {
   color: var(--color-nav-black);
 }
 
