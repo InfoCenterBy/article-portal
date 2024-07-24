@@ -676,7 +676,7 @@
      }
 }
 
-.video-list{
+.video-list, .topic-slider{
      .swiper-slide {
           padding: 25px;
           min-height: 152px;
@@ -687,6 +687,12 @@
           &:hover{
                color: var(--color-nav-black);
           }
+     }
+}
+
+.topic-slider{
+     .swiper-slide{
+          min-height: 108px;
      }
 }
 

@@ -492,6 +492,38 @@ const videoList = new Swiper('.video-list', {
 	},
 });
 
+const topicSlider = new Swiper('.topic-slider', {
+	slidesPerView: 4,
+	speed: 400,
+	spaceBetween: 16,
+	navigation: {
+		nextEl: '.topic-slider .swiper-button-next',
+		prevEl: '.topic-slider .swiper-button-prev',
+	},
+	pagination: {
+		el: '.topic-slider .swiper-pagination',
+		type: 'bullets',
+		clickable: true,
+	},
+	breakpoints: {
+		// when window width is >= 320px
+		320: {
+			slidesPerView: 1,
+			spaceBetween: 8,
+		},
+		// when window width is >= 1100px
+		1100: {
+			slidesPerView: 3,
+			spaceBetween: 8,
+		},
+		// when window width is >= 1300px
+		1300: {
+			slidesPerView: 4,
+			spaceBetween: 16,
+		},
+	},
+});
+
 let actualBook = document.querySelectorAll('#actualBook');
 
 if (actualBook) {
