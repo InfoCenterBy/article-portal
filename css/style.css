@@ -3569,6 +3569,65 @@ body._lock {
      object-fit: contain;
 }
 
+.sive-bar-link {
+  font-weight: 500;
+  color: var(--color-blue-light);
+}
+
+.sive-bar-link,
+.sive-bar-link * {
+  -webkit-transition: all ease-out 0.3s;
+  -o-transition: all ease-out 0.3s;
+  transition: all ease-out 0.3s;
+}
+
+.topic-section-nav-links__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  overflow-y: hidden;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.topic-section-nav-links__link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  white-space: nowrap;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--color-gray-dark);
+  padding: 10px 20px;
+  border-bottom: 2px solid var(--color-gray);
+  position: relative;
+  -webkit-transition: all ease-out 0.3s;
+  -o-transition: all ease-out 0.3s;
+  transition: all ease-out 0.3s;
+}
+
+.topic-section-nav-links__link.active {
+  color: var(--color-gold);
+  border-color: var(--color-gold);
+}
+
+.topic-link-block {
+  border: 1px solid var(--color-gray);
+  -webkit-transition: all ease-out 0.3s;
+  -o-transition: all ease-out 0.3s;
+  transition: all ease-out 0.3s;
+  border-radius: 20px;
+  color: var(--color-gray-dark);
+}
+
 p {
   margin-bottom: 24px;
 }
@@ -8594,6 +8653,10 @@ html {
 }
 
 @media (min-width: 1200px) {
+  .gap-lg-20 {
+    gap: 1.25rem !important;
+  }
+
   .line-top__date {
     min-width: 170px;
   }
@@ -10258,6 +10321,20 @@ html {
 
   .infographics-block:hover .infographics-block__arrow {
     opacity: 1;
+  }
+
+  .sive-bar-link:hover span:first-of-type {
+    color: var(--color-gold);
+  }
+
+  .topic-section-nav-links__link:hover {
+    color: var(--color-gold);
+    border-color: var(--color-gold);
+  }
+
+  .topic-link-block:hover {
+    border-color: var(--color-gold);
+    color: var(--color-gold);
   }
 
   .cash-about-block:not(.cash-about-block-disabled):hover {
