@@ -3551,3 +3551,97 @@
 .mt-80{
   margin-top: 5rem;
 }
+
+
+.up-btn{
+  color: #5b422c;
+  border: 1px solid var(--color-gold);
+  background-color: var(--color-white-gray);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  z-index: 10;
+  bottom: 40px;
+  right: 80px;
+  cursor: pointer;
+  &::after{
+    content: '\F286';
+    font-family: bootstrap-icons;
+    display: inline-block;
+    font-style: normal;
+    text-transform: none;
+    line-height: 14px;
+    vertical-align: -.125em;
+    font-weight: 700;
+    font-size: 18px;
+  }
+}
+
+.infographics-block {
+    border: 1px solid var(--color-gray);
+    transition: all ease-out .3s;
+		&__prev {
+      img{
+        max-width: 250px;
+        max-height: 180px;
+        width: 100%;
+        object-fit: contain;
+        aspect-ratio: 1.4;
+      }
+		}
+
+		&__title {
+      font-weight: 600;
+      color: var(--color-nav-black);
+      font-size: 1.25rem;
+      line-height: 1.5rem;
+      transition: all ease-out .3s;
+		}
+
+		&__date {
+      font-size: .875rem;
+      .bi{
+        color: var(--color-gold);
+      }
+      span{
+        color: var(--color-gray-dark);
+      }
+		}
+    
+    &__arrow{
+      opacity: 0;
+      user-select: none;
+      transition: all ease-out .3s;
+      color: var(--color-gold);
+      font-size: 1.125rem;
+    }
+    @media #{$mouse-device} {
+      &:hover{
+        border-color: var(--color-gold);
+        .infographics-block__title{
+          color: var(--color-gold);
+        }
+        .infographics-block__arrow{
+          opacity: 1;
+        }
+      }
+    }
+    
+}
+
+@media (min-width: 992px) {
+  .gap-lg-20{
+    gap: 1.25rem !important;
+  }
+}
+
+.infographics-inner-img{
+  img{
+    max-width: 700px;
+    width: 100%;
+    object-fit: contain;
+  }
+}
