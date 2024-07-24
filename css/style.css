@@ -3628,6 +3628,10 @@ body._lock {
   color: var(--color-gray-dark);
 }
 
+.min-h-auto {
+  min-height: auto !important;
+}
+
 p {
   margin-bottom: 24px;
 }
@@ -7500,6 +7504,10 @@ i {
 .video-list .slider-text:hover,
 .topic-slider .slider-text:hover {
   color: var(--color-nav-black);
+}
+
+.topic-slider .swiper-slide {
+  min-height: 108px;
 }
 
 .media-section .row {
