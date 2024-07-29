@@ -7508,6 +7508,7 @@ i {
 
 .topic-slider .swiper-slide {
   min-height: 108px;
+  font-size: 16px;
 }
 
 .media-section .row {
@@ -10112,6 +10113,10 @@ html {
   .prod-calendar .vc-day-content {
     padding: 5px 3px;
   }
+
+  .new-header {
+    padding: 18px 12px;
+  }
 }
 
 @media (max-width: 550px) {
@@ -10456,5 +10461,11 @@ html {
 
   .interesting-article {
     display: none;
+  }
+}
+
+@media (hover: none) {
+  a:hover {
+    color: none;
   }
 }
