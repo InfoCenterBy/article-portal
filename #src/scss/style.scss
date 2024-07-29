@@ -791,3 +791,15 @@ body {
 @import '_prod-calendar.scss';
 
 @import '_cookie.scss';
+
+@media (hover: none) {
+  a:hover{
+    color: none;
+  }
+}
+
+@media(max-width: 560px){
+  .new-header{
+    padding: 18px 12px;
+  }
+}
