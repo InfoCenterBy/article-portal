@@ -3490,7 +3490,7 @@
 
 .after-no{
     &::after{
-      content: none;
+      content: none !important;
     }
 }
 
