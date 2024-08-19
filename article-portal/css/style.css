@@ -3415,7 +3415,7 @@ body._lock {
 }
 
 .after-no::after {
-  content: none;
+  content: none !important;
 }
 
 .spinner,
@@ -3880,11 +3880,12 @@ td.vertical-bottom {
 }
 
 .paywall {
-  margin-top: -60px;
-  padding: 32px 0px 0px 0px;
+  margin-top: -68px;
+  padding: 48px 72px;
   text-align: center;
   position: relative;
-  background-color: var(--color-white);
+  background-color: var(--color-white-gray);
+  border-radius: 20px;
 }
 
 .paywall:before {
@@ -3904,35 +3905,34 @@ td.vertical-bottom {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-.paywall__header:before {
-  content: "";
-  width: 100%;
-  height: 1px;
-  background-color: var(--color-gold);
-  position: absolute;
-  top: calc(50% - 1px);
-  left: 0;
-  z-index: 1;
+  margin-bottom: 32px;
 }
 
 .paywall__title {
   padding: 0 24px;
   width: 100%;
-  max-width: 440px;
-  font-size: 18px;
+  font-size: 20px;
   color: var(--color-gold);
   font-weight: 600;
-  background-color: var(--color-white);
   position: relative;
   z-index: 2;
+}
+
+.paywall__subtitle {
+  text-align: center;
+  color: var(--color-gray-dark);
+  margin-block: 16px;
+  max-width: 830px;
 }
 
 .paywall__text {
@@ -3940,18 +3940,280 @@ td.vertical-bottom {
 }
 
 .paywall__link {
-  color: var(--color-gray-dark);
+  color: var(--color-black);
 }
 
 .paywall__link a {
-  font-size: 16px;
   color: var(--color-gold);
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .paywall__link a:hover {
   color: var(--color-gold-light);
-  text-decoration: none;
+}
+
+.paywall__tarifs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 32px;
+}
+
+.paywall__tarifs-title {
+  color: var(--color-nav-black);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.paywall__tarifs-list {
+  padding-left: 0;
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 0;
+}
+
+.paywall__tarifs-card {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 280px;
+          flex: 0 1 280px;
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border: 1px solid var(--color-gray);
+  border-radius: 10px;
+}
+
+.paywall__tarifs-card-title {
+  font-size: 24px;
+  color: var(--color-gold);
+  text-align: center;
+  font-weight: 600;
+  position: relative;
+}
+
+.paywall__tarifs-card-title::after {
+  content: "";
+  position: absolute;
+  top: 36px;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: var(--color-gold);
+}
+
+.paywall__tarifs-price {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.paywall__tarifs-info {
+  font-size: 16px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.paywall__tarifs-button {
+  color: var(--color-white);
+  background-color: var(--color-gold);
+  border-radius: 10px;
+  padding: 14px 20px;
+}
+
+.paywall__tarifs-button:hover {
+  background-color: var(--color-gold-light);
+}
+
+.paywall__demo-info {
+  color: var(--color-blue-light);
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 32px;
+}
+
+.paywall__benefits {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 32px;
+}
+
+.paywall__benefits-title {
+  font-weight: 600;
+  color: var(--color-nav-black);
+}
+
+.paywall__benefits-list {
+  padding-left: 0;
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 0;
+  width: 100%;
+}
+
+.paywall__benefits-card {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 280px;
+          flex: 1 1 280px;
+  padding: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 1px solid var(--color-gray);
+  border-radius: 10px;
+}
+
+.paywall__benefits-number {
+  font-size: 32px;
+  color: var(--color-gold);
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.paywall__benefits-text {
+  color: var(--color-gray-dark);
+  margin-bottom: 0;
+}
+
+.paywall__benefits-extra {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.paywall__benefits-extra-title {
+  color: var(--color-nav-black);
+  font-weight: 600;
+  font-weight: 18px;
+}
+
+.paywall__benefits-extra-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  -webkit-column-gap: 32px;
+     -moz-column-gap: 32px;
+          column-gap: 32px;
+  padding-left: 0;
+  list-style: none;
+  margin: 0;
+  width: 100%;
+}
+
+.paywall__benefits-extra-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 16px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: var(--color-black);
+  text-align: start;
+}
+
+.paywall__benefits-extra-item img {
+  margin-right: 16px;
+  width: 24px;
+  height: 24px;
+}
+
+.paywall__benefits-extra-item--without-icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: var(--color-gray-dark);
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.paywall__benefits-extra-item:nth-child(1) {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.paywall__benefits-extra-item:nth-child(2) {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.paywall__benefits-extra-item:nth-child(3) {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.paywall__benefits-extra-item:nth-child(4) {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.paywall__benefits-extra-item:nth-child(5) {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.paywall__benefits-extra-item:nth-child(6) {
+  grid-column: 2;
+  grid-row: 3;
 }
 
 /* ОБЁРТКА СТАТЬИ */
@@ -9032,6 +9294,12 @@ html {
     border-left: 0;
   }
 
+  .paywall__tarifs-card {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 280px;
+            flex: 1 1 280px;
+  }
+
   .footer__payments {
     padding: 12px 8px;
   }
@@ -9489,6 +9757,30 @@ html {
 
   .card-link__go {
     display: none;
+  }
+
+  .paywall__benefits-card {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 100%;
+            flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .paywall__benefits-extra-list {
+    grid-template-columns: 1fr;
+  }
+
+  .paywall__benefits-extra-item:nth-child(n) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .paywall__benefits-extra-item--without-icon {
+    margin-top: 24px;
+    text-align: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
 
   .header {
@@ -9969,6 +10261,10 @@ html {
 
   .article-reviewer {
     padding: 10px 0px 0px 0px;
+  }
+
+  .paywall {
+    padding: 40px 16px;
   }
 
   .list {

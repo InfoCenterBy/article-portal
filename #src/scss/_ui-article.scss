@@ -241,49 +241,51 @@ td.vertical-bottom {
 	color: var(--color-gray-dark);
 }
 .paywall {
-	margin-top: -60px;
-	padding: 32px 0px 0px 0px;
+	margin-top: -68px;
+	padding: 48px 72px;
 	text-align: center;
 	position: relative;
-	background-color: var(--color-white);
+	background-color: var(--color-white-gray);
+	border-radius: 20px;
+
+	@media (max-width: 565px) {
+		padding: 40px 16px;
+	}
 
 	&:before {
-	    content:'';
-	    width: 100%;
+	  content:'';
+	  width: 100%;
 		height: 100px;
 		background: linear-gradient(0deg, #FFFFFF 14.69%, rgba(255, 255, 255, 0) 100%, rgba(255, 255, 255, 0) 100%);
-	    position: absolute;
+	  position: absolute;
 		top: -100px;
 		left: 0;
 	}
+
 	&__header {
 		position: relative;
 		display: flex;
+		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-
-		&:before {
-			content:'';
-			width: 100%;
-			height: 1px;
-			background-color: var(--color-gold);
-			position: absolute;
-			top: calc(50% - 1px);
-			left: 0;
-			z-index: 1;
-		}
+		margin-bottom: 32px;
 	}
 
 	&__title {
 		padding: 0 24px;
 		width: 100%;
-		max-width: 440px;
-		font-size: 18px;
+		font-size: 20px;
 		color: var(--color-gold);
 		font-weight: 600;
-		background-color: var(--color-white);
 		position: relative;
 		z-index: 2;
+	}
+
+	&__subtitle {
+		text-align: center;
+		color: var(--color-gray-dark);
+		margin-block: 16px;
+		max-width: 830px;
 	}
 
 	&__text {
@@ -291,19 +293,250 @@ td.vertical-bottom {
 	}
 
 	&__link {
-		color: var(--color-gray-dark);
+		color: var(--color-black);
 
 		a {
-			font-size: 16px;
 			color: var(--color-gold);
-			text-decoration: underline;
+			text-decoration: none;
 			
 			&:hover {
 				color: var(--color-gold-light);
-				text-decoration: none;
 			}
 		}
 	}
+
+	&__tarifs {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: 32px;
+	}
+
+	&__tarifs-title {
+		color: var(--color-nav-black);
+		font-size: 20px;
+		font-weight: 600;
+	}
+
+	&__tarifs-list {
+		padding-left: 0;
+		list-style: none;
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		gap: 24px;
+		margin-bottom: 0;
+	}
+
+	&__tarifs-card {
+		flex: 0 1 280px;
+		padding: 20px;
+		display: flex;
+		flex-direction: column;
+		border: 1px solid var(--color-gray);
+		border-radius: 10px;
+	}
+
+	@media (max-width: 1200px) {
+		&__tarifs-card {
+			flex: 1 1 280px;
+		}
+	}
+
+
+	&__tarifs-card-title {
+		font-size: 24px;
+		color: var(--color-gold);
+		text-align: center;
+		font-weight: 600;
+		position: relative;
+	}
+
+	&__tarifs-card-title::after {
+		content: "";
+		position: absolute;
+		top: 36px;
+		left: 0;
+		height: 2px;
+		width: 100%;
+		background-color: var(--color-gold);
+	}
+
+	&__tarifs-price {
+		font-size: 24px;
+		font-weight: 600;
+		margin-bottom: 8px;
+	}
+
+	&__tarifs-info {
+		font-size: 16px;
+		flex: 1;
+	}
+
+	&__tarifs-button {
+		color: var(--color-white);
+		background-color: var(--color-gold);
+		border-radius: 10px;
+		padding: 14px 20px;
+
+		&:hover {
+			background-color: var(--color-gold-light);
+		}
+	}
+
+	&__demo-info {
+		color: var(--color-blue-light);
+		font-size: 20px;
+		font-weight: 600;
+		margin-bottom: 32px;
+	}
+
+	&__benefits {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: 32px;
+	}
+
+	&__benefits-title {
+		font-weight: 600;
+		color: var(--color-nav-black);
+	}
+
+	&__benefits-list {
+		padding-left: 0;
+		list-style: none;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 24px;
+		margin-bottom: 0;
+		width: 100%;
+	}
+
+	&__benefits-card {
+		flex: 1 1 280px;
+		padding: 16px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		border: 1px solid var(--color-gray);
+		border-radius: 10px;
+	}
+
+	&__benefits-number {
+		font-size: 32px;
+		color: var(--color-gold);
+		font-weight: 600;
+		margin-bottom: 0;	
+	}
+
+	&__benefits-text {
+		color: var(--color-gray-dark);
+		margin-bottom: 0;	
+	}
+
+	@media (max-width: 768px) {
+		&__benefits-card {
+			flex: 1 1 100%;
+			max-width: 100%;
+		}
+	}
+
+	&__benefits-extra {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	&__benefits-extra-title {
+		color: var(--color-nav-black);
+		font-weight: 600;
+		font-weight: 18px;
+		
+	}
+
+	&__benefits-extra-list {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 16px; 
+		column-gap: 32px;
+		padding-left: 0;
+		list-style: none;
+		margin: 0;
+		width: 100%;
+	}
+
+	&__benefits-extra-item {
+		display: flex;
+		font-size: 16px;
+		align-items: center;
+		color: var(--color-black);
+		text-align: start;
+	}
+	
+	&__benefits-extra-item img {
+		margin-right: 16px;
+		width: 24px;
+		height: 24px;
+	}
+
+	&__benefits-extra-item--without-icon {
+		display: flex;
+		align-items: center;
+		color: var(--color-gray-dark);
+		text-align: left;
+		margin-bottom: 0;
+	}
+
+	&__benefits-extra-item:nth-child(1) {
+		grid-column: 1;
+		grid-row: 1;
+	}
+	
+	&__benefits-extra-item:nth-child(2) {
+		grid-column: 1;
+		grid-row: 2;
+	}
+	
+	&__benefits-extra-item:nth-child(3) {
+		grid-column: 1;
+		grid-row: 3;
+	}
+	
+	&__benefits-extra-item:nth-child(4) {
+		grid-column: 2;
+		grid-row: 1;
+	}
+	
+	&__benefits-extra-item:nth-child(5) {
+		grid-column: 2;
+		grid-row: 2;
+	}
+	
+	&__benefits-extra-item:nth-child(6) {
+		grid-column: 2;
+		grid-row: 3;
+	}
+	
+	@media (max-width: 768px) {
+		&__benefits-extra-list {
+			grid-template-columns: 1fr; 
+		}
+
+		&__benefits-extra-item:nth-child(n) {
+			grid-column: auto; 
+			grid-row: auto;
+		}
+		&__benefits-extra-item--without-icon {
+			margin-top: 24px;
+			text-align: center;
+			justify-content: center;
+		}
+	}
+
 }
 /* ОБЁРТКА СТАТЬИ */
 .article-text {
