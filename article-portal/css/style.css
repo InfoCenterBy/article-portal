@@ -4150,13 +4150,14 @@ td.vertical-bottom {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
-  -webkit-column-gap: 32px;
-     -moz-column-gap: 32px;
-          column-gap: 32px;
+  -webkit-column-gap: 36px;
+     -moz-column-gap: 36px;
+          column-gap: 36px;
   padding-left: 0;
   list-style: none;
   margin: 0;
   width: 100%;
+  margin-bottom: 24px;
 }
 
 .paywall__benefits-extra-item {
