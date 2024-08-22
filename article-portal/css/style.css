@@ -4004,6 +4004,7 @@ td.vertical-bottom {
           flex-direction: column;
   border: 1px solid var(--color-gray);
   border-radius: 10px;
+  background-color: var(--color-white);
 }
 
 .paywall__tarifs-card-title {
@@ -4035,6 +4036,7 @@ td.vertical-bottom {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  color: var(--color-gray-dark);
 }
 
 .paywall__tarifs-button {
@@ -4107,6 +4109,7 @@ td.vertical-bottom {
           justify-content: center;
   border: 1px solid var(--color-gray);
   border-radius: 10px;
+  background-color: var(--color-white);
 }
 
 .paywall__benefits-number {
