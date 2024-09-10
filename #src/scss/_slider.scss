@@ -18,7 +18,7 @@
     height: 32px;
     border: 1px solid var(--color-gray);
     display: flex;
-    justify-content:center;
+    justify-content: center;
     align-items: center;
     cursor: pointer;
     transition: all 0.3s ease 0s;
@@ -39,5 +39,65 @@
       opacity: 0.5;
       cursor: default;
     }
+  }
+}
+
+.slider__infographics__wrapper .swiper-button-prev,
+.slider__infographics__wrapper .swiper-button-next {
+  position: static;
+  margin: 0;
+  color: #5b422c;
+  padding: 18px;
+  border: 1px solid var(--color-gold);
+  background-color: var(--color-white-gray);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+}
+
+.slider__infographics__wrapper .swiper-button-prev {
+  position: absolute;
+}
+
+.slider__infographics__wrapper .swiper-button-next {
+  position: absolute;
+  left: 70%;
+}
+
+.slider__infographics__wrapper .swiper-button-prev::after,
+.slider__infographics__wrapper .swiper-button-next::after {
+  font-family: "bootstrap-icons";
+  display: inline-block;
+  font-style: normal;
+  text-transform: none;
+  line-height: 14px;
+  vertical-align: -0.125em;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.slider__infographics__wrapper .swiper-button-prev::after {
+  content: "\f284";
+}
+
+.slider__infographics__wrapper .swiper-button-next::after {
+  content: "\f285";
+}
+
+.slider__infographics-swiper-wrapper {
+  padding-left: 100px;
+}
+
+@media screen and (max-width: 576px) {
+  .slider__infographics-swiper-wrapper {
+    padding-left: 0px;
+  }
+
+  .slider__infographics__wrapper .swiper-button-next {
+    position: absolute;
+    left: 80%;
   }
 }

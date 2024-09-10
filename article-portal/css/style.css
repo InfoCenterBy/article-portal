@@ -3892,9 +3892,9 @@ td.vertical-bottom {
   content: "";
   width: 100%;
   height: 100px;
-  background: -webkit-gradient(linear, left bottom, left top, color-stop(14.69%, #FFFFFF), color-stop(100%, rgba(255, 255, 255, 0)), to(rgba(255, 255, 255, 0)));
-  background: -o-linear-gradient(bottom, #FFFFFF 14.69%, rgba(255, 255, 255, 0) 100%, rgba(255, 255, 255, 0) 100%);
-  background: linear-gradient(0deg, #FFFFFF 14.69%, rgba(255, 255, 255, 0) 100%, rgba(255, 255, 255, 0) 100%);
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(14.69%, #ffffff), color-stop(100%, rgba(255, 255, 255, 0)), to(rgba(255, 255, 255, 0)));
+  background: -o-linear-gradient(bottom, #ffffff 14.69%, rgba(255, 255, 255, 0) 100%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(0deg, #ffffff 14.69%, rgba(255, 255, 255, 0) 100%, rgba(255, 255, 255, 0) 100%);
   position: absolute;
   top: -100px;
   left: 0;
@@ -4004,7 +4004,6 @@ td.vertical-bottom {
           flex-direction: column;
   border: 1px solid var(--color-gray);
   border-radius: 10px;
-  background-color: var(--color-white);
 }
 
 .paywall__tarifs-card-title {
@@ -4036,7 +4035,6 @@ td.vertical-bottom {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  color: var(--color-gray-dark);
 }
 
 .paywall__tarifs-button {
@@ -4109,7 +4107,6 @@ td.vertical-bottom {
           justify-content: center;
   border: 1px solid var(--color-gray);
   border-radius: 10px;
-  background-color: var(--color-white);
 }
 
 .paywall__benefits-number {
@@ -5609,6 +5606,55 @@ td.vertical-bottom {
 .slider-event-control__arrow.swiper-button-disabled {
   opacity: 0.5;
   cursor: default;
+}
+
+.slider__infographics__wrapper .swiper-button-prev,
+.slider__infographics__wrapper .swiper-button-next {
+  position: static;
+  margin: 0;
+  color: #5b422c;
+  padding: 18px;
+  border: 1px solid var(--color-gold);
+  background-color: var(--color-white-gray);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+}
+
+.slider__infographics__wrapper .swiper-button-prev {
+  position: absolute;
+}
+
+.slider__infographics__wrapper .swiper-button-next {
+  position: absolute;
+  left: 70%;
+}
+
+.slider__infographics__wrapper .swiper-button-prev::after,
+.slider__infographics__wrapper .swiper-button-next::after {
+  font-family: "bootstrap-icons";
+  display: inline-block;
+  font-style: normal;
+  text-transform: none;
+  line-height: 14px;
+  vertical-align: -0.125em;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.slider__infographics__wrapper .swiper-button-prev::after {
+  content: "\f284";
+}
+
+.slider__infographics__wrapper .swiper-button-next::after {
+  content: "\f285";
+}
+
+.slider__infographics-swiper-wrapper {
+  padding-left: 100px;
 }
 
 .form-news {
@@ -10251,6 +10297,17 @@ html {
 
   .subscribe-tabs-section .nav-step .nav-step__content p .subtitle {
     font-size: calc(12px + 2 * ((100vw - 320px) / 1200));
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .slider__infographics-swiper-wrapper {
+    padding-left: 0px;
+  }
+
+  .slider__infographics__wrapper .swiper-button-next {
+    position: absolute;
+    left: 80%;
   }
 }
 
