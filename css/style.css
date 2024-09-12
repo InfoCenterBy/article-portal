@@ -3632,6 +3632,107 @@ body._lock {
   min-height: auto !important;
 }
 
+.w-fit-content {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.about-banner-numbers {
+  color: var(--color-gold);
+  font-size: 52px;
+  line-height: 1.3;
+  font-weight: 700;
+  font-family: "PT Serif", sans-serif;
+}
+
+.about-banner-numbers-text {
+  color: var(--color-black);
+  line-height: 1.2;
+  text-align: center;
+}
+
+.fs-a-20-18 {
+  font-size: 20px;
+}
+
+.about-highlights-icon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border: 1px solid var(--color-gray);
+  background-color: var(--color-white);
+}
+
+.mt-32 {
+  margin-top: 32px;
+}
+
+.accordion-about.accordion {
+  --bs-accordion-color: none;
+  --bs-accordion-bg: none;
+  --bs-accordion-transition: color 0.15s ease-in-out,background-color 0.15s ease-in-out,border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out,border-radius 0.15s ease;
+  --bs-accordion-border-color: none;
+  --bs-accordion-border-width: 0;
+  --bs-accordion-border-radius: 0;
+  --bs-accordion-inner-border-radius: 0;
+  --bs-accordion-btn-padding-x: 1rem;
+  --bs-accordion-btn-padding-y: 1rem;
+  --bs-accordion-btn-color: var(--color-black);
+  --bs-accordion-btn-bg: var(--color-white);
+  --bs-accordion-btn-icon: none;
+  --bs-accordion-btn-icon-width: 1.25rem;
+  --bs-accordion-btn-icon-transform: rotate(-180deg);
+  --bs-accordion-btn-icon-transition: transform 0.2s ease-in-out;
+  --bs-accordion-btn-active-icon: none;
+  --bs-accordion-btn-focus-box-shadow: none;
+  --bs-accordion-body-padding-x: 0;
+  --bs-accordion-body-padding-y: 0;
+  --bs-accordion-active-color: var(--color-white);
+  --bs-accordion-active-bg: var(--color-gold);
+}
+
+.accordion-about.accordion .accordion-button {
+  border: 1px solid transparent;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 10px;
+}
+
+.accordion-about.accordion .accordion-button.collapsed {
+  border-color: var(--color-gray);
+}
+
+.accordion-about .accordion-about-btn-group {
+  overflow-y: auto;
+}
+
+.accordion-about .accordion-about-btn-group::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+.accordion-about .accordion-about-btn-group::-webkit-scrollbar-thumb {
+  background: #D9D9D9;
+}
+
+.accordion-about .accordion-about-btn-group::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 4px;
+}
+
+.accordion-about .accordion-about-btn-group {
+  scrollbar-face-color: #D9D9D9;
+  scrollbar-track-color: transparent;
+}
+
+.accordion-about .accordion-body img {
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
 p {
   margin-bottom: 24px;
 }
@@ -3892,9 +3993,9 @@ td.vertical-bottom {
   content: "";
   width: 100%;
   height: 100px;
-  background: -webkit-gradient(linear, left bottom, left top, color-stop(14.69%, #FFFFFF), color-stop(100%, rgba(255, 255, 255, 0)), to(rgba(255, 255, 255, 0)));
-  background: -o-linear-gradient(bottom, #FFFFFF 14.69%, rgba(255, 255, 255, 0) 100%, rgba(255, 255, 255, 0) 100%);
-  background: linear-gradient(0deg, #FFFFFF 14.69%, rgba(255, 255, 255, 0) 100%, rgba(255, 255, 255, 0) 100%);
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(14.69%, #ffffff), color-stop(100%, rgba(255, 255, 255, 0)), to(rgba(255, 255, 255, 0)));
+  background: -o-linear-gradient(bottom, #ffffff 14.69%, rgba(255, 255, 255, 0) 100%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(0deg, #ffffff 14.69%, rgba(255, 255, 255, 0) 100%, rgba(255, 255, 255, 0) 100%);
   position: absolute;
   top: -100px;
   left: 0;
@@ -4147,13 +4248,14 @@ td.vertical-bottom {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
-  -webkit-column-gap: 32px;
-     -moz-column-gap: 32px;
-          column-gap: 32px;
+  -webkit-column-gap: 36px;
+     -moz-column-gap: 36px;
+          column-gap: 36px;
   padding-left: 0;
   list-style: none;
   margin: 0;
   width: 100%;
+  margin-bottom: 24px;
 }
 
 .paywall__benefits-extra-item {
@@ -5605,6 +5707,55 @@ td.vertical-bottom {
 .slider-event-control__arrow.swiper-button-disabled {
   opacity: 0.5;
   cursor: default;
+}
+
+.slider__infographics__wrapper .swiper-button-prev,
+.slider__infographics__wrapper .swiper-button-next {
+  position: static;
+  margin: 0;
+  color: #5b422c;
+  padding: 18px;
+  border: 1px solid var(--color-gold);
+  background-color: var(--color-white-gray);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+}
+
+.slider__infographics__wrapper .swiper-button-prev {
+  position: absolute;
+}
+
+.slider__infographics__wrapper .swiper-button-next {
+  position: absolute;
+  left: 70%;
+}
+
+.slider__infographics__wrapper .swiper-button-prev::after,
+.slider__infographics__wrapper .swiper-button-next::after {
+  font-family: "bootstrap-icons";
+  display: inline-block;
+  font-style: normal;
+  text-transform: none;
+  line-height: 14px;
+  vertical-align: -0.125em;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.slider__infographics__wrapper .swiper-button-prev::after {
+  content: "\f284";
+}
+
+.slider__infographics__wrapper .swiper-button-next::after {
+  content: "\f285";
+}
+
+.slider__infographics-swiper-wrapper {
+  padding-left: 100px;
 }
 
 .form-news {
@@ -7267,10 +7418,6 @@ i {
   -webkit-box-flex: 1;
       -ms-flex: 1 0 auto;
           flex: 1 0 auto;
-}
-
-.main-content .row {
-  margin: 0;
 }
 
 .main-content hr {
@@ -9088,6 +9235,18 @@ html {
     font-size: calc(14px + 6 * ((100vw - 320px) / 1200));
   }
 
+  .about-banner-numbers {
+    font-size: calc(40px + 12 * ((100vw - 320px) / 1200));
+  }
+
+  .fs-a-20-18 {
+    font-size: calc(18px + 2 * ((100vw - 320px) / 1200));
+  }
+
+  .accordion-about.accordion .accordion-button {
+    font-size: calc(16px + 2 * ((100vw - 320px) / 1200));
+  }
+
   .main-list-has ag__wrapper .button-hover {
     font-size: calc(12px + 2 * ((100vw - 320px) / 1200));
   }
@@ -9292,6 +9451,10 @@ html {
 
   .archive-sidebar {
     border-left: 0;
+  }
+
+  .border-xl-none {
+    border: 0 !important;
   }
 
   .paywall__tarifs-card {
@@ -10247,6 +10410,17 @@ html {
 
   .subscribe-tabs-section .nav-step .nav-step__content p .subtitle {
     font-size: calc(12px + 2 * ((100vw - 320px) / 1200));
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .slider__infographics-swiper-wrapper {
+    padding-left: 0px;
+  }
+
+  .slider__infographics__wrapper .swiper-button-next {
+    position: absolute;
+    left: 80%;
   }
 }
 

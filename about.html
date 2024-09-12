@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+      <title>O сетевом издании «padatak.by»</title>
+      <meta charset="UTF-8" />
+      <meta name="format-detection" content="telephone=no" />
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.cdnfonts.com/css/pt-serif" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=PT+Serif" />
+      <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+      <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.min.css">
+
+      <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css" />
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
+
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/css/tempusdominus-bootstrap-4.min.css">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/1.1.2/css/bootstrap-multiselect.min.css" integrity="sha512-fZNmykQ6RlCyzGl9he+ScLrlU0LWeaR6MO/Kq9lelfXOw54O63gizFMSD5fVgZvU1YfDIc6mxom5n60qJ1nCrQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet" />
+      <link rel="stylesheet" href="css/style.min.css" />
+</head>
+
+<body>
+     <header class="new-header d-flex flex-row justify-content-between align-items-center">
+     <div class="d-flex flex-row align-items-center">
+          <div class="mobile-menu me-2">
+               <button type="button" class="bi bi-list" id="mobile-button"></button>
+               <div class="mobile-nav">
+     <div class="mobile-nav-block  d-flex flex-row">
+          <div class="mobile-nav-block__icon">
+               <i class="icon-ballot"></i>
+          </div>
+          <div class="mobile-nav-block__text">
+               <a href="">
+                    <strong>Аналитические материалы</strong>
+               </a>
+               <div class="mobile-nav-block__sub-text d-flex flex-column">
+                    <a href="">Организациям</a>
+                    <a href="">Индивидуальным предпринимателям</a>
+                    <a href="">Физическим лицам</a>
+               </div>
+          </div>
+     </div>
+     <div class="mobile-nav-block  d-flex flex-row">
+          <div class="mobile-nav-block__icon">
+               <i class="icon-envelope-open-text"></i>
+          </div>
+          <div class="mobile-nav-block__text">
+               <a href="">
+                    <strong>Новости</strong>
+               </a>
+          </div>
+     </div>
+     <div class="mobile-nav-block  d-flex flex-row">
+          <div class="mobile-nav-block__icon">
+               <i class="icon-file-invoice"></i>
+          </div>
+          <div class="mobile-nav-block__text">
+               <a href="">
+                    <strong>Налоговый календарь</strong>
+               </a>
+          </div>
+     </div>
+     <a class="subcribe-btn mt-5" href="#">
+          Оформить доступ
+     </a>
+     <div class="d-flex flex-column justify-content-center text-center mt-2">
+          <span class="d-block">Телефон для консультации:</span>
+          <a class="color-gold d-block ff-pt-serif" href="tel:+375172691903">+375 (17) 269-19-03</a>
+     </div>
+</div>
+          </div>
+          <picture>
+               <source media="(min-width: 960px)" srcset="./img/padatak-logo.png">
+               <img src="./img/padatak-logo-mobile.png" alt="padatak-logo" >
+          </picture>
+          <div class="ms-2">
+               <span class="color-gray fs-20">
+                    12+
+               </span>
+          </div>
+     </div>
+     <div class="header-hide">
+          <form class="new-header-search w-100 mx-2">
+     <input type="text" name="searchBar" id="searchBar" placeholder="Поиск">
+     <button type="submit">
+          <i class="bi bi-search"></i>
+     </button>
+</form>
+     </div>
+     <div class="header-tel">
+          <span>Телефон для консультации:</span> <br>
+          <span class="color-gold ff-pt-serif">+375 (17) 269-19-03</span>
+     </div>
+     <div class="d-flex flex-row header-mobile-menu justify-content-center">
+          <div class="d-flex flex-row">
+               <button class="modal-mobile-button mx-2" type="button" data-bs-toggle="modal" data-bs-target="#searchModal">
+                    <i class="bi bi-search"></i>
+               </button>
+               <button class="modal-mobile-button btn-dropdown show mx-2" 
+                         type="button" data-bs-toggle="dropdown" aria-expanded="true" data-bs-auto-close="outside" >
+                    <i class="icon-circle-user"></i>
+               </button>
+               <div class="dropdown-menu dropdown-menu-login dropdown-menu-end p-3" data-popper-placement="bottom-end" >
+     <div class="dropdown-menu-wrapper">
+          <form id="form-login">
+               <div class="input mb-3">
+                    <label for="email-login">Email <span>*</span></label>
+                    <input type="text" id="email-login" class="_email _required" placeholder="Ваш email">
+                    <div class="input__text-error"><i class="bi bi-exclamation-triangle me-2"></i>Электронная почта не может быть пустой</div>
+                    <div class="input__text-error-email"><i class="bi bi-exclamation-triangle me-2"></i>Адрес электоронной почты должен заканчиваться на @**.**</div>
+               </div>
+               <div class="input mb-3">
+                    <label for="password-login">Пароль <span>*</span></label>
+                    <div class="input__password">
+                         <input type="password" id="password-login" class="_required" placeholder="Введите пароль">
+                         <i class="icon-password bi bi-eye-slash"></i>
+                    </div>
+                    <div class="input__text-error"><i class="bi bi-exclamation-triangle me-2"></i>Пароль не может быть пустым</div>
+               </div>
+               <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div class="checkbox">
+                         <input type="checkbox" id="remember-me">
+                         <label class="checkbox__label" for="remember-me">
+                              <span class="checkbox__label_text">Запомнить меня</span>
+                         </label>
+                    </div>
+                    <a href="#" class="link link_blue-light">Забыли пароль?</a>
+               </div>
+               <div class="mb-2">
+                    <a href="main-login.html" class="button w-100">Войти</a>
+               </div>
+               <div>
+                    <a href="login.html" class="button button_empty w-100">Зарегистрироваться</a>
+               </div>
+          </form>
+     </div>
+</div>
+          </div>
+          <div class="header-button header-button-enter flex-row align-items-center"  
+               type="button" class="how" data-bs-toggle="dropdown" aria-expanded="true" data-bs-auto-close="outside">
+               <span>Иванова И.И.</span>
+               <div class="header-button__hr"></div>
+               <i class="icon-circle-user"></i>
+          </div>
+          <div class="dropdown-menu dropdown-menu-user dropdown-menu-end py-2 border-10" 
+               data-popper-placement="bottom-end">
+               <div class="dropdown-menu-wrapper">
+                    <div class="dropdown-arrow"></div>
+                    <ul class="ps-0 mb-0">
+                         <li><a href="profile.html" class="py-2 px-3 d-block"><i class="bi bi-person me-3"></i>Профиль</a></li>
+                         <li><a href="favorites.html" class="py-2 px-3 d-block"><i class="bi bi-bookmark me-3"></i>Избранное</a></li>
+                         <li><a href="browsing-history.html" class="py-2 px-3 d-block"><i class="bi bi-clock me-3"></i>История просмотров</a></li>
+                         <li><a href="subscription.html" class="py-2 px-3 d-block"><i class="bi bi-unlock me-3"></i>Управление подпиской</a></li>
+                         <li><a href="settings.html" class="py-2 px-3 d-block"><i class="bi bi-gear me-3"></i>Настройки</a></li>
+                    </ul>
+                    <hr class="my-2">
+                    <a href="new-main.html" class="py-2 px-3 d-block"><i class="bi bi-box-arrow-right me-3"></i>Выйти</a>
+               </div>
+          </div>
+          <div class="header-button header-button-subscribe flex-row align-items-center">
+               <span>Оформить доступ</span>
+               <div class="header-button__hr"></div>
+               <i class="icon-gem"></i>
+          </div>
+     </div>
+</header>
+     <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+     <div class="modal-dialog">
+          <div class="modal-content">
+               <div class="modal-body d-flex flex-row align-items-center justify-content-between">
+                    <form class="new-header-search w-100 mx-2">
+                         <input type="text" name="searchBar" id="searchBar" placeholder="Поиск">
+                         <button type="submit">
+                              <i class="bi bi-search"></i>
+                         </button>
+                    </form>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+          </div>
+     </div>
+</div>
+
+     <nav class="side-navbar active-nav justify-content-start flex-column" id="sidebar">
+     <div class="nav main-nav flex-column w-100">
+          <div href="#" class="nav-link">
+               <a href="" class="nav-link__icon">
+                    <i class="icon-ballot"></i>
+               </a>
+               <div class="nav-link__text">
+                    <a href="" class="nav-link__text-sub d-flex">Аналитические материалы</a>
+                    <div class="nav-link__list d-flex flex-column">
+                         <a href="">Организациям</a>
+                         <a href="">Индивидуальным предпринимателям</a>
+                         <a href="">Физическим лицам</a>
+                    </div>
+               </div>
+          </div>
+          <div href="#" class="nav-link">
+               <a href="" class="nav-link__icon">
+                    <i class="icon-envelope-open-text"></i>
+               </a>
+               <div class="nav-link__text">
+                    <a href="" class="nav-link__text-sub">Новости</a>
+               </div>
+          </div>
+          <div href="#" class="nav-link">
+               <a href="" class="nav-link__icon">
+                    <i class="icon-file-invoice"></i>
+               </a>
+               <div class="nav-link__text">
+                    <a href="" class="nav-link__text-sub">Налоговый календарь</a>
+               </div>
+          </div>
+          <div href="#" class="nav-link">
+               <a href="" class="nav-link__icon">
+                    <i class="icon-calendar-lines"></i>
+               </a>
+               <div class="nav-link__text">
+                    <a href="" class="nav-link__text-sub">Справочная информация</a>
+               </div>
+          </div>
+          <div href="#" class="nav-link">
+               <a href="" class="nav-link__icon">
+                    <i class="icon-table-layout"></i>
+               </a>
+               <div class="nav-link__text">
+                    <a href="" class="nav-link__text-sub">Сервисы</a>
+               </div>
+          </div>
+          <div href="#" class="nav-link">
+               <a href="" class="nav-link__icon">
+                    <i class="icon-calculator"></i>
+               </a>
+               <div class="nav-link__text">
+                    <a href="" class="nav-link__text-sub">Формы документов</a>
+               </div>
+          </div>
+     </div>
+     <hr>
+     <div href="#" class="nav-link">
+          <a href="" class="nav-link__icon-simple">
+               <i class="icon-attribution-pen"></i>
+          </a>
+          <div class="nav-link__text">
+               <a href="">Авторам</a>
+          </div>
+     </div>
+     <div href="#" class="nav-link">
+          <a href="" class="nav-link__icon-simple">
+               <i class="icon-megaphone"></i>
+          </a>
+          <div class="nav-link__text">
+               <a href="">Рекламодателям</span>
+          </div>
+     </div>
+     <a class="nav-hidden subcribe-btn mt-3" href="#">
+          Оформить доступ
+     </a>
+     <div class="nav-hidden text-center mt-2">
+          <span class="d-block">Телефон для консультации:</span>
+          <a class="color-gold d-block ff-pt-serif" href="tel:+375172691903">+375 (17) 269-19-03</a>
+     </div>
+</nav>
+
+
+
+     <div class="nav-container active-container">
+
+          <a class="" id="menu-btn"><i class="bi bi-chevron-right"></i></a>
+          <div class="main-content">
+               <section class="main-section">
+                    <div class="row">
+                         <nav aria-label="breadcrumb" class="col-12">
+                              <ol class="breadcrumb">
+                                   <li class="breadcrumb-item"><a href="new-main.html"><i class="bi bi-house"></i></a>
+                                   </li>
+                                   <li class="breadcrumb-item active" aria-current="page">
+                                        O сетевом издании «padatak.by»
+                                   </li>
+                              </ol>
+                         </nav>
+                    </div>
+               </section>
+               <div class="mt-4"></div>
+               <section class="main-section">
+               <div class="row gap-0 row-gap-3 align-items-center">
+                         <div class="col-xxl-5 d-flex flex-column justify-content-start row row-container">
+                              <div class="col-lg-10">
+                                   <picture>
+                                        <source media="(min-width: 992px)" srcset="./img/landing-about/logo-padatak-lg-x2.png">
+                                        <img src="./img/landing-about/logo-padatak-lg-x1.png" alt="" class="w-100">
+                                   </picture>
+                              </div>
+                              <div class="mt-3 col-lg-10">
+                                   <span class="color-gray-dark fs-18">
+                                        Современный информационный ресурс предлагает субъектам хозяйствования и физическим лицам
+                                        разноплановую профессиональную информацию
+                                        о налогообложении и бухгалтерском учете
+                                   </span>
+                              </div>
+                              <div class="mt-4 col-lg-7 col-xl-6">
+                                   <a class="btn-orange py-3 px-4 w-100" href="#">
+                                        Получить демодоступ
+                                   </a>
+                              </div>
+                         </div>
+                         <div class="col-xxl-7 d-flex align-items-end">
+                              <picture>
+                                   <source media="(min-width: 992px)" srcset="./img/landing-about/main-illustr-x2.png">
+                                   <img src="./img/landing-about/main-illustr-x1.png" alt="" class="w-100">
+                              </picture>
+                         </div>
+                    </div>
+               </section>
+               <section class="main-section mt-40">
+                    <div class="row">
+                         <div class="col-xl-3 border-end border-color-gold d-flex flex-column justify-content-center align-items-center border-xl-none">
+                              <div class="about-banner-numbers">
+                                   2600+
+                              </div>
+                              <div class="about-banner-numbers-text mt-2 fs-a-20-18">
+                                   аналитических материалов
+                              </div>
+                         </div>
+                         <div class="col-xl-3 border-end border-color-gold d-flex flex-column justify-content-center align-items-center border-xl-none mt-3 mt-xl-0">
+                              <div class="about-banner-numbers">
+                                   50+
+                              </div>
+                              <div class="about-banner-numbers-text mt-2 fs-a-20-18">
+                                   форм документов
+                              </div>
+                         </div>
+                         <div class="col-xl-3 border-end border-color-gold d-flex flex-column justify-content-center align-items-center border-xl-none mt-3 mt-xl-0">
+                              <div class="about-banner-numbers">
+                                   1000+
+                              </div>
+                              <div class="about-banner-numbers-text mt-2 fs-a-20-18">
+                                   ответов на вопросы
+                              </div>
+                         </div>
+                         <div class="col-xl-3 d-flex flex-column justify-content-center align-items-center mt-3 mt-xl-0">
+                              <div class="about-banner-numbers">
+                                   100+
+                              </div>
+                              <div class="about-banner-numbers-text mt-2 fs-a-20-18">
+                                   видеоматериалов в сервисе «Медиатека»
+                              </div>
+                         </div>
+                    </div>
+               </section>
+               <section class="main-section mt-100">
+                    <div class="">
+                         <span class="d-xl-block d-none fs-32 fw-700 ff-pt-serif">Почему выбирают нас</span>
+                         <span class="d-block d-xl-none fs-24 fw-700 ff-pt-serif">Почему выбирают нас</span>
+                    </div>
+                    <div class="row mt-32">
+                         <div class="col-xxl-3 d-flex mt-xxl-0 mt-3">
+                              <div class="bg-blue-light border-10 p-xl-4 p-3">
+                                   <div class="about-highlights-icon border-10">
+                                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                             <g clip-path="url(#clip0_985_12045)">
+                                             <path d="M18.6667 17.3333H21.3333V20H18.6667V17.3333ZM24 20H26.6667V17.3333H24V20ZM18.6667 25.3333H21.3333V22.6667H18.6667V25.3333ZM24 25.3333H26.6667V22.6667H24V25.3333ZM18.6667 9.33333H21.3333V6.66667H18.6667V9.33333ZM24 9.33333H26.6667V6.66667H24V9.33333ZM18.6667 14.6667H21.3333V12H18.6667V14.6667ZM24 14.6667H26.6667V12H24V14.6667ZM32 4V32H0V11.772C0 10.704 0.416 9.69867 1.172 8.94267L4.78133 5.33333C6.5 3.61333 9.5 3.61333 11.2187 5.33333L13.3333 7.448V4C13.3333 1.79467 15.128 0 17.3333 0H28C30.2053 0 32 1.79467 32 4ZM13.3333 11.772C13.3338 11.5967 13.2995 11.423 13.2324 11.2609C13.1654 11.0989 13.0669 10.9518 12.9427 10.828L9.33333 7.21867C8.632 6.51733 7.368 6.51733 6.66667 7.21867L3.05733 10.828C2.933 10.9517 2.83444 11.0988 2.76738 11.2608C2.70032 11.4229 2.66609 11.5966 2.66667 11.772V29.3333H13.3333V11.772ZM29.3333 4C29.3333 3.26533 28.7347 2.66667 28 2.66667H17.3333C16.5987 2.66667 16 3.26533 16 4V29.3333H29.3333V4ZM6.66667 20H9.33333V17.3333H6.66667V20ZM6.66667 14.6667H9.33333V12H6.66667V14.6667ZM6.66667 25.3333H9.33333V22.6667H6.66667V25.3333Z" fill="#034A66"/>
+                                             </g>
+                                             <defs>
+                                             <clipPath id="clip0_985_12045">
+                                             <rect width="32" height="32" fill="white"/>
+                                             </clipPath>
+                                             </defs>
+                                        </svg>
+
+                                                                                </div>
+                                   <div class="mt-3">
+                                        <p class="mb-0 color-white fs-a-20-18 fw-500">
+                                             Официальное сетевое издание Министерства по налогам и сборам Республики Беларусь
+                                        </p>
+                                   </div>
+                              </div>
+                         </div>
+                         <div class="col-xxl-3 d-flex mt-xxl-0 mt-3">
+                              <div class="border-10 border-color-gray border p-xl-4 p-3">
+                                   <div class="about-highlights-icon border-10">
+                                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                             <path d="M22.6667 32H9.33335C5.65735 32 2.66669 29.0093 2.66669 25.3333V6.66667C2.66669 2.99067 5.65735 0 9.33335 0H22.6667C26.3427 0 29.3334 2.99067 29.3334 6.66667V25.3333C29.3334 29.0093 26.3427 32 22.6667 32ZM9.33335 2.66667C7.12802 2.66667 5.33335 4.46133 5.33335 6.66667V25.3333C5.33335 27.5387 7.12802 29.3333 9.33335 29.3333H22.6667C24.872 29.3333 26.6667 27.5387 26.6667 25.3333V6.66667C26.6667 4.46133 24.872 2.66667 22.6667 2.66667H9.33335ZM24 8C24 7.264 23.4027 6.66667 22.6667 6.66667H17.3334C16.5974 6.66667 16 7.264 16 8C16 8.736 16.5974 9.33333 17.3334 9.33333H22.6667C23.4027 9.33333 24 8.736 24 8ZM24 16C24 15.264 23.4027 14.6667 22.6667 14.6667H17.3334C16.5974 14.6667 16 15.264 16 16C16 16.736 16.5974 17.3333 17.3334 17.3333H22.6667C23.4027 17.3333 24 16.736 24 16ZM24 24C24 23.264 23.4027 22.6667 22.6667 22.6667H17.3334C16.5974 22.6667 16 23.264 16 24C16 24.736 16.5974 25.3333 17.3334 25.3333H22.6667C23.4027 25.3333 24 24.736 24 24ZM13.3334 9.33333V6.66667C13.3334 5.93067 12.736 5.33333 12 5.33333H9.33335C8.59735 5.33333 8.00002 5.93067 8.00002 6.66667V9.33333C8.00002 10.0693 8.59735 10.6667 9.33335 10.6667H12C12.736 10.6667 13.3334 10.0693 13.3334 9.33333ZM13.3334 17.3333V14.6667C13.3334 13.9307 12.736 13.3333 12 13.3333H9.33335C8.59735 13.3333 8.00002 13.9307 8.00002 14.6667V17.3333C8.00002 18.0693 8.59735 18.6667 9.33335 18.6667H12C12.736 18.6667 13.3334 18.0693 13.3334 17.3333ZM13.3334 25.3333V22.6667C13.3334 21.9307 12.736 21.3333 12 21.3333H9.33335C8.59735 21.3333 8.00002 21.9307 8.00002 22.6667V25.3333C8.00002 26.0693 8.59735 26.6667 9.33335 26.6667H12C12.736 26.6667 13.3334 26.0693 13.3334 25.3333Z" fill="#C47A2C"/>
+                                        </svg>
+                                   </div>
+                                   <div class="mt-3">
+                                        <p class="mb-0 color-gold fs-a-20-18 fw-500">
+                                             Аналитические материалы от экспертов
+                                        </p>
+                                        <div class="d-flex flex-column mt-3 gap-2">
+                                             <div class="d-flex flex-row gap-2">
+                                                  <i class="bi bi-check color-gold fs-24"></i>
+                                                  <span>
+                                                       Возможность читать аналитический контент «здесь и сейчас»
+                                                  </span>
+                                             </div>
+                                             <div class="d-flex flex-row gap-2">
+                                                  <i class="bi bi-check color-gold fs-24"></i>
+                                                  <span>
+                                                       Рассмотрение примеров из практики экспертами
+                                                  </span>
+                                             </div>
+                                             <div class="d-flex flex-row gap-2">
+                                                  <i class="bi bi-check color-gold fs-24"></i>
+                                                  <span>
+                                                       Наличие экслюзивных информационных материалов, подготовленных специалистами налоговых органов, только для сетевого издания «padatak.by»
+                                                  </span>
+                                             </div>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+                         <div class="col-xxl-3 d-flex mt-xxl-0 mt-3">
+                              <div class="border-10 border-color-gray border p-xl-4 p-3">
+                                   <div class="about-highlights-icon border-10">
+                                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                             <g clip-path="url(#clip0_985_12059)">
+                                             <path d="M16 0C12.0607 0.00280849 8.26151 1.46216 5.33333 4.09733V1.33333C5.33333 0.979711 5.19286 0.640573 4.94281 0.390524C4.69276 0.140476 4.35362 0 4 0C3.64638 0 3.30724 0.140476 3.05719 0.390524C2.80714 0.640573 2.66667 0.979711 2.66667 1.33333V5.33333C2.66667 6.3942 3.08809 7.41162 3.83824 8.16176C4.58839 8.91191 5.6058 9.33333 6.66667 9.33333H10.6667C11.0203 9.33333 11.3594 9.19286 11.6095 8.94281C11.8595 8.69276 12 8.35362 12 8C12 7.64638 11.8595 7.30724 11.6095 7.05719C11.3594 6.80714 11.0203 6.66667 10.6667 6.66667H6.66667C6.6217 6.66 6.57718 6.65065 6.53333 6.63867C8.70603 4.45044 11.5708 3.0841 14.6388 2.77289C17.7067 2.46167 20.7875 3.22487 23.3554 4.93221C25.9232 6.63956 27.819 9.18519 28.7189 12.1346C29.6189 15.084 29.4673 18.2543 28.2901 21.1045C27.1129 23.9546 24.983 26.3077 22.2639 27.7623C19.5449 29.2169 16.4053 29.6828 13.3811 29.0803C10.3569 28.4778 7.63545 26.8444 5.68141 24.4589C3.72737 22.0734 2.66183 19.0837 2.66667 16C2.66667 15.6464 2.52619 15.3072 2.27614 15.0572C2.02609 14.8071 1.68696 14.6667 1.33333 14.6667C0.979711 14.6667 0.640573 14.8071 0.390524 15.0572C0.140476 15.3072 0 15.6464 0 16C0 19.1645 0.938384 22.2579 2.69649 24.8891C4.45459 27.5203 6.95345 29.5711 9.87707 30.7821C12.8007 31.9931 16.0177 32.3099 19.1214 31.6926C22.2251 31.0752 25.0761 29.5514 27.3137 27.3137C29.5514 25.0761 31.0752 22.2251 31.6926 19.1214C32.3099 16.0177 31.9931 12.8007 30.7821 9.87707C29.5711 6.95345 27.5203 4.45459 24.8891 2.69649C22.2579 0.938384 19.1645 0 16 0Z" fill="#C47A2C"/>
+                                             <path d="M15.9993 8C15.6457 8 15.3066 8.14048 15.0565 8.39052C14.8065 8.64057 14.666 8.97971 14.666 9.33333V16C14.6661 16.3536 14.8066 16.6927 15.0567 16.9427L19.0567 20.9427C19.3082 21.1855 19.645 21.3199 19.9946 21.3169C20.3441 21.3139 20.6786 21.1736 20.9258 20.9264C21.173 20.6792 21.3132 20.3448 21.3162 19.9952C21.3193 19.6456 21.1849 19.3088 20.942 19.0573L17.3327 15.448V9.33333C17.3327 8.97971 17.1922 8.64057 16.9422 8.39052C16.6921 8.14048 16.353 8 15.9993 8Z" fill="#C47A2C"/>
+                                             </g>
+                                             <defs>
+                                             <clipPath id="clip0_985_12059">
+                                             <rect width="32" height="32" fill="white"/>
+                                             </clipPath>
+                                             </defs>
+                                        </svg>
+                                   </div>
+                                   <div class="mt-3">
+                                        <p class="mb-0 color-gold fs-a-20-18 fw-500">
+                                             Доступ 24/7 с любого устройства
+                                        </p>
+                                        <div class="d-flex flex-column mt-3 gap-2">
+                                             <div class="d-flex flex-row gap-2">
+                                                  <i class="bi bi-check color-gold fs-24"></i>
+                                                  <span>
+                                                       Ежедневное обновление позволяет пользователям оперативно узнавать о важнейших событиях в сферах налогообложения и бухгалтерского учета
+                                                  </span>
+                                             </div>
+                                             <div class="d-flex flex-row gap-2">
+                                                  <i class="bi bi-check color-gold fs-24"></i>
+                                                  <span>
+                                                       Интерактивные сервисы помогут в ежедневной работе и станут настоящими помощникам в решении рабочих задач
+                                                  </span>
+                                             </div>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+                         <div class="col-xxl-3 d-flex mt-xxl-0 mt-3">
+                              <div class="border-10 border-color-gray border p-xl-4 p-3">
+                                   <div class="about-highlights-icon border-10">
+                                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                             <g clip-path="url(#clip0_1199_835)">
+                                             <path d="M25.3333 32H6.66667C4.89921 31.9979 3.20474 31.2948 1.95496 30.045C0.705176 28.7953 0.00211714 27.1008 0 25.3333L0 6.66667C0.00211714 4.89921 0.705176 3.20474 1.95496 1.95496C3.20474 0.705176 4.89921 0.00211714 6.66667 0L25.3333 0C27.1008 0.00211714 28.7953 0.705176 30.045 1.95496C31.2948 3.20474 31.9979 4.89921 32 6.66667V25.3333C31.9979 27.1008 31.2948 28.7953 30.045 30.045C28.7953 31.2948 27.1008 31.9979 25.3333 32ZM6.66667 2.66667C5.6058 2.66667 4.58839 3.08809 3.83824 3.83824C3.08809 4.58839 2.66667 5.6058 2.66667 6.66667V25.3333C2.66667 26.3942 3.08809 27.4116 3.83824 28.1618C4.58839 28.9119 5.6058 29.3333 6.66667 29.3333H25.3333C26.3942 29.3333 27.4116 28.9119 28.1618 28.1618C28.9119 27.4116 29.3333 26.3942 29.3333 25.3333V6.66667C29.3333 5.6058 28.9119 4.58839 28.1618 3.83824C27.4116 3.08809 26.3942 2.66667 25.3333 2.66667H6.66667ZM12.456 22.6733C11.9002 22.6715 11.3547 22.5229 10.8747 22.2427C10.4005 21.9713 10.0069 21.5787 9.73418 21.1053C9.46148 20.6318 9.31947 20.0944 9.32267 19.548V12.452C9.32222 11.9055 9.46549 11.3685 9.73811 10.8949C10.0107 10.4213 10.4031 10.0277 10.8759 9.75365C11.3487 9.47958 11.8852 9.33466 12.4317 9.33343C12.9781 9.3322 13.5153 9.47472 13.9893 9.74667L21.0267 13.26C21.5155 13.5239 21.9249 13.9137 22.2123 14.389C22.4998 14.8644 22.6549 15.408 22.6615 15.9634C22.6682 16.5189 22.5262 17.0661 22.2502 17.5482C21.9742 18.0303 21.5744 18.4298 21.092 18.7053L13.924 22.288C13.4769 22.543 12.9707 22.6759 12.456 22.6733ZM12.4227 12.0067C12.3492 12.0066 12.277 12.026 12.2133 12.0627C12.1442 12.1011 12.0868 12.1577 12.0473 12.2263C12.0079 12.2949 11.9878 12.3729 11.9893 12.452V19.548C11.9898 19.6259 12.0105 19.7024 12.0494 19.7699C12.0884 19.8374 12.1442 19.8937 12.2115 19.9331C12.2787 19.9725 12.3551 19.9937 12.433 19.9947C12.5109 19.9957 12.5878 19.9764 12.656 19.9387L19.824 16.3547C19.8774 16.3129 19.9198 16.2588 19.9477 16.1971C19.9756 16.1353 19.988 16.0677 19.984 16C19.9857 15.9207 19.9655 15.8425 19.9258 15.7738C19.8861 15.7052 19.8283 15.6487 19.7587 15.6107L12.7267 12.0973C12.635 12.0411 12.5302 12.0098 12.4227 12.0067Z" fill="#C47A2C"/>
+                                             </g>
+                                             <defs>
+                                             <clipPath id="clip0_1199_835">
+                                             <rect width="32" height="32" fill="white"/>
+                                             </clipPath>
+                                             </defs>
+                                        </svg>
+                                   </div>
+                                   <div class="mt-3">
+                                        <p class="mb-0 color-gold fs-a-20-18 fw-500">
+                                             Медиатека для бухгалтеров и индивидуальных предпринимателей
+                                        </p>
+                                        <p class="mt-3">
+                                             Постоянно обновляемая база видеозаписей прямых эфиров с налоговым консультантом Республиканского унитарного предприятия «Информационно- издательский центр по налогам и сборам» и вебинаров с участием представителей Министерства по налогам и сборам Республики Беларусь и других ведомств
+                                        </p>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+               </section>
+               <section class="main-section mt-100">
+                    <div class="">
+                         <span class="d-xl-block d-none fs-32 fw-700 ff-pt-serif">Наши сервисы и справочная информация</span>
+                         <span class="d-block d-xl-none fs-24 fw-700 ff-pt-serif">Наши сервисы и справочная информация</span>
+                    </div>
+                    <div class="accordion accordion-about mt-32" id="accordionAbout">
+                         <div class="row accordion-about-row">
+                              <div class="col-xxl-4 d-flex my-xxl-0 my-2">
+                                   <div class="p-xxl-4 p-3 bg-white border border-color-gray border-10">
+                                        <div class="accordion-about-btn-group">
+                                             <div class="d-flex flex-column gap-3">
+                                                  <h2 class="accordion-header">
+                                                       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAboutOne" aria-expanded="true" aria-controls="collapseAboutOne">
+                                                            Налоговый календарь
+                                                       </button>
+                                                  </h2>
+                                                  <h2 class="accordion-header">
+                                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAboutTwo" aria-expanded="false" aria-controls="collapseAboutTwo">
+                                                            Производственный календарь
+                                                       </button>
+                                                  </h2>
+                                                  <h2 class="accordion-header">
+                                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAboutThree" aria-expanded="false" aria-controls="collapseAboutThree">
+                                                            Сервис «Медиатека»
+                                                       </button>
+                                                  </h2>
+                                                  <h2 class="accordion-header">
+                                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAboutFour" aria-expanded="false" aria-controls="collapseAboutFour">
+                                                            Сервис «Перечень моделей (модификации) КСА, которые могут быть (не могут быть) доработаны заявителями до соответствия новым требованиям к КСА»
+                                                       </button>
+                                                  </h2>
+                                                  <h2 class="accordion-header">
+                                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAboutFive" aria-expanded="false" aria-controls="collapseAboutFive">
+                                                            Сервис «Реестр налоговых консультантов»
+                                                       </button>
+                                                  </h2>
+                                                  <h2 class="accordion-header">
+                                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAboutSix" aria-expanded="false" aria-controls="collapseAboutSix">
+                                                            Сервис «Вопрос-ответ»
+                                                       </button>
+                                                  </h2>
+                                                  <h2 class="accordion-header">
+                                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAboutSeven" aria-expanded="false" aria-controls="collapseAboutSeven">
+                                                            Сервис «Режимы налогообложения»
+                                                       </button>
+                                                  </h2>
+                                             </div>
+                                        </div>
+                                   </div>
+                              </div>
+                              <div class="col-xxl-8 d-flex my-xxl-0 my-2">
+                                   <div class="d-flex flex-column bg-white border border-color-gray border-10 justify-content-start align-items-center p-xxl-4 p-3">
+                                        <div class="accordion-item w-100">
+                                             <div id="collapseAboutOne" class="accordion-collapse collapse show" data-bs-parent="#accordionAbout">
+                                                  <div class="accordion-body d-flex flex-column">
+                                                       <span class="fw-500 fs-a-20-18 color-gold">Налоговый календарь</span>
+                                                       <p class="mt-3">
+                                                            Календарь сроков представления налоговых деклараций и уплаты налогов. При клике на соответствующей дате предоставляется полная информация о предстоящих подаче отчетности и уплате налогов и платежей.
+                                                       </p>
+                                                       <picture>
+                                                            <source media="(min-width: 1200px)" srcset="./img/about/acc-about-1-xl.png">
+                                                            <img src="./img/about/acc-about-1-sm.png" alt="">
+                                                       </picture>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                        <div class="accordion-item w-100">
+                                             <div id="collapseAboutTwo" class="accordion-collapse collapse" data-bs-parent="#accordionAbout">
+                                                  <div class="accordion-body d-flex flex-column">
+                                                       <span class="fw-500 fs-a-20-18 color-gold">Производственный календарь</span>
+                                                       <p class="mt-3">
+                                                            Календарь расчетных норм рабочего времени при пяти- и шестидневной рабочей неделе. Он содержит информацию о количестве рабочих, выходных и праздничных дней.
+                                                       </p>
+                                                       <picture>
+                                                            <source media="(min-width: 1200px)" srcset="./img/about/acc-about-2-xl.png">
+                                                            <img src="./img/about/acc-about-2-sm.png" alt="">
+                                                       </picture>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                        <div class="accordion-item w-100">
+                                             <div id="collapseAboutThree" class="accordion-collapse collapse" data-bs-parent="#accordionAbout">
+                                                  <div class="accordion-body d-flex flex-column">
+                                                       <span class="fw-500 fs-a-20-18 color-gold">Сервис «Медиатека»</span>
+                                                       <p class="mt-3">
+                                                            Предоставляет доступ к видеозаписям прямых эфиров с налоговым консультантом Республиканского унитарного предприятия «Информационно-издательский центр по налогам и сборам» и вебинаров с участием представителей Министерства по налогам и сборам Республики Беларусь и других ведомств.
+                                                       </p>
+                                                       <picture>
+                                                            <source media="(min-width: 1200px)" srcset="./img/about/acc-about-3-xl.png">
+                                                            <img src="./img/about/acc-about-3-sm.png" alt="">
+                                                       </picture>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                        <div class="accordion-item w-100">
+                                             <div id="collapseAboutFour" class="accordion-collapse collapse" data-bs-parent="#accordionAbout">
+                                                  <div class="accordion-body d-flex flex-column">
+                                                       <span class="fw-500 fs-a-20-18 color-gold">
+                                                            Сервис «Перечень моделей (модификации) КСА, которые могут быть (не могут быть) доработаны заявителями до соответствия новым требованиям к КСА»
+                                                       </span>
+                                                       <p class="mt-3">
+                                                            Позволяет пользователям, использующим кассовые суммирующие аппараты, в оперативном режиме узнать о возможности их доработки до соответствия новым требованиям с КСА.
+                                                       </p>
+                                                       <picture>
+                                                            <source media="(min-width: 1200px)" srcset="./img/about/acc-about-7-xl.png">
+                                                            <img src="./img/about/acc-about-7-sm.png" alt="">
+                                                       </picture>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                        <div class="accordion-item w-100">
+                                             <div id="collapseAboutFive" class="accordion-collapse collapse" data-bs-parent="#accordionAbout">
+                                                  <div class="accordion-body d-flex flex-column">
+                                                       <span class="fw-500 fs-a-20-18 color-gold">Сервис «Реестр налоговых консультантов»</span>
+                                                       <p class="mt-3">
+                                                            Предоставляет в удобном виде информацию из Единого реестра налоговых консультантов*. <br>
+                                                            *Сервис работает на основании данных, размещенных на сайте Министерства по налогам и сборам Республики Беларусь
+                                                       </p>
+                                                       <picture>
+                                                            <source media="(min-width: 1200px)" srcset="./img/about/acc-about-6-xl.png">
+                                                            <img src="./img/about/acc-about-6-sm.png" alt="">
+                                                       </picture>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                        <div class="accordion-item w-100">
+                                             <div id="collapseAboutSix" class="accordion-collapse collapse" data-bs-parent="#accordionAbout">
+                                                  <div class="accordion-body d-flex flex-column">
+                                                       <span class="fw-500 fs-a-20-18 color-gold">Сервис «Вопрос-ответ»</span>
+                                                       <p class="mt-3">
+                                                            Для организаций, индивидуальных предпринимателей и физических лиц публикуются ответы, полученные от работников налоговой службы, налоговых консультантов Республиканского унитарного предприятия «Информационно-издательский центр по налогам и сборам» и других ведомств.
+                                                       </p>
+                                                       <picture>
+                                                            <source media="(min-width: 1200px)" srcset="./img/about/acc-about-4-xl.png">
+                                                            <img src="./img/about/acc-about-4-sm.png" alt="">
+                                                       </picture>
+                                                  </div>
+
+                                                                                               </div>
+                                        </div>
+                                        <div class="accordion-item w-100">
+                                             <div id="collapseAboutSeven" class="accordion-collapse collapse" data-bs-parent="#accordionAbout">
+                                                  <div class="accordion-body d-flex flex-column">
+                                                       <span class="fw-500 fs-a-20-18 color-gold">Сервис «Режимы налогообложения»</span>
+                                                       <p class="mt-3">
+                                                            Содержит описание режимов налогообложения, каждый из которых имеет свои особенности в зависимости от категории налогоплательщика, размера его годового дохода и других параметров, и помогает сделать выбор.
+                                                       </p>
+                                                       <picture>
+                                                            <source media="(min-width: 1200px)" srcset="./img/about/acc-about-5-xl.png">
+                                                            <img src="./img/about/acc-about-5-sm.png" alt="">
+                                                       </picture>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+               </section>
+               <section class="main-section mt-100">
+                    <div class="bg-blue-light border-10 p-xl-4 p-3">
+                         <div class="p-xl-2">
+                              <div class="row">
+                                   <div class="col-xxl-8 col-xxxl-9 d-flex">
+                                        <div class="">
+                                             <strong class="fs-2 ff-pt-serif color-white">Демодоступ на <span class="color-gold">3 дня</span></strong>
+                                             <div class="bg-color-light-blue p-12 border-10 mt-4">
+                                                  <p class="mb-0 color-white">
+                                                       Мы предоставляем вам возможность получить бесплатный доступ к 
+                                                       сетевому изданию <a 
+                                                       href="https://padatak.by/" target="_blank" rel="noopener noreferrer" class="color-white hover-gold-light transition-3">
+                                                            <strong>«padatak.by»</strong>
+                                                       </a> на 3 дня по <strong class="color-gold">тарифу «Бизнес»</strong>, чтобы вы смогли 
+                                                       оценить, насколько оно соответствует вашим требованиям и ожиданиям
+
+                                                                                                         </p>
+                                             </div>
+                                             <div class="mt-4">
+                                                  <div class="row">
+                                                       <div class="col-xl-6 my-1">
+                                                            <div class="d-flex flex-column gap-2">
+                                                                 <p class="mb-0 color-white fw-normal">
+                                                                      <i class="bi bi-check color-gold fs-18"></i>
+                                                                      <span>Добавление необходимых для работы материалов материалов в закладки</span>
+                                                                 </p>
+                                                                 <p class="mb-0 color-white fw-normal">
+                                                                      <i class="bi bi-check color-gold fs-18"></i>
+                                                                      <span>Сохранение истории просмотров материалов</span>
+                                                                 </p>
+                                                                 <p class="mb-0 color-white fw-normal">
+                                                                      <i class="bi bi-check color-gold fs-18"></i>
+                                                                      <span>Полные тексты аналитических материалов</span>
+                                                                 </p>
+                                                                 <p class="mb-0 color-white fw-normal">
+                                                                      <i class="bi bi-check color-gold fs-18"></i>
+                                                                      <span>Сервис «Налоговый календарь»</span>
+                                                                 </p>
+                                                            </div>
+                                                       </div>
+                                                       <div class="col-xl-6 my-1">
+                                                            <div class="d-flex flex-column gap-2">
+                                                                 <p class="mb-0 color-white fw-normal">
+                                                                      <i class="bi bi-check color-gold fs-18"></i>
+                                                                      <span>Сервис «Производственный календарь»</span>
+                                                                 </p>
+                                                                 <p class="mb-0 color-white fw-normal">
+                                                                      <i class="bi bi-check color-gold fs-18"></i>
+                                                                      <span>Сервис «Медиатека»</span>
+                                                                 </p>
+                                                                 <p class="mb-0 color-white fw-normal">
+                                                                      <i class="bi bi-check color-gold fs-18"></i>
+                                                                      <span>Сервис «Вопрос–ответ»</span>
+                                                                 </p>
+                                                            </div>
+                                                       </div>
+                                                  </div>
+                                             </div>
+                                             <a target="_blank" href="" class="button border-10 mt-4"> Оформить демодоступ </a>
+                                        </div>
+                                   </div>
+                                   <div class="col-xxl-4 col-xxxl-3 d-flex justify-content-center align-items-center">
+                                        <div class="bg-white p-4 d-xxl-flex d-none w-100 justify-content-center align-items-center border-10">
+                                             <img src="./img/about/about-demo-img.png" alt="" class="w-100 object-fit-cover">
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+               </section>
+               <section class="main-section mt-100">
+                    <div class="">
+                         <span class="d-xl-block d-none fs-32 fw-700 ff-pt-serif">Тарифы</span>
+                         <span class="d-block d-xl-none fs-24 fw-700 ff-pt-serif">Тарифы</span>
+                    </div>
+               </section>
+               <section class="main-section mt-100">
+                    <div class="">
+                         <span class="d-xl-block d-none fs-32 fw-700 ff-pt-serif">Часто задаваемые вопросы</span>
+                         <span class="d-block d-xl-none fs-24 fw-700 ff-pt-serif">Часто задаваемые вопросы</span>
+                    </div>
+                    <div class="faq-block-land mt-32">
+                         <div class="accordion" id="accordionExample">
+                              <div class="accordion-item my-2">
+                                   <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                             Как оплатить доступ к сетевому изданию «padatak.by»
+                                        </button>
+                                   </h2>
+                                   <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                             Оплатить доступ к платформе можно либо c помощью оплаты счет-фактуры либо через систему ЕРИП. <br>
+                                             Для оплаты через ЕРИП: <br>
+                                             1. Выберите пункт ЕРИП в интернет-банкинге, мобильном приложении или терминале <br>
+                                             2. Далее выберите последовательно пункты: <br>
+                                                  &nbsp;&nbsp;&nbsp;&nbsp;Система «Расчет» (ЕРИП) <br>
+                                                  &nbsp;&nbsp;&nbsp;&nbsp;Информационные услуги <br>
+                                                  &nbsp;&nbsp;&nbsp;&nbsp;Деловая информация <br>
+                                                  &nbsp;&nbsp;&nbsp;&nbsp;Инфо-центр по налогам и сборам <br>
+                                                  &nbsp;&nbsp;&nbsp;&nbsp;Доступ к Padatak.by <br>
+                                             3. Введите код платежа для оплаты в ЕРИП:  (ваш номер заказа) <br>
+                                             4. Проверьте корректность информации <br>
+                                             5. Совершите платеж
+                                        </div>
+                                   </div>
+                              </div>
+                              <div class="accordion-item my-2">
+                                   <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                             Какие возможности ИПС «ЭТАЛОН-ONLINE» открываются для пользователей, оформивших доступ по тарифу «Преимум»
+                                        </button>
+                                   </h2>
+                                   <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                             Ответ
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+               </section>
+               <div class="mt-4"></div>
+          </div>
+          <div class="my-5"></div>
+          <footer class="footer">
+     <div class="main-section">
+          <div class="footer__body">
+               <div class="row g-4">
+                    <div class="col-xl-3 col-md-6">
+                         <nav class="menu-footer">
+                              <div class="menu-footer__collapse">
+                                   <a href="forms-of-documents.html" class="menu-footer__link">Аналитические материалы</a>
+                                   <button class="menu-footer__button collapsed" data-bs-toggle="collapse" data-bs-target="#footer-forms-doc-collapse" aria-expanded="false" aria-current="true">
+                                        <i class="bi bi-chevron-down"></i>
+                                   </button>
+                              </div>
+                              <ul class="submenu-footer collapse" id="footer-forms-doc-collapse">
+                                   <li><a href="#" class="submenu-footer__link">Организациям</a></li>
+                                   <li><a href="#" class="submenu-footer__link">Индивидуальным предпринимателям</a></li>
+                                   <li><a href="#" class="submenu-footer__link">Физическим лицам</a></li>
+                              </ul>
+                         </nav>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                         <nav class="menu-footer">
+                              <div class="menu-footer__collapse">
+                                   <a href="articles.html" class="menu-footer__link">Сервисы</a>
+                              </div>
+                         </nav>
+                         <nav class="menu-footer mt-4 mt-xl-0">
+                              <div class="menu-footer__collapse">
+                                   <a href="articles.html" class="menu-footer__link">Формы документов</a>
+                              </div>
+                         </nav>
+                         <nav class="menu-footer mt-4 mt-xl-0">
+                              <div class="menu-footer__collapse">
+                                   <a href="articles.html" class="menu-footer__link">Справочная информация</a>
+                              </div>
+                         </nav>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                         <nav class="menu-footer">
+                              <div class="menu-footer__collapse">
+                                   <a href="#" class="menu-footer__link">Информация о платформе</a>
+                                   <button class="menu-footer__button collapsed" data-bs-toggle="collapse" data-bs-target="#footer-ref-info-collapse" aria-expanded="false" aria-current="true">
+                                        <i class="bi bi-chevron-down"></i>
+                                   </button>
+                              </div>
+                              <ul class="submenu-footer collapse" id="footer-ref-info-collapse">
+                                   <li><a href="#" class="submenu-footer__link">Публичный договор</a></li>
+                                   <li><a href="#" class="submenu-footer__link">Политика обработки cookies</a></li>
+                                   <li><a href="#" class="submenu-footer__link">Политика обработки персональных данных</a></li>
+                                   <li><a href="#" class="submenu-footer__link">Пользовательское соглашение</a></li>
+                                   <li><a href="#" class="submenu-footer__link">Оплата доступа</a></li>
+                              </ul>
+                         </nav>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                         <nav class="menu-footer">
+                              <div class="menu-footer__collapse">
+                                   <div class="menu-footer__title">Контакты</div>
+                                   <button class="menu-footer__button collapsed" data-bs-toggle="collapse" data-bs-target="#footer-contacts-collapse" aria-expanded="false" aria-current="true">
+                                        <i class="bi bi-chevron-down"></i>
+                                   </button>
+                              </div>
+                              <ul class="submenu-footer collapse" id="footer-contacts-collapse">
+                                   <li>
+                                        <a href="https://yandex.by/maps/157/minsk/?from=api-maps&amp;ll=27.574767%2C53.913305&amp;mode=poi&amp;poi%5Bpoint%5D=27.574228%2C53.913730&amp;poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D76571038512&amp;utm_source=api-maps&amp;z=18.18" class="submenu-footer__link d-flex flex-row" target="_blank">
+                                             <i class="bi bi-geo-alt me-2"></i>
+                                             <span>
+                                                  г.Минск, пр-т. Машерова, 7
+                                             </span>
+                                        </a>
+                                   </li>
+                                   <li>
+                                        <a href="mailto:info@info-center.by" class="submenu-footer__link">
+                                             <i class="bi bi-envelope me-2"></i>
+                                             info@info-center.by
+                                        </a>
+                                   </li>
+                                   <li>
+                                        <a href="tel:375172691903" class="submenu-footer__link">
+                                             <i class="bi bi-telephone me-2"></i>
+                                             +375 (17) 269 19 03
+                                        </a>
+                                   </li>
+                                   <li>
+                                        <div class="d-flex flex-row">
+                                             <i class="bi bi-clock me-2"></i>
+                                             <span>
+                                                  Пн. – Чт.: с 8:45 до 18:00 <br>
+                                                  Пт.: с 8:45 до 16:45
+                                             </span>
+                                        </div>
+                                   </li>
+                                   <li>
+                                        <div class="d-flex flex-row">
+                                             <i class="bi bi-list-ol me-2"></i>
+                                             <span>
+                                                  Регистрация №190819036 <br>
+                                                  от 29.03.2007 Минским горисполкомом
+                                             </span>
+                                        </div>
+                                   </li>
+                              </ul>
+                         </nav>
+                    </div>
+                    <div class="col-12">
+                         <div class="footer__payments d-flex flex-row flex-wrap justify-content-between align-items-center">
+                              <div class="footer__subscribe d-flex align-items-center my-2">
+                                   <a href="#">ОФОРМИТЬ ДОСТУП К ЦИФРОВОЙ ПЛАТФОРМЕ<i class="bi bi-box-arrow-up-right ms-2"></i></a>
+                              </div>
+                              <div class="d-flex flex-row flex-wrap flex-md-wrap-no my-2">
+                                   <span>Принимаем <br class="d-none d-md-block my-1"> к оплате:</span>
+                                   <div class="row g-2 ms-lg-2 justify-content-start my-1">
+                                        <div class="col-md col-3 d-flex my-1">
+                                             <div class="footer__payments-item">
+                                                  <img src="./img/pay-logos/pay-logo-1.png" alt="ipay">
+                                             </div>
+                                        </div>
+                                        <div class="col-md col-3 d-flex my-1">
+                                             <div class="footer__payments-item">
+                                                  <img src="./img/pay-logos/pay-logo-2.png" alt="erip">
+                                             </div>
+                                        </div>
+                                        <div class="col-md col-3 d-flex my-1">
+                                             <div class="footer__payments-item">
+                                                  <img src="./img/pay-logos/pay-logo-3.png" alt="mir">
+                                             </div>
+                                        </div>
+                                        <div class="col-md col-3 d-flex my-1">
+                                             <div class="footer__payments-item">
+                                                  <img src="./img/pay-logos/pay-logo-4.png" alt="mastercard">
+                                             </div>
+                                        </div>
+                                        <div class="col-md col-3 d-flex my-1">
+                                             <div class="footer__payments-item">
+                                                  <img src="./img/pay-logos/pay-logo-5.png" alt="visa">
+                                             </div>
+                                        </div>
+                                        <div class="col-md col-3 d-flex my-1">
+                                             <div class="footer__payments-item">
+                                                  <img src="./img/pay-logos/pay-logo-6.png" alt="assist">
+                                             </div>
+                                        </div>
+                                        <div class="col-md col-3 d-flex my-1">
+                                             <div class="footer__payments-item">
+                                                  <img src="./img/pay-logos/pay-logo-7.png" alt="belcart">
+                                             </div>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+          <div class="footer-bottom border-0">
+               <a href="main.html" class="footer-bottom__logo">Республиканское унитарное предприятие
+                    «Информационно-издательский центр по налогам и сборам»</a>
+               <div class="footer-bottom__copyright">© 2023 Все права защищены</div>
+          </div>
+     </div>
+</footer>
+     </div>
+     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+        integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+
+<script
+        src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/js/tempusdominus-bootstrap-4.min.js"></script>
+
+
+<script src="js/script.min.js"></script>
+</body>
+
+</html>
