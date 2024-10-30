@@ -59,13 +59,19 @@
                                         <div class="weekend-block__list">
                                              <div class="d-flex flex-column gap-2">
                                                   <div class="w-100 d-flex align-items-start justify-content-start">
-                                                       <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div>
+                                                       <div class="calendar-dot calendar-dot-lg calendar-dot-weekend-red me-2"></div>
                                                        <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
                                                   </div>
                                                   <div class="w-100 d-flex align-items-start justify-content-start">
                                                        <div class="calendar-dot calendar-dot-lg calendar-dot-show me-2"></div>
                                                        <span class="color-gray-dark fs-14">Предпраздничный день. Время работы сокращено
                                                             на 1 час</span>
+                                                  </div>
+                                                  <div class="w-100 d-flex align-items-start justify-content-start">
+                                                       <div class="calendar-dot calendar-dot-lg calendar-dot-weekend-etc me-2"></div>
+                                                       <span class="color-gray-dark fs-14">
+                                                            Иные праздничные дни
+                                                       </span>
                                                   </div>
                                                   <div class="mt-3"></div>
                                                   <div class="">
@@ -608,6 +614,10 @@
                                    date: '07-10-2024',
                                    title: 'Тест'
                               },
+                              {
+                                   date: '10-30-2024',
+                                   title: 'Тест 2'
+                              },
                          ],
                          innerdisabledDatesWithTitleFilteredByCurrentMonth: [],
                          transferDatesFilteredByCurrentMonth: [],
@@ -1016,7 +1026,7 @@
                                         content: {
                                              style: {
                                                   //color: '#F9B974',
-                                                  color: 'red',
+                                                  color: '#D24344',
                                              }
                                         },
                                         popover: {
@@ -1038,8 +1048,7 @@
                                         dates: dayInFormat,
                                         content: {
                                              style: {
-                                                  //color: '#F9B974',
-                                                  color: 'green',
+                                                  color: '#F9B974',
                                              }
                                         },
                                         popover: {
