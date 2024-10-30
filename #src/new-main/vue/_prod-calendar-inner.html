@@ -603,6 +603,12 @@
                                    title: 'Рождество'
                               },
                          ],
+                         innerdisabledDatesWithTitleETC:[
+                              {
+                                   date: '07-10-2024',
+                                   title: 'Тест'
+                              },
+                         ],
                          innerdisabledDatesWithTitleFilteredByCurrentMonth: [],
                          transferDatesFilteredByCurrentMonth: [],
                     }
@@ -648,6 +654,11 @@
                     innerdisabledDatesInFormat() {
                          return this.innerdisabledDates.map(el => {
                               return moment(el).format()
+                         })
+                    },
+                    innerdisabledDatesETCInFormat(){
+                         return this.innerdisabledDatesWithTitleETC.map(el=>{
+                              return moment(el.date).format()
                          })
                     },
                     calcTimeResults() {
@@ -971,6 +982,7 @@
                     },
                     highlightPrevAndDisDate() {
                          const disabledDates = this?.innerdisabledDatesInFormat
+                         const disabledDatesETC = this?.innerdisabledDatesETCInFormat
                          disabledDates?.forEach((date, count) => {
                               let dayInFormat = moment(date).format()
                               
@@ -1003,7 +1015,31 @@
                                         dates: dayInFormat,
                                         content: {
                                              style: {
-                                                  color: '#F9B974',
+                                                  //color: '#F9B974',
+                                                  color: 'red',
+                                             }
+                                        },
+                                        popover: {
+                                             label: labelDate[0]?.title
+                                        }
+                                   },
+                              )
+                         })
+                         
+                         disabledDatesETC?.forEach((date, count) => {
+                              let dayInFormat = moment(date).format()
+                              
+                              let labelDate = this.innerdisabledDatesWithTitleETC.filter(el => {
+                                   return moment(el.date, 'MM-DD-YYYY').format() == moment(dayInFormat).format()
+                              })
+
+                              this.innerAttributes.push(
+                                   {
+                                        dates: dayInFormat,
+                                        content: {
+                                             style: {
+                                                  //color: '#F9B974',
+                                                  color: 'green',
                                              }
                                         },
                                         popover: {

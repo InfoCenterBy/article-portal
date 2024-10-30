@@ -73,7 +73,28 @@
 }
 .active-nav {
      margin-left: 0;
-     padding: 16px 24px;
+     padding: 12px 24px;
+     // overflow-y: auto;
+     // &::-webkit-scrollbar {
+     //      width:  3px;
+     //      height: 3px;
+     // }
+
+     // &::-webkit-scrollbar-thumb {
+     //      background: #D9D9D9;
+     // }
+
+     // &::-webkit-scrollbar-track {
+     //      background: transparent;
+     //      border-radius: 4px;
+     // }
+
+     //  // For Internet Explorer
+     // &{
+     //      scrollbar-face-color: #D9D9D9;
+     //      scrollbar-track-color: transparent;
+     // }
+     // padding-bottom: 124px;
      .nav-link{
           display: flex;
           justify-content: flex-start;
