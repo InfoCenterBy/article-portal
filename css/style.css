@@ -8685,6 +8685,14 @@ html {
   background-color: var(--color-gold-light);
 }
 
+.calendar-dot-weekend-etc {
+  background-color: var(--color-gold-light);
+}
+
+.calendar-dot-weekend-red {
+  background-color: var(--color-red);
+}
+
 .calendar-dot-sm {
   width: 12px;
   height: 12px;
