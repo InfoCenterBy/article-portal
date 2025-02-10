@@ -173,7 +173,7 @@
      </div>
 </div>
           </div>
-          <div class="header-button header-button-enter flex-row align-items-center"  
+          <div class="header-button header-button-enter header-button-notification flex-row align-items-center"  
                type="button" class="how" data-bs-toggle="dropdown" aria-expanded="true" data-bs-auto-close="outside">
                <span>Иванова И.И.</span>
                <div class="header-button__hr"></div>
@@ -548,13 +548,19 @@
                     <div class="col-xxl-8 mt-4">
                          <div class="d-flex flex-row gap-2 flex-wrap">
                               <div class="d-flex align-items-start justify-content-start">
-                                   <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div>
+                                   <div class="calendar-dot calendar-dot-lg calendar-dot-weekend-red me-2"></div>
                                    <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
                               </div>
                               <div class="d-flex align-items-start justify-content-start">
                                    <div class="calendar-dot calendar-dot-lg calendar-dot-show me-2"></div>
                                    <span class="color-gray-dark fs-14">Предпраздничный день. Время работы сокращено
                                         на 1 час</span>
+                              </div>
+                              <div class="d-flex align-items-start justify-content-start">
+                                   <div class="calendar-dot calendar-dot-lg calendar-dot-weekend-etc me-2"></div>
+                                   <span class="color-gray-dark fs-14">
+                                        Иные праздничные дни
+                                   </span>
                               </div>
                          </div>
                     </div>
@@ -925,8 +931,16 @@
                                    title: 'Тест'
                               },
                               {
-                                   date: '10-30-2024',
+                                   date: '03-08-2024',
                                    title: 'Тест 2'
+                              },
+                              {
+                                   date: '03-08-2024',
+                                   title: 'Тест 3'
+                              },
+                              {
+                                   date: '11-03-2024',
+                                   title: 'Тест 4'
                               },
                          ],
                          innerdisabledDatesWithTitleFilteredByCurrentMonth: [],
@@ -1302,7 +1316,6 @@
                     },
                     highlightPrevAndDisDate() {
                          const disabledDates = this?.innerdisabledDatesInFormat
-                         const disabledDatesETC = this?.innerdisabledDatesETCInFormat
                          disabledDates?.forEach((date, count) => {
                               let dayInFormat = moment(date).format()
 
@@ -1347,35 +1360,56 @@
                               )
                          })
 
-                                                  disabledDatesETC?.forEach((date, count) => {
-                              let dayInFormat = moment(date).format()
+                                             },
+                    highlightEtcDate(){
+                         const disabledDatesETC = this?.innerdisabledDatesETCInFormat
 
-                                                            let labelDate = this.innerdisabledDatesWithTitleETC.filter(el => {
-                                   return moment(el.date, 'MM-DD-YYYY').format() == moment(dayInFormat).format()
+                         try {
+                              const formattedDates = this.innerdisabledDatesWithTitleETC.reduce((acc, el) => {
+                                   const formattedDate = moment(el.date, 'MM-DD-YYYY').format()
+                                   if (!acc[formattedDate]) {
+                                        acc[formattedDate] = []
+                                   }
+                                   acc[formattedDate].push(el.title)
+                                   return acc;
+                              }, {});
+
+                              console.log(this.innerAttributes);
+
+
+                                                            disabledDatesETC?.forEach((date) => {
+                                   const formattedDate = moment(date).format()
+
+                                   const titles = formattedDates[formattedDate]
+                                   if (!titles) return
+
+                                   const existingAttributes = this.innerAttributes.filter(attr => attr.dates === formattedDate)
+
+                                   const color = existingAttributes.some(attr => attr?.content?.style?.color !== '#D24344')
+                                        ? '#D24344'
+                                        : '#F9B974'
+
+                                   titles.forEach(title => {
+                                        const exists = existingAttributes.some(attr => attr.popover.label === title)
+                                        if (!exists) {
+                                             this.innerAttributes.push({
+                                                  dates: formattedDate,
+                                                  content: {
+                                                       style: {
+                                                            color: color,
+                                                       },
+                                                  },
+                                                  popover: {
+                                                       label: title,
+                                                  },
+                                             })
+                                        }
+                                   })
                               })
 
-                              this.innerAttributes.push(
-                                   {
-                                        dates: dayInFormat,
-                                        content: {
-                                             style: {
-                                                  color: '#F9B974',
-                                             }
-                                        },
-                                        popover: {
-                                             label: labelDate[0]?.title
-                                        }
-                                   },
-                              )
-                         })
-                         // {
-                         //           dates:  {weekdays: [1,7] },
-                         //           content: {
-                         //                style: {
-                         //                     color: '#F9B974',
-                         //                }
-                         //           }
-                         //      }
+                         } catch (error) {
+
+                                                       }
                     },
                     quarterCalc(){
                          // this.monthOrder.forEach((month, index) => {
@@ -1519,7 +1553,7 @@
                                         dates: dayInFormatFrom,
                                         content: {
                                              style: {
-                                                  color: '#F9B974',
+                                                  color: '#D24344',
                                              }
                                         },
                                         popover: {
@@ -1618,6 +1652,7 @@
                     // this.initializeUIDs()
                     // this.moment()
                     this.processInnerDisabeledDates()
+                    this.highlightEtcDate()
                     this.highlightPrevAndDisDate()
                     this.mainCalendarUpdate(this.$refs.mainCalendar.pages[0].month)
                     this.transferDates()

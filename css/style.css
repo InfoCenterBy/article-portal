@@ -3733,6 +3733,21 @@ body._lock {
      object-fit: contain;
 }
 
+.header-button.header-button-enter.header-button-notification {
+  position: relative;
+}
+
+.header-button.header-button-enter.header-button-notification::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background-color: var(--color-red);
+  border-radius: 50%;
+  right: -4px;
+  top: -2px;
+}
+
 p {
   margin-bottom: 24px;
 }
