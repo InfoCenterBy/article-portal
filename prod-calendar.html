@@ -173,7 +173,7 @@
      </div>
 </div>
           </div>
-          <div class="header-button header-button-enter header-button-notification flex-row align-items-center"  
+          <div class="header-button header-button-enter flex-row align-items-center"  
                type="button" class="how" data-bs-toggle="dropdown" aria-expanded="true" data-bs-auto-close="outside">
                <span>Иванова И.И.</span>
                <div class="header-button__hr"></div>
@@ -187,7 +187,7 @@
                          <li><a href="profile.html" class="py-2 px-3 d-block"><i class="bi bi-person me-3"></i>Профиль</a></li>
                          <li><a href="favorites.html" class="py-2 px-3 d-block"><i class="bi bi-bookmark me-3"></i>Избранное</a></li>
                          <li><a href="browsing-history.html" class="py-2 px-3 d-block"><i class="bi bi-clock me-3"></i>История просмотров</a></li>
-                         <li><a href="subscription.html" class="py-2 px-3 d-block"><i class="bi bi-unlock me-3"></i>Управление подпиской</a></li>
+                         <li><a href="subscription.html" class="py-2 px-3 d-block d-flex flex-row align-items-center"><i class="bi bi-unlock me-3"></i>Управление подпиской <span class="notification-circle notification-circle-active ms-1"><span>10</span></span></a></li>
                          <li><a href="settings.html" class="py-2 px-3 d-block"><i class="bi bi-gear me-3"></i>Настройки</a></li>
                     </ul>
                     <hr class="my-2">
@@ -548,19 +548,13 @@
                     <div class="col-xxl-8 mt-4">
                          <div class="d-flex flex-row gap-2 flex-wrap">
                               <div class="d-flex align-items-start justify-content-start">
-                                   <div class="calendar-dot calendar-dot-lg calendar-dot-weekend-red me-2"></div>
+                                   <div class="calendar-dot calendar-dot-lg calendar-dot-weekend me-2"></div>
                                    <span class="color-gray-dark fs-14">Выходной/праздничный день</span>
                               </div>
                               <div class="d-flex align-items-start justify-content-start">
                                    <div class="calendar-dot calendar-dot-lg calendar-dot-show me-2"></div>
                                    <span class="color-gray-dark fs-14">Предпраздничный день. Время работы сокращено
                                         на 1 час</span>
-                              </div>
-                              <div class="d-flex align-items-start justify-content-start">
-                                   <div class="calendar-dot calendar-dot-lg calendar-dot-weekend-etc me-2"></div>
-                                   <span class="color-gray-dark fs-14">
-                                        Иные праздничные дни
-                                   </span>
                               </div>
                          </div>
                     </div>
@@ -816,7 +810,7 @@
                                    dates:  {weekdays: [1,7]},
                                    content: {
                                         style: {
-                                             color: '#D24344',
+                                             color: '#F9B974',
                                         }
                                    },
                               },
@@ -931,18 +925,15 @@
                                    title: 'Тест'
                               },
                               {
-                                   date: '03-08-2024',
+                                   date: '01-30-2024',
                                    title: 'Тест 2'
                               },
                               {
-                                   date: '03-08-2024',
+                                   date: '01-30-2024',
                                    title: 'Тест 3'
                               },
-                              {
-                                   date: '11-03-2024',
-                                   title: 'Тест 4'
-                              },
-                         ],
+
+                                                       ],
                          innerdisabledDatesWithTitleFilteredByCurrentMonth: [],
                          transferDatesFilteredByCurrentMonth: [],
                     }
@@ -1316,6 +1307,7 @@
                     },
                     highlightPrevAndDisDate() {
                          const disabledDates = this?.innerdisabledDatesInFormat
+                         const disabledDatesETC = this?.innerdisabledDatesETCInFormat
                          disabledDates?.forEach((date, count) => {
                               let dayInFormat = moment(date).format()
 
@@ -1350,7 +1342,6 @@
                                              style: {
                                                   //color: '#F9B974',
                                                   color: '#D24344',
-                                                  //red
                                              }
                                         },
                                         popover: {
@@ -1360,56 +1351,44 @@
                               )
                          })
 
+                                                  disabledDatesETC?.forEach((date) => {
+                              let dayInFormat = moment(date).format();
+
+                              // Фильтруем все элементы с совпадающей датой
+                              let labelDates = this.innerdisabledDatesWithTitleETC.filter(el => {
+                                   return moment(el.date, 'MM-DD-YYYY').format() === dayInFormat;
+                              });
+
+                              // Добавляем уникальные записи в `innerAttributes`
+                              labelDates.forEach(labelDate => {
+                                   // Проверяем, существует ли уже такой объект в `innerAttributes`
+                                   const exists = this.innerAttributes.some(attr => {
+                                        return attr.dates === dayInFormat && attr.popover.label === labelDate.title;
+                                   });
+
+                                   if (!exists) {
+                                        this.innerAttributes.push({
+                                             dates: dayInFormat,
+                                             content: {
+                                                  style: {
+                                                       color: '#F9B974',
+                                                  }
                                              },
-                    highlightEtcDate(){
-                         const disabledDatesETC = this?.innerdisabledDatesETCInFormat
-
-                         try {
-                              const formattedDates = this.innerdisabledDatesWithTitleETC.reduce((acc, el) => {
-                                   const formattedDate = moment(el.date, 'MM-DD-YYYY').format()
-                                   if (!acc[formattedDate]) {
-                                        acc[formattedDate] = []
+                                             popover: {
+                                                  label: labelDate.title // Добавляем каждый title отдельно
+                                             }
+                                        });
                                    }
-                                   acc[formattedDate].push(el.title)
-                                   return acc;
-                              }, {});
-
-                              console.log(this.innerAttributes);
-
-
-                                                            disabledDatesETC?.forEach((date) => {
-                                   const formattedDate = moment(date).format()
-
-                                   const titles = formattedDates[formattedDate]
-                                   if (!titles) return
-
-                                   const existingAttributes = this.innerAttributes.filter(attr => attr.dates === formattedDate)
-
-                                   const color = existingAttributes.some(attr => attr?.content?.style?.color !== '#D24344')
-                                        ? '#D24344'
-                                        : '#F9B974'
-
-                                   titles.forEach(title => {
-                                        const exists = existingAttributes.some(attr => attr.popover.label === title)
-                                        if (!exists) {
-                                             this.innerAttributes.push({
-                                                  dates: formattedDate,
-                                                  content: {
-                                                       style: {
-                                                            color: color,
-                                                       },
-                                                  },
-                                                  popover: {
-                                                       label: title,
-                                                  },
-                                             })
-                                        }
-                                   })
-                              })
-
-                         } catch (error) {
-
-                                                       }
+                              });
+                         });
+                         // {
+                         //           dates:  {weekdays: [1,7] },
+                         //           content: {
+                         //                style: {
+                         //                     color: '#F9B974',
+                         //                }
+                         //           }
+                         //      }
                     },
                     quarterCalc(){
                          // this.monthOrder.forEach((month, index) => {
@@ -1553,7 +1532,7 @@
                                         dates: dayInFormatFrom,
                                         content: {
                                              style: {
-                                                  color: '#D24344',
+                                                  color: '#F9B974',
                                              }
                                         },
                                         popover: {
@@ -1652,7 +1631,6 @@
                     // this.initializeUIDs()
                     // this.moment()
                     this.processInnerDisabeledDates()
-                    this.highlightEtcDate()
                     this.highlightPrevAndDisDate()
                     this.mainCalendarUpdate(this.$refs.mainCalendar.pages[0].month)
                     this.transferDates()

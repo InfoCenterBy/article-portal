@@ -3733,19 +3733,25 @@ body._lock {
      object-fit: contain;
 }
 
-.header-button.header-button-enter.header-button-notification {
-  position: relative;
+.notification-circle {
+  display: none;
+  line-height: 0;
+  border-radius: 50%;
+  font-size: 14px;
+  background-color: var(--color-red);
+  color: var(--color-white-gray);
 }
 
-.header-button.header-button-enter.header-button-notification::after {
-  content: "";
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  background-color: var(--color-red);
-  border-radius: 50%;
-  right: -4px;
-  top: -2px;
+.notification-circle-active {
+  display: inline-block;
+}
+
+.notification-circle span {
+  display: inline-block;
+  padding-top: 50%;
+  padding-bottom: 50%;
+  margin-left: 4px;
+  margin-right: 4px;
 }
 
 p {
