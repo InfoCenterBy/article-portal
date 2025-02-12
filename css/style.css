@@ -3735,23 +3735,18 @@ body._lock {
 
 .notification-circle {
   display: none;
-  line-height: 0;
-  border-radius: 50%;
-  font-size: 14px;
   background-color: var(--color-red);
   color: var(--color-white-gray);
+  border-radius: 1em;
+  -moz-border-radius: 1em;
+  -webkit-border-radius: 1em;
+  line-height: 1.8em;
+  text-align: center;
+  width: 2em;
 }
 
 .notification-circle-active {
   display: inline-block;
-}
-
-.notification-circle span {
-  display: inline-block;
-  padding-top: 50%;
-  padding-bottom: 50%;
-  margin-left: 4px;
-  margin-right: 4px;
 }
 
 p {
