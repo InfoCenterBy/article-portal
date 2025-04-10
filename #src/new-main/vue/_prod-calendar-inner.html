@@ -887,42 +887,21 @@
                               let previousDay = moment(moment(dayInFormat).clone().subtract(1, 'days')).format()
                               let nextDay = moment(moment(dayInFormat).add(1, 'days')).format()
                               
-                              // console.log('dayInFormat', )
-                              // let momentDate = moment({ 
-                              //                          year: dayInFormat.get('year'), 
-                              //                          month: dayInFormat.get('month'), 
-                              //                          day: dayInFormat.get('date') })
-
-                              // console.log('momentDate', moment(momentDate).format('MM-DD-YYYY'), moment(startDate).format('MM-DD-YYYY'), moment(endDate).format('MM-DD-YYYY'))
-                              // console.log('date', dayInFormat, startDateInFormat, endDateDateInFormat, previousDay, nextDay);
-                              //weekend for five week without sat and sun
+                              
                               if (moment(dayInFormat).isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]') && moment(dayInFormat).get('day') != 0 && moment(dayInFormat).get('day') != 6) {
                                    disabledDatesObj.countFive++;
-                                   // console.log('count', count)
                               }
                               //weekend for six week without sun
                               if (moment(dayInFormat).isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]') && moment(dayInFormat).get('day') != 0) {
                                    disabledDatesObj.countSix++
-                                   // console.log('count', count)
                               }
 
-                              // if (moment(dayInFormat).isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]') && moment(dayInFormat).get('day') != 0 && moment(dayInFormat).get('day') != 6) {
-                              //      hourCountBoth++
-                              //      // console.log('count', count)
-                              // }
-
-                              // if (moment(dayInFormat).isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]') && moment(dayInFormat).get('day') != 0) {
-                              //      hourCountSix++
-                              //      // console.log('count', count)
-                              // }
-                              // console.log(previousDay);
                               if(!disabledDates.includes(previousDay)){
                                    if (
                                         moment(previousDay).isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]')
                                         && moment(previousDay).get('day') != 0
                                         && moment(previousDay).get('day') != 6) {
                                         disabledDatesObj.hourCountBoth++
-                                        // console.log('count', count)
                                    } else if (
                                         moment(previousDay).isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]')
                                         && moment(previousDay).get('day') == 6) {
@@ -944,53 +923,13 @@
                               }
                               
 
-                              // if (moment(dayInFormat).isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]') && moment(dayInFormat).get('day') != 0) {
-                              //      count++;
-                              //      // console.log('count', count)
-                              // }
-
-                              // console.log({
-                              //      countFive: countFive,
-                              //      countSix: countSix,
-                              //      hourCountBoth: hourCountBoth,
-                              //      hourCountSix: hourCountSix,
-                              // });
+                              
 
                          });
-                         // console.log('disabledDates', disabledDatesObj);
                          return disabledDatesObj
                     },
 
-                    // test(index){
-                    //      // let currentPage = this.$refs['calendar']
-                    //      // console.log(currentPage, index, this )
-                    //      // if(index){
-                    //      //      // let calendarNum = 'calendar' + el
-                    //      //      // let currentPageCopy = currentPage
-                    //      //      // if(currentPage.calendar !== undefined){
-                    //      //      // }
-                    //      // }
-                    //      // return index
-                    //      let per = this.$nextTick(() => {
-                    //           let currentPage = this.$refs['calendar' + index];
-                    //           console.log(currentPage, index,);
-                    //           if (index !== undefined) {
-                    //                // ваши дополнительные действия
-                    //           }
-                    //           return currentPage[0]._uid
-                    //      });
-                    //      console.log('per', per);
-                    //      return per
-                    // }
-                    // test(index) {
-                    //      this.$nextTick(() => {
-                    //           let currentPage = this.$refs['calendar' + index];
-                    //           if (currentPage && currentPage[0]) {
-                    //                this.$set(this.sumDaysValue, index, currentPage[0]._uid);
-                    //                console.log(`UID for index ${index}:`, currentPage[0]._uid); // Для отладки
-                    //           }
-                    //      });
-                    // }
+                    
                     initializeUIDs() {
                          // this.$nextTick(() => {
                               // this.monthOrder.forEach((el, index) => {
