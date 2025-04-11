@@ -565,13 +565,9 @@
                          mainCalendarTime: {},
                          transferDatesArr: [
                               {
-                                   from: '05-13-2024',
-                                   to: '05-18-2024'
+                                   from: '04-26-2025',
+                                   to: '04-28-2025'
                               },
-                              {
-                                   from: '11-08-2024',
-                                   to: '11-16-2024'
-                              }
                          ],
                          innerdisabledDatesWithTitle: [
                               {
@@ -595,11 +591,11 @@
                                    title: 'День Победы'
                               },
                               {
-                                   date: '05-14-2024',
+                                   date: '04-29-2025',
                                    title: 'Радуница'
                               },
                               {
-                                   date: '03-08-2024',
+                                   date: '03-08-2025',
                                    title: 'Женский день'
                               },
                               {
@@ -637,30 +633,8 @@
                          transferDatesFilteredByCurrentMonth: [],
                     }
                },
-               computed:{
+               computed: {
                     setToday() {
-                         // let timeObj = { dayOfWeek: '', dateNumber: '' }
-                         // const days = [
-                         //      'воскресенье',
-                         //      'понедельник',
-                         //      'вторник',
-                         //      'среда',
-                         //      'четверг',
-                         //      'пятница',
-                         //      'суббота'
-                         // ];
-                         // let day = new Date()
-                         // let textDay = day.getDay()
-                         // let numberDay = day.toLocaleDateString('en-GB').split('/')
-                         // this.formatTitle(day)
-                         // try {
-                         //      timeObj.dayOfWeek = days[textDay]
-                         //      timeObj.dateNumber = numberDay[0] + '.' + numberDay[1]
-                         //      timeObj.dayNum = numberDay[0]
-                         //      timeObj.monthString = day.toLocaleString('default', {month: 'long'})
-                         // } catch (error) {
-                         //      console.log('setToday error', error)
-                         // }
                          let nowDate = moment().locale('ru').format('D MMMM')
                          let dayOfWeek = moment().locale('ru').format('dddd')
                          let timeObj = {
@@ -670,7 +644,7 @@
                          return timeObj
                          // + ' ' + day.toLocaleString('default', {month: 'long'}) if need text month
                     },
-                    innerAttributesProccess(order){
+                    innerAttributesProccess(order) {
                          // push etc attr to main arr if need to add more exeptions, like:
                          // this.innerAttributes.push({dates:new Date(2024, 0, 1), content:'orange'})
                          return this.innerAttributes
@@ -680,15 +654,15 @@
                               return moment(el).format()
                          })
                     },
-                    innerdisabledDatesETCInFormat(){
-                         return this.innerdisabledDatesWithTitleETC.map(el=>{
+                    innerdisabledDatesETCInFormat() {
+                         return this.innerdisabledDatesWithTitleETC.map(el => {
                               return moment(el.date).format()
                          })
                     },
                     calcTimeResults() {
                          return this.monthOrder.map(el => this.calcTime(el, 'etc'));
                     },
-                    
+
                     // innerdisabledDates(){
                     //      return [
                     //           '',
@@ -700,9 +674,9 @@
                     // }
                     // new Date('03-01-2024').toISOString()
                },
-               watch:{},
-               methods:{
-                    formatTitle(val){
+               watch: {},
+               methods: {
+                    formatTitle(val) {
                          let localMonth = {
                               month: new Date(val).toLocaleString('ru', {
                                    month: 'long',
@@ -711,10 +685,10 @@
                          let splitedTitle = localMonth.month.split('')
                          let filteredTitle = []
                          // let filteredTitle = splitedTitle.filter(el=> el !== 'ь')
-                         if(splitedTitle.includes('ь')){
-                              filteredTitle = splitedTitle.filter(el=> el !== 'ь')
+                         if (splitedTitle.includes('ь')) {
+                              filteredTitle = splitedTitle.filter(el => el !== 'ь')
                               filteredTitle.push('я')
-                         } else{
+                         } else {
                               filteredTitle = splitedTitle
                               filteredTitle.push('а')
                          }
@@ -724,34 +698,45 @@
                     maxPage(order) {
                          let newDate = new Date
                          let monthInOrder = newDate.setMonth(order - 1)
-                         const maxPageObj = { day: 0, month: newDate.getMonth() + 2, year: this.currentDate.getFullYear() }
+                         const maxPageObj = {
+                              day: 0,
+                              month: newDate.getMonth() + 2,
+                              year: this.currentDate.getFullYear()
+                         }
                          return maxPageObj
                     },
                     minPage(order) {
                          let newDate = new Date
                          let monthInOrder = newDate.setMonth(order - 1)
-                         const minPageObj = { day: 1, month: newDate.getMonth() + 1, year: this.currentDate.getFullYear() }
+                         const minPageObj = {
+                              day: 1,
+                              month: newDate.getMonth() + 1,
+                              year: this.currentDate.getFullYear()
+                         }
                          return minPageObj
                     },
-                    initialPage(order){
+                    initialPage(order) {
                          return null
                     },
-                    dateToFormat(date){
+                    dateToFormat(date) {
                          // return moment(date).format()
                          return date
                     },
                     calcTime(month, type) {
 
-                         
-                              
+
                          if (month < 1 || month > 12) {
                               throw new Error("Wrong month");
                          }
 
                          let year = this.currentDate.getFullYear()
-                         
+
                          // let startDate = moment({ year: year, month: month - 1, day: 1 });
-                         let startDate = moment({ year: year, month: month - 1, day: 1 });
+                         let startDate = moment({
+                              year: year,
+                              month: month - 1,
+                              day: 1
+                         });
                          let endDate = moment(startDate).endOf('month');
                          let totalDaysInMonth = moment(startDate).daysInMonth();
                          // console.log(moment(startDate).format('MM-DD-YYYY'));
@@ -791,9 +776,11 @@
                          let timeFiveWeek40 = (40 / 5) * workFive - disabledDatesCount.hourCountBoth
                          let timeFiveWeek35 = (35 / 5) * workFive - disabledDatesCount.hourCountBoth
                          let timeSixWeek40 =
-                              workFive * 7 + saturdays * 5 - disabledDatesCount.hourCountBoth - disabledDatesCount.hourCountSix
+                              workFive * 7 + saturdays * 5 - disabledDatesCount.hourCountBoth - disabledDatesCount.hourCountSix - disabledDatesCount.saturdayDis * 5
+                         // console.log('timeSixWeek40', workFive, saturdays, disabledDatesCount.hourCountBoth, disabledDatesCount.hourCountSix);
+
                          let timeSixWeek35 =
-                              workFive * 6 + saturdays * 5 - disabledDatesCount.hourCountBoth - disabledDatesCount.hourCountSix
+                              workFive * 6 + saturdays * 5 - disabledDatesCount.hourCountBoth - disabledDatesCount.hourCountSix - disabledDatesCount.saturdayDis * 5
 
                          // console.log(totalDaysInMonth)
 
@@ -812,14 +799,15 @@
                               // todayDate: { dayOfWeek: '', dateNumber: '' }
                          }
 
-                         if(type === 'etc'){
+                         if (type === 'etc') {
                               this.updateQuarterObj(month, finalObj)
                          }
+                         // console.log('finalObj', finalObj);
 
                          return finalObj
                     },
                     updateQuarterObj(month, calcResult) {
-                         
+
                          let key = Object.keys(this.quarterObj);
 
                          if (month <= 3) {
@@ -833,7 +821,7 @@
                               this.quarterObj[quarterKey].totalTimeFiveWeek35 += calcResult.timeFiveWeek35;
                               this.quarterObj[quarterKey].totalTimeSixWeek40 += calcResult.timeSixWeek40;
                               this.quarterObj[quarterKey].totalTimeSixWeek35 += calcResult.timeSixWeek35;
-                         } 
+                         }
                          if (month <= 6 && month > 3) {
                               let quarterKey = key[1];
                               this.quarterObj[quarterKey].totalDaysInQuarter += calcResult.totalDays;
@@ -845,7 +833,7 @@
                               this.quarterObj[quarterKey].totalTimeFiveWeek35 += calcResult.timeFiveWeek35;
                               this.quarterObj[quarterKey].totalTimeSixWeek40 += calcResult.timeSixWeek40;
                               this.quarterObj[quarterKey].totalTimeSixWeek35 += calcResult.timeSixWeek35;
-                         }  
+                         }
                          if (month <= 9 && month > 6) {
                               let quarterKey = key[2];
                               this.quarterObj[quarterKey].totalDaysInQuarter += calcResult.totalDays;
@@ -857,7 +845,7 @@
                               this.quarterObj[quarterKey].totalTimeFiveWeek35 += calcResult.timeFiveWeek35;
                               this.quarterObj[quarterKey].totalTimeSixWeek40 += calcResult.timeSixWeek40;
                               this.quarterObj[quarterKey].totalTimeSixWeek35 += calcResult.timeSixWeek35;
-                         }  
+                         }
                          if (month <= 12 && month > 9) {
                               let quarterKey = key[3];
                               this.quarterObj[quarterKey].totalDaysInQuarter += calcResult.totalDays;
@@ -870,24 +858,40 @@
                               this.quarterObj[quarterKey].totalTimeSixWeek40 += calcResult.timeSixWeek40;
                               this.quarterObj[quarterKey].totalTimeSixWeek35 += calcResult.timeSixWeek35;
                          }
-                    
+
                     },
-                    calcSumTime(startDateInFormat, endDateDateInFormat){
+                    calcSumTime(startDateInFormat, endDateDateInFormat) {
                          const disabledDates = this?.innerdisabledDatesInFormat
                          const disabledDatesObj = {
                               countFive: 0,
                               countSix: 0,
                               hourCountBoth: 0,
                               hourCountSix: 0,
+                              saturdayDis: 0
                          }
 
-                         // console.log(disabledDates);
+                         const transDatePlainArr = []
+
+
+                         this.transferDatesFilteredByCurrentMonth.forEach(el => {
+                              transDatePlainArr.push(moment(el.from))
+                              transDatePlainArr.push(moment(el.to))
+                         })
+
+                         // console.log('transDatePlainArr', transDatePlainArr);
+
+
                          disabledDates?.forEach((date, count) => {
                               let dayInFormat = moment(date).format()
                               let previousDay = moment(moment(dayInFormat).clone().subtract(1, 'days')).format()
                               let nextDay = moment(moment(dayInFormat).add(1, 'days')).format()
-                              
-                              
+
+                              // let momentDate = moment({
+                              //                          year: dayInFormat.get('year'),
+                              //                          month: dayInFormat.get('month'),
+                              //                          day: dayInFormat.get('date') })
+
+                              //weekend for five week without sat and sun
                               if (moment(dayInFormat).isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]') && moment(dayInFormat).get('day') != 0 && moment(dayInFormat).get('day') != 6) {
                                    disabledDatesObj.countFive++;
                               }
@@ -896,24 +900,42 @@
                                    disabledDatesObj.countSix++
                               }
 
-                              if(!disabledDates.includes(previousDay)){
+                              if (moment(dayInFormat).isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]') && moment(dayInFormat).get('day') == 6 && transDatePlainArr.includes(dayInFormat) == false) {
+                                   disabledDatesObj.saturdayDis++
+                              }
+
+
+                              // console.log('dayInFormat', dayInFormat);
+
+
+                              // if (moment(dayInFormat).isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]') && moment(dayInFormat).get('day') != 0 && moment(dayInFormat).get('day') != 6) {
+                              //      hourCountBoth++
+                              //      // console.log('count', count)
+                              // }
+
+                              // if (moment(dayInFormat).isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]') && moment(dayInFormat).get('day') != 0) {
+                              //      hourCountSix++
+                              //      // console.log('count', count)
+                              // }
+                              // console.log(previousDay);
+                              if (!disabledDates.includes(previousDay)) {
                                    if (
-                                        moment(previousDay).isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]')
-                                        && moment(previousDay).get('day') != 0
-                                        && moment(previousDay).get('day') != 6) {
+                                        moment(previousDay).isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]') &&
+                                        moment(previousDay).get('day') != 0 &&
+                                        moment(previousDay).get('day') != 6) {
                                         disabledDatesObj.hourCountBoth++
                                    } else if (
-                                        moment(previousDay).isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]')
-                                        && moment(previousDay).get('day') == 6) {
+                                        moment(previousDay).isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]') &&
+                                        moment(previousDay).get('day') == 6) {
                                         disabledDatesObj.hourCountSix++
                                    } else if (
-                                        moment(previousDay) == moment(endDateDateInFormat)
-                                        && moment(nextDay).get('day') != 0) {
+                                        moment(previousDay) == moment(endDateDateInFormat) &&
+                                        moment(nextDay).get('day') != 0) {
                                         disabledDatesObj.hourCountBoth++
                                    } else if (
-                                        moment(previousDay) == moment(endDateDateInFormat)
-                                        && moment(nextDay).get('day') != 0
-                                        && moment(nextDay).get('day') == 6) {
+                                        moment(previousDay) == moment(endDateDateInFormat) &&
+                                        moment(nextDay).get('day') != 0 &&
+                                        moment(nextDay).get('day') == 6) {
                                         disabledDatesObj.hourCountSix++
                                    }
                               }
@@ -921,33 +943,34 @@
                               if (moment(dayInFormat).isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]') && moment(dayInFormat).get('day') != 0 && this.hasDecember31(startDateInFormat, endDateDateInFormat)) {
                                    disabledDatesObj.hourCountBoth++;
                               }
-                              
 
-                              
+
+                              // if (moment(dayInFormat).isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]') && moment(dayInFormat).get('day') != 0) {
+                              //      count++;
+                              //      // console.log('count', count)
+                              // }
+
 
                          });
+                         // console.log('disabledDatesObj', disabledDatesObj);
+
                          return disabledDatesObj
                     },
+                    hasDecember31(startDate, endDate) {
+                         const startDateInFormat = moment(startDate, 'MM-DD-YYYY')
+                         const endDateDateInFormat = moment(endDate, 'MM-DD-YYYY')
+                         const december31 = moment('12-31', 'MM-DD')
 
-                    
-                    initializeUIDs() {
-                         // this.$nextTick(() => {
-                              // this.monthOrder.forEach((el, index) => {
-                                   // let currentPage = this.$refs['mainCalendar']
-                                   // console.log('this.$refs', this.$refs.mainCalendar);
-                                   
-                                   // if (currentPage && currentPage[0]) {
-                                   //      this.$set(this.sumDaysValue, index, currentPage[0].pages[0].monthComps.days)
-                                   //      // console.log(`UID for index ${index}:`, currentPage[0])
-                                   // }
-                              // });
-                         // });
+                         if (december31.isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]')) {
+                              return true
+                         }
+                         return false
                     },
                     highlightPrevAndDisDate() {
                          const disabledDates = this?.innerdisabledDatesInFormat
                          disabledDates?.forEach((date, count) => {
                               let dayInFormat = moment(date).format()
-                              
+
                               let labelDate = this.innerdisabledDatesWithTitle.filter(el => {
                                    return moment(el.date, 'MM-DD-YYYY').format() == moment(dayInFormat).format()
                               })
@@ -961,103 +984,70 @@
                               let disDayPrev = !disabledDates.includes(previousDay)
                               let transDayPrev = !transDateArr.includes(previousDay)
 
-                              this.innerAttributes.push(
-                                   {
-                                        dates: disDayPrev && transDayPrev ? previousDay : null,
-                                        content: {
-                                             style: {
-                                                  color: '#C47A2C',
-                                             }
-                                        },
-                                        popover: {
-                                             label: 'Рабочий день сокращен на 1 час',
-                                        },
-                                   },
-                                   {
-                                        dates: dayInFormat,
-                                        content: {
-                                             style: {
-                                                  //color: '#F9B974',
-                                                  color: '#D24344',
-                                                  //red
-                                             }
-                                        },
-                                        popover: {
-                                             label: labelDate[0]?.title
+                              this.innerAttributes.push({
+                                   dates: disDayPrev && transDayPrev ? previousDay : null,
+                                   content: {
+                                        style: {
+                                             color: '#C47A2C',
                                         }
                                    },
-                              )
+                                   popover: {
+                                        label: 'Рабочий день сокращен на 1 час',
+                                   },
+                              }, {
+                                   dates: dayInFormat,
+                                   content: {
+                                        style: {
+                                             //color: '#F9B974',
+                                             color: '#D24344',
+                                             //red
+                                        }
+                                   },
+                                   popover: {
+                                        label: labelDate[0]?.title
+                                   }
+                              },)
                          })
-                         
+
                     },
-                    highlightEtcDate(){
+                    highlightEtcDate() {
                          const disabledDatesETC = this?.innerdisabledDatesETCInFormat
 
                          try {
-                              const formattedDates = this.innerdisabledDatesWithTitleETC.reduce((acc, el) => {
-                                   const formattedDate = moment(el.date, 'MM-DD-YYYY').format()
-                                   if (!acc[formattedDate]) {
-                                        acc[formattedDate] = []
-                                   }
-                                   acc[formattedDate].push(el.title)
-                                   return acc;
-                              }, {});
-
-                              console.log(this.innerAttributes);
-                              
-
                               disabledDatesETC?.forEach((date) => {
-                                   const formattedDate = moment(date).format()
+                                   let dayInFormat = moment(date).format()
 
-                                   const titles = formattedDates[formattedDate]
-                                   if (!titles) return
+                                   let labelDates = this.innerdisabledDatesWithTitleETC.filter(el => {
+                                        return moment(el.date, 'MM-DD-YYYY').format() === dayInFormat
+                                   })
 
-                                   const existingAttributes = this.innerAttributes.filter(attr => attr.dates === formattedDate)
+                                   labelDates.forEach(labelDate => {
 
-                                   const color = existingAttributes.some(attr => attr?.content?.style?.color !== '#D24344')
-                                        ? '#D24344'
-                                        : '#F9B974'
+                                        const exists = this.innerAttributes.some(attr => {
+                                             return attr.dates === dayInFormat && attr.popover.label === labelDate.title
+                                        })
 
-                                   titles.forEach(title => {
-                                        const exists = existingAttributes.some(attr => attr.popover.label === title)
                                         if (!exists) {
                                              this.innerAttributes.push({
-                                                  dates: formattedDate,
+                                                  dates: dayInFormat,
                                                   content: {
                                                        style: {
-                                                            color: color,
-                                                       },
+                                                            color: '#F9B974',
+                                                       }
                                                   },
                                                   popover: {
-                                                       label: title,
-                                                  },
+                                                       label: labelDate.title
+                                                  }
                                              })
                                         }
                                    })
                               })
 
                          } catch (error) {
-                              
+                              // console.error('Error in highlightEtcDate:', error)
                          }
                     },
-                    quarterCalc(){
-                         // this.monthOrder.forEach((month, index) => {
-                         //      if (month <= 3) {
-                         //           Object.keys(this.quarterObj)[0].totalDaysInQuarter += totalDaysInMonth
-                         //           this.quarterObj.first.totalWorkFive += workFive
-                         //           this.quarterObj.first.totalWorkSix += workSix
-                         //           this.quarterObj.first.totalWeekends += totalWeekends
-                         //           this.quarterObj.first.totalSundays += sundaysWithDis
-                         //           this.quarterObj.first.totalTimeFiveWeek40 += timeFiveWeek40
-                         //           this.quarterObj.first.totalTimeFiveWeek35 += timeFiveWeek35
-                         //           this.quarterObj.first.totalTimeSixWeek40 += timeSixWeek40
-                         //           this.quarterObj.first.totalTimeSixWeek35 += timeSixWeek35
-                         //           // console.log(month)
-                         //      }
-                         // })
-                         
-                    },
-                    loadMoreCalendars(){
+                    loadMoreCalendars() {
                          this.preloaderInner = true
                          setTimeout(() => {
                               this.pushNewCalendars()
@@ -1108,16 +1098,16 @@
                                    }
                               }
                               this.preloaderInner = false
-                         }, );
+                         },);
                     },
-                    pushNewCalendars(){
+                    pushNewCalendars() {
                          if (this.monthOrder.length <= 6) {
                               this.monthOrder.push(7, 8, 9, 10, 11, 12)
                          } else {
                               this.monthOrder = [1, 2, 3, 4, 5, 6]
                          }
                     },
-                    quarterOrderTitle(el){
+                    quarterOrderTitle(el) {
                          switch (el) {
                               case 1:
                                    return 'I квартал';
@@ -1145,17 +1135,14 @@
                                    return '';
                          }
                     },
-                    
-                    mainCalendarUpdate(){
-                         // console.log('we are here', month);
-                         // console.log('this.$refs', this.$refs.mainCalendar.pages[0].month);
+
+                    mainCalendarUpdate() {
                          const currentMonth = this.$refs.mainCalendar.pages[0].month
                          this.mainCalendarTime = this.calcTime(currentMonth)
-                         // this.innerdisabledDatesWithTitleFilteredByCurrentMonth(currentMonth)
-                         this.innerdisabledDatesCurrentMonth(this.innerdisabledDatesWithTitle , currentMonth)
-                         this.transferDatesFilteredByCurrentMonthProcess(this.transferDatesArr , currentMonth)
+                         this.innerdisabledDatesCurrentMonth(this.innerdisabledDatesWithTitle, currentMonth)
+                         this.transferDatesFilteredByCurrentMonthProcess(this.transferDatesArr, currentMonth)
                     },
-                    innerdisabledDatesCurrentMonth(datesArr, month){
+                    innerdisabledDatesCurrentMonth(datesArr, month) {
 
                          const monthString = month.toString().padStart(2, '0')
 
@@ -1164,7 +1151,7 @@
                               return itemMonth === monthString
                          });
                     },
-                    transferDatesFilteredByCurrentMonthProcess(datesArr, month){
+                    transferDatesFilteredByCurrentMonthProcess(datesArr, month) {
                          const monthString = month.toString().padStart(2, '0');
 
                          this.transferDatesFilteredByCurrentMonth = datesArr.filter(item => {
@@ -1173,34 +1160,31 @@
                               return fromMonth === monthString || toMonth === monthString;
                          });
                     },
-                    transferDates(){
+                    transferDates() {
                          this.transferDatesArr.forEach((date, count) => {
                               let dayInFormatFrom = moment(date.from, 'MM-DD-YYYY').toISOString()
                               let dayInFormatTo = moment(date.to, 'MM-DD-YYYY').toISOString()
-                              this.innerAttributes.push(
-                                   {
-                                        dates: dayInFormatFrom,
-                                        content: {
-                                             style: {
-                                                  color: '#D24344',
-                                             }
-                                        },
-                                        popover: {
-                                             label: `Рабочий день перенесен на ${moment(dayInFormatTo).locale('ru').format('D MMMM')}`,
-                                        },
+                              this.innerAttributes.push({
+                                   dates: dayInFormatFrom,
+                                   content: {
+                                        style: {
+                                             color: '#D24344',
+                                        }
                                    },
-                                   {
-                                        dates: dayInFormatTo,
-                                        content: {
-                                             style: {
-                                                  color: '#282828',
-                                             }
-                                        },
+                                   popover: {
+                                        label: `Рабочий день перенесен на ${moment(dayInFormatTo).locale('ru').format('D MMMM')}`,
                                    },
-                              )
+                              }, {
+                                   dates: dayInFormatTo,
+                                   content: {
+                                        style: {
+                                             color: '#282828',
+                                        }
+                                   },
+                              },)
                          })
                     },
-                    processInnerDisabeledDates(){
+                    processInnerDisabeledDates() {
                          this.innerdisabledDatesWithTitle.forEach((date, count) => {
                               let isoDate = moment(date.date, 'MM-DD-YYYY').toISOString()
                               this.innerdisabledDates.push(isoDate)
@@ -1210,18 +1194,18 @@
                               const dateB = moment(b.date, 'MM-DD-YYYY');
                               return dateA - dateB;
                          });
-                         
+
                     },
-                    viewDateDay(date){
+                    viewDateDay(date) {
                          let dateInFormat = moment(date, 'MM-DD-YYYY').locale('ru')
                          let monthName = dateInFormat.format('D MMMM')
                          return monthName
                     },
                     groupBySix(arr) {
                          const groups = [];
-                              for (let i = 0; i < arr.length; i += 6) {
-                                   groups.push(arr.slice(i, i + 6));
-                              }
+                         for (let i = 0; i < arr.length; i += 6) {
+                              groups.push(arr.slice(i, i + 6));
+                         }
                          return groups;
                     },
                     viewTranserDates(date) {
@@ -1245,8 +1229,9 @@
                               'воскресенье': 'воскресенье'
                          };
 
-                         let dateFrom = moment(date.from, 'MM-DD-YYYY').locale('ru')
-                         let dateTo = moment(date.to, 'MM-DD-YYYY').locale('ru')
+                         let dateFrom = moment(date.from, 'MM-DD-YYYY').locale('ru');
+                         let dateTo = moment(date.to, 'MM-DD-YYYY').locale('ru');
+
 
                          let dayOfWeekFrom = dateFrom.format('dddd');
                          let dayOfWeekTo = dateTo.format('dddd');
@@ -1262,75 +1247,73 @@
                               to: dateInFormatTo
                          };
                     },
-                    hasDecember31(startDate, endDate) {
-                         const startDateInFormat = moment(startDate, 'MM-DD-YYYY');
-                         const endDateDateInFormat = moment(endDate, 'MM-DD-YYYY');
-                         const december31 = moment('12-31', 'MM-DD');
-
-                         if (december31.isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]')) {
-                              return true;
-                         }
-                         return false;
-                    }
 
                },
-               created(){
+               created() {
                     this.preloader = true
                },
                mounted() {
-                    // this.initializeUIDs()
-                    // this.moment()
                     this.processInnerDisabeledDates()
                     this.highlightEtcDate()
+                    this.innerAttributes.push({
+                         dates: {
+                              weekdays: [1, 7]
+                         },
+                         content: {
+                              style: {
+                                   color: '#D24344',
+                              }
+                         },
+                    })
                     this.highlightPrevAndDisDate()
                     this.mainCalendarUpdate(this.$refs.mainCalendar.pages[0].month)
                     this.transferDates()
                     this.quarterObj = {
-                                   first: {
-                                        totalDaysInQuarter: 0,
-                                        totalWorkFive: 0,
-                                        totalWorkSix: 0,
-                                        totalWeekends: 0,
-                                        totalSundays: 0,
-                                        totalTimeFiveWeek40: 0,
-                                        totalTimeFiveWeek35: 0,
-                                        totalTimeSixWeek40: 0,
-                                        totalTimeSixWeek35: 0,
-                                   },
-                                   second: {
-                                        totalDaysInQuarter: 0,
-                                        totalWorkFive: 0,
-                                        totalWorkSix: 0,
-                                        totalWeekends: 0,
-                                        totalSundays: 0,
-                                        totalTimeFiveWeek40: 0,
-                                        totalTimeFiveWeek35: 0,
-                                        totalTimeSixWeek40: 0,
-                                        totalTimeSixWeek35: 0,
-                                   },
-                                   third: {
-                                        totalDaysInQuarter: 0,
-                                        totalWorkFive: 0,
-                                        totalWorkSix: 0,
-                                        totalWeekends: 0,
-                                        totalSundays: 0,
-                                        totalTimeFiveWeek40: 0,
-                                        totalTimeFiveWeek35: 0,
-                                        totalTimeSixWeek40: 0,
-                                        totalTimeSixWeek35: 0,
-                                   },
-                                   fourth: {
-                                        totalDaysInQuarter: 0,
-                                        totalWorkFive: 0,
-                                        totalWorkSix: 0,
-                                        totalWeekends: 0,
-                                        totalSundays: 0,
-                                        totalTimeFiveWeek40: 0,
-                                        totalTimeFiveWeek35: 0,
-                                        totalTimeSixWeek40: 0,
-                                        totalTimeSixWeek35: 0,
-                                   }
-                              }
+                         first: {
+                              totalDaysInQuarter: 0,
+                              totalWorkFive: 0,
+                              totalWorkSix: 0,
+                              totalWeekends: 0,
+                              totalSundays: 0,
+                              totalTimeFiveWeek40: 0,
+                              totalTimeFiveWeek35: 0,
+                              totalTimeSixWeek40: 0,
+                              totalTimeSixWeek35: 0,
+                         },
+                         second: {
+                              totalDaysInQuarter: 0,
+                              totalWorkFive: 0,
+                              totalWorkSix: 0,
+                              totalWeekends: 0,
+                              totalSundays: 0,
+                              totalTimeFiveWeek40: 0,
+                              totalTimeFiveWeek35: 0,
+                              totalTimeSixWeek40: 0,
+                              totalTimeSixWeek35: 0,
+                         },
+                         third: {
+                              totalDaysInQuarter: 0,
+                              totalWorkFive: 0,
+                              totalWorkSix: 0,
+                              totalWeekends: 0,
+                              totalSundays: 0,
+                              totalTimeFiveWeek40: 0,
+                              totalTimeFiveWeek35: 0,
+                              totalTimeSixWeek40: 0,
+                              totalTimeSixWeek35: 0,
+                         },
+                         fourth: {
+                              totalDaysInQuarter: 0,
+                              totalWorkFive: 0,
+                              totalWorkSix: 0,
+                              totalWeekends: 0,
+                              totalSundays: 0,
+                              totalTimeFiveWeek40: 0,
+                              totalTimeFiveWeek35: 0,
+                              totalTimeSixWeek40: 0,
+                              totalTimeSixWeek35: 0,
+                         }
+                    }
                     this.preloader = false
                },
                updated() {
