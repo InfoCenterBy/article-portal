@@ -615,9 +615,14 @@
                                    title: 'Тест'
                               },
                               {
-                                   date: '10-30-2024',
+                                   date: '01-30-2024',
                                    title: 'Тест 2'
                               },
+                              {
+                                   date: '01-30-2024',
+                                   title: 'Тест 3'
+                              },
+                              
                          ],
                          innerdisabledDatesWithTitleFilteredByCurrentMonth: [],
                          transferDatesFilteredByCurrentMonth: [],
@@ -1036,27 +1041,36 @@
                               )
                          })
                          
-                         disabledDatesETC?.forEach((date, count) => {
-                              let dayInFormat = moment(date).format()
-                              
-                              let labelDate = this.innerdisabledDatesWithTitleETC.filter(el => {
-                                   return moment(el.date, 'MM-DD-YYYY').format() == moment(dayInFormat).format()
-                              })
+                         disabledDatesETC?.forEach((date) => {
+                              let dayInFormat = moment(date).format();
 
-                              this.innerAttributes.push(
-                                   {
-                                        dates: dayInFormat,
-                                        content: {
-                                             style: {
-                                                  color: '#F9B974',
+                              // Фильтруем все элементы с совпадающей датой
+                              let labelDates = this.innerdisabledDatesWithTitleETC.filter(el => {
+                                   return moment(el.date, 'MM-DD-YYYY').format() === dayInFormat;
+                              });
+
+                              // Добавляем уникальные записи в `innerAttributes`
+                              labelDates.forEach(labelDate => {
+                                   // Проверяем, существует ли уже такой объект в `innerAttributes`
+                                   const exists = this.innerAttributes.some(attr => {
+                                        return attr.dates === dayInFormat && attr.popover.label === labelDate.title;
+                                   });
+
+                                   if (!exists) {
+                                        this.innerAttributes.push({
+                                             dates: dayInFormat,
+                                             content: {
+                                                  style: {
+                                                       color: '#F9B974',
+                                                  }
+                                             },
+                                             popover: {
+                                                  label: labelDate.title // Добавляем каждый title отдельно
                                              }
-                                        },
-                                        popover: {
-                                             label: labelDate[0]?.title
-                                        }
-                                   },
-                              )
-                         })
+                                        });
+                                   }
+                              });
+                         });
                          // {
                          //           dates:  {weekdays: [1,7] },
                          //           content: {

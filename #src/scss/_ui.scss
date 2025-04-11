@@ -4092,3 +4092,21 @@
     }
   }
 }
+
+.notification-circle {
+  display: none;
+  background-color: var(--color-red);
+  color: var(--color-white-gray);
+  border-radius: 1.2em;
+  -moz-border-radius: 1.2em;
+  -webkit-border-radius: 1.2em;
+  line-height: 2.2em;
+  text-align: center;
+  width: 2.2em;
+  min-width: 2.2em;
+  max-width: 2.2em;
+  font-size: 1rem;
+  &-active{
+    display: inline-block;
+  }
+}
