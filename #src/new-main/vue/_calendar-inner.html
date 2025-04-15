@@ -1073,51 +1073,7 @@
                                    console.log('Error in date format', err)
                               }
                          })
-                         // const disabledDates = this?.innerdisabledDatesInFormat
-
-                         // disabledDates?.forEach((date, count) => {
-                         //      let dayInFormat = moment(date).format()
-
-                         //      let labelDate = this.innerdisabledDatesWithTitle.filter(el => {
-                         //           return moment(el.date, 'MM-DD-YYYY').format() == moment(dayInFormat).format()
-                         //      })
-
-                         //      let previousDay = moment(moment(dayInFormat).clone().subtract(1, 'days')).format()
-
-                         //      const transDateArr = this.transferDatesArr.map(el => {
-                         //           return moment(moment(el.from, 'MM-DD-YYYY').toISOString()).format()
-                         //      })
-
-                         //      let disDayPrev = !disabledDates.includes(previousDay)
-                         //      let transDayPrev = !transDateArr.includes(previousDay)
-
-                         //      this.attributes.push(
-                         //           {
-                         //                dates: disDayPrev && transDayPrev ? previousDay : null,
-                         //                content: {
-                         //                     style: {
-                         //                          color: '#C47A2C',
-                         //                     }
-                         //                },
-                         //                popover: {
-                         //                     label: 'Рабочий день сокращен на 1 час',
-                         //                },
-                         //           },
-                         //           {
-                         //                dates: dayInFormat,
-                         //                content: {
-                         //                     style: {
-                         //                          //color: '#F9B974',
-                         //                          color: '#D24344',
-                         //                          //red
-                         //                     }
-                         //                },
-                         //                popover: {
-                         //                     label: labelDate[0]?.title
-                         //                }
-                         //           },
-                         //      )
-                         // })
+                         
                          this.setTransAttr()
                     },
                     setTransAttr() {
