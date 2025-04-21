@@ -172,7 +172,7 @@
      </div>
 </div>
           </div>
-          <div class="header-button header-button-enter flex-row align-items-center"  
+          <div class="header-button header-button-enter header-button-notification flex-row align-items-center"  
                type="button" class="how" data-bs-toggle="dropdown" aria-expanded="true" data-bs-auto-close="outside">
                <span>Иванова И.И.</span>
                <div class="header-button__hr"></div>
@@ -186,7 +186,7 @@
                          <li><a href="profile.html" class="py-2 px-3 d-block"><i class="bi bi-person me-3"></i>Профиль</a></li>
                          <li><a href="favorites.html" class="py-2 px-3 d-block"><i class="bi bi-bookmark me-3"></i>Избранное</a></li>
                          <li><a href="browsing-history.html" class="py-2 px-3 d-block"><i class="bi bi-clock me-3"></i>История просмотров</a></li>
-                         <li><a href="subscription.html" class="py-2 px-3 d-block d-flex flex-row align-items-center"><i class="bi bi-unlock me-3"></i>Управление подпиской <span class="notification-circle notification-circle-active ms-1">10</span></a></li>
+                         <li><a href="subscription.html" class="py-2 px-3 d-block d-flex flex-row align-items-center"><i class="bi bi-unlock me-3"></i>Управление подпиской <span class="notification-circle notification-circle-active ms-1">10+</span></a></li>
                          <li><a href="settings.html" class="py-2 px-3 d-block"><i class="bi bi-gear me-3"></i>Настройки</a></li>
                     </ul>
                     <hr class="my-2">
@@ -1056,6 +1056,8 @@
                          class="mt-3"
                          ref="calendar"
                          :disabled-dates="disabledDates"
+                         locale="ru"
+                         :masks="{title:'MMMM', weekdays: 'WW'}"
                          ></v-calendar>
                     </div>
                     <div class="col-xxl-6">
@@ -1235,12 +1237,12 @@
                               <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
                                    <span class="fs-16 color-nav-black">по пятидневной рабочей неделе</span>
                                    <div class="time-underline mt-2 mx-2"></div>
-                                   <span class="color-gold fs-18">{{weekTime.offFive}}</span>
+                                   <span class="color-gold fs-18">{{weekTime.totalWeekends}}</span>
                               </div>
                               <div class="work-time-elem d-flex flex-row align-items-center justify-content-between my-1">
                                    <span class="fs-16 color-nav-black">по шестидневной рабочей неделе</span>
                                    <div class="time-underline mt-2 mx-2"></div>
-                                   <span class="color-gold fs-18">{{weekTime.offSix}}</span>
+                                   <span class="color-gold fs-18">{{weekTime.sundaysWithDis}}</span>
                               </div>
                          </div>
                     </div>
@@ -1286,6 +1288,9 @@
           <script src="https://unpkg.com/vue@2"></script>
           <script src="https://unpkg.com/@popperjs/core@2"></script>
           <script src="https://unpkg.com/v-calendar"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment-with-locales.min.js"
+               integrity="sha512-4F1cxYdMiAW98oomSLaygEwmCnIP38pb4Kx70yQYqRwLVCs3DbRumfBq82T08g/4LJ/smbFGFpmeFlQgoDccgg=="
+               crossorigin="anonymous" referrerpolicy="no-referrer"></script>
           <script >
           Vue.component('v-calendar', window.VCalendar)
           Vue.component('testComp', {
@@ -1321,7 +1326,6 @@
                     }
                },
                mounted() {
-                    this.checkweekend()
                }
           });
           new Vue({
@@ -1338,7 +1342,7 @@
                          dates: [
 
                                                             {
-                                   date: '2024-02-05',
+                                   date: '2025-03-05',
                                    pay: false,
                                    show: false,
                                    payShow: true,
@@ -1374,7 +1378,7 @@
                                    dateCategory: 'calendarOrg'
                               },
                               {
-                                   date: '2024-02-15',
+                                   date: '2025-03-12',
                                    pay: true,
                                    show: false,
                                    payShow: true,
@@ -1662,17 +1666,29 @@
                          disDateArr: [],
                          allOff: [],
                          selectedDisDates: [],
-                         transDates: ['2024-02-17']
+                         transDates: ['2024-02-17'],
+                         transferDatesArr: [
+                              {
+                                   from: '04-26-2025',
+                                   to: '04-28-2025'
+                              },
+                         ],
+                         innerdisabledDates: [],
+                         innerdisabledDatesWithTitle: [
+                              {
+                                   date: '04-29-2025',
+                                   title: 'Радуница'
+                              },
+                              {
+                                   date: '03-08-2025',
+                                   title: 'Женский день'
+                              },
+                         ],
+                         currentDate: new Date(),
+                         transferDatesFilteredByCurrentMonth: []
                     }
                },
                computed: {
-                    computedWeekTime(){
-                         const weekTime = {}
-                         this.weekTime = {
-                              sumDays: 31,
-                         }
-                         return weekTime
-                    },
                     setToday() {
                          let timeObj= { dayOfWeek: '', dateNumber: ''}
                          const days = [
@@ -1694,13 +1710,14 @@
                               console.log('setToday error', error)
                          }
                          return timeObj
-                         // + ' ' + day.toLocaleString('default', {month: 'long'}) if need text month
+                    },
+                    innerdisabledDatesInFormat() {
+                         return this.innerdisabledDates.map(el => {
+                              return moment(el).format()
+                         })
                     },
                },
                watch: {
-                    // watchChange(typeMode){
-                    //      this.changeType()
-                    // }
                     typeMode(newVal) {
                          this.attributes = []
                          this.dateToShow = this.checkedDates.filter(el => {
@@ -1714,37 +1731,9 @@
                          this.setAttributes()
                          this.calcTime()
                          this.markWeekend()
-                         this.processTimeDates()
                     }
                },
                methods: {
-                    updateMessage(message) {
-                         this.messageFromChild = message
-                    },
-                    disableDate(){
-                         // this.isOn= 'true'
-                         let disDateArr = []
-                         // , '02/05/2024'
-                         let arrOfDate = ['2024-01-01', '2024-01-02', '2024-01-07', '2024-03-08', '2024-05-01', '2024-05-09', '2024-05-14', '2024-07-03',]
-                         try {
-                              arrOfDate.forEach(el => {
-                                   el+='T00:00:00' //if time is not define
-                                   disDateArr.push(new Date(el))
-                              });
-                         } catch (error) {
-                              console.log('error in disable dates', error)
-                         }
-
-                         this.disDateArr = disDateArr
-                         // console.log('disDateArr', disDateArr)
-                         disDateArr = [{ weekdays: [1, 7] },...disDateArr ]
-                         this.disabledDates = disDateArr
-                         // console.log('this.dis', this.disabledDates)
-                    },
-                    fillDates(){
-                         // this.dates = Array.from(Array(35).keys())
-                         // console.log('parent', this.messageFromChild)
-                    },
                     calcMinDate(){
                          let lastDay =  new Date(new Date().getFullYear(), new Date().getMonth() - 1, 1)
                          this.minDate = lastDay
@@ -1932,162 +1921,187 @@
                     setNewMonth(newCurrentMonth){
                          this.currentMonth = newCurrentMonth
                     },
-                    calcETCWeekend(){
-                         const currentPage = this.$refs.calendar.pages[0]
-                         let d = new Date(currentPage.monthComps.year, currentPage.monthComps.month, 0).toLocaleString('default', { month: 'long' });
-                         const etcWeekend = this.dates.filter(function(el){
-                                   let dayWeedendArr = el.date.split('-')
-                                   let dateWeekend = new Date(dayWeedendArr[0], dayWeedendArr[1], 0).toLocaleString('default', { month: 'long' })
-                                   return el.weekend === true && d === dateWeekend
-                              }).reduce((acc, current) => {
-                                   if (!acc.find((item) => item.weekend === current.weekend && item.date === current.date)) {
-                                        acc.push(current);
-                                   }
-                                   return acc;
-                         }, [])
-                         return etcWeekend
-                    },
-                    isSunday(date) {
-                         if (date.getDay() === 0) {
+                    hasDecember31(startDate, endDate) {
+                         const startDateInFormat = moment(startDate, 'MM-DD-YYYY');
+                         const endDateDateInFormat = moment(endDate, 'MM-DD-YYYY');
+                         const december31 = moment('12-31', 'MM-DD');
+
+                         if (december31.isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]')) {
                               return true;
                          }
                          return false;
                     },
-                    isSaturday(date) {
-                         if (date.getDay() === 6) {
-                              return true;
+                    calcSumTime(startDateInFormat, endDateDateInFormat) {
+                         const disabledDates = this?.innerdisabledDatesInFormat
+                         const disabledDatesObj = {
+                              countFive: 0,
+                              countSix: 0,
+                              hourCountBoth: 0,
+                              hourCountSix: 0,
+                              saturdayDis: 0
                          }
-                         return false;
-                    },
-                    isDateInMonth(date, month) {
-                         // console.log('we are here isDateInMonth');
-                         const dateMonth = date.getMonth() + 1;
-                         // console.log('dateMonth === month', dateMonth, month);
-                         return dateMonth === month;
-                    },
-                    processTimeDates() {
-                         this.selectedDisDates.forEach(element => {
-                              // debugger
-                              this.checkPrevDate(element)
+
+                         const transDatePlainArr = []
+
+
+                         this.transferDatesFilteredByCurrentMonth.forEach(el => {
+                              transDatePlainArr.push(moment(el.from))
+                              transDatePlainArr.push(moment(el.to))
                          })
-                    },
-                    checkPrevDate(element){
-                         let prevDate = new Date(element)
-                         prevDate.setDate(prevDate.getDate() - 1)
-                         // console.log('prevDate', prevDate)
 
-                                                  if(
-                              this.isDateInMonth(prevDate, this.$refs.calendar.pages[0].monthComps.month)
-                              && this.checkWork(prevDate, null, this.disDateArr)
-                         ){
-                              this.checkWeekend(element)
-                         }
-                         else{
-                              console.log('we are not here');
-                         }
-                         // {
-                         //      if (this.isSunday(prevDate)) {
-                         //           console.log('we are here sun')
-                         //           this.weekTime.timeSixWeek40--
-                         //           this.weekTime.timeSixWeek35--
-                         //      } else if (this.isSaturday(prevDate)) {
-                         //           console.log('we are here sat')
-                         //           this.weekTime.timeFiveWeek40--
-                         //           this.weekTime.timeFiveWeek35--
-                         //      } else {
-                         //           this.weekTime.timeSixWeek40--
-                         //           this.weekTime.timeSixWeek35--
-                         //           this.weekTime.timeFiveWeek40--
-                         //           this.weekTime.timeFiveWeek35--
-                         //           //todo: дополнить проверку функцией написанной ниже(или нет, пока не решил) 
-                         //      }
-                         // }
-                    },
-                    checkWeekend(element){
-                              // console.log('element', element)
-                              let nowDate = new Date(element)
-                              nowDate.setDate(nowDate.getDate())
-                              // console.log('prevDate', nowDate)
-                              if (this.isSunday(nowDate)) {
-                                   // console.log('we are here sun')
-                                   this.weekTime.timeSixWeek40--
-                                   this.weekTime.timeSixWeek35--
-                              } else if (this.isSaturday(nowDate)) {
-                                   // console.log('we are here sat')
-                                   this.weekTime.timeFiveWeek40--
-                                   this.weekTime.timeFiveWeek35--
-                              } else {
-                                   this.weekTime.timeSixWeek40--
-                                   this.weekTime.timeSixWeek35--
-                                   this.weekTime.timeFiveWeek40--
-                                   this.weekTime.timeFiveWeek35--
-                                   //todo: дополнить проверку функцией написанной ниже(или нет, пока не решил) 
+                         console.log('transDatePlainArr', transDatePlainArr);
+                         disabledDates?.forEach((date, count) => {
+                              let dayInFormat = moment(date).format()
+                              let previousDay = moment(moment(dayInFormat).clone().subtract(1, 'days')).format()
+                              let nextDay = moment(moment(dayInFormat).add(1, 'days')).format()
+
+                              // let momentDate = moment({
+                              //                          year: dayInFormat.get('year'),
+                              //                          month: dayInFormat.get('month'),
+                              //                          day: dayInFormat.get('date') })
+
+                              //weekend for five week without sat and sun
+                              if (moment(dayInFormat).isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]') && moment(dayInFormat).get('day') != 0 && moment(dayInFormat).get('day') != 6) {
+                                   disabledDatesObj.countFive++;
                               }
-                    },
-                    checkWork(dateString, firstArr, secondArr) {
-                         const targetDate = new Date(dateString)
-                         // console.log('targetDate', targetDate);
-                         const foundInAllOff = firstArr?.some(date => date.getTime() === targetDate.getTime())
-                         const foundInDisDateArr = secondArr?.some(date => date.getTime() === targetDate.getTime())
+                              //weekend for six week without sun
+                              if (moment(dayInFormat).isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]') && moment(dayInFormat).get('day') != 0) {
+                                   disabledDatesObj.countSix++
+                              }
 
-                         if (foundInAllOff && foundInDisDateArr) {
-                              return false
-                         } else if (foundInAllOff) {
-                              return false
-                         } else if (foundInDisDateArr) {
-                              return false
-                         } else {
-                              return true
-                         }
+                              if (moment(dayInFormat).isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]') && moment(dayInFormat).get('day') == 6 && transDatePlainArr.includes(dayInFormat) == false) {
+                                   disabledDatesObj.saturdayDis++
+                              }
 
-                    },
-                    calcTime() {
-                         const currentPage = this.$refs.calendar.pages[0];
-                         const year = currentPage.monthComps.year;
-                         const month = currentPage.monthComps.month;
-                         const daysInMonth = new Date(year, month, 0).getDate();
-                         const sat = [];
-                         const sun = [];
-                         const allOff = [];
 
-                         let disNumber = 0;
+                              // if (moment(dayInFormat).isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]') && moment(dayInFormat).get('day') != 0 && moment(dayInFormat).get('day') != 6) {
+                              //      hourCountBoth++
+                              //      // console.log('count', count)
+                              // }
 
-                         for (let i = 1; i <= daysInMonth; i++) {
-                              const newDate = new Date(year, month - 1, i);
-                              const dayOfWeek = newDate.getDay();
+                              // if (moment(dayInFormat).isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]') && moment(dayInFormat).get('day') != 0) {
+                              //      hourCountSix++
+                              //      // console.log('count', count)
+                              // }
+                              // console.log(previousDay);
+                              if (!disabledDates.includes(previousDay)) {
+                                   if (
+                                        moment(previousDay).isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]') &&
+                                        moment(previousDay).get('day') != 0 &&
+                                        moment(previousDay).get('day') != 6) {
+                                        disabledDatesObj.hourCountBoth++
+                                   } else if (
+                                        moment(previousDay).isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]') &&
+                                        moment(previousDay).get('day') == 6) {
+                                        disabledDatesObj.hourCountSix++
+                                   } else if (
+                                        moment(previousDay) == moment(endDateDateInFormat) &&
+                                        moment(nextDay).get('day') != 0) {
+                                        disabledDatesObj.hourCountBoth++
+                                   } else if (
+                                        moment(previousDay) == moment(endDateDateInFormat) &&
+                                        moment(nextDay).get('day') != 0 &&
+                                        moment(nextDay).get('day') == 6) {
+                                        disabledDatesObj.hourCountSix++
+                                   }
+                              }
 
-                              if (dayOfWeek === 0) sun.push(newDate);
-                              if (dayOfWeek === 6) sat.push(newDate);
-                              if (dayOfWeek === 0 || dayOfWeek === 6) allOff.push(newDate);
-                         }
+                              if (moment(dayInFormat).isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]') && moment(dayInFormat).get('day') != 0 && this.hasDecember31(startDateInFormat, endDateDateInFormat)) {
+                                   disabledDatesObj.hourCountBoth++;
+                              }
 
-                         this.allOff = allOff;
 
-                         const disabledDatesThisMonth = this.disDateArr.filter(date => date.getMonth() + 1 === month);
-                         this.selectedDisDates = disabledDatesThisMonth;
+                              // if (moment(dayInFormat).isBetween(startDateInFormat, endDateDateInFormat, 'day', '[]') && moment(dayInFormat).get('day') != 0) {
+                              //      count++;
+                              //      // console.log('count', count)
+                              // }
 
-                         disabledDatesThisMonth.forEach(el => {
-                              if (el.getDay() !== 0) disNumber++;
+
                          });
 
-                         const etcWeekendLength = this.calcETCWeekend();
+                         if(transDatePlainArr.length > 0){
+                              disabledDatesObj.hourCountBoth++
 
-                         const getTot = daysInMonth - disNumber;
-                         const workFive = getTot - allOff.length - etcWeekendLength.length;
-                         const workSix = getTot - sun.length - etcWeekendLength.length;
+                         }
+
+                         return disabledDatesObj
+                    },
+                    calcTime() {
+                         const currentPage = this.$refs.calendar.pages[0]
+                         const month = currentPage.monthComps.month
+                         const year = this.currentDate.getFullYear()
+                         const sat = []
+                         const sun = []
+                         const allOff = []
+                         if (month < 1 || month > 12) {
+                              throw new Error("Wrong month");
+                         }
+
+
+                         // let startDate = moment({ year: year, month: month - 1, day: 1 });
+                         let startDate = moment({ year: year, month: month - 1, day: 1 });
+                         let endDate = moment(startDate).endOf('month');
+                         let totalDaysInMonth = moment(startDate).daysInMonth();
+                         // console.log(moment(startDate).format('MM-DD-YYYY'));
+                         let startDateInFormat = moment(startDate)
+                         let endDateDateInFormat = moment(endDate)
+                         // console.log('startDateInFormat', startDateInFormat, endDateDateInFormat);
+                         // console.log(month, moment(startDate).format('MM-DD-YYYY'), moment(endDate).format('MM-DD-YYYY'));
+
+                         let saturdays = 0;
+                         let sundays = 0;
+
+                         while (startDate.isSameOrBefore(endDate)) {
+                              if (startDate.day() === 6) {
+                                   saturdays++;
+                              } else if (startDate.day() === 0) {
+                                   sundays++;
+                              }
+                              startDate.add(1, 'day');
+                         }
+
+                         let totalWeekends = saturdays + sundays
+
+                         let disabledDatesCount = this.calcSumTime(startDateInFormat, endDateDateInFormat)
+                         // console.log('disabledDatesCount', disabledDatesCount);
+
+                         // console.log('disabledDatesCount', disabledDatesCount);
+
+
+                         totalWeekends += disabledDatesCount.countFive
+
+                         let workFive = totalDaysInMonth - totalWeekends
+
+                         let workSix = totalDaysInMonth - sundays - disabledDatesCount.countSix
+
+                         let sundaysWithDis = sundays + disabledDatesCount.countSix
+
+                         let timeFiveWeek40 = (40 / 5) * workFive - disabledDatesCount.hourCountBoth
+                         let timeFiveWeek35 = (35 / 5) * workFive - disabledDatesCount.hourCountBoth
+                         let timeSixWeek40 =
+                              workFive * 7 + saturdays * 5 - disabledDatesCount.hourCountBoth - disabledDatesCount.hourCountSix - disabledDatesCount.saturdayDis * 5
+                         // console.log('timeSixWeek40', workFive, saturdays, disabledDatesCount.hourCountBoth, disabledDatesCount.hourCountSix);
+
+                         let timeSixWeek35 =
+                              workFive * 6 + saturdays * 5 - disabledDatesCount.hourCountBoth - disabledDatesCount.hourCountSix - disabledDatesCount.saturdayDis * 5
+
+                         console.log('timeSixWeek40', timeSixWeek40, timeSixWeek35);
+
 
                          this.weekTime = {
-                              sumDays: daysInMonth,
-                              workFive,
-                              workSix,
-                              offFive: allOff.length + etcWeekendLength.length + disNumber,
-                              offSix: sun.length + etcWeekendLength.length + disNumber,
-                              timeFiveWeek40: (40 / 5) * workFive,
-                              timeFiveWeek35: (35 / 5) * workFive,
-                              timeSixWeek40: sun.length * 5 + (getTot - sat.length - sun.length - etcWeekendLength.length) * 7,
-                              timeSixWeek35: sun.length * 5 + (getTot - sat.length - sun.length - etcWeekendLength.length) * 6,
-                              todayDate:{ dayOfWeek:'', dateNumber:'' }
-                         };
+                              totalDays: totalDaysInMonth,
+                              saturdays: saturdays,
+                              sundays: sundays,
+                              totalWeekends: totalWeekends,
+                              sundaysWithDis: sundaysWithDis,
+                              workFive: workFive,
+                              workSix: workSix,
+                              timeFiveWeek40: timeFiveWeek40,
+                              timeFiveWeek35: timeFiveWeek35,
+                              timeSixWeek40: timeSixWeek40,
+                              timeSixWeek35: timeSixWeek35,
+                              todayDate: { dayOfWeek: '', dateNumber: '' }
+                         }
                     },
                     markWeekend(){
                          this.dates.forEach(function(el){
@@ -2103,7 +2117,42 @@
                                    }
                               }
                          })
-                    }
+                    },
+                    processInnerDisabeledDates() {
+                         this.innerdisabledDatesWithTitle.forEach((date, count) => {
+                              let isoDate = moment(date.date, 'MM-DD-YYYY').toISOString()
+                              this.innerdisabledDates.push(isoDate)
+                         })
+                         this.innerdisabledDatesWithTitle.sort((a, b) => {
+                              const dateA = moment(a.date, 'MM-DD-YYYY');
+                              const dateB = moment(b.date, 'MM-DD-YYYY');
+                              return dateA - dateB;
+                         });
+                    },
+                    innerdisabledDatesCurrentMonth(datesArr, month) {
+
+                         const monthString = month.toString().padStart(2, '0')
+
+                         this.innerdisabledDatesWithTitleFilteredByCurrentMonth = datesArr.filter(item => {
+                              const itemMonth = item.date.split('-')[0]
+                              return itemMonth === monthString
+                         });
+                    },
+                    mainCalendarUpdate() {
+                         const currentMonth = this.$refs.calendar.pages[0].month
+                         this.mainCalendarTime = this.calcTime(currentMonth)
+                         this.innerdisabledDatesCurrentMonth(this.innerdisabledDatesWithTitle, currentMonth)
+                         this.transferDatesFilteredByCurrentMonthProcess(this.transferDatesArr, currentMonth)
+                    },
+                    transferDatesFilteredByCurrentMonthProcess(datesArr, month) {
+                         const monthString = month.toString().padStart(2, '0');
+
+                         this.transferDatesFilteredByCurrentMonth = datesArr.filter(item => {
+                              const fromMonth = item.from.split('-')[0];
+                              const toMonth = item.to.split('-')[0];
+                              return fromMonth === monthString || toMonth === monthString;
+                         });
+                    },
                     // testCheck(){
                     //      const calendar = this.$refs.calendar
                     //      console.log('calendar.pages', calendar.pages[0])
@@ -2112,7 +2161,7 @@
                     // },
                },
                mounted() {
-                    this.disableDate()
+                    this.processInnerDisabeledDates()
                     this.checkDate()
                     this.calcMinDate()
                     this.calcMaxDate()
@@ -2120,6 +2169,7 @@
                     this.currentMonth = new Date().getMonth() + 1
                     this.changeType()
                     this.setAttributes()
+                    this.mainCalendarUpdate(this.$refs.calendar.pages[0].month)
                     this.formatTitle(new Date())
                     // this.calcTime()
                     // this.setToday()

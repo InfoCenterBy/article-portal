@@ -3737,19 +3737,34 @@ body._lock {
   display: none;
   background-color: var(--color-red);
   color: var(--color-white-gray);
-  border-radius: 0.8em;
-  -moz-border-radius: 0.8em;
-  -webkit-border-radius: 0.8em;
-  line-height: 1.6em;
+  border-radius: 1.2em;
+  -moz-border-radius: 1.2em;
+  -webkit-border-radius: 1.2em;
+  line-height: 2.2em;
   text-align: center;
-  width: 1.6em;
-  min-width: 1.6em;
-  max-width: 1.6em;
+  width: 2.2em;
+  min-width: 2.2em;
+  max-width: 2.2em;
   font-size: 1rem;
 }
 
 .notification-circle-active {
   display: inline-block;
+}
+
+.header-button.header-button-enter.header-button-notification {
+  position: relative;
+}
+
+.header-button.header-button-enter.header-button-notification::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background-color: var(--color-red);
+  border-radius: 50%;
+  right: -4px;
+  top: -2px;
 }
 
 p {
