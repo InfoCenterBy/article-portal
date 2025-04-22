@@ -546,57 +546,49 @@
                                         filterEl() {
 
                                              try {
-                                                  this.isEmpty = false
+                                                  this.isEmpty = false;
 
-                                                  let sortedFilter = this.filterRule.special.sort()
-                                                  // console.log('sortedFilter', sortedFilter)
-                                                  const newList = this.listItems.filter(el => {
-                                                       let sortedItems = el.features.slice().sort()
-                                                       // console.log('sortedItems', sortedItems)
+                                                  // Основные условия фильтрации
+                                                  const { income, staff, category, special } = this.filterRule;
+                                                  const hasCategoryFilter = category !== '';
+                                                  const hasSpecialFilter = special.length > 0;
 
-                                                       if (this.filterRule.category === '' && this.filterRule.special.length == 0) {
-                                                            return el.income >= this.filterRule.income
-                                                                 && el.staff >= this.filterRule.staff
+                                                  // Сортируем фильтры один раз
+                                                  const sortedFilter = hasSpecialFilter ? [...special].sort() : [];
 
-                                                       } else
-                                                            if (this.filterRule.category !== '' && this.filterRule.special.length !== 0) {
+                                                  this.filterList = this.listItems.filter(item => {
+                                                       // Проверка базовых числовых полей
+                                                       if (item.income < income || item.staff < staff) {
+                                                            return false;
+                                                       }
 
-                                                                 return el.income >= this.filterRule.income
-                                                                      && el.staff >= this.filterRule.staff
-                                                                      && el.category === this.filterRule.category
-                                                                      && this.filterRule.special.some(fit => el.features.includes(fit))
-                                                                 // && JSON.stringify(sortedFilter) === JSON.stringify(sortedItems)
+                                                       // Проверка категории (если есть фильтр)
+                                                       if (hasCategoryFilter && item.category !== category) {
+                                                            return false;
+                                                       }
 
+                                                       // Проверка специальных фич (если есть фильтр)
+                                                       if (hasSpecialFilter) {
+                                                            const hasMatchingFeature = special.some(fit =>
+                                                                 item.features.includes(fit)
+                                                            );
+
+                                                            if (!hasMatchingFeature) {
+                                                                 return false;
                                                             }
-                                                            else if (this.filterRule.category === '' && this.filterRule.special.length !== 0) {
-                                                                 return el.income >= this.filterRule.income
-                                                                      && el.staff >= this.filterRule.staff
-                                                                      && this.filterRule.special.some(fit => el.features.includes(fit))
-                                                                 // && JSON.stringify(sortedFilter) === JSON.stringify(sortedItems)
+
+                                                            // Раскомментируйте если нужно точное совпадение всех фич
+                                                            const sortedItems = [...item.features].sort();
+                                                            if (JSON.stringify(sortedFilter) !== JSON.stringify(sortedItems)) {
+                                                                return false;
                                                             }
-                                                            else {
-                                                                 return el.income >= this.filterRule.income
-                                                                      && el.staff >= this.filterRule.staff
-                                                                      && el.category === this.filterRule.category
-                                                            }
-                                                  })
+                                                       }
 
-                                                  // const newList = this.listItems.filter(el => {
-                                                  //      return this.filterRule.special.some((f) => {
-                                                  //           return f === el.features
-                                                  //      })
-                                                  // })
-
-                                                  // const newList = this.listItems.filter(obj => {
-                                                  //      return obj.income <= this.filterRule.income &&
-                                                  //           obj.staff <= this.filterRule.staff &&
-                                                  //           obj.category === this.filterRule.category &&
-                                                  //           obj.features.some(f => this.filterRule.special.includes(f));
-                                                  // });
-
-
-                                                  this.filterList = newList
-                                                  if (newList.length === 0) {
+                                                       return true;
+                                                  });
+                                                  
+                                                  // this.filterList = newList
+                                                  if (this.filterList.length === 0) {
                                                        this.isEmpty = true
                                                   }
 
