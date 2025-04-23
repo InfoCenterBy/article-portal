@@ -2766,7 +2766,10 @@
 
   .card-wrapper {
     border: 1px solid var(--color-gray);
-
+    .h4{
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
     &__more {
       display: grid;
       place-items: center;
