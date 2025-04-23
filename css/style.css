@@ -2682,6 +2682,12 @@ body._lock {
   line-height: 19px;
 }
 
+.taxation-filter .card-wrapper .h4 {
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+  overflow: hidden;
+}
+
 .taxation-filter .card-wrapper__more {
   display: grid;
   place-items: center;
