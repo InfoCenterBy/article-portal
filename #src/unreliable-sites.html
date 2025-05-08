@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+@@include('_head.html',{
+"title":"Реестр неблагонадежных сайтов"
+})
+
+<body>
+     <div class="wrapper">
+          @@include('_header.html',{})
+          <main class="page">
+               <nav aria-label="breadcrumb">
+                    <div class='container'>
+                         <ol class="breadcrumb">
+                              <li class="breadcrumb-item"><a href="main.html"><i class="bi bi-house"></i></a></li>
+                              <li class="breadcrumb-item"><a href="services.html">Сервисы</a></li>
+                              <li class="breadcrumb-item active" aria-current="page">Реестр неблагонадежных сайтов</li>
+                         </ol>
+                    </div>
+               </nav>
+               <section class="mt-4 mb-5">
+                    <div class='container'>
+                         <h1 class="h1">Реестр неблагонадежных сайтов</h1>
+                         <div class="row">
+                              <div class="col-12 col-md-4">
+                                   <div class="input mb-4" id="domain">
+                                        <label for="domain">Доменное имя</label>
+                                        <input class="border-10" type="text" name="" placeholder="Введите имя"
+                                             maxlength="255" value="">
+                                   </div>
+                              </div>
+                              <div class="col-12 col-md-4">
+                                   <div class="input mb-4" id="domain">
+                                        <label for="domain">Статус актуален на:</label>
+                                        <input class="border-10" type="text" name="" placeholder="Выберите дату"
+                                             maxlength="255" value="">
+                                   </div>
+                              </div>
+                         </div>
+                         <p class="fw-semibold fs-18 mb-3">Сведения о продавце/исполнителе</p>
+                         <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 row-gap-3">
+                              <div class="col">
+                                   <p class="mb-2 fw-medium">Наименование</p>
+                                   <select class="select border-10">
+                                        <option value="" disabled selected>Выберите</option>
+                                        <option value="">1</option>
+                                        <option value="">2</option>
+                                   </select>
+                              </div>
+                              <div class="col">
+                                   <p class="mb-2 fw-medium">УНП</p>
+                                   <select class="select border-10">
+                                        <option value="" disabled selected>Выберите</option>
+                                        <option value="">1</option>
+                                        <option value="">2</option>
+                                   </select>
+                              </div>
+                              <div class="col">
+                                   <p class="mb-2 fw-medium">Улица</p>
+                                   <select class="select border-10">
+                                        <option value="" disabled selected>Выберите</option>
+                                        <option value="">1</option>
+                                        <option value="">2</option>
+                                   </select>
+                              </div>
+                              <div class="col">
+                                   <p class="mb-2 fw-medium">Дом</p>
+                                   <select class="select border-10">
+                                        <option value="" disabled selected>Выберите</option>
+                                        <option value="">1</option>
+                                        <option value="">2</option>
+                                   </select>
+                              </div>
+                              <div class="col">
+                                   <p class="mb-2 fw-medium">Помещение</p>
+                                   <select class="select border-10">
+                                        <option value="" disabled selected>Выберите</option>
+                                        <option value="">1</option>
+                                        <option value="">2</option>
+                                   </select>
+                              </div>
+                         </div>
+
+                         <div class="row mt-4">
+                              <div class="col-6 col-md-2 order-2 order-md-1">
+                                   <button class="button sbs border-10 w-100" type="button">Найти</button>
+                              </div>
+                              <div class="col-6 col-md-2 order-1 order-md-2">
+                                   <button id="reset" name="reset_filter"
+                                        class="button border-10 button_empty w-100">Очистить</button>
+                              </div>
+                         </div>
+                    </div>
+               </section>
+          </main>
+          @@include('_footer.html',{})
+     </div>
+     @@include('_js.html',{})
+</body>
+
+</html>
