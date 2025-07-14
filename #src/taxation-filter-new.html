@@ -17,6 +17,7 @@
           <div class="main-content">
                @@include('./new-main/main-components/_fin.html')
                <hr class="my-0 d-md-block d-none">
+
                <div class='main-section taxation-filter'>
                
                     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -42,12 +43,12 @@
                
                                    <transition-group tag="div" class="row w-100 card-scope " name="card-filter">
                                         <div v-for="item in filterList" :key="item.id" class="col-12 col-xxl-6 col-xxxl-4 card-filter my-2">
-                                             <div class="card-wrapper d-flex flex-column my-2 justify-content-between p-4 h-100">
+                                             <div class="card-wrapper d-flex flex-column my-2 justify-content-between p-4 h-100 border-20">
                                                   <h4 class="h4">{{item.title}}</h4>
                                                   <p>
                                                        {{item.text}}
                                                   </p>
-                                                  <div class="mt-auto py-3 card-wrapper__more" data-bs-toggle="modal"
+                                                  <div class="mt-auto py-3 card-wrapper__more border-20" data-bs-toggle="modal"
                                                        :data-bs-target="'#' + 'modal' + '-'  + item.id">
                                                        Подробнее
                                                   </div>
@@ -161,7 +162,7 @@
                
                                         <input type="text" class="js-range-slider-staff" name="staff" value="">
                                    </div>
-                                   <div class="d-flex justify-content-center align-items-center filter-reset mt-4"
+                                   <div class="d-flex justify-content-center align-items-center filter-reset mt-4 border-20"
                                         @click="resetForm()">
                                         Очистить фильтр
                                    </div>
@@ -493,53 +494,72 @@
 
 
                                    },
+                                   observeSliderChanges(element, callback, key) {
+                                        // Отключаем предыдущий observer, если есть
+                                        if (this.observers && this.observers[key]) {
+                                             this.observers[key].disconnect();
+                                        }
+
+                                        const observer = new MutationObserver((mutations) => {
+                                             mutations.forEach((mutation) => {
+                                                  if (mutation.type === 'childList' || mutation.type === 'characterData') {
+                                                       callback();
+                                                  }
+                                             });
+                                        });
+
+                                        observer.observe(element, {
+                                             childList: true,
+                                             subtree: true,
+                                             characterData: true
+                                        });
+
+                                        // Инициализируем объект observers, если его нет
+                                        if (!this.observers) {
+                                             this.observers = {};
+                                        }
+
+                                        // Сохраняем observer с строковым ключом
+                                        this.observers[key] = observer;
+                                   },
+
                                    modifyEl() {
                                         try {
+                                             // Обработка первого слайдера (доход)
                                              document.querySelectorAll(".js-irs-0 .irs-grid-text").forEach(el => {
                                                   if (el.innerHTML != '0' && el.innerHTML != '5') {
-                                                       el.innerHTML = el.innerHTML + ' млн'
+                                                       el.innerHTML = el.innerHTML + ' млн';
                                                   }
                                                   if (el.innerHTML == '5') {
-                                                       el.innerHTML = ' '
+                                                       el.innerHTML = ' ';
                                                   }
-                                             })
-                                             document.querySelectorAll('.js-irs-0 .irs-from').forEach(el => {
-                                                  el.innerHTML = '0'
-                                             })
-                                        }
-                                        catch (error) {
-                                             console.log(error)
-                                        }
+                                             });
 
-                                        try {
+                                             document.querySelectorAll('.js-irs-0 .irs-from').forEach(el => {
+                                                  el.innerHTML = '0';
+                                             });
+
+                                             // Обработка второго слайдера (персонал)
                                              document.querySelectorAll(".js-irs-1 .irs-grid-text").forEach(el => {
                                                   if (el.innerHTML == '500') {
-                                                       el.innerHTML = ' '
+                                                       el.innerHTML = ' ';
                                                   }
-                                             })
-                                        }
-                                        catch (error) {
-                                             console.log(error)
-                                        }
+                                             });
 
-                                        try {
+                                             // Настройка observers с уникальными строковыми ключами
+                                             document.querySelectorAll('.js-irs-0 .irs-to').forEach((el, index) => {
+                                                  this.observeSliderChanges(el, () => {
+                                                       this.income = Math.fround($('.js-range-slider-income').prop("value").replace(/0;/g, '')).toFixed(2);
+                                                  }, `income-slider-${index}`);
+                                             });
 
-
-                                             document.querySelectorAll('.js-irs-0 .irs-to').forEach(el => {
-                                                  el.addEventListener('DOMSubtreeModified', (e) => {
-                                                       // add " * 1000000 " in the end of next line if data if millions (now in short form - 1.2)
-                                                       this.income = Math.fround($('.js-range-slider-income').prop("value").replace(/0;/g, '')).toFixed(2)
-                                                  })
-                                             })
-
-                                             document.querySelectorAll('.js-irs-1 .irs-to').forEach(el => {
-                                                  el.addEventListener('DOMSubtreeModified', (e) => {
-                                                       this.staff = parseInt($('.js-range-slider-staff').prop("value").replace(/0;/g, ''))
-                                                  })
-                                             })
-                                        }
-                                        catch (error) {
-                                             console.log(error)
+                                             document.querySelectorAll('.js-irs-1 .irs-to').forEach((el, index) => {
+                                                  this.observeSliderChanges(el, () => {
+                                                       this.staff = parseInt($('.js-range-slider-staff').prop("value").replace(/0;/g, ''));
+                                                  }, `staff-slider-${index}`);
+                                             });
+                                        } catch (error) {
+                                             console.error('Error in modifyEl:', error);
                                         }
                                    },
                                    filterEl() {
@@ -658,6 +678,14 @@
                                         // this.filterEl()
                                    }
                               },
+                              beforeUnmount() {
+                                   if (this.observers) {
+                                        Object.values(this.observers).forEach(observer => {
+                                             observer.disconnect();
+                                        });
+                                        this.observers = {};
+                                   }
+                              },
                               mounted() {
                                    this.getData()
                                    this.initSlider()
@@ -674,6 +702,7 @@
                </div>
           </div>
 
+          <div class="my-5"></div>
           <div class="my-5"></div>
           @@include('./new-main/main-components/_new-footer.html')
      </div>

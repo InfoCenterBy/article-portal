@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ru">
+	@@include('_head.html',{ "title":"Регистрация в личный кабинет" })
+	<body>
+		@@include('./new-main/main-components/_new-header.html')
+		@@include('./new-main/main-components/_search-modal.html') @@include('./new-main/main-components/_nav.html')
+
+		<div class="justify-content-between nav-container active-container">
+			<!-- Nav Button -->
+			<a class="" id="menu-btn"><i class="bi-chevron-right bi"></i></a>
+			<!--Nav Button -->
+			<div class="main-content">
+				<div class="mt-32"></div>
+				<div class="main-section">
+					<div class="row">
+						<div class="d-flex flex-column col-xl-6">
+							<div class="d-flex flex-column calendar-tabs-wrapper">
+								<div class="d-flex flex-row justify-content-around">
+									<label
+										for="login"
+										class="d-flex justify-content-start px-3 w-100 tab-toggle"
+									>
+										<a
+											href="./new-login.html"
+											target="_self"
+											rel="noopener noreferrer"
+											class="color-gray-dark"
+											>Войти</a
+										>
+									</label>
+									<label
+										for="register"
+										class="d-flex justify-content-start px-3 w-100 tab-toggle"
+									>
+										<a
+											href="./new-register.html"
+											target="_self"
+											rel="noopener noreferrer"
+											class="color-gold"
+											>Зарегистрироваться</a
+										>
+									</label>
+								</div>
+								<div class="mt-2"></div>
+								<div class="tab-underline-accent tab-underline-unchecked"></div>
+								<div class="w-100 tab-underline"></div>
+							</div>
+
+							<div class="mt-32">
+								<h1 class="h1 fs-32 fw-600 ff-inter">Регистрация</h1>
+							</div>
+							<form
+								id="form-registration"
+								method="post"
+								action="/login/?reg=yes"
+								name="regform"
+								enctype="multipart/form-data"
+							>
+								<input type="hidden" name="backurl" value="?reg=yes" />
+
+								<div class="mb-4 input" style="display: none">
+									<label for="name">Логин (мин. 3 символа) <span>*</span> </label>
+									<input
+										class="border-10"
+										size="30"
+										type="text"
+										name="REGISTER[LOGIN]"
+										value=""
+									/>
+									<div class="input__text-error">
+										<i class="me-2 bi bi-exclamation-triangle"></i>
+									</div>
+								</div>
+								<div class="mb-4 input">
+									<label for="name">Email <span>*</span> </label>
+									<input
+										class="border-10"
+										size="30"
+										type="text"
+										name="REGISTER[EMAIL]"
+										value=""
+										inputmode="email"
+									/>
+									<div class="input__text-error">
+										<i class="me-2 bi bi-exclamation-triangle"></i>
+									</div>
+								</div>
+								<div class="mb-4 input">
+									<label for="name">Номер телефона <span>*</span> </label>
+									<input
+										class="border-10"
+										size="30"
+										type="text"
+										name="REGISTER[PHONE_NUMBER]"
+										value=""
+										inputmode="text"
+									/>
+									<div class="input__text-error">
+										<i class="me-2 bi bi-exclamation-triangle"></i>
+									</div>
+								</div>
+								<div class="mb-4 input">
+									<label for="name">Пароль <span>*</span> </label>
+									<div class="input__password password">
+										<input
+											size="30"
+											type="password"
+											name="REGISTER[PASSWORD]"
+											value=""
+											autocomplete="off"
+											class="border-10 _required-registr"
+											id="password-registration"
+										/>
+										<i class="icon-password bi bi-eye-slash"></i>
+									</div>
+									<small class="text-muted"
+										>Пароль должен быть не менее 8 символов длиной, содержать латинские
+										символы верхнего регистра (A-Z), содержать латинские символы нижнего
+										регистра (a-z), содержать цифры (0-9).</small
+									>
+									<div class="input__text-error">
+										<i class="me-2 bi bi-exclamation-triangle"></i>
+									</div>
+								</div>
+								<div class="mb-4 input">
+									<label for="name">Подтверждение пароля <span>*</span> </label>
+									<div class="input__password">
+										<input
+											size="30"
+											type="password"
+											name="REGISTER[CONFIRM_PASSWORD]"
+											value=""
+											autocomplete="off"
+											id="password-confirmation-registration"
+											class="border-10 password-confirmation _required-registr"
+										/>
+										<i class="icon-password bi bi-eye-slash"></i>
+										<div class="input__text-error">
+											<i class="me-2 bi bi-exclamation-triangle"></i>
+										</div>
+									</div>
+								</div>
+
+								<div class="mb-4 checkbox">
+									<input type="checkbox" name="pd-check" id="personal-data" />
+									<label class="checkbox__label" for="personal-data">
+										<span class="checkbox__label_text"
+											>Для регистрации, создания и пользования личным кабинетом
+											предлагаем дать согласие на обработку персональных данных
+											и ознакомиться с 
+											<button
+												type="button"
+												class="color-gold"
+												data-bs-toggle="modal"
+												data-bs-target="#personalDataModal"
+											>
+												Положением о политике в отношении обработки персональных
+												данных
+											</button>
+										</span>
+									</label>
+									<div class="input__text-error" id="pd-error">
+										<i class="me-2 bi bi-exclamation-triangle"></i> Для использования
+										личного кабинета, необходимо дать свое согласие
+									</div>
+								</div>
+								<div>
+									Защита от автоматической регистрации <br />
+									<small class="text-muted">
+										Введите слово на картинке <span class="starrequired">*</span>
+									</small>
+								</div>
+								<div>
+									<input
+										class="border-10"
+										type="hidden"
+										name="captcha_sid"
+										value="0f854df0bb34e9eb9fa2acecae2172dd"
+									/>
+
+									<img
+										src="/bitrix/tools/captcha.php?captcha_sid=0f854df0bb34e9eb9fa2acecae2172dd"
+										width="180"
+										height="40"
+										alt="CAPTCHA"
+									/>
+								</div>
+								<div class="mb-4 input">
+									<input
+										type="text"
+										class="mt-1 border-10"
+										name="captcha_word"
+										maxlength="50"
+										value=""
+										autocomplete="off"
+									/>
+								</div>
+								<div class="d-flex justify-content-center">
+									<input
+										type="submit"
+										class="border-10 button"
+										disabled=""
+										name="register_submit_button"
+										value="Зарегистрироваться"
+									/>
+								</div>
+								<div class="d-flex justify-content-center mt-4">
+									<p class="mb-0">
+										Уже зарегистрированы?
+										<a
+											href="./new-login.html"
+											class="color-gold"
+											target="_self"
+											rel="noopener noreferrer"
+										>
+											Войдите в аккаунт
+										</a>
+									</p>
+								</div>
+							</form>
+						</div>
+						<div class="d-xl-flex col-xl-2 d-none"></div>
+						<div class="d-xl-flex d-none col-xl-4">
+							<div class="ps-3 border-start">
+								<h4 class="d-block h4">Личный кабинет дает возможность:</h4>
+								<div class="">
+									<ul class="list-group list-group-flush d-flex flex-column gap-3 gap-xl-5">
+										<li
+											class="list-group-item d-flex flex-row align-items-center gap-20 border-0"
+										>
+											<i class="bi bi-bell color-blue-light fs-28"></i
+											><span>Получать уведомления о новых статьях</span>
+										</li>
+										<li
+											class="list-group-item d-flex flex-row align-items-center gap-20 border-0"
+										>
+											<i class="bi bi-bookmark color-blue-light fs-28"></i
+											><span
+												>Добавлять понравившееся статьи и документы в закладки</span
+											>
+										</li>
+										<li
+											class="list-group-item d-flex flex-row align-items-center gap-20 border-0"
+										>
+											<i class="bi bi-gem color-blue-light fs-28"></i
+											><span>Читать актуальные новости о бухучете и налогах</span>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="my-5"></div>
+			<div class="my-5"></div>
+			<div class="my-5"></div>
+			@@include('./new-main/main-components/_new-footer.html')
+		</div>
+		<div
+			class="modal fade"
+			id="personalDataModal"
+			tabindex="-1"
+			aria-labelledby="personalDataModalLabel"
+			aria-hidden="true"
+		>
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1 class="modal-title fs-5" id="personalDataModalLabel">Modal title</h1>
+						<button
+							type="button"
+							class="btn-close"
+							data-bs-dismiss="modal"
+							aria-label="Close"
+						></button>
+					</div>
+					<div class="modal-body">...</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary">Save changes</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		@@include('_js.html',{})
+	</body>
+</html>
