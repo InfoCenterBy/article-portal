@@ -55,6 +55,7 @@
 								action="/login/?reg=yes"
 								name="regform"
 								enctype="multipart/form-data"
+								class="pending-check-block"
 							>
 								<input type="hidden" name="backurl" value="?reg=yes" />
 
@@ -72,6 +73,21 @@
 									</div>
 								</div>
 								<div class="mb-4 input">
+									<label for="name">Фамилия Имя Отчество <span>*</span> </label>
+									<input
+										class="border-10"
+										size="200"
+										type="text"
+										name="REGISTER[name]"
+										value=""
+										inputmode="name"
+										autocomplete="name"
+									/>
+									<div class="input__text-error">
+										<i class="me-2 bi bi-exclamation-triangle"></i>
+									</div>
+								</div>
+								<div class="mb-4 input">
 									<label for="name">Email <span>*</span> </label>
 									<input
 										class="border-10"
@@ -80,6 +96,7 @@
 										name="REGISTER[EMAIL]"
 										value=""
 										inputmode="email"
+										autocomplete="email"
 									/>
 									<div class="input__text-error">
 										<i class="me-2 bi bi-exclamation-triangle"></i>
@@ -94,6 +111,7 @@
 										name="REGISTER[PHONE_NUMBER]"
 										value=""
 										inputmode="text"
+										autocomplete="tel"
 									/>
 									<div class="input__text-error">
 										<i class="me-2 bi bi-exclamation-triangle"></i>
@@ -107,9 +125,9 @@
 											type="password"
 											name="REGISTER[PASSWORD]"
 											value=""
-											autocomplete="off"
 											class="border-10 _required-registr"
 											id="password-registration"
+											autocomplete="new-password"
 										/>
 										<i class="icon-password bi bi-eye-slash"></i>
 									</div>
@@ -133,6 +151,7 @@
 											autocomplete="off"
 											id="password-confirmation-registration"
 											class="border-10 password-confirmation _required-registr"
+											autocomplete="new-password"
 										/>
 										<i class="icon-password bi bi-eye-slash"></i>
 										<div class="input__text-error">
@@ -142,21 +161,28 @@
 								</div>
 
 								<div class="mb-4 checkbox">
-									<input type="checkbox" name="pd-check" id="personal-data" />
-									<label class="checkbox__label" for="personal-data">
+									<input
+										type="checkbox"
+										name="pd-check"
+										id="personal-data"
+										class="agree-delete-check"
+									/>
+									<label
+										class="checkbox__label"
+										for="personal-data"
+										type="button"
+										class="color-gold"
+										data-bs-toggle="modal"
+										data-bs-target="#personalDataModal"
+									>
 										<span class="checkbox__label_text"
 											>Для регистрации, создания и пользования личным кабинетом
 											предлагаем дать согласие на обработку персональных данных
 											и ознакомиться с 
-											<button
-												type="button"
-												class="color-gold"
-												data-bs-toggle="modal"
-												data-bs-target="#personalDataModal"
-											>
+											<span class="color-gold">
 												Положением о политике в отношении обработки персональных
 												данных
-											</button>
+											</span>
 										</span>
 									</label>
 									<div class="input__text-error" id="pd-error">
@@ -198,7 +224,7 @@
 								<div class="d-flex justify-content-center">
 									<input
 										type="submit"
-										class="border-10 button"
+										class="border-10 button delete-agree-btn"
 										disabled=""
 										name="register_submit_button"
 										value="Зарегистрироваться"
@@ -253,8 +279,6 @@
 				</div>
 			</div>
 			<div class="my-5"></div>
-			<div class="my-5"></div>
-			<div class="my-5"></div>
 			@@include('./new-main/main-components/_new-footer.html')
 		</div>
 		<div
@@ -263,11 +287,15 @@
 			tabindex="-1"
 			aria-labelledby="personalDataModalLabel"
 			aria-hidden="true"
+			data-bs-backdrop="static"
+			data-bs-keyboard="false"
 		>
-			<div class="modal-dialog modal-dialog-centered">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h1 class="modal-title fs-5" id="personalDataModalLabel">Modal title</h1>
+			<div class="modal-dialog modal-dialog-centered modal-lg">
+				<div class="pending-check-block modal-content">
+					<div class="align-items-start pb-0 border-0 modal-header">
+						<h1 class="mb-0 h1 modal-title fs-5 fw-500" id="personalDataModalLabel">
+							Получение согласий на обработку персональных данных
+						</h1>
 						<button
 							type="button"
 							class="btn-close"
@@ -275,10 +303,123 @@
 							aria-label="Close"
 						></button>
 					</div>
-					<div class="modal-body">...</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Save changes</button>
+					<div class="modal-body">
+						<p class="mb-0">
+							Пожалуйста, предоставьте согласия на обработку ваших персональных данных
+							для следующих целей:
+						</p>
+						<div class="check-all-block d-flex flex-column gap-2 mt-3">
+							<div class="checkbox">
+								<input
+									type="checkbox"
+									name="pd-check"
+									id="agree-all"
+									class="agree-delete-check check-all-input"
+								/>
+								<label class="checkbox__label" for="agree-all">
+									<span class="checkbox__label_text">Выбрать все </span>
+								</label>
+								<div class="input__text-error" id="pd-error">
+									<i class="me-2 bi bi-exclamation-triangle"></i> Для использования личного
+									кабинета, необходимо дать свое согласие
+								</div>
+							</div>
+							<div class="checkbox">
+								<input
+									type="checkbox"
+									name="pd-check"
+									id="agree-first"
+									class="agree-delete-check"
+								/>
+								<label class="checkbox__label" for="agree-first">
+									<span class="checkbox__label_text"
+										>Я согласен(а) на обработку персональных данных с целью создания
+										и использования личного кабинета
+										<button
+											type="button"
+											class="color-gold"
+											data-bs-target="#personalDataModalSecond"
+											data-bs-toggle="modal"
+										>
+											(подробнее)
+										</button>
+										<a href="" target="_self" class="">
+											<span class="color-gold"> </span>
+										</a>
+									</span>
+								</label>
+								<div class="input__text-error" id="pd-error">
+									<i class="me-2 bi bi-exclamation-triangle"></i> Для использования личного
+									кабинета, необходимо дать свое согласие
+								</div>
+							</div>
+							<div class="checkbox">
+								<input type="checkbox" name="pd-check" id="agree-second" class="" />
+								<label class="checkbox__label" for="agree-second">
+									<span class="checkbox__label_text"
+										>Я согласен(а) на обработку персональных данных с целью получения
+										информационной и рекламной рассылки на электронную почту
+										<a href="" target="_self" class="color-gold">
+											<span class="color-gold"> (подробнее) </span>
+										</a>
+									</span>
+								</label>
+								<div class="input__text-error" id="pd-error">
+									<i class="me-2 bi bi-exclamation-triangle"></i> Для использования личного
+									кабинета, необходимо дать свое согласие
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="justify-content-center border-0 modal-footer">
+						<input
+							type="button"
+							class="border-10 button delete-agree-btn"
+							disabled=""
+							name="agree-all-submit"
+							value="Согласиться"
+							data-bs-dismiss="modal"
+							aria-label="Close"
+						/>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div
+			class="modal fade"
+			id="personalDataModalSecond"
+			aria-hidden="true"
+			aria-labelledby="personalDataModalSecondLabel"
+			tabindex="-1"
+			data-bs-backdrop="static"
+			data-bs-keyboard="false"
+		>
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="justify-content-end pb-0 border-0 modal-header">
+						<button
+							type="button"
+							class="btn-close"
+							data-bs-target="#personalDataModal"
+							data-bs-toggle="modal"
+						></button>
+					</div>
+					<div class="modal-body">
+						<p class="mb-0">
+							Если не согласитесь на обработку персональных данных для создания и использования
+							личного кабинета, вы не сможете воспользоваться нашими услугами, предоставляемыми
+							посредством личного кабинета, в том числе получение актов выполненных работ,
+							информационной и рекламной рассылки и др.
+						</p>
+					</div>
+					<div class="justify-content-center border-0 modal-footer">
+						<button
+							class="p-3 border-10 w-fit-content button"
+							data-bs-target="#personalDataModal"
+							data-bs-toggle="modal"
+						>
+							Вернуться
+						</button>
 					</div>
 				</div>
 			</div>

@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="ru">
+	@@include('_head.html',{ "title":"Безопасность" })
+	<style>
+		.overflow-x {
+			overflow: hidden;
+			overflow-x: auto;
+		}
+
+		.nav-tab {
+			border-bottom: 1px solid var(--color-gray);
+		}
+
+		.nav-tab_news .nav-tab__wrapper {
+			white-space: normal;
+		}
+
+		.nav-tab__wrapper {
+			margin-bottom: -1px;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			white-space: nowrap;
+		}
+
+		.nav-tab__button {
+			position: relative;
+			padding: 10px 20px;
+			font-size: 16px;
+			text-align: center;
+			color: var(--color-gray-dark);
+			border-bottom: 2px solid transparent;
+		}
+
+		.nav-tab__button:not(:last-child) {
+			margin: 0px 3px 0px 0px;
+		}
+
+		.nav-tab__button.active {
+			color: var(--color-gold);
+			border-color: var(--color-gold);
+		}
+
+		.nav-tab__button:hover {
+			color: var(--color-gold);
+			border-color: var(--color-gold);
+		}
+
+		.nav-tab__button:hover .title {
+			color: var(--color-gold);
+		}
+
+		.nav-tab__button.active .title {
+			color: var(--color-gold);
+		}
+
+		.nav-tab .link-setting {
+			margin-left: auto;
+			padding: 10px 0 10px 10px;
+			font-size: 16px;
+			color: var(--color-gray-dark);
+		}
+
+		.nav-tab .link-setting:hover {
+			color: var(--color-gold);
+		}
+
+		.nav-tab .badge {
+			font-size: 12px;
+			font-weight: 500;
+			background-color: var(--color-red);
+			border-radius: 10px;
+		}
+        .btn-close:focus{
+    		box-shadow: 0 0 0 0.25rem rgba(196, 122, 44, 0.25);
+		}
+	</style>
+	<body>
+		@@include('./new-main/main-components/_new-header.html')
+		@@include('./new-main/main-components/_search-modal.html') @@include('./new-main/main-components/_nav.html')
+
+		<div class="justify-content-between nav-container active-container">
+			<!-- Nav Button -->
+			<a class="" id="menu-btn"><i class="bi-chevron-right bi"></i></a>
+			<!--Nav Button -->
+			<div class="main-content">
+				<div class="mt-32"></div>
+				<div class="main-section">
+					<nav aria-label="breadcrumb" class="mx-3 w-100">
+						<link
+							href="/bitrix/css/main/font-awesome.css?166460420128777"
+							type="text/css"
+							rel="stylesheet"
+						/>
+						<ol class="border-0 breadcrumb">
+							<li class="breadcrumb-item" id="bx_breadcrumb_0">
+								<a href="/"> <i class="bi bi-house"></i> </a>
+								<a href="/" title="" itemprop="item">
+									<span itemprop="name"></span>
+								</a>
+								<meta itemprop="position" content="1" />
+							</li>
+							<li class="breadcrumb-item" id="bx_breadcrumb_1">
+								<i class="fa-angle-right mx-1 fa"></i>
+								<a href="/cabinet/" title="Личный кабинет" itemprop="item">
+									<span itemprop="name">Личный кабинет</span>
+								</a>
+								<meta itemprop="position" content="2" />
+							</li>
+							<li class="breadcrumb-item">
+								<i class="fa-angle-right mx-1 fa"></i>
+								<span>Безопасность</span>
+							</li>
+						</ol>
+					</nav>
+				</div>
+				<div class="border-1 border-bottom border-bottom-gray w-100"></div>
+				<div class="mt-4 main-section">
+					<div class="row">
+						<div class="d-flex flex-column col-xl-7">
+							<div class="">
+								<h1 class="mb-0 h1 fs-32 fw-600 ff-inter">Безопасность</h1>
+							</div>
+							<div class="">
+								<nav class="nav-tab">
+									<div class="overflow-x nav-tab__wrapper" id="nav-tab" role="tablist">
+										<button
+											class="nav-tab__button active"
+											id="nav-login-tab"
+											data-bs-toggle="tab"
+											data-bs-target="#nav-login"
+											type="button"
+											role="tab"
+											aria-controls="nav-login"
+											aria-selected="false"
+											tabindex="-1"
+										>
+											Изменить пароль
+										</button>
+
+										<button
+											class="nav-tab__button"
+											id="nav-registration-tab"
+											data-bs-toggle="tab"
+											data-bs-target="#nav-registration"
+											type="button"
+											role="tab"
+											aria-controls="nav-registration"
+											aria-selected="true"
+										>
+											Согласия на обработку персональных данных
+										</button>
+									</div>
+								</nav>
+							</div>
+							<div class="tab-content" id="nav-tabContent">
+								<div
+									class="tab-pane fade show active"
+									id="nav-login"
+									role="tabpanel"
+									aria-labelledby="nav-login-tab"
+									tabindex="0"
+								>
+									<div class="mt-4">
+										<div class="">
+											<h3 class="h3">Изменить пароль</h3>
+										</div>
+
+										<div class="d-flex flex-column gap-4">
+											<div class="">
+												<div class="input" id="password-login">
+													<label for="password-login">
+														Текущий пароль
+														<span class="color-red">*</span>
+													</label>
+													<div class="input__password">
+														<input
+															class="border-10"
+															type="password"
+															name="USER_PASSWORD"
+															maxlength="255"
+															autocomplete="current-password"
+															placeholder="Введите пароль"
+														/>
+														<i class="icon-password bi bi-eye-slash"></i>
+													</div>
+													<div class="input__text-error">
+														<i class="me-2 bi bi-exclamation-triangle"></i>
+													</div>
+												</div>
+											</div>
+											<div class="">
+												<div class="input" id="password-login">
+													<label for="password-login">
+														Новый пароль
+														<span class="color-red">*</span>
+													</label>
+													<div class="input__password">
+														<input
+															class="border-10"
+															type="password"
+															name="USER_PASSWORD"
+															maxlength="255"
+															autocomplete="new-password"
+															placeholder="Введите новый пароль"
+														/>
+														<i class="icon-password bi bi-eye-slash"></i>
+													</div>
+													<div class="input__text-error">
+														<i class="me-2 bi bi-exclamation-triangle"></i>
+													</div>
+												</div>
+												<small class="mt-1 text-muted"
+													>Пароль должен быть не менее 8 символов длиной,
+													содержать латинские символы верхнего регистра (A-Z),
+													содержать латинские символы нижнего регистра (a-z),
+													содержать цифры (0-9).</small
+												>
+											</div>
+											<div class="">
+												<div class="input" id="password-login">
+													<label for="password-login">
+														Повторите новый пароль
+														<span class="color-red">*</span>
+													</label>
+													<div class="input__password">
+														<input
+															class="border-10"
+															type="password"
+															name="USER_PASSWORD"
+															maxlength="255"
+															autocomplete="current-password"
+															placeholder="Повторите новый пароль "
+														/>
+														<i class="icon-password bi bi-eye-slash"></i>
+													</div>
+													<div class="input__text-error">
+														<i class="me-2 bi bi-exclamation-triangle"></i>
+													</div>
+												</div>
+											</div>
+											<div class="mt-2">
+												<button
+													type="submit"
+													class="px-5 border-10 w-fit-content button"
+                                                    data-bs-toggle="modal"
+													data-bs-target="#changePassModal"
+												>
+													Изменить пароль
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div
+									class="tab-pane fade"
+									id="nav-registration"
+									role="tabpanel"
+									aria-labelledby="nav-registration-tab"
+									tabindex="0"
+								>
+									<div class="mt-4">
+										<form class="pending-check-block">
+											<div class="">
+												<h3 class="mb-0 h3">
+													Согласия на обработку персональных данных
+												</h3>
+											</div>
+											<div class="mt-4">
+												<h4 class="h4">
+													Отзыв согласия на обработку персональных данных
+												</h4>
+											</div>
+											<div class="d-flex flex-column gap-4">
+												<p class="mb-0">
+													Для отзыва согласия на обработку ваших персональных
+													данных необходимо снять соответствующую отметку
+													напротив выбранной цели обработки персональных данных
+													или удалить свой личный кабинет.
+												</p>
+												<div class="">
+													<div class="checkbox">
+														<input
+															type="checkbox"
+															id="personal-data-agree"
+															class="_required"
+															required
+														/>
+														<label
+															class="checkbox__label"
+															for="personal-data-agree"
+														>
+															<span class="checkbox__label_text">
+																Я согласен(а) на обработку персональных
+																данных с целью создания и использования
+																личного кабинета
+																<span class="color-red">*</span>
+															</span>
+														</label>
+													</div>
+												</div>
+												<div class="">
+													<div class="checkbox">
+														<input
+															type="checkbox"
+															id="personal-data-agree-second"
+															class="_required"
+															required
+														/>
+														<label
+															class="checkbox__label"
+															for="personal-data-agree-second"
+														>
+															Я согласен(а) на обработку персональных данных с целью получения информационной и рекламной рассылки на электронную почту 
+															</span>
+														</label>
+													</div>
+												</div>
+												<div class="">
+													<p class="mb-0">
+														Если вы отзовете согласие на обработку ваших персональных данных, мы не сможем предоставить или оказать вам наши услуги (совершить следующие действия):
+													</p>
+												</div>
+												<div class="d-flex flex-column gap-4">
+                                                    <ol class="ps-3">
+                                                        <li>
+                                                            <p class="mb-0">
+														При отзыве согласия на обработку персональных
+														данных на цели, указанные как обязательные (с
+														отметкой «<span class="color-red">*</span>»):
+													</p>
+                                                    <ul class="d-flex flex-column gap-2 mt-2 mb-0">
+														<li>
+															прекращается доступ к вашему личному
+															кабинету;
+														</li>
+														<li>
+															вы не сможете воспользоваться нашими услугами
+															(за исключением исполнения обязательств,
+															принятых нами до отзыва вашего согласия);
+														</li>
+														<li>
+															прекращается направление в личный кабинет
+															актов выполненных работ (оказанных услуг),
+															рассмотрение ваших обращений, заявлений и
+															иных документов, направленных через личный
+															кабинет.
+														</li>
+													</ul>
+                                                        </li>
+                                                        <li>
+                                                            <p class="mb-0">
+														При отзыве согласия на обработку персональных
+														данных на цели, указанные как обязательные (с
+														отметкой «<span class="color-red">*</span>»):
+													</p>
+                                                    </li>
+                                                    </ol>
+                                                        
+													
+													
+												</div>
+												<div class="mb-0">
+													<div class="checkbox">
+														<input
+															type="checkbox"
+															id="personal-data-agree-all"
+															class="agree-delete-check"
+														/>
+														<label
+															class="checkbox__label"
+															for="personal-data-agree-all"
+														>
+															<span class="checkbox__label_text"
+																>Я понимаю и принимаю последствия отзыва
+																согласия на обработку моих персональных
+																данных
+															</span>
+														</label>
+													</div>
+												</div>
+											</div>
+											<div class="mt-32">
+												<button
+													type="button"
+													class="px-5 border-10 w-fit-content button delete-agree-btn"
+                                                    data-bs-target="#agreementDeleteModal" data-bs-toggle="modal"
+												>
+													Отозвать согласие
+												</button>
+											</div>
+										</form>
+										<form class="mt-4">
+											<div class="">
+												<h3 class="mb-0 h3">
+													Отозвать согласие возможно также посредством удаления
+													личного кабинета.
+												</h3>
+											</div>
+											<div class="mt-4">
+												<button
+													type="button"
+													class="px-5 border-10 w-fit-content button"
+													data-bs-toggle="modal"
+													data-bs-target="#personalDataModalDelete"
+												>
+													Удалить личный кабинет
+												</button>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="my-5"></div>
+			@@include('./new-main/main-components/_new-footer.html')
+		</div>
+		<div
+			class="modal fade"
+			id="personalDataModalDelete"
+			tabindex="-1"
+			aria-labelledby="personalDataModalDeleteLabel"
+			aria-hidden="true"
+			data-bs-backdrop="static"
+			data-bs-keyboard="false"
+		>
+			<div class="modal-dialog modal-dialog-centered modal-lg">
+				<div class="pending-check-block modal-content">
+					<div class="align-items-start pb-0 border-0 modal-header">
+						<h3 class="mb-0 h3 modal-title fs-5 fw-500" id="personalDataModalDeleteLabel">
+							Удаление личного кабинета
+						</h3>
+						<button
+							type="button"
+							class="btn-close"
+							data-bs-dismiss="modal"
+							aria-label="Close"
+						></button>
+					</div>
+					<div class="modal-body">
+						<p class="mb-0">Если вы удалите свой личный кабинет:</p>
+						<ol class="d-flex flex-column gap-2 mt-2 mb-0">
+							<li>
+								прекратится доступ к вашему личному кабинету без возможности восстановления
+								документов и информации, находившихся в нем;
+							</li>
+							<li>
+								вы не сможете воспользоваться нашими услугами (за исключением исполнения
+								обязательств, принятых нами до отзыва вашего согласия);
+							</li>
+							<li>
+								прекратится направление в личный кабинет актов выполненных работ (оказанных
+								услуг), рассмотрение ваших обращений, заявлений и иных документов, направленных
+								через личный кабинет.
+							</li>
+							<li>прекратится направление вам информационной и рекламной рассылки.</li>
+						</ol>
+						<div class="mt-3">
+							<div class="checkbox">
+								<input
+									type="checkbox"
+									name="pd-check"
+									id="agree-first"
+									class="agree-delete-check"
+									required
+								/>
+								<label class="checkbox__label" for="agree-first">
+									<span class="checkbox__label_text">
+										Я понимаю и принимаю последствия удаления моего личного кабинета.
+									</span>
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="justify-content-center border-0 modal-footer">
+						<input
+							class="border-10 button delete-agree-btn"
+							name="agree-submit"
+							value="Удалить"
+							type="button"
+							disabled
+							data-bs-target="#personalDataModalDeleteSecond"
+							data-bs-toggle="modal"
+						/>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div
+			class="modal fade"
+			id="personalDataModalDeleteSecond"
+			aria-hidden="true"
+			aria-labelledby="personalDataModalDeleteSecondLabel"
+			tabindex="-1"
+			data-bs-backdrop="static"
+			data-bs-keyboard="false"
+		>
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-body">
+						<div class="d-flex justify-content-center">
+							<i class="bi bi-check2-circle color-gold" style="font-size: 5rem"></i>
+						</div>
+						<h4 class="mt-4 mb-0 text-center h4">Личный кабинет удален</h4>
+					</div>
+					<div class="justify-content-center border-0 modal-footer">
+						<button
+							class="p-3 px-5 border-10 w-fit-content button"
+							data-bs-dismiss="modal"
+							aria-label="Close"
+						>
+							Закрыть
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div
+			class="modal fade"
+			id="agreementDeleteModal"
+			aria-hidden="true"
+			aria-labelledby="agreementDeleteModalLabel"
+			tabindex="-1"
+			data-bs-backdrop="static"
+			data-bs-keyboard="false"
+		>
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-body">
+						<div class="d-flex justify-content-center">
+							<i class="bi bi-check2-circle color-gold" style="font-size: 5rem"></i>
+						</div>
+						<h4 class="mt-4 mb-0 text-center h4">Согласие отозвано</h4>
+					</div>
+					<div class="justify-content-center border-0 modal-footer">
+						<button
+							class="p-3 px-5 border-10 w-fit-content button"
+							data-bs-dismiss="modal"
+							aria-label="Close"
+						>
+							Закрыть
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div
+			class="modal fade"
+			id="changePassModal"
+			aria-hidden="true"
+			aria-labelledby="changePassModalLabel"
+			tabindex="-1"
+			data-bs-backdrop="static"
+			data-bs-keyboard="false"
+		>
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-body">
+						<div class="d-flex justify-content-center">
+							<i class="bi bi-check2-circle color-gold" style="font-size: 5rem"></i>
+						</div>
+						<h4 class="mt-4 mb-0 text-center h4">Пароль изменен</h4>
+					</div>
+					<div class="justify-content-center border-0 modal-footer">
+						<button
+							class="p-3 px-5 border-10 w-fit-content button"
+							data-bs-dismiss="modal"
+							aria-label="Close"
+						>
+							Закрыть
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		@@include('_js.html',{})
+	</body>
+</html>
