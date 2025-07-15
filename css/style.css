@@ -2239,6 +2239,10 @@ body._lock {
   border-top: 3px solid var(--color-gold) !important;
 }
 
+.subsribe-card__hr-blue-light {
+  border-top: 3px solid var(--color-blue-light) !important;
+}
+
 .subsribe-card .button {
   border-radius: 10px;
 }
@@ -6186,10 +6190,18 @@ td.vertical-bottom {
 }
 
 .select {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   width: 100%;
   padding: 15px;
   border: 1px solid var(--color-gray);
   background-color: transparent;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M7 10l5 5 5-5"/></svg>');
+  background-repeat: no-repeat;
+  background-size: 24px;
+  background-position: right 10px center;
+  padding-right: 35px;
 }
 
 .select:focus {

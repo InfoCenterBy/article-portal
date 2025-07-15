@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+      <title>Регистрация в личный кабинет</title>
+      <meta charset="UTF-8" />
+      <meta name="format-detection" content="telephone=no" />
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.cdnfonts.com/css/pt-serif" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=PT+Serif" />
+      <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+      <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.min.css">
+
+      <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css" />
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
+
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/css/tempusdominus-bootstrap-4.min.css">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/1.1.2/css/bootstrap-multiselect.min.css" integrity="sha512-fZNmykQ6RlCyzGl9he+ScLrlU0LWeaR6MO/Kq9lelfXOw54O63gizFMSD5fVgZvU1YfDIc6mxom5n60qJ1nCrQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet" />
+      <link rel="stylesheet" href="css/style.min.css" />
+</head>
+	<body>
+		<header class="new-header d-flex flex-row justify-content-between align-items-center">
+     <div class="d-flex flex-row align-items-center">
+          <div class="mobile-menu me-2">
+               <button type="button" class="bi bi-list" id="mobile-button"></button>
+               <div class="mobile-nav">
+     <div class="mobile-nav-block  d-flex flex-row">
+          <div class="mobile-nav-block__icon">
+               <i class="icon-ballot"></i>
+          </div>
+          <div class="mobile-nav-block__text">
+               <a href="">
+                    <strong>Аналитические материалы</strong>
+               </a>
+               <div class="mobile-nav-block__sub-text d-flex flex-column">
+                    <a href="">Организациям</a>
+                    <a href="">Индивидуальным предпринимателям</a>
+                    <a href="">Физическим лицам</a>
+               </div>
+          </div>
+     </div>
+     <div class="mobile-nav-block  d-flex flex-row">
+          <div class="mobile-nav-block__icon">
+               <i class="icon-ballot"></i>
+          </div>
+          <div class="mobile-nav-block__text">
+               <a href="">
+                    <strong>Сервисы</strong>
+               </a>
+               <div class="mobile-nav-block__sub-text d-flex flex-column">
+                    <a href="">Вопрос-ответ</a>
+                    <a href="">Медиатека</a>
+                    <a href="">Семинары/вебинары</a>
+                    <a href="">Режим налогообложения</a>
+                    <a href="">Форум</a>
+                    <a href="">Реестр налоговых консультантов</a>
+                    <a href="">
+                         Перечень моделей (модификации) КСА, которые могут быть (не могут быть) доработаны заявителями до
+                         соответствия новым
+                         требованиям к КСА
+                    </a>
+                    <a href="">
+                         Инфорграфика
+                    </a>
+               </div>
+          </div>
+     </div>
+     <div class="mobile-nav-block  d-flex flex-row">
+          <div class="mobile-nav-block__icon">
+               <i class="icon-envelope-open-text"></i>
+          </div>
+          <div class="mobile-nav-block__text">
+               <a href="">
+                    <strong>Новости</strong>
+               </a>
+          </div>
+     </div>
+     <div class="mobile-nav-block  d-flex flex-row">
+          <div class="mobile-nav-block__icon">
+               <i class="icon-file-invoice"></i>
+          </div>
+          <div class="mobile-nav-block__text">
+               <a href="">
+                    <strong>Налоговый календарь</strong>
+               </a>
+          </div>
+     </div>
+     <a class="subcribe-btn mt-5" href="#">
+          Оформить доступ
+     </a>
+     <div class="d-flex flex-column justify-content-center text-center mt-2">
+          <span class="d-block">Телефон для консультации:</span>
+          <a class="color-gold d-block ff-pt-serif" href="tel:+375172691903">+375 (17) 269-19-03</a>
+     </div>
+</div>
+          </div>
+          <picture>
+               <source media="(min-width: 960px)" srcset="./img/padatak-logo.png">
+               <img src="./img/padatak-logo-mobile.png" alt="padatak-logo" >
+          </picture>
+          <div class="ms-2">
+               <span class="color-gray fs-20">
+                    12+
+               </span>
+          </div>
+     </div>
+     <div class="header-hide">
+          <form class="new-header-search w-100 mx-2">
+     <input type="text" name="searchBar" id="searchBar" placeholder="Поиск">
+     <button type="submit">
+          <i class="bi bi-search"></i>
+     </button>
+</form>
+     </div>
+     <div class="header-tel">
+          <span>Телефон для консультации:</span> <br>
+          <span class="color-gold ff-pt-serif">+375 (17) 269-19-03</span>
+     </div>
+     <div class="d-flex flex-row header-mobile-menu justify-content-center">
+          <div class="d-flex flex-row">
+               <button class="modal-mobile-button mx-2" type="button" data-bs-toggle="modal" data-bs-target="#searchModal">
+                    <i class="bi bi-search"></i>
+               </button>
+               <button class="modal-mobile-button btn-dropdown show mx-2" 
+                         type="button" data-bs-toggle="dropdown" aria-expanded="true" data-bs-auto-close="outside" >
+                    <i class="icon-circle-user"></i>
+               </button>
+               <div class="dropdown-menu dropdown-menu-login dropdown-menu-end p-3" data-popper-placement="bottom-end" >
+     <div class="dropdown-menu-wrapper">
+          <form id="form-login">
+               <div class="input mb-3">
+                    <label for="email-login">Email <span>*</span></label>
+                    <input type="text" id="email-login" class="_email _required" placeholder="Ваш email">
+                    <div class="input__text-error"><i class="bi bi-exclamation-triangle me-2"></i>Электронная почта не может быть пустой</div>
+                    <div class="input__text-error-email"><i class="bi bi-exclamation-triangle me-2"></i>Адрес электоронной почты должен заканчиваться на @**.**</div>
+               </div>
+               <div class="input mb-3">
+                    <label for="password-login">Пароль <span>*</span></label>
+                    <div class="input__password">
+                         <input type="password" id="password-login" class="_required" placeholder="Введите пароль">
+                         <i class="icon-password bi bi-eye-slash"></i>
+                    </div>
+                    <div class="input__text-error"><i class="bi bi-exclamation-triangle me-2"></i>Пароль не может быть пустым</div>
+               </div>
+               <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div class="checkbox">
+                         <input type="checkbox" id="remember-me">
+                         <label class="checkbox__label" for="remember-me">
+                              <span class="checkbox__label_text">Запомнить меня</span>
+                         </label>
+                    </div>
+                    <a href="#" class="link link_blue-light">Забыли пароль?</a>
+               </div>
+               <div class="mb-2">
+                    <a href="main-login.html" class="button w-100">Войти</a>
+               </div>
+               <div>
+                    <a href="login.html" class="button button_empty w-100">Зарегистрироваться</a>
+               </div>
+          </form>
+     </div>
+</div>
+          </div>
+          <div class="header-button header-button-enter header-button-notification flex-row align-items-center"  
+               type="button" class="how" data-bs-toggle="dropdown" aria-expanded="true" data-bs-auto-close="outside">
+               <span>Иванова И.И.</span>
+               <div class="header-button__hr"></div>
+               <i class="icon-circle-user"></i>
+          </div>
+          <div class="dropdown-menu dropdown-menu-user dropdown-menu-end py-2 border-10" 
+               data-popper-placement="bottom-end">
+               <div class="dropdown-menu-wrapper">
+                    <div class="dropdown-arrow"></div>
+                    <ul class="ps-0 mb-0">
+                         <li><a href="profile.html" class="py-2 px-3 d-block"><i class="bi bi-person me-3"></i>Профиль</a></li>
+                         <li><a href="favorites.html" class="py-2 px-3 d-block"><i class="bi bi-bookmark me-3"></i>Избранное</a></li>
+                         <li><a href="browsing-history.html" class="py-2 px-3 d-block"><i class="bi bi-clock me-3"></i>История просмотров</a></li>
+                         <li><a href="subscription.html" class="py-2 px-3 d-block d-flex flex-row align-items-center"><i class="bi bi-unlock me-3"></i>Управление подпиской <span class="notification-circle notification-circle-active ms-1">10+</span></a></li>
+                         <li><a href="settings.html" class="py-2 px-3 d-block"><i class="bi bi-gear me-3"></i>Настройки</a></li>
+                    </ul>
+                    <hr class="my-2">
+                    <a href="new-main.html" class="py-2 px-3 d-block"><i class="bi bi-box-arrow-right me-3"></i>Выйти</a>
+               </div>
+          </div>
+          <div class="header-button header-button-subscribe flex-row align-items-center">
+               <span>Оформить доступ</span>
+               <div class="header-button__hr"></div>
+               <i class="icon-gem"></i>
+          </div>
+     </div>
+</header>
+		<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+     <div class="modal-dialog">
+          <div class="modal-content">
+               <div class="modal-body d-flex flex-row align-items-center justify-content-between">
+                    <form class="new-header-search w-100 mx-2">
+                         <input type="text" name="searchBar" id="searchBar" placeholder="Поиск">
+                         <button type="submit">
+                              <i class="bi bi-search"></i>
+                         </button>
+                    </form>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+          </div>
+     </div>
+</div> 
+<nav class="side-navbar active-nav justify-content-start flex-column" id="sidebar">
+     <div class="nav main-nav flex-column w-100">
+          <div href="#" class="nav-link">
+               <a href="" class="nav-link__icon">
+                    <i class="icon-ballot"></i>
+               </a>
+               <div class="nav-link__text">
+                    <a href="" class="nav-link__text-sub d-flex">Аналитические материалы</a>
+                    <div class="nav-link__list d-flex flex-column">
+                         <a href="">Организациям</a>
+                         <a href="">Индивидуальным предпринимателям</a>
+                         <a href="">Физическим лицам</a>
+                    </div>
+               </div>
+          </div>
+          <div href="#" class="nav-link">
+               <a href="" class="nav-link__icon">
+                    <i class="icon-table-layout"></i>
+               </a>
+               <div class="nav-link__text">
+                    <a href="" class="nav-link__text-sub d-flex">Сервисы</a>
+                    <div class="nav-link__list d-flex flex-column">
+                         <a href="">Вопрос-ответ</a>
+                         <a href="">Медиатека</a>
+                         <a href="" class="color-gold d-flex flex-row align-items-center">
+                              <span>Еще</span> 
+                              <i class="ms-1 bi bi-chevron-right hover-gold" style="font-size: 14px; line-height: 14px; margin-top: 2px;"></i>
+                         </a>
+                    </div>
+               </div>
+          </div>
+          <div href="#" class="nav-link">
+               <a href="" class="nav-link__icon">
+                    <i class="icon-envelope-open-text"></i>
+               </a>
+               <div class="nav-link__text">
+                    <a href="" class="nav-link__text-sub">Новости</a>
+               </div>
+          </div>
+          <div href="#" class="nav-link">
+               <a href="" class="nav-link__icon">
+                    <i class="icon-file-invoice"></i>
+               </a>
+               <div class="nav-link__text">
+                    <a href="" class="nav-link__text-sub">Налоговый календарь</a>
+               </div>
+          </div>
+          <div href="#" class="nav-link">
+               <a href="" class="nav-link__icon">
+                    <i class="icon-calendar-lines"></i>
+               </a>
+               <div class="nav-link__text">
+                    <a href="" class="nav-link__text-sub">Справочная информация</a>
+               </div>
+          </div>
+          <div href="#" class="nav-link">
+               <a href="" class="nav-link__icon">
+                    <i class="icon-calculator"></i>
+               </a>
+               <div class="nav-link__text">
+                    <a href="" class="nav-link__text-sub">Формы документов</a>
+               </div>
+          </div>
+     </div>
+     <hr>
+     <div href="#" class="nav-link">
+          <a href="" class="nav-link__icon-simple">
+               <i class="icon-attribution-pen"></i>
+          </a>
+          <div class="nav-link__text">
+               <a href="">Авторам</a>
+          </div>
+     </div>
+     <div href="#" class="nav-link">
+          <a href="" class="nav-link__icon-simple">
+               <i class="icon-megaphone"></i>
+          </a>
+          <div class="nav-link__text">
+               <a href="">Рекламодателям</span>
+          </div>
+     </div>
+     <a class="nav-hidden subcribe-btn mt-3" href="#">
+          Оформить доступ
+     </a>
+     <div class="nav-hidden text-center mt-2">
+          <span class="d-block">Телефон для консультации:</span>
+          <a class="color-gold d-block ff-pt-serif" href="tel:+375172691903">+375 (17) 269-19-03</a>
+     </div>
+</nav>
+
+
+
+		<div class="justify-content-between nav-container active-container">
+			<a class="" id="menu-btn"><i class="bi-chevron-right bi"></i></a>
+			<div class="main-content">
+				<div class="mt-32"></div>
+				<div class="main-section">
+					<div class="row">
+						<div class="d-flex flex-column col-xl-6">
+							<div class="d-flex flex-column calendar-tabs-wrapper">
+								<div class="d-flex flex-row justify-content-around">
+									<label
+										for="login"
+										class="d-flex justify-content-start px-3 w-100 tab-toggle"
+									>
+										<a
+											href="./new-login.html"
+											target="_self"
+											rel="noopener noreferrer"
+											class="color-gray-dark"
+											>Войти</a
+										>
+									</label>
+									<label
+										for="register"
+										class="d-flex justify-content-start px-3 w-100 tab-toggle"
+									>
+										<a
+											href="./new-register.html"
+											target="_self"
+											rel="noopener noreferrer"
+											class="color-gold"
+											>Зарегистрироваться</a
+										>
+									</label>
+								</div>
+								<div class="mt-2"></div>
+								<div class="tab-underline-accent tab-underline-unchecked"></div>
+								<div class="w-100 tab-underline"></div>
+							</div>
+
+							<div class="mt-32">
+								<h1 class="h1 fs-32 fw-600 ff-inter">Регистрация</h1>
+							</div>
+							<form
+								id="form-registration"
+								method="post"
+								action="/login/?reg=yes"
+								name="regform"
+								enctype="multipart/form-data"
+								class="pending-check-block"
+							>
+								<input type="hidden" name="backurl" value="?reg=yes" />
+
+								<div class="mb-4 input" style="display: none">
+									<label for="name">Логин (мин. 3 символа) <span>*</span> </label>
+									<input
+										class="border-10"
+										size="30"
+										type="text"
+										name="REGISTER[LOGIN]"
+										value=""
+									/>
+									<div class="input__text-error">
+										<i class="me-2 bi bi-exclamation-triangle"></i>
+									</div>
+								</div>
+								<div class="mb-4 input">
+									<label for="name">Email <span>*</span> </label>
+									<input
+										class="border-10"
+										size="30"
+										type="text"
+										name="REGISTER[EMAIL]"
+										value=""
+										inputmode="email"
+										autocomplete="email"
+									/>
+									<div class="input__text-error">
+										<i class="me-2 bi bi-exclamation-triangle"></i>
+									</div>
+								</div>
+								<div class="mb-4 input">
+									<label for="name">Номер телефона <span>*</span> </label>
+									<input
+										class="border-10"
+										size="30"
+										type="text"
+										name="REGISTER[PHONE_NUMBER]"
+										value=""
+										inputmode="text"
+										autocomplete="tel"
+									/>
+									<div class="input__text-error">
+										<i class="me-2 bi bi-exclamation-triangle"></i>
+									</div>
+								</div>
+								<div class="mb-4 input">
+									<label for="name">Пароль <span>*</span> </label>
+									<div class="input__password password">
+										<input
+											size="30"
+											type="password"
+											name="REGISTER[PASSWORD]"
+											value=""
+											class="border-10 _required-registr"
+											id="password-registration"
+											autocomplete="new-password"
+										/>
+										<i class="icon-password bi bi-eye-slash"></i>
+									</div>
+									<small class="text-muted"
+										>Пароль должен быть не менее 8 символов длиной, содержать латинские
+										символы верхнего регистра (A-Z), содержать латинские символы нижнего
+										регистра (a-z), содержать цифры (0-9).</small
+									>
+									<div class="input__text-error">
+										<i class="me-2 bi bi-exclamation-triangle"></i>
+									</div>
+								</div>
+								<div class="mb-4 input">
+									<label for="name">Подтверждение пароля <span>*</span> </label>
+									<div class="input__password">
+										<input
+											size="30"
+											type="password"
+											name="REGISTER[CONFIRM_PASSWORD]"
+											value=""
+											autocomplete="off"
+											id="password-confirmation-registration"
+											class="border-10 password-confirmation _required-registr"
+											autocomplete="new-password"
+										/>
+										<i class="icon-password bi bi-eye-slash"></i>
+										<div class="input__text-error">
+											<i class="me-2 bi bi-exclamation-triangle"></i>
+										</div>
+									</div>
+								</div>
+
+								<div class="mb-4 checkbox">
+									<input
+										type="checkbox"
+										name="pd-check"
+										id="personal-data"
+										class="agree-delete-check"
+									/>
+									<label
+										class="checkbox__label"
+										for="personal-data"
+										type="button"
+										class="color-gold"
+										data-bs-toggle="modal"
+										data-bs-target="#personalDataModal"
+									>
+										<span class="checkbox__label_text"
+											>Для регистрации, создания и пользования личным кабинетом
+											предлагаем дать согласие на обработку персональных данных
+											и ознакомиться с 
+											<span class="color-gold">
+												Положением о политике в отношении обработки персональных
+												данных
+											</span>
+										</span>
+									</label>
+									<div class="input__text-error" id="pd-error">
+										<i class="me-2 bi bi-exclamation-triangle"></i> Для использования
+										личного кабинета, необходимо дать свое согласие
+									</div>
+								</div>
+								<div>
+									Защита от автоматической регистрации <br />
+									<small class="text-muted">
+										Введите слово на картинке <span class="starrequired">*</span>
+									</small>
+								</div>
+								<div>
+									<input
+										class="border-10"
+										type="hidden"
+										name="captcha_sid"
+										value="0f854df0bb34e9eb9fa2acecae2172dd"
+									/>
+
+									<img
+										src="/bitrix/tools/captcha.php?captcha_sid=0f854df0bb34e9eb9fa2acecae2172dd"
+										width="180"
+										height="40"
+										alt="CAPTCHA"
+									/>
+								</div>
+								<div class="mb-4 input">
+									<input
+										type="text"
+										class="mt-1 border-10"
+										name="captcha_word"
+										maxlength="50"
+										value=""
+										autocomplete="off"
+									/>
+								</div>
+								<div class="d-flex justify-content-center">
+									<input
+										type="submit"
+										class="border-10 button delete-agree-btn"
+										disabled=""
+										name="register_submit_button"
+										value="Зарегистрироваться"
+									/>
+								</div>
+								<div class="d-flex justify-content-center mt-4">
+									<p class="mb-0">
+										Уже зарегистрированы?
+										<a
+											href="./new-login.html"
+											class="color-gold"
+											target="_self"
+											rel="noopener noreferrer"
+										>
+											Войдите в аккаунт
+										</a>
+									</p>
+								</div>
+							</form>
+						</div>
+						<div class="d-xl-flex col-xl-2 d-none"></div>
+						<div class="d-xl-flex d-none col-xl-4">
+							<div class="ps-3 border-start">
+								<h4 class="d-block h4">Личный кабинет дает возможность:</h4>
+								<div class="">
+									<ul class="list-group list-group-flush d-flex flex-column gap-3 gap-xl-5">
+										<li
+											class="list-group-item d-flex flex-row align-items-center gap-20 border-0"
+										>
+											<i class="bi bi-bell color-blue-light fs-28"></i
+											><span>Получать уведомления о новых статьях</span>
+										</li>
+										<li
+											class="list-group-item d-flex flex-row align-items-center gap-20 border-0"
+										>
+											<i class="bi bi-bookmark color-blue-light fs-28"></i
+											><span
+												>Добавлять понравившееся статьи и документы в закладки</span
+											>
+										</li>
+										<li
+											class="list-group-item d-flex flex-row align-items-center gap-20 border-0"
+										>
+											<i class="bi bi-gem color-blue-light fs-28"></i
+											><span>Читать актуальные новости о бухучете и налогах</span>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="my-5"></div>
+			<footer class="footer">
+     <div class="main-section">
+          <div class="footer__body">
+               <div class="row g-4">
+                    <div class="col-xl-3 col-md-6">
+                         <nav class="menu-footer">
+                              <div class="menu-footer__collapse">
+                                   <a href="forms-of-documents.html" class="menu-footer__link">Аналитические материалы</a>
+                                   <button class="menu-footer__button collapsed" data-bs-toggle="collapse" data-bs-target="#footer-forms-doc-collapse" aria-expanded="false" aria-current="true">
+                                        <i class="bi bi-chevron-down"></i>
+                                   </button>
+                              </div>
+                              <ul class="submenu-footer collapse" id="footer-forms-doc-collapse">
+                                   <li><a href="#" class="submenu-footer__link">Организациям</a></li>
+                                   <li><a href="#" class="submenu-footer__link">Индивидуальным предпринимателям</a></li>
+                                   <li><a href="#" class="submenu-footer__link">Физическим лицам</a></li>
+                              </ul>
+                         </nav>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                         <nav class="menu-footer">
+                              <div class="menu-footer__collapse">
+                                   <a href="articles.html" class="menu-footer__link">Сервисы</a>
+                              </div>
+                         </nav>
+                         <nav class="menu-footer mt-4 mt-xl-0">
+                              <div class="menu-footer__collapse">
+                                   <a href="articles.html" class="menu-footer__link">Формы документов</a>
+                              </div>
+                         </nav>
+                         <nav class="menu-footer mt-4 mt-xl-0">
+                              <div class="menu-footer__collapse">
+                                   <a href="articles.html" class="menu-footer__link">Справочная информация</a>
+                              </div>
+                         </nav>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                         <nav class="menu-footer">
+                              <div class="menu-footer__collapse">
+                                   <a href="#" class="menu-footer__link">Информация о платформе</a>
+                                   <button class="menu-footer__button collapsed" data-bs-toggle="collapse" data-bs-target="#footer-ref-info-collapse" aria-expanded="false" aria-current="true">
+                                        <i class="bi bi-chevron-down"></i>
+                                   </button>
+                              </div>
+                              <ul class="submenu-footer collapse" id="footer-ref-info-collapse">
+                                   <li><a href="#" class="submenu-footer__link">Публичный договор</a></li>
+                                   <li><a href="#" class="submenu-footer__link">Политика обработки cookies</a></li>
+                                   <li><a href="#" class="submenu-footer__link">Политика обработки персональных данных</a></li>
+                                   <li><a href="#" class="submenu-footer__link">Пользовательское соглашение</a></li>
+                                   <li><a href="#" class="submenu-footer__link">Оплата доступа</a></li>
+                              </ul>
+                         </nav>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                         <nav class="menu-footer">
+                              <div class="menu-footer__collapse">
+                                   <div class="menu-footer__title">Контакты</div>
+                                   <button class="menu-footer__button collapsed" data-bs-toggle="collapse" data-bs-target="#footer-contacts-collapse" aria-expanded="false" aria-current="true">
+                                        <i class="bi bi-chevron-down"></i>
+                                   </button>
+                              </div>
+                              <ul class="submenu-footer collapse" id="footer-contacts-collapse">
+                                   <li>
+                                        <a href="https://yandex.by/maps/157/minsk/?from=api-maps&amp;ll=27.574767%2C53.913305&amp;mode=poi&amp;poi%5Bpoint%5D=27.574228%2C53.913730&amp;poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D76571038512&amp;utm_source=api-maps&amp;z=18.18" class="submenu-footer__link d-flex flex-row" target="_blank">
+                                             <i class="bi bi-geo-alt me-2"></i>
+                                             <span>
+                                                  г.Минск, пр-т. Машерова, 7
+                                             </span>
+                                        </a>
+                                   </li>
+                                   <li>
+                                        <a href="mailto:info@info-center.by" class="submenu-footer__link">
+                                             <i class="bi bi-envelope me-2"></i>
+                                             info@info-center.by
+                                        </a>
+                                   </li>
+                                   <li>
+                                        <a href="tel:375172691903" class="submenu-footer__link">
+                                             <i class="bi bi-telephone me-2"></i>
+                                             +375 (17) 269 19 03
+                                        </a>
+                                   </li>
+                                   <li>
+                                        <div class="d-flex flex-row">
+                                             <i class="bi bi-clock me-2"></i>
+                                             <span>
+                                                  Пн. – Чт.: с 8:45 до 18:00 <br>
+                                                  Пт.: с 8:45 до 16:45
+                                             </span>
+                                        </div>
+                                   </li>
+                                   <li>
+                                        <div class="d-flex flex-row">
+                                             <i class="bi bi-list-ol me-2"></i>
+                                             <span>
+                                                  Регистрация №190819036 <br>
+                                                  от 29.03.2007 Минским горисполкомом
+                                             </span>
+                                        </div>
+                                   </li>
+                              </ul>
+                         </nav>
+                    </div>
+                    <div class="col-12">
+                         <div class="footer__payments d-flex flex-row flex-wrap justify-content-between align-items-center">
+                              <div class="footer__subscribe d-flex align-items-center my-2">
+                                   <a href="#">ОФОРМИТЬ ДОСТУП К ЦИФРОВОЙ ПЛАТФОРМЕ<i class="bi bi-box-arrow-up-right ms-2"></i></a>
+                              </div>
+                              <div class="d-flex flex-row flex-wrap flex-md-wrap-no my-2">
+                                   <span>Принимаем <br class="d-none d-md-block my-1"> к оплате:</span>
+                                   <div class="row g-2 ms-lg-2 justify-content-start my-1">
+                                        <div class="col-md col-3 d-flex my-1">
+                                             <div class="footer__payments-item">
+                                                  <img src="./img/pay-logos/pay-logo-1.png" alt="ipay">
+                                             </div>
+                                        </div>
+                                        <div class="col-md col-3 d-flex my-1">
+                                             <div class="footer__payments-item">
+                                                  <img src="./img/pay-logos/pay-logo-2.png" alt="erip">
+                                             </div>
+                                        </div>
+                                        <div class="col-md col-3 d-flex my-1">
+                                             <div class="footer__payments-item">
+                                                  <img src="./img/pay-logos/pay-logo-3.png" alt="mir">
+                                             </div>
+                                        </div>
+                                        <div class="col-md col-3 d-flex my-1">
+                                             <div class="footer__payments-item">
+                                                  <img src="./img/pay-logos/pay-logo-4.png" alt="mastercard">
+                                             </div>
+                                        </div>
+                                        <div class="col-md col-3 d-flex my-1">
+                                             <div class="footer__payments-item">
+                                                  <img src="./img/pay-logos/pay-logo-5.png" alt="visa">
+                                             </div>
+                                        </div>
+                                        <div class="col-md col-3 d-flex my-1">
+                                             <div class="footer__payments-item">
+                                                  <img src="./img/pay-logos/pay-logo-6.png" alt="assist">
+                                             </div>
+                                        </div>
+                                        <div class="col-md col-3 d-flex my-1">
+                                             <div class="footer__payments-item">
+                                                  <img src="./img/pay-logos/pay-logo-7.png" alt="belcart">
+                                             </div>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+          <div class="footer-bottom border-0">
+               <a href="main.html" class="footer-bottom__logo">Республиканское унитарное предприятие
+                    «Информационно-издательский центр по налогам и сборам»</a>
+               <div class="footer-bottom__copyright">© 2023 Все права защищены</div>
+          </div>
+     </div>
+</footer>
+		</div>
+		<div
+			class="modal fade"
+			id="personalDataModal"
+			tabindex="-1"
+			aria-labelledby="personalDataModalLabel"
+			aria-hidden="true"
+			data-bs-backdrop="static"
+			data-bs-keyboard="false"
+		>
+			<div class="modal-dialog modal-dialog-centered modal-lg">
+				<div class="pending-check-block modal-content">
+					<div class="align-items-start border-0 modal-header">
+						<h1 class="mb-0 h1 modal-title fs-5 fw-500" id="personalDataModalLabel">
+							Получение согласий на обработку персональных данных
+						</h1>
+						<button
+							type="button"
+							class="btn-close"
+							data-bs-dismiss="modal"
+							aria-label="Close"
+						></button>
+					</div>
+					<div class="modal-body">
+						<p class="mb-0">
+							Пожалуйста, предоставьте согласия на обработку ваших персональных данных
+							для следующих целей:
+						</p>
+						<div class="check-all-block d-flex flex-column gap-2 mt-3">
+							<div class="checkbox">
+								<input
+									type="checkbox"
+									name="pd-check"
+									id="agree-all"
+									class="agree-delete-check check-all-input"
+								/>
+								<label class="checkbox__label" for="agree-all">
+									<span class="checkbox__label_text">Выбрать все </span>
+								</label>
+								<div class="input__text-error" id="pd-error">
+									<i class="me-2 bi bi-exclamation-triangle"></i> Для использования личного
+									кабинета, необходимо дать свое согласие
+								</div>
+							</div>
+							<div class="checkbox">
+								<input
+									type="checkbox"
+									name="pd-check"
+									id="agree-first"
+									class="agree-delete-check"
+								/>
+								<label class="checkbox__label" for="agree-first">
+									<span class="checkbox__label_text"
+										>Я согласен(а) на обработку персональных данных с целью создания
+										и использования личного кабинета
+										<button
+											type="button"
+											class="color-gold"
+											data-bs-target="#personalDataModalSecond"
+											data-bs-toggle="modal"
+										>
+											(подробнее)
+										</button>
+										<a href="" target="_self" class="">
+											<span class="color-gold"> </span>
+										</a>
+									</span>
+								</label>
+								<div class="input__text-error" id="pd-error">
+									<i class="me-2 bi bi-exclamation-triangle"></i> Для использования личного
+									кабинета, необходимо дать свое согласие
+								</div>
+							</div>
+							<div class="checkbox">
+								<input type="checkbox" name="pd-check" id="agree-second" class="" />
+								<label class="checkbox__label" for="agree-second">
+									<span class="checkbox__label_text"
+										>Я согласен(а) на обработку персональных данных с целью получения
+										информационной и рекламной рассылки на электронную почту
+										<a href="" target="_self" class="color-gold">
+											<span class="color-gold"> (подробнее) </span>
+										</a>
+									</span>
+								</label>
+								<div class="input__text-error" id="pd-error">
+									<i class="me-2 bi bi-exclamation-triangle"></i> Для использования личного
+									кабинета, необходимо дать свое согласие
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="justify-content-center border-0 modal-footer">
+						<input
+							type="button"
+							class="border-10 button delete-agree-btn"
+							disabled=""
+							name="agree-all-submit"
+							value="Согласиться"
+							data-bs-dismiss="modal"
+							aria-label="Close"
+						/>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div
+			class="modal fade"
+			id="personalDataModalSecond"
+			aria-hidden="true"
+			aria-labelledby="personalDataModalSecondLabel"
+			tabindex="-1"
+			data-bs-backdrop="static"
+			data-bs-keyboard="false"
+		>
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="justify-content-end border-0 modal-header">
+						<button
+							type="button"
+							class="btn-close"
+							data-bs-target="#personalDataModal"
+							data-bs-toggle="modal"
+						></button>
+					</div>
+					<div class="modal-body">
+						<p class="mb-0">
+							Если не согласитесь на обработку персональных данных для создания и использования
+							личного кабинета, вы не сможете воспользоваться нашими услугами, предоставляемыми
+							посредством личного кабинета, в том числе получение актов выполненных работ,
+							информационной и рекламной рассылки и др.
+						</p>
+					</div>
+					<div class="justify-content-center border-0 modal-footer">
+						<button
+							class="p-3 border-10 w-fit-content button"
+							data-bs-target="#personalDataModal"
+							data-bs-toggle="modal"
+						>
+							Вернуться
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+        integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+
+<script
+        src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/js/tempusdominus-bootstrap-4.min.js"></script>
+
+
+<script src="js/script.min.js"></script>
+	</body>
+</html>
