@@ -99,6 +99,9 @@
 			background-color: var(--color-red);
 			border-radius: 10px;
 		}
+        .btn-close:focus{
+    		box-shadow: 0 0 0 0.25rem rgba(196, 122, 44, 0.25);
+		}
 	</style>
 	<body>
 		<header class="new-header d-flex flex-row justify-content-between align-items-center">
@@ -414,7 +417,7 @@
 				<div class="border-1 border-bottom border-bottom-gray w-100"></div>
 				<div class="mt-4 main-section">
 					<div class="row">
-						<div class="d-flex flex-column col-xl-8">
+						<div class="d-flex flex-column col-xl-7">
 							<div class="">
 								<h1 class="mb-0 h1 fs-32 fw-600 ff-inter">Безопасность</h1>
 							</div>
@@ -679,8 +682,9 @@
 											</div>
 											<div class="mt-32">
 												<button
-													type="submit"
+													type="button"
 													class="px-5 border-10 w-fit-content button delete-agree-btn"
+                                                    data-bs-target="#agreementDeleteModal" data-bs-toggle="modal"
 												>
 													Отозвать согласие
 												</button>
@@ -698,7 +702,7 @@
 													type="button"
 													class="px-5 border-10 w-fit-content button"
 													data-bs-toggle="modal"
-													data-bs-target="#changePassModal"
+													data-bs-target="#personalDataModalDelete"
 												>
 													Удалить личный кабинет
 												</button>
@@ -883,7 +887,7 @@
 		>
 			<div class="modal-dialog modal-dialog-centered modal-lg">
 				<div class="pending-check-block modal-content">
-					<div class="align-items-start border-0 modal-header">
+					<div class="align-items-start pb-0 border-0 modal-header">
 						<h3 class="mb-0 h3 modal-title fs-5 fw-500" id="personalDataModalDeleteLabel">
 							Удаление личного кабинета
 						</h3>
@@ -959,6 +963,35 @@
 							<i class="bi bi-check2-circle color-gold" style="font-size: 5rem"></i>
 						</div>
 						<h4 class="mt-4 mb-0 text-center h4">Личный кабинет удален</h4>
+					</div>
+					<div class="justify-content-center border-0 modal-footer">
+						<button
+							class="p-3 px-5 border-10 w-fit-content button"
+							data-bs-dismiss="modal"
+							aria-label="Close"
+						>
+							Закрыть
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div
+			class="modal fade"
+			id="agreementDeleteModal"
+			aria-hidden="true"
+			aria-labelledby="agreementDeleteModalLabel"
+			tabindex="-1"
+			data-bs-backdrop="static"
+			data-bs-keyboard="false"
+		>
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-body">
+						<div class="d-flex justify-content-center">
+							<i class="bi bi-check2-circle color-gold" style="font-size: 5rem"></i>
+						</div>
+						<h4 class="mt-4 mb-0 text-center h4">Согласие отозвано</h4>
 					</div>
 					<div class="justify-content-center border-0 modal-footer">
 						<button
