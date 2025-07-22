@@ -29,7 +29,8 @@
 		"gulp-ttf2woff": "^1.1.1",
 		"gulp-ttf2woff2": "^3.0.0",
 		"gulp-uglify-es": "^2.0.0",
-		"sass": "^1.56.1"
+		"sass": "^1.56.1",
+		"vidstack": "^1.12.13"
 	},
 	"dependencies": {
 		"ion-rangeslider": "^2.3.1",
