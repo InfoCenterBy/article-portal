@@ -1,8 +1,51 @@
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<style>
+	.chapter-block::-webkit-scrollbar {
+		width: 3px;
+		height: 3px;
+	}
+
+	.chapter-block::-webkit-scrollbar-thumb {
+		background: oklch(75% 0.00006 271.152);
+	}
+
+	.chapter-block::-webkit-scrollbar-track {
+		background: transparent;
+		border-radius: 4px;
+	}
+
+	.chapter-block {
+		scrollbar-face-color: #d9d9d9;
+		scrollbar-track-color: transparent;
+	}
+</style>
+<script>
+	function calcHeighChapterBlock() {
+		let player = document.querySelector('.player-block media-player');
+		let chapterBlock = document.querySelectorAll('.chapter-block');
+		if (chapterBlock && player) {
+			chapterBlock.forEach((element) => {
+				element.style.setProperty('--max-height', player.offsetHeight - '75' + 'px');
+			});
+			if (window.innerWidth < 1200) {
+				chapterBlock.forEach((element) => {
+					element.style.setProperty('--max-height', 'auto');
+				});
+			}
+		}
+	}
+	window.addEventListener('resize', () => {
+		calcHeighChapterBlock();
+	});
+
+	window.addEventListener('load', () => {
+		setTimeout(calcHeighChapterBlock, 2000);
+	});
+</script>
 <div id="app">
 	<template id="player-template">
 		<div class="row">
-			<div class="d-flex justify-content-center mt-5 col-12" :class="[loading ? 'd-block' : 'd-none']">
+			<!-- <div class="d-flex justify-content-center mt-5 col-12" :class="[loading ? 'd-block' : 'd-none']">
 				<div
 					class="spinner-border"
 					role="status"
@@ -10,12 +53,17 @@
 				>
 					<span class="visually-hidden">Loading...</span>
 				</div>
+			</div> -->
+			<div class="col-12">
+				<h2 class="h2" :class="[loading ? 'placeholder placeholder-wave border-20' : '']">{{title}}</h2>
 			</div>
-			<div class="col-12" :class="[loading ? 'd-none' : 'd-block']">
-				<h2 class="h2">{{title}}</h2>
-			</div>
-			<div class="col-12" :class="[loading ? 'd-none' : 'd-block']">
-				<div ref="target" class="w-100" style="z-index: 3"></div>
+			<div class="d-flex align-items-start col-xl-8 col-12">
+				<div
+					ref="target"
+					class="player-block border-20 w-100 overflow-hidden"
+					style="z-index: 3"
+					:class="[loading ? 'placeholder placeholder-wave' : '']"
+				></div>
 			</div>
 			<!-- <div>
 				<button @click="play">Play</button>
@@ -32,26 +80,47 @@
 					</li>
 				</ul>
 			</div> -->
-			<div class="mt-4 col-12" :class="[loading ? 'd-none' : 'd-block']">
-				<h3 class="mb-0 h3">Главы:</h3>
-				<div class="d-flex flex-column gap-3 mt-3">
-					<a
-						v-for="(ch, idx) in chapters"
-						:key="idx"
-						href="#"
-						class="d-flex flex-row align-items-center gap-2 transition-3 transition-3 color-black hover-gold"
-						@click.prevent="seekTo(ch.time)"
+			<div class="d-flex mt-4 mt-xl-0 col-xl-4 col-12" :class="[loading ? '' : '']">
+				<div class="bg-white-gray px-3 pt-3 pb-2 border-20 w-100">
+					<h3 class="mb-0 h3">Главы:</h3>
+					<div
+						class="chapter-block d-flex flex-column gap-3 mt-3 pe-2"
+						style="--max-height: 356px; overflow-y: auto; max-height: var(--max-height)"
 					>
-						<i
-							class="w-fit-content bi fs-32"
-							:class="[idx <= currentChapterIdx ? 'bi-eye-fill color-gold' : 'bi-eye color-gray' ]"
-						></i>
-						<div class="d-flex flex-row gap-1 p-3 border border-1 border-10 border-gray w-100">
-							<span>{{ formatTime(ch.time) }} </span>
-							<span>—</span>
-							<span>{{ ch.label }}</span>
+						<div
+							:class="[loading ? 'd-block' : 'd-none']"
+							class="d-flex flex-row align-items-center gap-2 transition-3 transition-3 color-black hover-gold"
+						>
+							<i
+								class="w-fit-content bi fs-32"
+								:class="[idx <= currentChapterIdx ? 'bi-eye-fill color-gold' : 'bi-eye color-gray' ]"
+							></i>
+							<div class="d-flex flex-row gap-1 p-1 border border-1 border-10 border-gray w-100">
+								<div class="py-3 border-20 w-100 placeholder placeholder-wave"></div>
+							</div>
 						</div>
-					</a>
+
+						<a
+							v-for="(ch, idx) in chapters"
+							:key="idx"
+							href="#"
+							class="d-flex flex-row align-items-center gap-2 transition-3 transition-3 color-black hover-gold"
+							@click.prevent="seekTo(ch.time)"
+							:class="[loading ? 'invisible' : 'visible']"
+						>
+							<i
+								class="w-fit-content bi fs-32"
+								:class="[idx <= currentChapterIdx ? 'bi-eye-fill color-gold' : 'bi-eye color-gray' ]"
+							></i>
+							<div
+								class="d-flex flex-row gap-1 px-3 py-2 border border-1 border-10 border-gray w-100"
+							>
+								<span>{{ formatTime(ch.time) }} </span>
+								<span>—</span>
+								<span>{{ ch.label }}</span>
+							</div>
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>
