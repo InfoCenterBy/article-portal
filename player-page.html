@@ -420,7 +420,9 @@
 								class="w-fit-content bi fs-32"
 								:class="[idx <= currentChapterIdx ? 'bi-eye-fill color-gold' : 'bi-eye color-gray' ]"
 							></i>
-							<div class="d-flex flex-row gap-1 p-3 border border-1 border-10 border-gray w-100">
+							<div
+								class="d-flex flex-row gap-1 px-3 py-2 border border-1 border-10 border-gray w-100"
+							>
 								<span>{{ formatTime(ch.time) }} </span>
 								<span>—</span>
 								<span>{{ ch.label }}</span>
