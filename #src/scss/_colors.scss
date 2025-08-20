@@ -1,26 +1,26 @@
-$mouse-device: '(hover: hover) and (pointer: fine)';
+$mouse-device: "(hover: hover) and (pointer: fine)";
 
 @each $name, $color in $colorsMap {
-	.bg-#{$name}{
-          background-color: #{$color};
-     }
-     .color-#{$name}{
-          color: #{$color};
-     }
-     .hover-#{$name}{
-          @media #{$mouse-device} {
-               &:hover{
-                    color: #{$color};
-               }
-          }
-     }
-     // .hover-bg-#{$name}{
-     //      @include hover('background-color', #{$color});
-     // }
-     // .border-1-5-#{$name}{
-     //      border: 1.5px solid #{$color};
-     // }
-     .border-color-#{$name}{
-          border-color: #{$color} !important;
-     }
+  .bg-#{$name} {
+    background-color: #{$color};
+  }
+  .color-#{$name} {
+    color: #{$color};
+  }
+  .hover-#{$name} {
+    @media #{$mouse-device} {
+      &:hover {
+        color: #{$color};
+      }
+    }
+  }
+  // .hover-bg-#{$name}{
+  //      @include hover('background-color', #{$color});
+  // }
+  .border-1-5-#{$name} {
+    border: 1.5px solid #{$color};
+  }
+  .border-color-#{$name} {
+    border-color: #{$color} !important;
+  }
 }

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+@@include('_head.html',{
+"title":"Архив курсов валют"
+})
+
+<body>
+  @@include('./new-main/main-components/_new-header.html')
+  @@include('./new-main/main-components/_search-modal.html')
+  @@include('./new-main/main-components/_nav.html')
+
+  <div class="nav-container active-container">
+
+    <!-- Nav Button -->
+    <a class="" id="menu-btn"><i class="bi bi-chevron-right"></i></a>
+    <!--Nav Button -->
+    <div class="main-content">
+      <section class="main-section">
+        <div class="row">
+          <nav aria-label="breadcrumb" class="col-12">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="main.html"><i class="bi bi-house"></i></a></li>
+              <li class="breadcrumb-item"><a href="#">Справочная информация</a></li>
+              <li class="breadcrumb-item " aria-current="page">Архив курсов валют</li>
+            </ol>
+          </nav>
+        </div>
+      </section>
+      <div class="mt-4"></div>
+      <div class="main-section">
+        <div class="">
+          <strong class="ff-inter fs-28">
+            Архив курсов валют
+          </strong>
+        </div>
+        <div class="row mt-4">
+          <div class="col">
+            <div class="border-20 border-1-5-gray p-3 p-lg-4">
+              <p class="fs-24 fw-semibold">
+                Курсы валют на
+                <span class="color-gold" id="date-display">07.02.2025</span>
+                <span class="date-container">
+                  <label class="cursor-pointer" for="cur-date" id="cur-label"> <i class="bi bi-calendar4-event color-gold cursor-pointer fs-20"></i></label>
+                  <input class="opacity-0" id="cur-date" type="date" name="cur-date" onchange="">
+                </span>
+                <span id="cur-value"></span>
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+    <div class="my-5"></div>
+    @@include('./new-main/main-components/_new-footer.html')
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+    })
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const dateInput = document.querySelector('#cur-date');
+      const dateDisplay = document.querySelector('#date-display');
+      const calendarIcon = document.querySelector('#cur-label');
+      const curValue = document.querySelector('#cur-value');
+
+      const today = new Date();
+      const formattedToday = formatDateToInput(today);
+      dateInput.value = formattedToday;
+
+      updateDisplayedDate(formattedToday);
+
+      getRateForCurrency(440, formattedToday);
+
+      dateInput.addEventListener('change', function () {
+        updateDisplayedDate(this.value);
+        getRateForCurrency(440, this.value);
+      });
+
+      function updateDisplayedDate(dateString) {
+        const date = new Date(dateString);
+        const formattedDate = formatDateToDisplay(date);
+        dateDisplay.textContent = formattedDate;
+      }
+
+      function formatDateToDisplay(date) {
+        const day = date.getDate().toString().padStart(2, '0');
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const year = date.getFullYear();
+        return `${day}.${month}.${year}`;
+      }
+
+      function formatDateToInput(date) {
+        const year = date.getFullYear();
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const day = date.getDate().toString().padStart(2, '0');
+        return `${year}-${month}-${day}`;
+      }
+
+      async function getRateForCurrency(curId, date) {
+        try {
+          const response = await fetch(`https://api.nbrb.by/exrates/rates/${curId}?ondate=${date}&periodicity=0`);
+          const data = await response.json();
+
+          // Обновляем значение на странице
+          if (curValue) {
+            curValue.innerHTML = data.Cur_OfficialRate;
+          }
+
+          console.log('Полученные данные:', data);
+          return data.Cur_OfficialRate;
+        } catch (error) {
+          console.error('Ошибка при получении курса:', error);
+          if (curValue) {
+            curValue.innerHTML = 'Ошибка';
+          }
+        }
+      }
+
+      dateInput.onchange = getRateForCurrency(440, dateInput.value)
+
+      calendarIcon.addEventListener('click', function () {
+        dateInput.showPicker();
+      });
+    });
+  </script>
+  @@include('_js.html',{})
+</body>
+
+</html>
