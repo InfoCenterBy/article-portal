@@ -224,26 +224,18 @@
 						this.player = await VidstackPlayer.create({
 							target: this.$refs.target,
 							title: this.title,
-							src: 'https://files.vidstack.io/sprite-fight/720p.mp4',
+							src: 'https://padatak.by/upload/video/webinars/2025/Онлайн-конференция_20.06.2025_FIN_FIX_2.mp4',
 							poster: 'https://files.vidstack.io/sprite-fight/poster.webp',
 							layout: new VidstackPlayerLayout({
-								thumbnails: 'https://files.vidstack.io/sprite-fight/thumbnails.vtt',
+								// thumbnails: 'https://files.vidstack.io/sprite-fight/thumbnails.vtt',
 							}),
 							streamType: 'on-demand',
 							logLevel: 'warn',
 							playsInline: true,
 							tracks: [
 								{
-									src: 'https://files.vidstack.io/sprite-fight/subs/english.vtt',
-									label: 'English',
-									language: 'en-US',
-									kind: 'subtitles',
-									type: 'vtt',
-									default: true,
-								},
-								{
-									src: 'https://files.vidstack.io/sprite-fight/chapters.vtt',
-									language: 'en-US',
+									src: './chapters (1).vtt',
+									language: 'ru-RU',
 									kind: 'chapters',
 									type: 'vtt',
 									default: true,
@@ -372,9 +364,14 @@
 						}
 					},
 					formatTime(sec) {
-						const m = Math.floor(sec / 60);
+						const h = Math.floor(sec / 3600);
+						const m = Math.floor((sec % 3600) / 60);
 						const s = Math.floor(sec % 60);
-						return `${m}:${s.toString().padStart(2, '0')}`;
+						if (h > 0) {
+							return `${h}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+						} else {
+							return `${m}:${s.toString().padStart(2, '0')}`;
+						}
 					},
 					updateCurrentChapter() {
 						if (!this.chapters.length || !this.player) {
