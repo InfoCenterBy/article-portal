@@ -188,6 +188,8 @@
           })
           const commonRatesList = ["USD", "EUR", "RUB", "CNY", "KZT", "PLN"];
           let commonRates = exchangeRatesList.filter(rate => commonRatesList.includes(rate.Cur_Abbreviation))
+          console.log(commonRates);
+
           listExchangeRatesSmall.innerHTML = ""
           commonRates.forEach(item => {
             listExchangeRatesSmall.innerHTML += `<tr>
@@ -229,16 +231,105 @@
           });
         })
 
+        async function getWeeklyRates(currencyId, currencyCode) {
+          try {
+            // Получаем даты начала и конца текущей недели
+            const now = new Date();
+            const startOfWeek = new Date(now);
+            startOfWeek.setDate(now.getDate() - now.getDay() + (now.getDay() === 0 ? -6 : 1));
+            startOfWeek.setHours(0, 0, 0, 0);
+
+            const endOfWeek = new Date(now);
+            endOfWeek.setHours(23, 59, 59, 999);
+
+            // Форматируем даты
+            const formatDate = (date) => date.toISOString().split('T')[0];
+
+            const startDateStr = formatDate(startOfWeek);
+            const endDateStr = formatDate(endOfWeek);
+
+            // Проверяем кэш (если нужно)
+            const cacheKey = `rates_${currencyId}_${startDateStr}`;
+            const cachedData = localStorage.getItem(cacheKey);
+
+            if (cachedData) {
+              const parsedData = JSON.parse(cachedData);
+              if (new Date(parsedData.expiry) > new Date()) {
+                return parsedData.rates;
+              }
+            }
+
+            // Делаем запрос к API
+            const response = await fetch(`https://www.nbrb.by/API/ExRates/Rates/Dynamics/${currencyId}?startDate=${startDateStr}&endDate=${endDateStr}`);
+
+            if (!response.ok) {
+              throw new Error(`Ошибка HTTP: ${response.status}`);
+            }
+
+            const ratesData = await response.json();
+
+            // Обрабатываем данные
+            const weeklyRates = ratesData.map(item => ({
+              date: new Date(item.Date).toLocaleDateString('ru-RU'),
+              dateObj: new Date(item.Date),
+              rate: item.Cur_OfficialRate,
+              scale: item.Cur_Scale,
+              currency: currencyCode
+            }));
+
+            // Сохраняем в кэш на 1 час
+            const cacheData = {
+              rates: weeklyRates,
+              expiry: new Date().getTime() + 60 * 60 * 1000 // 1 час
+            };
+            localStorage.setItem(cacheKey, JSON.stringify(cacheData));
+
+            return weeklyRates;
+
+          } catch (error) {
+            console.error(`Ошибка при получении курса ${currencyCode}:`, error);
+            throw new Error(`Не удалось получить курс ${currencyCode} на неделю`);
+          }
+        }
+        // [431 - usd, 456 - rub, 452 - pln, 462 - cny, 459 - kzt, 451 - eur]
+        // Пример использования для разных валют:
+        async function getAllWeeklyRates() {
+          const currencies = [
+            { id: 431, code: 'USD', name: 'Доллар США' },
+            { id: 451, code: 'EUR', name: 'Евро' },
+            { id: 456, code: 'RUB', name: 'Российских рублей' },
+            { id: 452, code: 'PLN', name: 'Злотых' },
+            { id: 462, code: 'CNY', name: 'Китайских юаней' },
+            { id: 459, code: 'KZT', name: 'Тенге' },
+          ];
+
+          try {
+            const allRates = await Promise.all(
+              currencies.map(async currency => ({
+                currency: currency.name,
+                rates: await getWeeklyRates(currency.id, currency.code)
+              }))
+            );
+
+            console.log('Все курсы на неделю:', allRates);
+            return allRates;
+
+          } catch (error) {
+            console.error('Ошибка при получении всех курсов:', error);
+          }
+        }
+        getAllWeeklyRates()
       });
     </script>
 
     @@include('_js.html',{})
+    [431-usd, 456-rub, 452-pln, 462-cny, 459-kzt, 451-eur]
 
     <script>
       const ctx = document.getElementById('chart-rates');
 
       new Chart(ctx, {
-        type: 'bar',
+        type: 'line',
         data: {
           labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
           datasets: [{
