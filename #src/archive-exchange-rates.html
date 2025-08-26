@@ -66,20 +66,12 @@
               </div>
             </div>
           </div>
-          <div class="col-12 col-lg-6">
-            <div class="border-20 border-1-5-gray p-3 p-lg-4">
+          <div class="col-12 col-lg-6 d-flex">
+            <div class="border-20 border-1-5-gray p-3 p-lg-4 w-100 mt-4 mt-lg-0">
               <p class="fs-24 fw-semibold">
-                Курсы валют на
-                <span class="color-gold" id="date-display">07.02.2025</span>
-                <span class="date-container">
-                  <label class="cursor-pointer" for="cur-date" id="cur-label"> <i class="bi bi-calendar4-event color-gold cursor-pointer fs-20"></i></label>
-                  <input class="opacity-0" id="cur-date" type="date" name="cur-date">
-                </span>
+                График архива курсов валют
               </p>
               <div class="chart-container">
-                <div class="currency-selector" id="currencySelector">
-                  <!-- Кнопки валют будут добавлены через JavaScript -->
-                </div>
                 <canvas id="currencyChart"></canvas>
               </div>
             </div>
@@ -362,12 +354,12 @@
         // Пример использования для разных валют:
         let data = null
         const currencies = [
-          { id: 431, code: 'USD', name: 'Доллар США' },
-          { id: 451, code: 'EUR', name: 'Евро' },
-          { id: 456, code: 'RUB', name: 'Российских рублей' },
-          { id: 452, code: 'PLN', name: 'Злотых' },
-          { id: 462, code: 'CNY', name: 'Китайских юаней' },
-          { id: 459, code: 'KZT', name: 'Тенге' },
+          { id: 431, code: 'USD', name: '1 Доллар США' },
+          { id: 451, code: 'EUR', name: '1 Евро' },
+          { id: 456, code: 'RUB', name: '100 Российских рублей' },
+          { id: 452, code: 'PLN', name: '10 Злотых' },
+          { id: 462, code: 'CNY', name: '10 Китайских юаней' },
+          { id: 459, code: 'KZT', name: '1000 Тенге' },
         ];
 
         // async function getAllWeeklyRates() {
@@ -423,10 +415,60 @@
                 datasets: data.map((c, i) => ({
                   label: c.currency,
                   data: dates.map(d => c.rates.find(r => r.date === d)?.rate || null),
-                  borderColor: `hsl(${i * 60}, 70%, 50%)`,
-                  tension: 0.3
                 }))
+              },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                  y: {
+                    ticks: {
+                      minTicksLimit: 15,
+                      stepSize: 0.01,
+                      callback: function (value) {
+                        return value.toFixed(3);
+                      },
+                      grace: '50%'
+                    },
+                    beginAtZero: false
+                  }
+                },
+
+              },
+              plugins: {
+                legend: {
+                  labels: {
+                    usePointStyle: true, // используем стиль точек вместо прямоугольников
+                    pointStyle: 'image', // указываем что хотим использовать изображения
+                    generateLabels: function (chart) {
+                      const original = Chart.overrides.line.plugins.legend.labels.generateLabels;
+                      const labelsOriginal = original.call(this, chart);
+
+                      // Маппинг валют на изображения
+                      const currencyImages = {
+                        'USD': './img/countries-flags/USD.svg',
+                        'EUR': 'https://example.com/eur-flag.png',
+                        'PLN': 'https://example.com/pln-flag.png',
+                        'CNY': 'https://example.com/cny-flag.png',
+                        'RUB': 'https://example.com/rub-flag.png',
+                        'KZT': 'https://example.com/kzt-flag.png'
+                      };
+
+                      // Добавляем изображения к лейблам
+                      labelsOriginal.forEach(label => {
+                        const currencyCode = label.text.split(' - ')[0];
+                        label.pointStyle = new Image();
+                        label.pointStyle.src = currencyImages[currencyCode];
+                        label.pointStyle.width = 20;
+                        label.pointStyle.height = 15;
+                      });
+
+                      return labelsOriginal;
+                    }
+                  }
+                }
               }
+
             });
             return allRates;
 

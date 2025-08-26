@@ -57,3 +57,13 @@
     }
   }
 }
+.chart-container {
+  height: 450px; /* или любое другое значение */
+  width: 100%;
+  position: relative;
+}
+
+#currency-chart {
+  width: 100% !important;
+  height: 100% !important;
+}
