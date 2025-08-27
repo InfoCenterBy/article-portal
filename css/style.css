@@ -29,6 +29,10 @@
   color: #ffffff;
 }
 
+.border-1-5-white {
+  border: 1.5px solid #ffffff;
+}
+
 .border-color-white {
   border-color: #ffffff !important;
 }
@@ -39,6 +43,10 @@
 
 .color-black {
   color: #000000;
+}
+
+.border-1-5-black {
+  border: 1.5px solid #000000;
 }
 
 .border-color-black {
@@ -53,6 +61,10 @@
   color: #282828;
 }
 
+.border-1-5-nav-black {
+  border: 1.5px solid #282828;
+}
+
 .border-color-nav-black {
   border-color: #282828 !important;
 }
@@ -63,6 +75,10 @@
 
 .color-gold {
   color: #c47a2c;
+}
+
+.border-1-5-gold {
+  border: 1.5px solid #c47a2c;
 }
 
 .border-color-gold {
@@ -77,6 +93,10 @@
   color: #f9b974;
 }
 
+.border-1-5-gold-light {
+  border: 1.5px solid #f9b974;
+}
+
 .border-color-gold-light {
   border-color: #f9b974 !important;
 }
@@ -87,6 +107,10 @@
 
 .color-gray {
   color: #d1d2d4;
+}
+
+.border-1-5-gray {
+  border: 1.5px solid #d1d2d4;
 }
 
 .border-color-gray {
@@ -101,6 +125,10 @@
   color: #818181;
 }
 
+.border-1-5-gray-dark {
+  border: 1.5px solid #818181;
+}
+
 .border-color-gray-dark {
   border-color: #818181 !important;
 }
@@ -111,6 +139,10 @@
 
 .color-blue {
   color: #040926;
+}
+
+.border-1-5-blue {
+  border: 1.5px solid #040926;
 }
 
 .border-color-blue {
@@ -125,6 +157,10 @@
   color: #034A66;
 }
 
+.border-1-5-blue-light {
+  border: 1.5px solid #034A66;
+}
+
 .border-color-blue-light {
   border-color: #034A66 !important;
 }
@@ -135,6 +171,10 @@
 
 .color-red {
   color: #D24344;
+}
+
+.border-1-5-red {
+  border: 1.5px solid #D24344;
 }
 
 .border-color-red {
@@ -149,6 +189,10 @@
   color: #48B16E;
 }
 
+.border-1-5-green {
+  border: 1.5px solid #48B16E;
+}
+
 .border-color-green {
   border-color: #48B16E !important;
 }
@@ -159,6 +203,10 @@
 
 .color-orange {
   color: #F9B974;
+}
+
+.border-1-5-orange {
+  border: 1.5px solid #F9B974;
 }
 
 .border-color-orange {
@@ -173,6 +221,10 @@
   color: #5EB1FF;
 }
 
+.border-1-5-indigo {
+  border: 1.5px solid #5EB1FF;
+}
+
 .border-color-indigo {
   border-color: #5EB1FF !important;
 }
@@ -183,6 +235,10 @@
 
 .color-green-status-background {
   color: #CEF8E0;
+}
+
+.border-1-5-green-status-background {
+  border: 1.5px solid #CEF8E0;
 }
 
 .border-color-green-status-background {
@@ -197,6 +253,10 @@
   color: #008F5D;
 }
 
+.border-1-5-green-status {
+  border: 1.5px solid #008F5D;
+}
+
 .border-color-green-status {
   border-color: #008F5D !important;
 }
@@ -207,6 +267,10 @@
 
 .color-white-gray {
   color: #FAF9FA;
+}
+
+.border-1-5-white-gray {
+  border: 1.5px solid #FAF9FA;
 }
 
 .border-color-white-gray {
@@ -221,6 +285,10 @@
   color: #FDEAD5;
 }
 
+.border-1-5-gold-semi-light {
+  border: 1.5px solid #FDEAD5;
+}
+
 .border-color-gold-semi-light {
   border-color: #FDEAD5 !important;
 }
@@ -231,6 +299,10 @@
 
 .color-white-text {
   color: #FAFAFA;
+}
+
+.border-1-5-white-text {
+  border: 1.5px solid #FAFAFA;
 }
 
 .border-color-white-text {
@@ -7085,7 +7157,7 @@ td.vertical-bottom {
 .subscribe-date .input-group:has(.form-control:disabled) .form-control,
 .subscribe-date .input-group:has(.form-control:disabled) .input-group-text {
   background: transparent;
-  color: #D1D2D4;
+  color: #d1d2d4;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -7094,27 +7166,27 @@ td.vertical-bottom {
 }
 
 .subscribe-date .input-group:has(.form-control:disabled) ::-webkit-input-placeholder {
-  color: #D1D2D4;
+  color: #d1d2d4;
 }
 
 .subscribe-date .input-group:has(.form-control:disabled) ::-moz-placeholder {
-  color: #D1D2D4;
+  color: #d1d2d4;
 }
 
 .subscribe-date .input-group:has(.form-control:disabled) :-ms-input-placeholder {
-  color: #D1D2D4;
+  color: #d1d2d4;
 }
 
 .subscribe-date .input-group:has(.form-control:disabled) ::-ms-input-placeholder {
-  color: #D1D2D4;
+  color: #d1d2d4;
 }
 
 .subscribe-date .input-group:has(.form-control:disabled) ::placeholder {
-  color: #D1D2D4;
+  color: #d1d2d4;
 }
 
 .subscribe-date .input-group:has(.form-control:disabled) .bi {
-  color: #D1D2D4;
+  color: #d1d2d4;
 }
 
 .registry-content .datetimepicker-wrapper {
@@ -8512,12 +8584,12 @@ html {
   border: 1px solid transparent;
   background-color: var(--color-blue-light);
   border-radius: 10px;
-  color: #FAF9FA;
+  color: #faf9fa;
 }
 
 .subcribe-demo-modal .btn-close {
   opacity: 1;
-  color: #FAF9FA;
+  color: #faf9fa;
   background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23FAF9FA'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
 }
 
@@ -8530,7 +8602,7 @@ html {
 }
 
 .bg-color-light-blue {
-  background-color: #28647C;
+  background-color: #28647c;
 }
 
 .p-12 {
@@ -8949,6 +9021,78 @@ html {
 
 .cookie-modal .accordion-item {
   border-radius: var(--bs-accordion-border-radius);
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.table-default {
+  overflow-x: auto;
+}
+
+.table-default table th,
+.table-default table td {
+  padding: 16px 10px;
+}
+
+.table-default table thead {
+  text-align: center;
+  font-weight: 600;
+}
+
+.table-default table thead tr td {
+  color: var(--color-nav-black);
+  background-color: rgba(3, 74, 102, 0.0705882353);
+}
+
+.table-default table thead td:not(:last-child) {
+  border-right: 1px solid var(--color-gray);
+}
+
+.table-default table thead td:first-child {
+  border-top-left-radius: 20px;
+}
+
+.table-default table thead td:last-child {
+  border-top-right-radius: 20px;
+}
+
+.table-default table tbody {
+  text-align: center;
+}
+
+.table-default table tbody tr {
+  border-bottom: 1px solid var(--color-gray);
+}
+
+.table-default table tbody tr:hover {
+  background: rgba(129, 129, 129, 0.1);
+}
+
+.table-default table tbody tr td:first-child {
+  text-align: left;
+}
+
+.table-default table a {
+  color: var(--color-black);
+}
+
+.table-default table a:hover {
+  color: var(--color-blue-light);
+  text-decoration: underline;
+}
+
+.chart-container {
+  height: 450px;
+  /* или любое другое значение */
+  width: 100%;
+  position: relative;
+}
+
+#currency-chart {
+  width: 100% !important;
+  height: 100% !important;
 }
 
 @media (min-width: 576px) {

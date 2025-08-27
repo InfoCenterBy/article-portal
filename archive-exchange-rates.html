@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
-	<head>
-      <title>Плеер</title>
+<head>
+      <title>Архив курсов валют</title>
       <meta charset="UTF-8" />
       <meta name="format-detection" content="telephone=no" />
       <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,12 +29,9 @@
       <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet" />
       <link rel="stylesheet" href="css/style.min.css" />
 </head>
-	<head>
-		<link rel="stylesheet" href="https://cdn.vidstack.io/player/theme.css" />
-		<link rel="stylesheet" href="https://cdn.vidstack.io/player/video.css" />
-	</head>
-	<body>
-		<header class="new-header d-flex flex-row justify-content-between align-items-center">
+
+<body>
+  <header class="new-header d-flex flex-row justify-content-between align-items-center">
      <div class="d-flex flex-row align-items-center">
           <div class="mobile-menu me-2">
                <button type="button" class="bi bi-list" id="mobile-button"></button>
@@ -204,7 +201,7 @@
           </div>
      </div>
 </header>
-		<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+  <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
      <div class="modal-dialog">
           <div class="modal-content">
                <div class="modal-body d-flex flex-row align-items-center justify-content-between">
@@ -218,8 +215,9 @@
                </div>
           </div>
      </div>
-</div> 
-<nav class="side-navbar active-nav justify-content-start flex-column" id="sidebar">
+</div>
+
+  <nav class="side-navbar active-nav justify-content-start flex-column" id="sidebar">
      <div class="nav main-nav flex-column w-100">
           <div href="#" class="nav-link">
                <a href="" class="nav-link__icon">
@@ -311,406 +309,106 @@
 
 
 
-		<div class="nav-container active-container">
-			<a class="" id="menu-btn"><i class="bi-chevron-right bi"></i></a>
-			<div class="main-content">
-				<section class="main-section">
-					<div class="row">
-						<nav aria-label="breadcrumb" class="col-12">
-							<ol class="breadcrumb">
-								<li class="breadcrumb-item">
-									<a href="main.html"><i class="bi bi-house"></i></a>
-								</li>
-								<li class="breadcrumb-item active" aria-current="page">Плеер</li>
-							</ol>
-						</nav>
-					</div>
-				</section>
-				<div class="mt-4"></div>
-				<section class="main-section"><script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-<style>
-	.chapter-block::-webkit-scrollbar {
-		width: 3px;
-		height: 3px;
-	}
+  <div class="nav-container active-container">
 
-	.chapter-block::-webkit-scrollbar-thumb {
-		background: oklch(75% 0.00006 271.152);
-	}
+    <a class="" id="menu-btn"><i class="bi bi-chevron-right"></i></a>
+    <div class="main-content">
+      <section class="main-section">
+        <div class="row">
+          <nav aria-label="breadcrumb" class="col-12">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="main.html"><i class="bi bi-house"></i></a></li>
+              <li class="breadcrumb-item"><a href="#">Справочная информация</a></li>
+              <li class="breadcrumb-item " aria-current="page">Архив курсов валют</li>
+            </ol>
+          </nav>
+        </div>
+      </section>
+      <div class="mt-4"></div>
+      <div class="main-section">
+        <div class="">
+          <strong class="ff-inter fs-28">
+            Архив курсов валют
+          </strong>
+        </div>
+        <div class="row mt-4">
+          <div class="col-12 col-lg-6">
+            <div class="border-20 border-1-5-gray p-3 p-lg-4">
+              <p class="fs-24 fw-semibold">
+                Курсы валют на
+                <span class="color-gold date-display">07.02.2025</span>
+                <span class="date-container">
+                  <label class="cur-label cursor-pointer" for="cur-date-small"><i class="bi bi-calendar4-event color-gold cursor-pointer fs-20"></i>
+                  </label>
+                  <input class="opacity-0 cur-date" id="cur-date-small" type="date" name="cur-date">
+                </span>
+              </p>
+              <div class="table-default">
+                <table class="w-100">
+                  <thead>
+                    <tr>
+                      <td>
+                        Наименование иностранной валюты
+                      </td>
+                      <td>
+                        Количество единиц иностранной валюты, буквенный код валюты
+                      </td>
+                      <td>
+                        Официальный курс, (BYN)
+                      </td>
+                    </tr>
+                  </thead>
+                  <tbody class="list-exchange-rates list-exchange-rates--small">
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6 d-flex">
+            <div class="border-20 border-1-5-gray p-3 p-lg-4 w-100 mt-4 mt-lg-0">
+              <p class="fs-24 fw-semibold">
+                График архива курсов валют
+              </p>
+              <div class="chart-container">
+                <canvas id="currencyChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-5">
+          <p class="fs-24 fw-semibold">
+            Курсы валют на
+            <span class="color-gold date-display">07.02.2025</span>
+            <span class="date-container">
+              <label class="cur-label cursor-pointer" for="cur-date-large"><i class="bi bi-calendar4-event color-gold cursor-pointer fs-20"></i>
+              </label>
+              <input class="opacity-0 cur-date" id="cur-date-large" type="date" name="cur-date">
+            </span>
+          </p>
+          <div class="table-default">
+            <table class="w-100">
+              <thead>
+                <tr>
+                  <td>
+                    Наименование иностранной валюты
+                  </td>
+                  <td>
+                    Количество единиц иностранной валюты, буквенный код валюты
+                  </td>
+                  <td>
+                    Официальный курс, (BYN)
+                  </td>
+                </tr>
+              </thead>
+              <tbody class="list-exchange-rates list-exchange-rates--large">
+              </tbody>
+            </table>
+          </div>
+        </div>
 
-	.chapter-block::-webkit-scrollbar-track {
-		background: transparent;
-		border-radius: 4px;
-	}
-
-	.chapter-block {
-		scrollbar-face-color: #d9d9d9;
-		scrollbar-track-color: transparent;
-	}
-</style>
-<script>
-	function calcHeighChapterBlock() {
-		let player = document.querySelector('.player-block media-player');
-		let chapterBlock = document.querySelectorAll('.chapter-block');
-		if (chapterBlock && player) {
-			chapterBlock.forEach((element) => {
-				element.style.setProperty('--max-height', player.offsetHeight - '75' + 'px');
-			});
-			if (window.innerWidth < 1200) {
-				chapterBlock.forEach((element) => {
-					element.style.setProperty('--max-height', 'auto');
-				});
-			}
-		}
-	}
-	window.addEventListener('resize', () => {
-		calcHeighChapterBlock();
-	});
-
-	window.addEventListener('load', () => {
-		setTimeout(calcHeighChapterBlock, 2000);
-	});
-</script>
-<div id="app">
-	<template id="player-template">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="h2" :class="[loading ? 'placeholder placeholder-wave border-20' : '']">{{title}}</h2>
-			</div>
-			<div class="d-flex align-items-start col-xl-8 col-12">
-				<div ref="target" class="player-block border-20 w-100 overflow-hidden" style="z-index: 3"
-					:class="[loading ? 'placeholder placeholder-wave' : '']"></div>
-			</div>
-			<div class="d-flex mt-4 mt-xl-0 col-xl-4 col-12" :class="[loading ? '' : '']">
-				<div class="bg-white-gray px-3 pt-3 pb-2 border-20 w-100">
-					<h3 class="mb-0 h3">Главы:</h3>
-					<div class="chapter-block d-flex flex-column gap-3 mt-3 pe-2"
-						style="--max-height: 356px; overflow-y: auto; max-height: var(--max-height)">
-						<div :class="[loading ? 'd-block' : 'd-none']"
-							class="d-flex flex-row align-items-center gap-2 transition-3 transition-3 color-black hover-gold">
-							<div class="d-flex flex-row gap-1 p-1 border border-1 border-10 border-gray w-100">
-								<div class="py-3 border-20 w-100 placeholder placeholder-wave"></div>
-							</div>
-						</div>
-
-						<a v-for="(ch, idx) in chapters" :key="idx" href="#"
-							class="d-flex flex-row align-items-center gap-2 transition-3 transition-3 color-black hover-gold"
-							@click.prevent="seekTo(ch.time)" :class="[loading ? 'invisible' : 'visible']">
-							<div class="d-flex flex-row gap-1 px-3 py-2 border border-1 border-10 border-gray w-100 fs-14"
-								:class="[idx <= currentChapterIdx ? 'color-gold' : 'color-black' ]">
-								<span>{{ formatTime(ch.time) }} — {{ ch.label }} </span>
-							</div>
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</template>
-	<player-component></player-component>
-</div>
-
-<script type="module">
-	import { VidstackPlayer, VidstackPlayerLayout } from 'https://cdn.vidstack.io/player';
-
-	window.Vue.createApp({
-		components: {
-			'player-component': {
-				template: document.getElementById('player-template').innerHTML,
-				data() {
-					return {
-						player: null,
-						muted: false,
-						title: 'Sprite Fight',
-						duration: 0,
-						// timeCodes: [
-						// 	{ time: 10, label: 'Вступление' },
-						// 	{ time: 42, label: 'Битва начинается' },
-						// 	{ time: 75, label: 'Кульминация' },
-						// ],
-						chapters: [],
-						RUSSIAN: {
-							Accessibility: 'Особые возможности',
-							AirPlay: 'AirPlay',
-							Announcements: 'Объявления',
-							Audio: 'Аудио',
-							Auto: 'Авто',
-							Boost: 'Усиление',
-							Captions: 'Субтитры',
-							Chapters: 'Главы',
-							Color: 'Цвет',
-							Connected: 'Подключено',
-							Connecting: 'Подключение',
-							Continue: 'Продолжить',
-							Default: 'По умолчанию',
-							Disabled: 'Отключено',
-							Disconnected: 'Отключено',
-							Download: 'Скачать',
-							Family: 'Шрифты',
-							Font: 'Шрифт',
-							Fullscreen: 'Полноэкранный режим',
-							LIVE: 'Прямой эфир',
-							Loop: 'Повторение',
-							Mute: 'Выключить звук',
-							Normal: 'Нормальный',
-							Off: 'Выключено',
-							Opacity: 'Прозрачность',
-							Pause: 'Пауза',
-							PiP: 'Картинка в картинке',
-							Play: 'Воспроизведение',
-							Playback: 'Воспроизведение',
-							Quality: 'Качество',
-							Replay: 'Повтор',
-							Reset: 'Сброс',
-							Seek: 'Перемотка',
-							Settings: 'Настройки',
-							Shadow: 'Тень',
-							Size: 'Размер',
-							Speed: 'Скорость',
-							Text: 'Текст',
-							Track: 'Трек',
-							Unmute: 'Включить звук',
-							Volume: 'Громкость',
-							'Caption Styles': 'Стили субтитров',
-							'Captions look like this': 'Субтитры выглядят так',
-							'Closed-Captions Off': 'Выключить субтитры',
-							'Closed-Captions On': 'Включить субтитры',
-							'Display Background': 'Фон',
-							'Enter Fullscreen': 'Полноэкранный режим',
-							'Enter PiP': 'Картинка в картинке',
-							'Exit Fullscreen': 'Выход из полноэкранного режима',
-							'Exit PiP': 'Выход из картинки в картинке',
-							'Google Cast': 'Google Cast',
-							'Keyboard Animations': 'Анимации клавиатуры',
-							'Seek Backward': 'Перемотка назад',
-							'Seek Forward': 'Перемотка вперед',
-							'Skip To Live': 'Перейти к прямому эфиру',
-							'Text Background': 'Фон текста',
-						},
-						currentChapterIdx: -1,
-						rafId: null,
-						loading: true,
-					};
-				},
-				methods: {
-					getTimeFromUrl() {
-						// Ищем ?t= или #t= в адресе
-						const url = new URL(window.location.href);
-						let t = url.searchParams.get('t');
-						const sec = parseInt(t, 10);
-						return isNaN(sec) ? 0 : sec;
-					},
-
-					async initPlayer() {
-						this.loading = true;
-						this.player = await VidstackPlayer.create({
-							target: this.$refs.target,
-							title: this.title,
-							src: 'https://padatak.by/upload/video/webinars/2025/Онлайн-конференция_20.06.2025_FIN_FIX_2.mp4',
-							poster: 'https://files.vidstack.io/sprite-fight/poster.webp',
-							layout: new VidstackPlayerLayout({
-								// thumbnails: 'https://files.vidstack.io/sprite-fight/thumbnails.vtt',
-							}),
-							streamType: 'on-demand',
-							logLevel: 'warn',
-							playsInline: true,
-							tracks: [
-								{
-									src: './chapters (1).vtt',
-									language: 'ru-RU',
-									kind: 'chapters',
-									type: 'vtt',
-									default: true,
-								},
-							],
-						});
-
-						this.muted = this.player.muted;
-						this.player.addEventListener('volumechange', () => {
-							this.muted = this.player.muted;
-						});
-						this.player.addEventListener('loadedmetadata', () => {
-							this.duration = this.player.duration;
-						});
-						if (this.player.duration) {
-							this.duration = this.player.duration;
-						}
-
-						// Скрываем лоадер после полной инициализации плеера или loadedmetadata
-						let loadingCleared = false;
-						const clearLoading = () => {
-							if (!loadingCleared) {
-								this.loading = false;
-								loadingCleared = true;
-							}
-						};
-						this.player.addEventListener('loadedmetadata', clearLoading);
-						// Если метаданные уже загружены (например, кэш)
-						if (this.player.duration) {
-							clearLoading();
-						}
-						// Fallback: если loadedmetadata не пришёл за 2 секунды, всё равно показываем плеер
-						setTimeout(clearLoading, 2000);
-
-						// ГЛАВЫ: слушаем появление трека и cues
-						const updateChapters = () => {
-							const chaptersTrack = Array.from(this.player.textTracks || []).find(
-								(t) => t.kind === 'chapters'
-							);
-							if (chaptersTrack) {
-								chaptersTrack.mode = 'hidden';
-								// Ждём cues асинхронно
-								const tryUpdate = () => {
-									if (chaptersTrack.cues && chaptersTrack.cues.length) {
-										this.chapters = Array.from(chaptersTrack.cues).map((cue) => ({
-											time: cue.startTime,
-											label: cue.text,
-										}));
-										this.updateCurrentChapter(); // Важно: сразу обновить активную главу
-									} else {
-										setTimeout(tryUpdate, 200); // пробуем снова через 200мс
-									}
-								};
-								tryUpdate();
-							}
-						};
-
-						// Сразу пробуем, и если что — слушаем появление новых треков
-						updateChapters();
-						this.player.textTracks?.addEventListener?.('addtrack', updateChapters);
-
-						// Локализация
-						const layout = document.querySelector('media-video-layout');
-						if (layout) layout.translations = this.RUSSIAN;
-
-						this.player.addEventListener('timeupdate', this.updateCurrentChapter);
-						this.player.addEventListener('seeked', this.updateCurrentChapter);
-						this.player.addEventListener('play', this.updateCurrentChapter);
-
-						// Антипиратские меры: отключаем контекстное меню, выделение, drag, скачивание
-						const protectVideo = () => {
-							// Находим внутренний <video> элемент
-							const video = this.$refs.target.querySelector('video');
-							if (video) {
-								video.addEventListener('contextmenu', (e) => e.preventDefault());
-								video.addEventListener('dragstart', (e) => e.preventDefault());
-								video.addEventListener('selectstart', (e) => e.preventDefault());
-								video.setAttribute('controlsList', 'nodownload noremoteplayback');
-								video.setAttribute('disablePictureInPicture', '');
-								video.setAttribute('oncontextmenu', 'return false;');
-								video.style.userSelect = 'none';
-								video.style.pointerEvents = '';
-							}
-						};
-						// Ждём появления <video> через MutationObserver
-						const observer = new MutationObserver(() => {
-							protectVideo();
-						});
-						observer.observe(this.$refs.target, { childList: true, subtree: true });
-						// Также пробуем сразу
-						setTimeout(protectVideo, 500);
-
-						// После инициализации плеера
-						const seekToUrlTime = () => {
-							const sec = this.getTimeFromUrl();
-							if (sec > 0 && this.player) {
-								this.player.currentTime = sec;
-							}
-						};
-						// Ждём, пока duration будет известна
-						if (this.player && this.player.duration) {
-							seekToUrlTime();
-						} else {
-							const wait = setInterval(() => {
-								if (this.player && this.player.duration) {
-									seekToUrlTime();
-									clearInterval(wait);
-								}
-							}, 200);
-						}
-					},
-					play() {
-						if (this.player) this.player.play();
-					},
-					pause() {
-						if (this.player) this.player.pause();
-					},
-					toggleMute() {
-						if (this.player) this.player.muted = !this.player.muted;
-					},
-					seekTo(time) {
-						if (this.player) {
-							this.player.currentTime = time;
-							// Немного подождать, чтобы currentTime обновился, затем обновить главу
-							setTimeout(this.updateCurrentChapter, 100);
-						}
-					},
-					formatTime(sec) {
-						const h = Math.floor(sec / 3600);
-						const m = Math.floor((sec % 3600) / 60);
-						const s = Math.floor(sec % 60);
-						if (h > 0) {
-							return `${h}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
-						} else {
-							return `${m}:${s.toString().padStart(2, '0')}`;
-						}
-					},
-					updateCurrentChapter() {
-						if (!this.chapters.length || !this.player) {
-							this.currentChapterIdx = -1;
-							return;
-						}
-						const time = this.player.currentTime;
-						let idx = -1;
-						for (let i = 0; i < this.chapters.length; i++) {
-							const start = this.chapters[i].time;
-							const end = i < this.chapters.length - 1 ? this.chapters[i + 1].time : Infinity;
-							if (time >= start && time < end) {
-								idx = i;
-								break;
-							}
-						}
-						this.currentChapterIdx = idx;
-					},
-					startChapterRaf() {
-						const loop = () => {
-							this.updateCurrentChapter();
-							this.rafId = requestAnimationFrame(loop);
-						};
-						this.rafId = requestAnimationFrame(loop);
-					},
-					stopChapterRaf() {
-						if (this.rafId) {
-							cancelAnimationFrame(this.rafId);
-							this.rafId = null;
-						}
-					},
-				},
-				mounted() {
-					this.initPlayer();
-					this.startChapterRaf();
-				},
-				beforeUnmount() {
-					this.stopChapterRaf();
-					if (this.player) {
-						this.player.removeEventListener('timeupdate', this.updateCurrentChapter);
-						this.player.removeEventListener('seeked', this.updateCurrentChapter);
-						this.player.removeEventListener('play', this.updateCurrentChapter);
-						this.player.destroy();
-					}
-				},
-				watch: {
-					chapters() {
-						this.updateCurrentChapter();
-					},
-				},
-			},
-		},
-	}).mount('#app');
-</script></section>
-				<div class="mt-4"></div>
-			</div>
-			<div class="my-5"></div>
-			<footer class="footer">
+      </div>
+      <div class="my-5"></div>
+      <footer class="footer">
      <div class="main-section">
           <div class="footer__body">
                <div class="row g-4">
@@ -869,8 +567,8 @@
           </div>
      </div>
 </footer>
-		</div>
-		<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
         crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
         integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
@@ -889,5 +587,375 @@
 
 
 <script src="js/script.min.js"></script>
-	</body>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const dateInputs = document.querySelectorAll('.cur-date');
+        const dateDisplay = document.querySelectorAll('.date-display');
+        const calendarIcons = document.querySelectorAll('.cur-label');
+
+        const today = new Date();
+        const formattedToday = formatDateToInput(today);
+
+        dateInputs.forEach(input => {
+          input.value = formattedToday;
+        })
+
+        updateDisplayedDate(formattedToday);
+
+        getRateForCurrency(formattedToday);
+
+        dateInputs.forEach(input => {
+          input.addEventListener('change', function () {
+            updateDisplayedDate(this.value);
+            getRateForCurrency(this.value);
+          });
+        })
+
+
+        function updateDisplayedDate(dateString) {
+          const date = new Date(dateString);
+          const formattedDate = formatDateToDisplay(date);
+          dateDisplay.forEach(date => {
+            date.textContent = formattedDate;
+          })
+        }
+
+        function formatDateToDisplay(date) {
+          const day = date.getDate().toString().padStart(2, '0');
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const year = date.getFullYear();
+          return `${day}.${month}.${year}`;
+        }
+
+        function formatDateToInput(date) {
+          const year = date.getFullYear();
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const day = date.getDate().toString().padStart(2, '0');
+          return `${year}-${month}-${day}`;
+        }
+
+        const listExchangeRatesLarge = document.querySelector(".list-exchange-rates--large");
+        const listExchangeRatesSmall = document.querySelector(".list-exchange-rates--small");
+
+        const createListExchangeRates = (exchangeRatesList) => {
+          listExchangeRatesLarge.innerHTML = ""
+          exchangeRatesList.forEach(item => {
+            listExchangeRatesLarge.innerHTML += `<tr>
+                                                <td>
+                                                  <div class="d-flex align-items-center">
+                                                    <img src="./img/countries-flags/${item.Cur_Abbreviation}.svg" alt="flag">
+                                                    <span>${item.Cur_Name}</span>
+                                                  </div>
+                                                </td>
+                                                <td>
+                                                  ${item.Cur_Scale} ${item.Cur_Abbreviation}
+                                                </td>
+                                                <td>
+                                                   ${item.Cur_OfficialRate}
+                                                </td>
+                                            </tr>
+                                          `;
+          })
+          const commonRatesList = ["USD", "EUR", "RUB", "CNY", "KZT", "PLN"];
+          let commonRates = exchangeRatesList.filter(rate => commonRatesList.includes(rate.Cur_Abbreviation))
+          console.log(commonRates);
+
+          listExchangeRatesSmall.innerHTML = ""
+          commonRates.forEach(item => {
+            listExchangeRatesSmall.innerHTML += `<tr>
+                                                <td>
+                                                  <div class="d-flex align-items-center">
+                                                    <img src="./img/countries-flags/${item.Cur_Abbreviation}.svg" alt="flag">
+                                                    <span>${item.Cur_Name}</span>
+                                                  </div>
+                                                </td>
+                                                <td>
+                                                  ${item.Cur_Scale} ${item.Cur_Abbreviation}
+                                                </td>
+                                                <td>
+                                                   ${item.Cur_OfficialRate}
+                                                </td>
+                                            </tr>
+                                          `;
+          })
+
+
+        };
+
+        async function getRateForCurrency(date) {
+          try {
+            const response = await fetch(`https://api.nbrb.by/exrates/rates?ondate=${date}&periodicity=0`);
+            const data = await response.json();
+            createListExchangeRates(data);
+            return data
+          } catch (error) {
+            console.error('Ошибка при получении курса:', error);
+          }
+        }
+
+        calendarIcons.forEach(icon => {
+          icon.addEventListener('click', function () {
+            const inputId = this.getAttribute('for');
+            const dateInput = document.getElementById(inputId);
+            dateInput.showPicker();
+          });
+        })
+
+        async function getRates(currencyID, period = 'week', customDate = null) {
+          try {
+            let startDate, endDate;
+
+            // Определяем период на основе аргумента
+            switch (period) {
+              case 'week':
+                ({ startDate, endDate } = getCurrentWeek());
+                break;
+              case 'month':
+                ({ startDate, endDate } = getCurrentMonth());
+                break;
+              case 'custom':
+                if (!customDate) {
+                  throw new Error('Для custom периода необходимо указать дату');
+                }
+                ({ startDate, endDate } = getCustomMonth(customDate));
+                break;
+              case 'year':
+                ({ startDate, endDate } = getLastYear());
+                break;
+              default:
+                throw new Error('Неверный период. Доступные значения: week, month, custom, year');
+            }
+
+            // Форматируем даты для API
+            const formatDate = (date) => {
+              const year = date.getFullYear();
+              const month = (date.getMonth() + 1).toString().padStart(2, '0');
+              const day = date.getDate().toString().padStart(2, '0');
+              return `${year}-${month}-${day}`;
+            };
+
+            const startDateStr = formatDate(startDate);
+            const endDateStr = formatDate(endDate);
+
+            console.log(`Запрос данных за период: ${startDateStr} - ${endDateStr}`);
+
+            // Делаем запрос к API
+            const response = await fetch(`https://www.nbrb.by/API/ExRates/Rates/Dynamics/${currencyID}?startDate=${startDateStr}&endDate=${endDateStr}`);
+
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const rates = await response.json();
+
+            // Обрабатываем полученные данные
+            const processedRates = rates.map(rate => ({
+              date: new Date(rate.Date).toLocaleDateString('ru-RU'),
+              rate: rate.Cur_OfficialRate,
+              scale: rate.Cur_Scale,
+              dateObj: new Date(rate.Date)
+            }));
+
+            // Сортируем по дате (от старых к новым)
+            processedRates.sort((a, b) => a.dateObj - b.dateObj);
+
+            return processedRates;
+
+          } catch (error) {
+            console.error('Ошибка при получении курсов:', error);
+            throw error;
+          }
+        }
+
+        // Вспомогательные функции для расчета периодов
+
+        function getCurrentWeek() {
+          const now = new Date();
+          const dayOfWeek = now.getDay();
+
+          const startOfWeek = new Date(now);
+          if (dayOfWeek === 0) {
+            startOfWeek.setDate(now.getDate() - 6);
+          } else {
+            startOfWeek.setDate(now.getDate() - dayOfWeek + 1);
+          }
+          startOfWeek.setHours(0, 0, 0, 0);
+
+          const endOfWeek = new Date(startOfWeek);
+          endOfWeek.setDate(startOfWeek.getDate() + 6);
+          endOfWeek.setHours(23, 59, 59, 999);
+
+          return { startDate: startOfWeek, endDate: endOfWeek };
+        }
+
+        function getCurrentMonth() {
+          const now = new Date();
+
+          const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+          startOfMonth.setHours(0, 0, 0, 0);
+
+          const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+          endOfMonth.setHours(23, 59, 59, 999);
+
+          return { startDate: startOfMonth, endDate: endOfMonth };
+        }
+
+        function getCustomMonth(date) {
+          const inputDate = new Date(date);
+
+          const startOfMonth = new Date(inputDate.getFullYear(), inputDate.getMonth(), 1);
+          startOfMonth.setHours(0, 0, 0, 0);
+
+          const endOfMonth = new Date(inputDate.getFullYear(), inputDate.getMonth() + 1, 0);
+          endOfMonth.setHours(23, 59, 59, 999);
+
+          return { startDate: startOfMonth, endDate: endOfMonth };
+        }
+
+        function getLastYear() {
+          const now = new Date();
+
+          const startOfYear = new Date(now.getFullYear() - 1, now.getMonth(), now.getDate());
+          startOfYear.setHours(0, 0, 0, 0);
+
+          const endOfYear = new Date(now);
+          endOfYear.setHours(23, 59, 59, 999);
+
+          return { startDate: startOfYear, endDate: endOfYear };
+        }
+        // [431 - usd, 456 - rub, 452 - pln, 462 - cny, 459 - kzt, 451 - eur]
+        // Пример использования для разных валют:
+        let data = null
+        const currencies = [
+          { id: 431, code: 'USD', name: '1 Доллар США' },
+          { id: 451, code: 'EUR', name: '1 Евро' },
+          { id: 456, code: 'RUB', name: '100 Российских рублей' },
+          { id: 452, code: 'PLN', name: '10 Злотых' },
+          { id: 462, code: 'CNY', name: '10 Китайских юаней' },
+          { id: 459, code: 'KZT', name: '1000 Тенге' },
+        ];
+
+        // async function getAllWeeklyRates() {
+        //   try {
+        //     const allRates = await Promise.all(
+        //       currencies.map(async currency => ({
+        //         currency: currency.name,
+        //         rates: await getRates(currency.id)
+        //       }))
+        //     );
+
+        //     console.log('Все курсы на неделю:', allRates);
+        //     let data = allRates
+        //     const dates = [...new Set(data.flatMap(c => c.rates.map(r => r.date)))].sort();
+
+        //     new Chart(document.getElementById('currencyChart').getContext('2d'), {
+        //       type: 'line',
+        //       data: {
+        //         labels: dates,
+        //         datasets: data.map((c, i) => ({
+        //           label: c.currency,
+        //           data: dates.map(d => c.rates.find(r => r.date === d)?.rate || null),
+        //           borderColor: `hsl(${i * 60}, 70%, 50%)`,
+        //           tension: 0.3
+        //         }))
+        //       }
+        //     });
+        //     return allRates;
+
+        //   } catch (error) {
+        //     console.error('Ошибка при получении всех курсов:', error);
+        //   }
+        // }
+        // getAllWeeklyRates()
+
+        async function getAllMonthlyRates() {
+          try {
+            const allRates = await Promise.all(
+              currencies.map(async currency => ({
+                currency: currency.name,
+                rates: await getRates(currency.id, 'month')
+              }))
+            );
+
+            console.log('Все курсы на месяц:', allRates);
+            let data = allRates
+            const dates = [...new Set(data.flatMap(c => c.rates.map(r => r.date)))].sort();
+
+            new Chart(document.getElementById('currencyChart').getContext('2d'), {
+              type: 'line',
+              data: {
+                labels: dates,
+                datasets: data.map((c, i) => ({
+                  label: c.currency,
+                  data: dates.map(d => c.rates.find(r => r.date === d)?.rate || null),
+                }))
+              },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                  y: {
+                    ticks: {
+                      minTicksLimit: 15,
+                      stepSize: 0.01,
+                      callback: function (value) {
+                        return value.toFixed(3);
+                      },
+                      grace: '50%'
+                    },
+                    beginAtZero: false
+                  }
+                },
+
+              },
+              plugins: {
+                legend: {
+                  labels: {
+                    usePointStyle: true, // используем стиль точек вместо прямоугольников
+                    pointStyle: 'image', // указываем что хотим использовать изображения
+                    generateLabels: function (chart) {
+                      const original = Chart.overrides.line.plugins.legend.labels.generateLabels;
+                      const labelsOriginal = original.call(this, chart);
+
+                      // Маппинг валют на изображения
+                      const currencyImages = {
+                        'USD': './img/countries-flags/USD.svg',
+                        'EUR': 'https://example.com/eur-flag.png',
+                        'PLN': 'https://example.com/pln-flag.png',
+                        'CNY': 'https://example.com/cny-flag.png',
+                        'RUB': 'https://example.com/rub-flag.png',
+                        'KZT': 'https://example.com/kzt-flag.png'
+                      };
+
+                      // Добавляем изображения к лейблам
+                      labelsOriginal.forEach(label => {
+                        const currencyCode = label.text.split(' - ')[0];
+                        label.pointStyle = new Image();
+                        label.pointStyle.src = currencyImages[currencyCode];
+                        label.pointStyle.width = 20;
+                        label.pointStyle.height = 15;
+                      });
+
+                      return labelsOriginal;
+                    }
+                  }
+                }
+              }
+
+            });
+            return allRates;
+
+          } catch (error) {
+            console.error('Ошибка при получении всех курсов:', error);
+          }
+        }
+        getAllMonthlyRates()
+
+
+
+      });
+    </script>
+</body>
+
 </html>
