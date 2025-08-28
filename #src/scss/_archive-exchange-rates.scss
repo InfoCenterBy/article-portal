@@ -58,12 +58,38 @@
   }
 }
 .chart-container {
-  height: 400px;
+  min-height: 300px;
+  max-height: 310px;
   width: 100%;
   position: relative;
 }
 
 #currency-chart {
   width: 100% !important;
-  height: 100% !important;
+  height: 310px;
+}
+
+.date-container {
+  display: inline;
+  width: 100%;
+}
+
+.cur-label {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.cur-date-absolute {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  font-size: 0;
+  min-width: 0;
 }

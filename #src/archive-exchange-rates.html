@@ -36,16 +36,27 @@
         <div class="row mt-4">
           <div class="col-12 col-lg-6">
             <div class="border-20 border-1-5-gray p-3 p-lg-4">
-              <p class="fs-24 fw-semibold">
-                Курсы валют на
-                <span class="color-gold date-display">07.02.2025</span>
-                <span class="date-container">
-                  <label class="cur-label cursor-pointer" for="cur-date-small"><i class="bi bi-calendar4-event color-gold cursor-pointer fs-20"></i>
-                  </label>
-                  <input class="opacity-0 cur-date" id="cur-date-small" type="date" name="cur-date">
+              <p class="fs-24 fw-semibold d-flex justify-content-between align-items-center">
+                <span>
+                  <span>Курсы валют на</span>
+                  <span class="color-gold date-display">07.02.2025</span>
+                  <span class="date-container">
+                    <label class="cur-label cursor-pointer" for="cur-date-small">
+                      <i class="bi bi-calendar4-event color-gold cursor-pointer fs-20"></i>
+                      <input class="cur-date cur-date-absolute" type="date" name="cur-date" id="cur-date-small">
+                    </label>
+                  </span>
+                </span>
+                <span class="d-flex gap-2">
+                  <button>
+                    <img id="save-table-small" src=" ./img/icons/download-file.svg" alt="" width="22" height="22">
+                  </button>
+                  <button>
+                    <img id="print-table-small" src="./img/icons/printer.svg" alt="" width="22" height="22">
+                  </button>
                 </span>
               </p>
-              <div class="table-default">
+              <div id="rates-table-small" class="table-default">
                 <table class="w-100">
                   <thead>
                     <tr>
@@ -68,24 +79,47 @@
           </div>
           <div class="col-12 col-lg-6 d-flex">
             <div class="border-20 border-1-5-gray p-3 p-lg-4 w-100 mt-4 mt-lg-0">
-              <p class="fs-24 fw-semibold">
-                График архива курсов валют
+              <p class="fs-24 fw-semibold d-flex align-items-center justify-content-between lh-1">
+                <span>
+                  График архива курсов валют
+                </span>
+                <span class="d-flex gap-2">
+                  <img id="save-chart" src=" ./img/icons/download-file.svg" alt="" width="22" height="22">
+                  <img id="print-chart" src="./img/icons/printer.svg" alt="" width="22" height="22">
+                </span>
               </p>
+              <div class="d-flex gap-4 mb-3">
+                <div class="radio-wrapper">
+                  <input class="d-none" type="radio" name="ratesPeriod" id="currentWeek" checked>
+                  <label class="try-btn px-3 py-2" for="currentWeek">Текущая неделя</label>
+                </div>
+                <div class="radio-wrapper">
+                  <input class="d-none" type="radio" name="ratesPeriod" id="currentMonth">
+                  <label class="try-btn px-3 py-2" for="currentMonth">Текущий месяц</label>
+                </div>
+              </div>
               <div class="chart-container">
-                <div id="legend-container"></div>
                 <canvas id="currencyChart"></canvas>
+                <div id="legend-container"></div>
               </div>
             </div>
           </div>
         </div>
         <div class="mt-5">
-          <p class="fs-24 fw-semibold">
-            Курсы валют на
-            <span class="color-gold date-display">07.02.2025</span>
-            <span class="date-container">
-              <label class="cur-label cursor-pointer" for="cur-date-large"><i class="bi bi-calendar4-event color-gold cursor-pointer fs-20"></i>
-              </label>
-              <input class="opacity-0 cur-date" id="cur-date-large" type="date" name="cur-date">
+          <p class="fs-24 fw-semibold d-flex justify-content-between align-items-center">
+            <span>
+              <span>Курсы валют на</span>
+              <span class="color-gold date-display">07.02.2025</span>
+              <span class="date-container">
+                <label class="cur-label cursor-pointer" for="cur-date-large">
+                  <i class="bi bi-calendar4-event color-gold cursor-pointer fs-20"></i>
+                  <input class="cur-date cur-date-absolute" type="date" name="cur-date" id="cur-date-large">
+                </label>
+              </span>
+            </span>
+            <span class="d-flex gap-2">
+              <img id="save-chart" src=" ./img/icons/download-file.svg" alt="" width="22" height="22">
+              <img id="print-chart" src="./img/icons/printer.svg" alt="" width="22" height="22">
             </span>
           </p>
           <div class="table-default">
@@ -114,7 +148,8 @@
       @@include('./new-main/main-components/_new-footer.html')
     </div>
     @@include('_js.html',{})
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/3.0.2/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', function () {
         const dateInputs = document.querySelectorAll('.cur-date');
@@ -361,8 +396,10 @@
             listContainer.style.display = 'flex';
             listContainer.style.flexDirection = 'row';
             listContainer.style.gap = '12px';
+            listContainer.style.columnGap = '24px';
             listContainer.style.flexWrap = 'wrap';
             listContainer.style.margin = 0;
+            listContainer.style.marginTop = '16px';
             listContainer.style.padding = 0;
 
             legendContainer.appendChild(listContainer);
@@ -371,11 +408,22 @@
           return listContainer;
         };
 
+        const customChartBackgroundPlugin = {
+          id: 'customChartBackground',
+          beforeDraw: (chart) => {
+            const { ctx } = chart;
+            ctx.save();
+            ctx.globalCompositeOperation = 'destination-over';
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, chart.width, chart.height);
+            ctx.restore();
+          }
+        };
+
         const htmlLegendPlugin = {
           id: 'htmlLegend',
           afterUpdate(chart, args, options) {
             const ul = getOrCreateLegendList(chart, options.containerID);
-            ul.style.marginBottom = '16px';
 
             while (ul.firstChild) {
               ul.firstChild.remove();
@@ -473,6 +521,7 @@
             });
           }
         };
+
         function getCurrencyImage(currencyText) {
           const currencyImages = {
             '1 Доллар США': './img/countries-flags/USD.svg',
@@ -490,63 +539,237 @@
           }
         }
 
-        async function getAllMonthlyRates() {
+        let currentChart = null;
+
+        async function getAllRates(period) {
           try {
             const allRates = await Promise.all(
               currencies.map(async currency => ({
                 currency: currency.name,
-                rates: await getRates(currency.id, 'month')
+                rates: await getRates(currency.id, period)
               }))
             );
 
             console.log('Все курсы на месяц:', allRates);
             let data = allRates
-            const dates = [...new Set(data.flatMap(c => c.rates.map(r => r.date)))].sort();
+            createChart(allRates);
 
-            new Chart(document.getElementById('currencyChart').getContext('2d'), {
-              type: 'line',
-              data: {
-                labels: dates,
-                datasets: data.map((c, i) => ({
-                  label: c.currency,
-                  data: dates.map(d => c.rates.find(r => r.date === d)?.rate || null),
-                }))
-              },
-              options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                  y: {
-                    ticks: {
-                      minTicksLimit: 15,
-                      stepSize: 0.01,
-                      callback: function (value) {
-                        return value.toFixed(3);
-                      },
-                      grace: '50%'
-                    },
-                    beginAtZero: false
-                  }
-                },
-                plugins: {
-                  htmlLegend: {
-                    containerID: 'legend-container',
-                  },
-                  legend: {
-                    display: false,
-                  }
-                }
-
-              },
-              plugins: [htmlLegendPlugin],
-            });
             return allRates;
 
           } catch (error) {
             console.error('Ошибка при получении всех курсов:', error);
           }
         }
-        getAllMonthlyRates()
+
+        function createChart(data) {
+          if (currentChart) {
+            currentChart.destroy();
+          }
+
+          const dates = [...new Set(data.flatMap(c => c.rates.map(r => r.date)))].sort();
+
+          currentChart = new Chart(document.getElementById('currencyChart').getContext('2d'), {
+            type: 'line',
+            data: {
+              labels: dates,
+              datasets: data.map((c, i) => {
+                const colorIndex = i % 6;
+                const colors = [
+                  '#034A66',
+                  '#C47A2C',
+                  '#F9B974',
+                  '#D24344',
+                  '#18B08C',
+                  '#808181'
+                ];
+
+                const borderColor = colors[colorIndex];
+                const backgroundColor = borderColor;
+
+                return {
+                  label: c.currency,
+                  data: dates.map(d => c.rates.find(r => r.date === d)?.rate || null),
+                  borderColor: borderColor,
+                  backgroundColor: backgroundColor,
+                  pointBackgroundColor: borderColor,
+                  pointBorderColor: '#ffffff',
+                  pointHoverBackgroundColor: borderColor,
+                  pointHoverBorderColor: '#ffffff',
+                  tension: 0.4
+                };
+              })
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              scales: {
+                y: {
+                  ticks: {
+                    minTicksLimit: 15,
+                    stepSize: 0.01,
+                    callback: function (value) {
+                      return value.toFixed(3);
+                    },
+                    grace: '50%'
+                  },
+                  beginAtZero: false
+                }
+              },
+              plugins: {
+                htmlLegend: {
+                  containerID: 'legend-container',
+                  position: 'bottom'
+                },
+                legend: {
+                  display: true,
+                  labels: {
+                    boxWidth: 25,
+                    useBorderRadius: true,
+                    borderRadius: 4
+                  }
+                }
+              }
+
+            },
+            plugins: [htmlLegendPlugin, customChartBackgroundPlugin],
+          });
+        }
+        getAllRates()
+
+        const currentWeekBtn = document.querySelector('#currentWeek')
+        currentWeekBtn.addEventListener('change', () => {
+          getAllRates('week')
+        })
+
+        const currentMonthBtn = document.querySelector('#currentMonth')
+        currentMonthBtn.addEventListener('change', () => {
+          getAllRates('month')
+        })
+
+        function printChart() {
+          const canvas = document.querySelector('#currencyChart'); //Use canvas ID, *not* div ID
+          const win = window.open();
+          win.document.write("<br><img src='" + canvas.toDataURL() + "'/>");
+          setTimeout(() => {
+            win.print();
+          }, 1000);
+        }
+
+        const printChartBtn = document.querySelector('#print-chart')
+        printChartBtn.addEventListener('click', () => printChart())
+
+        function saveChartToPDF() {
+          const canvas = document.querySelector('#currencyChart');
+          const canvasImage = canvas.toDataURL('image/jpeg', 1.0);
+          let pdf = new jspdf.jsPDF({
+            orientation: 'landscape'
+          });
+          pdf.setFontSize(20);
+          pdf.addImage(canvasImage, 'jpeg', 15, 15, 280, 150);
+          pdf.save('График архива курсов валют.pdf');
+        }
+
+        const saveChartBtn = document.querySelector('#save-chart')
+        saveChartBtn.addEventListener('click', () => saveChartToPDF())
+
+
+        function printSmallTable() {
+          const originalContents = document.body.innerHTML;
+          const printableTable = document.querySelector('#rates-table-small').innerHTML;
+
+          document.body.innerHTML = `
+            <!DOCTYPE html>
+            <html>
+            <head>
+              <title>Курсы валют</title>
+              <style>
+                body { font-family: Arial, sans-serif; margin: 20px; }
+                table { width: 100%; border-collapse: collapse; }
+                th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+                th { background-color: #f2f2f2; }
+                .d-flex { display: flex; align-items: center; }
+                img { margin-right: 10px; width: 20px; height: 15px; }
+                @media print {
+                  .table-actions { display: none; }
+                  body { margin: 0; }
+                }
+              </style>
+            </head>
+            <body>
+              <h2>Курсы валют на ${new Date().toLocaleDateString()}</h2>
+              <table>${printableTable}</table>
+            </body>
+            </html>
+          `;
+
+          window.print();
+          document.body.innerHTML = originalContents;
+          window.location.reload();
+        }
+
+        // Функция для сохранения как PDF
+        async function saveSmallTable() {
+          try {
+            // Ждем загрузки библиотек
+            if (typeof html2canvas === 'undefined' || typeof jspdf === 'undefined') {
+              alert('Библиотеки для экспорта не загружены');
+              return;
+            }
+
+            const { jsPDF } = window.jspdf;
+            const table = document.querySelector('#rates-table-small');
+
+            // Создаем копию таблицы для PDF
+            const tableClone = table.cloneNode(true);
+            tableClone.style.width = '100%';
+            tableClone.style.fontSize = '12px';
+            document.body.appendChild(tableClone);
+
+            // Создаем canvas из таблицы
+            const canvas = await html2canvas(tableClone, {
+              scale: 2,
+              useCORS: true,
+              logging: false
+            });
+
+            // Удаляем клон
+            document.body.removeChild(tableClone);
+
+            // Создаем PDF
+            const imgData = canvas.toDataURL('image/png');
+            const pdf = new jsPDF('p', 'mm', 'a4');
+            const imgWidth = 190;
+            const pageHeight = 280;
+            const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+            let heightLeft = imgHeight;
+            let position = 10;
+
+            pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
+            heightLeft -= pageHeight;
+
+            // Добавляем новые страницы если нужно
+            while (heightLeft >= 0) {
+              position = heightLeft - imgHeight;
+              pdf.addPage();
+              pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
+              heightLeft -= pageHeight;
+            }
+
+            // Сохраняем PDF
+            pdf.save(`курсы-валют-${new Date().toISOString().split('T')[0]}.pdf`);
+
+          } catch (error) {
+            console.error('Ошибка при создании PDF:', error);
+            alert('Произошла ошибка при создании PDF файла');
+          }
+        }
+
+        const saveSmallTableBtn = document.querySelector('#save-table-small')
+        saveSmallTableBtn.addEventListener('click', () => saveSmallTable())
+
+        const printSmallTableBtn = document.querySelector('#print-table-small')
+        printSmallTableBtn.addEventListener('click', () => printSmallTable())
       });
     </script>
 </body>

@@ -51,7 +51,8 @@
       z-index: 2;
       width: 280px;
       background-color: var(--color-white);
-      box-shadow: 0px 4px 4px rgba(106, 58, 7, 0.25), -6px 0px 4px rgba(106, 58, 7, 0.25);
+      box-shadow: 0px 4px 4px rgba(106, 58, 7, 0.25),
+        -6px 0px 4px rgba(106, 58, 7, 0.25);
 
       &._show {
         display: block;
@@ -383,7 +384,7 @@
       content: "";
       position: absolute;
       left: 5px;
-      top: 5px;
+      top: 6px;
       width: 10px;
       height: 7px;
       border-left: 2.5px solid var(--color-gold);
@@ -446,7 +447,7 @@
 
     &:before {
       content: "";
-      margin: 0px 16px 0px 0px;
+      margin: 1px 16px 0px 0px;
       align-self: flex-start;
       flex: 0 0 20px;
       width: 20px;
@@ -724,7 +725,13 @@
 
   // .profile-photo__input
   &__input {
-    background: linear-gradient(180deg, rgba(22, 22, 22, 0) 0%, rgba(21, 21, 21, 0.08) 38.54%, rgba(20, 20, 20, 0.22) 64.06%, rgba(26, 26, 26, 0.68) 99.6%);
+    background: linear-gradient(
+      180deg,
+      rgba(22, 22, 22, 0) 0%,
+      rgba(21, 21, 21, 0.08) 38.54%,
+      rgba(20, 20, 20, 0.22) 64.06%,
+      rgba(26, 26, 26, 0.68) 99.6%
+    );
     background-color: rgba(0, 0, 0, 0.5);
     position: absolute;
     width: 100%;
