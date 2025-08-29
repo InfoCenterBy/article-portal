@@ -382,8 +382,12 @@
                   График архива курсов валют
                 </span>
                 <span class="d-flex gap-2">
-                  <img id="save-chart" src=" ./img/icons/download-file.svg" alt="" width="22" height="22">
-                  <img id="print-chart" src="./img/icons/printer.svg" alt="" width="22" height="22">
+                  <button>
+                    <img id="save-chart" src=" ./img/icons/download-file.svg" alt="" width="22" height="22">
+                  </button>
+                  <button>
+                    <img id="print-chart" src="./img/icons/printer.svg" alt="" width="22" height="22">
+                  </button>
                 </span>
               </p>
               <div class="d-flex gap-4 mb-3">
@@ -415,12 +419,16 @@
                 </label>
               </span>
             </span>
-            <span class="d-flex gap-2">
-              <img id="save-chart" src=" ./img/icons/download-file.svg" alt="" width="22" height="22">
-              <img id="print-chart" src="./img/icons/printer.svg" alt="" width="22" height="22">
+            <span>
+              <button>
+                <img id="save-table-large" src=" ./img/icons/download-file.svg" alt="" width="22" height="22">
+              </button>
+              <button>
+                <img id="print-table-large" src="./img/icons/printer.svg" alt="" width="22" height="22">
+              </button>
             </span>
           </p>
-          <div class="table-default">
+          <div id="rates-table-large" class="table-default">
             <table class="w-100">
               <thead>
                 <tr>
@@ -1121,7 +1129,7 @@
         })
 
         function printChart() {
-          const canvas = document.querySelector('#currencyChart'); //Use canvas ID, *not* div ID
+          const canvas = document.querySelector('#currencyChart');
           const win = window.open();
           win.document.write("<br><img src='" + canvas.toDataURL() + "'/>");
           setTimeout(() => {
@@ -1147,9 +1155,9 @@
         saveChartBtn.addEventListener('click', () => saveChartToPDF())
 
 
-        function printSmallTable() {
+        function printTable(selector) {
           const originalContents = document.body.innerHTML;
-          const printableTable = document.querySelector('#rates-table-small').innerHTML;
+          const printableTable = document.querySelector(selector).innerHTML;
 
           document.body.innerHTML = `
             <!DOCTYPE html>
@@ -1181,35 +1189,29 @@
           window.location.reload();
         }
 
-        // Функция для сохранения как PDF
-        async function saveSmallTable() {
+        async function saveTable(selector) {
           try {
-            // Ждем загрузки библиотек
             if (typeof html2canvas === 'undefined' || typeof jspdf === 'undefined') {
               alert('Библиотеки для экспорта не загружены');
               return;
             }
 
             const { jsPDF } = window.jspdf;
-            const table = document.querySelector('#rates-table-small');
+            const table = document.querySelector(selector);
 
-            // Создаем копию таблицы для PDF
             const tableClone = table.cloneNode(true);
             tableClone.style.width = '100%';
             tableClone.style.fontSize = '12px';
             document.body.appendChild(tableClone);
 
-            // Создаем canvas из таблицы
             const canvas = await html2canvas(tableClone, {
               scale: 2,
               useCORS: true,
               logging: false
             });
 
-            // Удаляем клон
             document.body.removeChild(tableClone);
 
-            // Создаем PDF
             const imgData = canvas.toDataURL('image/png');
             const pdf = new jsPDF('p', 'mm', 'a4');
             const imgWidth = 190;
@@ -1222,7 +1224,6 @@
             pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
             heightLeft -= pageHeight;
 
-            // Добавляем новые страницы если нужно
             while (heightLeft >= 0) {
               position = heightLeft - imgHeight;
               pdf.addPage();
@@ -1230,7 +1231,6 @@
               heightLeft -= pageHeight;
             }
 
-            // Сохраняем PDF
             pdf.save(`курсы-валют-${new Date().toISOString().split('T')[0]}.pdf`);
 
           } catch (error) {
@@ -1240,10 +1240,16 @@
         }
 
         const saveSmallTableBtn = document.querySelector('#save-table-small')
-        saveSmallTableBtn.addEventListener('click', () => saveSmallTable())
+        saveSmallTableBtn.addEventListener('click', () => saveTable("#rates-table-small"))
+
+        const saveLargeTableBtn = document.querySelector('#save-table-large')
+        saveLargeTableBtn.addEventListener('click', () => saveTable("#rates-table-large"))
 
         const printSmallTableBtn = document.querySelector('#print-table-small')
-        printSmallTableBtn.addEventListener('click', () => printSmallTable())
+        printSmallTableBtn.addEventListener('click', () => printTable("#rates-table-small"))
+
+        const printLargeTableBtn = document.querySelector('#print-table-large')
+        printLargeTableBtn.addEventListener('click', () => printTable("#rates-table-large"))
       });
     </script>
 </body>
