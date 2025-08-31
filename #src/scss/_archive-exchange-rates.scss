@@ -57,11 +57,15 @@
     }
   }
 }
+
 .chart-container {
-  min-height: 300px;
-  max-height: 310px;
+  height: 330px;
   width: 100%;
   position: relative;
+
+  @media (max-width: 576px) {
+    height: 410px;
+  }
 }
 
 #currency-chart {
@@ -92,4 +96,8 @@
   background: transparent;
   font-size: 0;
   min-width: 0;
+}
+
+.rates-card {
+  min-height: 560px;
 }
