@@ -1,10 +1,10 @@
 .header {
   position: relative;
-  
+
   @media (max-width: $md2+px) {
     margin: 86px 0px 0px 0px;
   }
-  
+
   @media (max-width: $md3+px) {
     margin: 68px 0px 0px 0px;
   }
@@ -212,7 +212,7 @@
   min-width: 380px;
   max-width: 380px;
   inset: 10px 0px auto auto !important;
-  
+
   @media (max-width: $md2+px) {
     .dropdown-arrow {
       right: 8px;
@@ -297,7 +297,7 @@
       right: 63px;
     }
   }
-  
+
   @media (max-width: $md4+px) {
     min-width: 380px;
     max-width: 380px;
@@ -310,7 +310,7 @@
   // .dropdown-menu-notifications__check-all
   &__check-all {
     &:hover {
-        text-decoration: underline;
+      text-decoration: underline;
     }
   }
 }
@@ -329,7 +329,7 @@
   // .menu-user__name
   &__name {
     @media (max-width: $md2+px) {
-        display: none;
+      display: none;
     }
   }
 }
@@ -342,7 +342,7 @@
   .dropdown-arrow {
     right: 65px;
   }
-  
+
   @media (max-width: $md2+px) {
     .dropdown-arrow {
       right: 3px;
@@ -374,9 +374,9 @@
   &._header-menu-open {
     transform: translateX(300px);
   }
-  
+
   @media (max-width: $md2+px) {
-      display: none;
+    display: none;
   }
   // .header-bottom__body
   &__body {
@@ -443,7 +443,6 @@
 }
 
 .menu-header {
-
   // .menu-header__list
   &__list {
     padding: 0px 0px 24px 0px;
@@ -456,7 +455,6 @@
     }
 
     li {
-
     }
   }
 

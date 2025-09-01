@@ -1,0 +1,103 @@
+.table-default {
+  overflow-x: auto;
+
+  table {
+    th,
+    td {
+      padding: 16px 10px;
+    }
+
+    thead {
+      text-align: center;
+      font-weight: 600;
+
+      tr td {
+        color: var(--color-nav-black);
+        background-color: #034a6612;
+      }
+
+      td:not(:last-child) {
+        border-right: 1px solid var(--color-gray);
+      }
+
+      td:first-child {
+        border-top-left-radius: 20px;
+      }
+
+      td:last-child {
+        border-top-right-radius: 20px;
+      }
+    }
+
+    tbody {
+      text-align: center;
+
+      tr {
+        border-bottom: 1px solid var(--color-gray);
+
+        &:hover {
+          background: rgba(129, 129, 129, 0.1);
+        }
+
+        td {
+          &:first-child {
+            text-align: left;
+          }
+        }
+      }
+    }
+
+    a {
+      color: var(--color-black);
+
+      &:hover {
+        color: var(--color-blue-light);
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.chart-container {
+  height: 330px;
+  width: 100%;
+  position: relative;
+
+  @media (max-width: 576px) {
+    height: 410px;
+  }
+}
+
+#currency-chart {
+  width: 100% !important;
+  height: 310px;
+}
+
+.date-container {
+  display: inline;
+  width: 100%;
+}
+
+.cur-label {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.cur-date-absolute {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  font-size: 0;
+  min-width: 0;
+}
+
+.rates-card {
+  min-height: 560px;
+}

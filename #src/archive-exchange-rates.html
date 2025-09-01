@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="ru">
+@@include('_head.html',{
+"title":"Архив курсов валют"
+})
+
+<body>
+  @@include('./new-main/main-components/_new-header.html')
+  @@include('./new-main/main-components/_search-modal.html')
+  @@include('./new-main/main-components/_nav.html')
+
+  <div class="nav-container active-container">
+
+    <!-- Nav Button -->
+    <a class="" id="menu-btn"><i class="bi bi-chevron-right"></i></a>
+    <!--Nav Button -->
+    <div class="main-content">
+      <section class="main-section">
+        <div class="row">
+          <nav aria-label="breadcrumb" class="col-12">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="main.html"><i class="bi bi-house"></i></a></li>
+              <li class="breadcrumb-item"><a href="#">Справочная информация</a></li>
+              <li class="breadcrumb-item " aria-current="page">Архив курсов валют</li>
+            </ol>
+          </nav>
+        </div>
+      </section>
+      <div class="mt-4"></div>
+      <div class="main-section">
+        <div class="">
+          <strong class="ff-inter fs-28">
+            Архив курсов валют
+          </strong>
+        </div>
+        <div class="row mt-4">
+          <div class="col-12 col-lg-6">
+            <div class="border-20 border-1-5-gray p-3 p-lg-4 rates-card">
+              <p class="fs-24 fw-semibold d-flex justify-content-between align-items-center flex-wrap gap-2">
+                <span>
+                  <span>Курсы валют на</span>
+                  <span class="color-gold date-display"></span>
+                  <span class="date-container">
+                    <label class="cur-label cursor-pointer" for="cur-date-small">
+                      <i class="bi bi-calendar4-event color-gold cursor-pointer fs-20"></i>
+                      <input class="cur-date cur-date-absolute" type="date" name="cur-date" id="cur-date-small">
+                    </label>
+                  </span>
+                </span>
+                <span class="d-flex gap-2">
+                  <button>
+                    <img id="save-table-small" src=" ./img/icons/download-file.svg" alt="" width="22" height="22">
+                  </button>
+                  <button>
+                    <img id="print-table-small" src="./img/icons/printer.svg" alt="" width="22" height="22">
+                  </button>
+                </span>
+              </p>
+              <div class="flex-column justify-content-center align-items-center mt-5 rates-preloader--table">
+                <div class="my-5"></div>
+                <div class="spinner" style="margin: 0 auto"></div>
+                <div class="my-5"></div>
+              </div>
+              <div id="rates-table-small" class="table-default d-none">
+                <table class="w-100">
+                  <thead>
+                    <tr>
+                      <td>
+                        Наименование иностранной валюты
+                      </td>
+                      <td>
+                        Количество единиц иностранной валюты, буквенный код валюты
+                      </td>
+                      <td>
+                        Официальный курс, (BYN)
+                      </td>
+                    </tr>
+                  </thead>
+                  <tbody class="list-exchange-rates list-exchange-rates--small">
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6 d-flex">
+            <div class="border-20 border-1-5-gray p-3 p-lg-4 w-100 rates-card mt-4 mt-lg-0">
+              <p class="fs-24 fw-semibold d-flex align-items-center justify-content-between lh-1">
+                <span>
+                  График архива курсов валют
+                </span>
+                <span class="d-flex gap-2">
+                  <button>
+                    <img id="save-chart" src=" ./img/icons/download-file.svg" alt="" width="22" height="22">
+                  </button>
+                  <button>
+                    <img id="print-chart" src="./img/icons/printer.svg" alt="" width="22" height="22">
+                  </button>
+                </span>
+              </p>
+
+              <div class="chart-content">
+                <div class="d-flex gap-2 gap-lg-4 flex-wrap flex-md-nowrap mb-3 w-100">
+                  <div class="radio-wrapper w-100">
+                    <input class="d-none" type="radio" name="ratesPeriod" id="currentWeek" checked>
+                    <label class="try-btn px-3 py-2" for="currentWeek">Текущая неделя</label>
+                  </div>
+                  <div class="radio-wrapper w-100">
+                    <input class="d-none" type="radio" name="ratesPeriod" id="currentMonth">
+                    <label class="try-btn px-3 py-2" for="currentMonth">Текущий месяц</label>
+                  </div>
+                </div>
+                <div class="flex-column justify-content-center align-items-center mt-5 rates-preloader--chart">
+                  <div class="my-5"></div>
+                  <div class="spinner" style="margin: 0 auto"></div>
+                  <div class="my-5"></div>
+                </div>
+                <div class="chart-container">
+                  <canvas id="currencyChart"></canvas>
+                </div>
+                <div id="legend-container"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-5">
+          <p class="fs-24 fw-semibold d-flex justify-content-between align-items-center">
+            <span>
+              <span>Курсы валют на</span>
+              <span class="color-gold date-display">07.02.2025</span>
+              <span class="date-container">
+                <label class="cur-label cursor-pointer" for="cur-date-large">
+                  <i class="bi bi-calendar4-event color-gold cursor-pointer fs-20"></i>
+                  <input class="cur-date cur-date-absolute" type="date" name="cur-date" id="cur-date-large">
+                </label>
+              </span>
+            </span>
+            <span>
+              <button>
+                <img id="save-table-large" src=" ./img/icons/download-file.svg" alt="" width="22" height="22">
+              </button>
+              <button>
+                <img id="print-table-large" src="./img/icons/printer.svg" alt="" width="22" height="22">
+              </button>
+            </span>
+          </p>
+          <div class="flex-column justify-content-center align-items-center mt-5 rates-preloader--table">
+            <div class="my-5"></div>
+            <div class="spinner" style="margin: 0 auto"></div>
+            <div class="my-5"></div>
+          </div>
+          <div id="rates-table-large" class="table-default d-none">
+            <table class="w-100">
+              <thead>
+                <tr>
+                  <td>
+                    Наименование иностранной валюты
+                  </td>
+                  <td>
+                    Количество единиц иностранной валюты, буквенный код валюты
+                  </td>
+                  <td>
+                    Официальный курс, (BYN)
+                  </td>
+                </tr>
+              </thead>
+              <tbody class="list-exchange-rates list-exchange-rates--large">
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+      <div class="my-5"></div>
+      @@include('./new-main/main-components/_new-footer.html')
+    </div>
+    @@include('_js.html',{})
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/3.0.2/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script async>
+      document.addEventListener('DOMContentLoaded', function () {
+        const dateInputs = document.querySelectorAll('.cur-date');
+        const dateDisplay = document.querySelectorAll('.date-display');
+        const calendarIcons = document.querySelectorAll('.cur-label');
+
+        const today = new Date();
+        const formattedToday = formatDateToInput(today);
+
+        dateInputs.forEach(input => {
+          input.value = formattedToday;
+        })
+
+        updateDisplayedDate(formattedToday);
+
+        getRateForCurrency(formattedToday);
+
+        dateInputs.forEach(input => {
+          input.addEventListener('change', function () {
+            updateDisplayedDate(this.value);
+            getRateForCurrency(this.value);
+          });
+        })
+
+        function updateDisplayedDate(dateString) {
+          const date = new Date(dateString);
+          const formattedDate = formatDateToDisplay(date);
+          dateDisplay.forEach(date => {
+            date.textContent = formattedDate;
+          })
+        }
+
+        function formatDateToDisplay(date) {
+          const day = date.getDate().toString().padStart(2, '0');
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const year = date.getFullYear();
+          return `${day}.${month}.${year}`;
+        }
+
+        function formatDateToInput(date) {
+          const day = date.getDate().toString().padStart(2, '0');
+          const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const year = date.getFullYear();
+          return `${year}-${month}-${day}`;
+        }
+
+        const listExchangeRatesLarge = document.querySelector(".list-exchange-rates--large");
+        const listExchangeRatesSmall = document.querySelector(".list-exchange-rates--small");
+
+        const createListExchangeRates = (exchangeRatesList) => {
+          listExchangeRatesLarge.innerHTML = ""
+          exchangeRatesList.forEach(item => {
+            listExchangeRatesLarge.innerHTML += `<tr>
+                                                <td>
+                                                  <div class="d-flex align-items-center">
+                                                    <img src="./img/countries-flags/${item.Cur_Abbreviation}.svg" alt="flag">
+                                                    <span>${item.Cur_Name}</span>
+                                                  </div>
+                                                </td>
+                                                <td>
+                                                  ${item.Cur_Scale} ${item.Cur_Abbreviation}
+                                                </td>
+                                                <td>
+                                                   ${item.Cur_OfficialRate}
+                                                </td>
+                                            </tr>
+                                          `;
+          })
+          const commonRatesList = ["USD", "EUR", "RUB", "CNY", "KZT", "PLN"];
+
+          let commonRates = exchangeRatesList.filter(rate => commonRatesList.includes(rate.Cur_Abbreviation))
+          listExchangeRatesSmall.innerHTML = ""
+
+          commonRates.forEach(item => {
+            listExchangeRatesSmall.innerHTML += `<tr>
+                                                <td>
+                                                  <div class="d-flex align-items-center">
+                                                    <img src="./img/countries-flags/${item.Cur_Abbreviation}.svg" alt="flag">
+                                                    <span>${item.Cur_Name}</span>
+                                                  </div>
+                                                </td>
+                                                <td>
+                                                  ${item.Cur_Scale} ${item.Cur_Abbreviation}
+                                                </td>
+                                                <td>
+                                                   ${item.Cur_OfficialRate}
+                                                </td>
+                                            </tr>
+                                          `;
+          })
+        };
+
+        async function getRateForCurrency(date) {
+          const tables = document.querySelectorAll('.table-default')
+          const loaders = document.querySelectorAll('.rates-preloader--table')
+
+          try {
+            tables.forEach(table => table.classList.add('d-none'))
+            loaders.forEach(loader => loader.classList.remove('d-none'))
+            loaders.forEach(loader => loader.classList.add('d-flex'))
+
+            const response = await fetch(`https://api.nbrb.by/exrates/rates?ondate=${date}&periodicity=0`);
+            const data = await response.json();
+            createListExchangeRates(data);
+
+            return data;
+          } catch (error) {
+            console.error('Ошибка при получении курса:', error);
+          } finally {
+            tables.forEach(table => {
+              table.classList.add('d-block')
+              table.classList.remove('d-none')
+            })
+            loaders.forEach(loader => loader.classList.add('d-none'))
+            loaders.forEach(loader => loader.classList.remove('d-flex'))
+          }
+        }
+
+        calendarIcons.forEach(icon => {
+          icon.addEventListener('click', function () {
+            const inputId = this.getAttribute('for');
+            const dateInput = document.getElementById(inputId);
+            dateInput.showPicker();
+          });
+        })
+
+        async function getRates(currencyID, period = 'week', customDate = null) {
+          const chartContent = document.querySelector('.chart-container')
+          const chartLoader = document.querySelector('.rates-preloader--chart')
+
+          try {
+            let startDate, endDate;
+
+            chartContent.classList.add('d-none')
+            chartLoader.classList.remove('d-none')
+            chartLoader.classList.add('d-flex')
+
+            switch (period) {
+              case 'week':
+                ({ startDate, endDate } = getCurrentWeek());
+                break;
+              case 'month':
+                ({ startDate, endDate } = getCurrentMonth());
+                break;
+              default:
+                throw new Error('Неверный период. Доступные значения: week, month, custom, year');
+            }
+
+            const formatDate = (date) => {
+              const year = date.getFullYear();
+              const month = (date.getMonth() + 1).toString().padStart(2, '0');
+              const day = date.getDate().toString().padStart(2, '0');
+              return `${year}-${month}-${day}`;
+            };
+
+            const startDateStr = formatDate(startDate);
+            const endDateStr = formatDate(endDate);
+
+            const response = await fetch(`https://www.nbrb.by/API/ExRates/Rates/Dynamics/${currencyID}?startDate=${startDateStr}&endDate=${endDateStr}`);
+
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const rates = await response.json();
+
+            const processedRates = rates.map(rate => ({
+              date: new Date(rate.Date).toLocaleDateString('ru-RU'),
+              rate: rate.Cur_OfficialRate,
+              dateObj: new Date(rate.Date)
+            }));
+
+            processedRates.sort((a, b) => a.dateObj - b.dateObj);
+
+            return processedRates;
+          } catch (error) {
+            console.error('Ошибка при получении курсов:', error);
+            throw error;
+          } finally {
+            chartContent.classList.add('d-block')
+            chartContent.classList.remove('d-none')
+            chartLoader.classList.add('d-none')
+            chartLoader.classList.remove('d-flex')
+          }
+        }
+
+        function getCurrentWeek() {
+          const now = new Date();
+          const dayOfWeek = now.getDay();
+
+          const startOfWeek = new Date(now);
+          if (dayOfWeek === 0) {
+            startOfWeek.setDate(now.getDate() - 6);
+          } else {
+            startOfWeek.setDate(now.getDate() - dayOfWeek + 1);
+          }
+          startOfWeek.setHours(0, 0, 0, 0);
+
+          const endOfWeek = new Date(startOfWeek);
+          endOfWeek.setDate(startOfWeek.getDate() + 6);
+          endOfWeek.setHours(23, 59, 59, 999);
+
+          return { startDate: startOfWeek, endDate: endOfWeek };
+        }
+
+        function getCurrentMonth() {
+          const now = new Date();
+
+          const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+          startOfMonth.setHours(0, 0, 0, 0);
+
+          const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+          endOfMonth.setHours(23, 59, 59, 999);
+
+          return { startDate: startOfMonth, endDate: endOfMonth };
+        }
+
+        let data = null
+        const currencies = [
+          { id: 431, code: 'USD', name: '1 Доллар США' },
+          { id: 451, code: 'EUR', name: '1 Евро' },
+          { id: 456, code: 'RUB', name: '100 Российских рублей' },
+          { id: 452, code: 'PLN', name: '10 Злотых' },
+          { id: 462, code: 'CNY', name: '10 Китайских юаней' },
+          { id: 459, code: 'KZT', name: '1000 Тенге' },
+        ];
+
+        const getOrCreateLegendList = (chart, id) => {
+          const legendContainer = document.getElementById(id);
+          let listContainer = legendContainer.querySelector('ul');
+
+          if (!listContainer) {
+            listContainer = document.createElement('ul');
+            listContainer.style.display = 'flex';
+            listContainer.style.flexDirection = 'row';
+            listContainer.style.gap = '12px';
+            listContainer.style.columnGap = '24px';
+            listContainer.style.flexWrap = 'wrap';
+            listContainer.style.margin = 0;
+            listContainer.style.marginTop = '16px';
+            listContainer.style.padding = 0;
+
+            legendContainer.appendChild(listContainer);
+          }
+
+          return listContainer;
+        };
+
+        const customChartBackgroundPlugin = {
+          id: 'customChartBackground',
+          beforeDraw: (chart) => {
+            const { ctx } = chart;
+            ctx.save();
+            ctx.globalCompositeOperation = 'destination-over';
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, chart.width, chart.height);
+            ctx.restore();
+          }
+        };
+
+        const htmlLegendPlugin = {
+          id: 'htmlLegend',
+          afterUpdate(chart, args, options) {
+            const ul = getOrCreateLegendList(chart, options.containerID);
+
+            while (ul.firstChild) {
+              ul.firstChild.remove();
+            }
+
+            const items = chart.options.plugins.legend.labels.generateLabels(chart);
+
+            items.forEach(item => {
+              const li = document.createElement('li');
+              li.style.alignItems = 'center';
+              li.style.cursor = 'pointer';
+              li.style.display = 'flex';
+              li.style.flexDirection = 'row';
+              li.style.gap = '10px';
+
+              const toggleVisibility = () => {
+                const { type } = chart.config;
+                if (type === 'pie' || type === 'doughnut') {
+                  chart.toggleDataVisibility(item.index);
+                } else {
+                  chart.setDatasetVisibility(item.datasetIndex, !chart.isDatasetVisible(item.datasetIndex));
+                }
+                chart.update();
+
+                const checkbox = li.querySelector('input[type="checkbox"]');
+                if (checkbox) {
+                  checkbox.checked = !item.hidden;
+                }
+
+                const textContainer = li.querySelector('.checkbox__label_text');
+                if (textContainer) {
+                  textContainer.style.textDecoration = item.hidden ? 'line-through' : '';
+                }
+              };
+
+              li.onclick = (e) => {
+                if (e.target.type !== 'checkbox') {
+                  toggleVisibility();
+                }
+              };
+
+              const checkboxContainer = document.createElement('div');
+              checkboxContainer.className = 'checkbox';
+              checkboxContainer.style.display = 'flex';
+              checkboxContainer.style.alignItems = 'center';
+              checkboxContainer.style.gap = '8px';
+
+              const checkbox = document.createElement('input');
+              checkbox.type = 'checkbox';
+              checkbox.id = `currency-${item.datasetIndex || item.index}`;
+              checkbox.checked = !item.hidden;
+              checkbox.className = 'checkbox__input';
+
+              checkbox.onchange = () => {
+                toggleVisibility();
+              };
+
+              const imageContainer = document.createElement('div');
+              imageContainer.style.display = 'flex';
+              imageContainer.style.alignItems = 'center';
+              imageContainer.style.justifyContent = 'center';
+              imageContainer.style.width = '30px';
+              imageContainer.style.height = '20px';
+              imageContainer.style.flexShrink = '0';
+              imageContainer.style.marginRight = '8px'
+
+              const img = document.createElement('img');
+              img.src = getCurrencyImage(item.text);
+              img.alt = item.text;
+              img.style.width = '100%';
+              img.style.height = '100%';
+              img.style.objectFit = 'cover';
+              img.style.borderRadius = '2px';
+
+              imageContainer.appendChild(img);
+
+              const label = document.createElement('label');
+              label.className = 'checkbox__label checkbox__label--small';
+              label.htmlFor = checkbox.id;
+
+              const labelText = document.createElement('span');
+              labelText.className = 'checkbox__label_text';
+              labelText.style.color = item.fontColor;
+              labelText.style.textDecoration = item.hidden ? 'line-through' : '';
+              labelText.textContent = item.text;
+
+              label.appendChild(imageContainer);
+              label.appendChild(labelText);
+
+              checkboxContainer.appendChild(checkbox);
+              checkboxContainer.appendChild(label);
+
+              li.appendChild(checkboxContainer);
+              ul.appendChild(li);
+            });
+          }
+        };
+
+        function getCurrencyImage(currencyText) {
+          const currencyImages = {
+            '1 Доллар США': './img/countries-flags/USD.svg',
+            '100 Российских рублей': './img/countries-flags/RUB.svg',
+            '1 Евро': './img/countries-flags/EUR.svg',
+            '10 Злотых': './img/countries-flags/PLN.svg',
+            '10 Китайских юаней': './img/countries-flags/CNY.svg',
+            '1000 Тенге': './img/countries-flags/KZT.svg',
+          };
+
+          for (const [key, value] of Object.entries(currencyImages)) {
+            if (currencyText.includes(key)) {
+              return value;
+            }
+          }
+        }
+
+        let currentChart = null;
+
+        async function getAllRates(period) {
+          try {
+            const allRates = await Promise.all(
+              currencies.map(async currency => ({
+                currency: currency.name,
+                rates: await getRates(currency.id, period)
+              }))
+            );
+
+            let data = allRates
+            createChart(allRates);
+
+            return allRates;
+
+          } catch (error) {
+            console.error('Ошибка при получении всех курсов:', error);
+          }
+        }
+
+        function createChart(data) {
+          if (currentChart) {
+            currentChart.destroy();
+          }
+
+          const dates = [...new Set(data.flatMap(c => c.rates.map(r => r.date)))].sort();
+
+          currentChart = new Chart(document.getElementById('currencyChart').getContext('2d'), {
+            type: 'line',
+            data: {
+              labels: dates,
+              datasets: data.map((c, i) => {
+                const colorIndex = i % 6;
+                const colors = [
+                  '#034A66',
+                  '#C47A2C',
+                  '#F9B974',
+                  '#D24344',
+                  '#18B08C',
+                  '#808181'
+                ];
+
+                const borderColor = colors[colorIndex];
+                const backgroundColor = borderColor;
+
+                return {
+                  label: c.currency,
+                  data: dates.map(d => c.rates.find(r => r.date === d)?.rate || null),
+                  borderColor: borderColor,
+                  backgroundColor: backgroundColor,
+                  pointBackgroundColor: borderColor,
+                  pointBorderColor: '#ffffff',
+                  pointHoverBackgroundColor: borderColor,
+                  pointHoverBorderColor: '#ffffff',
+                  tension: 0.4
+                };
+              })
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              scales: {
+                y: {
+                  ticks: {
+                    minTicksLimit: 15,
+                    stepSize: 0.01,
+                    callback: function (value) {
+                      return value.toFixed(3);
+                    },
+                    grace: '50%'
+                  },
+                  beginAtZero: false
+                }
+              },
+              plugins: {
+                htmlLegend: {
+                  containerID: 'legend-container',
+                  position: 'bottom'
+                },
+                legend: {
+                  display: true,
+                  labels: {
+                    boxWidth: 25,
+                    useBorderRadius: true,
+                    borderRadius: 4
+                  }
+                }
+              }
+
+            },
+            plugins: [htmlLegendPlugin, customChartBackgroundPlugin],
+          });
+        }
+        getAllRates()
+
+        const currentWeekBtn = document.querySelector('#currentWeek')
+        currentWeekBtn.addEventListener('change', () => {
+          getAllRates('week')
+        })
+
+        const currentMonthBtn = document.querySelector('#currentMonth')
+        currentMonthBtn.addEventListener('change', () => {
+          getAllRates('month')
+        })
+
+        function printChart() {
+          try {
+            const canvas = document.querySelector('#currencyChart');
+            const imageData = canvas.toDataURL('image/png');
+
+            const iframe = document.createElement('iframe');
+            iframe.style.position = 'fixed';
+            iframe.style.right = '0';
+            iframe.style.bottom = '0';
+            iframe.style.width = '0';
+            iframe.style.height = '0';
+            iframe.style.border = 'none';
+
+            iframe.onload = function () {
+              const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+              iframeDoc.write(`
+                <!DOCTYPE html>
+                <html>
+                <head>
+                  <title>График курсов валют</title>
+                  <style>
+                    body {
+                      margin: 0;
+                      padding: 20px;
+                      font-family: Arial, sans-serif;
+                      text-align: center;
+                    }
+                    img {
+                      max-width: 100%;
+                      height: auto;
+                      margin: 0 auto;
+                      display: block;
+                    }
+                    .print-title {
+                      text-align: center;
+                      margin-bottom: 20px;
+                      font-size: 18px;
+                      font-weight: bold;
+                    }
+                    @media print {
+                      body { margin: 0; padding: 0; }
+                      .no-print { display: none; }
+                    }
+                  </style>
+                </head>
+                <body>
+                  <div class="print-title">График курсов валют</div>
+                  <img src="${imageData}" alt="График курсов валют">
+                  <div class="no-print" style="margin-top: 20px; text-align: center;">
+                    <button onclick="window.print()" style="padding: 10px 20px; font-size: 16px;">
+                      Печать
+                    </button>
+                  </div>
+                </body>
+                </html>
+              `);
+
+              iframeDoc.close();
+              setTimeout(() => {
+                iframe.contentWindow.focus();
+                iframe.contentWindow.print();
+
+                setTimeout(() => {
+                  document.body.removeChild(iframe);
+                }, 1000);
+              }, 500);
+            };
+
+            document.body.appendChild(iframe);
+
+          } catch (error) {
+            console.error('Ошибка при печати графика:', error);
+            UIUtils.showError('Ошибка при печати графика');
+          }
+
+        }
+
+        const printChartBtn = document.querySelector('#print-chart')
+        printChartBtn.addEventListener('click', () => printChart())
+
+        function saveChartToPDF() {
+          const canvas = document.querySelector('#currencyChart');
+          const canvasImage = canvas.toDataURL('image/jpeg', 2.0);
+          let pdf = new jspdf.jsPDF({
+            orientation: 'landscape'
+          });
+          pdf.setFontSize(20);
+          pdf.addImage(canvasImage, 'jpeg', 15, 15, 280, 150);
+          pdf.save('График архива курсов валют.pdf');
+        }
+
+        const saveChartBtn = document.querySelector('#save-chart')
+        saveChartBtn.addEventListener('click', () => saveChartToPDF())
+
+        function printTable(selector) {
+          const originalContents = document.body.innerHTML;
+          const printableTable = document.querySelector(selector).innerHTML;
+
+          document.body.innerHTML = `
+            <!DOCTYPE html>
+            <html>
+            <head>
+              <title>Курсы валют</title>
+              <style>
+                body { font-family: Arial, sans-serif; margin: 20px; }
+                table { width: 100%; border-collapse: collapse; }
+                th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+                th { background-color: #f2f2f2; }
+                .d-flex { display: flex; align-items: center; }
+                img { margin-right: 10px; width: 20px; height: 15px; }
+                @media print {
+                  .table-actions { display: none; }
+                  body { margin: 0; }
+                }
+              </style>
+            </head>
+            <body>
+              <h2>Курсы валют на ${new Date().toLocaleDateString()}</h2>
+              <table>${printableTable}</table>
+            </body>
+            </html>
+          `;
+
+          window.print();
+          document.body.innerHTML = originalContents;
+          window.location.reload();
+        }
+
+        async function saveTable(selector) {
+          try {
+            if (typeof html2canvas === 'undefined' || typeof jspdf === 'undefined') {
+              alert('Библиотеки для экспорта не загружены');
+              return;
+            }
+
+            const { jsPDF } = window.jspdf;
+            const table = document.querySelector(selector);
+
+            const canvas = await html2canvas(table, {
+              scale: 2,
+              useCORS: true,
+              logging: false,
+              backgroundColor: '#ffffff',
+            });
+
+            let optimizedCanvas = canvas;
+            if (canvas.width > 1200) {
+              optimizedCanvas = document.createElement('canvas');
+              const ratio = 1200 / canvas.width;
+              optimizedCanvas.width = 1200;
+              optimizedCanvas.height = canvas.height * ratio;
+
+              const ctx = optimizedCanvas.getContext('2d');
+              ctx.drawImage(canvas, 0, 0, optimizedCanvas.width, optimizedCanvas.height);
+            }
+
+            const imgData = optimizedCanvas.toDataURL('image/jpeg', 1);
+
+            const pdf = new jsPDF('p', 'mm', 'a4');
+            const pdfWidth = pdf.internal.pageSize.getWidth();
+            const imgWidth = pdfWidth - 20;
+            const imgHeight = (optimizedCanvas.height * imgWidth) / optimizedCanvas.width;
+
+            pdf.addImage(imgData, 'JPEG', 10, 10, imgWidth, imgHeight);
+
+            const now = new Date();
+            const fileName = `Курсы-валют-${now.toISOString().split('T')[0]}.pdf`;
+
+            pdf.save(fileName);
+
+          } catch (error) {
+            console.error('Ошибка при создании PDF:', error);
+            alert('Произошла ошибка при создании PDF файла');
+          }
+        }
+
+        const saveSmallTableBtn = document.querySelector('#save-table-small')
+        saveSmallTableBtn.addEventListener('click', () => saveTable("#rates-table-small"))
+
+        const saveLargeTableBtn = document.querySelector('#save-table-large')
+        saveLargeTableBtn.addEventListener('click', () => saveTable("#rates-table-large"))
+
+        const printSmallTableBtn = document.querySelector('#print-table-small')
+        printSmallTableBtn.addEventListener('click', () => printTable("#rates-table-small"))
+
+        const printLargeTableBtn = document.querySelector('#print-table-large')
+        printLargeTableBtn.addEventListener('click', () => printTable("#rates-table-large"))
+      });
+    </script>
+
+</body>
+
+</html>

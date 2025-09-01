@@ -1,5 +1,6 @@
 @@include('libs/jquery.simple-calendar.js', {})
 @@include('libs/jquery.maskedinput.min.js', {})
+@@include('libs/chart.min.js', {})
 @@include('files/sliders.js', {})
 @@include('files/dynamic_adapt.js', {})
 @@include('libs/bootstrap-multiselect.min.js', {})
