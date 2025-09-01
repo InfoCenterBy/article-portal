@@ -9146,8 +9146,7 @@ html {
 }
 
 .chart-container {
-  min-height: 300px;
-  max-height: 310px;
+  height: 330px;
   width: 100%;
   position: relative;
 }
@@ -9180,6 +9179,10 @@ html {
   background: transparent;
   font-size: 0;
   min-width: 0;
+}
+
+.rates-card {
+  min-height: 560px;
 }
 
 @media (min-width: 576px) {
@@ -10691,6 +10694,10 @@ html {
 
   .content-forms-documents .sidebar-wrapper__aside {
     margin: 0px 0px 24px 0px;
+  }
+
+  .chart-container {
+    height: 410px;
   }
 }
 

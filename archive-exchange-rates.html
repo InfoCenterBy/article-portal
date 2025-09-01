@@ -333,11 +333,11 @@
         </div>
         <div class="row mt-4">
           <div class="col-12 col-lg-6">
-            <div class="border-20 border-1-5-gray p-3 p-lg-4">
-              <p class="fs-24 fw-semibold d-flex justify-content-between align-items-center">
+            <div class="border-20 border-1-5-gray p-3 p-lg-4 rates-card">
+              <p class="fs-24 fw-semibold d-flex justify-content-between align-items-center flex-wrap gap-2">
                 <span>
                   <span>Курсы валют на</span>
-                  <span class="color-gold date-display">07.02.2025</span>
+                  <span class="color-gold date-display"></span>
                   <span class="date-container">
                     <label class="cur-label cursor-pointer" for="cur-date-small">
                       <i class="bi bi-calendar4-event color-gold cursor-pointer fs-20"></i>
@@ -354,7 +354,13 @@
                   </button>
                 </span>
               </p>
-              <div id="rates-table-small" class="table-default">
+              <div class="flex-column justify-content-center align-items-center rates-preloader--table">
+                <div class="my-5"></div>
+                <div class="spinner" style="margin: 0 auto"></div>
+                <div class="my-5"></div>
+              </div>
+
+              <div id="rates-table-small" class="table-default d-none">
                 <table class="w-100">
                   <thead>
                     <tr>
@@ -373,10 +379,13 @@
                   </tbody>
                 </table>
               </div>
+              <div class="d-flex justify-content-center align-items-center rates-no-data d-none mt-4">
+                <p class="fs-20">Для данной даты нет данных, выберите другую дату</p>
+              </div>
             </div>
           </div>
           <div class="col-12 col-lg-6 d-flex">
-            <div class="border-20 border-1-5-gray p-3 p-lg-4 w-100 mt-4 mt-lg-0">
+            <div class="border-20 border-1-5-gray p-3 p-lg-4 w-100 rates-card mt-4 mt-lg-0">
               <p class="fs-24 fw-semibold d-flex align-items-center justify-content-between lh-1">
                 <span>
                   График архива курсов валют
@@ -390,23 +399,32 @@
                   </button>
                 </span>
               </p>
-              <div class="d-flex gap-4 mb-3">
-                <div class="radio-wrapper">
-                  <input class="d-none" type="radio" name="ratesPeriod" id="currentWeek" checked>
-                  <label class="try-btn px-3 py-2" for="currentWeek">Текущая неделя</label>
+
+              <div class="chart-content">
+                <div class="d-flex gap-2 gap-lg-4 flex-wrap flex-md-nowrap mb-3 w-100">
+                  <div class="radio-wrapper w-100">
+                    <input class="d-none" type="radio" name="ratesPeriod" id="currentWeek" checked>
+                    <label class="try-btn px-3 py-2" for="currentWeek">Текущая неделя</label>
+                  </div>
+                  <div class="radio-wrapper w-100">
+                    <input class="d-none" type="radio" name="ratesPeriod" id="currentMonth">
+                    <label class="try-btn px-3 py-2" for="currentMonth">Текущий месяц</label>
+                  </div>
                 </div>
-                <div class="radio-wrapper">
-                  <input class="d-none" type="radio" name="ratesPeriod" id="currentMonth">
-                  <label class="try-btn px-3 py-2" for="currentMonth">Текущий месяц</label>
+                <div class="flex-column justify-content-center align-items-center mt-5 rates-preloader--chart">
+                  <div class="my-5"></div>
+                  <div class="spinner" style="margin: 0 auto"></div>
+                  <div class="my-5"></div>
                 </div>
-              </div>
-              <div class="chart-container">
-                <canvas id="currencyChart"></canvas>
+                <div class="chart-container">
+                  <canvas id="currencyChart"></canvas>
+                </div>
                 <div id="legend-container"></div>
               </div>
             </div>
           </div>
         </div>
+
         <div class="mt-5">
           <p class="fs-24 fw-semibold d-flex justify-content-between align-items-center">
             <span>
@@ -428,7 +446,13 @@
               </button>
             </span>
           </p>
-          <div id="rates-table-large" class="table-default">
+          <div class="flex-column justify-content-center align-items-center mt-5 rates-preloader--table">
+            <div class="my-5"></div>
+            <div class="spinner" style="margin: 0 auto"></div>
+            <div class="my-5"></div>
+          </div>
+
+          <div id="rates-table-large" class="table-default d-none">
             <table class="w-100">
               <thead>
                 <tr>
@@ -446,6 +470,9 @@
               <tbody class="list-exchange-rates list-exchange-rates--large">
               </tbody>
             </table>
+          </div>
+          <div class="d-flex justify-content-center align-items-center rates-no-data d-none mt-4">
+            <p class="fs-20">Для данной даты нет данных, выберите другую дату</p>
           </div>
         </div>
 
@@ -632,7 +659,7 @@
 <script src="js/script.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/3.0.2/jspdf.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-    <script>
+    <script async>
       document.addEventListener('DOMContentLoaded', function () {
         const dateInputs = document.querySelectorAll('.cur-date');
         const dateDisplay = document.querySelectorAll('.date-display');
@@ -722,18 +749,59 @@
                                             </tr>
                                           `;
           })
-
-
         };
 
+        function isFutureDate(dateString) {
+          const inputDate = new Date(dateString);
+          const today = new Date();
+
+          today.setHours(0, 0, 0, 0);
+          inputDate.setHours(0, 0, 0, 0);
+          return inputDate > today;
+        }
+
         async function getRateForCurrency(date) {
+          const tables = document.querySelectorAll('.table-default')
+          const loaders = document.querySelectorAll('.rates-preloader--table')
+          const noDataMessages = document.querySelectorAll('.rates-no-data')
+
+          if (isFutureDate(date)) {
+            noDataMessages.forEach(message => {
+              message.classList.remove('d-none')
+              message.classList.add('d-flex')
+            })
+            tables.forEach(table => table.classList.add('d-none'))
+            return
+          } else {
+            noDataMessages.forEach(message => {
+              message.classList.add('d-none')
+              message.classList.remove('d-flex')
+            })
+            tables.forEach(table => {
+              table.classList.add('d-block')
+              table.classList.remove('d-none')
+            })
+          }
+
           try {
+            tables.forEach(table => table.classList.add('d-none'))
+            loaders.forEach(loader => loader.classList.remove('d-none'))
+            loaders.forEach(loader => loader.classList.add('d-flex'))
+
             const response = await fetch(`https://api.nbrb.by/exrates/rates?ondate=${date}&periodicity=0`);
             const data = await response.json();
             createListExchangeRates(data);
-            return data
+
+            return data;
           } catch (error) {
             console.error('Ошибка при получении курса:', error);
+          } finally {
+            tables.forEach(table => {
+              table.classList.add('d-block')
+              table.classList.remove('d-none')
+            })
+            loaders.forEach(loader => loader.classList.add('d-none'))
+            loaders.forEach(loader => loader.classList.remove('d-flex'))
           }
         }
 
@@ -746,8 +814,15 @@
         })
 
         async function getRates(currencyID, period = 'week', customDate = null) {
+          const chartContent = document.querySelector('.chart-container')
+          const chartLoader = document.querySelector('.rates-preloader--chart')
+
           try {
             let startDate, endDate;
+
+            chartContent.classList.add('d-none')
+            chartLoader.classList.remove('d-none')
+            chartLoader.classList.add('d-flex')
 
             switch (period) {
               case 'week':
@@ -755,15 +830,6 @@
                 break;
               case 'month':
                 ({ startDate, endDate } = getCurrentMonth());
-                break;
-              case 'custom':
-                if (!customDate) {
-                  throw new Error('Для custom периода необходимо указать дату');
-                }
-                ({ startDate, endDate } = getCustomMonth(customDate));
-                break;
-              case 'year':
-                ({ startDate, endDate } = getLastYear());
                 break;
               default:
                 throw new Error('Неверный период. Доступные значения: week, month, custom, year');
@@ -794,13 +860,16 @@
             }));
 
             processedRates.sort((a, b) => a.dateObj - b.dateObj);
-            console.log(processedRates)
 
             return processedRates;
-
           } catch (error) {
             console.error('Ошибка при получении курсов:', error);
             throw error;
+          } finally {
+            chartContent.classList.add('d-block')
+            chartContent.classList.remove('d-none')
+            chartLoader.classList.add('d-none')
+            chartLoader.classList.remove('d-flex')
           }
         }
 
@@ -833,30 +902,6 @@
           endOfMonth.setHours(23, 59, 59, 999);
 
           return { startDate: startOfMonth, endDate: endOfMonth };
-        }
-
-        function getCustomMonth(date) {
-          const inputDate = new Date(date);
-
-          const startOfMonth = new Date(inputDate.getFullYear(), inputDate.getMonth(), 1);
-          startOfMonth.setHours(0, 0, 0, 0);
-
-          const endOfMonth = new Date(inputDate.getFullYear(), inputDate.getMonth() + 1, 0);
-          endOfMonth.setHours(23, 59, 59, 999);
-
-          return { startDate: startOfMonth, endDate: endOfMonth };
-        }
-
-        function getLastYear() {
-          const now = new Date();
-
-          const startOfYear = new Date(now.getFullYear() - 1, now.getMonth(), now.getDate());
-          startOfYear.setHours(0, 0, 0, 0);
-
-          const endOfYear = new Date(now);
-          endOfYear.setHours(23, 59, 59, 999);
-
-          return { startDate: startOfYear, endDate: endOfYear };
         }
 
         let data = null
@@ -1032,7 +1077,6 @@
               }))
             );
 
-            console.log('Все курсы на месяц:', allRates);
             let data = allRates
             createChart(allRates);
 
@@ -1129,12 +1173,81 @@
         })
 
         function printChart() {
-          const canvas = document.querySelector('#currencyChart');
-          const win = window.open();
-          win.document.write("<br><img src='" + canvas.toDataURL() + "'/>");
-          setTimeout(() => {
-            win.print();
-          }, 1000);
+          try {
+            const canvas = document.querySelector('#currencyChart');
+            const imageData = canvas.toDataURL('image/png');
+
+            const iframe = document.createElement('iframe');
+            iframe.style.position = 'fixed';
+            iframe.style.right = '0';
+            iframe.style.bottom = '0';
+            iframe.style.width = '0';
+            iframe.style.height = '0';
+            iframe.style.border = 'none';
+
+            iframe.onload = function () {
+              const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+              iframeDoc.write(`
+                <!DOCTYPE html>
+                <html>
+                <head>
+                  <title>График курсов валют</title>
+                  <style>
+                    body {
+                      margin: 0;
+                      padding: 20px;
+                      font-family: Arial, sans-serif;
+                      text-align: center;
+                    }
+                    img {
+                      max-width: 100%;
+                      height: auto;
+                      margin: 0 auto;
+                      display: block;
+                    }
+                    .print-title {
+                      text-align: center;
+                      margin-bottom: 20px;
+                      font-size: 18px;
+                      font-weight: bold;
+                    }
+                    @media print {
+                      body { margin: 0; padding: 0; }
+                      .no-print { display: none; }
+                    }
+                  </style>
+                </head>
+                <body>
+                  <div class="print-title">График курсов валют</div>
+                  <img src="${imageData}" alt="График курсов валют">
+                  <div class="no-print" style="margin-top: 20px; text-align: center;">
+                    <button onclick="window.print()" style="padding: 10px 20px; font-size: 16px;">
+                      Печать
+                    </button>
+                  </div>
+                </body>
+                </html>
+              `);
+
+              iframeDoc.close();
+              setTimeout(() => {
+                iframe.contentWindow.focus();
+                iframe.contentWindow.print();
+
+                setTimeout(() => {
+                  document.body.removeChild(iframe);
+                }, 1000);
+              }, 500);
+            };
+
+            document.body.appendChild(iframe);
+
+          } catch (error) {
+            console.error('Ошибка при печати графика:', error);
+            UIUtils.showError('Ошибка при печати графика');
+          }
+
         }
 
         const printChartBtn = document.querySelector('#print-chart')
@@ -1142,7 +1255,7 @@
 
         function saveChartToPDF() {
           const canvas = document.querySelector('#currencyChart');
-          const canvasImage = canvas.toDataURL('image/jpeg', 1.0);
+          const canvasImage = canvas.toDataURL('image/jpeg', 2.0);
           let pdf = new jspdf.jsPDF({
             orientation: 'landscape'
           });
@@ -1153,7 +1266,6 @@
 
         const saveChartBtn = document.querySelector('#save-chart')
         saveChartBtn.addEventListener('click', () => saveChartToPDF())
-
 
         function printTable(selector) {
           const originalContents = document.body.innerHTML;
@@ -1199,39 +1311,37 @@
             const { jsPDF } = window.jspdf;
             const table = document.querySelector(selector);
 
-            const tableClone = table.cloneNode(true);
-            tableClone.style.width = '100%';
-            tableClone.style.fontSize = '12px';
-            document.body.appendChild(tableClone);
-
-            const canvas = await html2canvas(tableClone, {
+            const canvas = await html2canvas(table, {
               scale: 2,
               useCORS: true,
-              logging: false
+              logging: false,
+              backgroundColor: '#ffffff',
             });
 
-            document.body.removeChild(tableClone);
+            let optimizedCanvas = canvas;
+            if (canvas.width > 1200) {
+              optimizedCanvas = document.createElement('canvas');
+              const ratio = 1200 / canvas.width;
+              optimizedCanvas.width = 1200;
+              optimizedCanvas.height = canvas.height * ratio;
 
-            const imgData = canvas.toDataURL('image/png');
-            const pdf = new jsPDF('p', 'mm', 'a4');
-            const imgWidth = 190;
-            const pageHeight = 280;
-            const imgHeight = (canvas.height * imgWidth) / canvas.width;
-
-            let heightLeft = imgHeight;
-            let position = 10;
-
-            pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
-            heightLeft -= pageHeight;
-
-            while (heightLeft >= 0) {
-              position = heightLeft - imgHeight;
-              pdf.addPage();
-              pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
-              heightLeft -= pageHeight;
+              const ctx = optimizedCanvas.getContext('2d');
+              ctx.drawImage(canvas, 0, 0, optimizedCanvas.width, optimizedCanvas.height);
             }
 
-            pdf.save(`курсы-валют-${new Date().toISOString().split('T')[0]}.pdf`);
+            const imgData = optimizedCanvas.toDataURL('image/jpeg', 1);
+
+            const pdf = new jsPDF('p', 'mm', 'a4');
+            const pdfWidth = pdf.internal.pageSize.getWidth();
+            const imgWidth = pdfWidth - 20;
+            const imgHeight = (optimizedCanvas.height * imgWidth) / optimizedCanvas.width;
+
+            pdf.addImage(imgData, 'JPEG', 10, 10, imgWidth, imgHeight);
+
+            const now = new Date();
+            const fileName = `Курсы-валют-${now.toISOString().split('T')[0]}.pdf`;
+
+            pdf.save(fileName);
 
           } catch (error) {
             console.error('Ошибка при создании PDF:', error);
@@ -1252,6 +1362,7 @@
         printLargeTableBtn.addEventListener('click', () => printTable("#rates-table-large"))
       });
     </script>
+
 </body>
 
 </html>
