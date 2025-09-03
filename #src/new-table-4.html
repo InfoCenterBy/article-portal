@@ -1,307 +1,409 @@
 <!DOCTYPE html>
 <html lang="ru">
-@@include('_head.html',{ "title":"Главная" })
+	@@include('_head.html',{ "title":"Главная" })
 
-<body>
-	@@include('./new-main/main-components/_new-header.html')
-	@@include('./new-main/main-components/_search-modal.html') @@include('./new-main/main-components/_nav.html')
+	<body>
+		@@include('./new-main/main-components/_new-header.html')
+		@@include('./new-main/main-components/_search-modal.html') @@include('./new-main/main-components/_nav.html')
 
-	<div class="nav-container active-container">
-		<!-- Nav Button -->
-		<a class="" id="menu-btn"><i class="bi-chevron-right bi"></i></a>
-		<!--Nav Button -->
-		<div class="main-content">
-			@@include('./new-main/main-components/_fin.html')
-			<hr class="d-md-block my-0 d-none" />
-			<div class="mt-4"></div>
-			<div class="main-section">
-				<div class="table-4">
-					<table>
-						<thead>
-							<tr>
-								<td>Показатель</td>
-								<td>Установленный размер</td>
-								<td>С какой даты применяется</td>
-								<td>Нормативный правовой акт</td>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>
-									<span class="mobile-label d-md-none">Показатель: </span>
-									Базовая величина
-								</td>
-								<td>
-									<span class="mobile-label d-md-none">Установленный размер: </span>
-									32 руб. 00 коп.
-								</td>
-								<td>
-									<span class="mobile-label d-md-none">С какой даты применяется: </span>
-									С 01.01.2022
-								</td>
-								<td>
-									<span class="mobile-label d-md-none">Нормативный правовой акт: </span>
-									<p>
-										<a href="#" target="_blank">Постановление Совета Министров Республики
-											Беларусь</a>
-									</p>
-									<p class="color-gray-dark fz-14">от 31 декабря 2021 г. № 792</p>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<span class="mobile-label d-md-none">Показатель: </span>
-									Базовая арендная величина
-								</td>
-								<td>
-									<span class="mobile-label d-md-none">Установленный размер: </span>
-									16 руб. 90 коп.
-								</td>
-								<td>
-									<span class="mobile-label d-md-none">С какой даты применяется: </span>
-									С 01.04.2022
-								</td>
-								<td>
-									<span class="mobile-label d-md-none">Нормативный правовой акт: </span>
-									<p>
-										<a href="#" target="_blank">Совета Министров Республики Беларусь</a>
-									</p>
-									<p class="color-gray-dark fz-14">от 28 марта 2022 г. № 180</p>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<span class="mobile-label d-md-none">Показатель: </span>
-									Базовая ставка
-								</td>
-								<td>
-									<span class="mobile-label d-md-none">Установленный размер: </span>
-									210 руб. 00 коп.
-								</td>
-								<td>
-									<span class="mobile-label d-md-none">С какой даты применяется: </span>
-									С 01.05.2022
-								</td>
-								<td>
-									<span class="mobile-label d-md-none">Нормативный правовой акт: </span>
-									<p>
-										<a href="#" target="_blank">Постановление Совета Министров Республики
-											Беларусь</a>
-									</p>
-									<p class="color-gray-dark fz-14">от 31 марта 2022 г. № 194</p>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<span class="mobile-label d-md-none">Показатель: </span>
-									Месячная минимальная заработная плата
-								</td>
-								<td>
-									<span class="mobile-label d-md-none">Установленный размер: </span>
-									457 руб. 00 коп.
-								</td>
-								<td>
-									<span class="mobile-label d-md-none">С какой даты применяется: </span>
-									С 01.01.2022
-								</td>
-								<td>
-									<span class="mobile-label d-md-none">Нормативный правовой акт: </span>
-									<p>
-										<a href="#" target="_blank">Постановление Совета Министров Республики
-											Беларусь</a>
-									</p>
-									<p class="color-gray-dark fz-14">от 14 декабря 2021 г. № 721</p>
-								</td>
-							</tr>
-							<tr>
-								<td colspan="3">
-									<span class="mobile-label d-md-none">Описание: </span>
-									<p>Часовая минимальная заработная плата</p>
-									<p class="color-gray-dark fz-14">
-										Размер определяется нанимателем путем деления размера месячной
-										минимальной заработной платы на соотношение расчетной нормы
-										рабочего времени календарного года, установленной для
-										соответствующих категорий работников нанимателем в соответствии с
-										законодательством о труде, и количества месяцев календарного года
-									</p>
-								</td>
-								<td>
-									<span class="mobile-label d-md-none">Нормативный правовой акт: </span>
-									<p>
-										<a href="#" target="_blank">Часть вторая статьи 5 Закона Республики Беларусь</a>
-									</p>
-									<p class="color-gray-dark fz-14">от 17 июля 2002 г. № 124-З</p>
-								</td>
-							</tr>
-							<tr>
-								<td colspan="3">
-									<span class="mobile-label d-md-none">Описание: </span>
-									<p>
-										Расчетная норма рабочего времени на 2022 г. при полной норме его
+		<div class="nav-container active-container">
+			<!-- Nav Button -->
+			<a class="" id="menu-btn"><i class="bi-chevron-right bi"></i></a>
+			<!--Nav Button -->
+			<div class="main-content">
+				@@include('./new-main/main-components/_fin.html')
+				<hr class="d-md-block my-0 d-none" />
+				<div class="mt-4"></div>
+				<div class="main-section">
+					<div class="table-4 border-20">
+						<table>
+							<thead>
+								<tr>
+									<td>Показатель</td>
+									<td>Установленный размер</td>
+									<td>С какой даты применяется</td>
+									<td>Нормативный правовой акт</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Базовая величина</td>
+									<td>42 руб. 00 коп.</td>
+									<td>С 01.01.2025</td>
+									<td>
+										<p>
+											Постановление Совета Министров Республики Беларусь от 16 ноября
+											2024 г. № 848
+										</p>
+									</td>
+								</tr>
+								<tr>
+									<td>Базовая арендная величина</td>
+									<td>18 руб. 77 коп.</td>
+									<td>С 01.04.2025</td>
+									<td>
+										<p>
+											Постановление Совета Министров Республики Беларусь&nbsp;от 19
+											марта 2025&nbsp;г. №&nbsp;158
+										</p>
+									</td>
+								</tr>
+								<tr>
+									<td>Базовая ставка</td>
+									<td>273 руб. 00 коп.</td>
+									<td>С 01.09.2025</td>
+									<td>
+										<p>
+											Постановление Совета Министров Республики Беларусь от 13 августа
+											2025 г. № 436
+										</p>
+									</td>
+								</tr>
+								<tr>
+									<td rowspan="2">Месячная минимальная заработная плата</td>
+									<td>726 руб. 00 коп.</td>
+									<td>С 01.01.2025</td>
+									<td>
+										<p>
+											Постановление Совета Министров Республики Беларусь от 10 декабря
+											2024 г. № 935
+										</p>
+									</td>
+								</tr>
+								<tr>
+									<td>726 руб. 00 коп.</td>
+									<td>
+										За июль<br />
+										2025 г.
+									</td>
+									<td>
+										<a href="https://mintrud.gov.by/ru">www.mintrud.gov.by</a>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="3">
+										Часовая минимальная заработная плата.
+										<p class="color-gray-dark fz-14">
+											Размер определяется нанимателем путем деления размера месячной
+											минимальной заработной платы на соотношение расчетной нормы
+											рабочего времени календарного года, установленной для
+											соответствующих категорий работников нанимателем в соответствии с
+											законодательством о труде, и количества месяцев календарного года
+										</p>
+									</td>
+									<td>
+										Часть вторая статьи 5 Закона Республики Беларусь от 17 июля
+										2002&nbsp;г. №&nbsp;124-З
+									</td>
+								</tr>
+								<tr>
+									<td colspan="3">
+										Расчетная норма рабочего времени на 2025 г. при полной норме его
 										продолжительности не более:
-									</p>
-									<p class="color-gray-dark fz-14">
-										для пятидневной рабочей недели с выходными днями в субботу и
-										воскресенье — <strong>2 037 часов;</strong>
-									</p>
-									<p class="color-gray-dark fz-14">
-										для шестидневной рабочей недели с выходным днем в воскресенье —
-										<strong>2 038 часов</strong>
-									</p>
-								</td>
-								<td>
-									<span class="mobile-label d-md-none">Нормативный правовой акт: </span>
-									<p>
-										<a href="#" target="_blank">Постановление Министерства труда и социальной защиты
-											Республики Беларусь</a>
-									</p>
-									<p class="color-gray-dark fz-14">от 20 октября 2021 г. № 70</p>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<span class="mobile-label d-md-none">Показатель: </span>
-									Средняя заработная плата работников Республики Беларусь
-								</td>
-								<td>
-									<span class="mobile-label d-md-none">Установленный размер: </span>
-									1 573 руб. 40 коп.
-								</td>
-								<td>
-									<span class="mobile-label d-md-none">С какой даты применяется: </span>
-									Май 2022 г.
-								</td>
-								<td>
-									<span class="mobile-label d-md-none">Нормативный правовой акт: </span>
-									<a href="www.belstat.gov.by" target="_blank">www.belstat.gov.by</a>
-								</td>
-							</tr>
-							<tr>
-								<td colspan="3">
-									<span class="mobile-label d-md-none">Описание: </span>
-									<p>
-										Расчетная норма рабочего времени на 2022 г. при полной норме его
-										продолжительности не более:
-									</p>
-									<p class="color-gray-dark fz-14">
-										для пятидневной рабочей недели с выходными днями в субботу и
-										воскресенье — 2 037 часов;
-									</p>
-									<p class="color-gray-dark fz-14">
-										для шестидневной рабочей недели с выходным днем в воскресенье — 2
-										038 часов
-									</p>
-								</td>
-								<td>
-									<span class="mobile-label d-md-none">Нормативный правовой акт: </span>
-									<p>
-										<a href="#" target="_blank">Постановление Министерства труда и социальной защиты
-											Республики Беларусь</a>
-									</p>
-									<p class="color-gray-dark fz-14">от 20 октября 2021 г. № 70</p>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<span class="mobile-label d-md-none">Показатель: </span>
-									Средняя заработная плата работников Республики Беларусь
-								</td>
-								<td>
-									<span class="mobile-label d-md-none">Установленный размер: </span>
-									1 573 руб. 40 коп.
-								</td>
-								<td>
-									<span class="mobile-label d-md-none">С какой даты применяется: </span>
-									Май 2022 г.
-								</td>
-								<td>
-									<span class="mobile-label d-md-none">Нормативный правовой акт: </span>
-									<a href="www.belstat.gov.by" target="_blank">www.belstat.gov.by</a>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<span class="mobile-label d-md-none">Показатель: </span>
-									Базовая арендная величина
-								</td>
-								<td>
-									<span class="mobile-label d-md-none">Установленный размер: </span>
-									16 руб. 90 коп.
-								</td>
-								<td>
-									<span class="mobile-label d-md-none">С какой даты применяется: </span>
-									С 01.04.2022
-								</td>
-								<td>
-									<span class="mobile-label d-md-none">Нормативный правовой акт: </span>
-									<p>
-										<a href="#" target="_blank">Постановление Совета Министров Республики
-											Беларусь</a>
-									</p>
-									<p class="color-gray-dark fz-14">от 28 марта 2022 г. № 180</p>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<span class="mobile-label d-md-none">Показатель: </span>
-									Базовая ставка
-								</td>
-								<td>
-									<span class="mobile-label d-md-none">Установленный размер: </span>
-									210 руб. 00 коп.
-								</td>
-								<td>
-									<span class="mobile-label d-md-none">С какой даты применяется: </span>
-									С 01.05.2022
-								</td>
-								<td>
-									<span class="mobile-label d-md-none">Нормативный правовой акт: </span>
-									<p>
-										<a href="#" target="_blank">Постановление Совета Министров Республики
-											Беларусь</a>
-									</p>
-									<p class="color-gray-dark fz-14">от 31 марта 2022 г. № 194</p>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<span class="mobile-label d-md-none">Показатель: </span>
-									Месячная минимальная заработная плата
-								</td>
-								<td>
-									<span class="mobile-label d-md-none">Установленный размер: </span>
-									457 руб. 00 коп.
-								</td>
-								<td>
-									<span class="mobile-label d-md-none">С какой даты применяется: </span>
-									С 01.01.2022
-								</td>
-								<td>
-									<span class="mobile-label d-md-none">Нормативный правовой акт: </span>
-									<p>
-										<a href="#" target="_blank">Постановление Совета Министров Республики
-											Беларусь</a>
-									</p>
-									<p class="color-gray-dark fz-14">от 14 декабря 2021 г. № 721</p>
-								</td>
-							</tr>
-						</tbody>
-					</table>
+										<p class="color-gray-dark fz-14">
+											- для пятидневной рабочей недели с выходными днями в субботу и
+											воскресенье — 2 007 часов;<br />
+											- для шестидневной рабочей недели с выходным днем в воскресенье —
+											2 010 часов
+										</p>
+									</td>
+
+									<td>
+										<p>
+											Постановление Министерства труда и социальной защиты Республики
+											Беларусь от 15 ноября 2024 г. № 92
+										</p>
+									</td>
+								</tr>
+								<tr>
+									<td>Средняя заработная плата работников Республики Беларусь</td>
+									<td>2772 руб. 40 коп.</td>
+									<td>Июль 2025&nbsp;г.</td>
+									<td>
+										<a href="https://www.belstat.gov.by/">www.belstat.gov.by</a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Бюджет прожиточного минимума:<br />
+										<ul>
+											<li>в среднем на душу населения</li>
+										</ul>
+									</td>
+									<td>487 руб. 72 коп.</td>
+									<td rowspan="2">
+										С 01.08.2025<br />
+										по 31.10.2025
+									</td>
+									<td rowspan="2">
+										<p>
+											Постановление Министерства труда и социальной защиты Республики
+											Беларусь&nbsp;<span
+												style="
+													background-color: var(--color-white);
+													color: var(--color-black);
+												"
+												><br />
+												от 25 июля 2025 г. № 68</span
+											>
+										</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<ul>
+											<li>для трудоспособного населения</li>
+										</ul>
+									</td>
+									<td>523 руб. 92 коп.</td>
+								</tr>
+								<tr>
+									<td>Ставка рефинансирования Национального банка Республики Беларусь</td>
+									<td>9,75 % годовых</td>
+									<td>С 25.06.2025</td>
+									<td>
+										Постановление Правления Национального банка Республики Беларусь<br />
+										от&nbsp;23 июня 2025 г. № 163
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Ставка, применяемая для расчета пени за несвоевременную уплату
+										налогов, сборов (пошлин)
+									</td>
+									<td>0,0271</td>
+									<td>С 25.06.2025</td>
+									<td>Пункты 2 и 4 статьи 55 Налогового кодекса Республики Беларусь</td>
+								</tr>
+								<tr>
+									<td>
+										Средства, удерживаемые в бесспорном порядке обслуживающим нанимателя
+										банком с нанимателей, имеющих задолженность по выплате заработной
+										платы (бронирование средств на заработную плату)
+									</td>
+									<td>787 руб. 46 коп.</td>
+									<td>С 11.08.2025</td>
+									<td>
+										Подпункт 1.2 пункта 1 Указа Президента Республики Беларусь от 27
+										ноября 1995&nbsp;г. №&nbsp;483;
+										<br />
+										<a href="https://mintrud.gov.by/ru">www.mintrud.gov.by</a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Стандартные налоговые вычеты:<br />
+										<ul>
+											<li>
+												работнику при получении дохода, подлежащего налогообложению,
+												в сумме, не превышающей 1 164 руб. 00 коп. в месяц
+											</li>
+										</ul>
+									</td>
+									<td>192 руб. 00 коп.</td>
+									<td rowspan="4">С 01.01.2025</td>
+									<td rowspan="4">Статья 209 Налогового кодекса Республики Беларусь</td>
+								</tr>
+								<tr>
+									<td>
+										<p class="color-gray-dark fz-14"></p>
+										<ul>
+											<li>на ребенка до 18 лет и&nbsp;(или) каждого иждивенца</li>
+										</ul>
+										<p></p>
+									</td>
+									<td>56 руб. 00 коп.</td>
+								</tr>
+								<tr>
+									<td>
+										<p></p>
+										<ul>
+											<li>
+												вдове (вдовцу), одинокому родителю, приемному родителю,
+												опекуну или попечителю на каждого ребенка до 18 лет
+												и&nbsp;(или) каждого иждивенца (в месяц)
+											</li>
+										</ul>
+										<p></p>
+									</td>
+									<td>107 руб. 00 коп.</td>
+								</tr>
+								<tr>
+									<td>
+										<p class="color-gray-dark fz-14"></p>
+										<ul>
+											<li>
+												родителям, имеющим двух и более детей в возрасте до 18 лет
+												или детей-инвалидов в возрасте до 18 лет (на каждого ребенка
+												в месяц)
+											</li>
+										</ul>
+										<p></p>
+									</td>
+									<td>107 руб. 00 коп.</td>
+								</tr>
+								<tr>
+									<td>
+										Государственные пособия семьям, воспитывающим детей, <br />
+										<b>единовременно:</b>
+										<p class="color-gray-dark fz-14"></p>
+										<ul>
+											<li>
+												в связи с рождением первого ребенка&nbsp;— в размере
+												10-кратной наибольшей величины БПМ*, действующего на дату
+												рождения ребенка
+											</li>
+										</ul>
+										<p></p>
+									</td>
+									<td>4 877 руб. 20 коп.</td>
+									<td rowspan="3">
+										С 01.08.2025<br />
+										по 31.10.2025
+									</td>
+									<td rowspan="8">
+										Закон Республики Беларусь от 29 декабря 2012&nbsp;г. №&nbsp;7-З;<br />
+										<a href="https://mintrud.gov.by/ru">www.mintrud.gov.by</a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p class="color-gray-dark fz-14"></p>
+										<ul>
+											<li>
+												в связи с рождением второго и последующих детей&nbsp;— в
+												размере 14-кратной наибольшей величины БПМ, действующего на
+												дату рождения ребенка
+											</li>
+										</ul>
+										<p></p>
+									</td>
+									<td>6 828 руб. 08 коп.</td>
+								</tr>
+								<tr>
+									<td>
+										<p class="color-gray-dark fz-14"></p>
+										<ul>
+											<li>
+												женщинам, ставшим на учет до 12 недель беременности,&nbsp;—
+												в размере 100&nbsp;% наибольшей величины БПМ, действующего
+												на дату рождения ребенка
+											</li>
+										</ul>
+										<p></p>
+									</td>
+									<td>487 руб. 72 коп.</td>
+								</tr>
+								<tr>
+									<td>
+										<b>ежемесячно:</b>
+										<p></p>
+										<ul>
+											<li>по уходу за ребенком до 3 лет**:</li>
+										</ul>
+										<p></p>
+									</td>
+									<td rowspan="2">931 руб. 91 коп.</td>
+									<td rowspan="4">
+										С 01.08.2025<br />
+										по 31.01.2026
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p class="color-gray-dark fz-14"></p>
+										<ul style="margin-left: 40pt; list-style-type: square">
+											<li>
+												на первого ребенка&nbsp;— в размере 35&nbsp;% среднемесячной
+												заработной платы
+											</li>
+										</ul>
+										<p></p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p class="color-gray-dark fz-14"></p>
+										<ul style="margin-left: 40pt; list-style-type: square">
+											<li>
+												на второго и последующих детей&nbsp;— в размере 40&nbsp;%
+												среднемесячной заработной платы
+											</li>
+										</ul>
+										<p></p>
+									</td>
+									<td>1065 руб. 04 коп.</td>
+								</tr>
+								<tr>
+									<td>
+										<p class="color-gray-dark fz-14"></p>
+										<ul style="margin-left: 40pt; list-style-type: square">
+											<li>
+												на ребенка-инвалида&nbsp;— в размере 45&nbsp;%
+												среднемесячной заработной платы
+											</li>
+										</ul>
+										<p></p>
+									</td>
+									<td>1 198 руб. 17 коп.</td>
+								</tr>
+								<tr>
+									<td>
+										<p class="color-gray-dark fz-14"></p>
+										<ul style="margin-left: 40pt; list-style-type: square">
+											<li>
+												на детей в возрасте от 3 до 18 лет в период воспитания
+												ребенка в возрасте до 3 лет&nbsp;— в размере 50&nbsp;%
+												наибольшей величины БПМ
+											</li>
+										</ul>
+										<p></p>
+									</td>
+									<td>243 руб. 86 коп.</td>
+									<td>
+										С 01.08.2025<br />
+										по 31.10.2025
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<br />
+						<p><sup>*</sup>БМП - бюджет прожиточного минимума</p>
+						<p><sup>**</sup>Размер пособия по уходу за ребенком в возрасте до 3 лет определяется:</p>
+						<ul>
+							<li>
+								<b>за январь текущего года</b> - исходя из среднемесячной заработной платы
+								работников в республике за II квартал предшествующего года;
+							</li>
+							<li>
+								<b>за период с 1 февраля по 31 июля текущего года</b> - исходя из среднемесячной
+								заработной платы работников в республике за IV квартал предшествующего года;
+							</li>
+							<li>
+								<b>за период с 1 августа по 31 декабря текущего года</b> - исходя из
+								среднемесячной заработной платы работников в республике за II квартал
+								предшествующего года (ст. 13 Закона Республики Беларусь от 29 декабря 2012 г. №
+								7-3).
+							</li>
+						</ul>
+						В случае уменьшения среднемесячной заработной платы работников в республике, из которой
+						определяется размер пособия по уходу за ребенком в возрасте до 3 лет, такое пособие
+						назначается и выплачивается в размере, исчисленном до ее уменьшения.<br />
+						<ul></ul>
+						<br />
+					</div>
+				</div>
+				<div class="main-section">
+					<div class="position-relative" id="upBtn">
+						<div class="position-fixed up-btn" hidden></div>
+					</div>
 				</div>
 			</div>
-			<div class="main-section">
-				<div class="position-relative" id="upBtn">
-					<div class="position-fixed up-btn" hidden></div>
-				</div>
-			</div>
+			<div class="my-5"></div>
+			@@include('./new-main/main-components/_new-footer.html')
 		</div>
-
-		<div class="my-5"></div>
-		@@include('./new-main/main-components/_new-footer.html')
-	</div>
-	@@include('_js.html',{})
-</body>
-
+		@@include('_js.html',{})
+	</body>
 </html>
 
 <style>
@@ -340,43 +442,100 @@
 			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 		}
 
+		/* Скрываем пустые строки */
+		.table-4 tr:empty {
+			display: none;
+		}
+
 		.table-4 td {
 			display: block;
 			width: 100%;
 			padding: 0.5rem 0;
 			border: none;
 			text-align: left;
+			position: relative;
 		}
 
-		.table-4 td:not(:last-child) {
-			margin-bottom: 0.5rem;
-			padding-bottom: 0.5rem;
-		}
-
-		.mobile-label {
+		/* Добавляем метки для каждой ячейки */
+		.table-4 td:nth-child(1):before {
+			content: 'Показатель: ';
 			font-weight: 600;
 			color: #495057;
-			display: none;
+			display: block;
+			margin-bottom: 0.25rem;
 		}
 
-		@media (max-width: 768px) {
-			.mobile-label {
-				display: inline;
-			}
+		.table-4 td:nth-child(2):before {
+			content: 'Установленный размер: ';
+			font-weight: 600;
+			color: #495057;
+			display: block;
+			margin-bottom: 0.25rem;
 		}
 
+		.table-4 td:nth-child(3):before {
+			content: 'С какой даты применяется: ';
+			font-weight: 600;
+			color: #495057;
+			display: block;
+			margin-bottom: 0.25rem;
+		}
+
+		.table-4 td:nth-child(4):before {
+			content: 'Нормативный правовой акт: ';
+			font-weight: 600;
+			color: #495057;
+			display: block;
+			margin-bottom: 0.25rem;
+		}
+
+		/* Специальная обработка для ячеек с colspan */
 		.table-4 td[colspan='3'] {
-			border-bottom: 1px solid #f0f0f0;
+			display: block;
+			width: 100%;
 			margin-bottom: 0.5rem;
 			padding-bottom: 0.5rem;
+			border-bottom: 1px solid #f0f0f0;
 		}
 
+		.table-4 td[colspan='3']:before {
+			content: 'Описание: ';
+			font-weight: 600;
+			color: #495057;
+			display: block;
+			margin-bottom: 0.25rem;
+		}
+
+		/* Специальная обработка для ячеек с rowspan */
+		.table-4 td[rowspan] {
+			display: block;
+			width: 100%;
+		}
+
+		/* Стили для ссылок */
 		.table-4 a {
 			word-break: break-word;
 			display: inline-block;
 			max-width: 100%;
+			color: #007bff;
+			text-decoration: underline;
 		}
 
+		.table-4 a:hover {
+			color: #0056b3;
+		}
+
+		/* Стили для списков */
+		.table-4 ul {
+			margin: 0.5rem 0;
+			padding-left: 1.5rem;
+		}
+
+		.table-4 li {
+			margin-bottom: 0.25rem;
+		}
+
+		/* Стили для текста */
 		.table-4 .fz-14 {
 			font-size: 14px !important;
 		}
@@ -387,6 +546,17 @@
 
 		.table-4 p:last-child {
 			margin-bottom: 0;
+		}
+
+		/* Стили для жирного текста */
+		.table-4 b {
+			font-weight: 600;
+		}
+
+		/* Стили для сносок */
+		.table-4 sup {
+			font-size: 0.75em;
+			vertical-align: super;
 		}
 	}
 
@@ -400,9 +570,43 @@
 			padding: 0.375rem 0;
 		}
 
-		.table-4 td:not(:last-child) {
-			margin-bottom: 0.375rem;
-			padding-bottom: 0.375rem;
+		.table-4 td:before {
+			font-size: 0.9em;
+		}
+
+		.table-4 ul {
+			padding-left: 1.25rem;
+		}
+	}
+
+	/* Дополнительные стили для улучшения читаемости */
+	@media (max-width: 768px) {
+		.table-4 {
+			font-size: 14px;
+			line-height: 1.5;
+		}
+
+		.table-4 td:before {
+			font-size: 0.9em;
+			text-transform: uppercase;
+			letter-spacing: 0.5px;
+		}
+
+		/* Улучшенные стили для сложных ячеек */
+		.table-4 td[colspan='3'] {
+			background-color: #f8f9fa;
+			padding: 0.75rem;
+			border-radius: 0.25rem;
+			margin: 0.5rem 0;
+		}
+
+		/* Стили для ячеек с rowspan - делаем их более заметными */
+		.table-4 tr:has(td[rowspan]) {
+			background-color: #f8f9fa;
+		}
+
+		.table-4 tr:has(td[rowspan]) + tr {
+			background-color: #f8f9fa;
 		}
 	}
 </style>
