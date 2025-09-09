@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+@@include('_head.html',{
+"title":"Архив курсов валют"
+})
+
+<body>
+  @@include('./new-main/main-components/_new-header.html')
+  @@include('./new-main/main-components/_search-modal.html')
+  @@include('./new-main/main-components/_nav.html')
+
+  <div class="nav-container active-container">
+
+    <!-- Nav Button -->
+    <a class="" id="menu-btn"><i class="bi bi-chevron-right"></i></a>
+    <!--Nav Button -->
+    <div class="main-content">
+      <section class="main-section">
+        <div class="row">
+          <nav aria-label="breadcrumb" class="col-12">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="main.html"><i class="bi bi-house"></i></a></li>
+              <li class="breadcrumb-item"><a href="#">Справочная информация</a></li>
+              <li class="breadcrumb-item " aria-current="page">Перечень коммерческих организаций, зарегистрированных индивидуальными предпринимателями</li>
+            </ol>
+          </nav>
+        </div>
+      </section>
+      <div class="mt-4"></div>
+      <div class="main-section">
+        <div class="">
+          <strong class="ff-inter fs-28">
+            Перечень коммерческих организаций, зарегистрированных индивидуальными предпринимателями
+          </strong>
+        </div>
+
+        <div class="organizations-table mt-4">
+          <table>
+            <thead>
+              <tr>
+                <td colspan="5">
+                  Перечень коммерческих организаций, зарегистрированных индивидуальными предпринимателями в соответствии с Законом Республики
+                  Беларусь от 22 апреля 2024 г. No
+                  365-З "Об изменении законов по вопросам предпринимательской деятельности"
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Регистрационный номер индивидуального предпринимателя, создавшего коммерческую организацию
+                </td>
+                <td>
+                  Фамилия, собственное имя и отчество (если таковое имеется) индивидуального предпринимателя, создавшего коммерческую организацию
+                </td>
+                <td>
+                  Регистрационный номер коммерческой организации
+                </td>
+                <td>
+                  Полное наименование созданной коммерческой организации
+                </td>
+                <td>
+                  Дата государственной регистрации коммерческой организации/исключения индивидуального предпринимателя из ЕГР
+                </td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Lorem ipsum, dolor sdipisicing elit. Eveam itaque rem. Animi ipsum voluptate tempora veritatis,
+                  vel perspiciatis numqut cumque officiis!</td>
+                <td>Lorem ipsum dolor stelit. Facere voluptates repellat autem nemo sapiente eius repudiandae, ex provident
+                  obcaecati quisquam et mntium soluta numquam accusantium incidunt, quam quis?</td>
+                <td>Lorem ipsum, dolor sit amet consectetur aoluptatem quia itaque facilis omnis, culpa incidunt. Quisquam accusantium
+                  aliquam repudianatibus sapris deserunt eius, cum non.</td>
+                <td>Lorem ipsum, consectetur adipisicing elit. Earum voluptatem quia itaque facilis omnis, culpa incidunt. Quisquam accusantium
+                  aliquam ruptatibus sapierunt eius, cum non.</td>
+                <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Earum voluptatem quia itaque facilis omnis, culpa incidunt. Quisquam
+                  aliquam resapiente molestias quod corporis deserunt eius, cum non.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+      <div class="my-5"></div>
+      @@include('./new-main/main-components/_new-footer.html')
+    </div>
+    @@include('_js.html',{})
+
+</body>
+
+</html>
