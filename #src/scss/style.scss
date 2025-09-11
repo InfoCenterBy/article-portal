@@ -15,6 +15,7 @@ $colorsMap: (
   "red": "#D24344",
   "green": "#48B16E",
   "orange": "#F9B974",
+  "orange-light": "#FEEAD6",
   "indigo": "#5EB1FF",
   "green-status-background": "#CEF8E0",
   "green-status": "#008F5D",
@@ -810,3 +811,4 @@ body {
 @import "_player.scss";
 @import "_archive-exchange-rates.scss";
 @import "_tables.scss";
+@import "star-rating.scss";
