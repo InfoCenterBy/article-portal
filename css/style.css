@@ -11140,6 +11140,13 @@ html {
   .chart-container {
     height: 410px;
   }
+
+  .min-star-rating {
+    padding: 8px 12px;
+    font-size: 16px;
+    min-width: 160px;
+    right: -60px;
+  }
 }
 
 @media (max-width: 576px) and (max-width: 1520px) {

@@ -556,7 +556,7 @@
 </footer>
     </div>
     <form action="#" class="star-rating-form">
-      <div class="star-rating-card toast hide" role="alert" aria-live="assertive" aria-atomic="true" id="ratingToast">
+      <div class="star-rating-card toast hide" role="alert" aria-live="assertive" aria-atomic="true" id="ratingToast" data-bs-autohide="false">
         <div class="toast-header">
           <button type="button" class="btn-close ms-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
@@ -571,16 +571,23 @@
             <option value="1">Ужасно</option>
           </select>
           <textarea class="star-rating-comment" name="star-rating-comment" id="star-rating-comment" placeholder="Оставьте отзыв"></textarea>
-          <button class="button border-10 w-100 py-3 mt-4">Отправить</button>
+          <button class="button border-10 w-100 py-3 mt-4" id="submit-rating-btn">Отправить</button>
         </div>
       </div>
 
       <div>
-        <button class="min-star-rating" type="button" id="show-rating-btn" onclick="showRatingToast()">Оценить статью</button>
+        <button class="min-star-rating" type="button" id="show-rating-btn">Оценить статью</button>
       </div>
-
-
     </form>
+    <div class="toast align-items-center text-bg-success border-0 position-absolute bottom-0 end-0 mb-4 me-4" role="alert" aria-live="assertive"
+      aria-atomic="true" id="successToast">
+      <div class="d-flex">
+        <div class="toast-body">
+          Спасибо за вашу оценку!
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
         crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
@@ -965,27 +972,84 @@
       });
 
       const ratingToast = document.querySelector('#ratingToast')
+      const successToast = document.querySelector('#successToast');
+      const submitRatingBtn = document.querySelector('#submit-rating-btn');
+      const starRatingSelect = document.querySelector('#star-rating');
+      const showStarRatingBtn = document.querySelector('#show-rating-btn');
 
-      function showRatingToast() {
-        ratingToast.show();
+      const ratingToastInstance = bootstrap.Toast.getOrCreateInstance(ratingToast, {
+        autohide: false
+      });
+
+      const successToastInstance = bootstrap.Toast.getOrCreateInstance(successToast, {
+        autohide: true,
+        delay: 3000
+      });
+
+      if (submitRatingBtn) {
+        submitRatingBtn.disabled = true;
+        submitRatingBtn.classList.add('disabled');
       }
 
-      const showStarRatingBtn = document.querySelector('#show-rating-btn')
+      if (starRatingSelect) {
+        starRatingSelect.addEventListener('change', function () {
+          if (submitRatingBtn) {
+            const isRatingSelected = this.value !== '';
+            submitRatingBtn.disabled = !isRatingSelected;
+
+            if (isRatingSelected) {
+              submitRatingBtn.classList.remove('disabled');
+            } else {
+              submitRatingBtn.classList.add('disabled');
+            }
+          }
+        });
+      }
 
       if (showStarRatingBtn) {
-        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(ratingToast)
         showStarRatingBtn.addEventListener('click', () => {
-          toastBootstrap.show()
+          ratingToastInstance.show();
+        });
+      }
+
+      if (submitRatingBtn) {
+        submitRatingBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+
+          const rating = document.querySelector('#star-rating').value;
+          const comment = document.querySelector('#star-rating-comment').value;
+
+          ratingToastInstance.hide();
+          successToastInstance.show();
+
+          document.querySelector('#star-rating').value = '';
+          document.querySelector('#star-rating-comment').value = '';
+
+          if (submitRatingBtn) {
+            submitRatingBtn.disabled = true;
+            submitRatingBtn.classList.add('disabled');
+          }
+
+          if (showStarRatingBtn) {
+            showStarRatingBtn.classList.add('d-none');
+          }
+
         })
+
+
       }
 
       ratingToast.addEventListener('show.bs.toast', function () {
-        showStarRatingBtn.classList.add('d-none')
+        if (showStarRatingBtn) {
+          showStarRatingBtn.classList.add('d-none');
+        }
       });
 
       ratingToast.addEventListener('hide.bs.toast', function () {
-        showStarRatingBtn.classList.add('d-flex')
-        showStarRatingBtn.classList.remove('d-none')
+        if (showStarRatingBtn && showStarRatingBtn.style.display !== 'none') {
+          showStarRatingBtn.classList.add('d-flex');
+          showStarRatingBtn.classList.remove('d-none');
+        }
       });
     </script>
 
