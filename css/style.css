@@ -9548,7 +9548,7 @@ html {
 .star-rating-form {
   position: fixed;
   right: 0;
-  top: 50%;
+  top: 60vh;
 }
 
 .star-rating-card {
@@ -9624,6 +9624,13 @@ html {
 .min-star-rating:hover {
   background-color: #c47a2c;
   color: #fff;
+}
+
+.toast-success {
+  position: absolute;
+  top: 32vh;
+  right: 0px;
+  min-width: 300px;
 }
 
 @media (min-width: 576px) {
