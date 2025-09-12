@@ -9548,7 +9548,7 @@ html {
 .star-rating-form {
   position: fixed;
   right: 0;
-  top: 60vh;
+  top: 58vh;
 }
 
 .star-rating-card {
@@ -9628,7 +9628,7 @@ html {
 
 .toast-success {
   position: absolute;
-  top: 32vh;
+  top: 30vh;
   right: 0px;
   min-width: 300px;
 }

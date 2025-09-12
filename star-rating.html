@@ -1025,18 +1025,10 @@
           document.querySelector('#star-rating').value = '';
           document.querySelector('#star-rating-comment').value = '';
 
-          if (submitRatingBtn) {
-            submitRatingBtn.disabled = true;
-            submitRatingBtn.classList.add('disabled');
-          }
-
           if (showStarRatingBtn) {
             showStarRatingBtn.classList.add('d-none');
           }
-
         })
-
-
       }
 
       ratingToast.addEventListener('show.bs.toast', function () {
@@ -1046,7 +1038,7 @@
       });
 
       ratingToast.addEventListener('hide.bs.toast', function () {
-        if (showStarRatingBtn && showStarRatingBtn.style.display !== 'none') {
+        if (showStarRatingBtn) {
           showStarRatingBtn.classList.add('d-flex');
           showStarRatingBtn.classList.remove('d-none');
         }
